@@ -1,6 +1,10 @@
 CHANGELOG
 ===========
 
+Version 0.5.2 - Beta
+--------------------
+-   Hotfix: Trigger hasn't triggered on each call!
+
 Version 0.5.1 - Beta
 --------------------
 -   Hotfix: Wrong If-Condition for `sourceHide`.

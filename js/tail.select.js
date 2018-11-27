@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./js/tail.select.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.1 - Beta
+ |  @version    0.5.2 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -120,7 +120,7 @@
         tailSelect.inst["tail-" + this.id] = this;
         return this.init().bind();
     }, tailOptions;
-    tailSelect.version = "0.5.1";
+    tailSelect.version = "0.5.2";
     tailSelect.status = "beta";
     tailSelect.count = 0;
     tailSelect.inst = {};
@@ -428,17 +428,17 @@
 
             // Handle
             this.update(item);
-            return (!_force)? this.trigger("change", item, state): true;
+            return (_force === true)? true: this.trigger("change", item, state);
         },
 
         /*
          |  INTERNAL :: TRIGGER EVENT HANDLER
-         |  @version    0.5.0 [0.4.0]
+         |  @version    0.5.2 [0.4.0]
          */
         trigger: function(event){
             if(this._init){ return false; }
             var obj = {bubbles: false, cancelable: true, detail: {args: arguments, self: this}};
-            if(event == "change" && arguments[2] && arguments[2].indexOf("select") > 0){
+            if(event == "change" && arguments[2] && arguments[2].indexOf("select") >= 0){
                 trigger(this.e, "input", obj);
                 trigger(this.e, "change", obj);
             }
