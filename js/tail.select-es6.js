@@ -1,6 +1,6 @@
 /*
  |  tail.select - Another solution to make select fields beautiful again!
- |  @file       ./js/tail.select.js
+ |  @file       ./js/tail.select-es6.js
  |  @author     SamBrishes <sam@pytes.net>
  |  @version    0.5.0 - Beta
  |
@@ -8,68 +8,24 @@
  |  @license    X11 / MIT License
  |  @copyright  Copyright © 2014 - 2018 SamBrishes, pytesNET <pytes@gmx.net>
  */
-;(function(factory){
-    if(typeof(define) == "function" && define.amd){
-        define(function(){ return factory(window); });
-    } else {
-        if(typeof(window.tail) == "undefined"){
-            window.tail = {};
-        }
-        window.tail.select = factory(window);
-
-        if(typeof(jQuery) != "undefined"){
-            jQuery.fn.tailselect = function(o){
-                var r = [], i;
-                this.each(function(){ if((i = tail.select(this, o)) !== false){ r.push(i); } });
-                return (r.length === 1)? r[0]: (r.length === 0)? false: r;
-            }
-        }
-        if(typeof(MooTools) != "undefined"){
-            Element.implement({ tailselect: function(o){ return new tail.select(this, o); } });
-        }
-    }
-}(function(root){
-    "use strict";
-    var w = root, d = root.document;
+/*
+ |  EXPERIMENTAL ECMAScript 2015 (ES6) EDITION
+ |  It is NOT-RECOMMENDED to use this version on productively websites!
+ */
+var {select, options} = (function(root){
+    let w = root, d = root.document;
+    const que = "querySelector";
+    const queA = "querySelectorAll";
+    const parE = "parentElement";
+    const hAttr = "hasAttribute";
+    const gAttr = "getAttribute";
+    const sAttr = "setAttribute";
+    const rAttr = "removeAttribute";
 
     // Internal Helper Methods
-    function cHAS(e, name){
-        return (new RegExp("(?:^|\\s+)" + name + "(?:\\s+|$)")).test((e.className || ""));
-    }
-    function cADD(e, name){
-        if(!(new RegExp("\\b" + name + "\\b")).test(e.className || name)){
-            e.className += " " + name;
-        }
-        return e;
-    }
-    function cREM(e, name, regex){
-        if((regex = new RegExp("\\b(" + name + ")\\b")) && regex.test(e.className || "")){
-            e.className = e.className.replace(regex, "");
-        }
-        return e;
-    }
-    function trigger(e, event, opt){
-        if(CustomEvent && CustomEvent.name){
-            var ev = new CustomEvent(event, opt);
-        } else {
-            var ev = d.createEvent("CustomEvent");
-            ev.initCustomEvent(event, !!opt.bubbles, !!opt.cancelable, opt.detail);
-        }
-        return e.dispatchEvent(ev);
-    }
-    function clone(obj, rep){
-        if(Object.assign){
-            return Object.assign({}, obj, rep || {});
-        }
-        var clone = new Object();
-        for(var key in obj){
-            clone[key] = (key in rep)? rep[key]: obj[key];
-        }
-        return clone;
-    }
     function create(tag, classes){
-        var r = d.createElement(tag);
-            r.className = (classes && classes.join)? classes.join(" "): classes || "";
+        let r = d.createElement(tag);
+        r.className = (classes && classes.join)? classes.join(" "): classes || "";
         return r;
     }
 
@@ -77,31 +33,28 @@
      |  SELECT CONSTRUCTOR
      |  @version    0.5.0 [0.3.0]
      */
-    var tailSelect = function(el, config){
-        el = (typeof(el) == "string")? d.querySelectorAll(el): el;
+    let tailSelect = function(el, config){
+        el = (typeof(el) == "string")? d[queA](el): el;
         if(el instanceof NodeList || el instanceof HTMLCollection || el instanceof Array){
-            for(var _r = [], l = el.length, i = 0; i < l; i++){
-                _r.push(new tailSelect(el[i], clone(config, {})));
-            }
-            return (_r.length === 1)? _r[0]: ((_r.length === 0)? false: _r);
+            return Array.prototype.map.call(el, item => {
+                return new tailSelect(item, Object.assign({}, config));
+            });
         }
         if(!(el instanceof Element) || !(this instanceof tailSelect)){
             return !(el instanceof Element)? false: new tailSelect(el, config);
         }
 
         // Check Element
-        if(tailSelect.inst[el.getAttribute("data-tail-select")]){
-            return tailSelect.inst[el.getAttribute("data-tail-select")];
+        if(tailSelect.inst[el[gAttr]("data-tail-select")]){
+            return tailSelect.inst[el[gAttr]("data-tail-select")];
         }
-        if(el.getAttribute("data-select")){
-            var test = JSON.parse(el.getAttribute("data-select").replace(/\'/g, '"'));
-            if(test instanceof Object){
-                config = clone(config, test); // This is a unofficial function ;3
-            }
+        if(el[gAttr]("data-select")){
+            let test = JSON.parse(el[gAttr]("data-select").replace(/\'/g, '"'));
+            config = (test instanceof Object)? Object.assign(config, test): config;
         }
 
         // Get Element Options
-        var placeholder = el.getAttribute("placeholder") || el.getAttribute("data-placeholder"),
+        let placeholder = el[gAttr]("placeholder") || el[gAttr]("data-placeholder"),
             fb1 = "bindSourceSelect", fb2 = "sourceHide"; // Fallbacks
         config = (typeof(config) == "object")? config: {};
         config.multiple = ("multiple" in config)? config.multiple: el.multiple;
@@ -115,13 +68,13 @@
         // Init Instance
         this.e = el;
         this.id = ++tailSelect.count;
-        this.con = clone(tailSelect.defaults, config);
+        this.con = Object.assign({}, tailSelect.defaults, config);
         this.events = {};
         tailSelect.inst["tail-" + this.id] = this;
         return this.init().bind();
     }, tailOptions;
     tailSelect.version = "0.5.0";
-    tailSelect.status = "beta";
+    tailSelect.status = "dev";
     tailSelect.count = 0;
     tailSelect.inst = {};
 
@@ -171,6 +124,19 @@
      |  STORAGE :: STRINGS
      */
     tailSelect.strings = {
+        de: {
+            all: "Alle",
+            none: "Keine",
+            actionAll: "Alle auswählen",
+            actionNone: "Alle abwählen",
+            empty: "Keine Optionen verfügbar",
+            emptySearch: "Keine Optionen gefunden",
+            limit: "Keine weiteren Optionen wählbar",
+            placeholder: "Wähle eine Option...",
+            placeholderMulti: "Wähle bis zu :limit Optionen...",
+            search: "Tippen zum suchen",
+            disabled: "Dieses Feld ist deaktiviert"
+        },
         en: {
             all: "All",
             none: "None",
@@ -184,7 +150,20 @@
             search: "Type in to search...",
             disabled: "This Field is disabled"
         },
-        register: function(locale, object){
+        fr: {
+            all: "Tous",
+            none: "Aucun",
+            actionAll: "Sélectionner tout",
+            actionNone: "Sélectionner aucun",
+            empty: "Aucune option disponible",
+            emptySearch: "Aucune option trouvée",
+            limit: "Aucune autre option sélectionnable",
+            placeholder: "Choisissez une option ...",
+            placeholderMulti: "Choisissez jusqu'à :limit option(s) ...",
+            search: "Rechercher ...",
+            disabled: "Ce champs est désactivé"
+        },
+        register(locale, object){
             this[locale] = object;
         }
     };
@@ -197,13 +176,17 @@
          |  INTERNAL :: INIT SELECT FIELD
          |  @version    0.5.0 [0.3.0]
          */
-        init: function(){
-            var self = this, classes = ["tail-select"], con = this.con,
+        init(){
+            let classes = ["tail-select"], con = this.con,
                 regexp = /^[0-9.]+(?:cm|mm|in|px|pt|pc|em|ex|ch|rem|vw|vh|vmin|vmax|\%)$/i;
 
+            // Init Variables
+            this.__ = tailSelect.strings[con.locale] || tailSelect.strings.en;
+            this._pos = 0;
+            this._init = true;
+
             // Init ClassNames
-            var c = (con.classNames === true)? this.e.className: con.classNames;
-            classes.push((c && c.push)? c.join(" "): (c && c.split)? c: "no-classes");
+            classes = classes.concat((con.classNames === true)? this.e.className: con.classNames);
             if(con.hideSelected){    classes.push("hide-selected"); }
             if(con.hideDisabled){    classes.push("hide-disabled"); }
             if(con.multiLimit == 0){ classes.push("disabled");      }
@@ -211,17 +194,8 @@
             if(con.deselect){        classes.push("deselect");      }
             if(con.disabled){        classes.push("disabled");      }
 
-            // Init Variables
-            this.__ = tailSelect.strings[con.locale] || tailSelect.strings.en;
-            this._pos = 0;
-            this._init = true;
-            this.select = create("DIV", classes);
-            this.label = create("DIV", "select-label");
-            this.dropdown = create("DIV", "select-dropdown");
-            this.search = create("DIV", "dropdown-search");
-            this.csvInput = create("INPUT", "select-search");
-
             // Build :: Select
+            this.select = create("DIV", classes);
             if(con.width && regexp.test(con.width)){
                 this.select.style.width = con.width;
             } else if(con.width && !isNaN(parseFloat(con.width, 10))){
@@ -229,142 +203,134 @@
             }
 
             // Build :: Label
-            this.label.addEventListener("click", function(event){
-                self.toggle.call(self, self.con.animate);
-            });
+            this.label = create("DIV", "select-label");
+            this.label.addEventListener("click", (ev) => { this.toggle(); });
             this.select.appendChild(this.label);
 
             // Build :: Dropdown
+            this.dropdown = create("DIV", "select-dropdown");
             if(!isNaN(parseInt(con.height, 10))){
                 this.dropdown.style.maxHeight = parseInt(con.height, 10) + "px";
             }
             if(con.search){
-                this.search.innerHTML = '<input type="text" class="search-input" />';
-                this.search.children[0].placeholder = this.__.search;
-                this.search.children[0].addEventListener("input", function(event){
-                    self.query.call(self, (this.value.length > 2)? this.value: undefined);
+                this.search = create("DIV", "dropdown-search");
+                this.search.innerHTML = `<input type="text" class="search-input" placeholder="${this.__.search}" />`;
+                this.search.children[0].addEventListener("input", (ev) => {
+                    this.query((ev.target.value.length > 2)? ev.target.value: undefined);
                 });
                 this.dropdown.appendChild(this.search);
             }
             this.select.appendChild(this.dropdown);
 
             // Build :: CSV Input
+            this.csvInput = create("INPUT", "select-search");
             this.csvInput.type = "hidden";
             if(con.csvOutput){
                 this.csvInput.name = this.e.name;
-                this.e.removeAttribute("name");
+                this.e[rAttr]("name");
                 this.select.appendChild(this.csvInput);
             }
 
             // Prepare Container
             if(con.multiple && con.multiContainer){
-                if(d.querySelector(con.multiContainer)){
-                    this.container = d.querySelector(con.multiContainer);
-                    this.container.className += " tail-select-container";
+                if(d[que](con.multiContainer)){
+                    this.container = d[que](con.multiContainer);
+                    this.container.classList.add("tail-select-container");
                 } else if(con.multiContainer === true){
                     this.container = this.label;
-                    this.container.className += " tail-select-container";
+                    this.container.classList.add("tail-select-container");
                 }
             }
 
             // Prepare Options
             this.options = new tailOptions(this.e, this);
-            for(var l = this.e.options.length, i = 0; i < l; i++){
-                this.options.set(this.e.options[i], false);
-            }
-            for(var key in con.items){
-                if(typeof(con.items[key]) == "string"){
-                    con.items[key] = {value: con.items[key]};
-                }
-                this.options.add(key, con.items[key].value, con.items[key].group,
-                    con.items[key].selected, con.items[key].disabled,
-                    con.items[key].description);
-            }
+            Array.prototype.map.call(this.e.options, (opt) => {this.options.set(opt, false);});
+            Object.keys(con.items).forEach((key) => {
+                let value = (con.items[key].join)? con.items[key]: {value: con.items[key]};
+                let {value: a, group: b, selected: c, disabled: d, description: e} = value;
+                this.options.add(key, a, b, c, d, e);
+            });
             this.query();
 
             // Append and Return
             if(this.e.nextElementSibling){
-                this.e.parentElement.insertBefore(this.select, this.e.nextElementSibling);
+                this.e[parE].insertBefore(this.select, this.e.nextElementSibling);
             } else {
-                this.e.parentElement.appendChild(this.select);
+                this.e[parE].appendChild(this.select);
             }
             if(con.sourceHide){
                 if(this.e.style.display == "none"){
                     this.select.display = "none";
-                    this.e.setAttribute("data-select-hidden", "display");
+                    this.e[sAttr]("data-select-hidden", "display");
                 } if(this.e.style.visibility == "hidden"){
                     this.select.visibiltiy = "hidden";
-                    this.e.setAttribute("data-select-hidden", "visibility");
+                    this.e[sAttr]("data-select-hidden", "visibility");
                 } else {
                     this.e.style.display = "none";
-                    this.e.setAttribute("data-select-hidden", "0");
+                    this.e[sAttr]("data-select-hidden", "0");
                 }
             }
-            this.e.setAttribute("data-tail-select", "tail-" + this.id);
-            if(self.con.startOpen){
-                this.open(con.animate);
-            }
+            this._init = false
+            this.e[sAttr]("data-tail-select", "tail-" + this.id);
             (con.cbComplete || function(){ }).call(this, this.select);
-            return (this._init = false)? this: this;
+            return (con.startOpen)? this.open(this.con.animate): this;
         },
 
         /*
          |  INTERNAL :: EVENT LISTENER
          |  @version    0.5.0 [0.3.0]
          */
-        bind: function(){
-            var self = this;
-
-            // Keys Listener
-            d.addEventListener("keydown", function(event){
-                var key = (event.keyCode || event.which), opt, inner, e, temp;
-                if(!cHAS(self.select, "active") || [13, 27, 38, 40].indexOf(key) < 0){
+        bind(){
+            d.addEventListener("keydown", (ev) => {
+                let key = (ev.keyCode || ev.which), opt, inner, e, temp;
+                if(!this.select.classList.contains("active") || [13, 27, 38, 40].indexOf(key) < 0){
                     return false;
                 }
-                event.preventDefault();
-                event.stopPropagation();
+                ev.preventDefault();
+                ev.stopPropagation();
 
                 // Enter || Escape
                 if(key == 13){
-                    if((opt = self.dropdown.querySelector(".dropdown-option.hover:not(.disabled)"))){
-                        self.options.select.call(self.options, opt);
+                    if((opt = this.dropdown[que](".dropdown-option.hover:not(.disabled)"))){
+                        this.options.select(opt);
                     }
                 }
                 if(key == 27 || key == 13){
-                    return self.close(self.con.animate);
+                    return this.close(this.con.animate);
                 }
 
                 // Top || Down
-                if((opt = self.dropdown.querySelector(".dropdown-option.hover:not(.disabled)"))){
-                    cREM(opt, "hover"); e = [((key == 40)? "next": "previous") + "ElementSibling"];
+                if((opt = this.dropdown[que](".dropdown-option.hover:not(.disabled)"))){
+                    opt.classList.remove("hover");
+                    e = [((key == 40)? "next": "previous") + "ElementSibling"];
                     do {
                         if((temp = opt[e]) !== null && opt.tagName == "LI"){
                             opt = temp;
-                        } else if((temp = opt.parentElement[e]) !== null && temp.children.length > 0 && temp.tagName == "UL"){
+                        } else if((temp = opt[parE][e]) !== null && temp.children.length > 0 && temp.tagName == "UL"){
                             opt = temp.children[(key == 40)? 0: temp.children.length-1];
                         } else {
                             opt = false;
                         }
-                        if(opt && (!cHAS(opt, "dropdown-option") || cHAS(opt, "disabled"))){
+                        if(opt && (!/dropdown-option/.test(opt.className) || /disabled/.test(opt.className))){
                             continue;
                         }
                         break;
                     } while(true);
                 }
                 if(!opt && key == 40){
-                    opt = self.dropdown.querySelector(".dropdown-option:not(.disabled)");
+                    opt = this.dropdown[que](".dropdown-option:not(.disabled)");
                 } else if(!opt && key == 38){
-                    opt = self.dropdown.querySelector("ul:last-child li:not(.disabled):last-child");
+                    opt = this.dropdown[que]("ul:last-child li:not(.disabled):last-child");
                 }
-                if(opt && (inner = self.dropdown.querySelector(".dropdown-inner"))){
-                    var pos = (function(el){
-                        var _r = {top: el.offsetTop, height: el.offsetHeight};
-                        while((el = el.parentElement) != inner){
+                if(opt && (inner = this.dropdown[que](".dropdown-inner"))){
+                    let pos = (function(el){
+                        let _r = {top: el.offsetTop, height: el.offsetHeight};
+                        while((el = el[parE]) != inner){
                             _r.top += el.offsetTop;
                         }
                         return _r;
                     })(opt);
-                    cADD(opt, "hover");
+                    opt.classList.add("hover");
                     if((pos.top+(pos.height*2)) > (inner.offsetHeight+inner.scrollTop)){
                         inner.scrollBy(0, (pos.top+(pos.height*2))-(inner.offsetHeight+inner.scrollTop));
                     } else if((pos.top-pos.height) < inner.scrollTop){
@@ -375,36 +341,32 @@
             });
 
             // Close
-            d.addEventListener("click", function(ev){
-                if(!cHAS(self.select, "active") || cHAS(self.select, "idle")){ return false; }
-                if(self.con.stayOpen === true){ return false; }
-
-                var targets = [self.e, self.select, self.container];
-                for(var l = targets.length, i = 0; i < l; i++){
-                    if(targets[i] && (targets[i].contains(ev.target) || targets[i] == ev.target)){
-                        return false;
-                    }
-                    if(!ev.target.parentElement){ return false; }
+            d.addEventListener("click", (ev) => {
+                let test = !this.select.classList.contains("active") || this.select.classList.contains("idle");
+                if(test || this.con.stayOpen){
+                    return false;
                 }
-                return self.close.call(self, self.con.animate);
+                let result = [this.e, this.select, this.container].filter((el) => {
+                    return (el && (el.contains(ev.target) || el == ev.target));
+                });
+                return (result.length == 0)? this.close(this.con.animate): false;
             });
 
             // Bind Source Select
             if(!this.con.sourceBind){
                 return true;
             }
-            this.e.addEventListener("change", function(event){
-                event.preventDefault();
-                event.stopPropagation();
-                var handle = function(item){ self.options.select.call(self.options, item); };
-                if(!this.multiple && this.selectedIndex){
-                    self.options.select.call(self.options, this.options[this.selectedIndex]);
-                } else if(this.selectedOptions){
-                    self.options.all.call(self.options, "unselect");
-                    Array.prototype.forEach.call(this.selectedOptions, handle);
+            this.e.addEventListener("change", (ev) => {
+                ev.preventDefault();
+                ev.stopPropagation();
+                if(!this.multiple && this.e.selectedIndex){
+                    this.options.select(this.e.options[this.selectedIndex]);
+                } else if(this.e.selectedOptions){
+                    this.options.all("unselect");
+                    Array.from(this.e.selectedOptions, (e) => {this.options.select(e)});
                 } else {
-                    self.options.all.call(self.options, "unselect");
-                    Array.prototype.forEach.call(this.querySelectorAll("option:checked"), handle);
+                    this.options.all("unselect");
+                    Array.from(this.e[queA]("option:checked"), (e) => {this.options.select(e)});
                 }
             });
             return true;
@@ -414,16 +376,16 @@
          |  INTERNAL :: INTERNAL CALLBACK
          |  @version    0.5.0 [0.3.0]
          */
-        callback: function(item, state, _force){
-            var self = this, s = "[data-key='" + item.key + "'][data-group='" + item.group + "']";
+        callback(item, state, _force){
+            let self = this,  s = `[data-key='${item.key}'][data-group='${item.group}']`;
             if(state == "rebuild"){ return this.query(); }
 
             // Set Element-Item States
-            var element = this.dropdown.querySelector(s);
+            let element = this.dropdown[que](s);
             if(element && ["select", "disable"].indexOf(state) >= 0){
-                cADD(element, (state == "select"? "selected": "disabled"));
+                element.classList.add((state == "select"? "selected": "disabled"));
             } else if(element && ["unselect", "enable"].indexOf(state) >= 0){
-                cREM(element, (state == "unselect"? "selected": "disabled"));
+                element.classList.remove((state == "unselect"? "selected": "disabled"));
             }
 
             // Handle
@@ -435,23 +397,20 @@
          |  INTERNAL :: TRIGGER EVENT HANDLER
          |  @version    0.5.0 [0.4.0]
          */
-        trigger: function(event){
+        trigger(event){
             if(this._init){ return false; }
-            var obj = {bubbles: false, cancelable: true, detail: {args: arguments, self: this}};
+            let obj = {bubbles: false, cancelable: true, detail: {args: arguments, self: this}};
             if(event == "change" && arguments[2] && arguments[2].indexOf("select") > 0){
-                trigger(this.e, "input", obj);
-                trigger(this.e, "change", obj);
+                this.e.dispatchEvent(new CustomEvent("input", obj));
+                this.e.dispatchEvent(new CustomEvent("change", obj));
             }
-            trigger(this.select, "tail::" + event, obj);
+            this.select.dispatchEvent(new CustomEvent("tail::" + event, obj));
 
-            var args = [], pass;
-            Array.prototype.map.call(arguments, function(item, i){
-                if(i > 0){ args.push(item); }
-            });
-            (this.events[event] || []).forEach(function(item){
+            let args = [...arguments], pass; args.shift();
+            (this.events[event] || []).forEach((item) => {
                 pass = [].concat(args);
                 pass.push(item.args || null);
-                (item.cb || function(){ }).apply(obj.detail.self, pass);
+                (item.cb || function(){ }).apply(this, pass);
             });
             return true;
         },
@@ -460,32 +419,32 @@
          |  INTERNAL :: CALCULATE DROPDOWN
          |  @version    0.5.0 [0.5.0]
          */
-        calc: function(){
-            var clone = this.dropdown.cloneNode(true), height = this.con.height, search = 0,
-                inner = this.dropdown.querySelector(".dropdown-inner");
+        calc(){
+            let clone = this.dropdown.cloneNode(true), height = this.con.height, search = 0,
+                inner = this.dropdown[que](".dropdown-inner");
 
             // Calculate Dropdown Height
             clone = this.dropdown.cloneNode(true);
             clone.style.cssText = "height:auto;opacity:0;display:block;visibility:hidden;";
             clone.style.maxHeight = this.con.height + "px";
             clone.className += " cloned";
-            this.dropdown.parentElement.appendChild(clone);
+            this.dropdown[parE].appendChild(clone);
             height = (height > clone.clientHeight)? clone.clientHeight: height;
             if(this.con.search){
-                search = clone.querySelector(".dropdown-search").clientHeight;
+                search = clone[que](".dropdown-search").clientHeight;
             }
-            this.dropdown.parentElement.removeChild(clone);
+            this.dropdown[parE].removeChild(clone);
 
             // Calculate Viewport
-            var pos = this.select.getBoundingClientRect(),
+            let pos = this.select.getBoundingClientRect(),
                 bottom = w.innerHeight-(pos.top+pos.height),
                 view = ((height+search) > bottom)? pos.top > bottom: false;
             if(this.con.openAbove === true || (this.con.openAbove !== false && view)){
                 view = true, height = Math.min((height), pos.top-10);
-                cADD(this.select, "open-top");
+                this.select.classList.add("open-top");
             } else {
                 view = false, height = Math.min((height), bottom-10);
-                cREM(this.select, "open-top");
+                this.select.classList.remove("open-top");
             }
             if(inner){
                 this.dropdown.style.maxHeight = height + "px";
@@ -498,46 +457,42 @@
          |  API :: QUERY OPTIONS
          |  @version    0.5.0 [0.5.0]
          */
-        query: function(search, conf){
-            var root = create("DIV", "dropdown-inner"), self = this, item, tp, ul, li, a1, a2,
-                func = search? "finder": "walker", con = this.con, g = "getAttribute",
+        query(search, conf){
+            let root = create("DIV", "dropdown-inner"), tp, ul, a1, a2,
+                func = search? "finder": "walker", con = this.con,
                 args = search? [search, conf]: [con.sortItems, con.sortGroups];
 
             // Option Walker
-            while(item = this.options[func].apply(this.options, args)){
-                if(!ul || (ul && ul[g]("data-group") !== item.group)){
+            for(let item of this.options[func].apply(this.options, args)){
+                if(!ul || (ul && ul[gAttr]("data-group") !== item.group)){
                     tp = (con.cbLoopGroup || this.cbGroup).call(this, item.group, search, root);
                     if(tp instanceof Element){
                         ul = tp;
-                        ul.setAttribute("data-group", item.group);
+                        ul[sAttr]("data-group", item.group);
                         root.appendChild(ul);
                     } else { break; }
                 }
 
                 // Create Item
-                if((li = (con.cbLoopItem || this.cbItem).call(this, item, ul, search, root)) === null){
-                    continue;
-                }
+                let li = (con.cbLoopItem || this.cbItem).call(this, item, ul, search, root);
+                if(li === null){ continue; }
                 if(li === false){ break; }
-                li.setAttribute("data-key", item.key);
-                li.setAttribute("data-group", item.group);
-                li.addEventListener("click", function(event){
-                    if(!this.hasAttribute("data-key")){ return false; }
-                    var key = this[g]("data-key"), group = this[g]("data-group") || "#";
-                    if(self.options.toggle.call(self.options, key, group)){
-                        if(self.con.stayOpen === false && !self.con.multiple){
-                            self.close.call(self, self.con.animate);
-                        }
+                li[sAttr]("data-key", item.key);
+                li[sAttr]("data-group", item.group);
+                li.addEventListener("click", (ev) => {
+                    if(!li[gAttr]("data-key")){ return false; }
+                    if(this.options.toggle(li[gAttr]("data-key"), li[gAttr]("data-group"))){
+                        if(!con.stayOpen && !con.multiple){ this.close(this.con.animate); }
                     }
                 });
                 ul.appendChild(li);
             }
 
             // Empty
-            var count = root.querySelectorAll("*[data-key]").length;
+            let count = root[queA]("*[data-key]").length;
             if(count == 0){
                 (this.con.cbEmpty || function(element){
-                    var li = create("SPAN", "dropdown-empty");
+                    let li = create("SPAN", "dropdown-empty");
                     li.innerText = this.__["empty"];
                     element.appendChild(li);
                 }).call(this, root, search);
@@ -547,25 +502,25 @@
             if(count > 0 && con.multiple && con.multiLimit == Infinity && con.multiSelectAll){
                 a1 = create("BUTTON", "tail-all"), a2 = create("BUTTON", "tail-none");
                 a1.innerText = this.__["actionAll"];
-                a1.addEventListener("click", function(event){
-                    event.preventDefault();
-                    self.options.all.call(self.options, "select");
-                })
+                a1.addEventListener("click", (ev) => {
+                    ev.preventDefault();
+                    this.options.all("select");
+                });
                 a2.innerText = this.__["actionNone"];
-                a2.addEventListener("click", function(event){
-                    event.preventDefault();
-                    self.options.all.call(self.options, "unselect");
-                })
+                a2.addEventListener("click", (ev) => {
+                    ev.preventDefault();
+                    this.options.all("unselect");
+                });
 
                 // Add Element
-                li = create("SPAN", "dropdown-action");
+                let li = create("SPAN", "dropdown-action");
                 li.appendChild(a1);
                 li.appendChild(a2);
                 root.insertBefore(li, root.children[0]);
             }
 
             // Add and Return
-            var data = this.dropdown.querySelector(".dropdown-inner");
+            let data = this.dropdown[que](".dropdown-inner");
             this.dropdown[(data? "replace": "append") + "Child"](root, data);
             return this.calc().updateCSV().updateLabel();
         },
@@ -574,23 +529,21 @@
          |  API :: CALLBACK -> CREATE GROUP
          |  @version    0.5.0 [0.4.0]
          */
-        cbGroup: function(group, search){
-            var ul = create("UL", "dropdown-optgroup"), self = this, a1, a2;
+        cbGroup(group, search){
+            let ul = create("UL", "dropdown-optgroup"), self = this, a1, a2;
             if(group == "#"){ return ul; }
-            ul.innerHTML = '<li class="optgroup-title"><b>' + group + '</b></li>';
+            ul.innerHTML = `<li class="optgroup-title"><b>${group}</b></li>`;
             if(this.con.multiple && this.con.multiLimit == Infinity && this.con.multiSelectAll){
                 a1 = create("BUTTON", "tail-none"), a2 = create("BUTTON", "tail-all");
                 a1.innerText = this.__["none"];
-                a1.addEventListener("click", function(event){
-                    event.preventDefault();
-                    var grp = this.parentElement.parentElement.getAttribute("data-group");
-                    self.options.all.call(self.options, "unselect", grp);
+                a1.addEventListener("click", (ev) => {
+                    ev.preventDefault();
+                    this.options.all("unselect", ev.target[parE][parE][gAttr]("data-group"));
                 });
                 a2.innerText = this.__["all"];
-                a2.addEventListener("click", function(event){
-                    event.preventDefault();
-                    var grp = this.parentElement.parentElement.getAttribute("data-group");
-                    self.options.all.call(self.options, "select", grp);
+                a2.addEventListener("click", (ev) => {
+                    ev.preventDefault();
+                    this.options.all("select", ev.target[parE][parE][gAttr]("data-group"));
                 });
                 ul.children[0].appendChild(a1);
                 ul.children[0].appendChild(a2);
@@ -602,19 +555,17 @@
          |  API :: CALLBACK -> CREATE ITEM
          |  @version    0.5.0 [0.4.0]
          */
-        cbItem: function(item, optgroup, search){
-            var li = create("LI", "dropdown-option" + (item.selected? " selected": "") + (item.disabled? " disabled": ""));
+        cbItem(item, optgroup, search){
+            let {value: v, selected: s, disabled: d} = item;
+            let li = create("LI", "dropdown-option" + (s? " selected": "") + (d? " disabled": ""));
 
-            // Inner Text
             if(search && search.length > 0 && this.con.searchMarked){
-                li.innerHTML = item.value.replace(new RegExp("(" + search + ")", "i"), "<mark>$1</mark>");
+                li.innerHTML = v.replace(new RegExp("(" + search + ")", "i"), "<mark>$1</mark>");
             } else {
-                li.innerText = item.value;
+                li.innerText = v;
             }
-
-            // Inner Description
             if(this.con.descriptions && item.description){
-                li.innerHTML += '<span class="option-description">' + item.description + '</span>';
+                li.innerHTML += `<span class="option-description">${item.description}</span>`;
             }
             return li;
         },
@@ -623,7 +574,7 @@
          |  API :: UPDATE EVERYTHING
          |  @version    0.5.0 [0.5.0]
          */
-        update: function(item){
+        update(item){
             return this.updateLabel().updateContainer(item).updatePin(item).updateCSV(item);
         },
 
@@ -631,22 +582,22 @@
          |  API :: UPDATE LABEL
          |  @version    0.5.0 [0.5.0]
          */
-        updateLabel: function(label){
+        updateLabel(label){
             if(this.container == this.label && this.options.selected.length > 0){
-                if(this.label.querySelector(".label-inner")){
-                    this.label.removeChild(this.label.querySelector(".label-inner"));
+                if(this.label[que](".label-inner")){
+                    this.label.removeChild(this.label[que](".label-inner"));
                 }
-                if(this.label.querySelector(".label-count")){
-                    this.label.removeChild(this.label.querySelector(".label-count"));
+                if(this.label[que](".label-count")){
+                    this.label.removeChild(this.label[que](".label-count"));
                 }
                 return this;
             }
-            var c = this.con, len = this.options.selected.length, limit;
+            let c = this.con, len = this.options.selected.length, limit;
             if(typeof(label) != "string"){
                 if(c.disabled){
                     label = "disabled";
-                } else if(this.dropdown.querySelectorAll("*[data-key]").length == 0){
-                    label = "empty" + (cHAS(this.select, "in-search")? "Search": "");
+                } else if(this.dropdown[queA]("*[data-key]").length == 0){
+                    label = "empty" + (this.select.classList.contains("in-search")? "Search": "");
                 } else if(c.multiLimit <= len){
                     label = "limit";
                 } else if(!c.multiple && this.options.selected.length > 0){
@@ -660,10 +611,10 @@
 
             // Set HTML
             label = (this.__[label] || label).replace(":limit", c.multiLimit);
-            label = '<span class="label-inner">' + label + '</span>',
+            label = `<span class="label-inner">${label}</span>`;
             limit = (c.multiShowLimit && c.multiLimit < Infinity);
             if(c.multiple && c.multiShowCount){
-                label = '<span class="label-count">:c</span>' + label;
+                label = `<span class="label-count">:c</span>\n${label}`;
                 label = label.replace(":c", len + (limit? (" / " + c.multiLimit): ""));
             }
             this.label.innerHTML = label;
@@ -674,29 +625,28 @@
          |  API :: UPDATE CONTAINER
          |  @version    0.5.0 [0.5.0]
          */
-        updateContainer: function(item){
+        updateContainer(item){
             if(!this.container || !this.con.multiContainer){
                 return this;
             }
-            var s = "[data-group='" + item.group + "'][data-key='" + item.key + "']";
-            if(this.container.querySelector(s)){
+            let s = `[data-group='${item.group}'][data-key='${item.key}']`;
+            if(this.container[que](s)){
                 if(!item.selected){
-                    this.container.removeChild(this.container.querySelector(s));
+                    this.container.removeChild(this.container[que](s));
                 }
                 return this;
             }
 
             // Create Item
             if(item.selected){
-                var self = this, hndl = create("DIV", "select-handle");
+                let hndl = create("DIV", "select-handle");
                 hndl.innerText = item.value;
-                hndl.setAttribute("data-key", item.key);
-                hndl.setAttribute("data-group", item.group);
-                hndl.addEventListener("click", function(event){
-                    event.preventDefault();
-                    event.stopPropagation();
-                    var key = this.getAttribute("data-key"), grp = this.getAttribute("data-group");
-                    self.options.unselect.call(self.options, key, grp);
+                hndl[sAttr]("data-key", item.key);
+                hndl[sAttr]("data-group", item.group);
+                hndl.addEventListener("click", (ev) => {
+                    ev.preventDefault();
+                    ev.stopPropagation();
+                    this.options.unselect(ev.target[gAttr]("data-key"), ev.target[gAttr]("data-group"));
                 });
                 this.container.appendChild(hndl);
             }
@@ -707,22 +657,21 @@
          |  API :: UPDATE PIN POSITION
          |  @version    0.5.0 [0.5.0]
          */
-        updatePin: function(item){
-            var inner = this.dropdown.querySelector(".dropdown-inner ul"),
-                option = "li[data-key='" + item.key + "'][data-group='" + item.group + "']";
+        updatePin(item){
+            let inner = this.dropdown[que](".dropdown-inner ul");
             if(!this.con.multiPinSelected || !inner){
                 return this;
             }
 
             // Create Item
-            option = this.dropdown.querySelector(option);
+            option = this.dropdown[que](`li[data-key='${item.key}'][data-group='${item.group}']`);
             if(item.selected){
                 inner.insertBefore(option, inner.children[0]);
             } else {
-                var grp = this.dropdown.querySelector("ul[data-group='" + item.group + "']"),
+                let grp = this.dropdown[que](`ul[data-group='${item.group}']`),
                     prev = this.options[item.index-1], found = false;
                 while(prev.group == item.group){
-                    if(found = grp.querySelector("li[data-key='" + prev.key + "']")){
+                    if(found = grp[que](`li[data-key='${prev.key}']`)){
                         break;
                     }
                     prev = this.options[prev.index-1];
@@ -740,14 +689,12 @@
          |  API :: UPDATE CSV INPUT
          |  @version    0.5.0 [0.5.0]
          */
-        updateCSV: function(item){
+        updateCSV(item){
             if(!this.csvInput || !this.con.csvOutput){
                 return this;
             }
-            for(var selected = [], l = this.options.selected.length, i = 0; i < l; i++){
-                selected.push(this.options.selected[i].value);
-            }
-            this.csvInput.value = selected.join(this.con.csvSeparator || ",");
+            let sel = this.options.selected.map((item) => item.value);
+            this.csvInput.value = sel.join(this.con.csvSeparator || ",");
             return this;
         },
 
@@ -755,39 +702,38 @@
          |  PUBLIC :: OPEN DROPDOWN
          |  @version    0.5.0 [0.3.0]
          */
-        open: function(animate){
-            if(cHAS(this.select, "active") || cHAS(this.select, "idle") || this.con.disabled){
+        open(animate){
+            if(/active|idle/.test(this.select.className) || this.con.disabled){
                 return false;
             }
             this.calc();
 
             // Final Function
-            var final = function(){
-                cADD(cREM(self.select, "idle"), "active");
+            let final = function(){
+                this.select.classList.add("active");
+                this.select.classList.remove("idle");
                 this.dropdown.style.height = "auto";
                 this.dropdown.style.overflow = "visible";
-                this.label.removeAttribute("style");
+                this.label[rAttr]("style");
                 if(this.con.search && this.con.searchFocus){
-                    this.dropdown.querySelector("input").focus();
+                    this.dropdown[que]("input").focus();
                 }
                 this.trigger.call(this, "open");
             }, self = this, e = this.dropdown.style;
 
             // Open
-            if(animate !== false){
+            if(this.con.animate && animate !== false){
                 this.label.style.zIndex = 25;
                 this.dropdown.style.cssText += "height:0;display:block;overflow:hidden;";
-                cADD(self.select, "idle");
-                (function animate(){
-                    var h = parseInt(e.height, 10), m = parseInt(e.maxHeight, 10);
-                    if(h >= m){
-                        return final.call(self);
-                    }
+                this.select.classList.add("idle");
+                let animate = () => {
+                    let h = parseInt(e.height, 10), m = parseInt(e.maxHeight, 10);
+                    if(h >= m){ return final.call(self); }
                     e.height = ((h+50 > m)? m: h+50) + "px";
                     setTimeout(animate, 20);
-                })();
+                }; animate();
             } else {
-                e.cssText = "height:" + e.maxHeight + ";display:block;overflow:hidden;";
+                e.cssText = `height:${e.maxHeight};display:block;overflow:hidden;`;
                 final.call(this);
             }
             return this;
@@ -797,28 +743,26 @@
          |  PUBLIC :: CLOSE DROPDOWN
          |  @version    0.5.0 [0.3.0]
          */
-        close: function(animate){
-            if(!cHAS(this.select, "active") || cHAS(this.select, "idle")){
+        close(animate){
+            if(!this.select.classList.contains("active") || this.select.classList.contains("idle")){
                 return false;
             }
-            var final = function(){
-                cREM(cREM(this.select, "idle"), "active");
-                this.dropdown.removeAttribute("style");
-                this.dropdown.querySelector(".dropdown-inner").removeAttribute("style");
+            let final = function(){
+                this.select.classList.remove("idle", "active");
+                this.dropdown[rAttr]("style");
+                this.dropdown[que](".dropdown-inner")[rAttr]("style");
                 this.trigger.call(this, "close");
             }, self = this, e = this.dropdown;
 
             // Close
-            if(animate !== false){
-                cADD(this.select, "idle");
+            if(this.con.animate && animate !== false){
+                this.select.classList.add("idle");
                 this.dropdown.style.overflow = "hidden";
-                (function animate(){
-                    if((parseInt(e.offsetHeight, 10)-50) <= 0){
-                        return final.call(self);
-                    }
+                let animate = () => {
+                    if((parseInt(e.offsetHeight, 10)-50) <= 0){ return final.call(self); }
                     e.style.height = (parseInt(e.offsetHeight, 10)-50) + "px";
                     setTimeout(animate, 20);
-                })();
+                }; animate();
             } else {
                 final.call(this);
             }
@@ -829,40 +773,37 @@
          |  PUBLIC :: TOGGLE DROPDOWN
          |  @version    0.5.0 [0.3.0]
          */
-        toggle: function(animate){
-            if(cHAS(this.select, "active")){
+        toggle(animate){
+            if(this.select.classList.contains("active")){
                 return this.close(animate);
             }
-            return !cHAS(this.select, "idle")? this.open(animate): this;
+            return !this.select.classList.contains("idle")? this.open(animate): this;
         },
 
         /*
          |  PUBLIC :: REMOVE SELECT
          |  @version    0.5.0 [0.3.0]
          */
-        remove: function(){
-            this.e.removeAttribute("data-tail-select");
-            if(this.e.hasAttribute("data-select-hidden")){
-                if(this.e.getAttribute("data-select-hidden") == "0"){
+        remove(){
+            this.e[rAttr]("data-tail-select");
+            if(this.e[hAttr]("data-select-hidden")){
+                if(this.e[gAttr]("data-select-hidden") == "0"){
                     this.e.style.removeProperty("display");
                 }
-                this.e.removeAttribute("data-select-hidden");
+                this.e[rAttr]("data-select-hidden");
             }
-            Array.prototype.map.call(this.e.querySelectorAll("[data-select-option='add']"), function(item){
+            Array.from(this.e[queA]("[data-select-option='add']"), (item) => {
                 item.parentElement.removeChild(item);
-            })
-            Array.prototype.map.call(this.e.querySelectorAll("[data-select-optgroup='add']"), function(item){
+            });
+            Array.from(this.e[queA]("[data-select-optgroup='add']"), (item) => {
                 item.parentElement.removeChild(item);
-            })
+            });
             this.e.name = (this.csvInput)? this.csvInput.name: this.e.name;
-            if(this.select.parentElement){
-                this.select.parentElement.removeChild(this.select);
-            }
+            this.select[parE].removeChild(this.select);
             if(this.container){
-                var handles = this.container.querySelectorAll(".select-handle");
-                for(var l = handles.length, i = 0; i < l; i++){
-                    this.container.removeChild(handles[i]);
-                }
+                Array.from(this.container[queA](".select-handle"), (item) => {
+                    item.parentElement.removeChild(item);
+                });
             }
             return this;
         },
@@ -871,7 +812,7 @@
          |  PUBLIC :: RELOAD SELECT
          |  @version    0.5.0 [0.3.0]
          */
-        reload: function(){
+        reload(){
             return this.remove().init();
         },
 
@@ -879,9 +820,9 @@
          |  PUBLIC :: GET|SET CONFIG
          |  @version    0.5.0 [0.4.0]
          */
-        config: function(key, value, rebuild){
+        config(key, value, rebuild){
             if(key instanceof Object){
-                for(var k in key){ this.config(k, key[k], false); }
+                for(let k in key){ this.config(k, key[k], false); }
                 return this.reload()? this.con: this.con;
             }
             if(typeof(key) == "undefined"){
@@ -900,12 +841,12 @@
             }
             return this;
         },
-        enable: function(){
-            cREM(this.select, "disabled");
+        enable(){
+            this.select.classList.remove("disabled");
             return (this.disabled = false)? this: this;
         },
-        disable: function(){
-            cADD(this.select, "disabled");
+        disable(){
+            this.select.classList.add("disabled");
             return (this.disabled = true)? this: this;
         },
 
@@ -917,7 +858,7 @@
          |  @param  callb.  A custom callback function.
          |  @param  array   An array with own arguments, which should pass to the callback too.
          */
-        on: function(event, callback, args){
+        on(event, callback, args){
             if(["open", "close", "change"].indexOf(event) < 0 || typeof(callback) != "function"){
                 return false;
             }
@@ -955,7 +896,7 @@
          |  INTERNAL :: REPLACE TYPOs
          |  @version    0.5.0 [0.3.0]
          */
-        _r: function(state){
+        _r(state){
             return state.replace("disabled", "disable").replace("enabled", "enable")
                         .replace("selected", "select").replace("unselected", "unselect");
         },
@@ -964,18 +905,17 @@
          |  GET AN EXISTING OPTION
          |  @version    0.5.0 [0.3.0]
          */
-        get: function(key, grp){
-            var g = "getAttribute";
+        get(key, grp){
             if(typeof(key) == "object" && key.key && key.group){
-                grp = key.group || grp;
+                grp = key.group || "#";
                 key = key.key;
             } else if(key instanceof Element){
                 if(key.tagName == "OPTION"){
-                    grp = key.parentElement.label || "#";
+                    grp = key[parE].label || "#";
                     key = key.value || key.innerText;
-                } else if(key.hasAttribute("data-key")){
-                    grp = key[g]("data-group") || key.parentElement[g]("data-group") || "#";
-                    key = key[g]("data-key");
+                } else if(key[hAttr]("data-key")){
+                    grp = key[gAttr]("data-group") || key[parE][gAttr]("data-group") || "#";
+                    key = key[gAttr]("data-key");
                 }
             } else if(typeof(key) == "number"){
                 return this.get(this[key]);
@@ -989,31 +929,31 @@
          |  SET AN EXISTING OPTION
          |  @version    0.5.0 [0.3.0]
          */
-        set: function(opt, rebuild){
-            var key = opt.value || opt.innerText, grp = opt.parentElement.label || "#";
+        set(opt, rebuild){
+            let key = opt.value || opt.innerText, grp = opt[parE].label || "#";
             if(!(grp in this.items)){
                 this.items[grp] = {};
-                this.groups[grp] = opt.parentElement;
+                this.groups[grp] = opt[parE];
             }
             if(key in this.items[grp]){
                 return false;
             }
 
             // Validate Selection
-            var con = this.self.con, s = (!con.multiple && this.selected.length > 0);
+            let con = this.self.con, s = (!con.multiple && this.selected.length > 0);
             if(s || (con.multiple && this.selected.length >= con.multiLimit)){
                 opt.selected = false;
             }
-            if(opt.selected && con.deselect && (!opt.hasAttribute("selected") || con.multiLimit == 0)){
+            if(opt.selected && con.deselect && (!opt[hAttr]("selected") || con.multiLimit == 0)){
                 opt.selected = false;
                 opt.parentElement.selectedIndex = -1;
             }
 
             // Sanitize Description
-            if(opt.hasAttribute("data-description")){
-                var span = create("SPAN");
-                    span.innerHTML = opt.getAttribute("data-description");
-                opt.setAttribute("data-description", span.innerHTML);
+            if(opt[hAttr]("data-description")){
+                let span = create("SPAN");
+                span.innerHTML = opt[gAttr]("data-description");
+                opt[sAttr]("data-description", span.innerHTML);
             }
 
             // Add Item
@@ -1021,7 +961,7 @@
                 key: key,
                 value: opt.text,
                 index: (this.length-1),
-                description: opt.getAttribute("data-description") || null,
+                description: opt[gAttr]("data-description") || null,
                 group: grp,
                 option: opt,
                 optgroup: (grp != "#")? this.groups[grp]: undefined,
@@ -1037,10 +977,11 @@
          |  CREATE A NEW OPTION
          |  @version    0.5.0 [0.3.0]
          */
-        add: function(key, value, group, selected, disabled, description, rebuild){
+        add(key, value, group, selected, disabled, description, rebuild){
             if(key instanceof Object){
-                for(var k in key){
-                    this.add(k, key[k].value, key[k].group, key[k].selected, key[k].disabled, key[k].description, false);
+                for(let k in key){
+                    let {value: a, group: b, selected: c, disabled: d, description: e} = key[k];
+                    this.add(k, a, b, c, d, e, false);
                 }
                 return this.self.query();
             }
@@ -1051,30 +992,30 @@
             // Check Group
             group = (typeof(group) == "string")? group: "#";
             if(group !== "#" && !(group in this.groups)){
-                var optgroup = create("OPTGROUP");
+                let optgroup = create("OPTGROUP");
                 optgroup.label = group;
-                optgroup.setAttribute("data-select-optgroup", "add");
+                optgroup[sAttr]("data-select-optgroup", "add");
                 this.element.appendChild(optgroup);
                 this.items[group] = {};
                 this.groups[group] = optgroup;
             }
 
             // Validate Selection
-            var con = this.self.con, s = (!con.multiple && this.selected.length > 0);
+            let con = this.self.con, s = (!con.multiple && this.selected.length > 0);
             if(s || (con.multiple && this.selected.length >= con.multiLimit)){
                 selected = false;
             }
             disabled = !!disabled;
 
             // Create Option
-            var option = d.createElement("OPTION");
+            let option = d.createElement("OPTION");
             option.value = key;
             option.selected = selected;
             option.disabled = disabled;
             option.innerText = value;
-            option.setAttribute("data-select-option", "add");
+            option[sAttr]("data-select-option", "add");
             if(description.length && description.length > 0){
-                option.setAttribute("data-description", description);
+                option[sAttr]("data-description", description);
             }
 
             // Add Option and Return
@@ -1091,7 +1032,7 @@
 
             // Create Group
             if(new_group !== "#" && !(new_group in this.groups)){
-                var optgroup = create("OPTGROUP");
+                let optgroup = create("OPTGROUP");
                 optgroup.label = new_group;
                 this.element.appendChild(optgroup);
                 this.items[new_group] = {};
@@ -1111,13 +1052,13 @@
          |  REMOVE AN EXISTING OPTION
          |  @version    0.5.0 [0.3.0]
          */
-        remove: function(item, group, rebuild){
+        remove(item, group, rebuild){
             if(!(item = this.get(item, group))){ return false; }
             if(item.selected){ this.unselect(item); }
             if(item.disabled){ this.enable(item); }
 
             // Remove Data
-            item.option.parentElement.removeChild(item.option);
+            item.option[parE].removeChild(item.option);
             Array.prototype.splice.call(this, item.index, 1);
             delete this.items[item.group][item.key];
 
@@ -1133,8 +1074,8 @@
          |  CHECK AN EXISTING OPTION
          |  @version    0.5.0 [0.3.0]
          */
-        is: function(state, key, group){
-            var state = this._r(state), item = this.get(key, group);
+        is(state, item, group){
+            state = this._r(state), item = this.get(item, group);
             if(!item || ["select", "unselect", "disable", "enable"].indexOf(state) < 0){
                 return null;
             }
@@ -1150,8 +1091,8 @@
          |  INTERACT WITH AN OPTION
          |  @version    0.5.0 [0.3.0]
          */
-        handle: function(state, key, group, _force){
-            var item = this.get(key, group), state = this._r(state);
+        handle(state, item, group, _force){
+            state = this._r(state), item = this.get(item, group);
             if(!item || ["select", "unselect", "disable", "enable"].indexOf(state) < 0){
                 return null;
             }
@@ -1169,17 +1110,17 @@
             }
 
             // Select || Unselect
-            var dis = (cHAS(this.self.select, "disabled") || item.disabled || item.option.disabled),
+            let dis = (this.self.select.classList.contains("disabled") || item.disabled || item.option.disabled),
                 lmt = (this.self.con.multiple && this.self.con.multiLimit <= this.selected.length),
                 sgl = (!this.self.con.multiple && this.selected.indexOf(item.option) > 0),
                 del = (this.self.con.multiLimit == 0 && this.self.con.deselect == true),
-                uns = (!this.self.con.multiple && !this.self.con.deselect && _force !== true);
+                uns = (!this.self.con.multiple && !this.self.con.deselect) && _force !== true;
             if(state == "select"){
-                if(dis || lmt || del || sgl){
+                if(dis || lmt ||  del || sgl){
                     return false;
                 }
                 if(!this.self.con.multiple){
-                    for(var i in this.selected){
+                    for(let i in this.selected){
                         this.unselect(this.selected[i], undefined, true);
                     }
                 }
@@ -1195,21 +1136,21 @@
             item.selected = (state == "select");
             item.option.selected = (state == "select");
             item.option[(state.length > 6? "remove": "set") + "Attribute"]("selected", "selected");
-            return this.self.callback.call(this.self, item, state, _force);
+            return this.self.callback.call(this.self, item, state);
         },
-        enable: function(key, group){
+        enable(key, group){
             return this.handle("enable", key, group);
         },
-        disable: function(key, group){
+        disable(key, group){
             return this.handle("disable", key, group);
         },
-        select: function(key, group){
+        select(key, group){
             return this.handle("select", key, group);
         },
-        unselect: function(key, group, _force){
+        unselect(key, group, _force){
             return this.handle("unselect", key, group, _force);
         },
-        toggle: function(item, group){
+        toggle(item, group){
             if(!(item = this.get(item, group))){ return false; }
             return this.handle((item.selected? "unselect": "select"), item, group);
         },
@@ -1218,24 +1159,18 @@
          |  INVERT CURRENT <STATE>
          |  @version    0.5.0 [0.3.0]
          */
-        invert: function(state){
+        invert(state){
             state = this._replaceType(state);
             if(["enable", "disable"].indexOf(state) >= 0){
-                var invert = this.disabled, action = (state == "enable")? "disable": "enable";
+                let invert = this.disabled, action = (state == "enable")? "disable": "enable";
             } else if(["select", "unselect"].indexOf(state) >= 0){
-                var invert = this.selected, action = (state == "select")? "unselect": "select";
+                let invert = this.selected, action = (state == "select")? "unselect": "select";
             }
-            var convert = Array.prototype.filter.call(this, function(element){
-                return !(element in invert);
-            }), self = this;
+            let convert = Array.from(this).filter((item) => { !(item in invert); });
 
             // Loop
-            [].concat(invert).forEach(function(item){
-                self.handle.call(self, action, item);
-            });
-            [].concat(convert).forEach(function(item){
-                self.handle.call(self, state, item);
-            });
+            [].concat(invert).forEach((item) => { this.handle(action, item); });
+            [].concat(convert).forEach((item) => { this.handle(state, item); });
             return true;
         },
 
@@ -1243,16 +1178,14 @@
          |  SET <STATE> ON ALL OPTIONs
          |  @version    0.5.0 [0.5.0]
          */
-        all: function(state, group){
-            var self = this, list = this;
+        all(state, group){
+            let list = this;
             if(group in this.items){
                 list = Object.keys(this.items[group]);
             } else if(["unselect", "enable"].indexOf(state) >= 0){
-                list = [].concat((state == "unselect")? this.selected: this.disabled);
+                list = (state == "unselect")? this.selected: this.disabled;
             }
-            Array.prototype.forEach.call(list, function(item){
-                self.handle.call(self, state, item, group);
-            });
+            [].concat(Array.from(list)).forEach((item) => { this.handle(state, item, group); });
             return true;
         },
 
@@ -1260,47 +1193,34 @@
          |  FIND SOME OPTIONs - WALKER EDITION
          |  @version    0.5.0 [0.3.0]
          */
-        finder: function(search, config){
-            if(typeof(this._findLoop) == "undefined"){
-                search = search.replace(/[\[\]{}()*+?.,^$\\|#-]/g, "\\$&");
-                if(config == "any"){
-                    var regex  = "<option((\\s+[a-z0-9_\-]+(\\s*=\\s*(\\\".*?" + search + ".*?\\\"|'.*?" + search + ".*?'))?)>.+?";
-                        regex += "|(\\s+\\w+(\\s*=\\s*(?:\\\".*?\\\"|'.*?'))?)+>[^<]*(" + search + ")[^<]*)<\\/option>";
-                } else {
-                    var regex = "<option(\\s+\\w+(\\s*=\\s*(?:\\\".*?\\\"|'.*?'))?)*>[^<]*(" + search + ")[^<]*<\\/option>";
-                }
-            }
+        *finder(search, config){
+            search = search.replace(/[\[\]{}()*+?.,^$\\|#-]/g, "\\$&");
 
-            // Start Walker
-            if(typeof(this._findLoop) == "undefined"){
-                this._findLoop = true;
-                this._findRegex = new RegExp(regex, "gmi");
+            // RegExp
+            let regex = "<option(\\s+\\w+(\\s*=\\s*(?:\\\".*?\\\"|'.*?'))?)*>[^<]*(" + search + ")[^<]*<\\/option>";
+            if(config == "any"){
+                regex  = "<option((\\s+[a-z0-9_\-]+(\\s*=\\s*(\\\".*?" + search + ".*?\\\"|'.*?" + search + ".*?'))?)>.+?";
+                regex += "|(\\s+\\w+(\\s*=\\s*(?:\\\".*?\\\"|'.*?'))?)+>[^<]*(" + search + ")[^<]*)<\\/option>";
             }
 
             // Handle Walker
-            var text = this.self.e.innerHTML, match, item, num;
-            while((match = this._findRegex.exec(text)) !== null){
-                num = (text.substr(0, this._findRegex.lastIndex).match(/\<\/option\>/g) || []).length;
+            let text = this.self.e.innerHTML, regexp = new RegExp(regex, "gmi"), match, item, num;
+            while((match = regexp.exec(text)) !== null){
+                num = (text.substr(0, regexp.lastIndex).match(/\<\/option\>/g) || []).length;
                 item = this.get(this.self.e.options[num-1]);
-                if(item === null){
-                    continue;
+                if(item){
+                    yield item;
                 }
-                return item;
             }
-
-            // Close Walker
-            delete this._findLoop;
-            delete this._findRegex;
-            return false;
         },
 
         /*
          |  FIND SOME OPTIONs - ARRAY EDITION
          |  @version    0.5.0 [0.3.0]
          */
-        find: function(search, config){
-            var items = [];
-            while((item = this.finder(search, config)) !== false){
+        find(search, keys, groups){
+            let items = [];
+            for(let item of this.finder(search, groups)){
                 items.push(item);
             }
             return items;
@@ -1310,43 +1230,8 @@
          |  NEW OPTIONS WALKER
          |  @version    0.5.0 [0.4.0]
          */
-        walker: function(orderi, orderg){
-            if(typeof(this._inLoop) != "undefined" && this._inLoop){
-                if(this._inItems.length > 0){
-                    var key = this._inItems.shift();
-                    return this.items[this._inGroup][key];
-                }
-
-                // Sort Items
-                if(this._inGroups.length > 0){
-                    while(this._inGroups.length > 0){
-                        var group = this._inGroups.shift(), keys = Object.keys(this.items[group]);
-                        if(keys.length > 0){
-                            break;
-                        }
-                    }
-                    if(orderi == "ASC"){
-                        keys.sort();
-                    } else if(orderi == "DESC"){
-                        keys.sort().reverse();
-                    } else if(typeof(orderi) == "function"){
-                        keys = orderi.call(this, keys);
-                    }
-                    this._inItems = keys;
-                    this._inGroup = group;
-                    return this.walker(null, null);
-                }
-
-                // Delete and Exit
-                delete this._inLoop;
-                delete this._inItems;
-                delete this._inGroup;
-                delete this._inGroups;
-                return false;
-            }
-
-            // Sort Groups
-            var groups = Object.keys(this.groups);
+        *walker(orderi, orderg){
+            let groups = Object.keys(this.groups);
             if(orderg == "ASC"){
                 groups.sort();
             } else if(orderg == "DESC"){
@@ -1356,14 +1241,22 @@
             }
             groups.unshift("#");
 
-            // Init Loop
-            this._inLoop = true;
-            this._inItems = [];
-            this._inGroups = groups;
-            return this.walker(orderi, null);
-        }
-    };
+            for(let l = groups.length, i = 0; i < l; i++){
+                let grp = groups[i], keys = Object.keys(this.items[grp]);
+                if(orderi == "ASC"){
+                    keys.sort();
+                } else if(orderi == "DESC"){
+                    keys.sort().reverse();
+                } else if(typeof(orderi) == "function"){
+                    keys = orderi.call(this, keys);
+                }
 
-    // Return
-    return tailSelect;
-}));
+                for(let l = keys.length, i = 0; i < l; i++){
+                    yield this.items[grp][keys[i]];
+                }
+            }
+        }
+    }
+    return {select: tailSelect, options: tailOptions};
+})(window || this);
+export {select, options};

@@ -21,18 +21,18 @@ Features
 -   Offers a Search field within the dropdown list to find the desired options quickly!
 -   Offers a Description text to describe each single option!
 -   Allows to manipulate (add, edit and delete) each single option during the runtime.
--   Bindings for the jQuery and MooTools library and usable as **AMD**.
+-   Move selected options wherever you want / need.
+-   Bindings for the jQuery and MooTools library and usable as **AMD** and **ES6** Module.
 -   No dependencies, just include and use it!
 -   Event Listeners to bind your own function on each action.
--   ... and many settings to configure the environment and its behavior!
+-   ... and many settings to configure the environment and behavior!
 
 Install & Embed
 ---------------
-It's recommended to use the [Published Releases](https://github.com/pytesNET/tail.select/releases)
-instead of downloading the master branch, because the master branch may contains 'unreleased' changes,
-which may not work as expected! You can **download** the latest published **tail.select** Release as
-[.tar](https://github.com/pytesNET/tail.select/tarball/master) or as [.zip](https://github.com/pytesNET/tail.select/zipball/master)
-archive, or by using NPM or YARN:
+The master branch will always contain the latest Release, which you can download directly here
+as [.tar](https://github.com/pytesNET/tail.select/tarball/master) or as [.zip](https://github.com/pytesNET/tail.select/zipball/master)
+archive, or just visit the [Releases](https://github.com/pytesNET/tail.select/releases) Page
+on GitHub directly. You can also be cool and using npm, Yarn or bower:
 
 ```markup
 npm install tail.select --save
@@ -40,6 +40,10 @@ npm install tail.select --save
 
 ```markup
 yarn add tail.select --save
+```
+
+```markup
+bower install tail.select --save
 ```
 
 ### Using a CDN
@@ -53,17 +57,37 @@ https://cdn.jsdelivr.net/npm/tail.select@latest/
 https://unpkg.com/tail.select/
 ```
 
+Thanks To
+---------
+-   [Octicons](https://octicons.github.com/) for the cute Icons
+-   [jsCompress](https://jscompress.com/) for the Compressor
+-   [prismJS](https://prismjs.com) for the Syntax highlighting library
+-   [MenuSpy](https://github.com/lcdsantos/menuspy) for the Menu Navigation
+
+### Translations
+-   [Anthony Rabine](https://github.com/arabine) / [French Translation](https://github.com/pytesNET/tail.select/issues/11)
+
 Documentation
 -------------
 The Documentation has been moved to [GitHubs Wiki Pages](https://github.com/pytesNET/tail.select/wiki),
 but I will keep a table of contents list here and some basic instructions.
 
--   [Instructions](https://github.com/pytesNET/tail.select/wiki/instructions)
--   [Default Usage](https://github.com/pytesNET/tail.select/wiki/default-usage)
--   [Public Options](https://github.com/pytesNET/tail.select/wiki/public-options)
--   [Public Methods](https://github.com/pytesNET/tail.select/wiki/public-methods)
--   [Events & Callbacks](https://github.com/pytesNET/tail.select/wiki/events-callbacks)
+-   [Install & Embed](https://www.github.com/pytesNET/tail.select/wiki/instructions)
+-   [Default Usage](https://www.github.com/pytesNET/tail.select/wiki/default-usage)
+-   [Public Options](https://www.github.com/pytesNET/tail.select/wiki/public-options)
+-   [Public Methods](https://www.github.com/pytesNET/tail.select/wiki/public-methods)
+-   [Events & Callbacks](https://www.github.com/pytesNET/tail.select/wiki/events-callbacks)
+-   [Internal Variables & Methods](https://www.github.com/pytesNET/tail.select/wiki/internal)
+-   [HowTos, Tips & Tricks](https://www.github.com/pytesNET/tail.select/wiki/How-Tos)
 
+### Files
+The `tail.select` package contains different JavaScript files:
+
+-   `js/tail.select(.min).js` The main JavaScript with `en` language strings only.
+-   `js/tail.select-full(.min).js` The main JavaScript with ALL language strings.
+-   `js/tail.select-es6(.min).js` An **experimental** ECMAScript 2015 / ES6 Module version.
+-   `langs/tail.select-all(.min).js` Just ALL language strings itself.
+-   `langs/tail.select-{locale}.js` Just the {locale} language strings.
 
 ### Basic Instructions
 You can pass up to 2 arguments to the **tail.select** constructor, the first parameter is required
@@ -76,15 +100,15 @@ second parameter is optional and, if set, MUST be an object with your *tail.sele
 <html>
     <head>
         <meta charset="utf-8" />
-        <link type="text/css" rel="stylesheet" href="css/tail.select.css" />
-        <!-- <link type="text/css" rel="stylesheet" href="css/tail.select-{theme}.css" /> -->
+
+        <link type="text/css" rel="stylesheet" href="css/tail.select-default.css" />
     </head>
     <body>
         <script type="text/javascript" src="js/tail.select.min.js"></script>
         <!-- <script type="text/javascript" src="langs/tail.select-{lang}.js"></script> -->
 
         <select>
-            <!-- Your <optgroup> and <option> Elements -->
+            <option>My Option</option>
         </select>
 
         <script type="text/javascript">
@@ -102,43 +126,45 @@ about each single option!
 
 ```javascript
 tail.select("select", {
-    width:              null,
-    height:             350,
-    classNames:         null,
-    placeholder:        null,
-    deselect:           false,
-    animate:            true,
-    openAbove:          null,
-    stayOpen:           false,
-    startOpen:          false,
-    multiple:           false,
-    multiLimit:         -1,
-    multiShowCount:     true,
-    multiContainer:     false,
-    multiSelectAll:     false,      // NEW IN 0.4.0
-    multiSelectGroup:   true,       // NEW IN 0.4.0
-    descriptions:       false,
-    items:              {},
-    sortItems:          false,
-    sortGroups:         false,
-    search:             false,
-    searchFocus:        true,
-    searchMarked:       true,
-    csvOutput:          false,
-    csvSeparator:       ",",
-    hideSelect:         true,
-    hideSelected:       false,
-    hideDisabled:       false,
-    bindSourceSelect:   false,
-    cbLoopItem:         undefined   // NEW IN 0.4.0
-    cbLoopGroup:        undefined   // NEW IN 0.4.0
+    animate: true,
+    classNames: null,
+    csvOutput: false,
+    csvSeparator: ",",
+    descriptions: false,
+    deselect: false,
+    disabled: false,                // NEW IN 0.5.0
+    height: 350,
+    hideDisabled: false,
+    hideSelected: false,
+    items: {},
+    locale: "en",                   // NEW IN 0.5.0
+    multiple: false,
+    multiLimit: Infinity,           // UPDATE IN 0.5.0
+    multiPinSelected: false,        // NEW IN 0.5.0
+    multiContainer: false,          // UPDATE IN 0.5.0
+    multiShowCount: true,
+    multiShowLimit: false,          // NEW IN 0.5.0
+    multiSelectAll: false,
+    multiSelectGroup: true,
+    openAbove: null,
+    placeholder: null,
+    search: false,
+    searchFocus: true,
+    searchMarked: true,
+    sortItems: false,
+    sortGroups: false,
+    sourceBind: false,              // NEW IN 0.5.0
+    sourceHide: true,               // NEW IN 0.5.0
+    startOpen: false,
+    stayOpen: false,                // UPDATED IN 0.5.0
+    width: null,
+    cbComplete: undefined,          // NEW IN 0.5.0
+    cbEmpty: undefined,             // NEW IN 0.5.0
+    cbLoopItem: undefined,
+    cbLoopGroup: undefined
 });
 ```
 
-Thanks To
----------
-Awesome Help by Awesome Companies and Projects
-
--   [jsCompress](https://jscompress.com)
--   [prismJS](https://prismjs.com)
--   [MenuSpy](https://github.com/lcdsantos/menuspy)
+Copyright & License
+-------------------
+Published under the MIT-License; Copyright &copy; 2014 - 2018 SamBrishes, pytesNET

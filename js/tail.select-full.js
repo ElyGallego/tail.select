@@ -1,6 +1,6 @@
 /*
  |  tail.select - Another solution to make select fields beautiful again!
- |  @file       ./js/tail.select.js
+ |  @file       ./js/tail.select-full.js
  |  @author     SamBrishes <sam@pytes.net>
  |  @version    0.5.0 - Beta
  |
@@ -171,6 +171,19 @@
      |  STORAGE :: STRINGS
      */
     tailSelect.strings = {
+        de: {
+            all: "Alle",
+            none: "Keine",
+            actionAll: "Alle auswählen",
+            actionNone: "Alle abwählen",
+            empty: "Keine Optionen verfügbar",
+            emptySearch: "Keine Optionen gefunden",
+            limit: "Keine weiteren Optionen wählbar",
+            placeholder: "Wähle eine Option...",
+            placeholderMulti: "Wähle bis zu :limit Optionen...",
+            search: "Tippen zum suchen",
+            disabled: "Dieses Feld ist deaktiviert"
+        },
         en: {
             all: "All",
             none: "None",
@@ -183,6 +196,19 @@
             placeholderMulti: "Select up to :limit Options...",
             search: "Type in to search...",
             disabled: "This Field is disabled"
+        },
+        fr: {
+            all: "Tous",
+            none: "Aucun",
+            actionAll: "Sélectionner tout",
+            actionNone: "Sélectionner aucun",
+            empty: "Aucune option disponible",
+            emptySearch: "Aucune option trouvée",
+            limit: "Aucune autre option sélectionnable",
+            placeholder: "Choisissez une option ...",
+            placeholderMulti: "Choisissez jusqu'à :limit option(s) ...",
+            search: "Rechercher ...",
+            disabled: "Ce champs est désactivé"
         },
         register: function(locale, object){
             this[locale] = object;

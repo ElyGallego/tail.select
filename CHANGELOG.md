@@ -1,10 +1,88 @@
 CHANGELOG
 ===========
 
+Version 0.5.0 - Beta
+--------------------
+-   Info: The ES6 Edition is just a "REALLY experimental" version!
+-   Info: The Priority has changed: Defined Settings > Element Attributes!
+-   Add: The new French Translation. Many Thanks to [Anthony Rabine](https://github.com/arabine)
+         ([#11](https://github.com/pytesNET/tail.select/issues/11))!
+-   Add: The origin select fields gets now also triggered on any `change` / `input` event.
+         Thanks to: [#10](https://github.com/pytesNET/tail.select/issues/10).
+-   Add: Three new designs "Bootstrap2", "Bootstrap3" and "Bootstrap4" (+ Multiple Color Schemes).
+-   Add: A IE incompatible, highly modern ECMAScript 2015 (6) edition (as \*-es6.js).
+-   Add: The new script version `tail.select-full(.min).js`, which contains also all language strings.
+-   Add: The new additional file `langs/tail.select-all(.min).js` which contains all language strings.
+-   Add: Key Listener: Use the Arrow Keys (Down, Up) to scroll through the opened dropdown list.
+-   Add: Key Listener: Use the Enter / Return Key to "click" on the focused option.
+-   Add: Key Listener: Use the Escape Key to close the dropdown list.
+-   Add: The new helper method `create()`.
+-   Add: The new option `locale`, to change the shown language strings.
+-   Add: The new option `disabled`, which disables the complete tail.select instance.
+-   Add: The new option `multiShowLimit`, which shows the max. number of selectable options.
+-   Add: The new option `sourceBind` and `sourceHide` replaces the deprecated methods
+         `bindSourceSelect` and `hideSelect` respectively.
+-   Add: The new callback option `cbComplete`, which fires when the tail.select instance
+         has been completely rendered.
+-   Add: The new option `multiPinSelected`, which "pins" selected options to the top of the
+         dropdown list.
+-   Add: The new public methods `enable()` and `disable()` to en/dis -able the complete field.
+         Thanks to: [#12](https://github.com/pytesNET/tail.select/issues/12).
+-   Add: The new tailOptions methods `.select()`, `.unselect()`, `.enable()` and `.disable()`.
+-   Add: The new tailOptions methods `.toggle()`, `.invert()` and `.all()`.
+-   Add: The new tailOptions methods `.move()` to change the optgroup of an option.
+-   Update: The helper methods.
+-   Update: The `sourceBind` event listener has been optimized and renewed.
+-   Update: The `tailOptions` class is now an ArrayLike object.
+-   Update: The settings are higher ranked then the select attributes.
+-   Update: Switched from SASS (SCSS) to LESS.
+-   Update: Language Files and Locale / Translation System.
+-   Update: The new language files are now compatible with AMD.
+-   Update: Many design changes on the default and modern theme.
+-   Update: Some Changes on the main RegExp on the search function.
+            Thanks to: [You've been Haacked](https://haacked.com/archive/2004/10/25/usingregularexpressionstomatchhtml.aspx)
+-   Update: The tail.select container will be inserted AFTER the source select field.
+-   Update: Check the source select field stylings.
+-   Update: A new animation flow, using `setTimeout()`.
+-   Update: The `bind()` method binds global events only and gets called by the constructor.
+-   Update: The internal `_replaceTypo` method has been renamed into `_r`.
+-   Update: The internal `build()` method has been replaced by the API method `query()`.
+-   Update: Remove the `name` attribute on the source select field when using `csvOutput`.
+-   Update: The option `width` now also supports other length units next to "px".
+-   Update: The option `multiContainer` allows now also "true" as value, to move selected
+            options to the label element of the respective tail.select instance.
+-   Update: The main callback function `cbLoopItem` can now also return `null` to skip the item
+            and false to "skip / escape" the complete render Loop.
+-   Update: The public method `.config()` allows now an object as first parameter to set
+            multiple settings at once.
+-   Update: The public method `.config()` allows now a third parameter, which prevents the
+            rebuilding of the selection field, if you change any option.
+-   Update: The `update*()` API methods replaces all `set*()` API methods.
+-   Remove: The `tail.animate()` helper function.
+-   Remove: The `bindSourceSelect` and `hideSelect` options has been replaced.
+-   Remove: The `.walk()` method has been removed (use `walker()` instead).
+-   Remove: The `.build()` method has been removed (use `query()` instead).
+-   Remove: The `.choose()` method has been removed (use the tail options API instead).
+-   Bugfix: The `placeholder` attribute is used with `.getAttribute()`, because its invalid HTML 5!
+-   Bugfix: The custom group sorting hasn't worked due to an faulty statement.
+-   Bugfix: The HTML option structure was invalid (`ul ul li` instead of `ul li ul li`).
+-   Bugfix: The hidden csvInput field functions didn't work on specific cases.
+-   Bugfix: The `clone` helper function didn't worked on the IE 9+ browsers.
+-   Bugfix: Tags duplicated when preselected
+            Thanks to: [#14](https://github.com/pytesNET/tail.select/issues/14).
+-   Bugfix: Non-Source Options gets duplicated.
+            Thanks to: [#13](https://github.com/pytesNET/tail.select/issues/13).
+-   Bugfix: The hidden csvInput field is rendered, even if the option is disabled
+            Thanks to: [#12](https://github.com/pytesNET/tail.select/issues/12).
+-   Bugfix: The instance ignores the disabled attribute on the main source element.
+            Thanks to: [#12](https://github.com/pytesNET/tail.select/issues/12).
+-   Bugfix: Check the visibility of the source select field.
+            Thanks to: [#10](https://github.com/pytesNET/tail.select/issues/10).
+
 Version 0.4.2 - Beta
 --------------------
 -   Bugfix: Search problem [#8](https://github.com/pytesNET/tail.select/issues/8),
-            Thansk to **elPesecillo**!
+            Thanks to **elPesecillo**!
 
 Version 0.4.1 - Beta
 --------------------

@@ -1,6 +1,6 @@
 /*
  |  tail.select - Another solution to make select fields beautiful again!
- |  @file       ./langs/tail.select-de.js
+ |  @file       ./langs/tail.select-all.js
  |  @author     SamBrishes <sam@pytes.net>
  |  @version    0.5.0 - Beta
  |
@@ -31,6 +31,19 @@
         placeholderMulti: "Wähle bis zu :limit Optionen...",
         search: "Tippen zum suchen",
         disabled: "Dieses Feld ist deaktiviert"
+    });
+    select.strings.register("fr", {
+        all: "Tous",
+        none: "Aucun",
+        actionAll: "Sélectionner tout",
+        actionNone: "Sélectionner aucun",
+        empty: "Aucune option disponible",
+        emptySearch: "Aucune option trouvée",
+        limit: "Aucune autre option sélectionnable",
+        placeholder: "Choisissez une option ...",
+        placeholderMulti: "Choisissez jusqu'à :limit option(s) ...",
+        search: "Rechercher ...",
+        disabled: "Ce champs est désactivé"
     });
     return select;
 }));
