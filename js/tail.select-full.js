@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./js/tail.select-full.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.0 - Beta
+ |  @version    0.5.1 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -120,7 +120,7 @@
         tailSelect.inst["tail-" + this.id] = this;
         return this.init().bind();
     }, tailOptions;
-    tailSelect.version = "0.5.0";
+    tailSelect.version = "0.5.1";
     tailSelect.status = "beta";
     tailSelect.count = 0;
     tailSelect.inst = {};
@@ -221,7 +221,7 @@
     tailSelect.prototype = {
         /*
          |  INTERNAL :: INIT SELECT FIELD
-         |  @version    0.5.0 [0.3.0]
+         |  @version    0.5.1 [0.3.0]
          */
         init: function(){
             var self = this, classes = ["tail-select"], con = this.con,
@@ -316,10 +316,10 @@
             }
             if(con.sourceHide){
                 if(this.e.style.display == "none"){
-                    this.select.display = "none";
+                    this.select.style.display = "none";
                     this.e.setAttribute("data-select-hidden", "display");
-                } if(this.e.style.visibility == "hidden"){
-                    this.select.visibiltiy = "hidden";
+                } else if(this.e.style.visibility == "hidden"){
+                    this.select.style.visibiltiy = "hidden";
                     this.e.setAttribute("data-select-hidden", "visibility");
                 } else {
                     this.e.style.display = "none";

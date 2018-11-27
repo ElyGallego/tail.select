@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./js/tail.select-es6.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.0 - Beta
+ |  @version    0.5.1 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -73,7 +73,7 @@ var {select, options} = (function(root){
         tailSelect.inst["tail-" + this.id] = this;
         return this.init().bind();
     }, tailOptions;
-    tailSelect.version = "0.5.0";
+    tailSelect.version = "0.5.1";
     tailSelect.status = "dev";
     tailSelect.count = 0;
     tailSelect.inst = {};
@@ -174,7 +174,7 @@ var {select, options} = (function(root){
     tailSelect.prototype = {
         /*
          |  INTERNAL :: INIT SELECT FIELD
-         |  @version    0.5.0 [0.3.0]
+         |  @version    0.5.1 [0.3.0]
          */
         init(){
             let classes = ["tail-select"], con = this.con,
@@ -260,14 +260,14 @@ var {select, options} = (function(root){
             }
             if(con.sourceHide){
                 if(this.e.style.display == "none"){
-                    this.select.display = "none";
-                    this.e[sAttr]("data-select-hidden", "display");
-                } if(this.e.style.visibility == "hidden"){
-                    this.select.visibiltiy = "hidden";
-                    this.e[sAttr]("data-select-hidden", "visibility");
+                    this.select.style.display = "none";
+                    this.e.setAttribute("data-select-hidden", "display");
+                } else if(this.e.style.visibility == "hidden"){
+                    this.select.style.visibiltiy = "hidden";
+                    this.e.setAttribute("data-select-hidden", "visibility");
                 } else {
                     this.e.style.display = "none";
-                    this.e[sAttr]("data-select-hidden", "0");
+                    this.e.setAttribute("data-select-hidden", "0");
                 }
             }
             this._init = false

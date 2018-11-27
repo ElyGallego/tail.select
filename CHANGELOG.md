@@ -1,6 +1,11 @@
 CHANGELOG
 ===========
 
+Version 0.5.1 - Beta
+--------------------
+-   Hotfix: Wrong If-Condition for `sourceHide`.
+-   Hotfix: Wrong attribute assignment on the tail.select field for `sourceHide`.
+
 Version 0.5.0 - Beta
 --------------------
 -   Info: The ES6 Edition is just a "REALLY experimental" version!
