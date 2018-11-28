@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./js/tail.select.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.2 - Beta
+ |  @version    0.5.3 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -37,13 +37,13 @@
         return (new RegExp("(?:^|\\s+)" + name + "(?:\\s+|$)")).test((e.className || ""));
     }
     function cADD(e, name){
-        if(!(new RegExp("\\b" + name + "\\b")).test(e.className || name)){
+        if(!(new RegExp("(?:^|\\s+)" + name + "(?:\\s+|$)")).test(e.className || name)){
             e.className += " " + name;
         }
         return e;
     }
     function cREM(e, name, regex){
-        if((regex = new RegExp("\\b(" + name + ")\\b")) && regex.test(e.className || "")){
+        if((regex = new RegExp("(?:^|\\s+)(" + name + ")(?:\\s+|$)")) && regex.test(e.className || "")){
             e.className = e.className.replace(regex, "");
         }
         return e;
@@ -120,7 +120,7 @@
         tailSelect.inst["tail-" + this.id] = this;
         return this.init().bind();
     }, tailOptions;
-    tailSelect.version = "0.5.2";
+    tailSelect.version = "0.5.3";
     tailSelect.status = "beta";
     tailSelect.count = 0;
     tailSelect.inst = {};
@@ -195,7 +195,7 @@
     tailSelect.prototype = {
         /*
          |  INTERNAL :: INIT SELECT FIELD
-         |  @version    0.5.1 [0.3.0]
+         |  @version    0.5.3 [0.3.0]
          */
         init: function(){
             var self = this, classes = ["tail-select"], con = this.con,
@@ -213,8 +213,8 @@
 
             // Init Variables
             this.__ = tailSelect.strings[con.locale] || tailSelect.strings.en;
-            this._pos = 0;
             this._init = true;
+            this._query = false;
             this.select = create("DIV", classes);
             this.label = create("DIV", "select-label");
             this.dropdown = create("DIV", "select-dropdown");
@@ -276,9 +276,9 @@
                 if(typeof(con.items[key]) == "string"){
                     con.items[key] = {value: con.items[key]};
                 }
-                this.options.add(key, con.items[key].value, con.items[key].group,
-                    con.items[key].selected, con.items[key].disabled,
-                    con.items[key].description);
+                this.options.add(con.items[key].key || key, con.items[key].value,
+                    con.items[key].group, con.items[key].selected,
+                    con.items[key].disabled, con.items[key].description);
             }
             this.query();
 
@@ -310,7 +310,7 @@
 
         /*
          |  INTERNAL :: EVENT LISTENER
-         |  @version    0.5.0 [0.3.0]
+         |  @version    0.5.3 [0.3.0]
          */
         bind: function(){
             var self = this;
@@ -394,17 +394,24 @@
                 return true;
             }
             this.e.addEventListener("change", function(event){
+                if(event.detail != undefined){
+                    return false;
+                }
                 event.preventDefault();
                 event.stopPropagation();
-                var handle = function(item){ self.options.select.call(self.options, item); };
                 if(!this.multiple && this.selectedIndex){
                     self.options.select.call(self.options, this.options[this.selectedIndex]);
-                } else if(this.selectedOptions){
-                    self.options.all.call(self.options, "unselect");
-                    Array.prototype.forEach.call(this.selectedOptions, handle);
                 } else {
-                    self.options.all.call(self.options, "unselect");
-                    Array.prototype.forEach.call(this.querySelectorAll("option:checked"), handle);
+                    var u = [].concat(self.options.selected);
+                    var s = [].filter.call(this.querySelectorAll("option:checked"), function(item){
+                        if(u.indexOf(item) >= 0){
+                            u.splice(u.indexOf(item), 1);
+                            return false;
+                        }
+                        return true;
+                    });
+                    self.options.walk.call(self.options, "unselect", u);
+                    self.options.walk.call(self.options, "select", s);
                 }
             });
             return true;
@@ -496,7 +503,7 @@
 
         /*
          |  API :: QUERY OPTIONS
-         |  @version    0.5.0 [0.5.0]
+         |  @version    0.5.3 [0.5.0]
          */
         query: function(search, conf){
             var root = create("DIV", "dropdown-inner"), self = this, item, tp, ul, li, a1, a2,
@@ -504,6 +511,7 @@
                 args = search? [search, conf]: [con.sortItems, con.sortGroups];
 
             // Option Walker
+            this._query = (typeof(search) == "string")? search: false;
             while(item = this.options[func].apply(this.options, args)){
                 if(!ul || (ul && ul[g]("data-group") !== item.group)){
                     tp = (con.cbLoopGroup || this.cbGroup).call(this, item.group, search, root);
@@ -549,12 +557,14 @@
                 a1.innerText = this.__["actionAll"];
                 a1.addEventListener("click", function(event){
                     event.preventDefault();
-                    self.options.all.call(self.options, "select");
+                    var options = self.dropdown.querySelectorAll(".dropdown-inner .dropdown-option");
+                    self.options.walk.call(self.options, "select", options);
                 })
                 a2.innerText = this.__["actionNone"];
                 a2.addEventListener("click", function(event){
                     event.preventDefault();
-                    self.options.all.call(self.options, "unselect");
+                    var options = self.dropdown.querySelectorAll(".dropdown-inner .dropdown-option");
+                    self.options.walk.call(self.options, "unselect", options);
                 })
 
                 // Add Element
@@ -705,12 +715,12 @@
 
         /*
          |  API :: UPDATE PIN POSITION
-         |  @version    0.5.0 [0.5.0]
+         |  @version    0.5.3 [0.5.0]
          */
         updatePin: function(item){
             var inner = this.dropdown.querySelector(".dropdown-inner ul"),
                 option = "li[data-key='" + item.key + "'][data-group='" + item.group + "']";
-            if(!this.con.multiPinSelected || !inner){
+            if(!this.con.multiPinSelected || !inner || this._query !== false){
                 return this;
             }
 
@@ -721,7 +731,7 @@
             } else {
                 var grp = this.dropdown.querySelector("ul[data-group='" + item.group + "']"),
                     prev = this.options[item.index-1], found = false;
-                while(prev.group == item.group){
+                while(prev && prev.group == item.group){
                     if(found = grp.querySelector("li[data-key='" + prev.key + "']")){
                         break;
                     }
@@ -838,7 +848,7 @@
 
         /*
          |  PUBLIC :: REMOVE SELECT
-         |  @version    0.5.0 [0.3.0]
+         |  @version    0.5.3 [0.3.0]
          */
         remove: function(){
             this.e.removeAttribute("data-tail-select");
@@ -854,7 +864,7 @@
             Array.prototype.map.call(this.e.querySelectorAll("[data-select-optgroup='add']"), function(item){
                 item.parentElement.removeChild(item);
             })
-            this.e.name = (this.csvInput)? this.csvInput.name: this.e.name;
+            this.e.name = (this.csvInput.hasAttribute("name"))? this.csvInput.name: this.e.name;
             if(this.select.parentElement){
                 this.select.parentElement.removeChild(this.select);
             }
@@ -877,7 +887,7 @@
 
         /*
          |  PUBLIC :: GET|SET CONFIG
-         |  @version    0.5.0 [0.4.0]
+         |  @version    0.5.3 [0.4.0]
          */
         config: function(key, value, rebuild){
             if(key instanceof Object){
@@ -900,13 +910,17 @@
             }
             return this;
         },
-        enable: function(){
+        enable: function(update){
             cREM(this.select, "disabled");
-            return (this.disabled = false)? this: this;
+            this.e.disabled = false;
+            this.con.disabled = false;
+            return (update === false)? this: this.reload();
         },
-        disable: function(){
+        disable: function(update){
             cADD(this.select, "disabled");
-            return (this.disabled = true)? this: this;
+            this.e.disabled = true;
+            this.con.disabled = true;
+            return (update === false)? this: this.reload();
         },
 
         /*
@@ -1035,12 +1049,12 @@
 
         /*
          |  CREATE A NEW OPTION
-         |  @version    0.5.0 [0.3.0]
+         |  @version    0.5.3 [0.3.0]
          */
         add: function(key, value, group, selected, disabled, description, rebuild){
             if(key instanceof Object){
                 for(var k in key){
-                    this.add(k, key[k].value, key[k].group, key[k].selected, key[k].disabled, key[k].description, false);
+                    this.add(key[k].key || k, key[k].value, key[k].group, key[k].selected, key[k].disabled, key[k].description, false);
                 }
                 return this.self.query();
             }
@@ -1073,7 +1087,7 @@
             option.disabled = disabled;
             option.innerText = value;
             option.setAttribute("data-select-option", "add");
-            if(description.length && description.length > 0){
+            if(description && description.length > 0){
                 option.setAttribute("data-description", description);
             }
 
@@ -1148,7 +1162,7 @@
 
         /*
          |  INTERACT WITH AN OPTION
-         |  @version    0.5.0 [0.3.0]
+         |  @version    0.5.3 [0.3.0]
          */
         handle: function(state, key, group, _force){
             var item = this.get(key, group), state = this._r(state);
@@ -1198,20 +1212,20 @@
             return this.self.callback.call(this.self, item, state, _force);
         },
         enable: function(key, group){
-            return this.handle("enable", key, group);
+            return this.handle("enable", key, group, false);
         },
         disable: function(key, group){
-            return this.handle("disable", key, group);
+            return this.handle("disable", key, group, false);
         },
         select: function(key, group){
-            return this.handle("select", key, group);
+            return this.handle("select", key, group, false);
         },
         unselect: function(key, group, _force){
             return this.handle("unselect", key, group, _force);
         },
         toggle: function(item, group){
             if(!(item = this.get(item, group))){ return false; }
-            return this.handle((item.selected? "unselect": "select"), item, group);
+            return this.handle((item.selected? "unselect": "select"), item, group, false);
         },
 
         /*
@@ -1251,9 +1265,26 @@
                 list = [].concat((state == "unselect")? this.selected: this.disabled);
             }
             Array.prototype.forEach.call(list, function(item){
-                self.handle.call(self, state, item, group);
+                self.handle.call(self, state, item, group, false);
             });
             return true;
+        },
+
+        /*
+         |  SET <STATE> FOR A BUNCH OF OPTIONs
+         |  @version    0.5.3 [0.5.3]
+         */
+        walk: function(state, items, args){
+            if(items instanceof Array){
+                for(var l = items.length, i = 0; i < l; i++){
+                    this.handle.apply(this, [state, items[i], null].concat(args));
+                }
+            } else if(items instanceof Object){
+                for(var key in items){
+                    this.handle.apply(this, [state, items[key], null].concat(args));
+                }
+            }
+            return this;
         },
 
         /*

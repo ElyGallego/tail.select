@@ -1,14 +1,15 @@
-tail.select
-===========
+tail.select - Beautify Select Fields
+====================================
 [![plainJS](https://s.pytes.net/cb2d2d94)](https://s.pytes.net/21d65dff)
 [![npm Version](https://s.pytes.net/9e506510)](https://s.pytes.net/2a8c886a)
 [![npm Downloads](https://s.pytes.net/3fd8be97)](https://s.pytes.net/2a8c886a)
 [![License](https://s.pytes.net/8257ac72)](LICENSE.md)
 [![Author](https://s.pytes.net/5542d1fa)](https://s.pytes.net/5be37d0a)
 
-The **tail.select** script is back, completely rewritten in pure vanilla JavaScript and ready to
-beautify your (multiple) select fields again and now even a lot better as the deprecated jQuery
-Version back in 2014!
+The **tail.select** script is back and ready to beautify your (multiple) select fields again, now
+also with an own search method and many features to increase the usability and handling on many as
+well as on just a few options! It contains all options and features from the original deprecated
+jQuery Version, back from 2014 (+ a MooTools implementation)!
 
 [Wanna see **tail.select** in action?](https://github.pytes.net/tail.select)
 

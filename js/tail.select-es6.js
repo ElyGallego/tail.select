@@ -174,7 +174,7 @@ var {select, options} = (function(root){
     tailSelect.prototype = {
         /*
          |  INTERNAL :: INIT SELECT FIELD
-         |  @version    0.5.1 [0.3.0]
+         |  @version    0.5.3 [0.3.0]
          */
         init(){
             let classes = ["tail-select"], con = this.con,
@@ -182,8 +182,8 @@ var {select, options} = (function(root){
 
             // Init Variables
             this.__ = tailSelect.strings[con.locale] || tailSelect.strings.en;
-            this._pos = 0;
             this._init = true;
+            this._query = false;
 
             // Init ClassNames
             classes = classes.concat((con.classNames === true)? this.e.className: con.classNames);
@@ -248,7 +248,7 @@ var {select, options} = (function(root){
             Object.keys(con.items).forEach((key) => {
                 let value = (con.items[key].join)? con.items[key]: {value: con.items[key]};
                 let {value: a, group: b, selected: c, disabled: d, description: e} = value;
-                this.options.add(key, a, b, c, d, e);
+                this.options.add(con.items[key].key || key, a, b, c, d, e);
             });
             this.query();
 
@@ -278,7 +278,7 @@ var {select, options} = (function(root){
 
         /*
          |  INTERNAL :: EVENT LISTENER
-         |  @version    0.5.0 [0.3.0]
+         |  @version    0.5.3 [0.3.0]
          */
         bind(){
             d.addEventListener("keydown", (ev) => {
@@ -357,16 +357,24 @@ var {select, options} = (function(root){
                 return true;
             }
             this.e.addEventListener("change", (ev) => {
-                ev.preventDefault();
-                ev.stopPropagation();
-                if(!this.multiple && this.e.selectedIndex){
+                if(event.detail != undefined){
+                    return false;
+                }
+                event.preventDefault();
+                event.stopPropagation();
+                if(!this.multiple && this.selectedIndex){
                     this.options.select(this.e.options[this.selectedIndex]);
-                } else if(this.e.selectedOptions){
-                    this.options.all("unselect");
-                    Array.from(this.e.selectedOptions, (e) => {this.options.select(e)});
                 } else {
-                    this.options.all("unselect");
-                    Array.from(this.e[queA]("option:checked"), (e) => {this.options.select(e)});
+                    var u = [].concat(self.options.selected);
+                    var s = Array.from(this.e[queA]("option:checked")).filter((item) => {
+                        if(u.indexOf(item) >= 0){
+                            u.splice(u.indexOf(item), 1);
+                            return false;
+                        }
+                        return true;
+                    });
+                    this.options.walk("unselect", u);
+                    this.options.walk("select", s);
                 }
             });
             return true;
@@ -455,7 +463,7 @@ var {select, options} = (function(root){
 
         /*
          |  API :: QUERY OPTIONS
-         |  @version    0.5.0 [0.5.0]
+         |  @version    0.5.3 [0.5.0]
          */
         query(search, conf){
             let root = create("DIV", "dropdown-inner"), tp, ul, a1, a2,
@@ -463,6 +471,7 @@ var {select, options} = (function(root){
                 args = search? [search, conf]: [con.sortItems, con.sortGroups];
 
             // Option Walker
+            this._query = (typeof(search) == "string")? search: false;
             for(let item of this.options[func].apply(this.options, args)){
                 if(!ul || (ul && ul[gAttr]("data-group") !== item.group)){
                     tp = (con.cbLoopGroup || this.cbGroup).call(this, item.group, search, root);
@@ -655,11 +664,11 @@ var {select, options} = (function(root){
 
         /*
          |  API :: UPDATE PIN POSITION
-         |  @version    0.5.0 [0.5.0]
+         |  @version    0.5.3 [0.5.0]
          */
         updatePin(item){
             let inner = this.dropdown[que](".dropdown-inner ul");
-            if(!this.con.multiPinSelected || !inner){
+            if(!this.con.multiPinSelected || !inner || this._query !== false){
                 return this;
             }
 
@@ -670,7 +679,7 @@ var {select, options} = (function(root){
             } else {
                 let grp = this.dropdown[que](`ul[data-group='${item.group}']`),
                     prev = this.options[item.index-1], found = false;
-                while(prev.group == item.group){
+                while(prev && prev.group == item.group){
                     if(found = grp[que](`li[data-key='${prev.key}']`)){
                         break;
                     }
@@ -798,7 +807,7 @@ var {select, options} = (function(root){
             Array.from(this.e[queA]("[data-select-optgroup='add']"), (item) => {
                 item.parentElement.removeChild(item);
             });
-            this.e.name = (this.csvInput)? this.csvInput.name: this.e.name;
+            this.e.name = (this.csvInput.hasAttribute("name"))? this.csvInput.name: this.e.name;
             this.select[parE].removeChild(this.select);
             if(this.container){
                 Array.from(this.container[queA](".select-handle"), (item) => {
@@ -841,13 +850,17 @@ var {select, options} = (function(root){
             }
             return this;
         },
-        enable(){
+        enable(update){
             this.select.classList.remove("disabled");
-            return (this.disabled = false)? this: this;
+            this.e.disabled = false;
+            this.con.disabled = false;
+            return (update === false)? this: this.reload();
         },
-        disable(){
+        disable(update){
             this.select.classList.add("disabled");
-            return (this.disabled = true)? this: this;
+            this.e.disabled = true;
+            this.con.disabled = true;
+            return (update === false)? this: this.reload();
         },
 
         /*
@@ -975,13 +988,13 @@ var {select, options} = (function(root){
 
         /*
          |  CREATE A NEW OPTION
-         |  @version    0.5.0 [0.3.0]
+         |  @version    0.5.3 [0.3.0]
          */
         add(key, value, group, selected, disabled, description, rebuild){
             if(key instanceof Object){
                 for(let k in key){
                     let {value: a, group: b, selected: c, disabled: d, description: e} = key[k];
-                    this.add(k, a, b, c, d, e, false);
+                    this.add(key[k].key || k, a, b, c, d, e, false);
                 }
                 return this.self.query();
             }
@@ -1014,7 +1027,7 @@ var {select, options} = (function(root){
             option.disabled = disabled;
             option.innerText = value;
             option[sAttr]("data-select-option", "add");
-            if(description.length && description.length > 0){
+            if(description && description.length > 0){
                 option[sAttr]("data-description", description);
             }
 
@@ -1027,7 +1040,7 @@ var {select, options} = (function(root){
          |  MOVE AN EXISTING OPTION
          |  @version    0.5.0 [0.5.0]
          */
-        move: function(item, group, new_group, rebuild){
+        move(item, group, new_group, rebuild){
             if(!(item = this.get(item, group))){ return false; }
 
             // Create Group
@@ -1187,6 +1200,23 @@ var {select, options} = (function(root){
             }
             [].concat(Array.from(list)).forEach((item) => { this.handle(state, item, group); });
             return true;
+        },
+
+        /*
+         |  SET <STATE> FOR A BUNCH OF OPTIONs
+         |  @version    0.5.3 [0.5.3]
+         */
+        walk(state, items, args){
+            if(items instanceof Array){
+                for(var l = items.length, i = 0; i < l; i++){
+                    this.handle.apply(this, [state, items[i], null].concat(args));
+                }
+            } else if(items instanceof Object){
+                for(var key in items){
+                    this.handle.apply(this, [state, key, items[key]].concat(args));
+                }
+            }
+            return this;
         },
 
         /*

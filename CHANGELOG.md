@@ -1,6 +1,29 @@
 CHANGELOG
 ===========
 
+Version 0.5.3 - Beta
+--------------------
+-   Add: The new `.walk()` method on the tailOptions class to "loop" multiple items.
+-   Add: The new internal variable `_query` for the current query.
+-   Update: Changed the RegExp `\b`, because it isn't accurate enough.
+-   Update: The complete `sourceBind` listener function has been renewed / fixed.
+-   Update: The `.enable()` and `.disable()` methods allows now a single parameter, which controls
+            the new rendering if the respective DOM Elements.
+-   Update: Support also [{ key: <>, [...] }] array objects.
+-   Remove: Unused variable `_pos`.
+-   Bugfix: The "(Un)Select All" buttons were not limited to the current query!
+-   Bugfix: The `.en/disable()` methods doesn't sets the configuration correctly.
+-   Bugfix: The `description` property on the `items` option is required.
+            Thanks to: [#15](https://github.com/pytesNET/tail.select/issues/15)
+-   Bugfix: Only the last item gets unchecked after pressing "Unselect All" on specific conditions.
+            Thanks to: [#16](https://github.com/pytesNET/tail.select/issues/16)
+-   Bugfix: When the `sourceBind` option is `true`, the dropdown becomes unusable!
+            Thanks to: [#17](https://github.com/pytesNET/tail.select/issues/17)
+-   Bugfix: Throws `TypeError` on "(Un)Select All" buttons on Search Queries.
+            Thanks to: [#18](https://github.com/pytesNET/tail.select/issues/18)
+-   Bugfix: Wrong `.en/disable()` and `.config(disabled, true|false)` order.
+            Thanks to: [#12](https://github.com/pytesNET/tail.select/issues/12#issuecomment-442318722)
+
 Version 0.5.2 - Beta
 --------------------
 -   Hotfix: Trigger hasn't triggered on each call!
