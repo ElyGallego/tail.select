@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./js/tail.select.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.3 - Beta
+ |  @version    0.5.4 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -1296,9 +1296,9 @@
                 search = search.replace(/[\[\]{}()*+?.,^$\\|#-]/g, "\\$&");
                 if(config == "any"){
                     var regex  = "<option((\\s+[a-z0-9_\-]+(\\s*=\\s*(\\\".*?" + search + ".*?\\\"|'.*?" + search + ".*?'))?)>.+?";
-                        regex += "|(\\s+\\w+(\\s*=\\s*(?:\\\".*?\\\"|'.*?'))?)+>[^<]*(" + search + ")[^<]*)<\\/option>";
+                        regex += "|(\\s+\\w+(-?\\w*)*(\\s*=\\s*(?:\\\".*?\\\"|'.*?'))?)+>[^<]*(" + search + ")[^<]*)<\\/option>";
                 } else {
-                    var regex = "<option(\\s+\\w+(\\s*=\\s*(?:\\\".*?\\\"|'.*?'))?)*>[^<]*(" + search + ")[^<]*<\\/option>";
+                    var regex = "<option(\\s+\\w+(-?\\w*)*(\\s*=\\s*(?:\\\".*?\\\"|'.*?'))?)*>[^<]*(" + search + ")[^<]*<\\/option>";
                 }
             }
 
