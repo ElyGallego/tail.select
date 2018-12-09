@@ -1,6 +1,13 @@
 CHANGELOG
 ===========
 
+Unreleased Changed
+--------------------
+-   Info: May become Version 0.5.4
+-   Bugfix: Search functionality breaks when source select's options contain hyphenated attributes. 
+            Thanks to: [#22](https://github.com/pytesNET/tail.select/issues/22),
+            **Fixed by:** AndrewDRX @ [#23](https://github.com/pytesNET/tail.select/pull/23)
+
 Version 0.5.3 - Beta
 --------------------
 -   Add: The new `.walk()` method on the tailOptions class to "loop" multiple items.
