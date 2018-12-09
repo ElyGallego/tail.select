@@ -1227,10 +1227,10 @@ var {select, options} = (function(root){
             search = search.replace(/[\[\]{}()*+?.,^$\\|#-]/g, "\\$&");
 
             // RegExp
-            let regex = "<option(\\s+\\w+(\\s*=\\s*(?:\\\".*?\\\"|'.*?'))?)*>[^<]*(" + search + ")[^<]*<\\/option>";
+            let regex = "<option(\\s+\\w+(-?\\w*)*(\\s*=\\s*(?:\\\".*?\\\"|'.*?'))?)*>[^<]*(" + search + ")[^<]*<\\/option>";
             if(config == "any"){
                 regex  = "<option((\\s+[a-z0-9_\-]+(\\s*=\\s*(\\\".*?" + search + ".*?\\\"|'.*?" + search + ".*?'))?)>.+?";
-                regex += "|(\\s+\\w+(\\s*=\\s*(?:\\\".*?\\\"|'.*?'))?)+>[^<]*(" + search + ")[^<]*)<\\/option>";
+                regex += "|(\\s+\\w+(-?\\w*)*(\\s*=\\s*(?:\\\".*?\\\"|'.*?'))?)+>[^<]*(" + search + ")[^<]*)<\\/option>";
             }
 
             // Handle Walker
