@@ -4,7 +4,10 @@ CHANGELOG
 Unreleased Changed
 --------------------
 -   Info: May become Version 0.5.4
--   Bugfix: Search functionality breaks when source select's options contain hyphenated attributes. 
+-   Bugfix: **ES6** The "Select All" Button doesn't work on Search (All options gets selected).
+-   Bugfix: "Select All" Button selects more items as shown on search results.
+            Thanks to [#21](https://github.com/pytesNET/tail.select/issues/21)
+-   Bugfix: Search functionality breaks when source select's options contain hyphenated attributes.
             Thanks to: [#22](https://github.com/pytesNET/tail.select/issues/22),
             **Fixed by:** AndrewDRX @ [#23](https://github.com/pytesNET/tail.select/pull/23)
 

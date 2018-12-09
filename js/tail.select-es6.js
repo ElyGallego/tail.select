@@ -463,7 +463,7 @@ var {select, options} = (function(root){
 
         /*
          |  API :: QUERY OPTIONS
-         |  @version    0.5.3 [0.5.0]
+         |  @version    0.5.4 [0.5.0]
          */
         query(search, conf){
             let root = create("DIV", "dropdown-inner"), tp, ul, a1, a2,
@@ -513,12 +513,12 @@ var {select, options} = (function(root){
                 a1.innerText = this.__["actionAll"];
                 a1.addEventListener("click", (ev) => {
                     ev.preventDefault();
-                    this.options.all("select");
+                    this.options.walk("select", this.dropdown.querySelectorAll(".dropdown-inner .dropdown-option"));
                 });
                 a2.innerText = this.__["actionNone"];
                 a2.addEventListener("click", (ev) => {
                     ev.preventDefault();
-                    this.options.all("unselect");
+                    this.options.walk("unselect", this.dropdown.querySelectorAll(".dropdown-inner .dropdown-option"));
                 });
 
                 // Add Element
@@ -1204,16 +1204,23 @@ var {select, options} = (function(root){
 
         /*
          |  SET <STATE> FOR A BUNCH OF OPTIONs
-         |  @version    0.5.3 [0.5.3]
+         |  @version    0.5.4 [0.5.3]
          */
         walk(state, items, args){
-            if(items instanceof Array){
+            if(items instanceof Array || items.length){
                 for(var l = items.length, i = 0; i < l; i++){
                     this.handle.apply(this, [state, items[i], null].concat(args));
                 }
             } else if(items instanceof Object){
-                for(var key in items){
-                    this.handle.apply(this, [state, key, items[key]].concat(args));
+                if(items.forEach){
+                    items.forEach((e) => { this.handle.apply(this, [state, value, null].concat(args)); });
+                } else {
+                    for(var key in items){
+                        if(typeof(items[key]) != "string" && typeof(items[key]) != "number" && !(items[key] instanceof Element)){
+                            continue;
+                        }
+                        this.handle.apply(this, [state, items[key], (key in this.items? key: null)]).concat(args);
+                    }
                 }
             }
             return this;
@@ -1221,7 +1228,7 @@ var {select, options} = (function(root){
 
         /*
          |  FIND SOME OPTIONs - WALKER EDITION
-         |  @version    0.5.0 [0.3.0]
+         |  @version    0.5.4 [0.3.0]
          */
         *finder(search, config){
             search = search.replace(/[\[\]{}()*+?.,^$\\|#-]/g, "\\$&");

@@ -1272,16 +1272,26 @@
 
         /*
          |  SET <STATE> FOR A BUNCH OF OPTIONs
-         |  @version    0.5.3 [0.5.3]
+         |  @version    0.5.4 [0.5.3]
          */
         walk: function(state, items, args){
-            if(items instanceof Array){
+            if(items instanceof Array || items.length){
                 for(var l = items.length, i = 0; i < l; i++){
                     this.handle.apply(this, [state, items[i], null].concat(args));
                 }
             } else if(items instanceof Object){
-                for(var key in items){
-                    this.handle.apply(this, [state, items[key], null].concat(args));
+                var self = this;
+                if(items.forEach){
+                    items.forEach(function(value){
+                        self.handle.apply(self, [state, value, null].concat(args));
+                    });
+                } else {
+                    for(var key in items){
+                        if(typeof(items[key]) != "string" && typeof(items[key]) != "number" && !(items[key] instanceof Element)){
+                            continue;
+                        }
+                        this.handle.apply(this, [state, items[key], (key in this.items? key: null)]).concat(args);
+                    }
                 }
             }
             return this;
@@ -1289,7 +1299,7 @@
 
         /*
          |  FIND SOME OPTIONs - WALKER EDITION
-         |  @version    0.5.0 [0.3.0]
+         |  @version    0.5.4 [0.3.0]
          */
         finder: function(search, config){
             if(typeof(this._findLoop) == "undefined"){
