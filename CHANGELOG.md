@@ -4,7 +4,15 @@ CHANGELOG
 Unreleased Changed
 --------------------
 -   Info: May become Version 0.5.4
+-   Add: The new `modify()` method on the string Storage to change the strings globally.
+         Requested by: ashucg @ [#20](https://github.com/pytesNET/tail.select/issues/20).
+-   Update: The `.register()` method checks now if locale is a string and object a object.
+-   Update: The `.register()` method returns now `true` on success and `false` on failure!
 -   Bugfix: **ES6** The "Select All" Button doesn't work on Search (All options gets selected).
+-   Bugfix: Z-Index CSS Styling bug (:hover).
+            Thanks to: [#19](https://github.com/pytesNET/tail.select/issues/19).
+-   Bugfix: Unnecessary Scrollbar (during a wrong calculation of the dropdown field).
+            Thanks to: [#19](https://github.com/pytesNET/tail.select/issues/19).
 -   Bugfix: "Select All" Button selects more items as shown on search results.
             Thanks to [#21](https://github.com/pytesNET/tail.select/issues/21)
 -   Bugfix: Search functionality breaks when source select's options contain hyphenated attributes.

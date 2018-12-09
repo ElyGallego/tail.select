@@ -31,7 +31,6 @@
     margin: 0;
     padding: 0;
     display: inline-block;
-    z-index: 50;
     position: relative;
 }
 .tail-select mark{
@@ -136,7 +135,7 @@
     height: 0;
     margin: 8px 0 0 0;
     padding: 0;
-    z-index: 30;
+    z-index: 25;
     content: "";
     display: inline-block;
     position: absolute;

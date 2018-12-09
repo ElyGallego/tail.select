@@ -163,8 +163,25 @@ var {select, options} = (function(root){
             search: "Rechercher ...",
             disabled: "Ce champs est désactivé"
         },
+        modify(locale, id, string){
+            if(!(locale in this)){
+                return false;
+            }
+            if((id instanceof Object)){
+                for(var key in id){
+                    this.modify(locale, key, id[key]);
+                }
+            } else {
+                this[locale][id] = (typeof(string) == "string")? string: this[locale][id];
+            }
+            return true;
+        },
         register(locale, object){
+            if(typeof(locale) != "string" || !(object instanceof Object)){
+                return false;
+            }
             this[locale] = object;
+            return true;
         }
     };
 
@@ -425,7 +442,7 @@ var {select, options} = (function(root){
 
         /*
          |  INTERNAL :: CALCULATE DROPDOWN
-         |  @version    0.5.0 [0.5.0]
+         |  @version    0.5.4 [0.5.0]
          */
         calc(){
             let clone = this.dropdown.cloneNode(true), height = this.con.height, search = 0,
@@ -433,7 +450,7 @@ var {select, options} = (function(root){
 
             // Calculate Dropdown Height
             clone = this.dropdown.cloneNode(true);
-            clone.style.cssText = "height:auto;opacity:0;display:block;visibility:hidden;";
+            clone.style.cssText = "height:auto;min-height:auto;max-height:none;opacity:0;display:block;visibility:hidden;";
             clone.style.maxHeight = this.con.height + "px";
             clone.className += " cloned";
             this.dropdown[parE].appendChild(clone);
@@ -456,7 +473,7 @@ var {select, options} = (function(root){
             }
             if(inner){
                 this.dropdown.style.maxHeight = height + "px";
-                inner.style.maxHeight = (height-search-2) + "px";
+                inner.style.maxHeight = (height-search) + "px";
             }
             return this;
         },
@@ -531,7 +548,7 @@ var {select, options} = (function(root){
             // Add and Return
             let data = this.dropdown[que](".dropdown-inner");
             this.dropdown[(data? "replace": "append") + "Child"](root, data);
-            return this.calc().updateCSV().updateLabel();
+            return this.updateCSV().updateLabel();
         },
 
         /*

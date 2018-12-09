@@ -216,6 +216,9 @@
     -moz-box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1), 0 0 1px 1px #3C82E6;
     -webkit-box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1), 0 0 1px 1px #3C82E6;
 }
+.tail-select.active .select-label{
+    z-index: 27;
+}
 .tail-select:hover .select-label:after,
 .tail-select.idle .select-label:after,
 .tail-select.active .select-label:after{
@@ -274,6 +277,9 @@
     transition: box-shadow 142ms linear;
     -moz-transition: box-shadow 142ms linear;
     -webkit-transition: box-shadow 142ms linear;
+}
+.tail-select.active .select-dropdown{
+    z-index: 26;
 }
 .tail-select .select-dropdown:before,
 .tail-select .select-dropdown:after{
