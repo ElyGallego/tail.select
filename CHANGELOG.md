@@ -1,9 +1,8 @@
 CHANGELOG
 ===========
 
-Unreleased Changed
---------------------
--   Info: May become Version 0.5.4
+Version 0.5.4
+-------------
 -   Add: The new `modify()` method on the string Storage to change the strings globally.
          Requested by: ashucg @ [#20](https://github.com/pytesNET/tail.select/issues/20).
 -   Update: The `.register()` method checks now if locale is a string and object a object.
