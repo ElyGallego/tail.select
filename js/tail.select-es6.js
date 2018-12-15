@@ -1248,21 +1248,35 @@ var {select, options} = (function(root){
          |  @version    0.5.4 [0.3.0]
          */
         *finder(search, config){
-            search = search.replace(/[\[\]{}()*+?.,^$\\|#-]/g, "\\$&");
-
-            // RegExp
-            let regex = "<option(\\s+\\w+(-?\\w*)*(\\s*=\\s*(?:\\\".*?\\\"|'.*?'))?)*>[^<]*(" + search + ")[^<]*<\\/option>";
-            if(config == "any"){
-                regex  = "<option((\\s+[a-z0-9_\-]+(\\s*=\\s*(\\\".*?" + search + ".*?\\\"|'.*?" + search + ".*?'))?)>.+?";
-                regex += "|(\\s+\\w+(-?\\w*)*(\\s*=\\s*(?:\\\".*?\\\"|'.*?'))?)+>[^<]*(" + search + ")[^<]*)<\\/option>";
-            }
+            // Start Walker
+            const regex = new RegExp(search, "im");
+            const filterKeyMatch = item => (
+                regex.test(item.text || item.value)
+            );
+            const filterAnyMatch = item => (
+                regex.test(item.text) ||
+                regex.test(item.value) ||
+                (
+                    Array
+                        .apply(null, item.attributes)
+                        .filter(filterKeyMatch)
+                        .length
+                )
+            );
+            let optionMatches = (
+                Array
+                    .apply(null, this.self.e.options)
+                    .filter(
+                        config === "any"
+                            ? filterAnyMatch
+                            : filterKeyMatch
+                    )
+            );
 
             // Handle Walker
-            let text = this.self.e.innerHTML, regexp = new RegExp(regex, "gmi"), match, item, num;
-            while((match = regexp.exec(text)) !== null){
-                num = (text.substr(0, regexp.lastIndex).match(/\<\/option\>/g) || []).length;
-                item = this.get(this.self.e.options[num-1]);
-                if(item){
+            let option, item;
+            while((option = optionMatches.shift())){
+                if((item = this.get(option))){
                     yield item;
                 }
             }
