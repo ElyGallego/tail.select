@@ -1345,36 +1345,48 @@
          |  @version    0.5.4 [0.3.0]
          */
         finder: function(search, config){
-            if(typeof(this._findLoop) == "undefined"){
-                search = search.replace(/[\[\]{}()*+?.,^$\\|#-]/g, "\\$&");
-                if(config == "any"){
-                    var regex  = "<option((\\s+[a-z0-9_\-]+(\\s*=\\s*(\\\".*?" + search + ".*?\\\"|'.*?" + search + ".*?'))?)>.+?";
-                        regex += "|(\\s+\\w+(-?\\w*)*(\\s*=\\s*(?:\\\".*?\\\"|'.*?'))?)+>[^<]*(" + search + ")[^<]*)<\\/option>";
-                } else {
-                    var regex = "<option(\\s+\\w+(-?\\w*)*(\\s*=\\s*(?:\\\".*?\\\"|'.*?'))?)*>[^<]*(" + search + ")[^<]*<\\/option>";
-                }
-            }
-
             // Start Walker
             if(typeof(this._findLoop) == "undefined"){
                 this._findLoop = true;
-                this._findRegex = new RegExp(regex, "gmi");
+                var options = this.self.e.options;
+                var regex = new RegExp(search, "im");
+                var filterKeyMatch = function filterKeyMatch(item){
+                    return regex.test(item.text || item.value);
+                };
+                var filterAnyMatch = function filterAnyMatch(item){
+                    return (
+                        regex.test(item.text) ||
+                        regex.test(item.value) ||
+                        (
+                            Array
+                                .apply(null, item.attributes)
+                                .filter(filterKeyMatch)
+                                .length
+                        )
+                    );
+                };
+                this._findOptions = (
+                    Array
+                        .apply(null, options)
+                        .filter(
+                            config === "any"
+                                ? filterAnyMatch
+                                : filterKeyMatch
+                        )
+                );
             }
 
             // Handle Walker
-            var text = this.self.e.innerHTML, match, item, num;
-            while((match = this._findRegex.exec(text)) !== null){
-                num = (text.substr(0, this._findRegex.lastIndex).match(/\<\/option\>/g) || []).length;
-                item = this.get(this.self.e.options[num-1]);
-                if(item === null){
-                    continue;
+            var option, item;
+            while((option = this._findOptions.shift())){
+                if((item = this.get(option))){
+                    return item;
                 }
-                return item;
             }
 
             // Close Walker
             delete this._findLoop;
-            delete this._findRegex;
+            delete this._findOptions;
             return false;
         },
 
