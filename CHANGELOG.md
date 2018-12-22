@@ -1,6 +1,18 @@
 CHANGELOG
 ===========
 
+Version 0.5.5
+-------------
+-   Add: The new `searchDisabled` option, which allows to exclude disabled options on the search.
+-   Update: The `.finder()` method depends now on the `.find()` method.
+-   Bugfix: Wrong Version Number on the main object.
+-   Bugfix: Options floats over the dropdown field. [#28](https://github.com/pytesNET/tail.select/issues/28)
+-   Bugfix: Terrible performance of search when descriptions included
+            Thanks to: [#27](https://github.com/pytesNET/tail.select/issues/27)
+-   Bugfix: Search functionality hangs exponentially when regular expression matches against larger source options.
+            Thanks to: [#24](https://github.com/pytesNET/tail.select/issues/24)
+-   Merged: (#25)[https://github.com/pytesNET/tail.select/pull/25], thanks to AndrewDRX.
+
 Version 0.5.4
 -------------
 -   Add: The new `modify()` method on the string Storage to change the strings globally.
@@ -15,8 +27,8 @@ Version 0.5.4
 -   Bugfix: "Select All" Button selects more items as shown on search results.
             Thanks to [#21](https://github.com/pytesNET/tail.select/issues/21)
 -   Bugfix: Search functionality breaks when source select's options contain hyphenated attributes.
-            Thanks to: [#22](https://github.com/pytesNET/tail.select/issues/22),
-            **Fixed by:** AndrewDRX @ [#23](https://github.com/pytesNET/tail.select/pull/23)
+            Thanks to: [#22](https://github.com/pytesNET/tail.select/issues/22).
+-   Merged: (#23)[https://github.com/pytesNET/tail.select/pull/23], thanks to AndrewDRX.
 
 Version 0.5.3 - Beta
 --------------------

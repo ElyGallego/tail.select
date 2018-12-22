@@ -84,11 +84,11 @@ but I will keep a table of contents list here and some basic instructions.
 ### Files
 The `tail.select` package contains different JavaScript files:
 
--   `js/tail.select(.min).js` The main JavaScript with `en` language strings only.
--   `js/tail.select-full(.min).js` The main JavaScript with ALL language strings.
--   `js/tail.select-es6(.min).js` An **experimental** ECMAScript 2015 / ES6 Module version.
--   `langs/tail.select-all(.min).js` Just ALL language strings itself.
--   `langs/tail.select-{locale}.js` Just the {locale} language strings.
+-   `js/tail.select(.min).js` The main JavaScript with `en` tranlation strings only.
+-   `js/tail.select-full(.min).js` The main JavaScript with ALL available translations.
+-   `js/tail.select-es6(.min).js` An **experimental** ECMAScript 2015 / ES6 Module version (includes all translations).
+-   `langs/tail.select-all(.min).js` Just ALL translation strings itself.
+-   `langs/tail.select-{locale}.js` Just the {locale} translation strings.
 
 ### Basic Instructions
 You can pass up to 2 arguments to the **tail.select** constructor, the first parameter is required
@@ -152,6 +152,7 @@ tail.select("select", {
     search: false,
     searchFocus: true,
     searchMarked: true,
+    searchDisabled: true,           // NEW IN 0.5.5
     sortItems: false,
     sortGroups: false,
     sourceBind: false,              // NEW IN 0.5.0
