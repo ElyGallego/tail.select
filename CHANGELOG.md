@@ -1,8 +1,15 @@
 CHANGELOG
 ===========
 
-Version 0.5.5
--------------
+Version 0.5.6 - Beta
+--------------------
+-   Add: The new French Translation. Many Thanks to [Igor](https://github.com/igorcm)
+         ([#11](https://github.com/pytesNET/tail.select/pull/34))!
+-   Update: the `bower.json` and `package.json` files
+-   Update: Add 2019 to all Copyright notes.
+		 
+Version 0.5.5 - Beta
+--------------------
 -   Add: The new `searchDisabled` option, which allows to exclude disabled options on the search.
 -   Update: The `.finder()` method depends now on the `.find()` method.
 -   Bugfix: Wrong Version Number on the main object.
@@ -13,8 +20,8 @@ Version 0.5.5
             Thanks to: [#24](https://github.com/pytesNET/tail.select/issues/24)
 -   Merged: (#25)[https://github.com/pytesNET/tail.select/pull/25], thanks to AndrewDRX.
 
-Version 0.5.4
--------------
+Version 0.5.4 - Beta
+--------------------
 -   Add: The new `modify()` method on the string Storage to change the strings globally.
          Requested by: ashucg @ [#20](https://github.com/pytesNET/tail.select/issues/20).
 -   Update: The `.register()` method checks now if locale is a string and object a object.

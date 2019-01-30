@@ -2,11 +2,11 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./js/tail.select.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.5 - Beta
+ |  @version    0.5.6 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
- |  @copyright  Copyright © 2014 - 2018 SamBrishes, pytesNET <info@pytes.net>
+ |  @copyright  Copyright © 2014 - 2019 SamBrishes, pytesNET <info@pytes.net>
  */
 ;(function(factory){
     if(typeof(define) == "function" && define.amd){
@@ -120,7 +120,7 @@
         tailSelect.inst["tail-" + this.id] = this;
         return this.init().bind();
     }, tailOptions;
-    tailSelect.version = "0.5.5";
+    tailSelect.version = "0.5.6";
     tailSelect.status = "beta";
     tailSelect.count = 0;
     tailSelect.inst = {};
@@ -210,6 +210,19 @@
             placeholderMulti: "Choisissez jusqu'à :limit option(s) ...",
             search: "Rechercher ...",
             disabled: "Ce champs est désactivé"
+        },
+        pt_BR: {
+            all: "Todas",
+            none: "Nenhuma",
+            actionAll: "Selecionar todas",
+            actionNone: "Desmarcar todas",
+            empty: "Nenhuma opção disponível",
+            emptySearch: "Nenhuma opção encontrada",
+            limit: "Não é possível selecionar outra opção",
+            placeholder: "Escolha uma opção ...",
+            placeholderMulti: "Escolha até: :limit opção(ões) ...",
+            search: "Buscar ...",
+            disabled: "Campo desativado"
         },
         modify: function(locale, id, string){
             if(!(locale in this)){

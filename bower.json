@@ -1,13 +1,28 @@
 {
     "name": "tail.select",
-    "description": "Create beautiful, functional and extensive (Multi) Select Fields with pure, vanilla JavaScript!",
-    "main": "js/tail.select.js",
+    "description": "Create beautiful, functional and extensive (Multi) select fields, written in Vanilla without any dependencies!",
+    "keywords": [
+        "select",
+        "selection",
+        "selectable",
+        "dropdown"
+        "choose",
+        "vanilla",
+        "tail"
+    ],
     "authors": [
-        "SamBrishes", "pytesNET"
+        "SamBrishes <sam@pytes.net> (https://www.pytes.net)",
+        "pytesNET <info@pytes.net> (https://www.pytes.net)"
     ],
     "license": "MIT",
-    "keywords": [
-        "select", "selection", "selectable", "choose", "beautify", "form", "field", "tail"
+    "homepage": "https://github.com/pytesNET/tail.select",
+
+    "main": [
+        "js/tail.select.js",
+        "css/tail.select-default.css"
     ],
-    "homepage": "https://github.com/pytesNET/tail.select"
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/pytesNET/tail.select.git"
+    }
 }

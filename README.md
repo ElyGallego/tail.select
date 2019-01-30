@@ -67,6 +67,7 @@ Thanks To
 
 ### Translations
 -   [Anthony Rabine](https://github.com/arabine) / [French Translation](https://github.com/pytesNET/tail.select/issues/11)
+-   [Igor](https://github.com/igorcm) / [French Translation](https://github.com/pytesNET/tail.select/pull/34)
 
 Documentation
 -------------
@@ -169,4 +170,4 @@ tail.select("select", {
 
 Copyright & License
 -------------------
-Published under the MIT-License; Copyright &copy; 2014 - 2018 SamBrishes, pytesNET
+Published under the MIT-License; Copyright &copy; 2014 - 2019 SamBrishes, pytesNET
