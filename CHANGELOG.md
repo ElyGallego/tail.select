@@ -3,7 +3,7 @@ CHANGELOG
 
 Version 0.5.6 - Beta
 --------------------
--   Add: The new French Translation. Many Thanks to [Igor](https://github.com/igorcm)
+-   Add: The new Brazilian Portuguese Translation. Many Thanks to [Igor](https://github.com/igorcm)
          ([#11](https://github.com/pytesNET/tail.select/pull/34))!
 -   Update: the `bower.json` and `package.json` files
 -   Update: Add 2019 to all Copyright notes.
