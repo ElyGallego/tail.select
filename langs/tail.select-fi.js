@@ -29,7 +29,7 @@
         limit: "Muita vaihtoehtoja ei voi valita",
         placeholder: "Valitse...",
         placeholderMulti: "Valitse maksimissaan :limit...",
-        search: "Etsi",
+        search: "Hae tästä...",
         disabled: "Kenttä on poissa käytöstä"
     });
     return select;
