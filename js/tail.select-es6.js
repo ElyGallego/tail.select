@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./js/tail.select-es6.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.6 - Beta
+ |  @version    0.5.7 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -36,9 +36,10 @@ var {select, options} = (function(root){
     let tailSelect = function(el, config){
         el = (typeof(el) == "string")? d[queA](el): el;
         if(el instanceof NodeList || el instanceof HTMLCollection || el instanceof Array){
-            return Array.prototype.map.call(el, item => {
+            let _r = Array.prototype.map.call(el, item => {
                 return new tailSelect(item, Object.assign({}, config));
             });
+            return (_r.length === 1)? _r[0]: ((_r.length === 0)? false: _r);
         }
         if(!(el instanceof Element) || !(this instanceof tailSelect)){
             return !(el instanceof Element)? false: new tailSelect(el, config);
@@ -73,7 +74,7 @@ var {select, options} = (function(root){
         tailSelect.inst["tail-" + this.id] = this;
         return this.init().bind();
     }, tailOptions;
-    tailSelect.version = "0.5.6";
+    tailSelect.version = "0.5.7";
     tailSelect.status = "dev";
     tailSelect.count = 0;
     tailSelect.inst = {};
@@ -949,11 +950,11 @@ var {select, options} = (function(root){
 
         /*
          |  GET AN EXISTING OPTION
-         |  @version    0.5.0 [0.3.0]
+         |  @version    0.5.7 [0.3.0]
          */
         get(key, grp){
             if(typeof(key) == "object" && key.key && key.group){
-                grp = key.group || "#";
+                grp = key.group || grp;
                 key = key.key;
             } else if(key instanceof Element){
                 if(key.tagName == "OPTION"){
@@ -963,17 +964,16 @@ var {select, options} = (function(root){
                     grp = key[gAttr]("data-group") || key[parE][gAttr]("data-group") || "#";
                     key = key[gAttr]("data-key");
                 }
-            } else if(typeof(key) == "number"){
-                return this.get(this[key]);
             } else if(typeof(key) != "string"){
                 return false;
             }
+            key = (/^[0-9]+$/.test(key))? "_" + key: key;
             return (grp in this.items)? this.items[grp][key]: false;
         },
 
         /*
          |  SET AN EXISTING OPTION
-         |  @version    0.5.0 [0.3.0]
+         |  @version    0.5.7 [0.3.0]
          */
         set(opt, rebuild){
             let key = opt.value || opt.innerText, grp = opt[parE].label || "#";
@@ -984,6 +984,7 @@ var {select, options} = (function(root){
             if(key in this.items[grp]){
                 return false;
             }
+            let id = (/^[0-9]+$/.test(key))? "_" + key: key;
 
             // Validate Selection
             let con = this.self.con, s = (!con.multiple && this.selected.length > 0);
@@ -1003,10 +1004,9 @@ var {select, options} = (function(root){
             }
 
             // Add Item
-            this[this.length++] = this.items[grp][key] = {
+            this.items[grp][id] = {
                 key: key,
                 value: opt.text,
-                index: (this.length-1),
                 description: opt[gAttr]("data-description") || null,
                 group: grp,
                 option: opt,
@@ -1014,8 +1014,9 @@ var {select, options} = (function(root){
                 selected: opt.selected,
                 disabled: opt.disabled
             };
-            if(opt.selected){ this.select(this.items[grp][key]); }
-            if(opt.disabled){ this.disable(this.items[grp][key]); }
+            this.length++;
+            if(opt.selected){ this.select(this.items[grp][id]); }
+            if(opt.disabled){ this.disable(this.items[grp][id]); }
             return (rebuild)? this.self.callback(this[this.length-1], "rebuild"): true;
         },
 
@@ -1096,7 +1097,7 @@ var {select, options} = (function(root){
 
         /*
          |  REMOVE AN EXISTING OPTION
-         |  @version    0.5.0 [0.3.0]
+         |  @version    0.5.7 [0.3.0]
          */
         remove(item, group, rebuild){
             if(!(item = this.get(item, group))){ return false; }
@@ -1106,7 +1107,9 @@ var {select, options} = (function(root){
             // Remove Data
             item.option[parE].removeChild(item.option);
             Array.prototype.splice.call(this, item.index, 1);
-            delete this.items[item.group][item.key];
+            let id = (/^[0-9]+$/.test(item.key))? "_" + item.key: item.key;
+            delete this.items[item.group][id];
+            this.length--;
 
             // Remove Optgroup
             if(Object.keys(this.items[item.group]).length === 0){
@@ -1297,7 +1300,7 @@ var {select, options} = (function(root){
 
         /*
          |  NEW OPTIONS WALKER
-         |  @version    0.5.0 [0.4.0]
+         |  @version    0.5.7 [0.4.0]
          */
         *walker(orderi, orderg){
             let groups = Object.keys(this.groups);
@@ -1311,7 +1314,12 @@ var {select, options} = (function(root){
             groups.unshift("#");
 
             for(let l = groups.length, i = 0; i < l; i++){
-                let grp = groups[i], keys = Object.keys(this.items[grp]);
+                let grp = groups[i];
+                if(!(grp in this.items)){
+                    break;
+                }
+
+                let keys = Object.keys(this.items[grp]);
                 if(orderi == "ASC"){
                     keys.sort();
                 } else if(orderi == "DESC"){

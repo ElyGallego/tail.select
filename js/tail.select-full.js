@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./js/tail.select.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.6 - Beta
+ |  @version    0.5.7 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -120,7 +120,7 @@
         tailSelect.inst["tail-" + this.id] = this;
         return this.init().bind();
     }, tailOptions;
-    tailSelect.version = "0.5.6";
+    tailSelect.version = "0.5.7";
     tailSelect.status = "beta";
     tailSelect.count = 0;
     tailSelect.inst = {};
@@ -172,19 +172,6 @@
      |  STORAGE :: STRINGS
      */
     tailSelect.strings = {
-        en: {
-            all: "All",
-            none: "None",
-            actionAll: "Select All",
-            actionNone: "Unselect All",
-            empty: "No Options available",
-            emptySearch: "No Options found",
-            limit: "You can't select more Options",
-            placeholder: "Select an Option...",
-            placeholderMulti: "Select up to :limit Options...",
-            search: "Type in to search...",
-            disabled: "This Field is disabled"
-        },
         de: {
             all: "Alle",
             none: "Keine",
@@ -197,6 +184,19 @@
             placeholderMulti: "Wähle bis zu :limit Optionen...",
             search: "Tippen zum suchen",
             disabled: "Dieses Feld ist deaktiviert"
+        },
+        en: {
+            all: "All",
+            none: "None",
+            actionAll: "Select All",
+            actionNone: "Unselect All",
+            empty: "No Options available",
+            emptySearch: "No Options found",
+            limit: "You can't select more Options",
+            placeholder: "Select an Option...",
+            placeholderMulti: "Select up to :limit Options...",
+            search: "Type in to search...",
+            disabled: "This Field is disabled"
         },
         fr: {
             all: "Tous",
@@ -1036,7 +1036,7 @@
 
         /*
          |  GET AN EXISTING OPTION
-         |  @version    0.5.0 [0.3.0]
+         |  @version    0.5.7 [0.3.0]
          */
         get: function(key, grp){
             var g = "getAttribute";
@@ -1051,17 +1051,16 @@
                     grp = key[g]("data-group") || key.parentElement[g]("data-group") || "#";
                     key = key[g]("data-key");
                 }
-            } else if(typeof(key) == "number"){
-                return this.get(this[key]);
             } else if(typeof(key) != "string"){
                 return false;
             }
+            key = (/^[0-9]+$/.test(key))? "_" + key: key;
             return (grp in this.items)? this.items[grp][key]: false;
         },
 
         /*
          |  SET AN EXISTING OPTION
-         |  @version    0.5.0 [0.3.0]
+         |  @version    0.5.7 [0.3.0]
          */
         set: function(opt, rebuild){
             var key = opt.value || opt.innerText, grp = opt.parentElement.label || "#";
@@ -1072,6 +1071,7 @@
             if(key in this.items[grp]){
                 return false;
             }
+            var id = (/^[0-9]+$/.test(key))? "_" + key: key;
 
             // Validate Selection
             var con = this.self.con, s = (!con.multiple && this.selected.length > 0);
@@ -1091,10 +1091,9 @@
             }
 
             // Add Item
-            this[this.length++] = this.items[grp][key] = {
+            this.items[grp][id] = {
                 key: key,
                 value: opt.text,
-                index: (this.length-1),
                 description: opt.getAttribute("data-description") || null,
                 group: grp,
                 option: opt,
@@ -1102,8 +1101,9 @@
                 selected: opt.selected,
                 disabled: opt.disabled
             };
-            if(opt.selected){ this.select(this.items[grp][key]); }
-            if(opt.disabled){ this.disable(this.items[grp][key]); }
+            this.length++;
+            if(opt.selected){ this.select(this.items[grp][id]); }
+            if(opt.disabled){ this.disable(this.items[grp][id]); }
             return (rebuild)? this.self.callback(this[this.length-1], "rebuild"): true;
         },
 
@@ -1183,7 +1183,7 @@
 
         /*
          |  REMOVE AN EXISTING OPTION
-         |  @version    0.5.0 [0.3.0]
+         |  @version    0.5.7 [0.3.0]
          */
         remove: function(item, group, rebuild){
             if(!(item = this.get(item, group))){ return false; }
@@ -1192,8 +1192,9 @@
 
             // Remove Data
             item.option.parentElement.removeChild(item.option);
-            Array.prototype.splice.call(this, item.index, 1);
-            delete this.items[item.group][item.key];
+            var id = (/^[0-9]+$/.test(item.key))? "_" + item.key: item.key;
+            delete this.items[item.group][id];
+            this.length--;
 
             // Remove Optgroup
             if(Object.keys(this.items[item.group]).length === 0){
@@ -1400,7 +1401,7 @@
 
         /*
          |  NEW OPTIONS WALKER
-         |  @version    0.5.0 [0.4.0]
+         |  @version    0.5.7 [0.4.0]
          */
         walker: function(orderi, orderg){
             if(typeof(this._inLoop) != "undefined" && this._inLoop){
@@ -1412,7 +1413,12 @@
                 // Sort Items
                 if(this._inGroups.length > 0){
                     while(this._inGroups.length > 0){
-                        var group = this._inGroups.shift(), keys = Object.keys(this.items[group]);
+                        var group = this._inGroups.shift();
+                        if(!(group in this.items)){
+                            return false;
+                        }
+
+                        var keys = Object.keys(this.items[group]);
                         if(keys.length > 0){
                             break;
                         }
@@ -1438,7 +1444,7 @@
             }
 
             // Sort Groups
-            var groups = Object.keys(this.groups);
+            var groups = Object.keys(this.groups) || [];
             if(orderg == "ASC"){
                 groups.sort();
             } else if(orderg == "DESC"){

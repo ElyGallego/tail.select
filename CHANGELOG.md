@@ -1,13 +1,24 @@
 CHANGELOG
 ===========
 
+Version 0.5.7 - Beta
+--------------------
+-   Info: It isn't longer possible to get an option using the internal option number!
+-   Remove: The internal-Array storage has been completely removed.
+-   Bugfix: The `.remove()` method on the options hasn't worked on the internal-Array storage.
+-   Bugfix: The ECMAScript 6 Version returns an Array, while the default version does not.
+-   Bugfix: TypeError: Cannot convert undefined or null to object.
+            Thanks To: [#32](https://github.com/pytesNET/tail.select/issues/32)
+-   Bugfix: Remove default options sorting.
+            Thanks To: [#37](https://github.com/pytesNET/tail.select/issues/37)
+
 Version 0.5.6 - Beta
 --------------------
 -   Add: The new Brazilian Portuguese Translation. Many Thanks to [Igor](https://github.com/igorcm)
          ([#11](https://github.com/pytesNET/tail.select/pull/34))!
 -   Update: the `bower.json` and `package.json` files
 -   Update: Add 2019 to all Copyright notes.
-		 
+
 Version 0.5.5 - Beta
 --------------------
 -   Add: The new `searchDisabled` option, which allows to exclude disabled options on the search.
