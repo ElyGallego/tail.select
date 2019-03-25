@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./js/tail.select.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.7 - Beta
+ |  @version    0.5.8 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -120,7 +120,7 @@
         tailSelect.inst["tail-" + this.id] = this;
         return this.init().bind();
     }, tailOptions;
-    tailSelect.version = "0.5.7";
+    tailSelect.version = "0.5.8";
     tailSelect.status = "beta";
     tailSelect.count = 0;
     tailSelect.inst = {};
@@ -212,8 +212,29 @@
      */
     tailSelect.prototype = {
         /*
+         |  INERNAL :: TRANSLATE
+         |  @version    0.5.8 [0.5.8]
+         */
+        _e: function(string, replace, def){
+            if(!(string in this.__)){
+                return (!def)? string: def;
+            }
+
+            var string = this.__[string];
+            if(typeof(string) === "function"){
+                string = string.call(this, replace);
+            }
+            if(typeof(replace) === "object"){
+                for(var key in replace){
+                    string = string.replace(key, replace[key]);
+                }
+            }
+            return string;
+        },
+
+        /*
          |  INTERNAL :: INIT SELECT FIELD
-         |  @version    0.5.3 [0.3.0]
+         |  @version    0.5.8 [0.3.0]
          */
         init: function(){
             var self = this, classes = ["tail-select"], con = this.con,
@@ -230,7 +251,7 @@
             if(con.disabled){        classes.push("disabled");      }
 
             // Init Variables
-            this.__ = tailSelect.strings[con.locale] || tailSelect.strings.en;
+            this.__ = clone(tailSelect.strings.en, tailSelect.strings[con.locale] || {});
             this._init = true;
             this._query = false;
             this.select = create("DIV", classes);
@@ -258,7 +279,7 @@
             }
             if(con.search){
                 this.search.innerHTML = '<input type="text" class="search-input" />';
-                this.search.children[0].placeholder = this.__.search;
+                this.search.children[0].placeholder = this._e("search");
                 this.search.children[0].addEventListener("input", function(event){
                     self.query.call(self, (this.value.length > 2)? this.value: undefined);
                 });
@@ -521,7 +542,7 @@
 
         /*
          |  API :: QUERY OPTIONS
-         |  @version    0.5.5 [0.5.0]
+         |  @version    0.5.8 [0.5.0]
          */
         query: function(search, conf){
             var root = create("DIV", "dropdown-inner"), self = this, item, tp, ul, li, a1, a2,
@@ -564,7 +585,7 @@
             if(count == 0){
                 (this.con.cbEmpty || function(element){
                     var li = create("SPAN", "dropdown-empty");
-                    li.innerText = this.__["empty"];
+                    li.innerText = this._e("empty");
                     element.appendChild(li);
                 }).call(this, root, search);
             }
@@ -572,13 +593,13 @@
             // Select All
             if(count > 0 && con.multiple && con.multiLimit == Infinity && con.multiSelectAll){
                 a1 = create("BUTTON", "tail-all"), a2 = create("BUTTON", "tail-none");
-                a1.innerText = this.__["actionAll"];
+                a1.innerText = this._e("actionAll");
                 a1.addEventListener("click", function(event){
                     event.preventDefault();
                     var options = self.dropdown.querySelectorAll(".dropdown-inner .dropdown-option");
                     self.options.walk.call(self.options, "select", options);
                 })
-                a2.innerText = this.__["actionNone"];
+                a2.innerText = this._e("actionNone");
                 a2.addEventListener("click", function(event){
                     event.preventDefault();
                     var options = self.dropdown.querySelectorAll(".dropdown-inner .dropdown-option");
@@ -603,7 +624,7 @@
 
         /*
          |  API :: CALLBACK -> CREATE GROUP
-         |  @version    0.5.0 [0.4.0]
+         |  @version    0.5.8 [0.4.0]
          */
         cbGroup: function(group, search){
             var ul = create("UL", "dropdown-optgroup"), self = this, a1, a2;
@@ -611,13 +632,13 @@
             ul.innerHTML = '<li class="optgroup-title"><b>' + group + '</b></li>';
             if(this.con.multiple && this.con.multiLimit == Infinity && this.con.multiSelectAll){
                 a1 = create("BUTTON", "tail-none"), a2 = create("BUTTON", "tail-all");
-                a1.innerText = this.__["none"];
+                a1.innerText = this._e("none");
                 a1.addEventListener("click", function(event){
                     event.preventDefault();
                     var grp = this.parentElement.parentElement.getAttribute("data-group");
                     self.options.all.call(self.options, "unselect", grp);
                 });
-                a2.innerText = this.__["all"];
+                a2.innerText = this._e("all");
                 a2.addEventListener("click", function(event){
                     event.preventDefault();
                     var grp = this.parentElement.parentElement.getAttribute("data-group");
@@ -660,7 +681,7 @@
 
         /*
          |  API :: UPDATE LABEL
-         |  @version    0.5.0 [0.5.0]
+         |  @version    0.5.8 [0.5.0]
          */
         updateLabel: function(label){
             if(this.container == this.label && this.options.selected.length > 0){
@@ -690,7 +711,7 @@
             }
 
             // Set HTML
-            label = (this.__[label] || label).replace(":limit", c.multiLimit);
+            label = this._e(label, {":limit": c.multiLimit}, label);
             label = '<span class="label-inner">' + label + '</span>',
             limit = (c.multiShowLimit && c.multiLimit < Infinity);
             if(c.multiple && c.multiShowCount){

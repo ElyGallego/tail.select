@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./js/tail.select-es6.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.7 - Beta
+ |  @version    0.5.8 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -74,7 +74,7 @@ var {select, options} = (function(root){
         tailSelect.inst["tail-" + this.id] = this;
         return this.init().bind();
     }, tailOptions;
-    tailSelect.version = "0.5.7";
+    tailSelect.version = "0.5.8";
     tailSelect.status = "dev";
     tailSelect.count = 0;
     tailSelect.inst = {};
@@ -177,6 +177,23 @@ var {select, options} = (function(root){
             search: "Buscar ...",
             disabled: "Campo desativado"
         },
+        ru: {
+            all: "Все",
+            none: "Ничего",
+            actionAll: "Выбрать все",
+            actionNone: "Отменить все",
+            empty: "Нет доступных вариантов",
+            emptySearch: "Ничего не найдено",
+            limit: "Вы не можете выбрать больше вариантов",
+            placeholder: "Выберите вариант...",
+            placeholderMulti: function(args){
+                var strings = ["варианта", "вариантов", "вариантов"], cases = [2, 0, 1, 1, 1, 2], num = args[":limit"];
+                var string = strings[(num%100 > 4 && num%100 < 20)? 2: cases[(num%10 < 5)? num%10: 5]];
+                return "Выбор до :limit " + string + " ...";
+            },
+            search: "Начните набирать для поиска ...",
+            disabled: "Поле отключено"
+        },
         modify(locale, id, string){
             if(!(locale in this)){
                 return false;
@@ -204,15 +221,36 @@ var {select, options} = (function(root){
      */
     tailSelect.prototype = {
         /*
+         |  INERNAL :: TRANSLATE
+         |  @version    0.5.8 [0.5.8]
+         */
+        _e(string, replace, def){
+            if(!(string in this.__)){
+                return (!def)? string: def;
+            }
+
+            var string = this.__[string];
+            if(typeof(string) === "function"){
+                string = string.call(this, replace);
+            }
+            if(typeof(replace) === "object"){
+                for(var key in replace){
+                    string = string.replace(key, replace[key]);
+                }
+            }
+            return string;
+        },
+
+        /*
          |  INTERNAL :: INIT SELECT FIELD
-         |  @version    0.5.3 [0.3.0]
+         |  @version    0.5.8 [0.3.0]
          */
         init(){
             let classes = ["tail-select"], con = this.con,
                 regexp = /^[0-9.]+(?:cm|mm|in|px|pt|pc|em|ex|ch|rem|vw|vh|vmin|vmax|\%)$/i;
 
             // Init Variables
-            this.__ = tailSelect.strings[con.locale] || tailSelect.strings.en;
+            this.__ = Object.assign({}, tailSelect.strings.en, tailSelect.strings[con.locale] || {});
             this._init = true;
             this._query = false;
 
@@ -245,7 +283,7 @@ var {select, options} = (function(root){
             }
             if(con.search){
                 this.search = create("DIV", "dropdown-search");
-                this.search.innerHTML = `<input type="text" class="search-input" placeholder="${this.__.search}" />`;
+                this.search.innerHTML = `<input type="text" class="search-input" placeholder="${this._e("search")}" />`;
                 this.search.children[0].addEventListener("input", (ev) => {
                     this.query((ev.target.value.length > 2)? ev.target.value: undefined);
                 });
@@ -494,7 +532,7 @@ var {select, options} = (function(root){
 
         /*
          |  API :: QUERY OPTIONS
-         |  @version    0.5.5 [0.5.0]
+         |  @version    0.5.8 [0.5.0]
          */
         query(search, conf){
             let root = create("DIV", "dropdown-inner"), tp, ul, a1, a2,
@@ -533,7 +571,7 @@ var {select, options} = (function(root){
             if(count == 0){
                 (this.con.cbEmpty || function(element){
                     let li = create("SPAN", "dropdown-empty");
-                    li.innerText = this.__["empty"];
+                    li.innerText = this._e("empty");
                     element.appendChild(li);
                 }).call(this, root, search);
             }
@@ -541,12 +579,12 @@ var {select, options} = (function(root){
             // Select All
             if(count > 0 && con.multiple && con.multiLimit == Infinity && con.multiSelectAll){
                 a1 = create("BUTTON", "tail-all"), a2 = create("BUTTON", "tail-none");
-                a1.innerText = this.__["actionAll"];
+                a1.innerText = this._e("actionAll");
                 a1.addEventListener("click", (ev) => {
                     ev.preventDefault();
                     this.options.walk("select", this.dropdown.querySelectorAll(".dropdown-inner .dropdown-option"));
                 });
-                a2.innerText = this.__["actionNone"];
+                a2.innerText = this._e("actionNone");
                 a2.addEventListener("click", (ev) => {
                     ev.preventDefault();
                     this.options.walk("unselect", this.dropdown.querySelectorAll(".dropdown-inner .dropdown-option"));
@@ -570,7 +608,7 @@ var {select, options} = (function(root){
 
         /*
          |  API :: CALLBACK -> CREATE GROUP
-         |  @version    0.5.0 [0.4.0]
+         |  @version    0.5.8 [0.4.0]
          */
         cbGroup(group, search){
             let ul = create("UL", "dropdown-optgroup"), self = this, a1, a2;
@@ -578,12 +616,12 @@ var {select, options} = (function(root){
             ul.innerHTML = `<li class="optgroup-title"><b>${group}</b></li>`;
             if(this.con.multiple && this.con.multiLimit == Infinity && this.con.multiSelectAll){
                 a1 = create("BUTTON", "tail-none"), a2 = create("BUTTON", "tail-all");
-                a1.innerText = this.__["none"];
+                a1.innerText = this._e("none");
                 a1.addEventListener("click", (ev) => {
                     ev.preventDefault();
                     this.options.all("unselect", ev.target[parE][parE][gAttr]("data-group"));
                 });
-                a2.innerText = this.__["all"];
+                a2.innerText = this._e("all");
                 a2.addEventListener("click", (ev) => {
                     ev.preventDefault();
                     this.options.all("select", ev.target[parE][parE][gAttr]("data-group"));
@@ -623,7 +661,7 @@ var {select, options} = (function(root){
 
         /*
          |  API :: UPDATE LABEL
-         |  @version    0.5.0 [0.5.0]
+         |  @version    0.5.8 [0.5.0]
          */
         updateLabel(label){
             if(this.container == this.label && this.options.selected.length > 0){
@@ -653,7 +691,7 @@ var {select, options} = (function(root){
             }
 
             // Set HTML
-            label = (this.__[label] || label).replace(":limit", c.multiLimit);
+            label = this._e(label, {":limit": c.multiLimit}, label);
             label = `<span class="label-inner">${label}</span>`;
             limit = (c.multiShowLimit && c.multiLimit < Infinity);
             if(c.multiple && c.multiShowCount){
@@ -1106,7 +1144,6 @@ var {select, options} = (function(root){
 
             // Remove Data
             item.option[parE].removeChild(item.option);
-            Array.prototype.splice.call(this, item.index, 1);
             let id = (/^[0-9]+$/.test(item.key))? "_" + item.key: item.key;
             delete this.items[item.group][id];
             this.length--;

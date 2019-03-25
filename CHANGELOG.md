@@ -1,6 +1,14 @@
 CHANGELOG
 ===========
 
+Version 0.5.8 - Beta
+--------------------
+-   Add: The new Brazilian Portuguese Translation. Many Thanks to [Roman Yepanchenko](https://github.com/tizis)
+         ([#38](https://github.com/pytesNET/tail.select/issues/38))!
+-   Add: Allow callback functions as strings to allow a deeper translation.
+-   Add: The new internal method `_e`, which handles the translations.
+-   Bugfix: Invalid `bower.json` file.
+
 Version 0.5.7 - Beta
 --------------------
 -   Info: It isn't longer possible to get an option using the internal option number!
@@ -15,7 +23,7 @@ Version 0.5.7 - Beta
 Version 0.5.6 - Beta
 --------------------
 -   Add: The new Brazilian Portuguese Translation. Many Thanks to [Igor](https://github.com/igorcm)
-         ([#11](https://github.com/pytesNET/tail.select/pull/34))!
+         ([#34](https://github.com/pytesNET/tail.select/pull/34))!
 -   Update: the `bower.json` and `package.json` files
 -   Update: Add 2019 to all Copyright notes.
 
