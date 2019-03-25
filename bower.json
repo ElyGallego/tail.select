@@ -18,7 +18,7 @@
     "homepage": "https://github.com/pytesNET/tail.select",
 
     "main": [
-        "js/tail.select.full.min.js",
+        "js/tail.select.full.js",
         "css/tail.select-default.css"
     ],
     "repository": {
