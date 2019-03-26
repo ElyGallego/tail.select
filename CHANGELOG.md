@@ -1,9 +1,17 @@
 CHANGELOG
 ===========
 
+Version 0.5.9 - Beta
+--------------------
+-   Add: The new Russian Translation. Many Thanks to [elPesecillo](https://github.com/elPesecillo)
+         ([#41](https://github.com/pytesNET/tail.select/issues/41))!
+-   Add: The new experimental `linguisticRules` options, which allows to regex letters, which are
+         (used) similiar. Thanks to ([#42](https://github.com/pytesNET/tail.select/issues/42)).
+-   Update: [ES6] Changed the last `var` variables into `let`.
+
 Version 0.5.8 - Beta
 --------------------
--   Add: The new Brazilian Portuguese Translation. Many Thanks to [Roman Yepanchenko](https://github.com/tizis)
+-   Add: The new Russian Translation. Many Thanks to [Roman Yepanchenko](https://github.com/tizis)
          ([#38](https://github.com/pytesNET/tail.select/issues/38))!
 -   Add: Allow callback functions as strings to allow a deeper translation.
 -   Add: The new internal method `_e`, which handles the translations.

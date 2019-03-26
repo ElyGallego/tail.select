@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./js/tail.select-es6.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.8 - Beta
+ |  @version    0.5.9 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -74,7 +74,7 @@ var {select, options} = (function(root){
         tailSelect.inst["tail-" + this.id] = this;
         return this.init().bind();
     }, tailOptions;
-    tailSelect.version = "0.5.8";
+    tailSelect.version = "0.5.9";
     tailSelect.status = "dev";
     tailSelect.count = 0;
     tailSelect.inst = {};
@@ -95,6 +95,9 @@ var {select, options} = (function(root){
         hideSelected: false,
         items: {},
         locale: "en",
+        linguisticRules: {
+            "ё": "е"
+        },
         multiple: false,
         multiLimit: Infinity,
         multiPinSelected: false,
@@ -187,8 +190,8 @@ var {select, options} = (function(root){
             limit: "Вы не можете выбрать больше вариантов",
             placeholder: "Выберите вариант...",
             placeholderMulti: function(args){
-                var strings = ["варианта", "вариантов", "вариантов"], cases = [2, 0, 1, 1, 1, 2], num = args[":limit"];
-                var string = strings[(num%100 > 4 && num%100 < 20)? 2: cases[(num%10 < 5)? num%10: 5]];
+                let strings = ["варианта", "вариантов", "вариантов"], cases = [2, 0, 1, 1, 1, 2], num = args[":limit"];
+                let string = strings[(num%100 > 4 && num%100 < 20)? 2: cases[(num%10 < 5)? num%10: 5]];
                 return "Выбор до :limit " + string + " ...";
             },
             search: "Начните набирать для поиска ...",
@@ -199,7 +202,7 @@ var {select, options} = (function(root){
                 return false;
             }
             if((id instanceof Object)){
-                for(var key in id){
+                for(let key in id){
                     this.modify(locale, key, id[key]);
                 }
             } else {
@@ -229,12 +232,12 @@ var {select, options} = (function(root){
                 return (!def)? string: def;
             }
 
-            var string = this.__[string];
+            string = this.__[string];
             if(typeof(string) === "function"){
                 string = string.call(this, replace);
             }
             if(typeof(replace) === "object"){
-                for(var key in replace){
+                for(let key in replace){
                     string = string.replace(key, replace[key]);
                 }
             }
@@ -434,8 +437,8 @@ var {select, options} = (function(root){
                 if(!this.multiple && this.selectedIndex){
                     this.options.select(this.e.options[this.selectedIndex]);
                 } else {
-                    var u = [].concat(self.options.selected);
-                    var s = Array.from(this.e[queA]("option:checked")).filter((item) => {
+                    let u = [].concat(self.options.selected);
+                    let s = Array.from(this.e[queA]("option:checked")).filter((item) => {
                         if(u.indexOf(item) >= 0){
                             u.splice(u.indexOf(item), 1);
                             return false;
@@ -532,12 +535,20 @@ var {select, options} = (function(root){
 
         /*
          |  API :: QUERY OPTIONS
-         |  @version    0.5.8 [0.5.0]
+         |  @version    0.5.9 [0.5.0]
          */
         query(search, conf){
             let root = create("DIV", "dropdown-inner"), tp, ul, a1, a2,
-                func = search? "finder": "walker", con = this.con,
-                args = search? [search, conf]: [con.sortItems, con.sortGroups];
+                func = search? "finder": "walker", con = this.con, re;
+
+            // Format Search
+            if(typeof(search) === "string" && search.length > 0){
+                for(let key in con.linguisticRules){
+                    re = new RegExp(`(${key}|${con.linguisticRules[key]})`, "ig");
+                    search = search.replace(re, `(${key}|${con.linguisticRules[key]})`);
+                }
+            }
+            let args = search? [search, conf]: [con.sortItems, con.sortGroups];
 
             // Option Walker
             this._query = (typeof(search) == "string")? search: false;
@@ -641,7 +652,7 @@ var {select, options} = (function(root){
             let li = create("LI", "dropdown-option" + (s? " selected": "") + (d? " disabled": ""));
 
             if(search && search.length > 0 && this.con.searchMarked){
-                li.innerHTML = v.replace(new RegExp("(" + search + ")", "i"), "<mark>$1</mark>");
+                li.innerHTML = v.replace(new RegExp(`(${search})`, "i"), "<mark>$1</mark>");
             } else {
                 li.innerText = v;
             }
@@ -1281,14 +1292,14 @@ var {select, options} = (function(root){
          */
         walk(state, items, args){
             if(items instanceof Array || items.length){
-                for(var l = items.length, i = 0; i < l; i++){
+                for(let l = items.length, i = 0; i < l; i++){
                     this.handle.apply(this, [state, items[i], null].concat(args));
                 }
             } else if(items instanceof Object){
                 if(items.forEach){
                     items.forEach((e) => { this.handle.apply(this, [state, value, null].concat(args)); });
                 } else {
-                    for(var key in items){
+                    for(let key in items){
                         if(typeof(items[key]) != "string" && typeof(items[key]) != "number" && !(items[key] instanceof Element)){
                             continue;
                         }

@@ -68,7 +68,8 @@ Thanks To
 ### Translations
 -   [Anthony Rabine](https://github.com/arabine) / [French Translation](https://github.com/pytesNET/tail.select/issues/11)
 -   [Igor](https://github.com/igorcm) / [Brazilian Portuguese Translation](https://github.com/pytesNET/tail.select/pull/34)
--   [Roman Yepanchenko](https://github.com/tizis) / [Russian Translation](https://github.com/pytesNET/tail.select/issues/38))
+-   [Roman Yepanchenko](https://github.com/tizis) / [Russian Translation](https://github.com/pytesNET/tail.select/issues/38)
+-   [elPesecillo](https://github.com/elPesecillo) / [Spanish Translation](https://github.com/pytesNET/tail.select/issues/41)
 
 Documentation
 -------------
@@ -141,6 +142,7 @@ tail.select("select", {
     hideSelected: false,
     items: {},
     locale: "en",                   // NEW IN 0.5.0
+    lingusticRules: {},             // EXPERIMENTAL SINCE 0.5.9
     multiple: false,
     multiLimit: Infinity,           // UPDATE IN 0.5.0
     multiPinSelected: false,        // NEW IN 0.5.0

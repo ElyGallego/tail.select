@@ -1,6 +1,6 @@
 {
     "name": "tail.select",
-    "version": "0.5.8",
+    "version": "0.5.9",
     "description": "Create beautiful, functional and extensive (Multi) select fields, written in Vanilla without any dependencies!",
     "keywords": [
         "select",

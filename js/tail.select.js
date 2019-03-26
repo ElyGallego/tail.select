@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./js/tail.select.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.8 - Beta
+ |  @version    0.5.9 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -120,7 +120,7 @@
         tailSelect.inst["tail-" + this.id] = this;
         return this.init().bind();
     }, tailOptions;
-    tailSelect.version = "0.5.8";
+    tailSelect.version = "0.5.9";
     tailSelect.status = "beta";
     tailSelect.count = 0;
     tailSelect.inst = {};
@@ -141,6 +141,9 @@
         hideSelected: false,
         items: {},
         locale: "en",
+        linguisticRules: {
+            "ё": "е"
+        },
         multiple: false,
         multiLimit: Infinity,
         multiPinSelected: false,
@@ -542,12 +545,20 @@
 
         /*
          |  API :: QUERY OPTIONS
-         |  @version    0.5.8 [0.5.0]
+         |  @version    0.5.9 [0.5.0]
          */
         query: function(search, conf){
             var root = create("DIV", "dropdown-inner"), self = this, item, tp, ul, li, a1, a2,
-                func = search? "finder": "walker", con = this.con, g = "getAttribute",
-                args = search? [search, conf]: [con.sortItems, con.sortGroups];
+                func = search? "finder": "walker", con = this.con, g = "getAttribute";
+
+            // Format Search
+            if(typeof(search) === "string" && search.length > 0){
+                for(var key in con.linguisticRules){
+                    var re = new RegExp("(" + key + "|" + con.linguisticRules[key] + ")", "ig");
+                    search = search.replace(re, "(" + key + "|" + con.linguisticRules[key] + ")");
+                }
+            }
+            var args = search? [search, conf]: [con.sortItems, con.sortGroups];
 
             // Option Walker
             this._query = (typeof(search) == "string")? search: false;

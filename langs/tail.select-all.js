@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./langs/tail.select-all.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.8 - Beta
+ |  @version    0.5.9 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -32,6 +32,29 @@
         search: "Tippen zum suchen",
         disabled: "Dieses Feld ist deaktiviert"
     });
+
+    /*
+     |  Translator:     elPesecillo - (https://github.com/elPesecillo)
+     |  GitHub:         https://github.com/pytesNET/tail.select/issues/41
+     */
+    select.strings.register("es", {
+        all: "Todos",
+        none: "Ninguno",
+        actionAll: "Seleccionar todo",
+        actionNone: "Descartar todo",
+        empty: "No hay opciones disponibles",
+        emptySearch: "No se encontraron opciones",
+        limit: "No puedes seleccionar mas opciones",
+        placeholder: "Selecciona una opción...",
+        placeholderMulti: "Selecciona hasta :límite de opciones...",
+        search: "Escribe dentro para buscar...",
+        disabled: "Este campo esta deshabilitado"
+    });
+
+    /*
+     |  Translator:     Anthony Rabine - (https://github.com/arabine)
+     |  GitHub:         https://github.com/pytesNET/tail.select/issues/11
+     */
     select.strings.register("fr", {
         all: "Tous",
         none: "Aucun",
@@ -45,6 +68,11 @@
         search: "Rechercher ...",
         disabled: "Ce champs est désactivé"
     });
+
+    /*
+     |  Translator:     Anthony Rabine - (https://github.com/arabine)
+     |  GitHub:         https://github.com/pytesNET/tail.select/issues/11
+     */
     select.strings.register("pt_BR", {
         all: "Todas",
         none: "Nenhuma",
@@ -58,6 +86,11 @@
         search: "Buscar ...",
         disabled: "Campo desativado"
     });
+
+    /*
+     |  Translator:     Roman Yepanchenko - (https://github.com/tizis)
+     |  GitHub:         https://github.com/pytesNET/tail.select/issues/38
+     */
     select.strings.register("ru", {
         all: "Все",
         none: "Ничего",

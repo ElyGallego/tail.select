@@ -2,11 +2,15 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./langs/tail.select-pt_BR.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.8 - Beta
+ |  @version    0.5.9 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
  |  @copyright  Copyright © 2014 - 2019 SamBrishes, pytesNET <info@pytes.net>
+ */
+/*
+ |  Translator:     Igor - (https://github.com/igorcm)
+ |  GitHub:         https://github.com/pytesNET/tail.select/pull/34
  */
 ;(function(factory){
    if(typeof(define) == "function" && define.amd){
