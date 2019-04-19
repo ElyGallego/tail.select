@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./langs/tail.select-fr.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.9 - Beta
+ |  @version    0.5.10 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -31,9 +31,9 @@
         empty: "Aucune option disponible",
         emptySearch: "Aucune option trouvée",
         limit: "Aucune autre option sélectionnable",
-        placeholder: "Choisissez une option ...",
-        placeholderMulti: "Choisissez jusqu'à :limit option(s) ...",
-        search: "Rechercher ...",
+        placeholder: "Choisissez une option...",
+        placeholderMulti: "Choisissez jusqu'à :limit option(s)...",
+        search: "Rechercher...",
         disabled: "Ce champs est désactivé"
     });
     return select;

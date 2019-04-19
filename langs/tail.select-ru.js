@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./langs/tail.select-ru.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.9 - Beta
+ |  @version    0.5.10 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License

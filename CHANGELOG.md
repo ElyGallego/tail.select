@@ -1,9 +1,16 @@
 CHANGELOG
 ===========
 
+Version 0.5.10 - Beta
+---------------------
+-   Add: The new Itlaian Translation. Many Thanks to [Alberto Vincenzi](https://github.com/albertovincenzi)
+         ([#43](https://github.com/pytesNET/tail.select/issues/43))!
+-   Add: The new Norwegish Translation. Many Thanks to [WoxVold](https://github.com/woxvold)
+         ([#45](https://github.com/pytesNET/tail.select/issues/45))!
+
 Version 0.5.9 - Beta
 --------------------
--   Add: The new Russian Translation. Many Thanks to [elPesecillo](https://github.com/elPesecillo)
+-   Add: The new Spanish Translation. Many Thanks to [elPesecillo](https://github.com/elPesecillo)
          ([#41](https://github.com/pytesNET/tail.select/issues/41))!
 -   Add: The new experimental `linguisticRules` options, which allows to regex letters, which are
          (used) similiar. Thanks to ([#42](https://github.com/pytesNET/tail.select/issues/42)).
@@ -20,6 +27,8 @@ Version 0.5.8 - Beta
 Version 0.5.7 - Beta
 --------------------
 -   Info: It isn't longer possible to get an option using the internal option number!
+-   Add: The new Finnish Translation. Many Thanks to [Noxludio](https://github.com/noxludio)
+         ([#35](https://github.com/pytesNET/tail.select/pull/35))!
 -   Remove: The internal-Array storage has been completely removed.
 -   Bugfix: The `.remove()` method on the options hasn't worked on the internal-Array storage.
 -   Bugfix: The ECMAScript 6 Version returns an Array, while the default version does not.

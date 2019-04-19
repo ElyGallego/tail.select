@@ -1,6 +1,6 @@
 /*
  |  tail.select - Another solution to make select fields beautiful again!
- |  @file       ./langs/tail.select-pt_BR.js
+ |  @file       ./langs/tail.select-it.js
  |  @author     SamBrishes <sam@pytes.net>
  |  @version    0.5.10 - Beta
  |
@@ -9,8 +9,8 @@
  |  @copyright  Copyright © 2014 - 2019 SamBrishes, pytesNET <info@pytes.net>
  */
 /*
- |  Translator:     Igor - (https://github.com/igorcm)
- |  GitHub:         https://github.com/pytesNET/tail.select/pull/34
+ |  Translator:     Alberto Vincenzi - (https://github.com/albertovincenzi)
+ |  GitHub:         https://github.com/pytesNET/tail.select/issues/43
  */
 ;(function(factory){
    if(typeof(define) == "function" && define.amd){
@@ -23,18 +23,18 @@
        }
    }
 }(function(select){
-    select.strings.register("pt_BR", {
-        all: "Todas",
-        none: "Nenhuma",
-        actionAll: "Selecionar todas",
-        actionNone: "Desmarcar todas",
-        empty: "Nenhuma opção disponível",
-        emptySearch: "Nenhuma opção encontrada",
-        limit: "Não é possível selecionar outra opção",
-        placeholder: "Escolha uma opção ...",
-        placeholderMulti: "Escolha até: :limit opção(ões) ...",
-        search: "Buscar ...",
-        disabled: "Campo desativado"
+    select.strings.register("it", {
+        all: "Tutti",
+        none: "Nessuno",
+        actionAll: "Seleziona Tutto",
+        actionNone: "Deseleziona Tutto",
+        empty: "Nessuna voce disponibile",
+        emptySearch: "Nessuna voce trovata",
+        limit: "Non puoi selezionare più Voci",
+        placeholder: "Seleziona una Voce",
+        placeholderMulti: "Selezione limitata a :limit Voci...",
+        search: "Digita per cercare...",
+        disabled: "Questo Campo è disabilitato"
     });
     return select;
 }));

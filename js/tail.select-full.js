@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./js/tail.select.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.9 - Beta
+ |  @version    0.5.10 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -120,7 +120,7 @@
         tailSelect.inst["tail-" + this.id] = this;
         return this.init().bind();
     }, tailOptions;
-    tailSelect.version = "0.5.9";
+    tailSelect.version = "0.5.10";
     tailSelect.status = "beta";
     tailSelect.count = 0;
     tailSelect.inst = {};
@@ -214,6 +214,19 @@
             search: "Escribe dentro para buscar...",
             disabled: "Este campo esta deshabilitado"
         },
+        fi: {
+            all: "Kaikki",
+            none: "Ei mitään",
+            actionAll: "Valitse kaikki",
+            actionNone: "Poista kaikki valinnat",
+            empty: "Ei vaihtoehtoja",
+            emptySearch: "Etsimääsi vaihtoehtoa ei löytynyt",
+            limit: "Muita vaihtoehtoja ei voi valita",
+            placeholder: "Valitse...",
+            placeholderMulti: "Valitse maksimissaan :limit...",
+            search: "Hae tästä...",
+            disabled: "Kenttä on poissa käytöstä"
+        },
         fr: {
             all: "Tous",
             none: "Aucun",
@@ -226,6 +239,32 @@
             placeholderMulti: "Choisissez jusqu'à :limit option(s) ...",
             search: "Rechercher ...",
             disabled: "Ce champs est désactivé"
+        },
+        it: {
+            all: "Tutti",
+            none: "Nessuno",
+            actionAll: "Seleziona Tutto",
+            actionNone: "Deseleziona Tutto",
+            empty: "Nessuna voce disponibile",
+            emptySearch: "Nessuna voce trovata",
+            limit: "Non puoi selezionare più Voci",
+            placeholder: "Seleziona una Voce",
+            placeholderMulti: "Selezione limitata a :limit Voci...",
+            search: "Digita per cercare...",
+            disabled: "Questo Campo è disabilitato"
+        },
+        no: {
+            all: "Alle",
+            none: "Ingen",
+            actionAll: "Velg alle",
+            actionNone: "Velg ingen",
+            empty: "Ingen valg tilgjengelig",
+            emptySearch: "Ingen valg funnet",
+            limit: "Du kan ikke velge flere",
+            placeholder: "Velg...",
+            placeholderMulti: "Velg opptil :limit...",
+            search: "Søk...",
+            disabled: "Dette feltet er deaktivert"
         },
         pt_BR: {
             all: "Todas",

@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./langs/tail.select-all.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.9 - Beta
+ |  @version    0.5.10 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -52,6 +52,24 @@
     });
 
     /*
+     |  Translator:     Noxludio - https://github.com/noxludio
+     |  GitHub:         https://github.com/pytesNET/tail.select/pull/35
+     */
+    select.strings.register("fi", {
+        all: "Kaikki",
+        none: "Ei mitään",
+        actionAll: "Valitse kaikki",
+        actionNone: "Poista kaikki valinnat",
+        empty: "Ei vaihtoehtoja",
+        emptySearch: "Etsimääsi vaihtoehtoa ei löytynyt",
+        limit: "Muita vaihtoehtoja ei voi valita",
+        placeholder: "Valitse...",
+        placeholderMulti: "Valitse maksimissaan :limit...",
+        search: "Hae tästä...",
+        disabled: "Kenttä on poissa käytöstä"
+    });
+
+    /*
      |  Translator:     Anthony Rabine - (https://github.com/arabine)
      |  GitHub:         https://github.com/pytesNET/tail.select/issues/11
      */
@@ -63,10 +81,46 @@
         empty: "Aucune option disponible",
         emptySearch: "Aucune option trouvée",
         limit: "Aucune autre option sélectionnable",
-        placeholder: "Choisissez une option ...",
-        placeholderMulti: "Choisissez jusqu'à :limit option(s) ...",
-        search: "Rechercher ...",
+        placeholder: "Choisissez une option...",
+        placeholderMulti: "Choisissez jusqu'à :limit option(s)...",
+        search: "Rechercher...",
         disabled: "Ce champs est désactivé"
+    });
+
+    /*
+     |  Translator:     Alberto Vincenzi - (https://github.com/albertovincenzi)
+     |  GitHub:         https://github.com/pytesNET/tail.select/issues/43
+     */
+    select.strings.register("it", {
+        all: "Tutti",
+        none: "Nessuno",
+        actionAll: "Seleziona Tutto",
+        actionNone: "Deseleziona Tutto",
+        empty: "Nessuna voce disponibile",
+        emptySearch: "Nessuna voce trovata",
+        limit: "Non puoi selezionare più Voci",
+        placeholder: "Seleziona una Voce",
+        placeholderMulti: "Selezione limitata a :limit Voci...",
+        search: "Digita per cercare...",
+        disabled: "Questo Campo è disabilitato"
+    });
+
+    /*
+     |  Translator:     WoxVold - (https://github.com/woxvold)
+     |  GitHub:         https://github.com/pytesNET/tail.select/issues/45
+     */
+    select.strings.register("no", {
+        all: "Alle",
+        none: "Ingen",
+        actionAll: "Velg alle",
+        actionNone: "Velg ingen",
+        empty: "Ingen valg tilgjengelig",
+        emptySearch: "Ingen valg funnet",
+        limit: "Du kan ikke velge flere",
+        placeholder: "Velg...",
+        placeholderMulti: "Velg opptil :limit...",
+        search: "Søk...",
+        disabled: "Dette feltet er deaktivert"
     });
 
     /*
