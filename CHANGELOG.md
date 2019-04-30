@@ -1,6 +1,11 @@
 CHANGELOG
 ===========
 
+Unreleased Changes
+------------------
+-   Add: Support fpr `tabindex` (using Tab to move from input field to input field).
+        ([#47](https://github.com/pytesNET/tail.select/issues/47))!
+
 Version 0.5.10 - Beta
 ---------------------
 -   Add: The new Itlaian Translation. Many Thanks to [Alberto Vincenzi](https://github.com/albertovincenzi)

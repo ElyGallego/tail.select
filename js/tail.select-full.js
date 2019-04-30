@@ -372,6 +372,11 @@
             this.csvInput = create("INPUT", "select-search");
 
             // Build :: Select
+            if(this.e.getAttribute("tabindex") !== null){
+                this.select.setAttribute("tabindex", this.e.getAttribute("tabindex"));
+            } else {
+                this.select.setAttribute("tabindex", 0);
+            }
             if(con.width && regexp.test(con.width)){
                 this.select.style.width = con.width;
             } else if(con.width && !isNaN(parseFloat(con.width, 10))){
