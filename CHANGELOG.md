@@ -3,8 +3,9 @@ CHANGELOG
 
 Unreleased Changes
 ------------------
--   Add: Support fpr `tabindex` (using Tab to move from input field to input field).
+-   Add: Support for `tabindex` (using Tab to move from input field to input field).
         ([#47](https://github.com/pytesNET/tail.select/issues/47))!
+-   Add: Key-Support for Space to open the current focused select field.
 
 Version 0.5.10 - Beta
 ---------------------

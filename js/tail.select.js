@@ -365,11 +365,17 @@
             // Keys Listener
             d.addEventListener("keydown", function(event){
                 var key = (event.keyCode || event.which), opt, inner, e, temp;
-                if(!cHAS(self.select, "active") || [13, 27, 38, 40].indexOf(key) < 0){
+                var space = (key == 32 && self.select === document.activeElement);
+                if(!space && (!cHAS(self.select, "active") || [13, 27, 38, 40].indexOf(key) < 0)){
                     return false;
                 }
                 event.preventDefault();
                 event.stopPropagation();
+
+                // Space
+                if(key === 32){
+                    return self.open(self.con.animate);
+                }
 
                 // Enter || Escape
                 if(key == 13){

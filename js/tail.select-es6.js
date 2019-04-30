@@ -412,11 +412,17 @@ var {select, options} = (function(root){
         bind(){
             d.addEventListener("keydown", (ev) => {
                 let key = (ev.keyCode || ev.which), opt, inner, e, temp;
-                if(!this.select.classList.contains("active") || [13, 27, 38, 40].indexOf(key) < 0){
+                let space = (key == 32 && self.select === document.activeElement);
+                if(!space ||(!this.select.classList.contains("active") || [13, 27, 38, 40].indexOf(key) < 0)){
                     return false;
                 }
                 ev.preventDefault();
                 ev.stopPropagation();
+
+                // Space
+                if(key === 32){
+                    return this.open(self.con.animate);
+                }
 
                 // Enter || Escape
                 if(key == 13){
