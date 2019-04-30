@@ -6,6 +6,7 @@ Unreleased Changes
 -   Add: Support for `tabindex` (using Tab to move from input field to input field).
         ([#47](https://github.com/pytesNET/tail.select/issues/47))!
 -   Add: Key-Support for Space to open the current focused select field.
+-   Bugfix: Replace classnames with an Space to prevent missing space between class names.
 
 Version 0.5.10 - Beta
 ---------------------

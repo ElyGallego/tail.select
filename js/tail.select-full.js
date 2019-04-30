@@ -44,7 +44,7 @@
     }
     function cREM(e, name, regex){
         if((regex = new RegExp("(?:^|\\s+)(" + name + ")(?:\\s+|$)")) && regex.test(e.className || "")){
-            e.className = e.className.replace(regex, "");
+            e.className = e.className.replace(regex, " ");
         }
         return e;
     }
