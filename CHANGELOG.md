@@ -1,8 +1,10 @@
 CHANGELOG
 ===========
 
-Unreleased Changes
-------------------
+Version 0.5.11 - Beta
+---------------------
+-   Add: The new Turkish Translation. Many Thanks to [Spritus](https://github.com/spritus)
+         ([#48](https://github.com/pytesNET/tail.select/issues/48))!
 -   Add: Support for `tabindex` (using Tab to move from input field to input field).
         ([#47](https://github.com/pytesNET/tail.select/issues/47))!
 -   Add: Key-Support for Space to open the current focused select field.
@@ -10,7 +12,7 @@ Unreleased Changes
 
 Version 0.5.10 - Beta
 ---------------------
--   Add: The new Itlaian Translation. Many Thanks to [Alberto Vincenzi](https://github.com/albertovincenzi)
+-   Add: The new Italian Translation. Many Thanks to [Alberto Vincenzi](https://github.com/albertovincenzi)
          ([#43](https://github.com/pytesNET/tail.select/issues/43))!
 -   Add: The new Norwegish Translation. Many Thanks to [WoxVold](https://github.com/woxvold)
          ([#45](https://github.com/pytesNET/tail.select/issues/45))!

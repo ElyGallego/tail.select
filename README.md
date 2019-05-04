@@ -3,7 +3,7 @@ tail.select - Beautify Select Fields
 [![plainJS](https://s.pytes.net/cb2d2d94)](https://s.pytes.net/21d65dff)
 [![npm Version](https://s.pytes.net/9e506510)](https://s.pytes.net/2a8c886a)
 [![npm Downloads](https://s.pytes.net/3fd8be97)](https://s.pytes.net/2a8c886a)
-[![jsDelivr Downloads](https://s.pytes.me/29d07205)](https://s.pytes.me/41b095bd)
+[![License](https://s.pytes.net/8257ac72)](LICENSE.md)
 [![Author](https://s.pytes.net/5542d1fa)](https://s.pytes.net/5be37d0a)
 
 The **tail.select** script is back and ready to beautify your (multiple) select fields again, now
@@ -73,6 +73,7 @@ Thanks To
 -   [elPesecillo](https://github.com/elPesecillo) / [Spanish Translation](https://github.com/pytesNET/tail.select/issues/41)
 -   [Alberto Vincenzi](https://github.com/albertovincenzi) / [Italian Translation](https://github.com/pytesNET/tail.select/issues/43)
 -   [WoxVold](https://github.com/woxwold) / [Norwegish Translation](https://github.com/pytesNET/tail.select/issues/45)
+-   [Spritus](https://github.com/spritus) / [Turkish Translation](https://github.com/pytesNET/tail.select/issues/48)
 
 Documentation
 -------------

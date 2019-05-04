@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./langs/tail.select-all.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.10 - Beta
+ |  @version    0.5.11 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -161,6 +161,24 @@
         },
         search: "Начните набирать для поиска ...",
         disabled: "Поле отключено"
+    });
+
+    /*
+     |  Translator:     Noxludio - https://github.com/noxludio
+     |  GitHub:         https://github.com/pytesNET/tail.select/pull/35
+     */
+    select.strings.register("tr", {
+        all: "Tümü",
+        none: "Hiçbiri",
+        actionAll: "Tümünü Seç",
+        actionNone: "Hiçbirini Seçme",
+        empty: "Seçenek yok",
+        emptySearch: "Seçenek bulunamadı",
+        limit: "Daha fazla Seçenek seçemezsiniz",
+        placeholder: "Bir Seçenek seçin...",
+        placeholderMulti: "En fazla :limit Seçenek seçin...",
+        search: "Aramak için yazın...",
+        disabled: "Bu Alan kullanılamaz"
     });
     return select;
 }));

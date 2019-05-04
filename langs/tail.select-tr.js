@@ -1,6 +1,6 @@
 /*
  |  tail.select - Another solution to make select fields beautiful again!
- |  @file       ./langs/tail.select-fi.js
+ |  @file       ./langs/tail.select-tr.js
  |  @author     SamBrishes <sam@pytes.net>
  |  @version    0.5.11 - Beta
  |
@@ -23,18 +23,18 @@
        }
    }
 }(function(select){
-    select.strings.register("fi", {
-        all: "Kaikki",
-        none: "Ei mitään",
-        actionAll: "Valitse kaikki",
-        actionNone: "Poista kaikki valinnat",
-        empty: "Ei vaihtoehtoja",
-        emptySearch: "Etsimääsi vaihtoehtoa ei löytynyt",
-        limit: "Muita vaihtoehtoja ei voi valita",
-        placeholder: "Valitse...",
-        placeholderMulti: "Valitse maksimissaan :limit...",
-        search: "Hae tästä...",
-        disabled: "Kenttä on poissa käytöstä"
+    select.strings.register("tr", {
+        all: "Tümü",
+        none: "Hiçbiri",
+        actionAll: "Tümünü Seç",
+        actionNone: "Hiçbirini Seçme",
+        empty: "Seçenek yok",
+        emptySearch: "Seçenek bulunamadı",
+        limit: "Daha fazla Seçenek seçemezsiniz",
+        placeholder: "Bir Seçenek seçin...",
+        placeholderMulti: "En fazla :limit Seçenek seçin...",
+        search: "Aramak için yazın...",
+        disabled: "Bu Alan kullanılamaz"
     });
     return select;
 }));
