@@ -1,10 +1,10 @@
 tail.select - Beautify Select Fields
 ====================================
-[![plainJS](https://s.pytes.net/cb2d2d94)](https://s.pytes.net/21d65dff)
-[![npm Version](https://s.pytes.net/9e506510)](https://s.pytes.net/2a8c886a)
-[![npm Downloads](https://s.pytes.net/3fd8be97)](https://s.pytes.net/2a8c886a)
-[![License](https://s.pytes.net/8257ac72)](LICENSE.md)
-[![Author](https://s.pytes.net/5542d1fa)](https://s.pytes.net/5be37d0a)
+[![npm Version](https://s.pytes.me/47a6bf48)](https://s.pytes.net/2a8c886a)
+[![npm Downloads](https://s.pytes.me/f678004c)](https://s.pytes.net/2a8c886a)
+[![Support Me](https://s.pytes.me/4a1717aa)](https://buymeacoffee.com/pytesNET)
+[![plainJS](https://s.pytes.me/cb2d2d94)](https://s.pytes.net/21d65dff)
+[![License](https://s.pytes.me/8257ac72)](LICENSE.md)
 
 The **tail.select** script is back and ready to beautify your (multiple) select fields again, now
 also with an own search method and many features to increase the usability and handling on many as
@@ -14,6 +14,14 @@ jQuery Version, back from 2014 (+ a MooTools implementation)!
 [Wanna see **tail.select** in action?](https://github.pytes.net/tail.select)
 
 [Wanna translate **tail.select** in your language?](https://github.com/pytesNET/tail.select/wiki/Help-Translating)
+
+Support
+-------
+<p align="center" atyle="text-align:center">
+You really like my <b>tail.select</b> script and want to support me and all of my projects?<br/>
+Then I would be extremely grateful for a coffee! (<b>Thanks to all Supporters</b>)<br/><br/>
+<a href="https://www.buymeacoffee.com/pytesNET"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" title="Buy Me A Coffee" /></a>
+</p>
 
 Features
 --------
