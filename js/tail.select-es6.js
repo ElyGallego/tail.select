@@ -2,7 +2,7 @@
  |  tail.select - Another solution to make select fields beautiful again!
  |  @file       ./js/tail.select-es6.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.11 - Beta
+ |  @version    0.5.12 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -13,7 +13,9 @@
  |  It is NOT-RECOMMENDED to use this version on productively websites!
  */
 var {select, options} = (function(root){
-    let w = root, d = root.document;
+    const w = root;
+    const d = root.document;
+
     const que = "querySelector";
     const queA = "querySelectorAll";
     const parE = "parentElement";
@@ -31,23 +33,23 @@ var {select, options} = (function(root){
 
     /*
      |  SELECT CONSTRUCTOR
-     |  @version    0.5.0 [0.3.0]
+     |  @since  0.5.12 [0.3.0]
      */
-    let tailSelect = function(el, config){
+    const select = function(el, config){
         el = (typeof(el) == "string")? d[queA](el): el;
         if(el instanceof NodeList || el instanceof HTMLCollection || el instanceof Array){
             let _r = Array.prototype.map.call(el, item => {
-                return new tailSelect(item, Object.assign({}, config));
+                return new select(item, Object.assign({}, config));
             });
             return (_r.length === 1)? _r[0]: ((_r.length === 0)? false: _r);
         }
-        if(!(el instanceof Element) || !(this instanceof tailSelect)){
-            return !(el instanceof Element)? false: new tailSelect(el, config);
+        if(!(el instanceof Element) || !(this instanceof select)){
+            return !(el instanceof Element)? false: new select(el, config);
         }
 
         // Check Element
-        if(tailSelect.inst[el[gAttr]("data-tail-select")]){
-            return tailSelect.inst[el[gAttr]("data-tail-select")];
+        if(select.inst[el[gAttr]("data-tail-select")]){
+            return select.inst[el[gAttr]("data-tail-select")];
         }
         if(el[gAttr]("data-select")){
             let test = JSON.parse(el[gAttr]("data-select").replace(/\'/g, '"'));
@@ -68,21 +70,21 @@ var {select, options} = (function(root){
 
         // Init Instance
         this.e = el;
-        this.id = ++tailSelect.count;
-        this.con = Object.assign({}, tailSelect.defaults, config);
+        this.id = ++select.count;
+        this.con = Object.assign({}, select.defaults, config);
         this.events = {};
-        tailSelect.inst["tail-" + this.id] = this;
+        select.inst["tail-" + this.id] = this;
         return this.init().bind();
-    }, tailOptions;
-    tailSelect.version = "0.5.11";
-    tailSelect.status = "dev";
-    tailSelect.count = 0;
-    tailSelect.inst = {};
+    };
+    select.version = "0.5.12";
+    select.status = "experimental";
+    select.count = 0;
+    select.inst = {};
 
     /*
      |  STORAGE :: DEFAULT OPTIONS
      */
-    tailSelect.defaults = {
+    select.defaults = {
         animate: true,
         classNames: null,
         csvOutput: false,
@@ -96,7 +98,11 @@ var {select, options} = (function(root){
         items: {},
         locale: "en",
         linguisticRules: {
-            "ё": "е"
+            "ё": "е",
+            "ä": "a",
+            "ö": "o",
+            "ü": "u",
+            "ß": "ss"
         },
         multiple: false,
         multiLimit: Infinity,
@@ -111,6 +117,7 @@ var {select, options} = (function(root){
         search: false,
         searchFocus: true,
         searchMarked: true,
+        searchDisabled: true,
         sortItems: false,
         sortGroups: false,
         sourceBind: false,
@@ -127,7 +134,7 @@ var {select, options} = (function(root){
     /*
      |  STORAGE :: STRINGS
      */
-    tailSelect.strings = {
+    select.strings = {
         de: {
             all: "Alle",
             none: "Keine",
@@ -287,10 +294,10 @@ var {select, options} = (function(root){
     /*
      |  TAIL.SELECT HANDLER
      */
-    tailSelect.prototype = {
+    select.prototype = {
         /*
          |  INERNAL :: TRANSLATE
-         |  @version    0.5.8 [0.5.8]
+         |  @since  0.5.8 [0.5.8]
          */
         _e(string, replace, def){
             if(!(string in this.__)){
@@ -311,14 +318,14 @@ var {select, options} = (function(root){
 
         /*
          |  INTERNAL :: INIT SELECT FIELD
-         |  @version    0.5.8 [0.3.0]
+         |  @since  0.5.12 [0.3.0]
          */
         init(){
             let classes = ["tail-select"], con = this.con,
                 regexp = /^[0-9.]+(?:cm|mm|in|px|pt|pc|em|ex|ch|rem|vw|vh|vmin|vmax|\%)$/i;
 
             // Init Variables
-            this.__ = Object.assign({}, tailSelect.strings.en, tailSelect.strings[con.locale] || {});
+            this.__ = Object.assign({}, select.strings.en, select.strings[con.locale] || {});
             this._init = true;
             this._query = false;
 
@@ -385,7 +392,7 @@ var {select, options} = (function(root){
             }
 
             // Prepare Options
-            this.options = new tailOptions(this.e, this);
+            this.options = new options(this.e, this);
             Array.prototype.map.call(this.e.options, (opt) => {this.options.set(opt, false);});
             Object.keys(con.items).forEach((key) => {
                 let value = (con.items[key].join)? con.items[key]: {value: con.items[key]};
@@ -420,7 +427,7 @@ var {select, options} = (function(root){
 
         /*
          |  INTERNAL :: EVENT LISTENER
-         |  @version    0.5.3 [0.3.0]
+         |  @since  0.5.3 [0.3.0]
          */
         bind(){
             d.addEventListener("keydown", (ev) => {
@@ -530,7 +537,7 @@ var {select, options} = (function(root){
 
         /*
          |  INTERNAL :: INTERNAL CALLBACK
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         callback(item, state, _force){
             let self = this,  s = `[data-key='${item.key}'][data-group='${item.group}']`;
@@ -551,7 +558,7 @@ var {select, options} = (function(root){
 
         /*
          |  INTERNAL :: TRIGGER EVENT HANDLER
-         |  @version    0.5.2 [0.4.0]
+         |  @since  0.5.2 [0.4.0]
          */
         trigger(event){
             if(this._init){ return false; }
@@ -573,7 +580,7 @@ var {select, options} = (function(root){
 
         /*
          |  INTERNAL :: CALCULATE DROPDOWN
-         |  @version    0.5.4 [0.5.0]
+         |  @since  0.5.4 [0.5.0]
          */
         calc(){
             let clone = this.dropdown.cloneNode(true), height = this.con.height, search = 0,
@@ -611,7 +618,7 @@ var {select, options} = (function(root){
 
         /*
          |  API :: QUERY OPTIONS
-         |  @version    0.5.9 [0.5.0]
+         |  @since  0.5.9 [0.5.0]
          */
         query(search, conf){
             let root = create("DIV", "dropdown-inner"), tp, ul, a1, a2,
@@ -695,7 +702,7 @@ var {select, options} = (function(root){
 
         /*
          |  API :: CALLBACK -> CREATE GROUP
-         |  @version    0.5.8 [0.4.0]
+         |  @since  0.5.8 [0.4.0]
          */
         cbGroup(group, search){
             let ul = create("UL", "dropdown-optgroup"), self = this, a1, a2;
@@ -721,7 +728,7 @@ var {select, options} = (function(root){
 
         /*
          |  API :: CALLBACK -> CREATE ITEM
-         |  @version    0.5.0 [0.4.0]
+         |  @since  0.5.0 [0.4.0]
          */
         cbItem(item, optgroup, search){
             let {value: v, selected: s, disabled: d} = item;
@@ -740,7 +747,7 @@ var {select, options} = (function(root){
 
         /*
          |  API :: UPDATE EVERYTHING
-         |  @version    0.5.0 [0.5.0]
+         |  @since  0.5.0 [0.5.0]
          */
         update(item){
             return this.updateLabel().updateContainer(item).updatePin(item).updateCSV(item);
@@ -748,7 +755,7 @@ var {select, options} = (function(root){
 
         /*
          |  API :: UPDATE LABEL
-         |  @version    0.5.8 [0.5.0]
+         |  @since  0.5.8 [0.5.0]
          */
         updateLabel(label){
             if(this.container == this.label && this.options.selected.length > 0){
@@ -791,7 +798,7 @@ var {select, options} = (function(root){
 
         /*
          |  API :: UPDATE CONTAINER
-         |  @version    0.5.0 [0.5.0]
+         |  @since  0.5.0 [0.5.0]
          */
         updateContainer(item){
             if(!this.container || !this.con.multiContainer){
@@ -823,7 +830,7 @@ var {select, options} = (function(root){
 
         /*
          |  API :: UPDATE PIN POSITION
-         |  @version    0.5.3 [0.5.0]
+         |  @since  0.5.3 [0.5.0]
          */
         updatePin(item){
             let inner = this.dropdown[que](".dropdown-inner ul");
@@ -855,7 +862,7 @@ var {select, options} = (function(root){
 
         /*
          |  API :: UPDATE CSV INPUT
-         |  @version    0.5.0 [0.5.0]
+         |  @since  0.5.0 [0.5.0]
          */
         updateCSV(item){
             if(!this.csvInput || !this.con.csvOutput){
@@ -868,7 +875,7 @@ var {select, options} = (function(root){
 
         /*
          |  PUBLIC :: OPEN DROPDOWN
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         open(animate){
             if(/active|idle/.test(this.select.className) || this.con.disabled){
@@ -909,7 +916,7 @@ var {select, options} = (function(root){
 
         /*
          |  PUBLIC :: CLOSE DROPDOWN
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         close(animate){
             if(!this.select.classList.contains("active") || this.select.classList.contains("idle")){
@@ -939,7 +946,7 @@ var {select, options} = (function(root){
 
         /*
          |  PUBLIC :: TOGGLE DROPDOWN
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         toggle(animate){
             if(this.select.classList.contains("active")){
@@ -950,7 +957,7 @@ var {select, options} = (function(root){
 
         /*
          |  PUBLIC :: REMOVE SELECT
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         remove(){
             this.e[rAttr]("data-tail-select");
@@ -978,7 +985,7 @@ var {select, options} = (function(root){
 
         /*
          |  PUBLIC :: RELOAD SELECT
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         reload(){
             return this.remove().init();
@@ -986,7 +993,7 @@ var {select, options} = (function(root){
 
         /*
          |  PUBLIC :: GET|SET CONFIG
-         |  @version    0.5.0 [0.4.0]
+         |  @since  0.5.0 [0.4.0]
          */
         config(key, value, rebuild){
             if(key instanceof Object){
@@ -1024,7 +1031,7 @@ var {select, options} = (function(root){
 
         /*
          |  PUBLIC :: CUSTOM EVENT LISTENER
-         |  @version    0.5.0 [0.4.0]
+         |  @since  0.5.0 [0.4.0]
          |
          |  @param  string  'open', 'close', 'change'
          |  @param  callb.  A custom callback function.
@@ -1044,11 +1051,11 @@ var {select, options} = (function(root){
 
     /*
      |  OPTIONS CONSTRUCTOR
-     |  @version    0.5.0 [0.3.0]
+     |  @since  0.5.12 [0.3.0]
      */
-    tailOptions = tailSelect.options = function(select, parent){
-        if(!(this instanceof tailOptions)){
-            return new tailOptions(select, parent);
+    const options = select.options = function(select, parent){
+        if(!(this instanceof options)){
+            return new options(select, parent);
         }
         this.self = parent;
         this.element = select;
@@ -1063,10 +1070,10 @@ var {select, options} = (function(root){
     /*
      |  TAIL.OPTIONS HANDLER
      */
-    tailOptions.prototype = {
+    options.prototype = {
         /*
          |  INTERNAL :: REPLACE TYPOs
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         _r(state){
             return state.replace("disabled", "disable").replace("enabled", "enable")
@@ -1075,7 +1082,7 @@ var {select, options} = (function(root){
 
         /*
          |  GET AN EXISTING OPTION
-         |  @version    0.5.7 [0.3.0]
+         |  @since  0.5.7 [0.3.0]
          */
         get(key, grp){
             if(typeof(key) == "object" && key.key && key.group){
@@ -1098,7 +1105,7 @@ var {select, options} = (function(root){
 
         /*
          |  SET AN EXISTING OPTION
-         |  @version    0.5.7 [0.3.0]
+         |  @since  0.5.7 [0.3.0]
          */
         set(opt, rebuild){
             let key = opt.value || opt.innerText, grp = opt[parE].label || "#";
@@ -1147,7 +1154,7 @@ var {select, options} = (function(root){
 
         /*
          |  CREATE A NEW OPTION
-         |  @version    0.5.3 [0.3.0]
+         |  @since  0.5.3 [0.3.0]
          */
         add(key, value, group, selected, disabled, description, rebuild){
             if(key instanceof Object){
@@ -1197,7 +1204,7 @@ var {select, options} = (function(root){
 
         /*
          |  MOVE AN EXISTING OPTION
-         |  @version    0.5.0 [0.5.0]
+         |  @since  0.5.0 [0.5.0]
          */
         move(item, group, new_group, rebuild){
             if(!(item = this.get(item, group))){ return false; }
@@ -1222,7 +1229,7 @@ var {select, options} = (function(root){
 
         /*
          |  REMOVE AN EXISTING OPTION
-         |  @version    0.5.7 [0.3.0]
+         |  @since  0.5.7 [0.3.0]
          */
         remove(item, group, rebuild){
             if(!(item = this.get(item, group))){ return false; }
@@ -1245,7 +1252,7 @@ var {select, options} = (function(root){
 
         /*
          |  CHECK AN EXISTING OPTION
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         is(state, item, group){
             state = this._r(state), item = this.get(item, group);
@@ -1262,7 +1269,7 @@ var {select, options} = (function(root){
 
         /*
          |  INTERACT WITH AN OPTION
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         handle(state, item, group, _force){
             state = this._r(state), item = this.get(item, group);
@@ -1330,7 +1337,7 @@ var {select, options} = (function(root){
 
         /*
          |  INVERT CURRENT <STATE>
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         invert(state){
             state = this._replaceType(state);
@@ -1349,7 +1356,7 @@ var {select, options} = (function(root){
 
         /*
          |  SET <STATE> ON ALL OPTIONs
-         |  @version    0.5.0 [0.5.0]
+         |  @since  0.5.0 [0.5.0]
          */
         all(state, group){
             let list = this;
@@ -1364,7 +1371,7 @@ var {select, options} = (function(root){
 
         /*
          |  SET <STATE> FOR A BUNCH OF OPTIONs
-         |  @version    0.5.4 [0.5.3]
+         |  @since  0.5.4 [0.5.3]
          */
         walk(state, items, args){
             if(items instanceof Array || items.length){
@@ -1388,7 +1395,7 @@ var {select, options} = (function(root){
 
         /*
          |  FIND SOME OPTIONs - ARRAY EDITION
-         |  @version    0.5.5 [0.3.0]
+         |  @since  0.5.5 [0.3.0]
          */
         find(search, config){
             let regex = new RegExp(search, "im"), filter = [],
@@ -1413,7 +1420,7 @@ var {select, options} = (function(root){
 
         /*
          |  FIND SOME OPTIONs - WALKER EDITION
-         |  @version    0.5.5 [0.3.0]
+         |  @since  0.5.5 [0.3.0]
          */
         *finder(search, config){
             let list = this.find(search, config), item;
@@ -1424,7 +1431,7 @@ var {select, options} = (function(root){
 
         /*
          |  NEW OPTIONS WALKER
-         |  @version    0.5.7 [0.4.0]
+         |  @since  0.5.7 [0.4.0]
          */
         *walker(orderi, orderg){
             let groups = Object.keys(this.groups);
@@ -1458,6 +1465,6 @@ var {select, options} = (function(root){
             }
         }
     }
-    return {select: tailSelect, options: tailOptions};
+    return {select: select, options: options};
 })(window || this);
 export {select, options};

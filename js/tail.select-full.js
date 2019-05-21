@@ -1,71 +1,63 @@
 /*
  |  tail.select - Another solution to make select fields beautiful again!
- |  @file       ./js/tail.select.js
+ |  @file       ./js/tail.select-full.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.11 - Beta
+ |  @version    0.5.12 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
  |  @copyright  Copyright © 2014 - 2019 SamBrishes, pytesNET <info@pytes.net>
  */
-;(function(factory){
-    if(typeof(define) == "function" && define.amd){
-        define(function(){ return factory(window); });
+;(function(root, factory){
+    if(typeof define === "function" && define.amd){
+        define(function(){ return factory(root); });
+    } else if(typeof module === "object" && module.exports){
+        module.exports = factory(root);
     } else {
-        if(typeof(window.tail) == "undefined"){
-            window.tail = {};
+        if(typeof root.tail === "undefined"){
+            root.tail = {};
         }
-        window.tail.select = factory(window);
+        root.tail.select = factory(root);
 
-        if(typeof(jQuery) != "undefined"){
+        // jQuery Support
+        if(typeof jQuery !== "undefined"){
             jQuery.fn.tailselect = function(o){
                 var r = [], i;
                 this.each(function(){ if((i = tail.select(this, o)) !== false){ r.push(i); } });
                 return (r.length === 1)? r[0]: (r.length === 0)? false: r;
-            }
+            };
         }
+
+        // MooTools Support
         if(typeof(MooTools) != "undefined"){
             Element.implement({ tailselect: function(o){ return new tail.select(this, o); } });
         }
     }
-}(function(root){
+}(this, function(root){
     "use strict";
     var w = root, d = root.document;
 
     // Internal Helper Methods
-    function cHAS(e, name){
-        return (new RegExp("(?:^|\\s+)" + name + "(?:\\s+|$)")).test((e.className || ""));
+    function cHAS(el, name){
+        return (!el.classList)? false: el.classList.contains(name);
     }
-    function cADD(e, name){
-        if(!(new RegExp("(?:^|\\s+)" + name + "(?:\\s+|$)")).test(e.className || name)){
-            e.className += " " + name;
-        }
-        return e;
+    function cADD(el, name){
+        return (!el.classList)? false: (el.classList.add(name))? el: el;
     }
-    function cREM(e, name, regex){
-        if((regex = new RegExp("(?:^|\\s+)(" + name + ")(?:\\s+|$)")) && regex.test(e.className || "")){
-            e.className = e.className.replace(regex, " ");
-        }
-        return e;
+    function cREM(el, name){
+        return (!el.classList)? false: (el.classList.remove(name))? el: el;
     }
-    function trigger(e, event, opt){
+    function trigger(el, event, opt){
         if(CustomEvent && CustomEvent.name){
             var ev = new CustomEvent(event, opt);
         } else {
             var ev = d.createEvent("CustomEvent");
             ev.initCustomEvent(event, !!opt.bubbles, !!opt.cancelable, opt.detail);
         }
-        return e.dispatchEvent(ev);
+        return el.dispatchEvent(ev);
     }
     function clone(obj, rep){
-        if(Object.assign){
-            return Object.assign({}, obj, rep || {});
-        }
-        var clone = new Object();
-        for(var key in obj){
-            clone[key] = (key in rep)? rep[key]: obj[key];
-        }
-        return clone;
+        return Object.assign({}, obj, rep || {});
     }
     function create(tag, classes){
         var r = d.createElement(tag);
@@ -75,23 +67,23 @@
 
     /*
      |  SELECT CONSTRUCTOR
-     |  @version    0.5.0 [0.3.0]
+     |  @since  0.5.12 [0.3.0]
      */
-    var tailSelect = function(el, config){
+    var select = function(el, config){
         el = (typeof(el) == "string")? d.querySelectorAll(el): el;
         if(el instanceof NodeList || el instanceof HTMLCollection || el instanceof Array){
             for(var _r = [], l = el.length, i = 0; i < l; i++){
-                _r.push(new tailSelect(el[i], clone(config, {})));
+                _r.push(new select(el[i], clone(config, {})));
             }
             return (_r.length === 1)? _r[0]: ((_r.length === 0)? false: _r);
         }
-        if(!(el instanceof Element) || !(this instanceof tailSelect)){
-            return !(el instanceof Element)? false: new tailSelect(el, config);
+        if(!(el instanceof Element) || !(this instanceof select)){
+            return !(el instanceof Element)? false: new select(el, config);
         }
 
         // Check Element
-        if(tailSelect.inst[el.getAttribute("data-tail-select")]){
-            return tailSelect.inst[el.getAttribute("data-tail-select")];
+        if(select.inst[el.getAttribute("data-tail-select")]){
+            return select.inst[el.getAttribute("data-tail-select")];
         }
         if(el.getAttribute("data-select")){
             var test = JSON.parse(el.getAttribute("data-select").replace(/\'/g, '"'));
@@ -114,21 +106,21 @@
 
         // Init Instance
         this.e = el;
-        this.id = ++tailSelect.count;
-        this.con = clone(tailSelect.defaults, config);
+        this.id = ++select.count;
+        this.con = clone(select.defaults, config);
         this.events = {};
-        tailSelect.inst["tail-" + this.id] = this;
+        select.inst["tail-" + this.id] = this;
         return this.init().bind();
-    }, tailOptions;
-    tailSelect.version = "0.5.11";
-    tailSelect.status = "beta";
-    tailSelect.count = 0;
-    tailSelect.inst = {};
+    }, options;
+    select.version = "0.5.12";
+    select.status = "beta";
+    select.count = 0;
+    select.inst = {};
 
     /*
      |  STORAGE :: DEFAULT OPTIONS
      */
-    tailSelect.defaults = {
+    select.defaults = {
         animate: true,
         classNames: null,
         csvOutput: false,
@@ -142,7 +134,11 @@
         items: {},
         locale: "en",
         linguisticRules: {
-            "ё": "е"
+            "ё": "е",
+            "ä": "a",
+            "ö": "o",
+            "ü": "u",
+            "ß": "ss"
         },
         multiple: false,
         multiLimit: Infinity,
@@ -174,7 +170,7 @@
     /*
      |  STORAGE :: STRINGS
      */
-    tailSelect.strings = {
+    select.strings = {
         de: {
             all: "Alle",
             none: "Keine",
@@ -334,10 +330,10 @@
     /*
      |  TAIL.SELECT HANDLER
      */
-    tailSelect.prototype = {
+    select.prototype = {
         /*
          |  INERNAL :: TRANSLATE
-         |  @version    0.5.8 [0.5.8]
+         |  @since  0.5.8 [0.5.8]
          */
         _e: function(string, replace, def){
             if(!(string in this.__)){
@@ -358,7 +354,7 @@
 
         /*
          |  INTERNAL :: INIT SELECT FIELD
-         |  @version    0.5.8 [0.3.0]
+         |  @since  0.5.12 [0.3.0]
          */
         init: function(){
             var self = this, classes = ["tail-select"], con = this.con,
@@ -375,7 +371,7 @@
             if(con.disabled){        classes.push("disabled");      }
 
             // Init Variables
-            this.__ = clone(tailSelect.strings.en, tailSelect.strings[con.locale] || {});
+            this.__ = clone(select.strings.en, select.strings[con.locale] || {});
             this._init = true;
             this._query = false;
             this.select = create("DIV", classes);
@@ -436,7 +432,7 @@
             }
 
             // Prepare Options
-            this.options = new tailOptions(this.e, this);
+            this.options = new options(this.e, this);
             for(var l = this.e.options.length, i = 0; i < l; i++){
                 this.options.set(this.e.options[i], false);
             }
@@ -478,7 +474,7 @@
 
         /*
          |  INTERNAL :: EVENT LISTENER
-         |  @version    0.5.3 [0.3.0]
+         |  @since  0.5.3 [0.3.0]
          */
         bind: function(){
             var self = this;
@@ -593,7 +589,7 @@
 
         /*
          |  INTERNAL :: INTERNAL CALLBACK
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         callback: function(item, state, _force){
             var self = this, s = "[data-key='" + item.key + "'][data-group='" + item.group + "']";
@@ -614,7 +610,7 @@
 
         /*
          |  INTERNAL :: TRIGGER EVENT HANDLER
-         |  @version    0.5.2 [0.4.0]
+         |  @since  0.5.2 [0.4.0]
          */
         trigger: function(event){
             if(this._init){ return false; }
@@ -639,7 +635,7 @@
 
         /*
          |  INTERNAL :: CALCULATE DROPDOWN
-         |  @version    0.5.4 [0.5.0]
+         |  @since  0.5.4 [0.5.0]
          */
         calc: function(){
             var clone = this.dropdown.cloneNode(true), height = this.con.height, search = 0,
@@ -677,7 +673,7 @@
 
         /*
          |  API :: QUERY OPTIONS
-         |  @version    0.5.9 [0.5.0]
+         |  @since  0.5.9 [0.5.0]
          */
         query: function(search, conf){
             var root = create("DIV", "dropdown-inner"), self = this, item, tp, ul, li, a1, a2,
@@ -767,7 +763,7 @@
 
         /*
          |  API :: CALLBACK -> CREATE GROUP
-         |  @version    0.5.8 [0.4.0]
+         |  @since  0.5.8 [0.4.0]
          */
         cbGroup: function(group, search){
             var ul = create("UL", "dropdown-optgroup"), self = this, a1, a2;
@@ -795,7 +791,7 @@
 
         /*
          |  API :: CALLBACK -> CREATE ITEM
-         |  @version    0.5.0 [0.4.0]
+         |  @since  0.5.0 [0.4.0]
          */
         cbItem: function(item, optgroup, search){
             var li = create("LI", "dropdown-option" + (item.selected? " selected": "") + (item.disabled? " disabled": ""));
@@ -816,7 +812,7 @@
 
         /*
          |  API :: UPDATE EVERYTHING
-         |  @version    0.5.0 [0.5.0]
+         |  @since  0.5.0 [0.5.0]
          */
         update: function(item){
             return this.updateLabel().updateContainer(item).updatePin(item).updateCSV(item);
@@ -824,7 +820,7 @@
 
         /*
          |  API :: UPDATE LABEL
-         |  @version    0.5.8 [0.5.0]
+         |  @since  0.5.8 [0.5.0]
          */
         updateLabel: function(label){
             if(this.container == this.label && this.options.selected.length > 0){
@@ -867,7 +863,7 @@
 
         /*
          |  API :: UPDATE CONTAINER
-         |  @version    0.5.0 [0.5.0]
+         |  @since  0.5.0 [0.5.0]
          */
         updateContainer: function(item){
             if(!this.container || !this.con.multiContainer){
@@ -900,7 +896,7 @@
 
         /*
          |  API :: UPDATE PIN POSITION
-         |  @version    0.5.3 [0.5.0]
+         |  @since  0.5.3 [0.5.0]
          */
         updatePin: function(item){
             var inner = this.dropdown.querySelector(".dropdown-inner ul"),
@@ -933,7 +929,7 @@
 
         /*
          |  API :: UPDATE CSV INPUT
-         |  @version    0.5.0 [0.5.0]
+         |  @since  0.5.0 [0.5.0]
          */
         updateCSV: function(item){
             if(!this.csvInput || !this.con.csvOutput){
@@ -948,7 +944,7 @@
 
         /*
          |  PUBLIC :: OPEN DROPDOWN
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         open: function(animate){
             if(cHAS(this.select, "active") || cHAS(this.select, "idle") || this.con.disabled){
@@ -990,7 +986,7 @@
 
         /*
          |  PUBLIC :: CLOSE DROPDOWN
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         close: function(animate){
             if(!cHAS(this.select, "active") || cHAS(this.select, "idle")){
@@ -1022,7 +1018,7 @@
 
         /*
          |  PUBLIC :: TOGGLE DROPDOWN
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         toggle: function(animate){
             if(cHAS(this.select, "active")){
@@ -1033,7 +1029,7 @@
 
         /*
          |  PUBLIC :: REMOVE SELECT
-         |  @version    0.5.3 [0.3.0]
+         |  @since  0.5.3 [0.3.0]
          */
         remove: function(){
             this.e.removeAttribute("data-tail-select");
@@ -1064,7 +1060,7 @@
 
         /*
          |  PUBLIC :: RELOAD SELECT
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         reload: function(){
             return this.remove().init();
@@ -1072,7 +1068,7 @@
 
         /*
          |  PUBLIC :: GET|SET CONFIG
-         |  @version    0.5.3 [0.4.0]
+         |  @since  0.5.3 [0.4.0]
          */
         config: function(key, value, rebuild){
             if(key instanceof Object){
@@ -1110,7 +1106,7 @@
 
         /*
          |  PUBLIC :: CUSTOM EVENT LISTENER
-         |  @version    0.5.0 [0.4.0]
+         |  @since  0.5.0 [0.4.0]
          |
          |  @param  string  'open', 'close', 'change'
          |  @param  callb.  A custom callback function.
@@ -1130,11 +1126,11 @@
 
     /*
      |  OPTIONS CONSTRUCTOR
-     |  @version    0.5.0 [0.3.0]
+     |  @since  0.5.12 [0.3.0]
      */
-    tailOptions = tailSelect.options = function(select, parent){
-        if(!(this instanceof tailOptions)){
-            return new tailOptions(select, parent);
+    options = select.options = function(select, parent){
+        if(!(this instanceof options)){
+            return new options(select, parent);
         }
         this.self = parent;
         this.element = select;
@@ -1149,10 +1145,10 @@
     /*
      |  TAIL.OPTIONS HANDLER
      */
-    tailOptions.prototype = {
+    options.prototype = {
         /*
          |  INTERNAL :: REPLACE TYPOs
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         _r: function(state){
             return state.replace("disabled", "disable").replace("enabled", "enable")
@@ -1161,7 +1157,7 @@
 
         /*
          |  GET AN EXISTING OPTION
-         |  @version    0.5.7 [0.3.0]
+         |  @since  0.5.7 [0.3.0]
          */
         get: function(key, grp){
             var g = "getAttribute";
@@ -1185,7 +1181,7 @@
 
         /*
          |  SET AN EXISTING OPTION
-         |  @version    0.5.7 [0.3.0]
+         |  @since  0.5.7 [0.3.0]
          */
         set: function(opt, rebuild){
             var key = opt.value || opt.innerText, grp = opt.parentElement.label || "#";
@@ -1234,7 +1230,7 @@
 
         /*
          |  CREATE A NEW OPTION
-         |  @version    0.5.3 [0.3.0]
+         |  @since  0.5.3 [0.3.0]
          */
         add: function(key, value, group, selected, disabled, description, rebuild){
             if(key instanceof Object){
@@ -1283,7 +1279,7 @@
 
         /*
          |  MOVE AN EXISTING OPTION
-         |  @version    0.5.0 [0.5.0]
+         |  @since  0.5.0 [0.5.0]
          */
         move: function(item, group, new_group, rebuild){
             if(!(item = this.get(item, group))){ return false; }
@@ -1308,7 +1304,7 @@
 
         /*
          |  REMOVE AN EXISTING OPTION
-         |  @version    0.5.7 [0.3.0]
+         |  @since  0.5.7 [0.3.0]
          */
         remove: function(item, group, rebuild){
             if(!(item = this.get(item, group))){ return false; }
@@ -1331,7 +1327,7 @@
 
         /*
          |  CHECK AN EXISTING OPTION
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         is: function(state, key, group){
             var state = this._r(state), item = this.get(key, group);
@@ -1348,7 +1344,7 @@
 
         /*
          |  INTERACT WITH AN OPTION
-         |  @version    0.5.3 [0.3.0]
+         |  @since  0.5.3 [0.3.0]
          */
         handle: function(state, key, group, _force){
             var item = this.get(key, group), state = this._r(state);
@@ -1416,7 +1412,7 @@
 
         /*
          |  INVERT CURRENT <STATE>
-         |  @version    0.5.0 [0.3.0]
+         |  @since  0.5.0 [0.3.0]
          */
         invert: function(state){
             state = this._replaceType(state);
@@ -1441,7 +1437,7 @@
 
         /*
          |  SET <STATE> ON ALL OPTIONs
-         |  @version    0.5.0 [0.5.0]
+         |  @since  0.5.0 [0.5.0]
          */
         all: function(state, group){
             var self = this, list = this;
@@ -1458,7 +1454,7 @@
 
         /*
          |  SET <STATE> FOR A BUNCH OF OPTIONs
-         |  @version    0.5.4 [0.5.3]
+         |  @since  0.5.4 [0.5.3]
          */
         walk: function(state, items, args){
             if(items instanceof Array || items.length){
@@ -1485,7 +1481,7 @@
 
         /*
          |  FIND SOME OPTIONs - ARRAY EDITION
-         |  @version    0.5.5 [0.3.0]
+         |  @since  0.5.5 [0.3.0]
          */
         find: function(search, config){
             var regex = new RegExp(search, "im"), filter = [], self = this,
@@ -1510,7 +1506,7 @@
 
         /*
          |  FIND SOME OPTIONs - WALKER EDITION
-         |  @version    0.5.5 [0.3.0]
+         |  @since  0.5.5 [0.3.0]
          */
         finder: function(search, config){
             if(this._finderLoop === undefined){
@@ -1526,7 +1522,7 @@
 
         /*
          |  NEW OPTIONS WALKER
-         |  @version    0.5.7 [0.4.0]
+         |  @since  0.5.7 [0.4.0]
          */
         walker: function(orderi, orderg){
             if(typeof(this._inLoop) != "undefined" && this._inLoop){
@@ -1588,5 +1584,5 @@
     };
 
     // Return
-    return tailSelect;
+    return select;
 }));

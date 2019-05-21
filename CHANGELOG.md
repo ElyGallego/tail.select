@@ -1,6 +1,26 @@
 CHANGELOG
 ===========
 
+Version 0.5.12 - Beta
+---------------------
+-   Info: This is the first version, which drops IE 9 support!
+-   Add: Support for module exporting, tested with browserify.
+-   Add: New german linguistic rules for `ä`, `ö`, `ü` and `ß`.
+-   Add: The new `browser` package variable pointing to `js/tail.select-full.js`.
+-   Update: Using `classList` to add / remove / check class names.
+-   Update: Using `Object.assign` only to merge / clone object properties.
+-   Rename: The internal `tailSelect` variable has been renamed into `select`.
+-   Rename: The internal `tailOptions` variable has been renamed into `options`.
+-   Remove: Support for Internet Explorer 9.
+-   Bugfix: Add correct file to the `main` bower variable.
+-   Bugfix: Add correct file to the `jsdelivr` package variable.
+
+### Changes in ES6 Version
+-   Add: Missing `searchDisabled` default option within the storage.
+-   Update: Use internal `select` (former `tailSelect`) variable as constant.
+-   Update: Use internal `options` (former `tailOptions`) variable as constant.
+-   Update: Use global `w` and `d` variables as constants.
+
 Version 0.5.11 - Beta
 ---------------------
 -   Add: The new Turkish Translation. Many Thanks to [Spritus](https://github.com/spritus)

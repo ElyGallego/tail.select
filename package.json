@@ -1,6 +1,6 @@
 {
     "name": "tail.select",
-    "version": "0.5.11",
+    "version": "0.5.12",
     "description": "Create beautiful, functional and extensive (Multi) select fields, written in Vanilla without any dependencies!",
     "keywords": [
         "select",
@@ -29,5 +29,6 @@
     },
 
     "reveal": true,
-    "jsdelivr": "js/tail.select.full.js"
+    "browser": "js/tail.select-full.js",
+    "jsdelivr": "js/tail.select-full.js"
 }

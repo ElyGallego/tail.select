@@ -25,16 +25,16 @@ Then I would be extremely grateful for a coffee! (<b>Thanks to all Supporters</b
 
 Features
 --------
--   Compatible with all modern browsers, and also for **IE >= 9**.
--   Supports Single and Multiple Select fields, also deselect- and limitable!
--   Offers a Search field within the dropdown list to find the desired options quickly!
--   Offers a Description text to describe each single option!
--   Allows to manipulate (add, edit and delete) each single option during the runtime.
--   Move selected options wherever you want / need.
--   Bindings for the jQuery and MooTools library and usable as **AMD** and **ES6** Module.
--   No dependencies, just include and use it!
--   Event Listeners to bind your own function on each action.
--   ... and many settings to configure the environment and behavior!
+-   Beautiful Single / Multiple Select replacement.
+-   Search function to find desired options quickly.
+-   Deselect-able, Limit-able and optional option descriptions.
+-   Manipulate and Move (selected) options during the runtime.
+-   Completely Translatable and already available in multiple languages.
+-   Many Settings to adapt and configure the design and behaviour.
+-   Supports AMD (requireJS) and available as browserify and **ES6** module.
+-   Compatible with all modern browsers **(including IE 10+)**
+-   No Dependencies, just embed and use
+-   Free/To/Use - MIT Licensed
 
 Install & Embed
 ---------------
