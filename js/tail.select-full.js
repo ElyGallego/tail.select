@@ -151,6 +151,7 @@
         openAbove: null,
         placeholder: null,
         search: false,
+        searchMinLength: 3,
         searchFocus: true,
         searchMarked: true,
         searchDisabled: true,
@@ -406,7 +407,7 @@
                 this.search.innerHTML = '<input type="text" class="search-input" />';
                 this.search.children[0].placeholder = this._e("search");
                 this.search.children[0].addEventListener("input", function(event){
-                    self.query.call(self, (this.value.length > 2)? this.value: undefined);
+                    self.query.call(self, (this.value.length >= con.searchMinLength)? this.value: undefined);
                 });
                 this.dropdown.appendChild(this.search);
             }

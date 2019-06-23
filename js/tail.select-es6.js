@@ -115,6 +115,7 @@ var {select, options} = (function(root){
         openAbove: null,
         placeholder: null,
         search: false,
+        searchMinLength: 3,
         searchFocus: true,
         searchMarked: true,
         searchDisabled: true,
@@ -365,7 +366,7 @@ var {select, options} = (function(root){
                 this.search = create("DIV", "dropdown-search");
                 this.search.innerHTML = `<input type="text" class="search-input" placeholder="${this._e("search")}" />`;
                 this.search.children[0].addEventListener("input", (ev) => {
-                    this.query((ev.target.value.length > 2)? ev.target.value: undefined);
+                    this.query((ev.target.value.length >= con.searchMinLength)? ev.target.value: undefined);
                 });
                 this.dropdown.appendChild(this.search);
             }
