@@ -592,7 +592,7 @@
          |  @since  0.5.0 [0.3.0]
          */
         callback: function(item, state, _force){
-            var self = this, s = "[data-key='" + item.key + "'][data-group='" + item.group + "']";
+            var self = this, s = "[data-key='" + item.key.replace(/('|\\)/g, "\\$1") + "'][data-group='" + item.group.replace(/('|\\)/g, "\\$1") + "']";
             if(state == "rebuild"){ return this.query(); }
 
             // Set Element-Item States
