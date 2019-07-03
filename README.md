@@ -168,6 +168,7 @@ tail.select("select", {
     search: false,
     searchFocus: true,
     searchMarked: true,
+    searchConfig: ["text", "value"],
     searchDisabled: true,           // NEW IN 0.5.5
     sortItems: false,
     sortGroups: false,
