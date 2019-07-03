@@ -98,11 +98,11 @@ var {select, options} = (function(root){
         items: {},
         locale: "en",
         linguisticRules: {
-            "ё": "е",
-            "ä": "a",
-            "ö": "o",
-            "ü": "u",
-            "ß": "ss"
+            "е": "ё",
+            "a": "ä",
+            "o": "ö",
+            "u": "ü",
+            "ss": "ß"
         },
         multiple: false,
         multiLimit: Infinity,
@@ -117,6 +117,7 @@ var {select, options} = (function(root){
         search: false,
         searchFocus: true,
         searchMarked: true,
+        searchConfig: ["text", "value"],
         searchDisabled: true,
         sortItems: false,
         sortGroups: false,
@@ -622,17 +623,9 @@ var {select, options} = (function(root){
          */
         query(search, conf){
             let root = create("DIV", "dropdown-inner"), tp, ul, a1, a2,
-                func = search? "finder": "walker", con = this.con, re;
-
-            // Format Search
-            if(typeof(search) === "string" && search.length > 0){
-                for(let key in con.linguisticRules){
-                    re = new RegExp(`(${key}|${con.linguisticRules[key]})`, "ig");
-                    search = search.replace(re, `(${key}|${con.linguisticRules[key]})`);
-                }
-            }
-            let args = search? [search, conf]: [con.sortItems, con.sortGroups];
-
+                func = "finder", con = this.con, re, args = [search, conf];
+            if (!search) { func = "walker"; args = [con.sortItems, con.sortGroups];}
+            
             // Option Walker
             this._query = (typeof(search) == "string")? search: false;
             for(let item of this.options[func].apply(this.options, args)){
@@ -735,6 +728,7 @@ var {select, options} = (function(root){
             let li = create("LI", "dropdown-option" + (s? " selected": "") + (d? " disabled": ""));
 
             if(search && search.length > 0 && this.con.searchMarked){
+                search = this.options.applyLinguisticRules(search);
                 li.innerHTML = v.replace(new RegExp(`(${search})`, "i"), "<mark>$1</mark>");
             } else {
                 li.innerText = v;
@@ -1394,29 +1388,49 @@ var {select, options} = (function(root){
         },
 
         /*
+         |  TRANSFORM VALUE INTO A MATCH PATTERN ACCORDING TO THE LINGUISTIC RULES
+         |  @since  
+         */         
+        applyLinguisticRules(search, casesensitive){
+            let  rules = this.self.con.linguisticRules,
+                values = Object.keys(rules).map(key => '(' + key + '|[' + rules[key] + '])');
+
+            if (casesensitive) values = values.concat(values.map(s => s.toUpperCase() ));
+
+            return search.replace(new RegExp(values.join('|'), casesensitive ? 'g' : 'ig'),
+                                  (m, ...args) => values[args.indexOf(m)]);
+        },
+
+        /*
          |  FIND SOME OPTIONs - ARRAY EDITION
          |  @since  0.5.5 [0.3.0]
          */
         find(search, config){
-            let regex = new RegExp(search, "im"), filter = [],
-                filterKey = (option) => { return regex.test(option.text || option.value); },
-                filterAny = (option) => {
-                    return (
-                        regex.test(option.text) || regex.test(option.value) ||
-                        Array.apply(null, option.attributes).filter(filterKey.length) > 0
-                    );
-                };
-            Array.apply(null, this.self.e.options).map((option) => {
-                if(!((config == "any")? filterAny(option): filterKey(option))){
-                    return false;
-                }
-                if(this.disabled.indexOf(option) >= 0 && !this.self.con.searchDisabled){
-                    return false;
-                }
-                filter.push(this.get(option));
-            });
-            return filter;
-        },
+            
+            let matches, self = this, has = {};
+            if (!config) config = this.self.con.searchConfig;
+            if(typeof(config) == 'function'){
+                matches = config.bind(this, search);
+            } else {
+                if(!(config instanceof Array)){ config = [config]; }
+                config.forEach(c => { if (typeof(c) == 'string') { has[c] = true; }});
+                
+                if(!has.any){ has.any = has.attributes && has.value; }
+                if(!has.regex || has.text){ search = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+                
+                if(!has.exactglyphes){ search = this.self.options.applyLinguisticRules(search, has.case); }
+                if(has.word){ search = `\\b${search}\\b`; }
+
+                let regex = new RegExp(search, !has.case ? 'mi': 'm'), m = opt => regex.test(opt.text || opt.value); 
+
+                if(has.any){ matches = opt => m(opt) || [...opt.attributes].some(m); }
+                else if(has.attributes){ matches = opt => [...opt.attributes].some(m); }
+                else { matches = m; }
+
+                if(!this.self.con.searchDisabled){ matches = opt => !self.disabled.includes(opt) && matches(opt); }
+            }
+            return [...this.self.e.options].filter(matches).map(opt => self.get(opt));
+        }, 
 
         /*
          |  FIND SOME OPTIONs - WALKER EDITION

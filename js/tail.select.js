@@ -134,11 +134,11 @@
         items: {},
         locale: "en",
         linguisticRules: {
-            "ё": "е",
-            "ä": "a",
-            "ö": "o",
-            "ü": "u",
-            "ß": "ss"
+            "е": "ё",
+            "a": "ä",
+            "o": "ö",
+            "u": "ü",
+            "ss": "ß"
         },
         multiple: false,
         multiLimit: Infinity,
@@ -153,6 +153,7 @@
         search: false,
         searchFocus: true,
         searchMarked: true,
+        searchConfig: ["text", "value"],
         searchDisabled: true,
         sortItems: false,
         sortGroups: false,
@@ -556,16 +557,9 @@
          */
         query: function(search, conf){
             var root = create("DIV", "dropdown-inner"), self = this, item, tp, ul, li, a1, a2,
-                func = search? "finder": "walker", con = this.con, g = "getAttribute";
+                func ="finder", con = this.con, g = "getAttribute", args = [search, conf];
 
-            // Format Search
-            if(typeof(search) === "string" && search.length > 0){
-                for(var key in con.linguisticRules){
-                    var re = new RegExp("(" + key + "|" + con.linguisticRules[key] + ")", "ig");
-                    search = search.replace(re, "(" + key + "|" + con.linguisticRules[key] + ")");
-                }
-            }
-            var args = search? [search, conf]: [con.sortItems, con.sortGroups];
+            if (!search) { func = "walker"; args = [con.sortItems, con.sortGroups];}
 
             // Option Walker
             this._query = (typeof(search) == "string")? search: false;
@@ -677,6 +671,7 @@
 
             // Inner Text
             if(search && search.length > 0 && this.con.searchMarked){
+                search = this.options.applyLinguisticRules(search);
                 li.innerHTML = item.value.replace(new RegExp("(" + search + ")", "i"), "<mark>$1</mark>");
             } else {
                 li.innerText = item.value;
@@ -1359,28 +1354,52 @@
         },
 
         /*
-         |  FIND SOME OPTIONs - ARRAY EDITION
-         |  @since  0.5.5 [0.3.0]
-         */
-        find: function(search, config){
-            var regex = new RegExp(search, "im"), filter = [], self = this,
-                filterKey = function(option){ return regex.test(option.text || option.value); },
-                filterAny = function(option){
-                    return (
-                        regex.test(option.text) || regex.test(option.value) ||
-                        Array.apply(null, option.attributes).filter(filterKey).length > 0
-                    );
-                };
-            Array.apply(null, this.self.e.options).map(function(option){
-                if(!((config == "any")? filterAny(option): filterKey(option))){
-                    return false;
-                }
-                if(self.disabled.indexOf(option) >= 0 && !self.self.con.searchDisabled){
-                    return false;
-                }
-                filter.push(self.get(option));
+         |  TRANSFORM VALUE INTO A MATCH PATTERN ACCORDING TO THE LINGUISTIC RULES
+         |  @since  
+         */            
+        applyLinguisticRules: function(search, casesensitive){
+            var  rules = this.self.con.linguisticRules, values = [];
+            Object.keys(rules).forEach(function (key){ values.push('(' + key + '|[' + rules[key] + '])') });
+
+            if (casesensitive) { values = values.concat(values.map(function(s) { return s.toUpperCase();})); }
+
+            return search.replace(new RegExp(values.join('|'), casesensitive ? 'g' : 'ig'), function(m){
+                return values[[].indexOf.call(arguments, m, 1) - 1];
             });
-            return filter;
+        },
+
+        /*
+        |  FIND SOME OPTIONs - ARRAY EDITION
+        |  @since  0.5.5 [0.3.0]
+        */
+        find: function(search, config){
+            var matches, self = this, has = {};
+            if (!config) config = this.self.con.searchConfig;
+            if(typeof(config) == 'function'){
+                matches = config.bind(this, search);
+            } else {
+                if(!(config instanceof Array)){ config = [config]; }
+                config.forEach(function(c) { if (typeof(c) == 'string') { has[c] = true; }});
+                
+                if(!has.any){ has.any = has.attributes && has.value; }
+                if(!has.regex || has.text){ search = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+                if(!has.exactglyphes){ search = this.self.options.applyLinguisticRules(search, has.case); }
+                if(has.word){ search = '\\b' + search + '\\b'; }
+
+                var regex = new RegExp(search, !has.case ? 'mi': 'm'),                
+                    m = function(opt){ return regex.test(opt.text || opt.value); };
+
+                if(has.any){
+                    matches = function(opt){ return m(opt) || [].some.call(opt.attributes, m); };
+                } else if(has.attributes){
+                    matches = function(opt){ return [].some.call(opt.attributes, m); };
+                } else { matches = m; }
+
+                if(!this.self.con.searchDisabled){
+                    matches = function(opt){ return !self.disabled.includes(opt) && matches(opt); };
+                }
+            }
+            return [].filter.call(this.self.e.options, matches).map(function(opt){return self.get(opt) });
         },
 
         /*
