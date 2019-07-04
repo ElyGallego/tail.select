@@ -1516,7 +1516,8 @@
                 } else { matches = m; }
 
                 if(!this.self.con.searchDisabled){
-                    matches = function(opt){ return !self.disabled.includes(opt) && matches(opt); };
+                    m = matches;
+                    matches = function(opt){ return !opt.disabled && m(opt); };
                 }
             }
             return [].filter.call(this.self.e.options, matches).map(function(opt){return self.get(opt) });

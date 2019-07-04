@@ -1427,7 +1427,10 @@ var {select, options} = (function(root){
                 else if(has.attributes){ matches = opt => [...opt.attributes].some(m); }
                 else { matches = m; }
 
-                if(!this.self.con.searchDisabled){ matches = opt => !self.disabled.includes(opt) && matches(opt); }
+                if(!this.self.con.searchDisabled){
+                    m = matches;
+                    matches = opt => !opt.disabled && m(opt);
+                }
             }
             return [...this.self.e.options].filter(matches).map(opt => self.get(opt));
         }, 
