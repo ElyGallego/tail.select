@@ -2,7 +2,7 @@
  |  tail.select - The vanilla solution to make your HTML select fields AWESOME!
  |  @file       ./langs/tail.select-no.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.13 - Beta
+ |  @version    0.5.14 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License

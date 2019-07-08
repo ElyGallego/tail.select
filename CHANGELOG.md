@@ -1,6 +1,12 @@
 CHANGELOG
 ===========
 
+Version 0.5.14 - Beta
+---------------------
+-   Hotfix: Unable to select options with apostrophes.
+    - Thanks to [#53](https://github.com/pytesNET/tail.select/issues/53),
+    - Thanks to [#55](https://github.com/pytesNET/tail.select/pull/55) (Pull Request).
+
 Version 0.5.13 - Beta
 ---------------------
 -   Add: The new public method `.value()` to get the current selected option value(s).
