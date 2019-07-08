@@ -1,6 +1,6 @@
 {
     "name": "tail.select",
-    "version": "0.5.12",
+    "version": "0.5.13",
     "description": "Create beautiful, functional and extensive (Multi) select fields, written in Vanilla without any dependencies!",
     "keywords": [
         "select",
@@ -25,7 +25,8 @@
         "url": "git+ssh://git@github.com/pytesNET/tail.select.git"
     },
     "devDependencies": {
-        "less": ">=3.5.0"
+        "less": ">=3.5.0",
+        "clean-css": ">=4.1.0"
     },
 
     "reveal": true,

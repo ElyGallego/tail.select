@@ -1,8 +1,8 @@
 /*
- |  tail.select - Another solution to make select fields beautiful again!
+ |  tail.select - The vanilla solution to make your HTML select fields AWESOME!
  |  @file       ./langs/tail.select-fi.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.12 - Beta
+ |  @version    0.5.13 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -26,8 +26,6 @@
     select.strings.register("fi", {
         all: "Kaikki",
         none: "Ei mitään",
-        actionAll: "Valitse kaikki",
-        actionNone: "Poista kaikki valinnat",
         empty: "Ei vaihtoehtoja",
         emptySearch: "Etsimääsi vaihtoehtoa ei löytynyt",
         limit: "Muita vaihtoehtoja ei voi valita",

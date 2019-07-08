@@ -6,10 +6,18 @@ tail.select - Beautify Select Fields
 [![plainJS](https://s.pytes.me/cb2d2d94)](https://s.pytes.me/21d65dff)
 [![License](https://s.pytes.me/8257ac72)](LICENSE.md)
 
-The **tail.select** script is back and ready to beautify your (multiple) select fields again, now
-also with an own search method and many features to increase the usability and handling on many as
-well as on just a few options! It contains all options and features from the original deprecated
-jQuery Version, back from 2014 (+ a MooTools implementation)!
+**Replace** and **Improve** your HTML `<select>` fields with style and without **jQuery**!
+
+<p align="center" style="text-align:center"><a href="https://github.pytes.net/tail.select">
+<img src="https://repository-images.githubusercontent.com/150568173/1ad2ae00-a16e-11e9-9d27-4b29de95ebe6" style="width:auto;max-width:640px;" />
+</a></p>
+
+The **tail.select** script is back, re-written in vanilla JavaScript and ready to beautify and 
+extend your HTML `<select>` fields... again! Add a search bar, multi-selection utilities (such as 
+select all or none buttons), deselectability on single select fields, a perfect design and many 
+more user-friendly functions to your web-application.
+
+----------------------------
 
 [Wanna see **tail.select** in action?](https://github.pytes.net/tail.select)
 
@@ -25,16 +33,17 @@ Then I would be extremely grateful for a coffee! (<b>Thanks to all Supporters</b
 
 Features
 --------
--   Beautiful Single / Multiple Select replacement.
--   Search function to find desired options quickly.
--   Deselect-able, Limit-able and optional option descriptions.
--   Manipulate and Move (selected) options during the runtime.
--   Completely Translatable and already available in multiple languages.
--   Many Settings to adapt and configure the design and behaviour.
--   Supports AMD (requireJS) and available as browserify and **ES6** module.
--   Compatible with all modern browsers **(including IE 10+)**
--   No Dependencies, just embed and use
--   Free/To/Use - MIT Licensed
+-   **Beautiful**. 5 different Designs in many color schemes...
+-   **Extensive**.
+    -   Search bar to find options quickly...
+    -   All / None optgroup selection buttons...
+    -   Add, Edit, Delete and Modifiy options at any time...
+    -   De-selection on single select fields...
+    -   ... and way more ...
+-   **Configurable**. 36 settings and 3 bindable events...
+-   **Translatable**. Already available in 10 languages...
+-   **Zero Dependencies**. And written in vanilla JavaScript...
+-   **Free/To/Use**. Because it's MIT licensed <3
 
 Install & Embed
 ---------------
@@ -142,44 +151,54 @@ about each single option!
 
 ```javascript
 tail.select("select", {
-    animate: true,
-    classNames: null,
-    csvOutput: false,
-    csvSeparator: ",",
-    descriptions: false,
-    deselect: false,
-    disabled: false,                // NEW IN 0.5.0
-    height: 350,
-    hideDisabled: false,
-    hideSelected: false,
-    items: {},
-    locale: "en",                   // NEW IN 0.5.0
-    lingusticRules: {},             // EXPERIMENTAL SINCE 0.5.9
-    multiple: false,
-    multiLimit: Infinity,           // UPDATE IN 0.5.0
-    multiPinSelected: false,        // NEW IN 0.5.0
-    multiContainer: false,          // UPDATE IN 0.5.0
-    multiShowCount: true,
-    multiShowLimit: false,          // NEW IN 0.5.0
-    multiSelectAll: false,
-    multiSelectGroup: true,
-    openAbove: null,
-    placeholder: null,
-    search: false,
-    searchFocus: true,
-    searchMarked: true,
-    searchDisabled: true,           // NEW IN 0.5.5
-    sortItems: false,
-    sortGroups: false,
-    sourceBind: false,              // NEW IN 0.5.0
-    sourceHide: true,               // NEW IN 0.5.0
-    startOpen: false,
-    stayOpen: false,                // UPDATED IN 0.5.0
-    width: null,
-    cbComplete: undefined,          // NEW IN 0.5.0
-    cbEmpty: undefined,             // NEW IN 0.5.0
-    cbLoopItem: undefined,
-    cbLoopGroup: undefined
+        animate: true,              // [0.3.0]      Boolean
+        classNames: null,           // [0.2.0]      Boolean, String, Array, null
+        csvOutput: false,           // [0.3.4]      Boolean
+        csvSeparator: ",",          // [0.3.4]      String
+        descriptions: false,        // [0.3.0]      Boolean
+        deselect: false,            // [0.3.0]      Boolean
+        disabled: false,            // [0.5.0]      Boolean
+        height: 350,                // [0.2.0]      Integer, null
+        hideDisabled: false,        // [0.3.0]      Boolean
+        hideSelected: false,        // [0.3.0]      Boolean
+        items: {},                  // [0.3.0]      Object
+        locale: "en",               // [0.5.0]      String
+        linguisticRules: {          // [0.5.9]      Object
+            "е": "ё",
+            "a": "ä",
+            "o": "ö",
+            "u": "ü",
+            "ss": "ß"
+        },
+        multiple: false,            // [0.2.0]      Boolean
+        multiLimit: Infinity,       // [0.3.0]      Integer, Infinity
+        multiPinSelected: false,    // [0.5.0]      Boolean
+        multiContainer: false,      // [0.3.0]      Boolean, String
+        multiShowCount: true,       // [0.3.0]      Boolean
+        multiShowLimit: false,      // [0.5.0]      Boolean
+        multiSelectAll: false,      // [0.4.0]      Boolean
+        multiSelectGroup: true,     // [0.4.0]      Boolean
+        openAbove: null,            // [0.3.0]      Boolean, null
+        placeholder: null,          // [0.2.0]      String, null
+        search: false,              // [0.3.0]      Boolean
+        searcgConfig: [             // [0.5.13]     Array
+            "text", "value"
+        ],
+        searchFocus: true,          // [0.3.0]      Boolean
+        searchMarked: true,         // [0.3.0]      Boolean
+        searchMinLength: 1,         // [0.5.13]     Integer
+        searchDisabled: true,       // [0.5.5]      Boolean
+        sortItems: false,           // [0.3.0]      String, Function, false
+        sortGroups: false,          // [0.3.0]      String, Function, false
+        sourceBind: false,          // [0.5.0]      Boolean
+        sourceHide: true,           // [0.5.0]      Boolean
+        startOpen: false,           // [0.3.0]      Boolean
+        stayOpen: false,            // [0.3.0]      Boolean
+        width: null,                // [0.2.0]      Integer, String, null
+        cbComplete: undefined,      // [0.5.0]      Function
+        cbEmpty: undefined,         // [0.5.0]      Function
+        cbLoopItem: undefined,      // [0.4.0]      Function
+        cbLoopGroup: undefined      // [0.4.0]      Function
 });
 ```
 

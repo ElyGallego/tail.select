@@ -1,8 +1,8 @@
 /*
- |  tail.select - Another solution to make select fields beautiful again!
+ |  tail.select - The vanilla solution to make your HTML select fields AWESOME!
  |  @file       ./langs/tail.select-no.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.12 - Beta
+ |  @version    0.5.13 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -26,8 +26,6 @@
     select.strings.register("no", {
         all: "Alle",
         none: "Ingen",
-        actionAll: "Velg alle",
-        actionNone: "Velg ingen",
         empty: "Ingen valg tilgjengelig",
         emptySearch: "Ingen valg funnet",
         limit: "Du kan ikke velge flere",

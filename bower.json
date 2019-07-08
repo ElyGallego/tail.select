@@ -19,7 +19,7 @@
 
     "main": [
         "js/tail.select-full.js",
-        "css/tail.select-default.css"
+        "css/default/tail.select-light.css"
     ],
     "repository": {
         "type": "git",

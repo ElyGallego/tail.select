@@ -1,8 +1,8 @@
 /*
- |  tail.select - Another solution to make select fields beautiful again!
+ |  tail.select - The vanilla solution to make your HTML select fields AWESOME!
  |  @file       ./langs/tail.select-all.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.12 - Beta
+ |  @version    0.5.13 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -19,11 +19,13 @@
        }
    }
 }(function(select){
+    /*
+     |  Translator:     SamBrishes - (https://www.pytes.net)
+     |  GitHub:         <internal>
+     */
     select.strings.register("de", {
         all: "Alle",
         none: "Keine",
-        actionAll: "Alle auswählen",
-        actionNone: "Alle abwählen",
         empty: "Keine Optionen verfügbar",
         emptySearch: "Keine Optionen gefunden",
         limit: "Keine weiteren Optionen wählbar",
@@ -40,8 +42,6 @@
     select.strings.register("es", {
         all: "Todos",
         none: "Ninguno",
-        actionAll: "Seleccionar todo",
-        actionNone: "Descartar todo",
         empty: "No hay opciones disponibles",
         emptySearch: "No se encontraron opciones",
         limit: "No puedes seleccionar mas opciones",
@@ -58,8 +58,6 @@
     select.strings.register("fi", {
         all: "Kaikki",
         none: "Ei mitään",
-        actionAll: "Valitse kaikki",
-        actionNone: "Poista kaikki valinnat",
         empty: "Ei vaihtoehtoja",
         emptySearch: "Etsimääsi vaihtoehtoa ei löytynyt",
         limit: "Muita vaihtoehtoja ei voi valita",
@@ -76,8 +74,6 @@
     select.strings.register("fr", {
         all: "Tous",
         none: "Aucun",
-        actionAll: "Sélectionner tout",
-        actionNone: "Sélectionner aucun",
         empty: "Aucune option disponible",
         emptySearch: "Aucune option trouvée",
         limit: "Aucune autre option sélectionnable",
@@ -94,8 +90,6 @@
     select.strings.register("it", {
         all: "Tutti",
         none: "Nessuno",
-        actionAll: "Seleziona Tutto",
-        actionNone: "Deseleziona Tutto",
         empty: "Nessuna voce disponibile",
         emptySearch: "Nessuna voce trovata",
         limit: "Non puoi selezionare più Voci",
@@ -112,8 +106,6 @@
     select.strings.register("no", {
         all: "Alle",
         none: "Ingen",
-        actionAll: "Velg alle",
-        actionNone: "Velg ingen",
         empty: "Ingen valg tilgjengelig",
         emptySearch: "Ingen valg funnet",
         limit: "Du kan ikke velge flere",
@@ -130,8 +122,6 @@
     select.strings.register("pt_BR", {
         all: "Todas",
         none: "Nenhuma",
-        actionAll: "Selecionar todas",
-        actionNone: "Desmarcar todas",
         empty: "Nenhuma opção disponível",
         emptySearch: "Nenhuma opção encontrada",
         limit: "Não é possível selecionar outra opção",
@@ -148,8 +138,6 @@
     select.strings.register("ru", {
         all: "Все",
         none: "Ничего",
-        actionAll: "Выбрать все",
-        actionNone: "Отменить все",
         empty: "Нет доступных вариантов",
         emptySearch: "Ничего не найдено",
         limit: "Вы не можете выбрать больше вариантов",
@@ -170,8 +158,6 @@
     select.strings.register("tr", {
         all: "Tümü",
         none: "Hiçbiri",
-        actionAll: "Tümünü Seç",
-        actionNone: "Hiçbirini Seçme",
         empty: "Seçenek yok",
         emptySearch: "Seçenek bulunamadı",
         limit: "Daha fazla Seçenek seçemezsiniz",
