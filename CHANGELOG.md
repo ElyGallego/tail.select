@@ -1,6 +1,12 @@
 CHANGELOG
 ===========
 
+Unreleased Changes
+------------------
+-   Bugfix: Some Less styling issues.
+    - Thanks to [#74](https://github.com/pytesNET/tail.select/issues/74).
+    - Thanks to [#75](https://github.com/pytesNET/tail.select/pull/75) (Pull Request).
+
 Version 0.5.14 - Beta
 ---------------------
 -   Hotfix: Unable to select options with apostrophes.
