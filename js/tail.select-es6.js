@@ -1144,7 +1144,7 @@ var {select, options} = (function(root){
             this.length++;
             if(opt.selected){ this.select(this.items[grp][id]); }
             if(opt.disabled){ this.disable(this.items[grp][id]); }
-            return (rebuild)? this.self.callback(this[this.length-1], "rebuild"): true;
+            return (rebuild)? this.self.callback(this.items[grp][key], "rebuild"): true;
         },
 
         /*
