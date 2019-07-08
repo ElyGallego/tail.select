@@ -1,8 +1,8 @@
 /*
- |  tail.select - Another solution to make select fields beautiful again!
+ |  tail.select - The vanilla solution to make your HTML select fields AWESOME!
  |  @file       ./js/tail.select.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.12 - Beta
+ |  @version    0.5.13 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -33,19 +33,19 @@
             Element.implement({ tailselect: function(o){ return new tail.select(this, o); } });
         }
     }
-}(this, function(root){
+}(window, function(root){
     "use strict";
     var w = root, d = root.document;
 
     // Internal Helper Methods
     function cHAS(el, name){
-        return (!el.classList)? false: el.classList.contains(name);
+        return (el && "classList" in el)? el.classList.contains(name): false;
     }
     function cADD(el, name){
-        return (!el.classList)? false: (el.classList.add(name))? el: el;
+        return (el && "classList" in el)? el.classList.add(name): undefined;
     }
     function cREM(el, name){
-        return (!el.classList)? false: (el.classList.remove(name))? el: el;
+        return (el && "classList" in el)? el.classList.remove(name): undefined;
     }
     function trigger(el, event, opt){
         if(CustomEvent && CustomEvent.name){
@@ -57,7 +57,14 @@
         return el.dispatchEvent(ev);
     }
     function clone(obj, rep){
-        return Object.assign({}, obj, rep || {});
+        if(typeof Object.assign === "function"){
+            return Object.assign({}, obj, rep || {});
+        }
+        var clone = Object.constructor();
+        for(var key in obj){
+            clone[key] = (key in rep)? rep[key]: obj[key];
+        }
+        return clone;
     }
     function create(tag, classes){
         var r = d.createElement(tag);
@@ -112,7 +119,7 @@
         select.inst["tail-" + this.id] = this;
         return this.init().bind();
     }, options;
-    select.version = "0.5.12";
+    select.version = "0.5.13";
     select.status = "beta";
     select.count = 0;
     select.inst = {};
@@ -121,52 +128,54 @@
      |  STORAGE :: DEFAULT OPTIONS
      */
     select.defaults = {
-        animate: true,
-        classNames: null,
-        csvOutput: false,
-        csvSeparator: ",",
-        descriptions: false,
-        deselect: false,
-        disabled: false,
-        height: 350,
-        hideDisabled: false,
-        hideSelected: false,
-        items: {},
-        locale: "en",
-        linguisticRules: {
+        animate: true,              // [0.3.0]      Boolean
+        classNames: null,           // [0.2.0]      Boolean, String, Array, null
+        csvOutput: false,           // [0.3.4]      Boolean
+        csvSeparator: ",",          // [0.3.4]      String
+        descriptions: false,        // [0.3.0]      Boolean
+        deselect: false,            // [0.3.0]      Boolean
+        disabled: false,            // [0.5.0]      Boolean
+        height: 350,                // [0.2.0]      Integer, null
+        hideDisabled: false,        // [0.3.0]      Boolean
+        hideSelected: false,        // [0.3.0]      Boolean
+        items: {},                  // [0.3.0]      Object
+        locale: "en",               // [0.5.0]      String
+        linguisticRules: {          // [0.5.9]      Object
             "е": "ё",
             "a": "ä",
             "o": "ö",
             "u": "ü",
             "ss": "ß"
         },
-        multiple: false,
-        multiLimit: Infinity,
-        multiPinSelected: false,
-        multiContainer: false,
-        multiShowCount: true,
-        multiShowLimit: false,
-        multiSelectAll: false,
-        multiSelectGroup: true,
-        openAbove: null,
-        placeholder: null,
-        search: false,
-        searchMinLength: 3,
-        searchFocus: true,
-        searchMarked: true,
-        searchConfig: ["text", "value"],
-        searchDisabled: true,
-        sortItems: false,
-        sortGroups: false,
-        sourceBind: false,
-        sourceHide: true,
-        startOpen: false,
-        stayOpen: false,
-        width: null,
-        cbComplete: undefined,
-        cbEmpty: undefined,
-        cbLoopItem: undefined,
-        cbLoopGroup: undefined
+        multiple: false,            // [0.2.0]      Boolean
+        multiLimit: Infinity,       // [0.3.0]      Integer, Infinity
+        multiPinSelected: false,    // [0.5.0]      Boolean
+        multiContainer: false,      // [0.3.0]      Boolean, String
+        multiShowCount: true,       // [0.3.0]      Boolean
+        multiShowLimit: false,      // [0.5.0]      Boolean
+        multiSelectAll: false,      // [0.4.0]      Boolean
+        multiSelectGroup: true,     // [0.4.0]      Boolean
+        openAbove: null,            // [0.3.0]      Boolean, null
+        placeholder: null,          // [0.2.0]      String, null
+        search: false,              // [0.3.0]      Boolean
+        searcgConfig: [             // [0.5.13]     Array
+            "text", "value"
+        ],
+        searchFocus: true,          // [0.3.0]      Boolean
+        searchMarked: true,         // [0.3.0]      Boolean
+        searchMinLength: 1,         // [0.5.13]     Integer
+        searchDisabled: true,       // [0.5.5]      Boolean
+        sortItems: false,           // [0.3.0]      String, Function, false
+        sortGroups: false,          // [0.3.0]      String, Function, false
+        sourceBind: false,          // [0.5.0]      Boolean
+        sourceHide: true,           // [0.5.0]      Boolean
+        startOpen: false,           // [0.3.0]      Boolean
+        stayOpen: false,            // [0.3.0]      Boolean
+        width: null,                // [0.2.0]      Integer, String, null
+        cbComplete: undefined,      // [0.5.0]      Function
+        cbEmpty: undefined,         // [0.5.0]      Function
+        cbLoopItem: undefined,      // [0.4.0]      Function
+        cbLoopGroup: undefined      // [0.4.0]      Function
     };
 
     /*
@@ -176,8 +185,6 @@
         en: {
             all: "All",
             none: "None",
-            actionAll: "Select All",
-            actionNone: "Unselect All",
             empty: "No Options available",
             emptySearch: "No Options found",
             limit: "You can't select more Options",
@@ -235,7 +242,7 @@
 
         /*
          |  INTERNAL :: INIT SELECT FIELD
-         |  @since  0.5.12 [0.3.0]
+         |  @since  0.5.13 [0.3.0]
          */
         init: function(){
             var self = this, classes = ["tail-select"], con = this.con,
@@ -287,7 +294,7 @@
                 this.search.innerHTML = '<input type="text" class="search-input" />';
                 this.search.children[0].placeholder = this._e("search");
                 this.search.children[0].addEventListener("input", function(event){
-                    self.query.call(self, (this.value.length >= con.searchMinLength)? this.value: undefined);
+                    self.query.call(self, (this.value.length > con.searchMinLength)? this.value: undefined);
                 });
                 this.dropdown.appendChild(this.search);
             }
@@ -355,14 +362,14 @@
 
         /*
          |  INTERNAL :: EVENT LISTENER
-         |  @since  0.5.3 [0.3.0]
+         |  @since  0.5.13 [0.3.0]
          */
         bind: function(){
             var self = this;
 
             // Keys Listener
             d.addEventListener("keydown", function(event){
-                var key = (event.keyCode || event.which), opt, inner, e, temp;
+                var key = (event.keyCode || event.which), opt, inner, e, temp, tmp;
                 var space = (key == 32 && self.select === document.activeElement);
                 if(!space && (!cHAS(self.select, "active") || [13, 27, 38, 40].indexOf(key) < 0)){
                     return false;
@@ -405,7 +412,8 @@
                 if(!opt && key == 40){
                     opt = self.dropdown.querySelector(".dropdown-option:not(.disabled)");
                 } else if(!opt && key == 38){
-                    opt = self.dropdown.querySelector("ul:last-child li:not(.disabled):last-child");
+                    tmp = self.dropdown.querySelectorAll(".dropdown-option:not(.disabled)");
+                    opt = tmp[tmp.length - 1];
                 }
                 if(opt && (inner = self.dropdown.querySelector(".dropdown-inner"))){
                     var pos = (function(el){
@@ -416,11 +424,7 @@
                         return _r;
                     })(opt);
                     cADD(opt, "hover");
-                    if((pos.top+(pos.height*2)) > (inner.offsetHeight+inner.scrollTop)){
-                        inner.scrollBy(0, (pos.top+(pos.height*2))-(inner.offsetHeight+inner.scrollTop));
-                    } else if((pos.top-pos.height) < inner.scrollTop){
-                        inner.scrollBy(0, -Math.abs(inner.scrollTop-pos.top+pos.height));
-                    }
+                    inner.scrollTop = Math.max(0, pos.top - (pos.height * 2));
                 }
                 return true;
             });
@@ -473,7 +477,7 @@
          |  @since  0.5.0 [0.3.0]
          */
         callback: function(item, state, _force){
-            var self = this, s = "[data-key='" + item.key.replace(/('|\\)/g, "\\$1") + "'][data-group='" + item.group.replace(/('|\\)/g, "\\$1") + "']";
+            var self = this, s = "[data-key='" + item.key + "'][data-group='" + item.group + "']";
             if(state == "rebuild"){ return this.query(); }
 
             // Set Element-Item States
@@ -554,13 +558,14 @@
 
         /*
          |  API :: QUERY OPTIONS
-         |  @since  0.5.9 [0.5.0]
+         |  @since  0.5.13 [0.5.0]
          */
         query: function(search, conf){
-            var root = create("DIV", "dropdown-inner"), self = this, item, tp, ul, li, a1, a2,
-                func ="finder", con = this.con, g = "getAttribute", args = [search, conf];
-
-            if (!search) { func = "walker"; args = [con.sortItems, con.sortGroups];}
+            var item, tp, ul, li, a1, a2;                           // Pre-Definition
+            var self = this, con = this.con, g = "getAttribute";    // Shorties
+            var root = create("DIV", "dropdown-inner"),             // Contexts
+                func = (!search)? "walker": "finder",
+                args = (!search)? [con.sortItems, con.sortGroups]: [search, conf];
 
             // Option Walker
             this._query = (typeof(search) == "string")? search: false;
@@ -606,13 +611,13 @@
             // Select All
             if(count > 0 && con.multiple && con.multiLimit == Infinity && con.multiSelectAll){
                 a1 = create("BUTTON", "tail-all"), a2 = create("BUTTON", "tail-none");
-                a1.innerText = this._e("actionAll");
+                a1.innerText = this._e("all");
                 a1.addEventListener("click", function(event){
                     event.preventDefault();
                     var options = self.dropdown.querySelectorAll(".dropdown-inner .dropdown-option");
                     self.options.walk.call(self.options, "select", options);
                 })
-                a2.innerText = this._e("actionNone");
+                a2.innerText = this._e("none");
                 a2.addEventListener("click", function(event){
                     event.preventDefault();
                     var options = self.dropdown.querySelectorAll(".dropdown-inner .dropdown-option");
@@ -665,7 +670,7 @@
 
         /*
          |  API :: CALLBACK -> CREATE ITEM
-         |  @since  0.5.0 [0.4.0]
+         |  @since  0.5.13 [0.4.0]
          */
         cbItem: function(item, optgroup, search){
             var li = create("LI", "dropdown-option" + (item.selected? " selected": "") + (item.disabled? " disabled": ""));
@@ -829,7 +834,8 @@
 
             // Final Function
             var final = function(){
-                cADD(cREM(self.select, "idle"), "active");
+                cADD(self.select, "active");
+                cREM(self.select, "idle");
                 this.dropdown.style.height = "auto";
                 this.dropdown.style.overflow = "visible";
                 this.label.removeAttribute("style");
@@ -868,7 +874,8 @@
                 return false;
             }
             var final = function(){
-                cREM(cREM(this.select, "idle"), "active");
+                cREM(this.select, "active");
+                cREM(this.select, "idle");
                 this.dropdown.removeAttribute("style");
                 this.dropdown.querySelector(".dropdown-inner").removeAttribute("style");
                 this.trigger.call(this, "close");
@@ -982,10 +989,6 @@
         /*
          |  PUBLIC :: CUSTOM EVENT LISTENER
          |  @since  0.5.0 [0.4.0]
-         |
-         |  @param  string  'open', 'close', 'change'
-         |  @param  callb.  A custom callback function.
-         |  @param  array   An array with own arguments, which should pass to the callback too.
          */
         on: function(event, callback, args){
             if(["open", "close", "change"].indexOf(event) < 0 || typeof(callback) != "function"){
@@ -996,6 +999,22 @@
             }
             this.events[event].push({cb: callback, args: (args instanceof Array)? args: []});
             return this;
+        },
+
+        /*
+         |  PUBLIC :: VALUE
+         |  @since  0.5.13 [0.5.13]
+         */
+        value: function(){
+            if(this.options.selected.length == 0){
+                return null;
+            }
+            if(this.con.multiple){
+                return this.options.selected.map(function(opt){
+                    return opt.value;
+                });
+            }
+            return this.options.selected[0].value;
         }
     };
 
@@ -1056,7 +1075,7 @@
 
         /*
          |  SET AN EXISTING OPTION
-         |  @since  0.5.7 [0.3.0]
+         |  @since  0.5.13 [0.3.0]
          */
         set: function(opt, rebuild){
             var key = opt.value || opt.innerText, grp = opt.parentElement.label || "#";
@@ -1070,8 +1089,8 @@
             var id = (/^[0-9]+$/.test(key))? "_" + key: key;
 
             // Validate Selection
-            var con = this.self.con, s = (!con.multiple && this.selected.length > 0);
-            if(s || (con.multiple && this.selected.length >= con.multiLimit)){
+            var con = this.self.con;
+            if(con.multiple && this.selected.length >= con.multiLimit){
                 opt.selected = false;
             }
             if(opt.selected && con.deselect && (!opt.hasAttribute("selected") || con.multiLimit == 0)){
@@ -1105,7 +1124,7 @@
 
         /*
          |  CREATE A NEW OPTION
-         |  @since  0.5.3 [0.3.0]
+         |  @since  0.5.13 [0.3.0]
          */
         add: function(key, value, group, selected, disabled, description, rebuild){
             if(key instanceof Object){
@@ -1130,8 +1149,7 @@
             }
 
             // Validate Selection
-            var con = this.self.con, s = (!con.multiple && this.selected.length > 0);
-            if(s || (con.multiple && this.selected.length >= con.multiLimit)){
+            if(this.self.con.multiple && this.selected.length >= this.self.con.multiLimit){
                 selected = false;
             }
             disabled = !!disabled;
@@ -1355,52 +1373,82 @@
         },
 
         /*
-         |  TRANSFORM VALUE INTO A MATCH PATTERN ACCORDING TO THE LINGUISTIC RULES
-         |  @since  
-         */            
+         |  APPLY LINGUSTIC RULES
+         |  @since  0.5.13 [0.5.13]
+         */
         applyLinguisticRules: function(search, casesensitive){
-            var  rules = this.self.con.linguisticRules, values = [];
-            Object.keys(rules).forEach(function (key){ values.push('(' + key + '|[' + rules[key] + '])') });
+            var rules = this.self.con.linguisticRules, values = [];
+            
+            // Prepare Rules
+            Object.keys(rules).forEach(function(key){ 
+                values.push("(" + key + "|[" + rules[key] + "])");
+            });
+            if(casesensitive){
+                values = values.concat(values.map(function(s){ return s.toUpperCase(); })); 
+            }
 
-            if (casesensitive) { values = values.concat(values.map(function(s) { return s.toUpperCase();})); }
-
-            return search.replace(new RegExp(values.join('|'), casesensitive ? 'g' : 'ig'), function(m){
+            return search.replace(new RegExp(values.join("|"), (casesensitive)? "g": "ig"), function(m){
                 return values[[].indexOf.call(arguments, m, 1) - 1];
             });
         },
+    
 
         /*
-        |  FIND SOME OPTIONs - ARRAY EDITION
-        |  @since  0.5.5 [0.3.0]
-        */
+         |  FIND SOME OPTIONs - ARRAY EDITION
+         |  @since  0.5.13 [0.3.0]
+         */
         find: function(search, config){
-            var matches, self = this, has = {};
-            if (!config) config = this.self.con.searchConfig;
-            if(typeof(config) == 'function'){
+            var self = this, matches, has = {};
+            
+            // Get Config
+            if(!config){
+                config = this.self.con.searchConfig;
+            }
+
+            // Config Callback
+            if(typeof config === "function"){
                 matches = config.bind(this, search);
-            } else {
-                if(!(config instanceof Array)){ config = [config]; }
-                config.forEach(function(c) { if (typeof(c) == 'string') { has[c] = true; }});
+            }
+
+            // Config Handler
+            else {
+                config = (config instanceof Array)? config: [config];
+                config.forEach(function(c){
+                    if(typeof(c) === "string"){ has[c] = true; }
+                });
+                has.any = (!has.any)? has.attributes && has.value: has.any;
                 
-                if(!has.any){ has.any = has.attributes && has.value; }
-                if(!has.regex || has.text){ search = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
-                if(!has.exactglyphes){ search = this.self.options.applyLinguisticRules(search, has.case); }
-                if(has.word){ search = '\\b' + search + '\\b'; }
+                // Cleanup & Prepare
+                if(!has.regex || has.text){
+                    search = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+                }
+                if(!has.exactglyphes){
+                    search = this.self.options.applyLinguisticRules(search, has.case);
+                }
+                if(has.word){
+                    search = '\\b' + search + '\\b';
+                }
 
-                var regex = new RegExp(search, !has.case ? 'mi': 'm'),                
-                    m = function(opt){ return regex.test(opt.text || opt.value); };
-
+                // Search
+                var regex = new RegExp(search, (!has.case)? "mi": "m"),
+                    sfunc = function(opt){ return regex.test(opt.text || opt.value); };
+                
+                // Handle
                 if(has.any){
-                    matches = function(opt){ return m(opt) || [].some.call(opt.attributes, m); };
+                    matches = function(opt){ return sfunc(opt) || [].some.call(opt.attributes, sfunc); };
                 } else if(has.attributes){
-                    matches = function(opt){ return [].some.call(opt.attributes, m); };
-                } else { matches = m; }
+                    matches = function(opt){ return [].some.call(opt.attributes, sfunc); };
+                } else {
+                    matches = sfunc;
+                }
 
                 if(!this.self.con.searchDisabled){
-                    m = matches;
-                    matches = function(opt){ return !opt.disabled && m(opt); };
+                    var temp = matches;
+                    matches = function(opt){ return !opt.disabled && temp(opt); };
                 }
             }
+
+            // Hammer Time
             return [].filter.call(this.self.e.options, matches).map(function(opt){return self.get(opt) });
         },
 

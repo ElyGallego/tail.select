@@ -1,8 +1,8 @@
 /*
- |  tail.select - Another solution to make select fields beautiful again!
+ |  tail.select - The vanilla solution to make your HTML select fields AWESOME!
  |  @file       ./langs/tail.select-pt_BR.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.12 - Beta
+ |  @version    0.5.13 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -26,8 +26,6 @@
     select.strings.register("pt_BR", {
         all: "Todas",
         none: "Nenhuma",
-        actionAll: "Selecionar todas",
-        actionNone: "Desmarcar todas",
         empty: "Nenhuma opção disponível",
         emptySearch: "Nenhuma opção encontrada",
         limit: "Não é possível selecionar outra opção",

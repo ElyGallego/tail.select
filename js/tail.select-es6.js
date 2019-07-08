@@ -1,8 +1,8 @@
 /*
- |  tail.select - Another solution to make select fields beautiful again!
+ |  tail.select - The vanilla solution to make your HTML select fields AWESOME!
  |  @file       ./js/tail.select-es6.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.12 - Beta
+ |  @version    0.5.13 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -76,7 +76,7 @@ var {select, options} = (function(root){
         select.inst["tail-" + this.id] = this;
         return this.init().bind();
     };
-    select.version = "0.5.12";
+    select.version = "0.5.13";
     select.status = "experimental";
     select.count = 0;
     select.inst = {};
@@ -85,52 +85,54 @@ var {select, options} = (function(root){
      |  STORAGE :: DEFAULT OPTIONS
      */
     select.defaults = {
-        animate: true,
-        classNames: null,
-        csvOutput: false,
-        csvSeparator: ",",
-        descriptions: false,
-        deselect: false,
-        disabled: false,
-        height: 350,
-        hideDisabled: false,
-        hideSelected: false,
-        items: {},
-        locale: "en",
-        linguisticRules: {
+        animate: true,              // [0.3.0]      Boolean
+        classNames: null,           // [0.2.0]      Boolean, String, Array, null
+        csvOutput: false,           // [0.3.4]      Boolean
+        csvSeparator: ",",          // [0.3.4]      String
+        descriptions: false,        // [0.3.0]      Boolean
+        deselect: false,            // [0.3.0]      Boolean
+        disabled: false,            // [0.5.0]      Boolean
+        height: 350,                // [0.2.0]      Integer, null
+        hideDisabled: false,        // [0.3.0]      Boolean
+        hideSelected: false,        // [0.3.0]      Boolean
+        items: {},                  // [0.3.0]      Object
+        locale: "en",               // [0.5.0]      String
+        linguisticRules: {          // [0.5.9]      Object
             "е": "ё",
             "a": "ä",
             "o": "ö",
             "u": "ü",
             "ss": "ß"
         },
-        multiple: false,
-        multiLimit: Infinity,
-        multiPinSelected: false,
-        multiContainer: false,
-        multiShowCount: true,
-        multiShowLimit: false,
-        multiSelectAll: false,
-        multiSelectGroup: true,
-        openAbove: null,
-        placeholder: null,
-        search: false,
-        searchMinLength: 3,
-        searchFocus: true,
-        searchMarked: true,
-        searchConfig: ["text", "value"],
-        searchDisabled: true,
-        sortItems: false,
-        sortGroups: false,
-        sourceBind: false,
-        sourceHide: true,
-        startOpen: false,
-        stayOpen: false,
-        width: null,
-        cbComplete: undefined,
-        cbEmpty: undefined,
-        cbLoopItem: undefined,
-        cbLoopGroup: undefined
+        multiple: false,            // [0.2.0]      Boolean
+        multiLimit: Infinity,       // [0.3.0]      Integer, Infinity
+        multiPinSelected: false,    // [0.5.0]      Boolean
+        multiContainer: false,      // [0.3.0]      Boolean, String
+        multiShowCount: true,       // [0.3.0]      Boolean
+        multiShowLimit: false,      // [0.5.0]      Boolean
+        multiSelectAll: false,      // [0.4.0]      Boolean
+        multiSelectGroup: true,     // [0.4.0]      Boolean
+        openAbove: null,            // [0.3.0]      Boolean, null
+        placeholder: null,          // [0.2.0]      String, null
+        search: false,              // [0.3.0]      Boolean
+        searcgConfig: [             // [0.5.13]     Array
+            "text", "value"
+        ],
+        searchFocus: true,          // [0.3.0]      Boolean
+        searchMarked: true,         // [0.3.0]      Boolean
+        searchMinLength: 1,         // [0.5.13]     Integer
+        searchDisabled: true,       // [0.5.5]      Boolean
+        sortItems: false,           // [0.3.0]      String, Function, false
+        sortGroups: false,          // [0.3.0]      String, Function, false
+        sourceBind: false,          // [0.5.0]      Boolean
+        sourceHide: true,           // [0.5.0]      Boolean
+        startOpen: false,           // [0.3.0]      Boolean
+        stayOpen: false,            // [0.3.0]      Boolean
+        width: null,                // [0.2.0]      Integer, String, null
+        cbComplete: undefined,      // [0.5.0]      Function
+        cbEmpty: undefined,         // [0.5.0]      Function
+        cbLoopItem: undefined,      // [0.4.0]      Function
+        cbLoopGroup: undefined      // [0.4.0]      Function
     };
 
     /*
@@ -320,7 +322,7 @@ var {select, options} = (function(root){
 
         /*
          |  INTERNAL :: INIT SELECT FIELD
-         |  @since  0.5.12 [0.3.0]
+         |  @since  0.5.13 [0.3.0]
          */
         init(){
             let classes = ["tail-select"], con = this.con,
@@ -367,7 +369,7 @@ var {select, options} = (function(root){
                 this.search = create("DIV", "dropdown-search");
                 this.search.innerHTML = `<input type="text" class="search-input" placeholder="${this._e("search")}" />`;
                 this.search.children[0].addEventListener("input", (ev) => {
-                    this.query((ev.target.value.length >= con.searchMinLength)? ev.target.value: undefined);
+                    this.query((ev.target.value.length > con.searchMinLength)? ev.target.value: undefined);
                 });
                 this.dropdown.appendChild(this.search);
             }
@@ -429,11 +431,11 @@ var {select, options} = (function(root){
 
         /*
          |  INTERNAL :: EVENT LISTENER
-         |  @since  0.5.3 [0.3.0]
+         |  @since  0.5.13 [0.3.0]
          */
         bind(){
             d.addEventListener("keydown", (ev) => {
-                let key = (ev.keyCode || ev.which), opt, inner, e, temp;
+                let key = (ev.keyCode || ev.which), opt, inner, e, temp, tmp;
                 let space = (key == 32 && self.select === document.activeElement);
                 if(!space ||(!this.select.classList.contains("active") || [13, 27, 38, 40].indexOf(key) < 0)){
                     return false;
@@ -477,7 +479,8 @@ var {select, options} = (function(root){
                 if(!opt && key == 40){
                     opt = this.dropdown[que](".dropdown-option:not(.disabled)");
                 } else if(!opt && key == 38){
-                    opt = this.dropdown[que]("ul:last-child li:not(.disabled):last-child");
+                    tmp = self.dropdown.querySelectorAll(".dropdown-option:not(.disabled)");
+                    opt = tmp[tmp.length - 1];
                 }
                 if(opt && (inner = this.dropdown[que](".dropdown-inner"))){
                     let pos = (function(el){
@@ -542,7 +545,7 @@ var {select, options} = (function(root){
          |  @since  0.5.0 [0.3.0]
          */
         callback(item, state, _force){
-            let self = this,  s = `[data-key='${item.key.replace(/('|\\)/g, "\\$1")}'][data-group='${item.group.replace(/('|\\)/g, "\\$1")}']`;
+            let self = this,  s = `[data-key='${item.key}'][data-group='${item.group}']`;
             if(state == "rebuild"){ return this.query(); }
 
             // Set Element-Item States
@@ -620,13 +623,15 @@ var {select, options} = (function(root){
 
         /*
          |  API :: QUERY OPTIONS
-         |  @since  0.5.9 [0.5.0]
+         |  @since  0.5.13 [0.5.0]
          */
         query(search, conf){
-            let root = create("DIV", "dropdown-inner"), tp, ul, a1, a2,
-                func = "finder", con = this.con, re, args = [search, conf];
-            if (!search) { func = "walker"; args = [con.sortItems, con.sortGroups];}
-            
+            let tp, ul, a1, a2;                             // Pre-Definition
+            let con = this.con;                             // Shorties
+            let root = create("DIV", "dropdown-inner"),     // Contexts
+                func = (!search)? "walker": "finder",
+                args = (!search)?[con.sortItems, con.sortGroups]: [search, conf];
+
             // Option Walker
             this._query = (typeof(search) == "string")? search: false;
             for(let item of this.options[func].apply(this.options, args)){
@@ -722,7 +727,7 @@ var {select, options} = (function(root){
 
         /*
          |  API :: CALLBACK -> CREATE ITEM
-         |  @since  0.5.0 [0.4.0]
+         |  @since  0.5.13 [0.4.0]
          */
         cbItem(item, optgroup, search){
             let {value: v, selected: s, disabled: d} = item;
@@ -1041,6 +1046,21 @@ var {select, options} = (function(root){
             }
             this.events[event].push({cb: callback, args: (args instanceof Array)? args: []});
             return this;
+        },
+
+
+        /*
+         |  PUBLIC :: VALUE
+         |  @since  0.5.13 [0.5.13]
+         */
+        value(){
+            if(this.options.selected.length == 0){
+                return null;
+            }
+            if(this.con.multiple){
+                return this.options.selected.map((opt) => opt.value);
+            }
+            return this.options.selected[0].value;
         }
     };
 
@@ -1114,8 +1134,8 @@ var {select, options} = (function(root){
             let id = (/^[0-9]+$/.test(key))? "_" + key: key;
 
             // Validate Selection
-            let con = this.self.con, s = (!con.multiple && this.selected.length > 0);
-            if(s || (con.multiple && this.selected.length >= con.multiLimit)){
+            let con = this.self.con;
+            if(con.multiple && this.selected.length >= con.multiLimit){
                 opt.selected = false;
             }
             if(opt.selected && con.deselect && (!opt[hAttr]("selected") || con.multiLimit == 0)){
@@ -1175,8 +1195,8 @@ var {select, options} = (function(root){
             }
 
             // Validate Selection
-            let con = this.self.con, s = (!con.multiple && this.selected.length > 0);
-            if(s || (con.multiple && this.selected.length >= con.multiLimit)){
+            let con = this.self.con;
+            if(con.multiple && this.selected.length >= con.multiLimit){
                 selected = false;
             }
             disabled = !!disabled;
@@ -1389,52 +1409,80 @@ var {select, options} = (function(root){
         },
 
         /*
-         |  TRANSFORM VALUE INTO A MATCH PATTERN ACCORDING TO THE LINGUISTIC RULES
-         |  @since  
-         */         
+         |  APPLY LINGUSTIC RULES
+         |  @since  0.5.13 [0.5.13]
+         */
         applyLinguisticRules(search, casesensitive){
-            let  rules = this.self.con.linguisticRules,
-                values = Object.keys(rules).map(key => '(' + key + '|[' + rules[key] + '])');
+            let rules = this.self.con.linguisticRules,
+                values = Object.keys(rules).map(key => "(" + key + "|[" + rules[key] + "])");
 
-            if (casesensitive) values = values.concat(values.map(s => s.toUpperCase() ));
+            // Prepare Rules
+            if(casesensitive){
+                values = values.concat(values.map(s => s.toUpperCase())); 
+            }
 
-            return search.replace(new RegExp(values.join('|'), casesensitive ? 'g' : 'ig'),
-                                  (m, ...args) => values[args.indexOf(m)]);
+            return search.replace(
+                new RegExp(values.join("|"), casesensitive? "g": "ig"), 
+                (m, ...args) => values[args.indexOf(m)]
+            );
         },
 
         /*
          |  FIND SOME OPTIONs - ARRAY EDITION
-         |  @since  0.5.5 [0.3.0]
+         |  @since  0.5.13 [0.3.0]
          */
         find(search, config){
-            
-            let matches, self = this, has = {};
-            if (!config) config = this.self.con.searchConfig;
-            if(typeof(config) == 'function'){
+            let self = this, matches, has = {};
+
+            // GetConfig
+            if(!config){
+                config = this.self.con.searchConfig;
+            }
+
+            // Config Callback
+            if(typeof config === "function"){
                 matches = config.bind(this, search);
-            } else {
-                if(!(config instanceof Array)){ config = [config]; }
-                config.forEach(c => { if (typeof(c) == 'string') { has[c] = true; }});
-                
-                if(!has.any){ has.any = has.attributes && has.value; }
-                if(!has.regex || has.text){ search = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
-                
-                if(!has.exactglyphes){ search = this.self.options.applyLinguisticRules(search, has.case); }
-                if(has.word){ search = `\\b${search}\\b`; }
+            }
 
-                let regex = new RegExp(search, !has.case ? 'mi': 'm'), m = opt => regex.test(opt.text || opt.value); 
+            // Config Handler
+            else {
+                config = (config instanceof Array)? config: [config];
+                config.forEach(c => { if(typeof(c) === "string"){ has[c] = true; } });
+                has.any = (!has.any)? has.attributes && has.value: has.any;
 
-                if(has.any){ matches = opt => m(opt) || [...opt.attributes].some(m); }
-                else if(has.attributes){ matches = opt => [...opt.attributes].some(m); }
-                else { matches = m; }
+                // Cleanup & Prepare
+                if(!has.regex || has.text){
+                    search = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+                }
+                if(!has.exactglyphes){
+                    search = this.self.options.applyLinguisticRules(search, has.case);
+                }
+                if(has.word){
+                    search = '\\b' + search + '\\b';
+                }
+
+                // Search
+                var regex = new RegExp(search, (!has.case)? "mi": "m"),
+                    sfunc = (opt) => regex.test(opt.text || opt.value);
+                
+                // Handle
+                if(has.any){
+                    matches = (opt) => sfunc(opt) || [...opt.attributes].some(m);
+                } else if(has.attributes){
+                    matches = (opt) => [...opt.attributes].some(m);
+                } else {
+                    matches = sfunc;
+                }
 
                 if(!this.self.con.searchDisabled){
-                    m = matches;
-                    matches = opt => !opt.disabled && m(opt);
+                    let temp = matches;
+                    matches = (opt) => !opt.disabled && temp(opt);
                 }
             }
+
+            // Hammer Time
             return [...this.self.e.options].filter(matches).map(opt => self.get(opt));
-        }, 
+        },
 
         /*
          |  FIND SOME OPTIONs - WALKER EDITION
