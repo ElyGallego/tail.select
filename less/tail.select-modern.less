@@ -251,7 +251,7 @@
 }
 .tail-select{
     width: 250px;
-    margin: 0;
+    margin: 1px;
     padding: 0;
     display: inline-block;
     position: relative;
@@ -517,7 +517,7 @@
     min-height: 35px;
     margin: 15px 0 0 0;
     padding: 0;
-    z-index: 20;
+    z-index: 30;
     display: none;
     overflow: visible;
     position: absolute;
@@ -655,9 +655,9 @@
         }
 
         // Hover
-        &:hover{
+        &:hover, &.hover{
             color: #scheme.option.hover[foreground];
-            background-color: #scheme.option.hover[background];
+            //background-color: #scheme.option.hover[background];
 
             .option-description{
                 color: #scheme.description.hover[foreground];
@@ -695,8 +695,10 @@
             background-image: %(~'url("data:image/svg+xml;charset=UTF-8,%s")', 
                               escape(%(#iconset[@@icons][@select], #scheme.option[foreground])));
         }
-        &:hover:before{
-            opacity: 0.5;
+        &:hover, &.hover{
+            &:before{
+                opacity: 0.5;
+            }
         }
     }
 
@@ -713,20 +715,22 @@
         .option-description{
             color: #scheme.description.active[foreground];
         }
-        &:hover{
-            background-color: #scheme.option.hover[background];
-        }
     }
 
     // Unselect
     &.deselect .select-dropdown ul li.dropdown-option.selected{
-        &:hover:before{
-            opacity: 0.85;
-            background-image: %(~'url("data:image/svg+xml;charset=UTF-8,%s")', 
-                              escape(%(#iconset[@@icons][@unselect], #scheme.option[foreground])));
+        &:hover, &.hover{
+            &:before{
+                opacity: 0.85;
+                background-image: %(~'url("data:image/svg+xml;charset=UTF-8,%s")', 
+                                escape(%(#iconset[@@icons][@unselect], #scheme.option[foreground])));
+            }
         }
-        &:hover .option-description{
-            color: #scheme.description.active[foreground];
+    }
+    // Hover
+    .select-dropdown ul li.dropdown-option{
+        &:hover, &.hover{
+            background-color: #scheme.option.hover[background];
         }
     }
 
@@ -756,21 +760,19 @@
             background-image: %(~'url("data:image/svg+xml;charset=UTF-8,%s")', 
                               escape(%(#iconset[@@icons][@m-select], #scheme.option[foreground])));
         }
-    }
-
-    // Selected
-    .select-dropdown ul li.dropdown-option.selected{
-        &:before{
-            background-image: %(~'url("data:image/svg+xml;charset=UTF-8,%s")', 
-                              escape(%(#iconset[@@icons][@m-selected], #scheme.option[foreground])));
-        }
-    }
-
-    // Unselect
-    .select-dropdown ul li.dropdown-option.selected:hover{
-        &:before{
-            background-image: %(~'url("data:image/svg+xml;charset=UTF-8,%s")', 
-                              escape(%(#iconset[@@icons][@m-unselect], #scheme.option[foreground])));
+        // Selected
+        &.selected{
+            &:before{
+                background-image: %(~'url("data:image/svg+xml;charset=UTF-8,%s")', 
+                                escape(%(#iconset[@@icons][@m-selected], #scheme.option[foreground])));
+            }
+            // Unselect
+            &:hover, &.hover{
+                &:before{
+                    background-image: %(~'url("data:image/svg+xml;charset=UTF-8,%s")', 
+                                      escape(%(#iconset[@@icons][@m-unselect], #scheme.option[foreground])));
+                }
+            }
         }
     }
 

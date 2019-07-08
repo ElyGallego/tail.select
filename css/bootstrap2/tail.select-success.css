@@ -401,13 +401,6 @@
     line-height: 14px;
     vertical-align: top;
 }
-.tail-select .select-dropdown ul li.dropdown-option:hover{
-    color: #333333;
-    background-color: rgba(51, 51, 51, 0.05);
-}
-.tail-select .select-dropdown ul li.dropdown-option:hover .option-description{
-    color: rgba(51, 51, 51, 0.7);
-}
 .tail-select.hide-selected .select-dropdown ul li.selected,
 .tail-select.hide-disabled .select-dropdown ul li.disabled{
     display: none;
@@ -426,20 +419,23 @@
     color: rgba(51, 51, 51, 0.7);
 }
 /* Unselect */
-.tail-select.deselect .select-dropdown ul li.dropdown-option.selected:hover,
-.tail-select.multiple .select-dropdown ul li.dropdown-option.selected:hover{
+.tail-select.deselect .select-dropdown ul li.dropdown-option.selected:hover:before,
+.tail-select.multiple .select-dropdown ul li.dropdown-option.selected:hover:before,
+.tail-select.deselect .select-dropdown ul li.dropdown-option.selected.hover:before,
+.tail-select.multiple .select-dropdown ul li.dropdown-option.selected.hover:before{
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC\
+                                        9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij48cGF0aCBkPSJNNy40OCA4bDMuNzUgM\
+                                        y43NS0xLjQ4IDEuNDhMNiA5LjQ4bC0zLjc1IDMuNzUtMS40OC0xLjQ4TDQuNTIgOCAuNzcgNC4yNWwxLjQ4LTEuNDhMNiA2\
+                                        LjUybDMuNzUtMy43NSAxLjQ4IDEuNDhMNy40OCA4eiIvPjwvc3ZnPg==");
+}
+/* Hover */
+.tail-select .select-dropdown ul li.dropdown-option:hover,
+.tail-select .select-dropdown ul li.dropdown-option.hover{
     color: #333333;
     background-color: rgba(51, 51, 51, 0.05);
 }
-.tail-select.deselect .select-dropdown ul li.dropdown-option.selected:hover:before,
-.tail-select.multiple .select-dropdown ul li.dropdown-option.selected:hover:before{
-    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC\
-                9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij48cGF0aCBkPSJNNy40OCA4bDMuNzUgM\
-                y43NS0xLjQ4IDEuNDhMNiA5LjQ4bC0zLjc1IDMuNzUtMS40OC0xLjQ4TDQuNTIgOCAuNzcgNC4yNWwxLjQ4LTEuNDhMNiA2\
-                LjUybDMuNzUtMy43NSAxLjQ4IDEuNDhMNy40OCA4eiIvPjwvc3ZnPg==");
-}
-.tail-select.deselect .select-dropdown ul li.dropdown-option.selected:hover .option-description,
-.tail-select.multiple .select-dropdown ul li.dropdown-option.selected:hover .option-description{
+.tail-select .select-dropdown ul li.dropdown-option:hover .option-description,
+.tail-select .select-dropdown ul li.dropdown-option.hover .option-description{
     color: rgba(51, 51, 51, 0.7);
 }
 /* Disabled */
@@ -452,8 +448,10 @@
 }
 .tail-select.disabled .select-dropdown ul li.dropdown-option .option-decription,
 .tail-select .select-dropdown ul li.dropdown-option.disabled .option-decription,
-.tail-select.disabled .select-dropdown ul li.dropdown-option:hover .option-description,
-.tail-select .select-dropdown ul li.dropdown-option.disabled:hover .option-description{
+.tail-select.disabled .select-dropdown ul li.dropdown-option:hover .option-decription,
+.tail-select .select-dropdown ul li.dropdown-option.disabled:hover .option-decription,
+.tail-select.disabled .select-dropdown ul li.dropdown-option.hover .option-decription,
+.tail-select .select-dropdown ul li.dropdown-option.disabled.hover .option-decription{
     color: rgba(51, 51, 51, 0.7);
 }
 /* @end DROPDOWN */

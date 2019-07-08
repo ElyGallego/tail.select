@@ -251,7 +251,7 @@
 }
 .tail-select{
     width: 250px;
-    margin: 0;
+    margin: 1px;
     padding: 0;
     display: inline-block;
     position: relative;
@@ -305,15 +305,17 @@
         }
     }
     &.disabled{
-        button.tail-all{
-            color: #scheme.button.all.disabled[foreground];
-            border-color: #scheme.button.all.disabled[separators];
-            background-color: #scheme.button.all.disabled[background];
-        }
-        button.tail-none{
-            color: #scheme.button.none.disabled[foreground];
-            border-color: #scheme.button.none.disabled[separators];
-            background-color: #scheme.button.none.disabled[background];
+        button {
+            &.tail-all{
+                color: #scheme.button.all.disabled[foreground];
+                border-color: #scheme.button.all.disabled[separators];
+                background-color: #scheme.button.all.disabled[background];
+            }
+            &.tail-none{
+                color: #scheme.button.none.disabled[foreground];
+                border-color: #scheme.button.none.disabled[separators];
+                background-color: #scheme.button.none.disabled[background];
+            }
         }
     }
     input[type="text"]{
@@ -488,7 +490,7 @@
     min-height: 35px;
     margin: -1px 0 0 0;
     padding: 0;
-    z-index: 20;
+    z-index: 28;
     display: none;
     overflow: hidden;
     position: absolute;
@@ -611,9 +613,8 @@
         }
 
         // Hover
-        &:hover{
+        &:hover, &.hover{
             color: #scheme.option.hover[foreground];
-            background-color: #scheme.option.hover[background];
 
             .option-description{
                 color: #scheme.description.hover[foreground];
@@ -639,8 +640,10 @@
             background-image: %(~'url("data:image/svg+xml;charset=UTF-8,%s")', 
                               escape(%(#iconset[@@icons][@select], #scheme.option[foreground])));
         }
-        &:hover:before{
-            opacity: 0.5;
+        &:hover, &.hover{
+            &:before{
+                opacity: 0.5;
+            }
         }
     }
 
@@ -657,20 +660,26 @@
         .option-description{
             color: #scheme.description.active[foreground];
         }
-        &:hover{
-            background-color: #scheme.option.hover[background];
+    }
+    
+    // Unselect
+    &.deselect .select-dropdown ul li.dropdown-option.selected{
+        &:hover, &.hover{
+            &:before{
+                opacity: 0.85;
+                background-image: %(~'url("data:image/svg+xml;charset=UTF-8,%s")', 
+                                  escape(%(#iconset[@@icons][@unselect], #scheme.option[foreground])));
+            }
+            .option-description{
+                color: #scheme.description.active[foreground];
+            }
         }
     }
 
-    // Unselect
-    &.deselect .select-dropdown ul li.dropdown-option.selected{
-        &:hover:before{
-            opacity: 0.85;
-            background-image: %(~'url("data:image/svg+xml;charset=UTF-8,%s")', 
-                              escape(%(#iconset[@@icons][@unselect], #scheme.option[foreground])));
-        }
-        &:hover .option-description{
-            color: #scheme.description.active[foreground];
+    // Hover
+    .select-dropdown ul li.dropdown-option{
+        &:hover, &.hover{
+            background-color: #scheme.option.hover[background];
         }
     }
 
@@ -700,21 +709,19 @@
             background-image: %(~'url("data:image/svg+xml;charset=UTF-8,%s")', 
                               escape(%(#iconset[@@icons][@m-select], #scheme.option[foreground])));
         }
-    }
-
-    // Selected
-    .select-dropdown ul li.dropdown-option.selected{
-        &:before{
+        // Selected
+        &.selected{
+            &:before{
             background-image: %(~'url("data:image/svg+xml;charset=UTF-8,%s")', 
                               escape(%(#iconset[@@icons][@m-selected], #scheme.option[foreground])));
-        }
-    }
-
-    // Unselect
-    .select-dropdown ul li.dropdown-option.selected:hover{
-        &:before{
-            background-image: %(~'url("data:image/svg+xml;charset=UTF-8,%s")', 
-                              escape(%(#iconset[@@icons][@m-unselect], #scheme.option[foreground])));
+            }
+            // Unselect
+            &:hover, &.hover{
+                &:before{
+                    background-image: %(~'url("data:image/svg+xml;charset=UTF-8,%s")', 
+                                      escape(%(#iconset[@@icons][@m-unselect], #scheme.option[foreground])));
+                }
+            } 
         }
     }
 
