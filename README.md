@@ -181,7 +181,7 @@ tail.select("select", {
         openAbove: null,            // [0.3.0]      Boolean, null
         placeholder: null,          // [0.2.0]      String, null
         search: false,              // [0.3.0]      Boolean
-        searcgConfig: [             // [0.5.13]     Array
+        searchConfig: [             // [0.5.13]     Array
             "text", "value"
         ],
         searchFocus: true,          // [0.3.0]      Boolean
