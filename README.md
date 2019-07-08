@@ -166,6 +166,7 @@ tail.select("select", {
     openAbove: null,
     placeholder: null,
     search: false,
+    searchMinLength: 3,
     searchFocus: true,
     searchMarked: true,
     searchDisabled: true,           // NEW IN 0.5.5
