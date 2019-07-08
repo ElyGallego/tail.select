@@ -2,7 +2,7 @@
  |  tail.select - The vanilla solution to make your HTML select fields AWESOME!
  |  @file       ./js/tail.select-es6.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.13 - Beta
+ |  @version    0.5.14 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -76,7 +76,7 @@ var {select, options} = (function(root){
         select.inst["tail-" + this.id] = this;
         return this.init().bind();
     };
-    select.version = "0.5.13";
+    select.version = "0.5.14";
     select.status = "experimental";
     select.count = 0;
     select.inst = {};
@@ -542,14 +542,16 @@ var {select, options} = (function(root){
 
         /*
          |  INTERNAL :: INTERNAL CALLBACK
-         |  @since  0.5.0 [0.3.0]
+         |  @since  0.5.14 [0.3.0]
          */
         callback(item, state, _force){
-            let self = this,  s = `[data-key='${item.key}'][data-group='${item.group}']`;
+            let rkey = item.key.replace(/('|\\)/g, "\\$1"),
+                rgrp = item.group.replace(/('|\\)/g, "\\$1"),
+                rsel = `[data-key='${rkey}'][data-group='${rgrp}']`;
             if(state == "rebuild"){ return this.query(); }
 
             // Set Element-Item States
-            let element = this.dropdown[que](s);
+            let element = this.dropdown[que](rsel);
             if(element && ["select", "disable"].indexOf(state) >= 0){
                 element.classList.add((state == "select"? "selected": "disabled"));
             } else if(element && ["unselect", "enable"].indexOf(state) >= 0){
