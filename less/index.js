@@ -116,6 +116,7 @@ file.readdir("./", "utf-8", (err, files) => {
     if(err) throw err;
 
     files.forEach((filename) => {
+        console.log('Render:', filename);
         if(filename.indexOf("tail.select-") !== 0){
             return false;
         }
