@@ -138,7 +138,7 @@
 
         .hover(){
             foreground: #scheme[foreground];
-            background: fadeout(#scheme.option[foreground], 95%);
+            background: mix(#scheme[primary], lighten(#scheme[foreground], 80%), 5%);
         }
         .active(){
             foreground: @secondary;
@@ -146,7 +146,7 @@
         }
         .disabled(){
             foreground: fadeout(#scheme.option[foreground], 65%);
-            background: @alpha;
+            background: fade(#scheme.option.hover[foreground], 2%);;
         }
     }
     .description(){
@@ -159,7 +159,7 @@
             foreground: fadeout(#scheme[foreground], 30%);
         }
         .disabled(){
-            foreground: fadeout(#scheme[foreground], 30%);
+            foreground: #scheme.option.disabled[foreground];
         }
     }
 }
@@ -631,10 +631,12 @@
 }
 /* Hover */
 .tail-select .select-dropdown ul li.dropdown-option {
+    transition: all 0.3s ease-out;
+
     &:hover, &.hover{
         color: #scheme.option.hover[foreground];
         background-color: #scheme.option.hover[background];
-
+        transition: all 0.4s ease;   
         .option-description{
             color: #scheme.description.hover[foreground];
         }        
@@ -646,7 +648,7 @@
     .select-dropdown ul li.dropdown-option.disabled{
         cursor: not-allowed;
         color: #scheme.option.disabled[foreground];
-        text-decoration: line-through;
+        text-shadow: 0px 1px 0px fade(lighten(#scheme.option.disabled[foreground],10%),10%), 0px -1px 0px fade(darken(#scheme.option.disabled[foreground],10%),10%);
         background-color: #scheme.option.disabled[background];
 
         &, &:hover, &.hover{

@@ -156,15 +156,15 @@
 
         .hover(){
             foreground: #scheme[foreground];
-            background: darken(#scheme[background], 5%),
+            background: mix(#scheme[primary], darken(#scheme[background], 5%), 5%);
         }
         .active(){
             foreground: @primary;
             background: #scheme[background];
         }
         .disabled(){
-            foreground: fadeout(#scheme[foreground], 25%);
-            background: darken(#scheme[background], 5%),
+            foreground: fadeout(#scheme[foreground], 60%);
+            background: lighten(greyscale(#scheme.option.hover[background]),5%);
         }
     }
     .description(){
@@ -624,6 +624,7 @@
     ul li.dropdown-option{
         cursor: pointer;
         color: #scheme.option[foreground];
+        transition: all 0.3s ease-out;
 
         &:before{
             top: 0;
@@ -656,8 +657,8 @@
 
         // Hover
         &:hover, &.hover{
-            color: #scheme.option.hover[foreground];
-            //background-color: #scheme.option.hover[background];
+            //color: #scheme.option.hover[foreground];
+            transition: all 0.4s ease;   
 
             .option-description{
                 color: #scheme.description.hover[foreground];
@@ -739,7 +740,7 @@
     .select-dropdown ul li.dropdown-option.disabled{
         cursor: not-allowed;
         color: #scheme.option.disabled[foreground];
-        text-decoration: line-through;
+        text-shadow: 0px 1px 0px fade(lighten(#scheme.option.disabled[foreground],30%),10%), 0px -1px 0px fade(darken(#scheme.option.disabled[foreground],30%),10%);
         background-color: #scheme.option.disabled[background];
 
         &:before{
@@ -747,7 +748,7 @@
             background-image: %(~'url("data:image/svg+xml;charset=UTF-8,%s")', 
                               escape(%(#iconset[@@icons][@disabled], #scheme.option[foreground])));
         }
-        .option-decription{
+        .option-description{
             color: #scheme.description.disabled[foreground];
         }
     }
