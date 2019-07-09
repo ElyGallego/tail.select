@@ -391,10 +391,14 @@
                                 LjUybDMuNzUtMy43NSAxLjQ4IDEuNDhMNy40OCA4eiIvPjwvc3ZnPg==");
 }
 /* Hover */
+.tail-select .select-dropdown ul li.dropdown-option{
+    transition: all 0.3s ease-in;
+}
 .tail-select .select-dropdown ul li.dropdown-option:hover,
 .tail-select .select-dropdown ul li.dropdown-option.hover{
+    transition: all 0.4s ease;
     color: #343a40;
-    background-color: rgba(52, 58, 64, 0.05);
+    background-color: #f4fcfa;
 }
 .tail-select .select-dropdown ul li.dropdown-option:hover .option-description,
 .tail-select .select-dropdown ul li.dropdown-option.hover .option-description{
@@ -405,15 +409,19 @@
 .tail-select .select-dropdown ul li.dropdown-option.disabled{
     cursor: not-allowed;
     color: rgba(52, 58, 64, 0.35);
-    text-decoration: line-through;
-    background-color: transparent;
+    text-shadow: 0px 1px 0px rgba(122, 135, 147, 0.1), 0px -1px 0px rgba(0, 0, 0, 0.1);
+    background-color: rgba(52, 58, 64, 0.02);
 }
-.tail-select.disabled .select-dropdown ul li.dropdown-option .option-decription,
-.tail-select .select-dropdown ul li.dropdown-option.disabled .option-decription,
-.tail-select.disabled .select-dropdown ul li.dropdown-option:hover .option-decription,
-.tail-select .select-dropdown ul li.dropdown-option.disabled:hover .option-decription,
-.tail-select.disabled .select-dropdown ul li.dropdown-option.hover .option-decription,
-.tail-select .select-dropdown ul li.dropdown-option.disabled.hover .option-decription{
+.tail-select.disabled .select-dropdown ul li.dropdown-option .option-description,
+.tail-select .select-dropdown ul li.dropdown-option.disabled .option-description{
+    text-shadow: 0px 1px 0px rgba(63, 71, 78, 0.05), 0px -1px 0px rgba(41, 45, 50, 0.05);
+}
+.tail-select.disabled .select-dropdown ul li.dropdown-option .option-description,
+.tail-select .select-dropdown ul li.dropdown-option.disabled .option-description,
+.tail-select.disabled .select-dropdown ul li.dropdown-option:hover .option-description,
+.tail-select .select-dropdown ul li.dropdown-option.disabled:hover .option-description,
+.tail-select.disabled .select-dropdown ul li.dropdown-option.hover .option-description,
+.tail-select .select-dropdown ul li.dropdown-option.disabled.hover .option-description{
     color: rgba(52, 58, 64, 0.7);
 }
 /* @end DROPDOWN */

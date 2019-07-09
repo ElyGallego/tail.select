@@ -417,6 +417,7 @@
 .tail-select .select-dropdown ul li.dropdown-option{
     cursor: pointer;
     color: #303438;
+    transition: all 0.3s ease-out;
 }
 .tail-select .select-dropdown ul li.dropdown-option:before{
     top: 0;
@@ -449,7 +450,7 @@
 }
 .tail-select .select-dropdown ul li.dropdown-option:hover,
 .tail-select .select-dropdown ul li.dropdown-option.hover{
-    color: #303438;
+    transition: all 0.4s ease;
 }
 .tail-select .select-dropdown ul li.dropdown-option:hover .option-description,
 .tail-select .select-dropdown ul li.dropdown-option.hover .option-description{
@@ -503,14 +504,14 @@
 }
 .tail-select .select-dropdown ul li.dropdown-option:hover,
 .tail-select .select-dropdown ul li.dropdown-option.hover{
-    background-color: #f2f2f2;
+    background-color: #e9edf2;
 }
 .tail-select.disabled .select-dropdown ul li.dropdown-option,
 .tail-select .select-dropdown ul li.dropdown-option.disabled{
     cursor: not-allowed;
-    color: rgba(48, 52, 56, 0.75);
-    text-decoration: line-through;
-    background-color: #f2f2f2;
+    color: rgba(48, 52, 56, 0.4);
+    text-shadow: 0px 1px 0px rgba(119, 129, 138, 0.1), 0px -1px 0px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa;
 }
 .tail-select.disabled .select-dropdown ul li.dropdown-option:before,
 .tail-select .select-dropdown ul li.dropdown-option.disabled:before{
