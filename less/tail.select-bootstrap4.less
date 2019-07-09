@@ -627,16 +627,6 @@
             line-height: 14px;
             vertical-align: top;
         }
-
-        // Hover
-        &:hover{
-            color: #scheme.option.hover[foreground];
-            background-color: #scheme.option.hover[background];
-
-            .option-description{
-                color: #scheme.description.hover[foreground];
-            }
-        }
     }
 }
 .tail-select.hide-selected .select-dropdown ul li.selected,
@@ -660,22 +650,29 @@
 }
 
 /* Unselect */
-.tail-select.deselect .select-dropdown ul li.dropdown-option.selected:hover,
-.tail-select.multiple .select-dropdown ul li.dropdown-option.selected:hover{
-    color: #scheme.option.hover[foreground];
-    background-color: #scheme.option.hover[background];
-
-    &:before{
-        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC\
-        9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij48cGF0aCBkPSJNNy40OCA4bDMuNzUgM\
-        y43NS0xLjQ4IDEuNDhMNiA5LjQ4bC0zLjc1IDMuNzUtMS40OC0xLjQ4TDQuNTIgOCAuNzcgNC4yNWwxLjQ4LTEuNDhMNiA2\
-        LjUybDMuNzUtMy43NSAxLjQ4IDEuNDhMNy40OCA4eiIvPjwvc3ZnPg==");
-    }
-    .option-description{
-        color: #scheme.description.hover[foreground];
+.tail-select.deselect, .tail-select.multiple{
+    .select-dropdown ul li.dropdown-option.selected{
+        &:hover, &.hover{
+            &:before{
+                background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC\
+                9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij48cGF0aCBkPSJNNy40OCA4bDMuNzUgM\
+                y43NS0xLjQ4IDEuNDhMNiA5LjQ4bC0zLjc1IDMuNzUtMS40OC0xLjQ4TDQuNTIgOCAuNzcgNC4yNWwxLjQ4LTEuNDhMNiA2\
+                LjUybDMuNzUtMy43NSAxLjQ4IDEuNDhMNy40OCA4eiIvPjwvc3ZnPg==");
+            }
+        }
     }
 }
+/* Hover */
+.tail-select .select-dropdown ul li.dropdown-option {
+    &:hover, &.hover{
+        color: #scheme.option.hover[foreground];
+        background-color: #scheme.option.hover[background];
 
+        .option-description{
+            color: #scheme.description.hover[foreground];
+        }        
+    }
+}
 /* Disabled */
 .tail-select{
     &.disabled .select-dropdown ul li.dropdown-option, 
@@ -685,8 +682,10 @@
         text-decoration: line-through;
         background-color: #scheme.option.disabled[background];
 
-        .option-decription, &:hover .option-description{
-            color: #scheme.description.disabled[foreground];
+        &, &:hover, &.hover {
+            .option-decription{
+                color: #scheme.description.disabled[foreground];
+            }
         }
     }
 }
