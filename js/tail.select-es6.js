@@ -2,7 +2,7 @@
  |  tail.select - The vanilla solution to make your HTML select fields AWESOME!
  |  @file       ./js/tail.select-es6.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.14 - Beta
+ |  @version    0.5.15 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -76,7 +76,7 @@ var {select, options} = (function(root){
         select.inst["tail-" + this.id] = this;
         return this.init().bind();
     };
-    select.version = "0.5.14";
+    select.version = "0.5.15";
     select.status = "experimental";
     select.count = 0;
     select.inst = {};

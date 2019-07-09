@@ -3,6 +3,9 @@ CHANGELOG
 
 Unreleased Changes
 ------------------
+-   Update: Differentiate .disabled and .hover colors.
+    - Thanks to [#79](https://github.com/pytesNET/tail.select/issues/79),
+    - Thanks to [#81](https://github.com/pytesNET/tail.select/pull/81) (Pull Request).
 -   Bugfix: Typo in `searchConfig` option key.
 -   Bugfix: Missing minified JavaScript files.
     - Thanks to [#77](https://github.com/pytesNET/tail.select/issues/77).
