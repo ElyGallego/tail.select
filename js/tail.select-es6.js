@@ -625,7 +625,7 @@ var {select, options} = (function(root){
 
         /*
          |  API :: QUERY OPTIONS
-         |  @since  0.5.13 [0.5.0]
+         |  @since  0.5.15 [0.5.0]
          */
         query(search, conf){
             let tp, ul, a1, a2;                             // Pre-Definition
@@ -637,6 +637,9 @@ var {select, options} = (function(root){
             // Option Walker
             this._query = (typeof(search) == "string")? search: false;
             for(let item of this.options[func].apply(this.options, args)){
+                if(item === false){
+                    continue;
+                }
                 if(!ul || (ul && ul[gAttr]("data-group") !== item.group)){
                     tp = (con.cbLoopGroup || this.cbGroup).call(this, item.group, search, root);
                     if(tp instanceof Element){
@@ -995,7 +998,7 @@ var {select, options} = (function(root){
 
         /*
          |  PUBLIC :: GET|SET CONFIG
-         |  @since  0.5.0 [0.4.0]
+         |  @since  0.5.15 [0.4.0]
          */
         config(key, value, rebuild){
             if(key instanceof Object){
@@ -1013,7 +1016,7 @@ var {select, options} = (function(root){
                 return this.con[key];
             }
             this.con[key] = value;
-            if(this.rebuild !== false){
+            if(rebuild !== false){
                 this.reload();
             }
             return this;
@@ -1122,7 +1125,7 @@ var {select, options} = (function(root){
 
         /*
          |  SET AN EXISTING OPTION
-         |  @since  0.5.7 [0.3.0]
+         |  @since  0.5.15 [0.3.0]
          */
         set(opt, rebuild){
             let key = opt.value || opt.innerText, grp = opt[parE].label || "#";
@@ -1161,7 +1164,8 @@ var {select, options} = (function(root){
                 option: opt,
                 optgroup: (grp != "#")? this.groups[grp]: undefined,
                 selected: opt.selected,
-                disabled: opt.disabled
+                disabled: opt.disabled,
+                hidden: opt.hidden || false
             };
             this.length++;
             if(opt.selected){ this.select(this.items[grp][id]); }
@@ -1354,10 +1358,10 @@ var {select, options} = (function(root){
 
         /*
          |  INVERT CURRENT <STATE>
-         |  @since  0.5.0 [0.3.0]
+         |  @since  0.5.15 [0.3.0]
          */
         invert(state){
-            state = this._replaceType(state);
+            state = this._r(state);
             if(["enable", "disable"].indexOf(state) >= 0){
                 let invert = this.disabled, action = (state == "enable")? "disable": "enable";
             } else if(["select", "unselect"].indexOf(state) >= 0){
@@ -1431,7 +1435,7 @@ var {select, options} = (function(root){
 
         /*
          |  FIND SOME OPTIONs - ARRAY EDITION
-         |  @since  0.5.13 [0.3.0]
+         |  @since  0.5.15 [0.3.0]
          */
         find(search, config){
             let self = this, matches, has = {};
@@ -1483,7 +1487,9 @@ var {select, options} = (function(root){
             }
 
             // Hammer Time
-            return [...this.self.e.options].filter(matches).map(opt => self.get(opt));
+            return [...this.self.e.options].filter(matches).map(opt => {
+                return opt.hidden? false: this.get(opt)
+            });
         },
 
         /*
@@ -1499,7 +1505,7 @@ var {select, options} = (function(root){
 
         /*
          |  NEW OPTIONS WALKER
-         |  @since  0.5.7 [0.4.0]
+         |  @since  0.5.15 [0.4.0]
          */
         *walker(orderi, orderg){
             let groups = Object.keys(this.groups);
@@ -1528,6 +1534,9 @@ var {select, options} = (function(root){
                 }
 
                 for(let l = keys.length, i = 0; i < l; i++){
+                    if(this.items[grp][keys[i]].hidden === true){
+                        continue;
+                    }
                     yield this.items[grp][keys[i]];
                 }
             }

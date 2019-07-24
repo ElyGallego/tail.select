@@ -952,7 +952,7 @@
 
         /*
          |  PUBLIC :: GET|SET CONFIG
-         |  @since  0.5.3 [0.4.0]
+         |  @since  0.5.15 [0.4.0]
          */
         config: function(key, value, rebuild){
             if(key instanceof Object){
@@ -970,7 +970,7 @@
                 return this.con[key];
             }
             this.con[key] = value;
-            if(this.rebuild !== false){
+            if(rebuild !== false){
                 this.reload();
             }
             return this;
@@ -1077,7 +1077,7 @@
 
         /*
          |  SET AN EXISTING OPTION
-         |  @since  0.5.13 [0.3.0]
+         |  @since  0.5.15 [0.3.0]
          */
         set: function(opt, rebuild){
             var key = opt.value || opt.innerText, grp = opt.parentElement.label || "#";
@@ -1116,7 +1116,8 @@
                 option: opt,
                 optgroup: (grp != "#")? this.groups[grp]: undefined,
                 selected: opt.selected,
-                disabled: opt.disabled
+                disabled: opt.disabled,
+                hidden: opt.hidden || false
             };
             this.length++;
             if(opt.selected){ this.select(this.items[grp][id]); }
@@ -1307,10 +1308,10 @@
 
         /*
          |  INVERT CURRENT <STATE>
-         |  @since  0.5.0 [0.3.0]
+         |  @since  0.5.15 [0.3.0]
          */
         invert: function(state){
-            state = this._replaceType(state);
+            state = this._r(state);
             if(["enable", "disable"].indexOf(state) >= 0){
                 var invert = this.disabled, action = (state == "enable")? "disable": "enable";
             } else if(["select", "unselect"].indexOf(state) >= 0){
@@ -1397,7 +1398,7 @@
 
         /*
          |  FIND SOME OPTIONs - ARRAY EDITION
-         |  @since  0.5.13 [0.3.0]
+         |  @since  0.5.15 [0.3.0]
          */
         find: function(search, config){
             var self = this, matches, has = {};
@@ -1451,7 +1452,9 @@
             }
 
             // Hammer Time
-            return [].filter.call(this.self.e.options, matches).map(function(opt){return self.get(opt) });
+            return [].filter.call(this.self.e.options, matches).map(function(opt){
+                return opt.hidden? false: self.get(opt) 
+            });
         },
 
         /*
@@ -1472,13 +1475,15 @@
 
         /*
          |  NEW OPTIONS WALKER
-         |  @since  0.5.7 [0.4.0]
+         |  @since  0.5.15 [0.4.0]
          */
         walker: function(orderi, orderg){
             if(typeof(this._inLoop) != "undefined" && this._inLoop){
                 if(this._inItems.length > 0){
-                    var key = this._inItems.shift();
-                    return this.items[this._inGroup][key];
+                    do {
+                        var temp = this.items[this._inGroup][this._inItems.shift()];
+                    } while(temp.hidden === true);
+                    return temp;
                 }
 
                 // Sort Items

@@ -1,18 +1,25 @@
 CHANGELOG
 ===========
 
-Unreleased Changes
-------------------
+Version 0.5.15 - Beta
+---------------------
+-   Update: Support for `hidden` options (didn't get queried).
+    - Thanks to [#67](https://github.com/pytesNET/tail.select/issues/67).
 -   Update: Differentiate .disabled and .hover colors.
     - Thanks to [#79](https://github.com/pytesNET/tail.select/issues/79),
     - Thanks to [#81](https://github.com/pytesNET/tail.select/pull/81) (Pull Request).
 -   Bugfix: Typo in `searchConfig` option key.
+-   Bugfix: Using `this.rebuild` instead of `rebuild` in the `.config()` method.
+-   Bugfix: Using the olf method `._replaceTypo` on the `.invert()` method (options class).
+-   Bugfix: The `.query()` method doesn't handle false as item return [ES6 only].
 -   Bugfix: Missing minified JavaScript files.
     - Thanks to [#77](https://github.com/pytesNET/tail.select/issues/77).
 -   Bugfix: Some Less styling issues.
     - Thanks to [#74](https://github.com/pytesNET/tail.select/issues/74),
     - Thanks to [#78](https://github.com/pytesNET/tail.select/issues/78),
     - Thanks to [#75](https://github.com/pytesNET/tail.select/pull/75) (Pull Request).
+-   Bugfix: Bootstrap 4 Theme Icon Issue in Chrome.
+    - Thanks to [#82](https://github.com/pytesNET/tail.select/issues/82).
 
 Version 0.5.14 - Beta
 ---------------------
