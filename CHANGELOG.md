@@ -1,8 +1,8 @@
 CHANGELOG
 ===========
 
-Version 0.5.16 - Beta
----------------------
+Unreleased Changes
+------------------
 -   Bugfix: IE doesn't recognize `Object.constructor()` as object (instead as function).
     - Thanks to [#92](https://github.com/pytesNET/tail.select/issues/92).
 
