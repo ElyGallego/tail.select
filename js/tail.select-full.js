@@ -1,8 +1,8 @@
 /*
  |  tail.select - The vanilla solution to make your HTML select fields AWESOME!
- |  @file       ./js/tail.select-full.js
+ |  @file       ./js/tail.select.js
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.15 - Beta
+ |  @version    0.5.16 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -29,7 +29,7 @@
         }
 
         // MooTools Support
-        if(typeof(MooTools) != "undefined"){
+        if(typeof MooTools !== "undefined"){
             Element.implement({ tailselect: function(o){ return new tail.select(this, o); } });
         }
     }
@@ -74,10 +74,10 @@
 
     /*
      |  SELECT CONSTRUCTOR
-     |  @since  0.5.12 [0.3.0]
+     |  @since  0.5.16 [0.3.0]
      */
     var select = function(el, config){
-        el = (typeof(el) == "string")? d.querySelectorAll(el): el;
+        el = (typeof el === "string")? d.querySelectorAll(el): el;
         if(el instanceof NodeList || el instanceof HTMLCollection || el instanceof Array){
             for(var _r = [], l = el.length, i = 0; i < l; i++){
                 _r.push(new select(el[i], clone(config, {})));
@@ -102,7 +102,7 @@
         // Get Element Options
         var placeholder = el.getAttribute("placeholder") || el.getAttribute("data-placeholder"),
             fb1 = "bindSourceSelect", fb2 = "sourceHide"; // Fallbacks
-        config = (typeof(config) == "object")? config: {};
+        config = (config instanceof Object)? config: {};
         config.multiple = ("multiple" in config)? config.multiple: el.multiple;
         config.disabled = ("disabled" in config)? config.disabled: el.disabled;
         config.placeholder = placeholder || config.placeholder || null;
@@ -110,6 +110,7 @@
         config.sourceBind = (fb1 in config)? config[fb1]: config.sourceBind || false;
         config.sourceHide = (fb2 in config)? config[fb2]: config.sourceHide || true;
         config.multiLimit = (config.multiLimit >= 0)? config.multiLimit: Infinity;
+
 
         // Init Instance
         this.e = el;
@@ -119,7 +120,7 @@
         select.inst["tail-" + this.id] = this;
         return this.init().bind();
     }, options;
-    select.version = "0.5.15";
+    select.version = "0.5.16";
     select.status = "beta";
     select.count = 0;
     select.inst = {};
@@ -305,12 +306,12 @@
                     this.modify(locale, key, id[key]);
                 }
             } else {
-                this[locale][id] = (typeof(string) == "string")? string: this[locale][id];
+                this[locale][id] = (typeof string === "string")? string: this[locale][id];
             }
             return true;
         },
         register: function(locale, object){
-            if(typeof(locale) != "string" || !(object instanceof Object)){
+            if(typeof locale !== "string" || !(object instanceof Object)){
                 return false;
             }
             this[locale] = object;
@@ -332,10 +333,10 @@
             }
 
             var string = this.__[string];
-            if(typeof(string) === "function"){
+            if(typeof string === "function"){
                 string = string.call(this, replace);
             }
-            if(typeof(replace) === "object"){
+            if(typeof replace === "object"){
                 for(var key in replace){
                     string = string.replace(key, replace[key]);
                 }
@@ -428,7 +429,7 @@
                 this.options.set(this.e.options[i], false);
             }
             for(var key in con.items){
-                if(typeof(con.items[key]) == "string"){
+                if(typeof con.items[key] === "string"){
                     con.items[key] = {value: con.items[key]};
                 }
                 this.options.add(con.items[key].key || key, con.items[key].value,
@@ -673,7 +674,7 @@
                 args = (!search)? [con.sortItems, con.sortGroups]: [search, conf];
 
             // Option Walker
-            this._query = (typeof(search) == "string")? search: false;
+            this._query = (typeof search === "string")? search: false;
             while(item = this.options[func].apply(this.options, args)){
                 if(!ul || (ul && ul[g]("data-group") !== item.group)){
                     tp = (con.cbLoopGroup || this.cbGroup).call(this, item.group, search, root);
@@ -818,7 +819,7 @@
                 return this;
             }
             var c = this.con, len = this.options.selected.length, limit;
-            if(typeof(label) != "string"){
+            if(typeof label !== "string"){
                 if(c.disabled){
                     label = "disabled";
                 } else if(this.dropdown.querySelectorAll("*[data-key]").length == 0){
@@ -827,7 +828,7 @@
                     label = "limit";
                 } else if(!c.multiple && this.options.selected.length > 0){
                     label = this.options.selected[0].innerText;
-                } else if(typeof(c.placeholder) == "string"){
+                } else if(typeof c.placeholder === "string"){
                     label = c.placeholder;
                 } else {
                     label = "placeholder" + (c.multiple && c.multiLimit < Infinity? "Multi": "");
@@ -1062,14 +1063,14 @@
                 for(var k in key){ this.config(k, key[k], false); }
                 return this.reload()? this.con: this.con;
             }
-            if(typeof(key) == "undefined"){
+            if(key === void 0){
                 return this.con;
             } else if(!(key in this.con)){
                 return false;
             }
 
             // Set | Return
-            if(typeof(value) == "undefined"){
+            if(value === void 0){
                 return this.con[key];
             }
             this.con[key] = value;
@@ -1096,7 +1097,7 @@
          |  @since  0.5.0 [0.4.0]
          */
         on: function(event, callback, args){
-            if(["open", "close", "change"].indexOf(event) < 0 || typeof(callback) != "function"){
+            if(["open", "close", "change"].indexOf(event) < 0 || typeof callback !== "function"){
                 return false;
             }
             if(!(event in this.events)){
@@ -1160,7 +1161,7 @@
          */
         get: function(key, grp){
             var g = "getAttribute";
-            if(typeof(key) == "object" && key.key && key.group){
+            if(typeof key === "object" && key.key && key.group){
                 grp = key.group || grp;
                 key = key.key;
             } else if(key instanceof Element){
@@ -1171,7 +1172,7 @@
                     grp = key[g]("data-group") || key.parentElement[g]("data-group") || "#";
                     key = key[g]("data-key");
                 }
-            } else if(typeof(key) != "string"){
+            } else if(typeof key !== "string"){
                 return false;
             }
             key = (/^[0-9]+$/.test(key))? "_" + key: key;
@@ -1244,7 +1245,7 @@
             }
 
             // Check Group
-            group = (typeof(group) == "string")? group: "#";
+            group = (typeof group === "string")? group: "#";
             if(group !== "#" && !(group in this.groups)){
                 var optgroup = create("OPTGROUP");
                 optgroup.label = group;
@@ -1468,7 +1469,7 @@
                     });
                 } else {
                     for(var key in items){
-                        if(typeof(items[key]) != "string" && typeof(items[key]) != "number" && !(items[key] instanceof Element)){
+                        if(typeof items[key] !== "string" && typeof items[key] !== "number" && !(items[key] instanceof Element)){
                             continue;
                         }
                         this.handle.apply(this, [state, items[key], (key in this.items? key: null)]).concat(args);
@@ -1520,7 +1521,7 @@
             else {
                 config = (config instanceof Array)? config: [config];
                 config.forEach(function(c){
-                    if(typeof(c) === "string"){ has[c] = true; }
+                    if(typeof c === "string"){ has[c] = true; }
                 });
                 has.any = (!has.any)? has.attributes && has.value: has.any;
                 
@@ -1581,7 +1582,7 @@
          |  @since  0.5.15 [0.4.0]
          */
         walker: function(orderi, orderg){
-            if(typeof(this._inLoop) != "undefined" && this._inLoop){
+            if(typeof this._inLoop !== "undefined" && this._inLoop){
                 if(this._inItems.length > 0){
                     do {
                         var temp = this.items[this._inGroup][this._inItems.shift()];
@@ -1606,7 +1607,7 @@
                         keys.sort();
                     } else if(orderi == "DESC"){
                         keys.sort().reverse();
-                    } else if(typeof(orderi) == "function"){
+                    } else if(typeof orderi === "function"){
                         keys = orderi.call(this, keys);
                     }
                     this._inItems = keys;
@@ -1628,7 +1629,7 @@
                 groups.sort();
             } else if(orderg == "DESC"){
                 groups.sort().reverse();
-            } else if(typeof(orderg) == "function"){
+            } else if(typeof orderg === "function"){
                 groups = orderg.call(this, groups);
             }
             groups.unshift("#");

@@ -15,7 +15,7 @@ const headerCSS = `@charset "UTF-8";
  |  tail.select - The vanilla solution to make your HTML select fields AWESOME!
  |  @file       ./css/{design}/tail.select-{color}.css
  |  @author     SamBrishes <sam@pytes.net>
- |  @version    0.5.15 - Beta
+ |  @version    0.5.16 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
@@ -26,7 +26,7 @@ const headerCSS = `@charset "UTF-8";
 /*# sourceMappingURL={source} */
 `; // Empty Last Line
 
-const headerMIN = `@charset "UTF-8"; /* pytesNET/tail.select v.0.5.15 */
+const headerMIN = `@charset "UTF-8"; /* pytesNET/tail.select v.0.5.16 */
 /* @author SamBrishes, pytesNET <sam@pytes.net> | @license MIT */
 {css}
 /*# sourceMappingURL={source} */`;
