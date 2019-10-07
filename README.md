@@ -89,7 +89,7 @@ Thanks To
 -   [Roman Yepanchenko](https://github.com/tizis) / [Russian Translation](https://github.com/pytesNET/tail.select/issues/38)
 -   [elPesecillo](https://github.com/elPesecillo) / [Spanish Translation](https://github.com/pytesNET/tail.select/issues/41)
 -   [Alberto Vincenzi](https://github.com/albertovincenzi) / [Italian Translation](https://github.com/pytesNET/tail.select/issues/43)
--   [WoxVold](https://github.com/woxwold) / [Norwegish Translation](https://github.com/pytesNET/tail.select/issues/45)
+-   [WoxVold](https://github.com/woxwold) / [Norwegian Translation](https://github.com/pytesNET/tail.select/issues/45)
 -   [Spritus](https://github.com/spritus) / [Turkish Translation](https://github.com/pytesNET/tail.select/issues/48)
 
 Documentation
