@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="content-language" content="en" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>tail.select / Documentation / Callbacks</title>
+
+        <!-- Common -->
+        <meta name="author" content="SamBrishes, pytesNET" />
+        <meta name="publisher" content="SamBrishes, pytesNET" />
+        <meta name="copyright" content="SamBrishes, pytesNET" />
+
+        <meta name="name" content="tail.select / Documentation / Callbacks" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <!-- Dublin Core -->
+        <meta name="DC.Language" content="en" />
+        <meta name="DC.Creator" content="SamBrishes, pytesNET" />
+        <meta name="DC.Publisher" content="SamBrishes, pytesNET" />
+        <meta name="DC.Rights" content="SamBrishes, pytesNET" />
+        <meta name="DC.Description" content="" />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="pytesNET" />
+        <meta name="twitter:creator" content="pytesNET" />
+        <meta name="twitter:title" content="tail.select / Documentation / Callbacks" />
+        <meta name="twitter:description" content="" />
+
+        <!-- Open Graph -->
+        <meta name="og:type" content="website" />
+        <meta name="og:url" content="http://pytesNET.github.io/tail.select" />
+        <meta name="og:locale" content="en" />
+        <meta name="og:title" content="tail.select / Documentation / Callbacks" />
+        <meta name="og:site_name" content="tail.select - The vanilla JS solution to level up your HTML &lt;select&gt; fields!" />
+        <meta name="og:description" content="" />
+
+        <!-- Assets -->
+        <link type="text/css" rel="stylesheet" href="../css/octmoon.min.css" />
+        <link type="text/css" rel="stylesheet" href="../css/milligram.min.css" />
+        <link type="text/css" rel="stylesheet" href="../css/styles.min.css" />
+        <script type="text/javascript" src="../js/menuspy.min.js"></script>
+        <script type="text/javascript" src="../js/prism.min.js"></script>
+        <script type="text/javascript" src="../js/website.js"></script>
+        <script type="text/javascript" src="../js/demo.js"></script>
+
+        <!-- Source -->
+        <link type="text/css" rel="stylesheet" href="../../dist/css/default/theme-default.css" />
+        <script type="text/javascript" src="../../dist/js/tail.select.js"></script>
+        <script type="text/javascript" src="../../dist/js/plugins/all.js"></script>
+        <script type="text/javascript" src="../../dist/js/locales/all.js"></script>
+    </head>
+    <body>
+        <div class="header header-static">
+            <div class="container">
+                <div class="row row-no-padding">
+                    <div class="column column-50">
+                        <div class="header-logo">
+                            <a href="https://www.pytes.net" target="_blank" class="logo-developer">
+                                <img src="../img/pytesnet-white.svg" title="pyteesNET Logo" />
+                            </a>
+
+                            <span class="slash">/</span>
+
+                            <a href="https://github.pytes.net/tail.select" target="_blank" class="logo-project">
+                                <span class="tail">tail</span>
+                                <span class="dot">.</span>
+                                <span class="name">select</span>
+                            </a>
+
+                            <div class="logo-projects">
+                                <span class="icon icon-triangle-down" data-toggle="active" data-target=".project-list"></span>
+                                
+                                <ul class="project-list">
+                                    <li class="list-item item-title">
+                                        <span class="tail">other</span><span class="dot">.</span><span class="name">Projects</span>
+                                    </li>
+                                    <li class="list-item"><a href="">
+                                        <span class="item-title">
+                                            <span class="tail">tail</span><span class="dot">.</span><span class="name">DateTime</span>
+                                        </span> 
+                                        <span class="item-slogan">A DateTime Picker</span>
+                                    </a></li>
+                                    <li class="list-item"><a href="">
+                                        <span class="item-title">
+                                            <span class="tail">tail</span><span class="dot">.</span><span class="name">writer</span>
+                                        </span> 
+                                        <span class="item-slogan">A Textarea Markup</span>
+                                    </a></li>
+                                    <li class="list-item"><a href="">
+                                        <span class="item-title">
+                                            <span class="tail">tail</span><span class="dot">.</span><span class="name">sortable</span>
+                                        </span> 
+                                        <span class="item-slogan">A Drag'n'Drop Library</span>
+                                    </a></li>
+                                    <li class="list-item item-close"><span class="icon icon-x" data-toggle="active" data-target=".project-list"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column column-50 text-right">
+                        <ul class="main-navi">
+                            <li class="navi-item">
+                                <a href="../index.html" class="item-link">Home</a>
+                            </li>
+                            <li class="navi-item active">
+                                <a href="../docs/index.html" class="item-link">Documentation</a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="../plugins.html" class="item-link">Plugins</a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="../themes.html" class="item-link">Themes</a>
+                            </li>
+                            <li class="navi-item item-download">
+                                <a href="https://github.com/pytesNET/tail.select/zipball/master" class="item-link">.ZIP</a>
+                                <a href="https://github.com/pytesNET/tail.select/tarball/master" class="item-link">.TAR</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-title">
+            <div class="container">
+                <div class="title-inner">Documentation / Callbacks</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="container">
+                <main class="content-page">
+                    <header class="page-header">
+                        <div class="last-author" data-tooltip="Author"><span class="icon icon-person"></span> SamBrishes, pytesNET</div>
+                        <div class="last-update" data-tooltip="Last Update"><span class="icon icon-calendar"></span> Apr. 04, 2020</div>
+                        <div class="last-version" data-tooltip="Package Version"><span class="icon icon-tag"></span> 0.6.0 - Beta</div>
+                    </header>
+
+                    <article class="page-content">
+                        <h1>Callbacks</h1>
+                        <p>
+                            The <b>tail.select</b> environment offers you 3 different types of callbacks, where you can place your own code,
+                            interact with a specific part of the <b>tail.select</b> script or also completely take-over an entire workflow of
+                            the method itself.
+                        </p>
+                        <p>
+                            You can add each callback type using the <a href="">on</a> option on the main <b>tail.select()</b> constructor or
+                            at any time after the initialization using the <a href="">.on()</a> method on the respective instance.
+                        </p>
+                        
+                        
+                        <h2>Events</h2>
+                        <p>"Something happened, and you may need to know it!"</p>
+                        <p>
+                            Events gets triggered everytime, when some (user) interaction happens, such as the dropdown field gets opened, the
+                            bunch of options gets rendered in the <b>tail.select</b> dropdown field or an item gets selected, disabled or hidden.
+                        </p>
+                        <p>
+                            Events gets also attached and triggered on the main <b>tail.select</b> container, which means that you can catch
+                            them using <code>.addEventListener()</code> next to the own <a href="">.on()</a> method.
+                        </p>
+                        <p class="note">
+                            <b>Good to Know:</b> Changing a state on an item gets also triggered on the source &lt;select&gt; field!
+                        </p>
+                        
+                        <h3>change</h3>
+                        <p></p>
+                        
+                        <h3>limit</h3>
+                        <p></p>
+                        
+                        <h3>open</h3>
+                        <p></p>
+                        
+                        <h3>close</h3>
+                        <p></p>
+                        
+                        <h3>enable</h3>
+                        <p></p>
+                        
+                        <h3>disable</h3>
+                        <p></p>
+                        
+                        <h3>results</h3>
+                        <p></p>
+                        
+                        <h3>noresults</h3>
+                        <p></p>
+                        
+                        
+                        <h2>Filters</h2>
+                        <p>"Something has been created, and you may want to change it!"</p>
+                        <p>
+                            Filters gets triggered everytime, when something important has been created or initialized, such as a rendered
+                            dropdown item or the method and arguments of a single <a href="">.query()</a>. Attached callback functions will
+                            always gets passed the respective arguments, which you're able to change and MUST return the arguments again (even
+                            if you don't changed them).
+                        </p>
+                        <p class="note">
+                            <b>Good to Know:</b> It's highly important to ALWAYS return ALL arguments in the same order. Otherwise the script
+                            will break!
+                        </p>
+                        
+                        <h3>query</h3>
+                        <p></p>
+                        
+                        <h3>query#walk</h3>
+                        <p></p>
+                        
+                        <h3>render</h3>
+                        <p></p>
+                        
+                        <h3>render#&lt;type&gt;</h3>
+                        <p></p>
+                        
+                        <h3>dropdown</h3>
+                        <p></p>
+                        
+                        <h3>update</h3>
+                        <p></p>
+                        
+                        <h3>update#csv</h3>
+                        <p></p>
+                        
+                        <h3>update#label</h3>
+                        <p></p>
+                        
+                        
+                        <h2>Hooks</h2>
+                        <p>"Something is or has been done, and you may want to intervene!"</p>
+                        <p>
+                            Hooks gets triggered everytime on the top and the bottom of important <a href="">Select()</a> methods, and ALWAYS
+                            contains a <code>:before</code> or <code>:after</code> on the callback name. Both types gets ALWAYS passed the
+                            arguments with which the respective method itself was called too.
+                        </p>
+                        <p>
+                            The <code>:before</code> hook allows you to prepend your own code or to completely take-over the entire workflow of
+                            the respective method, depending if you return <code>true</code> (prepend) or <code>false</code> (take-over) on your
+                            callback function. The <code>:after</code> hook just allows you to append your own code on the bottom of the method.
+                        </p>
+                        <p class="note">
+                            <b>Good to Know:</b> Just one of the attached callbacks needs to return <code>false</code> to skip the entire workflow!
+                        </p>
+                        
+                        <h3>init:&lt;position&gt;</h3>
+                        <p></p>
+                        
+                        <h3>build:&lt;position&gt;</h3>
+                        <p></p>
+                        
+                        <h3>bind:&lt;position&gt;</h3>
+                        <p></p>
+                        
+                        <h3>query:&lt;position&gt;</h3>
+                        <p></p>
+                        
+                        <h3>update:&lt;position&gt;</h3>
+                        <p></p>
+                        
+                        <h3>reload:&lt;position&gt;</h3>
+                        <p></p>
+                        
+                        <h3>remove:&lt;position&gt;</h3>
+                        <p></p></article>
+                    
+                    <footer class="page-footer">
+                        <div class="footer-author"></div>
+                        <div class="footer-last-update"></div>
+                        <div class="footer-tags"></div>
+                    </footer>
+                </main>
+
+                <div class="content-sidebar">
+                    <div class="widget widget-toc">
+                        <div class="widget-title">Table of Content</div>
+                        <div class="widget-content">
+                            
+                            <ul class="toc-navi navi-depth-1">
+                                <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                    <a href="index.html#documentation" title="Documentation">Documentation</a>
+                            
+                                <ul class="toc-sub-navi navi-depth-2">
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="index.html#translations" title="Translations">Translations</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="index.html#translations-add" title="Create a new Translation">Create a new Translation</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                </ul>
+                                </li>
+                                <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                    <a href="basics.html#basics" title="Installation & Usage">Installation & Usage</a>
+                            
+                                <ul class="toc-sub-navi navi-depth-2">
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="basics.html#explanation" title="Explaning the Versions">Explaning the Versions</a>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="basics.html#get" title="Get tail.select">Get tail.select</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="basics.html#package-manager" title="Using a Package Manager">Using a Package Manager</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="basics.html#cdn" title="Using a CDN">Using a CDN</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="basics.html#use-es5" title="Use tail.select (ES5)">Use tail.select (ES5)</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="basics.html#use-es6" title="Use tail.select (ES6)">Use tail.select (ES6)</a>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="basics.html#configure" title="Configure tail.select">Configure tail.select</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="basics.html#constructor" title="Constructor">Constructor</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                </ul>
+                                </li>
+                                <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                    <a href="options.html#options" title="Public Options">Public Options</a>
+                            
+                                <ul class="toc-sub-navi navi-depth-2">
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-classnames" title="classNames">classNames</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-csvoutput" title="csvOutput">csvOutput</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-csvseparator" title="csvSeparator">csvSeparator</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-descriptions" title="descriptions">descriptions</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-deselect" title="deselect">deselect</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-disabled" title="disabled">disabled</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-grouplessname" title="grouplessName">grouplessName</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-height" title="height">height</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-hidedisabled" title="hideDisabled">hideDisabled</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-hideempty" title="hideEmpty">hideEmpty</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-hidehidden" title="hideHidden">hideHidden</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-hideselected" title="hideSelected">hideSelected</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-items" title="items">items</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-locale" title="locale">locale</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-linguisticrules" title="linguisticRules">linguisticRules</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-multiple" title="multiple">multiple</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-multilimit" title="multiLimit">multiLimit</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-multiselectall" title="multiSelectAll">multiSelectAll</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-multiselectgroup" title="multiSelectGroup">multiSelectGroup</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-on" title="on">on</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-openabove" title="openAbove">openAbove</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-placeholder" title="placeholder">placeholder</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-placeholdercount" title="placeholderCount">placeholderCount</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-plugins" title="plugins">plugins</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-rtl" title="rtl">rtl</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-search" title="search">search</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-searchconfig" title="searchConfig">searchConfig</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-searchfocus" title="searchFocus">searchFocus</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-searchmarked" title="searchMarked">searchMarked</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-searchminlength" title="searchMinLength">searchMinLength</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-sortitems" title="sortItems">sortItems</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-sortgroups" title="sortGroups">sortGroups</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-sortsearch" title="sortSearch">sortSearch</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-sourcebind" title="sourceBind">sourceBind</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-sourcehide" title="sourceHide">sourceHide</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-startopen" title="startOpen">startOpen</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-stayopen" title="stayOpen">stayOpen</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-stickygroups" title="stickyGroups">stickyGroups</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-theme" title="theme">theme</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-titleoverflow" title="titleOverflow">titleOverflow</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-width" title="width">width</a>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="options.html#removed-options" title="Removed Options">Removed Options</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-animate" title="animate">animate</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-bindsourceselect" title="bindSourceSelect">bindSourceSelect</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-cbcomplete" title="cbComplete">cbComplete</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-cbempty" title="cbEmpty">cbEmpty</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-cbloopitem" title="cbLoopItem">cbLoopItem</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-cbloopgroup" title="cbLoopGroup">cbLoopGroup</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-hideselect" title="hideSelect">hideSelect</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-multicountainer" title="multiContainer">multiContainer</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-multipinselected" title="multiPinSelected">multiPinSelected</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-multishowcount" title="multiShowCount">multiShowCount</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-multishowlimit" title="multiShowLimit">multiShowLimit</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-searchdisabled" title="searchDisabled">searchDisabled</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                </ul>
+                                </li>
+                                <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                    <a href="class-select.html#null" title="Select Class">Select Class</a>
+                            
+                                <ul class="toc-sub-navi navi-depth-2">
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="class-select.html#constructor" title="Main Constructor">Main Constructor</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#binding-jquery" title="jQuery Binding">jQuery Binding</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#binding-mootools" title="MooTools Binding">MooTools Binding</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="class-select.html#methods-internal" title="Internal Methods">Internal Methods</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-_e" title="._e()">._e()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-_cls" title="._cls()">._cls()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-init" title=".init()">.init()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-build" title=".build()">.build()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-bind" title=".bind()">.bind()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-calculate" title=".calculate()">.calculate()</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="class-select.html#methods-api" title="API Methods">API Methods</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-trigger" title=".trigger()">.trigger()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-query" title=".query()">.query()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-render" title=".render()">.render()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-update" title=".update()">.update()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-updatecsv" title=".updateCSV()">.updateCSV()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-updatelabel" title=".updateLabel()">.updateLabel()</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="class-select.html#methods-public" title="Public Methods">Public Methods</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-open" title=".open()">.open()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-close" title=".close()">.close()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-toggle" title=".toggle()">.toggle()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-reload" title=".reload()">.reload()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-remove" title=".remove()">.remove()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-get" title=".get()">.get()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-set" title=".set()">.set()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-enable" title=".enable()">.enable()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-disable" title=".disable()">.disable()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-on" title=".on()">.on()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-value" title=".value()">.value()</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="class-select.html#methods-internal" title="Variables">Variables</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-__" title=".__">.__</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-_select" title="._select">._select</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-_label" title="._label">._label</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-_dropdown" title="._dropdown">._dropdown</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-_search" title="._search">._search</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-_csv" title="._csv">._csv</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-_last_query" title="._last_query">._last_query</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-id" title=".id">.id</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-e" title=".e">.e</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-con" title=".con">.con</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-listen" title=".listen">.listen</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-callbacks" title=".callbacks">.callbacks</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-options" title=".options">.options</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-plugins" title=".plugins">.plugins</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="class-select.html#methods-removed" title="Removed Methods">Removed Methods</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-callback" title=".callback()">.callback()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-calc" title=".calc()">.calc()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-cbgroup" title=".cbGroup()">.cbGroup()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-cbitem" title=".cbItem()">.cbItem()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-choose" title=".choose()">.choose()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-choose" title=".config()">.config()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-setlabel" title=".setLabel()">.setLabel()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-setcontainer" title=".setContainer()">.setContainer()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-choose" title=".setCSVInput()">.setCSVInput()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-choose" title=".setCounter()">.setCounter()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-updatecontainer" title=".updateContainer()">.updateContainer()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-updatepin" title=".updatePin()">.updatePin()</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                </ul>
+                                </li>
+                                <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                    <a href="class-options.html#null" title="Options Class">Options Class</a>
+                            
+                                <ul class="toc-sub-navi navi-depth-2">
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#constructor" title="Main Constructor">Main Constructor</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-create" title=".create()">.create()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-get" title=".get()">.get()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-getgroups" title=".getGroups()">.getGroups()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-count" title=".count()">.count()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-set" title=".set()">.set()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-add" title=".add()">.add()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-handle" title=".handle()">.handle()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-select" title=".select()">.select()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-unselect" title=".unselect()">.unselect()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-disable" title=".disable()">.disable()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-enable" title=".enable()">.enable()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-hide" title=".hide()">.hide()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-show" title=".show()">.show()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-toggle" title=".toggle()">.toggle()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-reload" title=".reload()">.reload()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-applylinguisticrules" title=".applyLinguisticRules()">.applyLinguisticRules()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-find" title=".find()">.find()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-finder" title=".finder()">.finder()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-walker" title=".walker()">.walker()</a>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#methods-removed" title="Removed Methods">Removed Methods</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-options.html#removed-all" title="all()">all()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-options.html#removed-init" title="init()">init()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-options.html#removed-invert" title="is()">is()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-options.html#removed-invert" title="invert()">invert()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-options.html#removed-move" title=".move()">.move()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-options.html#removed-remove" title=".remove()">.remove()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-options.html#removed-walk" title="walk()">walk()</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                </ul>
+                                </li>
+                                <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                    <a href="callbacks.html#null" title="Callbacks">Callbacks</a>
+                            
+                                <ul class="toc-sub-navi navi-depth-2">
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="callbacks.html#null" title="Events">Events</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="change">change</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="limit">limit</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="open">open</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="close">close</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="enable">enable</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="disable">disable</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="results">results</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="noresults">noresults</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="callbacks.html#null" title="Filters">Filters</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="query">query</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="query#walk">query#walk</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="render">render</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="render#&lt;type&gt;">render#&lt;type&gt;</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="dropdown">dropdown</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="update">update</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="update#csv">update#csv</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="update#label">update#label</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="callbacks.html#null" title="Hooks">Hooks</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="init:&lt;position&gt;">init:&lt;position&gt;</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="build:&lt;position&gt;">build:&lt;position&gt;</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="bind:&lt;position&gt;">bind:&lt;position&gt;</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="query:&lt;position&gt;">query:&lt;position&gt;</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="update:&lt;position&gt;">update:&lt;position&gt;</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="reload:&lt;position&gt;">reload:&lt;position&gt;</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="remove:&lt;position&gt;">remove:&lt;position&gt;</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                </ul>
+                                </li>
+                                <li class="navi-item" data-toggle="show" data-strict="true">
+                                    <a href="plugins.html#null" title="Plugin API">Plugin API</a>
+                                </li>
+                                <li class="navi-item" data-toggle="show" data-strict="true">
+                                    <a href="theming.html#null" title="Theming API">Theming API</a>
+                                </li>
+                                <li class="navi-item" data-toggle="show" data-strict="true">
+                                    <a href="migrate.html#null" title="Migration Guides">Migration Guides</a>
+                                </li>
+                                <li class="navi-item" data-toggle="show" data-strict="true">
+                                    <a href="how-to-do.html#null" title="Smart Tips & Tricks">Smart Tips & Tricks</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="container">
+                <div class="row footer-meta">
+                    <div class="column column-33">
+                        <b class="footer-title">Important Links</b>
+                        <ul class="footer-navi">
+                            <li class="navi-item">
+                                <a href="https://www.pytes.net" target="_blank">pytesNET - Our official Website</a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="https://www.github.com/pytesNET" target="_blank">pytesNET - Our GitHub Organization</a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="https://www.twitter.com/pytesNET" target="_blank">pytesNET - Our Twitter Profile</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column column-33 text-center">
+                        <div class="developed-by">
+                            <b class="footer-title">Developed By</b>
+                            <a href="https://www.pytes.net" target="_blank">
+                                <img src="../img/pytesnet-white.svg" alt="pytesNET Logo" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="column column-33 text-right">
+                        <b class="footer-title">Other Cool Projects</b>
+                        <ul class="footer-navi">
+                            <li class="navi-item">
+                                <a href="https://github.pytes.net/tail.datetime">tail.datetime - DateTime Picker</a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="https://github.pytes.net/tail.writer">tail.writer - Textarea Markup</a>
+                            </li>
+                            <li class="navi-item disabled">
+                                <span>Coming Soon</span>
+                                <a href="https://github.pytes.net/tail.sortable">tail.sortable - Drag 'n' Drop Library</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row footer-copyright">
+                    <div class="column column-50">
+                        <br />
+                        <b>tail.select</b> is released under the MIT License<br />
+                        Copyright &copy; 2014 - 2020 <a href="https://www.pytes.net" target="_blank">SamBrishes, pytesNET</a>
+                    </div>
+                    <div class="column column-50 text-right">
+                        Star, Fork & Download on <a href="https://www.github.com/pytesNET/tail.select"><span class="icon icon-logo-github"></span></a><br />
+                        Build with <a href="https://milligram.io/" target="_blank">Milligram</a> and <a href="https://octicons.github.com/" target="_blank">Octicons</a><br />
+                        Powered by <a href="https://prismjs.com/" target="_blank">PrismJS</a> and <a href="https://leocs.me/menuspy/" target="_blank">MenuSpy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

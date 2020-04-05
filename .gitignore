@@ -1,0 +1,25 @@
+##
+##  PREMIUM CONTENT
+##
+*/**/bluma
+*/**/foundation
+*/**/materialize
+*/**/ms
+*/**/semantic
+
+*/**/default/theme-default-plus.*
+*/**/harx/theme-harx-plus.*
+
+dist/*/tail.select-light.*
+dist/*/tail.select-tongue.*
+dist/*/tail.select-complete.*
+
+dist/php
+dist/python
+dist/sets
+
+
+##
+##  LOCAL TESTING ENVIRONMENT
+##
+tests

@@ -1,0 +1,722 @@
+{
+    "x2-the-threat": {
+        "key": "x2-the-threat",
+        "value": "X2: The Threat",
+        "group": "Deep Silver",
+        "description": "Released in 2003 for N/A."
+    },
+    "singles-flirt-up-your-life": {
+        "key": "singles-flirt-up-your-life",
+        "value": "Singles: Flirt Up Your Life",
+        "group": "Deep Silver",
+        "description": "Released in 2004 for N/A."
+    },
+    "the-fall-last-days-of-gaia": {
+        "key": "the-fall-last-days-of-gaia",
+        "value": "The Fall: Last Days of Gaia",
+        "group": "Deep Silver",
+        "description": "Released in 2004 for N/A."
+    },
+    "earth-2160": {
+        "key": "earth-2160",
+        "value": "Earth 2160",
+        "group": "Deep Silver",
+        "description": "Released in 2005 for N/A."
+    },
+    "singles-2-triple-trouble": {
+        "key": "singles-2-triple-trouble",
+        "value": "Singles 2: Triple Trouble",
+        "group": "Deep Silver",
+        "description": "Released in 2005 for N/A."
+    },
+    "neuro-hunter": {
+        "key": "neuro-hunter",
+        "value": "Neuro Hunter",
+        "group": "Deep Silver",
+        "description": "Released in 2005 for N/A."
+    },
+    "x3-reunion": {
+        "key": "x3-reunion",
+        "value": "X3: Reunion",
+        "group": "Deep Silver",
+        "description": "Released in 2005 for N/A."
+    },
+    "dawn-of-magic": {
+        "key": "dawn-of-magic",
+        "value": "Dawn of Magic",
+        "group": "Deep Silver",
+        "description": "Released in 2005 for N/A."
+    },
+    "birth-of-america": {
+        "key": "birth-of-america",
+        "value": "Birth of America",
+        "group": "Deep Silver",
+        "description": "Released in 2006 for N/A."
+    },
+    "the-hustle-detroit-streets": {
+        "key": "the-hustle-detroit-streets",
+        "value": "The Hustle: Detroit Streets",
+        "group": "Deep Silver",
+        "description": "Released in 2006 for N/A."
+    },
+    "war-on-terror": {
+        "key": "war-on-terror",
+        "value": "War on Terror",
+        "group": "Deep Silver",
+        "description": "Released in 2006 for N/A."
+    },
+    "spellforce-2": {
+        "key": "spellforce-2",
+        "value": "Spellforce 2",
+        "group": "Deep Silver",
+        "description": "Released in 2006 for N/A."
+    },
+    "city-life": {
+        "key": "city-life",
+        "value": "City Life",
+        "group": "Deep Silver",
+        "description": "Released in 2006 for N/A."
+    },
+    "wildlife-park-2": {
+        "key": "wildlife-park-2",
+        "value": "Wildlife Park 2",
+        "group": "Deep Silver",
+        "description": "Released in 2006 for N/A."
+    },
+    "rush-for-berlin": {
+        "key": "rush-for-berlin",
+        "value": "Rush for Berlin",
+        "group": "Deep Silver",
+        "description": "Released in 2006 for N/A."
+    },
+    "mage-knight-apocalypse": {
+        "key": "mage-knight-apocalypse",
+        "value": "Mage Knight: Apocalypse",
+        "group": "Deep Silver",
+        "description": "Released in 2006 for N/A."
+    },
+    "paraworld": {
+        "key": "paraworld",
+        "value": "ParaWorld",
+        "group": "Deep Silver",
+        "description": "Released in 2006 for N/A."
+    },
+    "the-guild-2": {
+        "key": "the-guild-2",
+        "value": "The Guild 2",
+        "group": "Deep Silver",
+        "description": "Released in 2006 for N/A."
+    },
+    "anno-1701": {
+        "key": "anno-1701",
+        "value": "Anno 1701",
+        "group": "Deep Silver",
+        "description": "Released in 2006 for N/A."
+    },
+    "gothic-3": {
+        "key": "gothic-3",
+        "value": "Gothic 3",
+        "group": "Deep Silver",
+        "description": "Released in 2006 for N/A."
+    },
+    "secret-files-tunguska": {
+        "key": "secret-files-tunguska",
+        "value": "Secret Files: Tunguska",
+        "group": "Deep Silver",
+        "description": "Released in 2006 for N/A."
+    },
+    "trackmania-united": {
+        "key": "trackmania-united",
+        "value": "TrackMania United",
+        "group": "Deep Silver",
+        "description": "Released in 2006 for N/A."
+    },
+    "warhammer-mark-of-chaos": {
+        "key": "warhammer-mark-of-chaos",
+        "value": "Warhammer: Mark of Chaos",
+        "group": "Deep Silver",
+        "description": "Released in 2006 for N/A."
+    },
+    "wildlife-park-2-crazy-zoo": {
+        "key": "wildlife-park-2-crazy-zoo",
+        "value": "Wildlife Park 2: Crazy Zoo",
+        "group": "Deep Silver",
+        "description": "Released in 2007 for N/A."
+    },
+    "wildlife-park-2-marine-world": {
+        "key": "wildlife-park-2-marine-world",
+        "value": "Wildlife Park 2: Marine World",
+        "group": "Deep Silver",
+        "description": "Released in 2007 for N/A."
+    },
+    "horse-life": {
+        "key": "horse-life",
+        "value": "Horse Life",
+        "group": "Deep Silver",
+        "description": "Released in 2008 for N/A."
+    },
+    "rhodan-myth-of-the-illochim": {
+        "key": "rhodan-myth-of-the-illochim",
+        "value": "Rhodan: Myth of the Illochim",
+        "group": "Deep Silver",
+        "description": "Released in 2008 for N/A."
+    },
+    "crosswords": {
+        "key": "crosswords",
+        "value": "CrossworDS",
+        "group": "Deep Silver",
+        "description": "Released in 2008 for N/A."
+    },
+    "s-t-a-l-k-e-r--clear-sky": {
+        "key": "s-t-a-l-k-e-r--clear-sky",
+        "value": "S.T.A.L.K.E.R.: Clear Sky",
+        "group": "Deep Silver",
+        "description": "Released in 2008 for N/A."
+    },
+    "let-s-play-mums": {
+        "key": "let-s-play-mums",
+        "value": "Let's Play Mums",
+        "group": "Deep Silver",
+        "description": "Released in 2008 for N/A."
+    },
+    "let-s-play-schools": {
+        "key": "let-s-play-schools",
+        "value": "Let's Play Schools",
+        "group": "Deep Silver",
+        "description": "Released in 2008 for N/A."
+    },
+    "x3-terran-conflict": {
+        "key": "x3-terran-conflict",
+        "value": "X3: Terran Conflict",
+        "group": "Deep Silver",
+        "description": "Released in 2008 for N/A."
+    },
+    "professor-heinz-wolff-s-gravity": {
+        "key": "professor-heinz-wolff-s-gravity",
+        "value": "Professor Heinz Wolff's Gravity",
+        "group": "Deep Silver",
+        "description": "Released in 2008 for N/A."
+    },
+    "sacred-2-fallen-angel": {
+        "key": "sacred-2-fallen-angel",
+        "value": "Sacred 2: Fallen Angel",
+        "group": "Deep Silver",
+        "description": "Released in 2008 for N/A."
+    },
+    "warhammer-battle-march": {
+        "key": "warhammer-battle-march",
+        "value": "Warhammer: Battle March",
+        "group": "Deep Silver",
+        "description": "Released in 2008 for N/A."
+    },
+    "wsc-real-08-world-snooker-championship": {
+        "key": "wsc-real-08-world-snooker-championship",
+        "value": "WSC Real 08: World Snooker Championship",
+        "group": "Deep Silver",
+        "description": "Released in 2008 for N/A."
+    },
+    "secret-files-2-puritas-cordis-1": {
+        "key": "secret-files-2-puritas-cordis-1",
+        "value": "Secret Files 2: Puritas Cordis[1]",
+        "group": "Deep Silver",
+        "description": "Released in 2009 for Microsoft Windows, Nintendo DS, Wii."
+    },
+    "fritz-chess": {
+        "key": "fritz-chess",
+        "value": "Fritz Chess",
+        "group": "Deep Silver",
+        "description": "Released in 2009 for Nintendo DS, PlayStation 3, Wii, 2009 Q2."
+    },
+    "cursed-mountain-3": {
+        "key": "cursed-mountain-3",
+        "value": "Cursed Mountain[3]",
+        "group": "Deep Silver",
+        "description": "Released in 2009 for Wii."
+    },
+    "risen": {
+        "key": "risen",
+        "value": "Risen",
+        "group": "Deep Silver",
+        "description": "Released in 2009 for Microsoft Windows, Xbox 360, November 10, 2009."
+    },
+    "prison-break-the-conspiracy-5": {
+        "key": "prison-break-the-conspiracy-5",
+        "value": "Prison Break: The Conspiracy[5]",
+        "group": "Deep Silver",
+        "description": "Released in 2010 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "lost-horizon": {
+        "key": "lost-horizon",
+        "value": "Lost Horizon",
+        "group": "Deep Silver",
+        "description": "Released in 2010 for Microsoft Windows."
+    },
+    "emergency-2012-the-quest-for-peace": {
+        "key": "emergency-2012-the-quest-for-peace",
+        "value": "Emergency 2012: The Quest for Peace",
+        "group": "Deep Silver",
+        "description": "Released in 2010 for Microsoft Windows."
+    },
+    "the-x-factor-6-7": {
+        "key": "the-x-factor-6-7",
+        "value": "The X Factor[6][7]",
+        "group": "Deep Silver",
+        "description": "Released in 2010 for PlayStation 3, Wii, Xbox 360."
+    },
+    "dead-island-9": {
+        "key": "dead-island-9",
+        "value": "Dead Island[9]",
+        "group": "Deep Silver",
+        "description": "Released in 2011 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "x3-albion-prelude-10": {
+        "key": "x3-albion-prelude-10",
+        "value": "X3: Albion Prelude[10]",
+        "group": "Deep Silver",
+        "description": "Released in 2011 for Microsoft Windows, December 23, 2011."
+    },
+    "catherine-11": {
+        "key": "catherine-11",
+        "value": "Catherine[11]",
+        "group": "Deep Silver",
+        "description": "Released in 2012 for PlayStation 3, Xbox 360."
+    },
+    "cartoon-network-punch-time-explosion": {
+        "key": "cartoon-network-punch-time-explosion",
+        "value": "Cartoon Network: Punch Time Explosion",
+        "group": "Deep Silver",
+        "description": "Released in 2012 for Nintendo 3DS."
+    },
+    "risen-2-dark-waters-13": {
+        "key": "risen-2-dark-waters-13",
+        "value": "Risen 2: Dark Waters[13]",
+        "group": "Deep Silver",
+        "description": "Released in 2012 for Microsoft Windows."
+    },
+    "back-to-the-future-the-game": {
+        "key": "back-to-the-future-the-game",
+        "value": "Back to the Future: The Game",
+        "group": "Deep Silver",
+        "description": "Released in 2012 for PlayStation 3, Wii."
+    },
+    "cartoon-network-punch-time-explosion-xl": {
+        "key": "cartoon-network-punch-time-explosion-xl",
+        "value": "Cartoon Network: Punch Time Explosion XL",
+        "group": "Deep Silver",
+        "description": "Released in 2012 for PlayStation 3, Wii, Xbox 360."
+    },
+    "dead-island-game-of-the-year-edition-14": {
+        "key": "dead-island-game-of-the-year-edition-14",
+        "value": "Dead Island: Game of the Year Edition[14]",
+        "group": "Deep Silver",
+        "description": "Released in 2012 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "risen-2-dark-waters-13-15": {
+        "key": "risen-2-dark-waters-13-15",
+        "value": "Risen 2: Dark Waters[13][15]",
+        "group": "Deep Silver",
+        "description": "Released in 2012 for PlayStation 3, Xbox 360."
+    },
+    "secret-files-3-16": {
+        "key": "secret-files-3-16",
+        "value": "Secret Files 3[16]",
+        "group": "Deep Silver",
+        "description": "Released in 2012 for Microsoft Windows."
+    },
+    "emergency-2013-17": {
+        "key": "emergency-2013-17",
+        "value": "Emergency 2013[17]",
+        "group": "Deep Silver",
+        "description": "Released in 2012 for Microsoft Windows."
+    },
+    "sacred-citadel-18": {
+        "key": "sacred-citadel-18",
+        "value": "Sacred Citadel[18]",
+        "group": "Deep Silver",
+        "description": "Released in 2013 for Microsoft Windows, PlayStation 3 (PSN), Xbox 360 (XBLA)."
+    },
+    "dead-island-riptide-19": {
+        "key": "dead-island-riptide-19",
+        "value": "Dead Island: Riptide[19]",
+        "group": "Deep Silver",
+        "description": "Released in 2013 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "x3-albion-prelude-20": {
+        "key": "x3-albion-prelude-20",
+        "value": "X3: Albion Prelude[20]",
+        "group": "Deep Silver",
+        "description": "Released in 2013 for Linux."
+    },
+    "ride-to-hell-retribution-21": {
+        "key": "ride-to-hell-retribution-21",
+        "value": "Ride to Hell: Retribution[21]",
+        "group": "Deep Silver",
+        "description": "Released in 2013 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "killer-is-dead-22": {
+        "key": "killer-is-dead-22",
+        "value": "Killer Is Dead[22]",
+        "group": "Deep Silver",
+        "description": "Released in 2013 for PlayStation 3, Xbox 360."
+    },
+    "secret-files-sam-peters": {
+        "key": "secret-files-sam-peters",
+        "value": "Secret Files: Sam Peters",
+        "group": "Deep Silver",
+        "description": "Released in 2013 for Microsoft Windows."
+    },
+    "emergency-2014": {
+        "key": "emergency-2014",
+        "value": "Emergency 2014",
+        "group": "Deep Silver",
+        "description": "Released in 2013 for Microsoft Windows."
+    },
+    "x-rebirth": {
+        "key": "x-rebirth",
+        "value": "X Rebirth",
+        "group": "Deep Silver",
+        "description": "Released in 2013 for Microsoft Windows."
+    },
+    "nascar-14-23": {
+        "key": "nascar-14-23",
+        "value": "NASCAR '14[23]",
+        "group": "Deep Silver",
+        "description": "Released in 2014 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "sacred-3-24": {
+        "key": "sacred-3-24",
+        "value": "Sacred 3[24]",
+        "group": "Deep Silver",
+        "description": "Released in 2014 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "risen-3-titan-lords-25": {
+        "key": "risen-3-titan-lords-25",
+        "value": "Risen 3: Titan Lords[25]",
+        "group": "Deep Silver",
+        "description": "Released in 2014 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "metro-redux-26": {
+        "key": "metro-redux-26",
+        "value": "Metro Redux[26]",
+        "group": "Deep Silver",
+        "description": "Released in 2014 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "wasteland-2-27": {
+        "key": "wasteland-2-27",
+        "value": "Wasteland 2[27]",
+        "group": "Deep Silver",
+        "description": "Released in 2014 for Microsoft Windows, macOS, Linux."
+    },
+    "ryse-son-of-rome": {
+        "key": "ryse-son-of-rome",
+        "value": "Ryse: Son of Rome",
+        "group": "Deep Silver",
+        "description": "Released in 2014 for Microsoft Windows[28]."
+    },
+    "escape-dead-island-30": {
+        "key": "escape-dead-island-30",
+        "value": "Escape Dead Island[30]",
+        "group": "Deep Silver",
+        "description": "Released in 2014 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "saints-row-iv-re-elected-31": {
+        "key": "saints-row-iv-re-elected-31",
+        "value": "Saints Row IV: Re-Elected[31]",
+        "group": "Deep Silver",
+        "description": "Released in 2015 for PlayStation 4, Xbox One."
+    },
+    "saints-row-gat-out-of-hell-31-32": {
+        "key": "saints-row-gat-out-of-hell-31-32",
+        "value": "Saints Row: Gat out of Hell[31][32]",
+        "group": "Deep Silver",
+        "description": "Released in 2015 for Microsoft Windows, PlayStation 3, PlayStation 4, Xbox 360, Xbox One."
+    },
+    "risen-3-titan-lords-enhanced-edition-33": {
+        "key": "risen-3-titan-lords-enhanced-edition-33",
+        "value": "Risen 3: Titan Lords Enhanced Edition[33]",
+        "group": "Deep Silver",
+        "description": "Released in 2015 for Microsoft Windows, PlayStation 4."
+    },
+    "lost-horizon-2": {
+        "key": "lost-horizon-2",
+        "value": "Lost Horizon 2",
+        "group": "Deep Silver",
+        "description": "Released in 2015 for Microsoft Windows."
+    },
+    "wasteland-2-director-s-cut-34": {
+        "key": "wasteland-2-director-s-cut-34",
+        "value": "Wasteland 2: Director's Cut[34]",
+        "group": "Deep Silver",
+        "description": "Released in 2015 for Microsoft Windows, macOS, Linux, PlayStation 4, Xbox One."
+    },
+    "emergency-2016-35": {
+        "key": "emergency-2016-35",
+        "value": "Emergency 2016[35]",
+        "group": "Deep Silver",
+        "description": "Released in 2015 for Microsoft Windows."
+    },
+    "secret-files-tunguska": {
+        "key": "secret-files-tunguska",
+        "value": "Secret Files: Tunguska",
+        "group": "Deep Silver",
+        "description": "Released in 2015 for Wii U (Nintendo eShop)."
+    },
+    "saints-row-iv-36": {
+        "key": "saints-row-iv-36",
+        "value": "Saints Row IV[36]",
+        "group": "Deep Silver",
+        "description": "Released in 2015 for Linux."
+    },
+    "saints-row-gat-out-of-hell-36": {
+        "key": "saints-row-gat-out-of-hell-36",
+        "value": "Saints Row: Gat out of Hell[36]",
+        "group": "Deep Silver",
+        "description": "Released in 2015 for Linux."
+    },
+    "this-war-of-mine-the-little-ones": {
+        "key": "this-war-of-mine-the-little-ones",
+        "value": "This War of Mine: The Little Ones",
+        "group": "Deep Silver",
+        "description": "Released in 2016 for PlayStation 4, Xbox One."
+    },
+    "homefront-the-revolution-37": {
+        "key": "homefront-the-revolution-37",
+        "value": "Homefront: The Revolution[37]",
+        "group": "Deep Silver",
+        "description": "Released in 2016 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "dead-island-definitive-edition-38": {
+        "key": "dead-island-definitive-edition-38",
+        "value": "Dead Island: Definitive Edition[38]",
+        "group": "Deep Silver",
+        "description": "Released in 2016 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "deadlight-director-s-cut-39": {
+        "key": "deadlight-director-s-cut-39",
+        "value": "Deadlight: Director's Cut[39]",
+        "group": "Deep Silver",
+        "description": "Released in 2016 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "mighty-no-9-40": {
+        "key": "mighty-no-9-40",
+        "value": "Mighty No. 9[40]",
+        "group": "Deep Silver",
+        "description": "Released in 2016 for Microsoft Windows, macOS, Linux, PlayStation 3, PlayStation 4, Wii U, Xbox 360, Xbox One."
+    },
+    "sacred-legends-41-42": {
+        "key": "sacred-legends-41-42",
+        "value": "Sacred Legends[41][42]",
+        "group": "Deep Silver",
+        "description": "Released in 2016 for Android, iOS."
+    },
+    "warp-shift-43": {
+        "key": "warp-shift-43",
+        "value": "Warp Shift[43]",
+        "group": "Deep Silver",
+        "description": "Released in 2016 for Android, iOS."
+    },
+    "the-king-of-fighters-xiv-44": {
+        "key": "the-king-of-fighters-xiv-44",
+        "value": "The King of Fighters XIV[44]",
+        "group": "Deep Silver",
+        "description": "Released in 2016 for PlayStation 4."
+    },
+    "emergency-2017-45": {
+        "key": "emergency-2017-45",
+        "value": "Emergency 2017[45]",
+        "group": "Deep Silver",
+        "description": "Released in 2016 for Microsoft Windows."
+    },
+    "killing-floor-2-46": {
+        "key": "killing-floor-2-46",
+        "value": "Killing Floor 2[46]",
+        "group": "Deep Silver",
+        "description": "Released in 2016 for PlayStation 4."
+    },
+    "7th-dragon-iii-code-vfd-48": {
+        "key": "7th-dragon-iii-code-vfd-48",
+        "value": "7th Dragon III Code: VFD[48]",
+        "group": "Deep Silver",
+        "description": "Released in 2016 for Nintendo 3DS."
+    },
+    "shin-megami-tensei-iv-apocalypse-48": {
+        "key": "shin-megami-tensei-iv-apocalypse-48",
+        "value": "Shin Megami Tensei IV: Apocalypse[48]",
+        "group": "Deep Silver",
+        "description": "Released in 2016 for Nintendo 3DS."
+    },
+    "galaxy-on-fire-3-manticore-49": {
+        "key": "galaxy-on-fire-3-manticore-49",
+        "value": "Galaxy on Fire 3: Manticore[49]",
+        "group": "Deep Silver",
+        "description": "Released in 2016 for iOS."
+    },
+    "persona-5-50": {
+        "key": "persona-5-50",
+        "value": "Persona 5[50]",
+        "group": "Deep Silver",
+        "description": "Released in 2017 for PlayStation 3, PlayStation 4."
+    },
+    "puyo-puyo-tetris-52": {
+        "key": "puyo-puyo-tetris-52",
+        "value": "Puyo Puyo Tetris[52]",
+        "group": "Deep Silver",
+        "description": "Released in 2017 for Nintendo Switch, PlayStation 4."
+    },
+    "dreamfall-chapters": {
+        "key": "dreamfall-chapters",
+        "value": "Dreamfall Chapters",
+        "group": "Deep Silver",
+        "description": "Released in 2017 for PlayStation 4, Xbox One."
+    },
+    "galaxy-on-fire-3-manticore-53": {
+        "key": "galaxy-on-fire-3-manticore-53",
+        "value": "Galaxy on Fire 3: Manticore[53]",
+        "group": "Deep Silver",
+        "description": "Released in 2017 for Android."
+    },
+    "utawarerumono-mask-of-deception-54": {
+        "key": "utawarerumono-mask-of-deception-54",
+        "value": "Utawarerumono: Mask of Deception[54]",
+        "group": "Deep Silver",
+        "description": "Released in 2017 for PlayStation 4, PlayStation Vita."
+    },
+    "valkyria-revolution-55": {
+        "key": "valkyria-revolution-55",
+        "value": "Valkyria Revolution[55]",
+        "group": "Deep Silver",
+        "description": "Released in 2017 for PlayStation 4, Xbox One."
+    },
+    "agents-of-mayhem-56": {
+        "key": "agents-of-mayhem-56",
+        "value": "Agents of Mayhem[56]",
+        "group": "Deep Silver",
+        "description": "Released in 2017 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "yakuza-kiwami-57": {
+        "key": "yakuza-kiwami-57",
+        "value": "Yakuza Kiwami[57]",
+        "group": "Deep Silver",
+        "description": "Released in 2017 for PlayStation 4."
+    },
+    "utawarerumono-mask-of-truth-59": {
+        "key": "utawarerumono-mask-of-truth-59",
+        "value": "Utawarerumono: Mask of Truth[59]",
+        "group": "Deep Silver",
+        "description": "Released in 2017 for PlayStation 4, PlayStation Vita."
+    },
+    "etrian-odyssey-v-beyond-the-myth-60": {
+        "key": "etrian-odyssey-v-beyond-the-myth-60",
+        "value": "Etrian Odyssey V: Beyond the Myth[60]",
+        "group": "Deep Silver",
+        "description": "Released in 2017 for Nintendo 3DS."
+    },
+    "kingdom-come-deliverance-62": {
+        "key": "kingdom-come-deliverance-62",
+        "value": "Kingdom Come: Deliverance[62]",
+        "group": "Deep Silver",
+        "description": "Released in 2018 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "radiant-historia-perfect-chronology-63": {
+        "key": "radiant-historia-perfect-chronology-63",
+        "value": "Radiant Historia: Perfect Chronology[63]",
+        "group": "Deep Silver",
+        "description": "Released in 2018 for Nintendo 3DS."
+    },
+    "yakuza-6-the-song-of-life-64": {
+        "key": "yakuza-6-the-song-of-life-64",
+        "value": "Yakuza 6: The Song of Life[64]",
+        "group": "Deep Silver",
+        "description": "Released in 2018 for PlayStation 4."
+    },
+    "conan-exiles-65": {
+        "key": "conan-exiles-65",
+        "value": "Conan Exiles[65]",
+        "group": "Deep Silver",
+        "description": "Released in 2018 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "shin-megami-tensei-strange-journey-redux-67": {
+        "key": "shin-megami-tensei-strange-journey-redux-67",
+        "value": "Shin Megami Tensei: Strange Journey Redux[67]",
+        "group": "Deep Silver",
+        "description": "Released in 2018 for Nintendo 3DS."
+    },
+    "dead-island-survivors-68": {
+        "key": "dead-island-survivors-68",
+        "value": "Dead Island: Survivors[68]",
+        "group": "Deep Silver",
+        "description": "Released in 2018 for Android, iOS."
+    },
+    "yakuza-kiwami-2-69": {
+        "key": "yakuza-kiwami-2-69",
+        "value": "Yakuza Kiwami 2[69]",
+        "group": "Deep Silver",
+        "description": "Released in 2018 for PlayStation 4."
+    },
+    "the-bard-s-tale-iv-barrows-deep-70": {
+        "key": "the-bard-s-tale-iv-barrows-deep-70",
+        "value": "The Bard's Tale IV: Barrows Deep[70]",
+        "group": "Deep Silver",
+        "description": "Released in 2018 for Microsoft Windows."
+    },
+    "dakar-18-71": {
+        "key": "dakar-18-71",
+        "value": "Dakar 18[71]",
+        "group": "Deep Silver",
+        "description": "Released in 2018 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "pathfinder-kingmaker-72": {
+        "key": "pathfinder-kingmaker-72",
+        "value": "Pathfinder: Kingmaker[72]",
+        "group": "Deep Silver",
+        "description": "Released in 2018 for Microsoft Windows, macOS, Linux."
+    },
+    "this-war-of-mine-complete-edition-73": {
+        "key": "this-war-of-mine-complete-edition-73",
+        "value": "This War of Mine: Complete Edition[73]",
+        "group": "Deep Silver",
+        "description": "Released in 2018 for Nintendo Switch."
+    },
+    "etrian-odyssey-nexus-74": {
+        "key": "etrian-odyssey-nexus-74",
+        "value": "Etrian Odyssey Nexus[74]",
+        "group": "Deep Silver",
+        "description": "Released in 2019 for Nintendo 3DS."
+    },
+    "outward-75": {
+        "key": "outward-75",
+        "value": "Outward[75]",
+        "group": "Deep Silver",
+        "description": "Released in 2019 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "metro-exodus-76": {
+        "key": "metro-exodus-76",
+        "value": "Metro Exodus[76]",
+        "group": "Deep Silver",
+        "description": "Released in 2019 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "shenmue-iii-77": {
+        "key": "shenmue-iii-77",
+        "value": "Shenmue III[77]",
+        "group": "Deep Silver",
+        "description": "Released in 2019 for Microsoft Windows, PlayStation 4."
+    },
+    "the-bard-s-tale-iv-barrows-deep-70": {
+        "key": "the-bard-s-tale-iv-barrows-deep-70",
+        "value": "The Bard's Tale IV: Barrows Deep[70]",
+        "group": "Deep Silver",
+        "description": "Released in 2019 for Nintendo Switch[78], PlayStation 4, Xbox One."
+    },
+    "wasteland-3-70": {
+        "key": "wasteland-3-70",
+        "value": "Wasteland 3[70]",
+        "group": "Deep Silver",
+        "description": "Released in 2019 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "dead-island-2": {
+        "key": "dead-island-2",
+        "value": "Dead Island 2",
+        "group": "Deep Silver",
+        "description": "Released in TBA for Microsoft Windows, PlayStation 4, Xbox One."
+    }
+}

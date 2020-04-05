@@ -1,0 +1,3440 @@
+{
+    "2-in-1-dreamworks-shark-tale--shrek-2": {
+        "key": "2-in-1-dreamworks-shark-tale--shrek-2",
+        "value": "2 in 1: DreamWorks' Shark Tale + Shrek 2",
+        "group": "Activision",
+        "description": "Released in 2005 for Game Boy Advance."
+    },
+    "32-in-1-game-cartridge": {
+        "key": "32-in-1-game-cartridge",
+        "value": "32 in 1 Game Cartridge",
+        "group": "Activision",
+        "description": "Released in 1988 for Atari 2600."
+    },
+    "007-blood-stone": {
+        "key": "007-blood-stone",
+        "value": "007 Blood Stone",
+        "group": "Activision",
+        "description": "Released in 2010 for PlayStation 3, Nintendo DS, Microsoft Windows, Xbox 360."
+    },
+    "007-legends": {
+        "key": "007-legends",
+        "value": "007 Legends",
+        "group": "Activision",
+        "description": "Released in 2012 for PlayStation 3, Xbox 360, Wii U, Microsoft Windows."
+    },
+    "a-10-cuba": {
+        "key": "a-10-cuba",
+        "value": "A-10 Cuba!",
+        "group": "Activision",
+        "description": "Released in 1996 for Classic Mac OS, Microsoft Windows."
+    },
+    "activision-anthology": {
+        "key": "activision-anthology",
+        "value": "Activision Anthology",
+        "group": "Activision",
+        "description": "Released in 2002 for PlayStation 2."
+    },
+    "the-activision-decathlon": {
+        "key": "the-activision-decathlon",
+        "value": "The Activision Decathlon",
+        "group": "Activision",
+        "description": "Released in 1983 for Atari 2600, Atari 5200, Atari 8-bit, ColecoVision, Commodore 64, MSX."
+    },
+    "activision-game-vault-volume-1": {
+        "key": "activision-game-vault-volume-1",
+        "value": "Activision Game Vault: Volume 1",
+        "group": "Activision",
+        "description": "Released in 1997 for Microsoft Windows."
+    },
+    "activision-game-vault-volume-2": {
+        "key": "activision-game-vault-volume-2",
+        "value": "Activision Game Vault: Volume 2",
+        "group": "Activision",
+        "description": "Released in 1997 for Microsoft Windows."
+    },
+    "activision-game-vault-volume-3": {
+        "key": "activision-game-vault-volume-3",
+        "value": "Activision Game Vault: Volume 3",
+        "group": "Activision",
+        "description": "Released in 1997 for Microsoft Windows."
+    },
+    "activision-hits-remixed": {
+        "key": "activision-hits-remixed",
+        "value": "Activision Hits: Remixed",
+        "group": "Activision",
+        "description": "Released in 2006 for PlayStation Portable."
+    },
+    "activision-s-atari-2600-action-pack": {
+        "key": "activision-s-atari-2600-action-pack",
+        "value": "Activision's Atari 2600 Action Pack",
+        "group": "Activision",
+        "description": "Released in 1995 for Microsoft Windows."
+    },
+    "activision-s-atari-2600-action-pack-2": {
+        "key": "activision-s-atari-2600-action-pack-2",
+        "value": "Activision's Atari 2600 Action Pack 2",
+        "group": "Activision",
+        "description": "Released in 1995 for Classic Mac OS, Microsoft Windows."
+    },
+    "activision-s-atari-2600-action-pack-3": {
+        "key": "activision-s-atari-2600-action-pack-3",
+        "value": "Activision's Atari 2600 Action Pack 3",
+        "group": "Activision",
+        "description": "Released in 1995 for Microsoft Windows."
+    },
+    "activision-s-commodore-64-15-pack": {
+        "key": "activision-s-commodore-64-15-pack",
+        "value": "Activision's Commodore 64 15 Pack",
+        "group": "Activision",
+        "description": "Released in 1995 for Microsoft Windows."
+    },
+    "the-adventure-collection": {
+        "key": "the-adventure-collection",
+        "value": "The Adventure Collection",
+        "group": "Activision",
+        "description": "Released in 1995 for Classic Mac OS, Microsoft Windows."
+    },
+    "the-adventurers": {
+        "key": "the-adventurers",
+        "value": "The Adventurers",
+        "group": "Activision",
+        "description": "Released in 1992 for Amiga."
+    },
+    "the-adventures-of-rad-gravity": {
+        "key": "the-adventures-of-rad-gravity",
+        "value": "The Adventures of Rad Gravity",
+        "group": "Activision",
+        "description": "Released in 1990 for Nintendo Entertainment System."
+    },
+    "after-burner": {
+        "key": "after-burner",
+        "value": "After Burner",
+        "group": "Activision",
+        "description": "Released in 1987 for Amiga, Amstrad CPC, Commodore 64, MSX, Atari ST, ZX Spectrum."
+    },
+    "after-burner-ii": {
+        "key": "after-burner-ii",
+        "value": "After Burner II",
+        "group": "Activision",
+        "description": "Released in 1989 for Amiga."
+    },
+    "alcatraz-prison-escape": {
+        "key": "alcatraz-prison-escape",
+        "value": "Alcatraz: Prison Escape",
+        "group": "Activision",
+        "description": "Released in 2001 for Microsoft Windows."
+    },
+    "alcazar-the-forgotten-fortress": {
+        "key": "alcazar-the-forgotten-fortress",
+        "value": "Alcazar: The Forgotten Fortress",
+        "group": "Activision",
+        "description": "Released in 1985 for Apple II, ColecoVision, Commodore 64, MSX."
+    },
+    "alex-demeo-s-title-match-pro-wrestling": {
+        "key": "alex-demeo-s-title-match-pro-wrestling",
+        "value": "Alex DeMeo's Title Match Pro Wrestling",
+        "group": "Activision",
+        "description": "Released in 1987 for Atari 2600."
+    },
+    "alienators-evolution-continues": {
+        "key": "alienators-evolution-continues",
+        "value": "Alienators: Evolution Continues",
+        "group": "Activision",
+        "description": "Released in 2001 for Game Boy Advance."
+    },
+    "aliens-the-computer-game": {
+        "key": "aliens-the-computer-game",
+        "value": "Aliens: The Computer Game",
+        "group": "Activision",
+        "description": "Released in 1986 for Amstrad CPC, Apple II, Commodore 64, ZX Spectrum."
+    },
+    "alien-vs-predator": {
+        "key": "alien-vs-predator",
+        "value": "Alien vs. Predator",
+        "group": "Activision",
+        "description": "Released in 1993 for Super Nintendo Entertainment System."
+    },
+    "alien-vs-predator-the-last-of-his-clan": {
+        "key": "alien-vs-predator-the-last-of-his-clan",
+        "value": "Alien vs Predator: The Last of His Clan",
+        "group": "Activision",
+        "description": "Released in 1993 for Game Boy."
+    },
+    "altered-beast": {
+        "key": "altered-beast",
+        "value": "Altered Beast",
+        "group": "Activision",
+        "description": "Released in 1988 for Amiga, Amstrad CPC, Atari ST, Commodore 64, MSX, ZX Spectrum."
+    },
+    "alter-ego": {
+        "key": "alter-ego",
+        "value": "Alter Ego",
+        "group": "Activision",
+        "description": "Released in 1986 for Apple II, Commodore 64, MS-DOS."
+    },
+    "alundra-2-a-new-legend-begins": {
+        "key": "alundra-2-a-new-legend-begins",
+        "value": "Alundra 2: A New Legend Begins",
+        "group": "Activision",
+        "description": "Released in 2000 for PlayStation."
+    },
+    "the-amazing-spider-man": {
+        "key": "the-amazing-spider-man",
+        "value": "The Amazing Spider-Man",
+        "group": "Activision",
+        "description": "Released in 2012 for Xbox 360, PlayStation 3, Nintendo DS, Nintendo DS, Wii, iOS, Android, Microsoft Windows."
+    },
+    "the-amazing-spider-man-2": {
+        "key": "the-amazing-spider-man-2",
+        "value": "The Amazing Spider-Man 2",
+        "group": "Activision",
+        "description": "Released in 2014 for Xbox 360, Xbox One, PlayStation 3, PlayStation 4, Nintendo DS, Wii U, iOS, Android, Microsoft Windows."
+    },
+    "american-chopper-2-full-throttle": {
+        "key": "american-chopper-2-full-throttle",
+        "value": "American Chopper 2: Full Throttle",
+        "group": "Activision",
+        "description": "Released in 2005 for Microsoft Windows."
+    },
+    "angry-birds-trilogy": {
+        "key": "angry-birds-trilogy",
+        "value": "Angry Birds Trilogy",
+        "group": "Activision",
+        "description": "Released in 2012 for PlayStation 3, Xbox 360, Nintendo DS, Wii, Wii U."
+    },
+    "angry-birds-star-wars": {
+        "key": "angry-birds-star-wars",
+        "value": "Angry Birds Star Wars",
+        "group": "Activision",
+        "description": "Released in 2013 for PlayStation 3, PlayStation Vita, Xbox 360, Nintendo DS, Wii, Wii U."
+    },
+    "animal-planet-emergency-vets": {
+        "key": "animal-planet-emergency-vets",
+        "value": "Animal Planet: Emergency Vets",
+        "group": "Activision",
+        "description": "Released in 2009 for Nintendo DS."
+    },
+    "animal-planet-vet-life": {
+        "key": "animal-planet-vet-life",
+        "value": "Animal Planet: Vet Life",
+        "group": "Activision",
+        "description": "Released in 2009 for Nintendo DS, Wii."
+    },
+    "apache-air-assault": {
+        "key": "apache-air-assault",
+        "value": "Apache: Air Assault",
+        "group": "Activision",
+        "description": "Released in 2010 for PlayStation 3, Xbox 360, Microsoft Windows."
+    },
+    "apocalypse": {
+        "key": "apocalypse",
+        "value": "Apocalypse",
+        "group": "Activision",
+        "description": "Released in 1998 for PlayStation."
+    },
+    "arcade-zone": {
+        "key": "arcade-zone",
+        "value": "Arcade Zone",
+        "group": "Activision",
+        "description": "Released in 2009 for Wii."
+    },
+    "archon-the-light-and-the-dark": {
+        "key": "archon-the-light-and-the-dark",
+        "value": "Archon: The Light and the Dark",
+        "group": "Activision",
+        "description": "Released in 1989 for Nintendo Entertainment System."
+    },
+    "armed-and-dangerous": {
+        "key": "armed-and-dangerous",
+        "value": "Armed and Dangerous",
+        "group": "Activision",
+        "description": "Released in 2004 for Microsoft Windows."
+    },
+    "arthur-the-quest-for-excalibur": {
+        "key": "arthur-the-quest-for-excalibur",
+        "value": "Arthur: The Quest for Excalibur",
+        "group": "Activision",
+        "description": "Released in 1989 for Amiga, Macintosh."
+    },
+    "asteroids": {
+        "key": "asteroids",
+        "value": "Asteroids",
+        "group": "Activision",
+        "description": "Released in 1998 for Game Boy Color, PlayStation, Microsoft Windows."
+    },
+    "autocracy": {
+        "key": "autocracy",
+        "value": "Autocracy",
+        "group": "Activision",
+        "description": "Released in 2002 for Microsoft Windows."
+    },
+    "bakugan-battle-brawlers": {
+        "key": "bakugan-battle-brawlers",
+        "value": "Bakugan: Battle Brawlers",
+        "group": "Activision",
+        "description": "Released in 2009 for Nintendo DS, PlayStation 2, PlayStation 3, Xbox 360, Wii."
+    },
+    "bakugan-battle-trainer": {
+        "key": "bakugan-battle-trainer",
+        "value": "Bakugan: Battle Trainer",
+        "group": "Activision",
+        "description": "Released in 2010 for Nintendo DS."
+    },
+    "ballblazer": {
+        "key": "ballblazer",
+        "value": "Ballblazer",
+        "group": "Activision",
+        "description": "Released in 1985 for Amstrad CPC, Commodore 64, MSX, ZX Spectrum."
+    },
+    "band-hero": {
+        "key": "band-hero",
+        "value": "Band Hero",
+        "group": "Activision",
+        "description": "Released in 2009 for Nintendo DS, PlayStation 2, PlayStation 3, Xbox 360, Wii."
+    },
+    "the-barbie-diaries-high-school-mystery": {
+        "key": "the-barbie-diaries-high-school-mystery",
+        "value": "The Barbie Diaries High School Mystery",
+        "group": "Activision",
+        "description": "Released in 2006 for Game Boy Advance, Microsoft Windows."
+    },
+    "barbie-in-the-12-dancing-princesses": {
+        "key": "barbie-in-the-12-dancing-princesses",
+        "value": "Barbie in the 12 Dancing Princesses",
+        "group": "Activision",
+        "description": "Released in 2006 for Game Boy Advance, Nintendo DS, PlayStation 2, Microsoft Windows."
+    },
+    "barbie-as-the-island-princess": {
+        "key": "barbie-as-the-island-princess",
+        "value": "Barbie as the Island Princess",
+        "group": "Activision",
+        "description": "Released in 2007 for Game Boy Advance, Nintendo DS, PlayStation 2, Wii, Microsoft Windows."
+    },
+    "barbie-fashion-show-an-eye-for-style": {
+        "key": "barbie-fashion-show-an-eye-for-style",
+        "value": "Barbie Fashion Show: An Eye for Style",
+        "group": "Activision",
+        "description": "Released in 2008 for Nintendo DS, Microsoft Windows."
+    },
+    "barnstorming": {
+        "key": "barnstorming",
+        "value": "Barnstorming",
+        "group": "Activision",
+        "description": "Released in 1982 for Atari 2600."
+    },
+    "battleship": {
+        "key": "battleship",
+        "value": "Battleship",
+        "group": "Activision",
+        "description": "Released in 2012 for Nintendo DS, Nintendo 3DS, PlayStation 3, Xbox 360, Wii."
+    },
+    "battletech": {
+        "key": "battletech",
+        "value": "BattleTech",
+        "group": "Activision",
+        "description": "Released in 1995 for Super Nintendo Entertainment System."
+    },
+    "battlezone": {
+        "key": "battlezone",
+        "value": "Battlezone",
+        "group": "Activision",
+        "description": "Released in 1998 for Microsoft Windows."
+    },
+    "battlezone-gold-pack": {
+        "key": "battlezone-gold-pack",
+        "value": "Battlezone: Gold Pack",
+        "group": "Activision",
+        "description": "Released in 1999 for Microsoft Windows."
+    },
+    "battlezone-ii-combat-commander": {
+        "key": "battlezone-ii-combat-commander",
+        "value": "Battlezone II: Combat Commander",
+        "group": "Activision",
+        "description": "Released in 1999 for Microsoft Windows."
+    },
+    "beamrider": {
+        "key": "beamrider",
+        "value": "Beamrider",
+        "group": "Activision",
+        "description": "Released in 1983 for Atari 2600, Atari 5200, Atari 8-bit, Commodore 64, ColecoVision, Intellivision, MSX, ZX Spectrum."
+    },
+    "big-rigs-over-the-road-racing": {
+        "key": "big-rigs-over-the-road-racing",
+        "value": "Big Rigs: Over the Road Racing",
+        "group": "Activision",
+        "description": "Released in 2003 for Microsoft Windows."
+    },
+    "biometal": {
+        "key": "biometal",
+        "value": "BioMetal",
+        "group": "Activision",
+        "description": "Released in 1993 for Super Nintendo Entertainment System."
+    },
+    "blade": {
+        "key": "blade",
+        "value": "Blade",
+        "group": "Activision",
+        "description": "Released in 2000 for Game Boy Color, PlayStation."
+    },
+    "blade-ii": {
+        "key": "blade-ii",
+        "value": "Blade II",
+        "group": "Activision",
+        "description": "Released in 2002 for PlayStation 2, Xbox."
+    },
+    "blast-chamber": {
+        "key": "blast-chamber",
+        "value": "Blast Chamber",
+        "group": "Activision",
+        "description": "Released in 1996 for MS-DOS, PlayStation, Sega Saturn."
+    },
+    "blood-omen-legacy-of-kain": {
+        "key": "blood-omen-legacy-of-kain",
+        "value": "Blood Omen: Legacy of Kain",
+        "group": "Activision",
+        "description": "Released in 1997 for Microsoft Windows."
+    },
+    "bloody-roar-3": {
+        "key": "bloody-roar-3",
+        "value": "Bloody Roar 3",
+        "group": "Activision",
+        "description": "Released in 2001 for PlayStation 2."
+    },
+    "bloody-roar-primal-fury": {
+        "key": "bloody-roar-primal-fury",
+        "value": "Bloody Roar: Primal Fury",
+        "group": "Activision",
+        "description": "Released in 2002 for Nintendo GameCube."
+    },
+    "blue-stinger": {
+        "key": "blue-stinger",
+        "value": "Blue Stinger",
+        "group": "Activision",
+        "description": "Released in 1999 for Dreamcast."
+    },
+    "blur": {
+        "key": "blur",
+        "value": "Blur",
+        "group": "Activision",
+        "description": "Released in 2010 for PlayStation 3, Microsoft Windows, Xbox 360."
+    },
+    "bomber-raid": {
+        "key": "bomber-raid",
+        "value": "Bomber Raid",
+        "group": "Activision",
+        "description": "Released in 1989 for Sega Master System."
+    },
+    "bomberman-tournament": {
+        "key": "bomberman-tournament",
+        "value": "Bomberman Tournament",
+        "group": "Activision",
+        "description": "Released in 2001 for Game Boy Advance."
+    },
+    "borrowed-time": {
+        "key": "borrowed-time",
+        "value": "Borrowed Time",
+        "group": "Activision",
+        "description": "Released in 1985 for Amiga, Apple II, Commodore 64, MS-DOS, Classic Mac OS, Atari ST."
+    },
+    "boxingboxing": {
+        "key": "boxingboxing",
+        "value": "BoxingBoxing",
+        "group": "Activision",
+        "description": "Released in 1980 for Atari 2600."
+    },
+    "bridge": {
+        "key": "bridge",
+        "value": "Bridge",
+        "group": "Activision",
+        "description": "Released in 1980 for Atari 2600."
+    },
+    "bush-buck-global-treasure-hunter": {
+        "key": "bush-buck-global-treasure-hunter",
+        "value": "Bush Buck: Global Treasure Hunter",
+        "group": "Activision",
+        "description": "Released in 1991 for Amiga."
+    },
+    "buzz-lightyear-of-star-command": {
+        "key": "buzz-lightyear-of-star-command",
+        "value": "Buzz Lightyear of Star Command",
+        "group": "Activision",
+        "description": "Released in 2000 for Dreamcast, Game Boy Color, PlayStation, Microsoft Windows."
+    },
+    "cabela-s-4x4-off-road-adventure": {
+        "key": "cabela-s-4x4-off-road-adventure",
+        "value": "Cabela's 4x4 Off-Road Adventure",
+        "group": "Activision",
+        "description": "Released in 2001 for Microsoft Windows."
+    },
+    "cabela-s-4x4-off-road-adventure-2": {
+        "key": "cabela-s-4x4-off-road-adventure-2",
+        "value": "Cabela's 4x4 Off-Road Adventure 2",
+        "group": "Activision",
+        "description": "Released in 2001 for Microsoft Windows."
+    },
+    "cabela-s-4x4-off-road-adventure-3": {
+        "key": "cabela-s-4x4-off-road-adventure-3",
+        "value": "Cabela's 4x4 Off-Road Adventure 3",
+        "group": "Activision",
+        "description": "Released in 2003 for Microsoft Windows."
+    },
+    "cabela-s-adventure-camp": {
+        "key": "cabela-s-adventure-camp",
+        "value": "Cabela's Adventure Camp",
+        "group": "Activision",
+        "description": "Released in 2011 for PlayStation 3, Wii, Xbox 360."
+    },
+    "cabela-s-african-safari": {
+        "key": "cabela-s-african-safari",
+        "value": "Cabela's African Safari",
+        "group": "Activision",
+        "description": "Released in 2006 for PlayStation 2, PlayStation Portable, Microsoft Windows, Xbox 360."
+    },
+    "cabela-s-alaskan-adventures": {
+        "key": "cabela-s-alaskan-adventures",
+        "value": "Cabela's Alaskan Adventures",
+        "group": "Activision",
+        "description": "Released in 2006 for PlayStation 2, Microsoft Windows, Xbox 360."
+    },
+    "cabela-s-big-game-hunter": {
+        "key": "cabela-s-big-game-hunter",
+        "value": "Cabela's Big Game Hunter",
+        "group": "Activision",
+        "description": "Released in 2007 for PlayStation 3, Wii, Xbox 360."
+    },
+    "cabela-s-big-game-hunter-iii-the-next-harvest": {
+        "key": "cabela-s-big-game-hunter-iii-the-next-harvest",
+        "value": "Cabela's Big Game Hunter III: The Next Harvest",
+        "group": "Activision",
+        "description": "Released in 1999 for Microsoft Windows."
+    },
+    "cabela-s-big-game-hunter-2012": {
+        "key": "cabela-s-big-game-hunter-2012",
+        "value": "Cabela's Big Game Hunter 2012",
+        "group": "Activision",
+        "description": "Released in 2011 for PlayStation 3, Wii, Xbox 360."
+    },
+    "cabela-s-big-game-hunter-hunting-party--kinect": {
+        "key": "cabela-s-big-game-hunter-hunting-party--kinect",
+        "value": "Cabela's Big Game Hunter: Hunting Party – Kinect",
+        "group": "Activision",
+        "description": "Released in 2011 for Xbox 360."
+    },
+    "cabela-s-big-game-hunter-pro-hunts": {
+        "key": "cabela-s-big-game-hunter-pro-hunts",
+        "value": "Cabela's Big Game Hunter: Pro Hunts",
+        "group": "Activision",
+        "description": "Released in 2014 for PlayStation 3, Xbox 360, Wii, Microsoft Windows."
+    },
+    "cabela-s-dangerous-hunts": {
+        "key": "cabela-s-dangerous-hunts",
+        "value": "Cabela's Dangerous Hunts",
+        "group": "Activision",
+        "description": "Released in 2003 for PlayStation 2, Xbox, Microsoft Windows."
+    },
+    "cabela-s-dangerous-hunts-2": {
+        "key": "cabela-s-dangerous-hunts-2",
+        "value": "Cabela's Dangerous Hunts 2",
+        "group": "Activision",
+        "description": "Released in 2005 for Nintendo GameCube, PlayStation 2, Microsoft Windows, Xbox."
+    },
+    "cabela-s-dangerous-hunts-2009": {
+        "key": "cabela-s-dangerous-hunts-2009",
+        "value": "Cabela's Dangerous Hunts 2009",
+        "group": "Activision",
+        "description": "Released in 2008 for PlayStation 2, PlayStation 3, Wii, Xbox 360."
+    },
+    "cabela-s-dangerous-hunts-2011": {
+        "key": "cabela-s-dangerous-hunts-2011",
+        "value": "Cabela's Dangerous Hunts 2011",
+        "group": "Activision",
+        "description": "Released in 2010 for PlayStation 3, Wii, Xbox 360."
+    },
+    "cabela-s-dangerous-hunts-2013": {
+        "key": "cabela-s-dangerous-hunts-2013",
+        "value": "Cabela's Dangerous Hunts 2013",
+        "group": "Activision",
+        "description": "Released in 2012 for PlayStation 3, Wii, Xbox 360, Microsoft Windows."
+    },
+    "cabela-s-dangerous-hunts-ultimate-challenge": {
+        "key": "cabela-s-dangerous-hunts-ultimate-challenge",
+        "value": "Cabela's Dangerous Hunts: Ultimate Challenge",
+        "group": "Activision",
+        "description": "Released in 2006 for PlayStation Portable."
+    },
+    "cabela-s-grandslam-hunting-north-american-29": {
+        "key": "cabela-s-grandslam-hunting-north-american-29",
+        "value": "Cabela's Grandslam Hunting: North American 29",
+        "group": "Activision",
+        "description": "Released in 2000 for Microsoft Windows."
+    },
+    "cabela-s-hunting-expeditions": {
+        "key": "cabela-s-hunting-expeditions",
+        "value": "Cabela's Hunting Expeditions",
+        "group": "Activision",
+        "description": "Released in 2012 for PlayStation 3, Wii, Xbox 360, Microsoft Windows."
+    },
+    "cabela-s-monster-buck-hunter": {
+        "key": "cabela-s-monster-buck-hunter",
+        "value": "Cabela's Monster Buck Hunter",
+        "group": "Activision",
+        "description": "Released in 2010 for Wii."
+    },
+    "cabela-s-north-american-adventures": {
+        "key": "cabela-s-north-american-adventures",
+        "value": "Cabela's North American Adventures",
+        "group": "Activision",
+        "description": "Released in 2010 for Wii, PlayStation Portable."
+    },
+    "cabela-s-survival-shadows-of-katmai": {
+        "key": "cabela-s-survival-shadows-of-katmai",
+        "value": "Cabela's Survival: Shadows of Katmai",
+        "group": "Activision",
+        "description": "Released in 2011 for PlayStation 3, Wii, Xbox 360."
+    },
+    "call-of-duty": {
+        "key": "call-of-duty",
+        "value": "Call of Duty",
+        "group": "Activision",
+        "description": "Released in 2004 for Classic Mac OS, N-Gage, PlayStation 3, Microsoft Windows, Xbox 360."
+    },
+    "call-of-duty-2": {
+        "key": "call-of-duty-2",
+        "value": "Call of Duty 2",
+        "group": "Activision",
+        "description": "Released in 2005 for JavaME, Classic Mac OS, Microsoft Windows, Xbox 360."
+    },
+    "call-of-duty-2-big-red-one": {
+        "key": "call-of-duty-2-big-red-one",
+        "value": "Call of Duty 2: Big Red One",
+        "group": "Activision",
+        "description": "Released in 2005 for Nintendo GameCube, PlayStation 2, Xbox."
+    },
+    "call-of-duty-3": {
+        "key": "call-of-duty-3",
+        "value": "Call of Duty 3",
+        "group": "Activision",
+        "description": "Released in 2006 for PlayStation 2, PlayStation 3, Wii,, Xbox, Xbox 360."
+    },
+    "call-of-duty-4-modern-warfare": {
+        "key": "call-of-duty-4-modern-warfare",
+        "value": "Call of Duty 4: Modern Warfare",
+        "group": "Activision",
+        "description": "Released in 2007 for Xbox 360, PlayStation 3, Microsoft Windows, Wii."
+    },
+    "call-of-duty-advanced-warfare": {
+        "key": "call-of-duty-advanced-warfare",
+        "value": "Call of Duty: Advanced Warfare",
+        "group": "Activision",
+        "description": "Released in 2014 for Microsoft Windows, PlayStation 3, PlayStation 4, Xbox 360, Xbox One."
+    },
+    "call-of-duty-black-ops": {
+        "key": "call-of-duty-black-ops",
+        "value": "Call of Duty: Black Ops",
+        "group": "Activision",
+        "description": "Released in 2010 for Microsoft Windows, Xbox 360, PlayStation 3, Wii, Nintendo DS."
+    },
+    "call-of-duty-black-ops-declassified": {
+        "key": "call-of-duty-black-ops-declassified",
+        "value": "Call of Duty: Black Ops Declassified",
+        "group": "Activision",
+        "description": "Released in 2012 for PlayStation Vita."
+    },
+    "call-of-duty-black-ops-ii": {
+        "key": "call-of-duty-black-ops-ii",
+        "value": "Call of Duty: Black Ops II",
+        "group": "Activision",
+        "description": "Released in 2012 for PlayStation 3, Xbox 360, Wii U, Microsoft Windows."
+    },
+    "call-of-duty-black-ops-iii": {
+        "key": "call-of-duty-black-ops-iii",
+        "value": "Call of Duty: Black Ops III",
+        "group": "Activision",
+        "description": "Released in 2015 for PlayStation 3, PlayStation 4, Xbox 360, Xbox One, Microsoft Windows."
+    },
+    "call-of-duty-black-ops-4": {
+        "key": "call-of-duty-black-ops-4",
+        "value": "Call of Duty: Black Ops 4",
+        "group": "Activision",
+        "description": "Released in 2018 for PlayStation 4, Xbox One, Microsoft Windows."
+    },
+    "call-of-duty-finest-hour": {
+        "key": "call-of-duty-finest-hour",
+        "value": "Call of Duty: Finest Hour",
+        "group": "Activision",
+        "description": "Released in 2004 for Nintendo GameCube, PlayStation 2, Xbox."
+    },
+    "call-of-duty-ghosts": {
+        "key": "call-of-duty-ghosts",
+        "value": "Call of Duty: Ghosts",
+        "group": "Activision",
+        "description": "Released in 2013 for Microsoft Windows, Xbox 360, PlayStation 3, Wii U, PlayStation 4, Xbox One."
+    },
+    "call-of-duty-infinite-warfare": {
+        "key": "call-of-duty-infinite-warfare",
+        "value": "Call of Duty: Infinite Warfare",
+        "group": "Activision",
+        "description": "Released in 2016 for Microsoft Windows, Xbox One, PlayStation 4."
+    },
+    "call-of-duty-modern-warfare-2": {
+        "key": "call-of-duty-modern-warfare-2",
+        "value": "Call of Duty: Modern Warfare 2",
+        "group": "Activision",
+        "description": "Released in 2009 for Microsoft Windows, Xbox 360, PlayStation 3."
+    },
+    "call-of-duty-modern-warfare-3": {
+        "key": "call-of-duty-modern-warfare-3",
+        "value": "Call of Duty: Modern Warfare 3",
+        "group": "Activision",
+        "description": "Released in 2011 for Microsoft Windows, Xbox 360, PlayStation 3, Wii."
+    },
+    "call-of-duty-roads-to-victory": {
+        "key": "call-of-duty-roads-to-victory",
+        "value": "Call of Duty: Roads to Victory",
+        "group": "Activision",
+        "description": "Released in 2007 for PlayStation Portable."
+    },
+    "call-of-duty-strike-team": {
+        "key": "call-of-duty-strike-team",
+        "value": "Call of Duty: Strike Team",
+        "group": "Activision",
+        "description": "Released in 2013 for iOS, Android."
+    },
+    "call-of-duty-united-offensive": {
+        "key": "call-of-duty-united-offensive",
+        "value": "Call of Duty: United Offensive",
+        "group": "Activision",
+        "description": "Released in 2004 for Microsoft Windows."
+    },
+    "call-of-duty-world-at-war": {
+        "key": "call-of-duty-world-at-war",
+        "value": "Call of Duty: World at War",
+        "group": "Activision",
+        "description": "Released in 2008 for Microsoft Windows, Xbox 360, PlayStation 3."
+    },
+    "call-of-duty-wwii": {
+        "key": "call-of-duty-wwii",
+        "value": "Call of Duty: WWII",
+        "group": "Activision",
+        "description": "Released in 2017 for Microsoft Windows, Xbox One, PlayStation 4."
+    },
+    "call-to-power-ii": {
+        "key": "call-to-power-ii",
+        "value": "Call to Power II",
+        "group": "Activision",
+        "description": "Released in 2000 for Microsoft Windows."
+    },
+    "championship-baseball": {
+        "key": "championship-baseball",
+        "value": "Championship Baseball",
+        "group": "Activision",
+        "description": "Released in 1986 for Amiga,, Apple II, Atari ST, Commodore 64, MS-DOS, ZX Spectrum."
+    },
+    "checkers": {
+        "key": "checkers",
+        "value": "Checkers",
+        "group": "Activision",
+        "description": "Released in 1980 for Atari 2600."
+    },
+    "chivalry-medieval-warfare": {
+        "key": "chivalry-medieval-warfare",
+        "value": "Chivalry: Medieval Warfare",
+        "group": "Activision",
+        "description": "Released in 2014 for PlayStation 3, Xbox 360."
+    },
+    "chopper-command": {
+        "key": "chopper-command",
+        "value": "Chopper Command",
+        "group": "Activision",
+        "description": "Released in 1982 for Atari 2600."
+    },
+    "civilization-call-to-power": {
+        "key": "civilization-call-to-power",
+        "value": "Civilization: Call to Power",
+        "group": "Activision",
+        "description": "Released in 1999 for Linux, Classic Mac OS, Microsoft Windows."
+    },
+    "classic-text-adventure-masterpieces-of-infocom": {
+        "key": "classic-text-adventure-masterpieces-of-infocom",
+        "value": "Classic Text Adventure Masterpieces of Infocom",
+        "group": "Activision",
+        "description": "Released in 1996 for MS-DOS, Classic Mac OS."
+    },
+    "a-collection-of-activision-classic-games-for-the-atari-2600": {
+        "key": "a-collection-of-activision-classic-games-for-the-atari-2600",
+        "value": "A Collection of Activision Classic Games for the Atari 2600",
+        "group": "Activision",
+        "description": "Released in 1998 for PlayStation."
+    },
+    "a-collection-of-classic-games-from-the-intellivision": {
+        "key": "a-collection-of-classic-games-from-the-intellivision",
+        "value": "A Collection of Classic Games from the Intellivision",
+        "group": "Activision",
+        "description": "Released in 1999 for PlayStation."
+    },
+    "the-comedy-collection": {
+        "key": "the-comedy-collection",
+        "value": "The Comedy Collection",
+        "group": "Activision",
+        "description": "Released in 1995 for MS-DOS, Classic Mac OS."
+    },
+    "commander-keen": {
+        "key": "commander-keen",
+        "value": "Commander Keen",
+        "group": "Activision",
+        "description": "Released in 2001 for Game Boy Color."
+    },
+    "commando": {
+        "key": "commando",
+        "value": "Commando",
+        "group": "Activision",
+        "description": "Released in 1988 for Atari 2600."
+    },
+    "corporation": {
+        "key": "corporation",
+        "value": "Corporation",
+        "group": "Activision",
+        "description": "Released in 1988 for Commodore 64."
+    },
+    "cosmic-commuter": {
+        "key": "cosmic-commuter",
+        "value": "Cosmic Commuter",
+        "group": "Activision",
+        "description": "Released in 1984 for Atari 2600."
+    },
+    "crackpots": {
+        "key": "crackpots",
+        "value": "Crackpots",
+        "group": "Activision",
+        "description": "Released in 1983 for Atari 2600."
+    },
+    "crash-bandicoot-mutant-island": {
+        "key": "crash-bandicoot-mutant-island",
+        "value": "Crash Bandicoot Mutant Island",
+        "group": "Activision",
+        "description": "Released in 2009 for JavaME."
+    },
+    "crash-bandicoot-n-sane-trilogy": {
+        "key": "crash-bandicoot-n-sane-trilogy",
+        "value": "Crash Bandicoot N. Sane Trilogy",
+        "group": "Activision",
+        "description": "Released in 2017 for PlayStation 4."
+    },
+    "crash-bandicoot-n-sane-trilogy": {
+        "key": "crash-bandicoot-n-sane-trilogy",
+        "value": "Crash Bandicoot N. Sane Trilogy",
+        "group": "Activision",
+        "description": "Released in 2018 for Microsoft Windows, Nintendo Switch, Xbox One."
+    },
+    "crash-bandicoot-nitro-kart-2": {
+        "key": "crash-bandicoot-nitro-kart-2",
+        "value": "Crash Bandicoot Nitro Kart 2",
+        "group": "Activision",
+        "description": "Released in 2010 for iOS."
+    },
+    "crash-bandicoot-nitro-kart-3d": {
+        "key": "crash-bandicoot-nitro-kart-3d",
+        "value": "Crash Bandicoot Nitro Kart 3D",
+        "group": "Activision",
+        "description": "Released in 2008 for iOS."
+    },
+    "crash-mind-over-mutant": {
+        "key": "crash-mind-over-mutant",
+        "value": "Crash: Mind over Mutant",
+        "group": "Activision",
+        "description": "Released in 2008 for Nintendo DS, PlayStation 2, PlayStation Portable, Wii, Xbox 360."
+    },
+    "cyber-troopers-virtual-on-oratorio-tangram": {
+        "key": "cyber-troopers-virtual-on-oratorio-tangram",
+        "value": "Cyber Troopers Virtual-On Oratorio Tangram",
+        "group": "Activision",
+        "description": "Released in 2000 for Dreamcast, Xbox 360."
+    },
+    "dan-kitchen-s-tomcat-the-f-14-fighter-simulator": {
+        "key": "dan-kitchen-s-tomcat-the-f-14-fighter-simulator",
+        "value": "Dan Kitchen's Tomcat: The F-14 Fighter Simulator",
+        "group": "Activision",
+        "description": "Released in 1988 for Atari 2600."
+    },
+    "dark-reign-2": {
+        "key": "dark-reign-2",
+        "value": "Dark Reign 2",
+        "group": "Activision",
+        "description": "Released in 2000 for Microsoft Windows."
+    },
+    "dark-reign-rise-of-the-shadowhand": {
+        "key": "dark-reign-rise-of-the-shadowhand",
+        "value": "Dark Reign: Rise of the Shadowhand",
+        "group": "Activision",
+        "description": "Released in 1998 for Microsoft Windows."
+    },
+    "dark-reign-the-future-of-war": {
+        "key": "dark-reign-the-future-of-war",
+        "value": "Dark Reign: The Future of War",
+        "group": "Activision",
+        "description": "Released in 1997 for Microsoft Windows."
+    },
+    "day-of-defeat": {
+        "key": "day-of-defeat",
+        "value": "Day of Defeat",
+        "group": "Activision",
+        "description": "Released in 2003 for Microsoft Windows."
+    },
+    "deadpool": {
+        "key": "deadpool",
+        "value": "Deadpool",
+        "group": "Activision",
+        "description": "Released in 2013 for PlayStation 3, PlayStation 4, Xbox 360, Xbox One, Microsoft Windows."
+    },
+    "deathtrack": {
+        "key": "deathtrack",
+        "value": "Deathtrack",
+        "group": "Activision",
+        "description": "Released in 1989 for MS-DOS."
+    },
+    "decathlon": {
+        "key": "decathlon",
+        "value": "Decathlon",
+        "group": "Activision",
+        "description": "Released in 1983 for Atari 2600."
+    },
+    "destiny": {
+        "key": "destiny",
+        "value": "Destiny",
+        "group": "Activision",
+        "description": "Released in 2014 for PlayStation 3, PlayStation 4, Xbox 360, Xbox One."
+    },
+    "destiny-2": {
+        "key": "destiny-2",
+        "value": "Destiny 2",
+        "group": "Activision",
+        "description": "Released in 2017 for PlayStation 4, Xbox One, Microsoft Windows."
+    },
+    "die-hard": {
+        "key": "die-hard",
+        "value": "Die Hard",
+        "group": "Activision",
+        "description": "Released in 1989 for Commodore 64, MS-DOS, Nintendo Entertainment System."
+    },
+    "disney-pixar-a-bug-s-life": {
+        "key": "disney-pixar-a-bug-s-life",
+        "value": "Disney/Pixar A Bug's Life",
+        "group": "Activision",
+        "description": "Released in 1999 for Nintendo 64."
+    },
+    "disney-pixar-s-toy-story-2-buzz-lightyear-to-the-rescue": {
+        "key": "disney-pixar-s-toy-story-2-buzz-lightyear-to-the-rescue",
+        "value": "Disney/Pixar's Toy Story 2: Buzz Lightyear to the Rescue!",
+        "group": "Activision",
+        "description": "Released in 1999 for Dreamcast, Nintendo 64, PlayStation, Microsoft Windows."
+    },
+    "disney-s-102-dalmatians-puppies-to-the-rescue": {
+        "key": "disney-s-102-dalmatians-puppies-to-the-rescue",
+        "value": "Disney's 102 Dalmatians: Puppies to the Rescue",
+        "group": "Activision",
+        "description": "Released in 2000 for Game Boy Color."
+    },
+    "disney-s-extreme-skate-adventure": {
+        "key": "disney-s-extreme-skate-adventure",
+        "value": "Disney's Extreme Skate Adventure",
+        "group": "Activision",
+        "description": "Released in 2003 for Nintendo GameCube, PlayStation 2, Xbox."
+    },
+    "disney-s-tarzan": {
+        "key": "disney-s-tarzan",
+        "value": "Disney's Tarzan",
+        "group": "Activision",
+        "description": "Released in 1999 for Game Boy Color, Nintendo 64."
+    },
+    "disney-s-tarzan-return-to-the-jungle": {
+        "key": "disney-s-tarzan-return-to-the-jungle",
+        "value": "Disney's Tarzan: Return to the Jungle",
+        "group": "Activision",
+        "description": "Released in 2002 for Game Boy Advance."
+    },
+    "dj-hero": {
+        "key": "dj-hero",
+        "value": "DJ Hero",
+        "group": "Activision",
+        "description": "Released in 2009 for PlayStation 2, PlayStation 3, Wii, Xbox 360."
+    },
+    "dolphin": {
+        "key": "dolphin",
+        "value": "Dolphin",
+        "group": "Activision",
+        "description": "Released in 1983 for Atari 2600."
+    },
+    "doom": {
+        "key": "doom",
+        "value": "Doom",
+        "group": "Activision",
+        "description": "Released in 2001 for Game Boy Advance."
+    },
+    "doom-3": {
+        "key": "doom-3",
+        "value": "Doom 3",
+        "group": "Activision",
+        "description": "Released in 2004 for Microsoft Windows, Xbox."
+    },
+    "doom-3-resurrection-of-evil": {
+        "key": "doom-3-resurrection-of-evil",
+        "value": "Doom 3: Resurrection of Evil",
+        "group": "Activision",
+        "description": "Released in 2005 for Microsoft Windows, Linux, Xbox."
+    },
+    "doom-ii-hell-on-earth": {
+        "key": "doom-ii-hell-on-earth",
+        "value": "Doom II: Hell on Earth",
+        "group": "Activision",
+        "description": "Released in 2002 for Game Boy Advance."
+    },
+    "double-dragon": {
+        "key": "double-dragon",
+        "value": "Double Dragon",
+        "group": "Activision",
+        "description": "Released in 1988 for Atari 2600, Atari 7800."
+    },
+    "dragon-breed": {
+        "key": "dragon-breed",
+        "value": "Dragon Breed",
+        "group": "Activision",
+        "description": "Released in 1990 for Amiga, Amstrad CPC, Atari ST, Commodore 64, ZX Spectrum."
+    },
+    "dragster": {
+        "key": "dragster",
+        "value": "Dragster",
+        "group": "Activision",
+        "description": "Released in 1980 for Atari 2600."
+    },
+    "the-dreadnaught-factor": {
+        "key": "the-dreadnaught-factor",
+        "value": "The Dreadnaught Factor",
+        "group": "Activision",
+        "description": "Released in 1983 for Atari 5200, Atari ST, Intellivision."
+    },
+    "dreamworks-shark-tale": {
+        "key": "dreamworks-shark-tale",
+        "value": "DreamWorks' Shark Tale",
+        "group": "Activision",
+        "description": "Released in 2004 for Nintendo GameCube, PlayStation 2, Microsoft Windows, Xbox."
+    },
+    "dynamite-dux": {
+        "key": "dynamite-dux",
+        "value": "Dynamite Dux",
+        "group": "Activision",
+        "description": "Released in 1989 for Amiga, Atari ST, Commodore 64, ZX Spectrum."
+    },
+    "the-eidolon": {
+        "key": "the-eidolon",
+        "value": "The Eidolon",
+        "group": "Activision",
+        "description": "Released in 1986 for Amstrad CPC, ZX Spectrum, MSX2."
+    },
+    "empires-dawn-of-the-modern-world": {
+        "key": "empires-dawn-of-the-modern-world",
+        "value": "Empires: Dawn of the Modern World",
+        "group": "Activision",
+        "description": "Released in 2003 for Microsoft Windows."
+    },
+    "enemy-territory-quake-wars": {
+        "key": "enemy-territory-quake-wars",
+        "value": "Enemy Territory: Quake Wars",
+        "group": "Activision",
+        "description": "Released in 2007 for Microsoft Windows, Linux, Classic Mac OS, Xbox 360, PlayStation 3."
+    },
+    "enduro": {
+        "key": "enduro",
+        "value": "Enduro",
+        "group": "Activision",
+        "description": "Released in 1983 for Atari 2600, ZX Spectrum."
+    },
+    "enduro-racer": {
+        "key": "enduro-racer",
+        "value": "Enduro Racer",
+        "group": "Activision",
+        "description": "Released in 1987 for Amstrad CPC, Atari ST, Commodore 64, ZX Spectrum."
+    },
+    "f-14-tomcat": {
+        "key": "f-14-tomcat",
+        "value": "F-14 Tomcat",
+        "group": "Activision",
+        "description": "Released in 1988 for Commodore 64, MS-DOS."
+    },
+    "family-guy-back-to-the-multiverse": {
+        "key": "family-guy-back-to-the-multiverse",
+        "value": "Family Guy: Back to the Multiverse",
+        "group": "Activision",
+        "description": "Released in 2012 for PlayStation 3, Microsoft Windows, Xbox 360."
+    },
+    "fantastic-four": {
+        "key": "fantastic-four",
+        "value": "Fantastic Four",
+        "group": "Activision",
+        "description": "Released in 2005 for Nintendo GameCube, PlayStation 2, Microsoft Windows, Xbox."
+    },
+    "the-fantasy-collection": {
+        "key": "the-fantasy-collection",
+        "value": "The Fantasy Collection",
+        "group": "Activision",
+        "description": "Released in 1995 for MS-DOS, Classic Mac OS."
+    },
+    "fast--furious-showdown": {
+        "key": "fast--furious-showdown",
+        "value": "Fast & Furious: Showdown",
+        "group": "Activision",
+        "description": "Released in 2013 for PlayStation 3, Xbox 360, Wii U, Microsoft Windows, Nintendo DS."
+    },
+    "the-fifth-element": {
+        "key": "the-fifth-element",
+        "value": "The Fifth Element",
+        "group": "Activision",
+        "description": "Released in 1998 for PlayStation."
+    },
+    "fighter-squadron-the-screamin-demons-over-europe": {
+        "key": "fighter-squadron-the-screamin-demons-over-europe",
+        "value": "Fighter Squadron: The Screamin' Demons Over Europe",
+        "group": "Activision",
+        "description": "Released in 1999 for Microsoft Windows."
+    },
+    "fighting-soccer": {
+        "key": "fighting-soccer",
+        "value": "Fighting Soccer",
+        "group": "Activision",
+        "description": "Released in 1989 for Amiga, Commodore 64, Amstrad CPC, Atari ST."
+    },
+    "fishing-derby": {
+        "key": "fishing-derby",
+        "value": "Fishing Derby",
+        "group": "Activision",
+        "description": "Released in 1980 for Atari 2600."
+    },
+    "freeway": {
+        "key": "freeway",
+        "value": "Freeway",
+        "group": "Activision",
+        "description": "Released in 1981 for Atari 2600."
+    },
+    "frostbite": {
+        "key": "frostbite",
+        "value": "Frostbite",
+        "group": "Activision",
+        "description": "Released in 1983 for Atari 2600."
+    },
+    "galaxy-5000": {
+        "key": "galaxy-5000",
+        "value": "Galaxy 5000",
+        "group": "Activision",
+        "description": "Released in 1991 for Nintendo Entertainment System."
+    },
+    "galaxy-force-ii": {
+        "key": "galaxy-force-ii",
+        "value": "Galaxy Force II",
+        "group": "Activision",
+        "description": "Released in 1989 for Commodore 64, Amstrad CPC, Atari ST, ZX Spectrum."
+    },
+    "game-set--match": {
+        "key": "game-set--match",
+        "value": "Game, Set & Match",
+        "group": "Activision",
+        "description": "Released in 1987 for Commodore 64."
+    },
+    "gba-championship-basketball-two-on-two": {
+        "key": "gba-championship-basketball-two-on-two",
+        "value": "GBA Championship Basketball: Two-on-Two",
+        "group": "Activision",
+        "description": "Released in 1986 for Amiga, Amstrad CPC, Atari ST, Commodore 64, MS-DOS, ZX Spectrum."
+    },
+    "gee-bee-air-rally": {
+        "key": "gee-bee-air-rally",
+        "value": "Gee Bee Air Rally",
+        "group": "Activision",
+        "description": "Released in 1987 for Amiga, Amstrad CPC, Commodore 64, ZX Spectrum."
+    },
+    "generator-rex-agent-of-providence": {
+        "key": "generator-rex-agent-of-providence",
+        "value": "Generator Rex: Agent of Providence",
+        "group": "Activision",
+        "description": "Released in 2011 for Nintendo DS, Nintendo DS, PlayStation 3, Xbox 360, Wii."
+    },
+    "gfl-championship-football": {
+        "key": "gfl-championship-football",
+        "value": "GFL Championship Football",
+        "group": "Activision",
+        "description": "Released in 1986 for Amiga, Commodore 64, Amstrad CPC, Atari ST, ZX Spectrum."
+    },
+    "ghostbusters": {
+        "key": "ghostbusters",
+        "value": "Ghostbusters",
+        "group": "Activision",
+        "description": "Released in 1984 for Amstrad CPC, Apple II, Atari 2600, Atari 8-bit, Commodore 64, MSX, Nintendo Entertainment System, MS-DOS, Sega Master System, ZX Spectrum."
+    },
+    "ghostbusters-ii": {
+        "key": "ghostbusters-ii",
+        "value": "Ghostbusters II",
+        "group": "Activision",
+        "description": "Released in 1989 for Amiga, Amstrad CPC, Atari 2600, Atari ST, Commodore 64, MS-DOS, MSX, ZX Spectrum, Game Boy, Nintendo Entertainment System."
+    },
+    "gladius": {
+        "key": "gladius",
+        "value": "Gladius",
+        "group": "Activision",
+        "description": "Released in 2003 for Nintendo GameCube, PlayStation 2, Xbox."
+    },
+    "goldeneye-007": {
+        "key": "goldeneye-007",
+        "value": "GoldenEye 007",
+        "group": "Activision",
+        "description": "Released in 2010 for Nintendo DS, Wii."
+    },
+    "goldeneye-007-reloaded": {
+        "key": "goldeneye-007-reloaded",
+        "value": "GoldenEye 007: Reloaded",
+        "group": "Activision",
+        "description": "Released in 2011 for PlayStation 3, Xbox 360."
+    },
+    "golf-tee-it-up": {
+        "key": "golf-tee-it-up",
+        "value": "Golf: Tee It Up!",
+        "group": "Activision",
+        "description": "Released in 2008 for Xbox 360."
+    },
+    "grand-prix": {
+        "key": "grand-prix",
+        "value": "Grand Prix",
+        "group": "Activision",
+        "description": "Released in 1982 for Atari 2600."
+    },
+    "grave-yardage": {
+        "key": "grave-yardage",
+        "value": "Grave Yardage",
+        "group": "Activision",
+        "description": "Released in 1989 for Commodore 64, MS-DOS."
+    },
+    "the-great-american-cross-country-road-race": {
+        "key": "the-great-american-cross-country-road-race",
+        "value": "The Great American Cross-Country Road Race",
+        "group": "Activision",
+        "description": "Released in 1985 for Apple II, Atari 8-bit, Commodore 64."
+    },
+    "guardian-s-crusade": {
+        "key": "guardian-s-crusade",
+        "value": "Guardian's Crusade",
+        "group": "Activision",
+        "description": "Released in 1999 for PlayStation."
+    },
+    "guacamelee-super-turbo-championship-edition": {
+        "key": "guacamelee-super-turbo-championship-edition",
+        "value": "Guacamelee! Super Turbo Championship Edition",
+        "group": "Activision",
+        "description": "Released in 2014 for Xbox One."
+    },
+    "guitar-hero-ii": {
+        "key": "guitar-hero-ii",
+        "value": "Guitar Hero II",
+        "group": "Activision",
+        "description": "Released in 2006 for PlayStation 2, Xbox 360."
+    },
+    "guitar-hero-iii-legends-of-rock": {
+        "key": "guitar-hero-iii-legends-of-rock",
+        "value": "Guitar Hero III: Legends of Rock",
+        "group": "Activision",
+        "description": "Released in 2007 for PlayStation 2, PlayStation 3, Wii, Xbox 360."
+    },
+    "guitar-hero-5": {
+        "key": "guitar-hero-5",
+        "value": "Guitar Hero 5",
+        "group": "Activision",
+        "description": "Released in 2009 for PlayStation 2, PlayStation 3, Wii, Xbox 360."
+    },
+    "guitar-hero-on-tour": {
+        "key": "guitar-hero-on-tour",
+        "value": "Guitar Hero on Tour",
+        "group": "Activision",
+        "description": "Released in 2008 for Nintendo DS."
+    },
+    "guitar-hero-on-tour-decades": {
+        "key": "guitar-hero-on-tour-decades",
+        "value": "Guitar Hero on Tour: Decades",
+        "group": "Activision",
+        "description": "Released in 2008 for Nintendo DS."
+    },
+    "guitar-hero-world-tour": {
+        "key": "guitar-hero-world-tour",
+        "value": "Guitar Hero World Tour",
+        "group": "Activision",
+        "description": "Released in 2008 for Classic Mac OS, PlayStation 2, PlayStation 3, Wii, Microsoft Windows, Xbox 360."
+    },
+    "guitar-hero-aerosmith": {
+        "key": "guitar-hero-aerosmith",
+        "value": "Guitar Hero: Aerosmith",
+        "group": "Activision",
+        "description": "Released in 2008 for PlayStation 2, PlayStation 3, Wii, Xbox 360."
+    },
+    "guitar-hero-metallica": {
+        "key": "guitar-hero-metallica",
+        "value": "Guitar Hero: Metallica",
+        "group": "Activision",
+        "description": "Released in 2009 for PlayStation 2, PlayStation 3, Wii, Xbox 360."
+    },
+    "guitar-hero-warriors-of-rock": {
+        "key": "guitar-hero-warriors-of-rock",
+        "value": "Guitar Hero: Warriors of Rock",
+        "group": "Activision",
+        "description": "Released in 2010 for PlayStation 3, Wii, Xbox 360."
+    },
+    "gun": {
+        "key": "gun",
+        "value": "GUN",
+        "group": "Activision",
+        "description": "Released in 2005 for Nintendo GameCube, PlayStation 2, Microsoft Windows, Xbox, Xbox 360."
+    },
+    "hacker": {
+        "key": "hacker",
+        "value": "Hacker",
+        "group": "Activision",
+        "description": "Released in 1985 for Amiga, Amstrad CPC, Apple II,, Atari 8-bit, Atari ST, Commodore 64, MS-DOS, MSX, ZX Spectrum."
+    },
+    "hacker-ii-the-doomsday-papers": {
+        "key": "hacker-ii-the-doomsday-papers",
+        "value": "Hacker II: The Doomsday Papers",
+        "group": "Activision",
+        "description": "Released in 1986 for Amiga, Amstrad CPC, Apple II, Atari ST, Commodore 64, MS-DOS, ZX Spectrum."
+    },
+    "hammerfist": {
+        "key": "hammerfist",
+        "value": "Hammerfist",
+        "group": "Activision",
+        "description": "Released in 1990 for Amiga, Atari ST, Commodore 64, ZX Spectrum."
+    },
+    "happy-trails": {
+        "key": "happy-trails",
+        "value": "Happy Trails",
+        "group": "Activision",
+        "description": "Released in 1983 for Intellivision."
+    },
+    "heavy-gear": {
+        "key": "heavy-gear",
+        "value": "Heavy Gear",
+        "group": "Activision",
+        "description": "Released in 1997 for Microsoft Windows."
+    },
+    "heavy-gear-ii": {
+        "key": "heavy-gear-ii",
+        "value": "Heavy Gear II",
+        "group": "Activision",
+        "description": "Released in 1999 for Linux, Microsoft Windows."
+    },
+    "heretic-ii": {
+        "key": "heretic-ii",
+        "value": "Heretic II",
+        "group": "Activision",
+        "description": "Released in 1998 for Linux, Microsoft Windows."
+    },
+    "h-e-r-o": {
+        "key": "h-e-r-o",
+        "value": "H.E.R.O.",
+        "group": "Activision",
+        "description": "Released in 1984 for Amstrad CPC, Apple II, Atari 2600, Atari 5200, Atari 8-bit, ColecoVision, Commodore 64, MSX, ZX Spectrum."
+    },
+    "hexen-ii": {
+        "key": "hexen-ii",
+        "value": "Hexen II",
+        "group": "Activision",
+        "description": "Released in 1997 for Microsoft Windows."
+    },
+    "hexen-ii-mission-pack-portal-of-praevus": {
+        "key": "hexen-ii-mission-pack-portal-of-praevus",
+        "value": "Hexen II: Mission Pack: Portal of Praevus",
+        "group": "Activision",
+        "description": "Released in 1998 for Microsoft Windows."
+    },
+    "hot-rod": {
+        "key": "hot-rod",
+        "value": "Hot Rod",
+        "group": "Activision",
+        "description": "Released in 1990 for Amiga, Amstrad CPC, Atari ST, Commodore 64, ZX Spectrum."
+    },
+    "the-house-of-the-dead-2": {
+        "key": "the-house-of-the-dead-2",
+        "value": "The House of the Dead 2",
+        "group": "Activision",
+        "description": "Released in 2001 for Microsoft Windows."
+    },
+    "howard-the-duck": {
+        "key": "howard-the-duck",
+        "value": "Howard the Duck",
+        "group": "Activision",
+        "description": "Released in 1986 for Amstrad CPC, Apple II, Commodore 64, MSX, ZX Spectrum."
+    },
+    "how-to-train-your-dragon": {
+        "key": "how-to-train-your-dragon",
+        "value": "How to Train Your Dragon",
+        "group": "Activision",
+        "description": "Released in 2010 for Nintendo DS, PlayStation 3, Wii, Xbox 360."
+    },
+    "hunter": {
+        "key": "hunter",
+        "value": "Hunter",
+        "group": "Activision",
+        "description": "Released in 1991 for Amiga, Atari ST."
+    },
+    "hyperblade": {
+        "key": "hyperblade",
+        "value": "HyperBlade",
+        "group": "Activision",
+        "description": "Released in 1996 for Microsoft Windows."
+    },
+    "icarly": {
+        "key": "icarly",
+        "value": "iCarly",
+        "group": "Activision",
+        "description": "Released in 2009 for Wii, Nintendo DS."
+    },
+    "icarly-2-ijoin-the-click": {
+        "key": "icarly-2-ijoin-the-click",
+        "value": "iCarly 2: iJoin the Click!",
+        "group": "Activision",
+        "description": "Released in 2010 for Wii, Nintendo DS."
+    },
+    "ice-age-continental-drift--arctic-games": {
+        "key": "ice-age-continental-drift--arctic-games",
+        "value": "Ice Age: Continental Drift – Arctic Games",
+        "group": "Activision",
+        "description": "Released in 2012 for Wii, Xbox 360, Nintendo DS, Nintendo 3DS."
+    },
+    "ice-age-dawn-of-the-dinosaurs": {
+        "key": "ice-age-dawn-of-the-dinosaurs",
+        "value": "Ice Age: Dawn of the Dinosaurs",
+        "group": "Activision",
+        "description": "Released in 2009 for Wii, PlayStation 2, PlayStation 3, Xbox 360, Nintendo DS, Microsoft Windows."
+    },
+    "ice-hockey": {
+        "key": "ice-hockey",
+        "value": "Ice Hockey",
+        "group": "Activision",
+        "description": "Released in 1981 for Atari 2600."
+    },
+    "impact-wrestling-activision": {
+        "key": "impact-wrestling-activision",
+        "value": "Impact Wrestling Activision",
+        "group": "Activision",
+        "description": "Released in 2013 for PlayStation 3, PlayStation 4, Wii U, Xbox 360, Xbox One."
+    },
+    "indiana-jones-and-the-emperor-s-tomb": {
+        "key": "indiana-jones-and-the-emperor-s-tomb",
+        "value": "Indiana Jones and the Emperor's Tomb",
+        "group": "Activision",
+        "description": "Released in 2003 for PlayStation 2, Microsoft Windows, Xbox."
+    },
+    "interstate-76": {
+        "key": "interstate-76",
+        "value": "Interstate '76",
+        "group": "Activision",
+        "description": "Released in 1997 for Microsoft Windows."
+    },
+    "the-interstate-76-arsenal": {
+        "key": "the-interstate-76-arsenal",
+        "value": "The Interstate '76 Arsenal",
+        "group": "Activision",
+        "description": "Released in 1998 for Microsoft Windows."
+    },
+    "interstate-76-nitro-pack": {
+        "key": "interstate-76-nitro-pack",
+        "value": "Interstate '76: Nitro Pack",
+        "group": "Activision",
+        "description": "Released in 1998 for Microsoft Windows."
+    },
+    "interstate-76-nitro-riders": {
+        "key": "interstate-76-nitro-riders",
+        "value": "Interstate '76: Nitro Riders",
+        "group": "Activision",
+        "description": "Released in 1998 for Microsoft Windows."
+    },
+    "interstate-82": {
+        "key": "interstate-82",
+        "value": "Interstate '82",
+        "group": "Activision",
+        "description": "Released in 1999 for Microsoft Windows."
+    },
+    "jack-nicklaus-6-golden-bear-challenge": {
+        "key": "jack-nicklaus-6-golden-bear-challenge",
+        "value": "Jack Nicklaus 6: Golden Bear Challenge",
+        "group": "Activision",
+        "description": "Released in 1999 for Microsoft Windows."
+    },
+    "jackie-chan-adventures-legend-of-the-dark-hand": {
+        "key": "jackie-chan-adventures-legend-of-the-dark-hand",
+        "value": "Jackie Chan Adventures: Legend of the Dark Hand",
+        "group": "Activision",
+        "description": "Released in 2001 for Game Boy Advance."
+    },
+    "james-clavell-s-sh-gun": {
+        "key": "james-clavell-s-sh-gun",
+        "value": "James Clavell's Shōgun",
+        "group": "Activision",
+        "description": "Released in 1989 for Amiga, Apple II, MS-DOS, Classic Mac OS."
+    },
+    "kaboom": {
+        "key": "kaboom",
+        "value": "Kaboom!",
+        "group": "Activision",
+        "description": "Released in 1981 for Atari 8-bit, Atari 2600, Atari 5200."
+    },
+    "karnov": {
+        "key": "karnov",
+        "value": "Karnov",
+        "group": "Activision",
+        "description": "Released in 1988 for Commodore 64."
+    },
+    "kelly-slater-s-pro-surfer": {
+        "key": "kelly-slater-s-pro-surfer",
+        "value": "Kelly Slater's Pro Surfer",
+        "group": "Activision",
+        "description": "Released in 2002 for Game Boy Advance, Nintendo GameCube, PlayStation 2, Xbox."
+    },
+    "keystone-kapers": {
+        "key": "keystone-kapers",
+        "value": "Keystone Kapers",
+        "group": "Activision",
+        "description": "Released in 1983 for Atari 2600, MSX, ColecoVision."
+    },
+    "knightmare": {
+        "key": "knightmare",
+        "value": "Knightmare",
+        "group": "Activision",
+        "description": "Released in 1987 for Commodore 64, Amstrad CPC, ZX Spectrum."
+    },
+    "kung-fu-master": {
+        "key": "kung-fu-master",
+        "value": "Kung-Fu Master",
+        "group": "Activision",
+        "description": "Released in 1987 for Atari 2600."
+    },
+    "kung-fu-panda": {
+        "key": "kung-fu-panda",
+        "value": "Kung Fu Panda",
+        "group": "Activision",
+        "description": "Released in 2008 for Nintendo DS, PlayStation 2, PlayStation 3, Wii, Microsoft Windows, Xbox 360."
+    },
+    "labyrinth-the-computer-game": {
+        "key": "labyrinth-the-computer-game",
+        "value": "Labyrinth: The Computer Game",
+        "group": "Activision",
+        "description": "Released in 1986 for Apple II, Commodore 64, MSX2."
+    },
+    "laser-blast": {
+        "key": "laser-blast",
+        "value": "Laser Blast",
+        "group": "Activision",
+        "description": "Released in 1981 for Atari 2600."
+    },
+    "laser-surgeon-the-microscopic-mission": {
+        "key": "laser-surgeon-the-microscopic-mission",
+        "value": "Laser Surgeon: The Microscopic Mission",
+        "group": "Activision",
+        "description": "Released in 1987 for MS-DOS."
+    },
+    "last-ninja-2-back-with-a-vengeance": {
+        "key": "last-ninja-2-back-with-a-vengeance",
+        "value": "Last Ninja 2: Back with a Vengeance",
+        "group": "Activision",
+        "description": "Released in 1990 for MS-DOS."
+    },
+    "the-last-ninja": {
+        "key": "the-last-ninja",
+        "value": "The Last Ninja",
+        "group": "Activision",
+        "description": "Released in 1988 for Apple II, MS-DOS."
+    },
+    "leather-goddesses-of-phobos": {
+        "key": "leather-goddesses-of-phobos",
+        "value": "Leather Goddesses of Phobos",
+        "group": "Activision",
+        "description": "Released in 1988 for Amiga, Amstrad CPC, Apple II, Atari 8-bit, Commodore 64, MS-DOS, Classic Mac OS, Microsoft Windows, Atari ST, TRS-80, Texas Instruments TI-99/4A."
+    },
+    "leather-goddesses-of-phobos-2": {
+        "key": "leather-goddesses-of-phobos-2",
+        "value": "Leather Goddesses of Phobos 2",
+        "group": "Activision",
+        "description": "Released in 1992 for MS-DOS."
+    },
+    "the-legend-of-korra": {
+        "key": "the-legend-of-korra",
+        "value": "The Legend of Korra",
+        "group": "Activision",
+        "description": "Released in 2014 for PlayStation 3, PlayStation 4, Xbox 360, Xbox One, Microsoft Windows."
+    },
+    "the-legend-of-korra-a-new-era-begins": {
+        "key": "the-legend-of-korra-a-new-era-begins",
+        "value": "The Legend of Korra: A New Era Begins",
+        "group": "Activision",
+        "description": "Released in 2014 for Nintendo DS."
+    },
+    "lemony-snicket-s-a-series-of-unfortunate-events": {
+        "key": "lemony-snicket-s-a-series-of-unfortunate-events",
+        "value": "Lemony Snicket's A Series of Unfortunate Events",
+        "group": "Activision",
+        "description": "Released in 2004 for Game Boy Advance, Nintendo GameCube, PlayStation 2, Microsoft Windows, Xbox."
+    },
+    "the-lion-king-simba-s-mighty-adventure": {
+        "key": "the-lion-king-simba-s-mighty-adventure",
+        "value": "The Lion King: Simba's Mighty Adventure",
+        "group": "Activision",
+        "description": "Released in 2000 for Game Boy Color, PlayStation."
+    },
+    "little-computer-people": {
+        "key": "little-computer-people",
+        "value": "Little Computer People",
+        "group": "Activision",
+        "description": "Released in 1985 for Amiga, Amstrad CPC, Commodore 64, Apple II, Atari ST, ZX Spectrum."
+    },
+    "lost-kingdoms": {
+        "key": "lost-kingdoms",
+        "value": "Lost Kingdoms",
+        "group": "Activision",
+        "description": "Released in 2002 for Nintendo GameCube."
+    },
+    "lost-kingdoms-ii": {
+        "key": "lost-kingdoms-ii",
+        "value": "Lost Kingdoms II",
+        "group": "Activision",
+        "description": "Released in 2003 for Nintendo GameCube."
+    },
+    "the-lost-treasures-of-infocom": {
+        "key": "the-lost-treasures-of-infocom",
+        "value": "The Lost Treasures of Infocom",
+        "group": "Activision",
+        "description": "Released in 1991 for MS-DOS, Classic Mac OS."
+    },
+    "the-lost-treasures-of-infocom-ii": {
+        "key": "the-lost-treasures-of-infocom-ii",
+        "value": "The Lost Treasures of Infocom II",
+        "group": "Activision",
+        "description": "Released in 1992 for MS-DOS, Classic Mac OS."
+    },
+    "madagascar": {
+        "key": "madagascar",
+        "value": "Madagascar",
+        "group": "Activision",
+        "description": "Released in 2005 for Nintendo GameCube, Mobile, PlayStation 2, Microsoft Windows, Xbox."
+    },
+    "madagascar-escape-2-africa": {
+        "key": "madagascar-escape-2-africa",
+        "value": "Madagascar: Escape 2 Africa",
+        "group": "Activision",
+        "description": "Released in 2008 for Mobile, PlayStation 2, Wii, Microsoft Windows, Xbox 360."
+    },
+    "madagascar-kartz": {
+        "key": "madagascar-kartz",
+        "value": "Madagascar Kartz",
+        "group": "Activision",
+        "description": "Released in 2009 for PlayStation 3, Xbox 360, Wii, Nintendo DS."
+    },
+    "the-manhole-new-and-enhanced": {
+        "key": "the-manhole-new-and-enhanced",
+        "value": "The Manhole: New and Enhanced",
+        "group": "Activision",
+        "description": "Released in 1992 for MS-DOS, Microsoft Windows."
+    },
+    "marvel-ultimate-alliance": {
+        "key": "marvel-ultimate-alliance",
+        "value": "Marvel: Ultimate Alliance",
+        "group": "Activision",
+        "description": "Released in 2006 for Game Boy Advance, PlayStation 2, PlayStation 3, PlayStation Portable, Wii, Microsoft Windows, Xbox, Xbox 360."
+    },
+    "master-of-the-lamps": {
+        "key": "master-of-the-lamps",
+        "value": "Master of the Lamps",
+        "group": "Activision",
+        "description": "Released in 1985 for Apple II, Atari 8-bit, Commodore 64, Amstrad CPC, MSX."
+    },
+    "mat-hoffman-s-pro-bmx": {
+        "key": "mat-hoffman-s-pro-bmx",
+        "value": "Mat Hoffman's Pro BMX",
+        "group": "Activision",
+        "description": "Released in 2001 for Dreamcast, Game Boy Advance, Game Boy Color, PlayStation, Microsoft Windows."
+    },
+    "mat-hoffman-s-pro-bmx-2": {
+        "key": "mat-hoffman-s-pro-bmx-2",
+        "value": "Mat Hoffman's Pro BMX 2",
+        "group": "Activision",
+        "description": "Released in 2002 for Game Boy Advance, Nintendo GameCube, PlayStation 2, Xbox."
+    },
+    "mechwarrior": {
+        "key": "mechwarrior",
+        "value": "MechWarrior",
+        "group": "Activision",
+        "description": "Released in 1989 for MS-DOS, Super Nintendo Entertainment System."
+    },
+    "mechwarrior-2-battlepack": {
+        "key": "mechwarrior-2-battlepack",
+        "value": "MechWarrior 2 BattlePack",
+        "group": "Activision",
+        "description": "Released in 1997 for Microsoft Windows."
+    },
+    "mechwarrior-2-31st-century-combat": {
+        "key": "mechwarrior-2-31st-century-combat",
+        "value": "MechWarrior 2: 31st Century Combat",
+        "group": "Activision",
+        "description": "Released in 1995 for MS-DOS,, Classic Mac OS, PlayStation, Sega Saturn, Microsoft Windows."
+    },
+    "mechwarrior-2-ghost-bear-s-legacy": {
+        "key": "mechwarrior-2-ghost-bear-s-legacy",
+        "value": "MechWarrior 2: Ghost Bear's Legacy",
+        "group": "Activision",
+        "description": "Released in 1995 for MS-DOS, Microsoft Windows."
+    },
+    "mechwarrior-2-mercenaries": {
+        "key": "mechwarrior-2-mercenaries",
+        "value": "MechWarrior 2: Mercenaries",
+        "group": "Activision",
+        "description": "Released in 1996 for MS-DOS, Microsoft Windows."
+    },
+    "mechwarrior-2-the-titanium-trilogy": {
+        "key": "mechwarrior-2-the-titanium-trilogy",
+        "value": "MechWarrior 2: The Titanium Trilogy",
+        "group": "Activision",
+        "description": "Released in 1998 for Microsoft Windows."
+    },
+    "medieval-total-war": {
+        "key": "medieval-total-war",
+        "value": "Medieval: Total War",
+        "group": "Activision",
+        "description": "Released in 2002 for Microsoft Windows."
+    },
+    "medieval-total-war-battle-collection": {
+        "key": "medieval-total-war-battle-collection",
+        "value": "Medieval: Total War Battle Collection",
+        "group": "Activision",
+        "description": "Released in 2004 for Microsoft Windows."
+    },
+    "medieval-total-war--viking-invasion": {
+        "key": "medieval-total-war--viking-invasion",
+        "value": "Medieval: Total War - Viking Invasion",
+        "group": "Activision",
+        "description": "Released in 2003 for Microsoft Windows."
+    },
+    "megamania": {
+        "key": "megamania",
+        "value": "Megamania",
+        "group": "Activision",
+        "description": "Released in 1982 for Atari 8-bit, Atari 2600, Atari 5200."
+    },
+    "megapak-9": {
+        "key": "megapak-9",
+        "value": "Megapak 9",
+        "group": "Activision",
+        "description": "Released in 1998 for Microsoft Windows."
+    },
+    "mib-alien-crisis": {
+        "key": "mib-alien-crisis",
+        "value": "MIB: Alien Crisis",
+        "group": "Activision",
+        "description": "Released in 2012 for Nintendo DS, PlayStation 3, Xbox 360, Wii, Microsoft Windows."
+    },
+    "a-mind-forever-voyaging": {
+        "key": "a-mind-forever-voyaging",
+        "value": "A Mind Forever Voyaging",
+        "group": "Activision",
+        "description": "Released in 1985 for Commodore 128."
+    },
+    "mindfighter": {
+        "key": "mindfighter",
+        "value": "Mindfighter",
+        "group": "Activision",
+        "description": "Released in 1988 for Amiga, Amstrad CPC, Atari ST, Commodore 64, MS-DOS."
+    },
+    "mindshadow": {
+        "key": "mindshadow",
+        "value": "Mindshadow",
+        "group": "Activision",
+        "description": "Released in 1984 for Amiga, Apple II, Atari 8-bit, Commodore 64, Amstrad CPC, MS-DOS, Atari ST, ZX Spectrum."
+    },
+    "minority-report-everybody-runs": {
+        "key": "minority-report-everybody-runs",
+        "value": "Minority Report: Everybody Runs",
+        "group": "Activision",
+        "description": "Released in 2002 for Nintendo GameCube, PlayStation 2, Xbox."
+    },
+    "monster-garage": {
+        "key": "monster-garage",
+        "value": "Monster Garage",
+        "group": "Activision",
+        "description": "Released in 2006 for Microsoft Windows, Xbox."
+    },
+    "monster-jam": {
+        "key": "monster-jam",
+        "value": "Monster Jam",
+        "group": "Activision",
+        "description": "Released in 2007 for Nintendo DS, PlayStation 2, Wii, Microsoft Windows, Xbox 360."
+    },
+    "monster-jam-path-of-destruction": {
+        "key": "monster-jam-path-of-destruction",
+        "value": "Monster Jam: Path of Destruction",
+        "group": "Activision",
+        "description": "Released in 2010 for Nintendo DS, PlayStation 3, PlayStation Portable, Wii, Xbox 360."
+    },
+    "monster-jam-urban-assault": {
+        "key": "monster-jam-urban-assault",
+        "value": "Monster Jam: Urban Assault",
+        "group": "Activision",
+        "description": "Released in 2008 for Nintendo DS, PlayStation 2, PlayStation Portable, Wii."
+    },
+    "the-movies": {
+        "key": "the-movies",
+        "value": "The Movies",
+        "group": "Activision",
+        "description": "Released in 2005 for Microsoft Windows, Classic Mac OS."
+    },
+    "the-movies-stunts--effects": {
+        "key": "the-movies-stunts--effects",
+        "value": "The Movies: Stunts & Effects",
+        "group": "Activision",
+        "description": "Released in 2006 for Microsoft Windows."
+    },
+    "muppet-treasure-island": {
+        "key": "muppet-treasure-island",
+        "value": "Muppet Treasure Island",
+        "group": "Activision",
+        "description": "Released in 1996 for Classic Mac OS, Microsoft Windows."
+    },
+    "murder-on-the-mississippi": {
+        "key": "murder-on-the-mississippi",
+        "value": "Murder on the Mississippi",
+        "group": "Activision",
+        "description": "Released in 1986 for Apple II, Commodore 64."
+    },
+    "the-mystery-collection": {
+        "key": "the-mystery-collection",
+        "value": "The Mystery Collection",
+        "group": "Activision",
+        "description": "Released in 1995 for MS-DOS, Classic Mac OS."
+    },
+    "nascar-the-game-2011": {
+        "key": "nascar-the-game-2011",
+        "value": "NASCAR The Game: 2011",
+        "group": "Activision",
+        "description": "Released in 2011 for PlayStation 3, Wii, Xbox 360."
+    },
+    "nascar-the-game-inside-line": {
+        "key": "nascar-the-game-inside-line",
+        "value": "NASCAR The Game: Inside Line",
+        "group": "Activision",
+        "description": "Released in 2012 for PlayStation 3, Wii, Xbox 360."
+    },
+    "nascar-unleashed": {
+        "key": "nascar-unleashed",
+        "value": "NASCAR Unleashed",
+        "group": "Activision",
+        "description": "Released in 2011 for Nintendo DS, PlayStation 3, Wii, Xbox 360."
+    },
+    "netmech": {
+        "key": "netmech",
+        "value": "NetMech",
+        "group": "Activision",
+        "description": "Released in 1996 for Microsoft Windows."
+    },
+    "netstorm-islands-at-war": {
+        "key": "netstorm-islands-at-war",
+        "value": "NetStorm: Islands At War",
+        "group": "Activision",
+        "description": "Released in 1997 for Microsoft Windows."
+    },
+    "nightmare-creatures": {
+        "key": "nightmare-creatures",
+        "value": "Nightmare Creatures",
+        "group": "Activision",
+        "description": "Released in 1997 for Nintendo 64, PlayStation, Microsoft Windows."
+    },
+    "ninja-spirit": {
+        "key": "ninja-spirit",
+        "value": "Ninja Spirit",
+        "group": "Activision",
+        "description": "Released in 1988 for Amiga, Commodore 64, Amstrad CPC, Atari ST, ZX Spectrum."
+    },
+    "noddy-s-magic-adventure": {
+        "key": "noddy-s-magic-adventure",
+        "value": "Noddy's Magic Adventure",
+        "group": "Activision",
+        "description": "Released in 1999 for Nintendo 64, PlayStation, Microsoft Windows."
+    },
+    "noddy-playtime-in-toyland": {
+        "key": "noddy-playtime-in-toyland",
+        "value": "Noddy: Playtime in Toyland",
+        "group": "Activision",
+        "description": "Released in 1999 for Nintendo 64, Microsoft Windows."
+    },
+    "ocean-ranger": {
+        "key": "ocean-ranger",
+        "value": "Ocean Ranger",
+        "group": "Activision",
+        "description": "Released in 1988 for Commodore 64, MS-DOS."
+    },
+    "oink": {
+        "key": "oink",
+        "value": "Oink!",
+        "group": "Activision",
+        "description": "Released in 1982 for Atari 2600."
+    },
+    "on-court-tennis": {
+        "key": "on-court-tennis",
+        "value": "On-Court Tennis",
+        "group": "Activision",
+        "description": "Released in 1984 for Commodore 64."
+    },
+    "orphen-scion-of-sorcery": {
+        "key": "orphen-scion-of-sorcery",
+        "value": "Orphen: Scion of Sorcery",
+        "group": "Activision",
+        "description": "Released in 2000 for PlayStation 2."
+    },
+    "over-the-hedge": {
+        "key": "over-the-hedge",
+        "value": "Over the Hedge",
+        "group": "Activision",
+        "description": "Released in 2006 for Nintendo GameCube, PlayStation 2, Microsoft Windows, Xbox."
+    },
+    "over-the-hedge": {
+        "key": "over-the-hedge",
+        "value": "Over the Hedge",
+        "group": "Activision",
+        "description": "Released in 2006 for Nintendo DS."
+    },
+    "over-the-hedge-hammy-goes-nuts": {
+        "key": "over-the-hedge-hammy-goes-nuts",
+        "value": "Over the Hedge: Hammy Goes Nuts!",
+        "group": "Activision",
+        "description": "Released in 2006 for Nintendo DS."
+    },
+    "paparazzi--tales-of-tinseltown": {
+        "key": "paparazzi--tales-of-tinseltown",
+        "value": "Paparazzi!: Tales of Tinseltown",
+        "group": "Activision",
+        "description": "Released in 1995 for MS-DOS, Classic Mac OS, Microsoft Windows."
+    },
+    "park-patrol": {
+        "key": "park-patrol",
+        "value": "Park Patrol",
+        "group": "Activision",
+        "description": "Released in 1984 for Commodore 64, Amstrad CPC, ZX Spectrum."
+    },
+    "pastfinder": {
+        "key": "pastfinder",
+        "value": "Pastfinder",
+        "group": "Activision",
+        "description": "Released in 1984 for Atari 8-bit, Commodore 64, MSX."
+    },
+    "pimp-my-ride": {
+        "key": "pimp-my-ride",
+        "value": "Pimp My Ride",
+        "group": "Activision",
+        "description": "Released in 2006 for PlayStation 2, PlayStation Portable, Wii, Xbox 360."
+    },
+    "pinobee-wings-of-adventure": {
+        "key": "pinobee-wings-of-adventure",
+        "value": "Pinobee: Wings of Adventure",
+        "group": "Activision",
+        "description": "Released in 2001 for Game Boy Advance."
+    },
+    "pitfall": {
+        "key": "pitfall",
+        "value": "Pitfall!",
+        "group": "Activision",
+        "description": "Released in 1982 for Atari 8-bit, Atari 2600, Atari 5200, Commodore 64, ColecoVision, Game Boy Advance, Intellivision, iOS, MSX."
+    },
+    "pitfall-3d-beyond-the-jungle": {
+        "key": "pitfall-3d-beyond-the-jungle",
+        "value": "Pitfall 3D: Beyond the Jungle",
+        "group": "Activision",
+        "description": "Released in 1998 for PlayStation."
+    },
+    "pitfall-ii-lost-caverns": {
+        "key": "pitfall-ii-lost-caverns",
+        "value": "Pitfall II: Lost Caverns",
+        "group": "Activision",
+        "description": "Released in 1984 for Apple II, Atari 8-bit, Atari 2600, Atari 5200, Commodore 64, ColecoVision, MS-DOS, MSX, TRS-80 Color Computer, ZX Spectrum."
+    },
+    "pitfall-the-lost-expedition": {
+        "key": "pitfall-the-lost-expedition",
+        "value": "Pitfall: The Lost Expedition",
+        "group": "Activision",
+        "description": "Released in 2004 for Game Boy Advance, Nintendo GameCube, PlayStation 2, Xbox."
+    },
+    "pitfall-the-mayan-adventure": {
+        "key": "pitfall-the-mayan-adventure",
+        "value": "Pitfall: The Mayan Adventure",
+        "group": "Activision",
+        "description": "Released in 1994 for Game Boy Advance, Atari Jaguar, Sega 32X, Sega CD, Sega Mega Drive, Super Nintendo Entertainment System, Microsoft Windows."
+    },
+    "plaque-attack": {
+        "key": "plaque-attack",
+        "value": "Plaque Attack",
+        "group": "Activision",
+        "description": "Released in 1983 for Atari 2600."
+    },
+    "plok": {
+        "key": "plok",
+        "value": "Plok",
+        "group": "Activision",
+        "description": "Released in 1993 for Super Nintendo Entertainment System."
+    },
+    "popeye-2": {
+        "key": "popeye-2",
+        "value": "Popeye 2",
+        "group": "Activision",
+        "description": "Released in 1994 for Game Boy."
+    },
+    "portal": {
+        "key": "portal",
+        "value": "Portal",
+        "group": "Activision",
+        "description": "Released in 1986 for Amiga, Apple II, MS-DOS, Commodore 64, Classic Mac OS, Atari ST."
+    },
+    "power-drift": {
+        "key": "power-drift",
+        "value": "Power Drift",
+        "group": "Activision",
+        "description": "Released in 1989 for Amiga, Commodore 64, Amstrad CPC, MS-DOS, Atari ST."
+    },
+    "power-game-iii": {
+        "key": "power-game-iii",
+        "value": "Power Game III",
+        "group": "Activision",
+        "description": "Released in 1995 for MS-DOS."
+    },
+    "powerhits-battletech": {
+        "key": "powerhits-battletech",
+        "value": "PowerHits: BattleTech",
+        "group": "Activision",
+        "description": "Released in 1992 for MS-DOS."
+    },
+    "powerhits-movies": {
+        "key": "powerhits-movies",
+        "value": "PowerHits Movies",
+        "group": "Activision",
+        "description": "Released in 1992 for MS-DOS."
+    },
+    "powerhits-sci-fi": {
+        "key": "powerhits-sci-fi",
+        "value": "PowerHits Sci/Fi",
+        "group": "Activision",
+        "description": "Released in 1994 for MS-DOS."
+    },
+    "powerhits-sports": {
+        "key": "powerhits-sports",
+        "value": "PowerHits Sports",
+        "group": "Activision",
+        "description": "Released in 1992 for MS-DOS."
+    },
+    "power-move-pro-wrestling": {
+        "key": "power-move-pro-wrestling",
+        "value": "Power Move Pro Wrestling",
+        "group": "Activision",
+        "description": "Released in 1996 for PlayStation."
+    },
+    "predator": {
+        "key": "predator",
+        "value": "Predator",
+        "group": "Activision",
+        "description": "Released in 1987 for Amiga, BBC Micro, Commodore 64, Amstrad CPC, Atari ST, ZX Spectrum."
+    },
+    "pressure-cooker": {
+        "key": "pressure-cooker",
+        "value": "Pressure Cooker",
+        "group": "Activision",
+        "description": "Released in 1983 for Atari 2600."
+    },
+    "private-eye": {
+        "key": "private-eye",
+        "value": "Private Eye",
+        "group": "Activision",
+        "description": "Released in 1984 for Atari 2600."
+    },
+    "prophecy-the-fall-of-trinadon": {
+        "key": "prophecy-the-fall-of-trinadon",
+        "value": "Prophecy: The Fall of Trinadon",
+        "group": "Activision",
+        "description": "Released in 1989 for MS-DOS."
+    },
+    "prototype": {
+        "key": "prototype",
+        "value": "Prototype",
+        "group": "Activision",
+        "description": "Released in 2009 for PlayStation 3, Microsoft Windows, Xbox 360."
+    },
+    "prototype-2": {
+        "key": "prototype-2",
+        "value": "Prototype 2",
+        "group": "Activision",
+        "description": "Released in 2012 for PlayStation 3, Microsoft Windows, Xbox 360."
+    },
+    "quake-2quake-ii": {
+        "key": "quake-2quake-ii",
+        "value": "Quake 2Quake II",
+        "group": "Activision",
+        "description": "Released in 1997 for Classic Mac OS, Nintendo 64, PlayStation, Microsoft Windows."
+    },
+    "quake-3-arenaquake-iii-arena": {
+        "key": "quake-3-arenaquake-iii-arena",
+        "value": "Quake 3 ArenaQuake III Arena",
+        "group": "Activision",
+        "description": "Released in 1999 for Linux, Classic Mac OS, Microsoft Windows."
+    },
+    "quake-3-team-arenaquake-iii-team-arena": {
+        "key": "quake-3-team-arenaquake-iii-team-arena",
+        "value": "Quake 3 Team ArenaQuake III Team Arena",
+        "group": "Activision",
+        "description": "Released in 2000 for Microsoft Windows."
+    },
+    "quake-4": {
+        "key": "quake-4",
+        "value": "Quake 4",
+        "group": "Activision",
+        "description": "Released in 2005 for Microsoft Windows, Xbox 360."
+    },
+    "quantum-of-solace": {
+        "key": "quantum-of-solace",
+        "value": "Quantum of Solace",
+        "group": "Activision",
+        "description": "Released in 2008 for Nintendo DS, PlayStation 2, PlayStation 3, Wii, Microsoft Windows, Xbox 360."
+    },
+    "quartet": {
+        "key": "quartet",
+        "value": "Quartet",
+        "group": "Activision",
+        "description": "Released in 1987 for Commodore 64, Amstrad CPC, ZX Spectrum."
+    },
+    "radical-rex": {
+        "key": "radical-rex",
+        "value": "Radical Rex",
+        "group": "Activision",
+        "description": "Released in 1994 for Super Nintendo Entertainment System."
+    },
+    "rally-fusion-race-of-champions": {
+        "key": "rally-fusion-race-of-champions",
+        "value": "Rally Fusion: Race of Champions",
+        "group": "Activision",
+        "description": "Released in 2002 for Nintendo GameCube, PlayStation 2, Xbox."
+    },
+    "rampage": {
+        "key": "rampage",
+        "value": "Rampage",
+        "group": "Activision",
+        "description": "Released in 1986 for Amiga, Apple II, Atari 2600, Atari 8-bit, Commodore 64, MS-DOS, Sega Master System, Atari ST, TRS-80 Color Computer, ZX Spectrum."
+    },
+    "rapala-for-kinect": {
+        "key": "rapala-for-kinect",
+        "value": "Rapala for Kinect",
+        "group": "Activision",
+        "description": "Released in 2011 for Xbox 360."
+    },
+    "the-real-ghostbusters": {
+        "key": "the-real-ghostbusters",
+        "value": "The Real Ghostbusters",
+        "group": "Activision",
+        "description": "Released in 1988 for Amiga, Commodore 64, Amstrad CPC, Atari ST."
+    },
+    "rescue-on-fractalus": {
+        "key": "rescue-on-fractalus",
+        "value": "Rescue on Fractalus!",
+        "group": "Activision",
+        "description": "Released in 1985 for Apple II, Commodore 64, Amstrad CPC, ZX Spectrum."
+    },
+    "return-to-castle-wolfenstein": {
+        "key": "return-to-castle-wolfenstein",
+        "value": "Return to Castle Wolfenstein",
+        "group": "Activision",
+        "description": "Released in 2001 for Microsoft Windows."
+    },
+    "return-to-castle-wolfenstein-operation-resurrection": {
+        "key": "return-to-castle-wolfenstein-operation-resurrection",
+        "value": "Return to Castle Wolfenstein: Operation Resurrection",
+        "group": "Activision",
+        "description": "Released in 2003 for PlayStation 2."
+    },
+    "return-to-castle-wolfenstein-tides-of-war": {
+        "key": "return-to-castle-wolfenstein-tides-of-war",
+        "value": "Return to Castle Wolfenstein: Tides of War",
+        "group": "Activision",
+        "description": "Released in 2003 for Xbox."
+    },
+    "return-to-zork": {
+        "key": "return-to-zork",
+        "value": "Return to Zork",
+        "group": "Activision",
+        "description": "Released in 1993 for 3DO, MS-DOS, Classic Mac OS, PlayStation, Sega Saturn, Microsoft Windows."
+    },
+    "river-raid": {
+        "key": "river-raid",
+        "value": "River Raid",
+        "group": "Activision",
+        "description": "Released in 1982 for Atari 8-bit, Atari 2600, Atari 5200, Commodore 64, ColecoVision, MS-DOS, Intellivision, MSX, ZX Spectrum."
+    },
+    "river-raid-ii": {
+        "key": "river-raid-ii",
+        "value": "River Raid II",
+        "group": "Activision",
+        "description": "Released in 1988 for Atari 2600."
+    },
+    "road-champs-bxs-stunt-biking": {
+        "key": "road-champs-bxs-stunt-biking",
+        "value": "Road Champs: BXS Stunt Biking",
+        "group": "Activision",
+        "description": "Released in 2000 for Game Boy Color."
+    },
+    "robot-tank": {
+        "key": "robot-tank",
+        "value": "Robot Tank",
+        "group": "Activision",
+        "description": "Released in 1983 for Atari 2600."
+    },
+    "rock-n-bolt": {
+        "key": "rock-n-bolt",
+        "value": "Rock n' Bolt",
+        "group": "Activision",
+        "description": "Released in 1984 for Commodore 64, ColecoVision, MSX."
+    },
+    "rodney-s-funscreen": {
+        "key": "rodney-s-funscreen",
+        "value": "Rodney's Funscreen",
+        "group": "Activision",
+        "description": "Released in 1992 for Classic Mac OS, Microsoft Windows."
+    },
+    "rome-total-war": {
+        "key": "rome-total-war",
+        "value": "Rome: Total War",
+        "group": "Activision",
+        "description": "Released in 2004 for Microsoft Windows."
+    },
+    "rtx-red-rock": {
+        "key": "rtx-red-rock",
+        "value": "RTX: Red Rock",
+        "group": "Activision",
+        "description": "Released in 2003 for PlayStation 2."
+    },
+    "r-type-ii": {
+        "key": "r-type-ii",
+        "value": "R-Type II",
+        "group": "Activision",
+        "description": "Released in 1991 for Amiga, Atari ST."
+    },
+    "santa-fe-mysteries-sacred-ground": {
+        "key": "santa-fe-mysteries-sacred-ground",
+        "value": "Santa Fe Mysteries: Sacred Ground",
+        "group": "Activision",
+        "description": "Released in 1997 for MS-DOS, Classic Mac OS, Microsoft Windows."
+    },
+    "santa-fe-mysteries-the-elk-moon-murder": {
+        "key": "santa-fe-mysteries-the-elk-moon-murder",
+        "value": "Santa Fe Mysteries: The Elk Moon Murder",
+        "group": "Activision",
+        "description": "Released in 1996 for MS-DOS, Classic Mac OS, Microsoft Windows."
+    },
+    "sargon-5-world-class-chess": {
+        "key": "sargon-5-world-class-chess",
+        "value": "Sargon 5: World Class Chess",
+        "group": "Activision",
+        "description": "Released in 1991 for MS-DOS."
+    },
+    "the-sci-fi-collection": {
+        "key": "the-sci-fi-collection",
+        "value": "The Sci-Fi Collection",
+        "group": "Activision",
+        "description": "Released in 1995 for MS-DOS, Classic Mac OS."
+    },
+    "sdi-strategic-defense-initiative": {
+        "key": "sdi-strategic-defense-initiative",
+        "value": "SDI: Strategic Defense Initiative",
+        "group": "Activision",
+        "description": "Released in 1987 for Amiga, Commodore 64, Atari ST, ZX Spectrum."
+    },
+    "seaquest": {
+        "key": "seaquest",
+        "value": "Seaquest",
+        "group": "Activision",
+        "description": "Released in 1983 for Atari 2600."
+    },
+    "seastalker": {
+        "key": "seastalker",
+        "value": "Seastalker",
+        "group": "Activision",
+        "description": "Released in 1986 for Amstrad CPC."
+    },
+    "seaworld-adventure-parks-tycoon": {
+        "key": "seaworld-adventure-parks-tycoon",
+        "value": "SeaWorld Adventure Parks Tycoon",
+        "group": "Activision",
+        "description": "Released in 2003 for Microsoft Windows."
+    },
+    "secret-weapons-over-normandy": {
+        "key": "secret-weapons-over-normandy",
+        "value": "Secret Weapons Over Normandy",
+        "group": "Activision",
+        "description": "Released in 2003 for PlayStation 2, Microsoft Windows."
+    },
+    "shake-it-up": {
+        "key": "shake-it-up",
+        "value": "Shake It Up",
+        "group": "Activision",
+        "description": "Released in 2011 for Wii."
+    },
+    "shake-it-up-2-groove-it-up": {
+        "key": "shake-it-up-2-groove-it-up",
+        "value": "Shake It Up 2: Groove It Up",
+        "group": "Activision",
+        "description": "Released in 2012 for Wii."
+    },
+    "sekiro-shadows-die-twice": {
+        "key": "sekiro-shadows-die-twice",
+        "value": "Sekiro: Shadows Die Twice",
+        "group": "Activision",
+        "description": "Released in 2019 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "shanghai": {
+        "key": "shanghai",
+        "value": "Shanghai",
+        "group": "Activision",
+        "description": "Released in 1986 for Amiga, Amstrad CPC, Apple II, Atari 8-bit, Commodore 64, MS-DOS, Atari Lynx, Classic Mac OS, MSX2, Sega Master System, Atari ST, TRS-80 Color Computer."
+    },
+    "shanghai-ii-dragon-s-eye": {
+        "key": "shanghai-ii-dragon-s-eye",
+        "value": "Shanghai II: Dragon's Eye",
+        "group": "Activision",
+        "description": "Released in 1989 for MS-DOS, MSX, Sega Mega Drive, Super Nintendo Entertainment System, Microsoft Windows."
+    },
+    "shanghai-dynasty": {
+        "key": "shanghai-dynasty",
+        "value": "Shanghai: Dynasty",
+        "group": "Activision",
+        "description": "Released in 1997 for Classic Mac OS, Microsoft Windows."
+    },
+    "shanghai-great-moments": {
+        "key": "shanghai-great-moments",
+        "value": "Shanghai: Great Moments",
+        "group": "Activision",
+        "description": "Released in 1995 for Microsoft Windows."
+    },
+    "shanghai-mah-jongg-essentials": {
+        "key": "shanghai-mah-jongg-essentials",
+        "value": "Shanghai: Mah-Jongg Essentials",
+        "group": "Activision",
+        "description": "Released in 1999 for Classic Mac OS, Microsoft Windows."
+    },
+    "shanghai-second-dynasty": {
+        "key": "shanghai-second-dynasty",
+        "value": "Shanghai: Second Dynasty",
+        "group": "Activision",
+        "description": "Released in 1999 for Classic Mac OS, Microsoft Windows."
+    },
+    "shanghai-triple-threat": {
+        "key": "shanghai-triple-threat",
+        "value": "Shanghai: Triple-Threat",
+        "group": "Activision",
+        "description": "Released in 1994 for 3DO, Sega Saturn."
+    },
+    "shaun-palmer-s-pro-snowboarder": {
+        "key": "shaun-palmer-s-pro-snowboarder",
+        "value": "Shaun Palmer's Pro Snowboarder",
+        "group": "Activision",
+        "description": "Released in 2001 for Game Boy Advance, PlayStation 2."
+    },
+    "shrek-2": {
+        "key": "shrek-2",
+        "value": "Shrek 2",
+        "group": "Activision",
+        "description": "Released in 2004 for Nintendo GameCube, PlayStation 2, Microsoft Windows, Xbox."
+    },
+    "shrek-2-beg-for-mercy": {
+        "key": "shrek-2-beg-for-mercy",
+        "value": "Shrek 2: Beg for Mercy!",
+        "group": "Activision",
+        "description": "Released in 2004 for Game Boy Advance."
+    },
+    "shrek-2-team-action": {
+        "key": "shrek-2-team-action",
+        "value": "Shrek 2: Team Action",
+        "group": "Activision",
+        "description": "Released in 2004 for Microsoft Windows."
+    },
+    "shrek-forever-after": {
+        "key": "shrek-forever-after",
+        "value": "Shrek: Forever After",
+        "group": "Activision",
+        "description": "Released in 2010 for Nintendo DS, PlayStation 3, Xbox 360, Wii."
+    },
+    "shrek-smash-n-crash-racing": {
+        "key": "shrek-smash-n-crash-racing",
+        "value": "Shrek Smash n' Crash Racing",
+        "group": "Activision",
+        "description": "Released in 2006 for Nintendo GameCube, PlayStation 2, PlayStation Portable."
+    },
+    "shrek-superslam": {
+        "key": "shrek-superslam",
+        "value": "Shrek SuperSlam",
+        "group": "Activision",
+        "description": "Released in 2005 for Game Boy Advance, Nintendo GameCube, Nintendo DS, PlayStation 2, Microsoft Windows, Xbox."
+    },
+    "shrek-the-third": {
+        "key": "shrek-the-third",
+        "value": "Shrek the Third",
+        "group": "Activision",
+        "description": "Released in 2007 for PlayStation 2, PlayStation Portable, Wii, Microsoft Windows, Xbox 360, Game Boy Advance, Nintendo DS."
+    },
+    "sid-meier-s-civilization-ii": {
+        "key": "sid-meier-s-civilization-ii",
+        "value": "Sid Meier's Civilization II",
+        "group": "Activision",
+        "description": "Released in 1998 for PlayStation."
+    },
+    "the-simpsons-wrestling": {
+        "key": "the-simpsons-wrestling",
+        "value": "The Simpsons Wrestling",
+        "group": "Activision",
+        "description": "Released in 2001 for PlayStation."
+    },
+    "sin": {
+        "key": "sin",
+        "value": "SiN",
+        "group": "Activision",
+        "description": "Released in 1998 for Microsoft Windows."
+    },
+    "sin-wages-of-sin": {
+        "key": "sin-wages-of-sin",
+        "value": "SiN: Wages of Sin",
+        "group": "Activision",
+        "description": "Released in 1999 for Microsoft Windows."
+    },
+    "singularity": {
+        "key": "singularity",
+        "value": "Singularity",
+        "group": "Activision",
+        "description": "Released in 2010 for PlayStation 3, Microsoft Windows, Xbox 360."
+    },
+    "skate-boardin": {
+        "key": "skate-boardin",
+        "value": "Skate Boardin'",
+        "group": "Activision",
+        "description": "Released in 1987 for Atari 2600."
+    },
+    "skiing": {
+        "key": "skiing",
+        "value": "Skiing",
+        "group": "Activision",
+        "description": "Released in 1980 for Atari 2600."
+    },
+    "sky-jinks": {
+        "key": "sky-jinks",
+        "value": "Sky Jinks",
+        "group": "Activision",
+        "description": "Released in 1982 for Atari 2600."
+    },
+    "sky-odyssey": {
+        "key": "sky-odyssey",
+        "value": "Sky Odyssey",
+        "group": "Activision",
+        "description": "Released in 2000 for PlayStation 2."
+    },
+    "skylanders-giants": {
+        "key": "skylanders-giants",
+        "value": "Skylanders: Giants",
+        "group": "Activision",
+        "description": "Released in 2012 for Nintendo DS, Classic Mac OS, PlayStation 3, Wii, Wii U, Xbox 360, Microsoft Windows."
+    },
+    "skylanders-imaginators": {
+        "key": "skylanders-imaginators",
+        "value": "Skylanders: Imaginators",
+        "group": "Activision",
+        "description": "Released in 2016 for PlayStation 3, PlayStation 4, Wii, Wii U, Xbox 360, Xbox One."
+    },
+    "skylanders-spyro-s-adventure": {
+        "key": "skylanders-spyro-s-adventure",
+        "value": "Skylanders: Spyro's Adventure",
+        "group": "Activision",
+        "description": "Released in 2011 for Nintendo DS, Classic Mac OS, PlayStation 3, Wii, Microsoft Windows, Xbox 360."
+    },
+    "skylanders-superchargers": {
+        "key": "skylanders-superchargers",
+        "value": "Skylanders: SuperChargers",
+        "group": "Activision",
+        "description": "Released in 2015 for PlayStation 3, PlayStation 4, Wii, Wii U, Xbox 360, iOS, Nintendo DS."
+    },
+    "skylanders-swap-force": {
+        "key": "skylanders-swap-force",
+        "value": "Skylanders: Swap Force",
+        "group": "Activision",
+        "description": "Released in 2013 for Nintendo DS, Classic Mac OS, PlayStation 3, Wii, Wii U, Xbox 360, Microsoft Windows."
+    },
+    "skylanders-trap-team": {
+        "key": "skylanders-trap-team",
+        "value": "Skylanders: Trap Team",
+        "group": "Activision",
+        "description": "Released in 2014 for Nintendo DS, Classic Mac OS, PlayStation 3, PlayStation 4, Wii, Wii U, Xbox 360, Xbox One, Microsoft Windows."
+    },
+    "sonic-action-4-pack": {
+        "key": "sonic-action-4-pack",
+        "value": "Sonic Action 4 Pack",
+        "group": "Activision",
+        "description": "Released in 2001 for Microsoft Windows."
+    },
+    "sonic-adventure-dx-director-s-cut": {
+        "key": "sonic-adventure-dx-director-s-cut",
+        "value": "Sonic Adventure DX: Director's Cut",
+        "group": "Activision",
+        "description": "Released in 2004 for Microsoft Windows."
+    },
+    "soldier-of-fortune": {
+        "key": "soldier-of-fortune",
+        "value": "Soldier of Fortune",
+        "group": "Activision",
+        "description": "Released in 2000 for Dreamcast, Linux, PlayStation 2, Microsoft Windows."
+    },
+    "soldier-of-fortune-ii-double-helix": {
+        "key": "soldier-of-fortune-ii-double-helix",
+        "value": "Soldier of Fortune II: Double Helix",
+        "group": "Activision",
+        "description": "Released in 2002 for Classic Mac OS, Microsoft Windows, Xbox."
+    },
+    "soldier-of-fortune-payback": {
+        "key": "soldier-of-fortune-payback",
+        "value": "Soldier of Fortune: Payback",
+        "group": "Activision",
+        "description": "Released in 2007 for Microsoft Windows, Xbox 360, PlayStation 3."
+    },
+    "sonic-boom": {
+        "key": "sonic-boom",
+        "value": "Sonic Boom",
+        "group": "Activision",
+        "description": "Released in 1990 for Amiga, Commodore 64, Amstrad CPC, Atari ST, ZX Spectrum."
+    },
+    "space-invaders": {
+        "key": "space-invaders",
+        "value": "Space Invaders",
+        "group": "Activision",
+        "description": "Released in 1999 for Game Boy Advance, Game Boy Color, Nintendo 64, PlayStation, Microsoft Windows."
+    },
+    "space-shuttle-a-journey-into-space": {
+        "key": "space-shuttle-a-journey-into-space",
+        "value": "Space Shuttle: A Journey into Space",
+        "group": "Activision",
+        "description": "Released in 1983 for Atari 8-bit, Atari 2600, Atari 5200, Commodore 64, Amstrad CPC, MSX, ZX Spectrum."
+    },
+    "spider-fighter": {
+        "key": "spider-fighter",
+        "value": "Spider Fighter",
+        "group": "Activision",
+        "description": "Released in 1982 for Atari 2600."
+    },
+    "spider-man": {
+        "key": "spider-man",
+        "value": "Spider-Man",
+        "group": "Activision",
+        "description": "Released in 2000 for Dreamcast, Game Boy Color, Nintendo 64, PlayStation, Microsoft Windows."
+    },
+    "spider-man-2": {
+        "key": "spider-man-2",
+        "value": "Spider-Man 2",
+        "group": "Activision",
+        "description": "Released in 2004 for Nintendo GameCube, Nintendo DS, PlayStation 2, PlayStation Portable, Microsoft Windows, Xbox."
+    },
+    "spider-man-2-enter-electro": {
+        "key": "spider-man-2-enter-electro",
+        "value": "Spider-Man 2: Enter Electro",
+        "group": "Activision",
+        "description": "Released in 2001 for PlayStation."
+    },
+    "spider-man-2-the-sinister-six": {
+        "key": "spider-man-2-the-sinister-six",
+        "value": "Spider-Man 2: The Sinister Six",
+        "group": "Activision",
+        "description": "Released in 2001 for Game Boy Color."
+    },
+    "spider-man-3": {
+        "key": "spider-man-3",
+        "value": "Spider-Man 3",
+        "group": "Activision",
+        "description": "Released in 2007 for Game Boy Advance, Nintendo DS, PlayStation 2, PlayStation 3, PlayStation Portable, Wii, Microsoft Windows, Xbox 360."
+    },
+    "spider-man-battle-for-new-york": {
+        "key": "spider-man-battle-for-new-york",
+        "value": "Spider-Man: Battle for New York",
+        "group": "Activision",
+        "description": "Released in 2004 for Game Boy Advance, Nintendo DS."
+    },
+    "spider-man-edge-of-time": {
+        "key": "spider-man-edge-of-time",
+        "value": "Spider-Man: Edge of Time",
+        "group": "Activision",
+        "description": "Released in 2011 for Nintendo DS, PlayStation 3, Wii, Xbox 360."
+    },
+    "spider-man-friend-or-foe": {
+        "key": "spider-man-friend-or-foe",
+        "value": "Spider-Man: Friend or Foe",
+        "group": "Activision",
+        "description": "Released in 2007 for Nintendo DS, PlayStation 2, PlayStation Portable, Wii, Microsoft Windows, Xbox 360."
+    },
+    "spider-man-mysterio-s-menace": {
+        "key": "spider-man-mysterio-s-menace",
+        "value": "Spider-Man: Mysterio's Menace",
+        "group": "Activision",
+        "description": "Released in 2001 for Game Boy Advance."
+    },
+    "spider-man-shattered-dimensions": {
+        "key": "spider-man-shattered-dimensions",
+        "value": "Spider-Man: Shattered Dimensions",
+        "group": "Activision",
+        "description": "Released in 2010 for Nintendo DS, PlayStation 3, Microsoft Windows, Wii, Xbox 360."
+    },
+    "spider-man-the-movie": {
+        "key": "spider-man-the-movie",
+        "value": "Spider-Man: The Movie",
+        "group": "Activision",
+        "description": "Released in 2002 for Game Boy Advance, Nintendo GameCube, PlayStation 2, Microsoft Windows, Xbox."
+    },
+    "spindizzy": {
+        "key": "spindizzy",
+        "value": "Spindizzy",
+        "group": "Activision",
+        "description": "Released in 1986 for Apple II, Atari 8-bit, Commodore 64, Amstrad CPC, ZX Spectrum."
+    },
+    "spongebob-heropants": {
+        "key": "spongebob-heropants",
+        "value": "SpongeBob HeroPants",
+        "group": "Activision",
+        "description": "Released in 2015 for Nintendo DS, PlayStation Vita, Xbox 360."
+    },
+    "spongebob-squarepants-plankton-s-robotic-revenge": {
+        "key": "spongebob-squarepants-plankton-s-robotic-revenge",
+        "value": "SpongeBob SquarePants: Plankton's Robotic Revenge",
+        "group": "Activision",
+        "description": "Released in 2013 for Nintendo DS, Nintendo DS, PlayStation 3, Wii, Xbox 360, Wii U."
+    },
+    "spycraft-the-great-game": {
+        "key": "spycraft-the-great-game",
+        "value": "Spycraft: The Great Game",
+        "group": "Activision",
+        "description": "Released in 1996 for MS-DOS, Classic Mac OS, Microsoft Windows."
+    },
+    "spyro-reignited-trilogy": {
+        "key": "spyro-reignited-trilogy",
+        "value": "Spyro Reignited Trilogy",
+        "group": "Activision",
+        "description": "Released in 2018 for PlayStation 4, Xbox One."
+    },
+    "stampede": {
+        "key": "stampede",
+        "value": "Stampede",
+        "group": "Activision",
+        "description": "Released in 1981 for Atari 2600, Intellivision."
+    },
+    "starmaster": {
+        "key": "starmaster",
+        "value": "Starmaster",
+        "group": "Activision",
+        "description": "Released in 1982 for Atari 2600."
+    },
+    "star-rank-boxing": {
+        "key": "star-rank-boxing",
+        "value": "Star Rank Boxing",
+        "group": "Activision",
+        "description": "Released in 1985 for Commodore 64, Amstrad CPC, ZX Spectrum."
+    },
+    "star-rank-boxing-ii": {
+        "key": "star-rank-boxing-ii",
+        "value": "Star Rank Boxing II",
+        "group": "Activision",
+        "description": "Released in 1987 for Apple II, Commodore 64, MS-DOS."
+    },
+    "star-trek-action-pack": {
+        "key": "star-trek-action-pack",
+        "value": "Star Trek Action Pack",
+        "group": "Activision",
+        "description": "Released in 2002 for Microsoft Windows."
+    },
+    "star-trek-armada": {
+        "key": "star-trek-armada",
+        "value": "Star Trek: Armada",
+        "group": "Activision",
+        "description": "Released in 2000 for Microsoft Windows."
+    },
+    "star-trek-armada-ii": {
+        "key": "star-trek-armada-ii",
+        "value": "Star Trek: Armada II",
+        "group": "Activision",
+        "description": "Released in 2001 for Microsoft Windows."
+    },
+    "star-trek-away-team": {
+        "key": "star-trek-away-team",
+        "value": "Star Trek: Away Team",
+        "group": "Activision",
+        "description": "Released in 2001 for Microsoft Windows."
+    },
+    "star-trek-bridge-commander": {
+        "key": "star-trek-bridge-commander",
+        "value": "Star Trek: Bridge Commander",
+        "group": "Activision",
+        "description": "Released in 2002 for Microsoft Windows."
+    },
+    "star-trek-conquest-online": {
+        "key": "star-trek-conquest-online",
+        "value": "Star Trek: ConQuest Online",
+        "group": "Activision",
+        "description": "Released in 2000 for Microsoft Windows."
+    },
+    "star-trek-elite-force-ii": {
+        "key": "star-trek-elite-force-ii",
+        "value": "Star Trek: Elite Force II",
+        "group": "Activision",
+        "description": "Released in 2003 for Microsoft Windows."
+    },
+    "star-trek-hidden-evil": {
+        "key": "star-trek-hidden-evil",
+        "value": "Star Trek: Hidden Evil",
+        "group": "Activision",
+        "description": "Released in 1999 for Microsoft Windows."
+    },
+    "star-trek-invasion": {
+        "key": "star-trek-invasion",
+        "value": "Star Trek: Invasion",
+        "group": "Activision",
+        "description": "Released in 2000 for PlayStation."
+    },
+    "star-trek-starfleet-command-iii": {
+        "key": "star-trek-starfleet-command-iii",
+        "value": "Star Trek: Starfleet Command III",
+        "group": "Activision",
+        "description": "Released in 2002 for Microsoft Windows."
+    },
+    "star-trek-voyager--elite-force": {
+        "key": "star-trek-voyager--elite-force",
+        "value": "Star Trek: Voyager – Elite Force",
+        "group": "Activision",
+        "description": "Released in 2000 for Microsoft Windows."
+    },
+    "star-wars-bounty-hunter": {
+        "key": "star-wars-bounty-hunter",
+        "value": "Star Wars: Bounty Hunter",
+        "group": "Activision",
+        "description": "Released in 2002 for PlayStation 2."
+    },
+    "star-wars-jedi-knight-jedi-academy": {
+        "key": "star-wars-jedi-knight-jedi-academy",
+        "value": "Star Wars Jedi Knight: Jedi Academy",
+        "group": "Activision",
+        "description": "Released in 2003 for Microsoft Windows, Xbox."
+    },
+    "star-wars-jedi-knight-ii-jedi-outcast": {
+        "key": "star-wars-jedi-knight-ii-jedi-outcast",
+        "value": "Star Wars Jedi Knight II: Jedi Outcast",
+        "group": "Activision",
+        "description": "Released in 2002 for Nintendo GameCube, Microsoft Windows, Xbox."
+    },
+    "star-wars-obi-wan": {
+        "key": "star-wars-obi-wan",
+        "value": "Star Wars: Obi-Wan",
+        "group": "Activision",
+        "description": "Released in 2002 for Xbox."
+    },
+    "star-wars-republic-commando": {
+        "key": "star-wars-republic-commando",
+        "value": "Star Wars: Republic Commando",
+        "group": "Activision",
+        "description": "Released in 2005 for Microsoft Windows, Xbox."
+    },
+    "star-wars-the-clone-wars": {
+        "key": "star-wars-the-clone-wars",
+        "value": "Star Wars: The Clone Wars",
+        "group": "Activision",
+        "description": "Released in 2002 for Nintendo GameCube, PlayStation 2, Xbox."
+    },
+    "stealth-atf": {
+        "key": "stealth-atf",
+        "value": "Stealth ATF",
+        "group": "Activision",
+        "description": "Released in 1989 for Nintendo Entertainment System."
+    },
+    "street-hoops": {
+        "key": "street-hoops",
+        "value": "Street Hoops",
+        "group": "Activision",
+        "description": "Released in 2002 for Nintendo GameCube, PlayStation 2, Xbox."
+    },
+    "stuart-little-the-journey-home": {
+        "key": "stuart-little-the-journey-home",
+        "value": "Stuart Little: The Journey Home",
+        "group": "Activision",
+        "description": "Released in 2001 for Game Boy Color."
+    },
+    "supercar-street-challenge": {
+        "key": "supercar-street-challenge",
+        "value": "Supercar Street Challenge",
+        "group": "Activision",
+        "description": "Released in 2001 for PlayStation 2, Microsoft Windows."
+    },
+    "super-pitfall": {
+        "key": "super-pitfall",
+        "value": "Super Pitfall",
+        "group": "Activision",
+        "description": "Released in 1987 for Nintendo Entertainment System."
+    },
+    "sword-master": {
+        "key": "sword-master",
+        "value": "Sword Master",
+        "group": "Activision",
+        "description": "Released in 1990 for Nintendo Entertainment System."
+    },
+    "t-ai-fu-wrath-of-the-tiger": {
+        "key": "t-ai-fu-wrath-of-the-tiger",
+        "value": "T'ai Fu: Wrath of the Tiger",
+        "group": "Activision",
+        "description": "Released in 1999 for PlayStation."
+    },
+    "tass-times-in-tonetown": {
+        "key": "tass-times-in-tonetown",
+        "value": "Tass Times in Tonetown",
+        "group": "Activision",
+        "description": "Released in 1986 for Amiga, Apple II, Apple IIGS, Commodore 64, MS-DOS, Classic Mac OS, Atari ST."
+    },
+    "tech-deck-skateboarding": {
+        "key": "tech-deck-skateboarding",
+        "value": "Tech Deck Skateboarding",
+        "group": "Activision",
+        "description": "Released in 2001 for Game Boy Color."
+    },
+    "tenchu-2-birth-of-the-stealth-assassins": {
+        "key": "tenchu-2-birth-of-the-stealth-assassins",
+        "value": "Tenchu 2: Birth of the Stealth Assassins",
+        "group": "Activision",
+        "description": "Released in 2000 for PlayStation."
+    },
+    "teenage-mutant-ninja-turtles-danger-of-the-ooze": {
+        "key": "teenage-mutant-ninja-turtles-danger-of-the-ooze",
+        "value": "Teenage Mutant Ninja Turtles: Danger of the Ooze",
+        "group": "Activision",
+        "description": "Released in 2014 for PlayStation 3, Xbox 360, Nintendo DS."
+    },
+    "teenage-mutant-ninja-turtles-mutants-in-manhattan": {
+        "key": "teenage-mutant-ninja-turtles-mutants-in-manhattan",
+        "value": "Teenage Mutant Ninja Turtles: Mutants in Manhattan",
+        "group": "Activision",
+        "description": "Released in 2016 for PlayStation 3, PlayStation 4, Xbox 360, Xbox One, Microsoft Windows."
+    },
+    "teenage-mutant-ninja-turtles-out-of-the-shadows": {
+        "key": "teenage-mutant-ninja-turtles-out-of-the-shadows",
+        "value": "Teenage Mutant Ninja Turtles: Out of the Shadows",
+        "group": "Activision",
+        "description": "Released in 2013 for PlayStation 3, Xbox 360, Microsoft Windows."
+    },
+    "tenchu-return-from-darkness": {
+        "key": "tenchu-return-from-darkness",
+        "value": "Tenchu: Return from Darkness",
+        "group": "Activision",
+        "description": "Released in 2004 for Xbox."
+    },
+    "tenchu-stealth-assassins": {
+        "key": "tenchu-stealth-assassins",
+        "value": "Tenchu: Stealth Assassins",
+        "group": "Activision",
+        "description": "Released in 1998 for PlayStation."
+    },
+    "tenchu-wrath-of-heaven": {
+        "key": "tenchu-wrath-of-heaven",
+        "value": "Tenchu: Wrath of Heaven",
+        "group": "Activision",
+        "description": "Released in 2003 for PlayStation 2."
+    },
+    "tennis": {
+        "key": "tennis",
+        "value": "Tennis",
+        "group": "Activision",
+        "description": "Released in 1981 for Atari 2600."
+    },
+    "thexder": {
+        "key": "thexder",
+        "value": "Thexder",
+        "group": "Activision",
+        "description": "Released in 1988 for Amiga, Apple II, Apple IIGS, MS-DOS, FM-7, Classic Mac OS, MSX, Nintendo Entertainment System, PC-8800, PC-9800, TRS-80, X1."
+    },
+    "they-sold-a-million-3": {
+        "key": "they-sold-a-million-3",
+        "value": "They Sold a Million 3",
+        "group": "Activision",
+        "description": "Released in 1986 for Amstrad CPC, ZX Spectrum."
+    },
+    "the-three-stooges": {
+        "key": "the-three-stooges",
+        "value": "The Three Stooges",
+        "group": "Activision",
+        "description": "Released in 1989 for Nintendo Entertainment System."
+    },
+    "time-commando": {
+        "key": "time-commando",
+        "value": "Time Commando",
+        "group": "Activision",
+        "description": "Released in 1996 for MS-DOS, PlayStation, Microsoft Windows."
+    },
+    "tomb-raider-curse-of-the-sword": {
+        "key": "tomb-raider-curse-of-the-sword",
+        "value": "Tomb Raider: Curse of the Sword",
+        "group": "Activision",
+        "description": "Released in 2001 for Game Boy Color."
+    },
+    "tongue-of-the-fatman": {
+        "key": "tongue-of-the-fatman",
+        "value": "Tongue of the Fatman",
+        "group": "Activision",
+        "description": "Released in 1989 for Commodore 64, MS-DOS, Sega Mega Drive."
+    },
+    "tony-hawk-ride": {
+        "key": "tony-hawk-ride",
+        "value": "Tony Hawk: Ride",
+        "group": "Activision",
+        "description": "Released in 2009 for PlayStation 3, Wii, Xbox 360."
+    },
+    "tony-hawk-s-american-sk8land": {
+        "key": "tony-hawk-s-american-sk8land",
+        "value": "Tony Hawk's American Sk8land",
+        "group": "Activision",
+        "description": "Released in 2005 for Game Boy Advance, Nintendo DS."
+    },
+    "tony-hawk-s-american-wasteland": {
+        "key": "tony-hawk-s-american-wasteland",
+        "value": "Tony Hawk's American Wasteland",
+        "group": "Activision",
+        "description": "Released in 2005 for Nintendo GameCube, PlayStation 2, Xbox, Xbox 360, Microsoft Windows."
+    },
+    "tony-hawk-s-downhill-jam": {
+        "key": "tony-hawk-s-downhill-jam",
+        "value": "Tony Hawk's Downhill Jam",
+        "group": "Activision",
+        "description": "Released in 2006 for Nintendo DS, PlayStation 2, Wii."
+    },
+    "tony-hawk-s-motion": {
+        "key": "tony-hawk-s-motion",
+        "value": "Tony Hawk's Motion",
+        "group": "Activision",
+        "description": "Released in 2008 for Nintendo DS."
+    },
+    "tony-hawk-s-project-8": {
+        "key": "tony-hawk-s-project-8",
+        "value": "Tony Hawk's Project 8",
+        "group": "Activision",
+        "description": "Released in 2006 for PlayStation 2, PlayStation 3, PlayStation Portable, Xbox, Xbox 360."
+    },
+    "tony-hawk-s-pro-skater": {
+        "key": "tony-hawk-s-pro-skater",
+        "value": "Tony Hawk's Pro Skater",
+        "group": "Activision",
+        "description": "Released in 1999 for Game Boy Color, N-Gage, Nintendo 64, PlayStation."
+    },
+    "tony-hawk-s-pro-skater-2": {
+        "key": "tony-hawk-s-pro-skater-2",
+        "value": "Tony Hawk's Pro Skater 2",
+        "group": "Activision",
+        "description": "Released in 2000 for Dreamcast, Game Boy Advance, Game Boy Color, Nintendo 64, PlayStation, Microsoft Windows."
+    },
+    "tony-hawk-s-pro-skater-2x": {
+        "key": "tony-hawk-s-pro-skater-2x",
+        "value": "Tony Hawk's Pro Skater 2x",
+        "group": "Activision",
+        "description": "Released in 2001 for Xbox."
+    },
+    "tony-hawk-s-pro-skater-3": {
+        "key": "tony-hawk-s-pro-skater-3",
+        "value": "Tony Hawk's Pro Skater 3",
+        "group": "Activision",
+        "description": "Released in 2001 for Game Boy Advance, Game Boy Color, Nintendo GameCube, Nintendo 64, PlayStation, PlayStation 2, Microsoft Windows, Xbox."
+    },
+    "tony-hawk-s-pro-skater-4": {
+        "key": "tony-hawk-s-pro-skater-4",
+        "value": "Tony Hawk's Pro Skater 4",
+        "group": "Activision",
+        "description": "Released in 2002 for Game Boy Advance, Nintendo GameCube, Classic Mac OS, PlayStation, PlayStation 2, Microsoft Windows, Xbox."
+    },
+    "tony-hawk-s-pro-skater-hd": {
+        "key": "tony-hawk-s-pro-skater-hd",
+        "value": "Tony Hawk's Pro Skater HD",
+        "group": "Activision",
+        "description": "Released in 2012 for PlayStation 3, Microsoft Windows, Xbox 360."
+    },
+    "tony-hawk-s-pro-skater-5": {
+        "key": "tony-hawk-s-pro-skater-5",
+        "value": "Tony Hawk's Pro Skater 5",
+        "group": "Activision",
+        "description": "Released in 2015 for PlayStation 3, PlayStation 4, Xbox 360, Xbox One."
+    },
+    "tony-hawk-s-proving-ground": {
+        "key": "tony-hawk-s-proving-ground",
+        "value": "Tony Hawk's Proving Ground",
+        "group": "Activision",
+        "description": "Released in 2007 for Nintendo DS, PlayStation 2, PlayStation 3, Xbox 360, Wii."
+    },
+    "tony-hawk-s-shred-session": {
+        "key": "tony-hawk-s-shred-session",
+        "value": "Tony Hawk's Shred Session",
+        "group": "Activision",
+        "description": "Released in 2014 for iOS, Android."
+    },
+    "tony-hawk-s-underground": {
+        "key": "tony-hawk-s-underground",
+        "value": "Tony Hawk's Underground",
+        "group": "Activision",
+        "description": "Released in 2003 for Game Boy Advance, Nintendo GameCube, PlayStation 2, Microsoft Windows, Xbox."
+    },
+    "tony-hawk-s-underground-2": {
+        "key": "tony-hawk-s-underground-2",
+        "value": "Tony Hawk's Underground 2",
+        "group": "Activision",
+        "description": "Released in 2004 for Game Boy Advance, Nintendo GameCube, PlayStation 2, PlayStation Portable, Microsoft Windows, Xbox."
+    },
+    "tony-hawk-s-underground-2-remix": {
+        "key": "tony-hawk-s-underground-2-remix",
+        "value": "Tony Hawk's Underground 2: Remix",
+        "group": "Activision",
+        "description": "Released in 2005 for Game Boy Advance, Nintendo GameCube, PlayStation 2, PlayStation Portable, Microsoft Windows, Xbox."
+    },
+    "toy-bizarre": {
+        "key": "toy-bizarre",
+        "value": "Toy Bizarre",
+        "group": "Activision",
+        "description": "Released in 1984 for Commodore 64, ZX Spectrum."
+    },
+    "toy-story-racer": {
+        "key": "toy-story-racer",
+        "value": "Toy Story Racer",
+        "group": "Activision",
+        "description": "Released in 2001 for Game Boy Color, PlayStation."
+    },
+    "the-tracer-sanction": {
+        "key": "the-tracer-sanction",
+        "value": "The Tracer Sanction",
+        "group": "Activision",
+        "description": "Released in 1984 for Apple II, Commodore 64, MS-DOS."
+    },
+    "transformers-autobots": {
+        "key": "transformers-autobots",
+        "value": "Transformers Autobots",
+        "group": "Activision",
+        "description": "Released in 2007 for Nintendo DS."
+    },
+    "transformers-dark-of-the-moon": {
+        "key": "transformers-dark-of-the-moon",
+        "value": "Transformers: Dark of the Moon",
+        "group": "Activision",
+        "description": "Released in 2011 for Nintendo DS, BlackBerry 10, iOS, Nintendo DS, PlayStation 3, Symbian, Wii, Xbox 360."
+    },
+    "transformers-decepticons": {
+        "key": "transformers-decepticons",
+        "value": "Transformers Decepticons",
+        "group": "Activision",
+        "description": "Released in 2007 for Nintendo DS."
+    },
+    "transformers-devastation": {
+        "key": "transformers-devastation",
+        "value": "Transformers: Devastation",
+        "group": "Activision",
+        "description": "Released in 2015 for Microsoft Windows, Xbox 360, Xbox One, PlayStation 3, PlayStation 4."
+    },
+    "transformers-fall-of-cybertron": {
+        "key": "transformers-fall-of-cybertron",
+        "value": "Transformers: Fall of Cybertron",
+        "group": "Activision",
+        "description": "Released in 2012 for PlayStation 3, Microsoft Windows, Xbox 360."
+    },
+    "transformers-prime": {
+        "key": "transformers-prime",
+        "value": "Transformers Prime",
+        "group": "Activision",
+        "description": "Released in 2012 for Nintendo DS, Nintendo DS, Wii, Wii U."
+    },
+    "transformers-revenge-of-the-fallen-the-game": {
+        "key": "transformers-revenge-of-the-fallen-the-game",
+        "value": "Transformers: Revenge of the Fallen: The Game",
+        "group": "Activision",
+        "description": "Released in 2009 for Nintendo DS, PlayStation Portable, PlayStation 2, PlayStation 3, Wii, Microsoft Windows, Xbox 360."
+    },
+    "transformers-rise-of-the-dark-spark": {
+        "key": "transformers-rise-of-the-dark-spark",
+        "value": "Transformers: Rise of the Dark Spark",
+        "group": "Activision",
+        "description": "Released in 2014 for Nintendo DS, PlayStation 3, PlayStation 4, Wii, Wii U, Microsoft Windows, Xbox 360, Xbox One."
+    },
+    "transformers-the-game": {
+        "key": "transformers-the-game",
+        "value": "Transformers: The Game",
+        "group": "Activision",
+        "description": "Released in 2007 for PlayStation 2, PlayStation 3, Wii, Xbox 360."
+    },
+    "transformers-war-for-cybertron": {
+        "key": "transformers-war-for-cybertron",
+        "value": "Transformers: War for Cybertron",
+        "group": "Activision",
+        "description": "Released in 2010 for PlayStation 3, Microsoft Windows, Xbox 360."
+    },
+    "true-crime-new-york-city": {
+        "key": "true-crime-new-york-city",
+        "value": "True Crime: New York City",
+        "group": "Activision",
+        "description": "Released in 2005 for Nintendo GameCube, PlayStation 2, Xbox."
+    },
+    "true-crime-streets-of-la": {
+        "key": "true-crime-streets-of-la",
+        "value": "True Crime: Streets of LA",
+        "group": "Activision",
+        "description": "Released in 2003 for Nintendo GameCube, PlayStation 2, Xbox, Microsoft Windows."
+    },
+    "twin-pack-sonic-3d-blast--sonic-r": {
+        "key": "twin-pack-sonic-3d-blast--sonic-r",
+        "value": "Twin Pack: Sonic 3D Blast & Sonic R",
+        "group": "Activision",
+        "description": "Released in 2002 for Windows."
+    },
+    "twinsen-s-odyssey": {
+        "key": "twinsen-s-odyssey",
+        "value": "Twinsen's Odyssey",
+        "group": "Activision",
+        "description": "Released in 1997 for MS-DOS, Microsoft Windows."
+    },
+    "ty-the-tasmanian-tiger-3-night-of-the-quinkan": {
+        "key": "ty-the-tasmanian-tiger-3-night-of-the-quinkan",
+        "value": "Ty the Tasmanian Tiger 3: Night of the Quinkan",
+        "group": "Activision",
+        "description": "Released in 2005 for Nintendo GameCube, Xbox."
+    },
+    "the-ultimate-doom-trilogy-collector-s-edition": {
+        "key": "the-ultimate-doom-trilogy-collector-s-edition",
+        "value": "The Ultimate DOOM Trilogy: Collector's Edition",
+        "group": "Activision",
+        "description": "Released in 2003 for Microsoft Windows."
+    },
+    "ultimate-quake": {
+        "key": "ultimate-quake",
+        "value": "Ultimate Quake",
+        "group": "Activision",
+        "description": "Released in 2001 for Microsoft Windows."
+    },
+    "ultimate-spider-man": {
+        "key": "ultimate-spider-man",
+        "value": "Ultimate Spider-Man",
+        "group": "Activision",
+        "description": "Released in 2005 for Nintendo GameCube, PlayStation 2, Microsoft Windows, Xbox."
+    },
+    "vampire-the-masquerade--bloodlines": {
+        "key": "vampire-the-masquerade--bloodlines",
+        "value": "Vampire: The Masquerade – Bloodlines",
+        "group": "Activision",
+        "description": "Released in 2004 for Microsoft Windows."
+    },
+    "vampire-the-masquerade--redemption": {
+        "key": "vampire-the-masquerade--redemption",
+        "value": "Vampire: The Masquerade – Redemption",
+        "group": "Activision",
+        "description": "Released in 2000 for Microsoft Windows."
+    },
+    "victorious-the-video-game": {
+        "key": "victorious-the-video-game",
+        "value": "Victorious: The Video Game",
+        "group": "Activision",
+        "description": "Released in 2011 for Nintendo DS, Wii."
+    },
+    "vigilante-8": {
+        "key": "vigilante-8",
+        "value": "Vigilante 8",
+        "group": "Activision",
+        "description": "Released in 1998 for Nintendo 64, PlayStation."
+    },
+    "vigilante-8-2nd-offense": {
+        "key": "vigilante-8-2nd-offense",
+        "value": "Vigilante 8: 2nd Offense",
+        "group": "Activision",
+        "description": "Released in 1999 for Dreamcast, Nintendo 64, PlayStation."
+    },
+    "vigilante-8-arcade": {
+        "key": "vigilante-8-arcade",
+        "value": "Vigilante 8 Arcade",
+        "group": "Activision",
+        "description": "Released in 2008 for Xbox 360."
+    },
+    "the-voice-i-want-you": {
+        "key": "the-voice-i-want-you",
+        "value": "The Voice: I Want You",
+        "group": "Activision",
+        "description": "Released in 2014 for PlayStation 3, Xbox 360, Wii, Wii U."
+    },
+    "wakeboarding-unleashed-featuring-shaun-murray": {
+        "key": "wakeboarding-unleashed-featuring-shaun-murray",
+        "value": "Wakeboarding Unleashed featuring Shaun Murray",
+        "group": "Activision",
+        "description": "Released in 2003 for PlayStation 2, Xbox."
+    },
+    "the-walking-dead-survival-instinct": {
+        "key": "the-walking-dead-survival-instinct",
+        "value": "The Walking Dead: Survival Instinct",
+        "group": "Activision",
+        "description": "Released in 2013 for PlayStation 3, Xbox 360, Microsoft Windows, Wii U."
+    },
+    "walt-disney-world-quest-magical-racing-tour": {
+        "key": "walt-disney-world-quest-magical-racing-tour",
+        "value": "Walt Disney World Quest: Magical Racing Tour",
+        "group": "Activision",
+        "description": "Released in 2000 for Game Boy Color."
+    },
+    "the-weakest-link": {
+        "key": "the-weakest-link",
+        "value": "The Weakest Link",
+        "group": "Activision",
+        "description": "Released in 2001 for PlayStation, Microsoft Windows, PlayStation 2."
+    },
+    "white-night": {
+        "key": "white-night",
+        "value": "White Night",
+        "group": "Activision",
+        "description": "Released in 2015 for PlayStation 4, Microsoft Windows, Xbox One, iOS[1]."
+    },
+    "wipeout-2": {
+        "key": "wipeout-2",
+        "value": "Wipeout 2",
+        "group": "Activision",
+        "description": "Released in 2011 for Xbox 360."
+    },
+    "wipeout-3": {
+        "key": "wipeout-3",
+        "value": "Wipeout 3",
+        "group": "Activision",
+        "description": "Released in 2012 for Xbox 360, Wii, Wii U, Nintendo DS."
+    },
+    "wipeout-create--crash": {
+        "key": "wipeout-create--crash",
+        "value": "Wipeout: Create & Crash",
+        "group": "Activision",
+        "description": "Released in 2013 for Xbox 360, Wii, Wii U, Nintendo DS."
+    },
+    "wipeout-in-the-zone": {
+        "key": "wipeout-in-the-zone",
+        "value": "Wipeout in the Zone",
+        "group": "Activision",
+        "description": "Released in 2011 for Xbox 360."
+    },
+    "wishbringer": {
+        "key": "wishbringer",
+        "value": "Wishbringer",
+        "group": "Activision",
+        "description": "Released in 1988 for Commodore 64, MS-DOS."
+    },
+    "wizards--warriors": {
+        "key": "wizards--warriors",
+        "value": "Wizards & Warriors",
+        "group": "Activision",
+        "description": "Released in 2000 for Microsoft Windows."
+    },
+    "wolfenstein": {
+        "key": "wolfenstein",
+        "value": "Wolfenstein",
+        "group": "Activision",
+        "description": "Released in 2009 for PlayStation 3, Xbox 360, Microsoft Windows."
+    },
+    "wolfenstein-enemy-territory": {
+        "key": "wolfenstein-enemy-territory",
+        "value": "Wolfenstein: Enemy Territory",
+        "group": "Activision",
+        "description": "Released in 2003 for Linux, Classic Mac OS, Microsoft Windows."
+    },
+    "wonder-boy": {
+        "key": "wonder-boy",
+        "value": "Wonder Boy",
+        "group": "Activision",
+        "description": "Released in 1987 for Amstrad CPC, Commodore 64, ZX Spectrum."
+    },
+    "wonder-boy-in-monster-land": {
+        "key": "wonder-boy-in-monster-land",
+        "value": "Wonder Boy in Monster Land",
+        "group": "Activision",
+        "description": "Released in 1989 for Amiga, Atari ST, Commodore 64, ZX Spectrum."
+    },
+    "world-series-of-poker": {
+        "key": "world-series-of-poker",
+        "value": "World Series of Poker",
+        "group": "Activision",
+        "description": "Released in 2003 for PlayStation 2, PlayStation Portable, Microsoft Windows, Xbox 360."
+    },
+    "world-series-of-poker-tournament-of-champions": {
+        "key": "world-series-of-poker-tournament-of-champions",
+        "value": "World Series of Poker: Tournament of Champions",
+        "group": "Activision",
+        "description": "Released in 2006 for PlayStation 2, PlayStation Portable, Microsoft Windows, Xbox 360."
+    },
+    "world-s-scariest-police-chases": {
+        "key": "world-s-scariest-police-chases",
+        "value": "World's Scariest Police Chases",
+        "group": "Activision",
+        "description": "Released in 2001 for PlayStation."
+    },
+    "worm-whomper": {
+        "key": "worm-whomper",
+        "value": "Worm Whomper",
+        "group": "Activision",
+        "description": "Released in 1983 for Intellivision."
+    },
+    "wreckless-the-yakuza-missions": {
+        "key": "wreckless-the-yakuza-missions",
+        "value": "Wreckless: The Yakuza Missions",
+        "group": "Activision",
+        "description": "Released in 2002 for Nintendo GameCube, PlayStation 2, Xbox."
+    },
+    "wu-tang-shaolin-style": {
+        "key": "wu-tang-shaolin-style",
+        "value": "Wu-Tang: Shaolin Style",
+        "group": "Activision",
+        "description": "Released in 1999 for PlayStation."
+    },
+    "x-kaliber-2097": {
+        "key": "x-kaliber-2097",
+        "value": "X-Kaliber 2097",
+        "group": "Activision",
+        "description": "Released in 1994 for Super Nintendo Entertainment System."
+    },
+    "x-men-legends": {
+        "key": "x-men-legends",
+        "value": "X-Men Legends",
+        "group": "Activision",
+        "description": "Released in 2004 for Nintendo GameCube, PlayStation 2, Xbox."
+    },
+    "x-men-legends-ii-rise-of-apocalypse": {
+        "key": "x-men-legends-ii-rise-of-apocalypse",
+        "value": "X-Men Legends II: Rise of Apocalypse",
+        "group": "Activision",
+        "description": "Released in 2005 for Nintendo GameCube, PlayStation 2, PlayStation Portable, Microsoft Windows, Xbox."
+    },
+    "x-men-origins-wolverine": {
+        "key": "x-men-origins-wolverine",
+        "value": "X-Men Origins: Wolverine",
+        "group": "Activision",
+        "description": "Released in 2009 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "x-men-destiny": {
+        "key": "x-men-destiny",
+        "value": "X-Men: Destiny",
+        "group": "Activision",
+        "description": "Released in 2011 for PlayStation 3, Nintendo DS, Xbox 360."
+    },
+    "x-men-mutant-academy": {
+        "key": "x-men-mutant-academy",
+        "value": "X-Men: Mutant Academy",
+        "group": "Activision",
+        "description": "Released in 2000 for Game Boy Color, PlayStation."
+    },
+    "x-men-mutant-academy-2": {
+        "key": "x-men-mutant-academy-2",
+        "value": "X-Men: Mutant Academy 2",
+        "group": "Activision",
+        "description": "Released in 2001 for PlayStation."
+    },
+    "x-men-mutant-wars": {
+        "key": "x-men-mutant-wars",
+        "value": "X-Men: Mutant Wars",
+        "group": "Activision",
+        "description": "Released in 2000 for Game Boy Color."
+    },
+    "x-men-next-dimension": {
+        "key": "x-men-next-dimension",
+        "value": "X-Men: Next Dimension",
+        "group": "Activision",
+        "description": "Released in 2002 for Nintendo GameCube, PlayStation 2, Xbox."
+    },
+    "x-men-reign-of-apocalypse": {
+        "key": "x-men-reign-of-apocalypse",
+        "value": "X-Men: Reign of Apocalypse",
+        "group": "Activision",
+        "description": "Released in 2001 for Game Boy Advance."
+    },
+    "x-men-the-last-stand": {
+        "key": "x-men-the-last-stand",
+        "value": "X-Men: The Last Stand",
+        "group": "Activision",
+        "description": "Released in 2006 for JavaME."
+    },
+    "x-men-the-official-game": {
+        "key": "x-men-the-official-game",
+        "value": "X-Men: The Official Game",
+        "group": "Activision",
+        "description": "Released in 2006 for Nintendo GameCube, PlayStation 2, Microsoft Windows, Xbox, Xbox 360."
+    },
+    "x-men-wolverine-s-rage": {
+        "key": "x-men-wolverine-s-rage",
+        "value": "X-Men: Wolverine's Rage",
+        "group": "Activision",
+        "description": "Released in 2001 for Game Boy Color."
+    },
+    "x2-wolverine-s-revenge": {
+        "key": "x2-wolverine-s-revenge",
+        "value": "X2: Wolverine's Revenge",
+        "group": "Activision",
+        "description": "Released in 2003 for Game Boy Advance, Nintendo GameCube, PlayStation 2, Microsoft Windows, Xbox."
+    },
+    "xcel": {
+        "key": "xcel",
+        "value": "Xcel",
+        "group": "Activision",
+        "description": "Released in 1985 for ZX Spectrum."
+    },
+    "xxx": {
+        "key": "xxx",
+        "value": "xXx",
+        "group": "Activision",
+        "description": "Released in 2002 for Game Boy Advance."
+    },
+    "zenji": {
+        "key": "zenji",
+        "value": "Zenji",
+        "group": "Activision",
+        "description": "Released in 1984 for Atari 5200, Atari 8-bit, ColecoVision, Commodore 64, MSX, ZX Spectrum."
+    },
+    "zone-ranger": {
+        "key": "zone-ranger",
+        "value": "Zone Ranger",
+        "group": "Activision",
+        "description": "Released in 1984 for Atari 5200, Atari 8-bit, Commodore 64."
+    },
+    "zoobles-spring-to-life": {
+        "key": "zoobles-spring-to-life",
+        "value": "Zoobles! Spring to Life!",
+        "group": "Activision",
+        "description": "Released in 2011 for Nintendo DS."
+    },
+    "zork-classics-interactive-fiction": {
+        "key": "zork-classics-interactive-fiction",
+        "value": "Zork Classics: Interactive Fiction",
+        "group": "Activision",
+        "description": "Released in 2000 for Microsoft Windows."
+    },
+    "zork-collection": {
+        "key": "zork-collection",
+        "value": "Zork Collection",
+        "group": "Activision",
+        "description": "Released in 1998 for Sega Saturn."
+    },
+    "zork-grand-inquisitor": {
+        "key": "zork-grand-inquisitor",
+        "value": "Zork: Grand Inquisitor",
+        "group": "Activision",
+        "description": "Released in 1997 for Classic Mac OS, Microsoft Windows."
+    },
+    "zork-legacy-collection": {
+        "key": "zork-legacy-collection",
+        "value": "Zork Legacy Collection",
+        "group": "Activision",
+        "description": "Released in 1997 for MS-DOS, Microsoft Windows."
+    },
+    "zork-nemesis-the-forbidden-lands": {
+        "key": "zork-nemesis-the-forbidden-lands",
+        "value": "Zork Nemesis: The Forbidden Lands",
+        "group": "Activision",
+        "description": "Released in 1996 for MS-DOS, Classic Mac OS, Microsoft Windows."
+    },
+    "zork-the-undiscovered-underground": {
+        "key": "zork-the-undiscovered-underground",
+        "value": "Zork: The Undiscovered Underground",
+        "group": "Activision",
+        "description": "Released in 1997 for Classic Mac OS, Microsoft Windows."
+    }
+}

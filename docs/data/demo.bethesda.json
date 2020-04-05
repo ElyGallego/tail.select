@@ -1,0 +1,608 @@
+{
+    "gridiron": {
+        "key": "gridiron",
+        "value": "Gridiron!",
+        "group": "Bethesda",
+        "description": "Released in 1986 for Amiga, Atari ST."
+    },
+    "vortex": {
+        "key": "vortex",
+        "value": "Vortex",
+        "group": "Bethesda",
+        "description": "Released in 1988 for Amiga."
+    },
+    "wayne-gretzky-hockey": {
+        "key": "wayne-gretzky-hockey",
+        "value": "Wayne Gretzky Hockey",
+        "group": "Bethesda",
+        "description": "Released in 1988 for Amiga, Atari ST, MS-DOS."
+    },
+    "wayne-gretzky-hockey-2": {
+        "key": "wayne-gretzky-hockey-2",
+        "value": "Wayne Gretzky Hockey 2",
+        "group": "Bethesda",
+        "description": "Released in January 1, 1990 for MS-DOS."
+    },
+    "hockey-league-simulator": {
+        "key": "hockey-league-simulator",
+        "value": "Hockey League Simulator",
+        "group": "Bethesda",
+        "description": "Released in January 1, 1990 for Amiga, MS-DOS."
+    },
+    "the-terminator": {
+        "key": "the-terminator",
+        "value": "The Terminator",
+        "group": "Bethesda",
+        "description": "Released in 1991 for MS-DOS."
+    },
+    "ncaa-basketball-road-to-the-final-four": {
+        "key": "ncaa-basketball-road-to-the-final-four",
+        "value": "NCAA Basketball: Road to the Final Four",
+        "group": "Bethesda",
+        "description": "Released in January 1, 1991 for MS-DOS."
+    },
+    "wayne-gretzky-hockey-3": {
+        "key": "wayne-gretzky-hockey-3",
+        "value": "Wayne Gretzky Hockey 3",
+        "group": "Bethesda",
+        "description": "Released in January 1, 1991 for MS-DOS."
+    },
+    "home-alone": {
+        "key": "home-alone",
+        "value": "Home Alone",
+        "group": "Bethesda",
+        "description": "Released in October 1, 1991 for NES."
+    },
+    "where-s-waldo": {
+        "key": "where-s-waldo",
+        "value": "Where's Waldo",
+        "group": "Bethesda",
+        "description": "Released in January 1, 1991 for NES."
+    },
+    "hockey-league-simulator-2": {
+        "key": "hockey-league-simulator-2",
+        "value": "Hockey League Simulator 2",
+        "group": "Bethesda",
+        "description": "Released in January 1, 1992 for MS-DOS."
+    },
+    "the-terminator-2029": {
+        "key": "the-terminator-2029",
+        "value": "The Terminator: 2029",
+        "group": "Bethesda",
+        "description": "Released in December 31, 1992 for MS-DOS."
+    },
+    "the-terminator-rampage": {
+        "key": "the-terminator-rampage",
+        "value": "The Terminator: Rampage",
+        "group": "Bethesda",
+        "description": "Released in January 1, 1993 for MS-DOS."
+    },
+    "delta-v": {
+        "key": "delta-v",
+        "value": "Delta V",
+        "group": "Bethesda",
+        "description": "Released in 1994 for MS-DOS."
+    },
+    "the-elder-scrolls-arena": {
+        "key": "the-elder-scrolls-arena",
+        "value": "The Elder Scrolls: Arena",
+        "group": "Bethesda",
+        "description": "Released in 1994 for MS-DOS."
+    },
+    "pba-bowling": {
+        "key": "pba-bowling",
+        "value": "PBA Bowling",
+        "group": "Bethesda",
+        "description": "Released in December 31, 1995 for Microsoft Windows."
+    },
+    "the-terminator-future-shock": {
+        "key": "the-terminator-future-shock",
+        "value": "The Terminator: Future Shock",
+        "group": "Bethesda",
+        "description": "Released in December 31, 1995 for MS-DOS."
+    },
+    "skynet": {
+        "key": "skynet",
+        "value": "Skynet",
+        "group": "Bethesda",
+        "description": "Released in May 24, 1996 for MS-DOS."
+    },
+    "the-elder-scrolls-ii-daggerfall": {
+        "key": "the-elder-scrolls-ii-daggerfall",
+        "value": "The Elder Scrolls II: Daggerfall",
+        "group": "Bethesda",
+        "description": "Released in August 31, 1996 for MS-DOS."
+    },
+    "xcar-experimental-racing": {
+        "key": "xcar-experimental-racing",
+        "value": "XCar: Experimental Racing",
+        "group": "Bethesda",
+        "description": "Released in July 31, 1997 for MS-DOS."
+    },
+    "the-10th-planet": {
+        "key": "the-10th-planet",
+        "value": "The 10th Planet",
+        "group": "Bethesda",
+        "description": "Released in Cancelled for MS-DOS."
+    },
+    "an-elder-scrolls-legend-battlespire": {
+        "key": "an-elder-scrolls-legend-battlespire",
+        "value": "An Elder Scrolls Legend: Battlespire",
+        "group": "Bethesda",
+        "description": "Released in November 30, 1997 for MS-DOS."
+    },
+    "burnout-championship-drag-racing": {
+        "key": "burnout-championship-drag-racing",
+        "value": "Burnout: Championship Drag Racing",
+        "group": "Bethesda",
+        "description": "Released in March 31, 1998 for MS-DOS."
+    },
+    "the-elder-scrolls-adventures-redguard": {
+        "key": "the-elder-scrolls-adventures-redguard",
+        "value": "The Elder Scrolls Adventures: Redguard",
+        "group": "Bethesda",
+        "description": "Released in October 31, 1998 for MS-DOS."
+    },
+    "symbiocom": {
+        "key": "symbiocom",
+        "value": "Symbiocom",
+        "group": "Bethesda",
+        "description": "Released in 1998 for Mac OS, Microsoft Windows."
+    },
+    "zero-critical": {
+        "key": "zero-critical",
+        "value": "Zero Critical",
+        "group": "Bethesda",
+        "description": "Released in 1998 for Mac OS, Microsoft Windows."
+    },
+    "magic--mayhem": {
+        "key": "magic--mayhem",
+        "value": "Magic & Mayhem",
+        "group": "Bethesda",
+        "description": "Released in April 30, 1999 for Microsoft Windows."
+    },
+    "f-16-aggressor": {
+        "key": "f-16-aggressor",
+        "value": "F-16 Aggressor",
+        "group": "Bethesda",
+        "description": "Released in July 1, 1999 for Microsoft Windows."
+    },
+    "nira-intense-import-drag-racing": {
+        "key": "nira-intense-import-drag-racing",
+        "value": "NIRA Intense Import Drag Racing",
+        "group": "Bethesda",
+        "description": "Released in September 30, 1999 for Microsoft Windows."
+    },
+    "protector": {
+        "key": "protector",
+        "value": "Protector",
+        "group": "Bethesda",
+        "description": "Released in December 20, 1999 for Atari Jaguar."
+    },
+    "pba-tour-bowling-2": {
+        "key": "pba-tour-bowling-2",
+        "value": "PBA Tour Bowling 2",
+        "group": "Bethesda",
+        "description": "Released in February 16, 2000 for Microsoft Windows."
+    },
+    "gromada": {
+        "key": "gromada",
+        "value": "Gromada",
+        "group": "Bethesda",
+        "description": "Released in June 19, 2000 for Microsoft Windows."
+    },
+    "sea-dogs": {
+        "key": "sea-dogs",
+        "value": "Sea Dogs",
+        "group": "Bethesda",
+        "description": "Released in November 24, 2000 for Microsoft Windows."
+    },
+    "pba-tour-bowling-2001": {
+        "key": "pba-tour-bowling-2001",
+        "value": "PBA Tour Bowling 2001",
+        "group": "Bethesda",
+        "description": "Released in November 30, 2000 for Microsoft Windows."
+    },
+    "ihra-drag-racing": {
+        "key": "ihra-drag-racing",
+        "value": "IHRA Drag Racing",
+        "group": "Bethesda",
+        "description": "Released in December 4, 2000 for Microsoft Windows."
+    },
+    "skip-barber-racing": {
+        "key": "skip-barber-racing",
+        "value": "Skip Barber Racing",
+        "group": "Bethesda",
+        "description": "Released in February 16, 2001 for Microsoft Windows."
+    },
+    "echelon": {
+        "key": "echelon",
+        "value": "Echelon",
+        "group": "Bethesda",
+        "description": "Released in May 16, 2001 for Microsoft Windows."
+    },
+    "magic--mayhem-2-the-art-of-magic": {
+        "key": "magic--mayhem-2-the-art-of-magic",
+        "value": "Magic & Mayhem 2: The Art of Magic",
+        "group": "Bethesda",
+        "description": "Released in October 30, 2001 for Microsoft Windows."
+    },
+    "ihra-drag-racing": {
+        "key": "ihra-drag-racing",
+        "value": "IHRA Drag Racing",
+        "group": "Bethesda",
+        "description": "Released in November 20, 2001 for PlayStation."
+    },
+    "family-card-games-fun-pack": {
+        "key": "family-card-games-fun-pack",
+        "value": "Family Card Games Fun Pack",
+        "group": "Bethesda",
+        "description": "Released in October 10, 2002 for PlayStation."
+    },
+    "the-elder-scrolls-iii-morrowind": {
+        "key": "the-elder-scrolls-iii-morrowind",
+        "value": "The Elder Scrolls III: Morrowind",
+        "group": "Bethesda",
+        "description": "Released in May 1, 2002 for Microsoft Windows, Xbox."
+    },
+    "ihra-drag-racing-2": {
+        "key": "ihra-drag-racing-2",
+        "value": "IHRA Drag Racing 2",
+        "group": "Bethesda",
+        "description": "Released in December 9, 2002 for PlayStation."
+    },
+    "puzznic": {
+        "key": "puzznic",
+        "value": "Puzznic",
+        "group": "Bethesda",
+        "description": "Released in May 2, 2003 for PlayStation."
+    },
+    "pirates-of-the-caribbean": {
+        "key": "pirates-of-the-caribbean",
+        "value": "Pirates of the Caribbean",
+        "group": "Bethesda",
+        "description": "Released in June 30, 2003 for Microsoft Windows, Xbox."
+    },
+    "the-elder-scrolls-travels-stormhold": {
+        "key": "the-elder-scrolls-travels-stormhold",
+        "value": "The Elder Scrolls Travels: Stormhold",
+        "group": "Bethesda",
+        "description": "Released in August 1, 2003 for J2ME, BREW."
+    },
+    "ihra-drag-racing-2004": {
+        "key": "ihra-drag-racing-2004",
+        "value": "IHRA Drag Racing 2004",
+        "group": "Bethesda",
+        "description": "Released in December 25, 2003 for Xbox."
+    },
+    "the-elder-scrolls-travels-dawnstar": {
+        "key": "the-elder-scrolls-travels-dawnstar",
+        "value": "The Elder Scrolls Travels: Dawnstar",
+        "group": "Bethesda",
+        "description": "Released in January 30, 2004 for J2ME, BREW."
+    },
+    "ihra-professional-drag-racing-2005": {
+        "key": "ihra-professional-drag-racing-2005",
+        "value": "IHRA Professional Drag Racing 2005",
+        "group": "Bethesda",
+        "description": "Released in November 8, 2004 for Xbox, PlayStation 2."
+    },
+    "the-elder-scrolls-travels-shadowkey": {
+        "key": "the-elder-scrolls-travels-shadowkey",
+        "value": "The Elder Scrolls Travels: Shadowkey",
+        "group": "Bethesda",
+        "description": "Released in November 24, 2004 for N-Gage."
+    },
+    "ihra-professional-drag-racing-2005": {
+        "key": "ihra-professional-drag-racing-2005",
+        "value": "IHRA Professional Drag Racing 2005",
+        "group": "Bethesda",
+        "description": "Released in June 17, 2005 for Microsoft Windows."
+    },
+    "breeders-cup-world-thoroughbred-championships": {
+        "key": "breeders-cup-world-thoroughbred-championships",
+        "value": "Breeders' Cup World Thoroughbred Championships",
+        "group": "Bethesda",
+        "description": "Released in September 29, 2005 for PlayStation 2, Xbox."
+    },
+    "call-of-cthulhu-dark-corners-of-the-earth": {
+        "key": "call-of-cthulhu-dark-corners-of-the-earth",
+        "value": "Call of Cthulhu: Dark Corners of the Earth",
+        "group": "Bethesda",
+        "description": "Released in October 24, 2005 for Xbox."
+    },
+    "the-elder-scrolls-iv-oblivion": {
+        "key": "the-elder-scrolls-iv-oblivion",
+        "value": "The Elder Scrolls IV: Oblivion",
+        "group": "Bethesda",
+        "description": "Released in March 20, 2006 for Microsoft Windows, Xbox 360, PlayStation 3."
+    },
+    "call-of-cthulhu-dark-corners-of-the-earth": {
+        "key": "call-of-cthulhu-dark-corners-of-the-earth",
+        "value": "Call of Cthulhu: Dark Corners of the Earth",
+        "group": "Bethesda",
+        "description": "Released in April 26, 2006 for Microsoft Windows."
+    },
+    "the-elder-scrolls-travels-oblivion": {
+        "key": "the-elder-scrolls-travels-oblivion",
+        "value": "The Elder Scrolls Travels: Oblivion",
+        "group": "Bethesda",
+        "description": "Released in May 2, 2006 for J2ME, BREW."
+    },
+    "ihra-drag-racing-sportsman-edition": {
+        "key": "ihra-drag-racing-sportsman-edition",
+        "value": "IHRA Drag Racing: Sportsman Edition",
+        "group": "Bethesda",
+        "description": "Released in June 12, 2006 for Microsoft Windows, PlayStation 2, Xbox 360."
+    },
+    "pirates-of-the-caribbean-the-legend-of-jack-sparrow": {
+        "key": "pirates-of-the-caribbean-the-legend-of-jack-sparrow",
+        "value": "Pirates of the Caribbean: The Legend of Jack Sparrow",
+        "group": "Bethesda",
+        "description": "Released in June 27, 2006 for Microsoft Windows, PlayStation 2."
+    },
+    "star-trek-encounters": {
+        "key": "star-trek-encounters",
+        "value": "Star Trek: Encounters",
+        "group": "Bethesda",
+        "description": "Released in October 3, 2006 for PlayStation 2."
+    },
+    "star-trek-tactical-assault": {
+        "key": "star-trek-tactical-assault",
+        "value": "Star Trek: Tactical Assault",
+        "group": "Bethesda",
+        "description": "Released in October 26, 2006 for Nintendo DS, PlayStation Portable."
+    },
+    "star-trek-legacy": {
+        "key": "star-trek-legacy",
+        "value": "Star Trek: Legacy",
+        "group": "Bethesda",
+        "description": "Released in December 5, 2006 for Microsoft Windows, Xbox 360."
+    },
+    "star-trek-conquest": {
+        "key": "star-trek-conquest",
+        "value": "Star Trek: Conquest",
+        "group": "Bethesda",
+        "description": "Released in November 20, 2007 for PlayStation 2, Wii."
+    },
+    "ducati-moto": {
+        "key": "ducati-moto",
+        "value": "Ducati Moto",
+        "group": "Bethesda",
+        "description": "Released in July 1, 2008 for Nintendo DS."
+    },
+    "fallout-3": {
+        "key": "fallout-3",
+        "value": "Fallout 3",
+        "group": "Bethesda",
+        "description": "Released in October 28, 2008 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "wet": {
+        "key": "wet",
+        "value": "Wet",
+        "group": "Bethesda",
+        "description": "Released in September 15, 2009 for PlayStation 3, Xbox 360."
+    },
+    "wheelspin": {
+        "key": "wheelspin",
+        "value": "Wheelspin",
+        "group": "Bethesda",
+        "description": "Released in November 27, 2009 for Wii."
+    },
+    "rogue-warrior": {
+        "key": "rogue-warrior",
+        "value": "Rogue Warrior",
+        "group": "Bethesda",
+        "description": "Released in December 1, 2009 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "doom-ii": {
+        "key": "doom-ii",
+        "value": "Doom II",
+        "group": "Bethesda",
+        "description": "Released in May 26, 2010 for Xbox 360."
+    },
+    "playstation-3": {
+        "key": "playstation-3",
+        "value": "PlayStation 3",
+        "group": "Bethesda",
+        "description": "Released in id Software for November 20, 2012."
+    },
+    "quake-live": {
+        "key": "quake-live",
+        "value": "Quake Live",
+        "group": "Bethesda",
+        "description": "Released in August 6, 2010 for Microsoft Windows."
+    },
+    "fallout-new-vegas": {
+        "key": "fallout-new-vegas",
+        "value": "Fallout: New Vegas",
+        "group": "Bethesda",
+        "description": "Released in October 19, 2010 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "quake-iii-arena-arcade": {
+        "key": "quake-iii-arena-arcade",
+        "value": "Quake III Arena Arcade",
+        "group": "Bethesda",
+        "description": "Released in December 15, 2010 for Xbox 360."
+    },
+    "brink": {
+        "key": "brink",
+        "value": "Brink",
+        "group": "Bethesda",
+        "description": "Released in May 10, 2011 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "hunted-the-demon-s-forge": {
+        "key": "hunted-the-demon-s-forge",
+        "value": "Hunted: The Demon's Forge",
+        "group": "Bethesda",
+        "description": "Released in May 31, 2011 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "rage": {
+        "key": "rage",
+        "value": "Rage",
+        "group": "Bethesda",
+        "description": "Released in October 4, 2011 for OS X, Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "the-elder-scrolls-v-skyrim": {
+        "key": "the-elder-scrolls-v-skyrim",
+        "value": "The Elder Scrolls V: Skyrim",
+        "group": "Bethesda",
+        "description": "Released in November 11, 2011 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "dishonored": {
+        "key": "dishonored",
+        "value": "Dishonored",
+        "group": "Bethesda",
+        "description": "Released in October 9, 2012 for Microsoft Windows, PlayStation 3, Xbox 360, PlayStation 4, Xbox One."
+    },
+    "doom-3-bfg-edition": {
+        "key": "doom-3-bfg-edition",
+        "value": "Doom 3 BFG Edition",
+        "group": "Bethesda",
+        "description": "Released in October 16, 2012 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "doom": {
+        "key": "doom",
+        "value": "Doom",
+        "group": "Bethesda",
+        "description": "Released in November 20, 2012 for PlayStation 3."
+    },
+    "the-elder-scrolls-online": {
+        "key": "the-elder-scrolls-online",
+        "value": "The Elder Scrolls Online",
+        "group": "Bethesda",
+        "description": "Released in April 4, 2014 for OS X, Microsoft Windows."
+    },
+    "wolfenstein-the-new-order": {
+        "key": "wolfenstein-the-new-order",
+        "value": "Wolfenstein: The New Order",
+        "group": "Bethesda",
+        "description": "Released in May 20, 2014 for Microsoft Windows, PlayStation 3, PlayStation 4, Xbox 360, Xbox One."
+    },
+    "the-evil-within": {
+        "key": "the-evil-within",
+        "value": "The Evil Within",
+        "group": "Bethesda",
+        "description": "Released in October 14, 2014 for Microsoft Windows, PlayStation 3, PlayStation 4, Xbox 360, Xbox One."
+    },
+    "wolfenstein-the-old-blood": {
+        "key": "wolfenstein-the-old-blood",
+        "value": "Wolfenstein: The Old Blood",
+        "group": "Bethesda",
+        "description": "Released in May 5, 2015 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "the-elder-scrolls-online": {
+        "key": "the-elder-scrolls-online",
+        "value": "The Elder Scrolls Online",
+        "group": "Bethesda",
+        "description": "Released in June 9, 2015 for PlayStation 4, Xbox One."
+    },
+    "fallout-shelter": {
+        "key": "fallout-shelter",
+        "value": "Fallout Shelter",
+        "group": "Bethesda",
+        "description": "Released in June 14, 2015 for iOS, Android, Xbox One."
+    },
+    "fallout-4": {
+        "key": "fallout-4",
+        "value": "Fallout 4",
+        "group": "Bethesda",
+        "description": "Released in November 10, 2015 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "doom": {
+        "key": "doom",
+        "value": "Doom",
+        "group": "Bethesda",
+        "description": "Released in May 13, 2016 for Microsoft Windows, PlayStation 4, Xbox One, Nintendo Switch."
+    },
+    "dishonored-2": {
+        "key": "dishonored-2",
+        "value": "Dishonored 2",
+        "group": "Bethesda",
+        "description": "Released in November 11, 2016 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "the-elder-scrolls-legends": {
+        "key": "the-elder-scrolls-legends",
+        "value": "The Elder Scrolls: Legends",
+        "group": "Bethesda",
+        "description": "Released in March 9, 2017 for Microsoft Windows, iOS, Android, macOS, Nintendo Switch, Playstation 4, Xbox One."
+    },
+    "prey": {
+        "key": "prey",
+        "value": "Prey",
+        "group": "Bethesda",
+        "description": "Released in May 5, 2017 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "dishonored-death-of-the-outsider": {
+        "key": "dishonored-death-of-the-outsider",
+        "value": "Dishonored: Death of the Outsider",
+        "group": "Bethesda",
+        "description": "Released in September 15, 2017 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "the-evil-within-2": {
+        "key": "the-evil-within-2",
+        "value": "The Evil Within 2",
+        "group": "Bethesda",
+        "description": "Released in October 13, 2017 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "wolfenstein-ii-the-new-colossus": {
+        "key": "wolfenstein-ii-the-new-colossus",
+        "value": "Wolfenstein II: The New Colossus",
+        "group": "Bethesda",
+        "description": "Released in October 27, 2017 for Microsoft Windows, PlayStation 4, Xbox One, Nintendo Switch."
+    },
+    "fallout-76": {
+        "key": "fallout-76",
+        "value": "Fallout 76",
+        "group": "Bethesda",
+        "description": "Released in November 14, 2018 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "the-elder-scrolls-blades": {
+        "key": "the-elder-scrolls-blades",
+        "value": "The Elder Scrolls: Blades",
+        "group": "Bethesda",
+        "description": "Released in Fall 2018 for iOS, Android."
+    },
+    "quake-champions": {
+        "key": "quake-champions",
+        "value": "Quake Champions",
+        "group": "Bethesda",
+        "description": "Released in 2018 for Microsoft Windows."
+    },
+    "rage-2": {
+        "key": "rage-2",
+        "value": "Rage 2",
+        "group": "Bethesda",
+        "description": "Released in Q1/Q2 2019 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "wolfenstein-youngblood": {
+        "key": "wolfenstein-youngblood",
+        "value": "Wolfenstein: Youngblood",
+        "group": "Bethesda",
+        "description": "Released in 2019 for TBA."
+    },
+    "wolfenstein-cyberpilot": {
+        "key": "wolfenstein-cyberpilot",
+        "value": "Wolfenstein: Cyberpilot",
+        "group": "Bethesda",
+        "description": "Released in 2019 for TBA."
+    },
+    "doom-eternal": {
+        "key": "doom-eternal",
+        "value": "Doom Eternal",
+        "group": "Bethesda",
+        "description": "Released in TBA for TBA."
+    },
+    "starfield": {
+        "key": "starfield",
+        "value": "Starfield",
+        "group": "Bethesda",
+        "description": "Released in TBA for TBA."
+    },
+    "the-elder-scrolls-vi": {
+        "key": "the-elder-scrolls-vi",
+        "value": "The Elder Scrolls VI",
+        "group": "Bethesda",
+        "description": "Released in TBA for TBA."
+    }
+}

@@ -1,27 +1,33 @@
-tail.select - Beautify Select Fields
-====================================
+tail.select - Awesome Select Fields
+===================================
 [![npm Version](https://s.pytes.me/47a6bf48)](https://s.pytes.me/2a8c886a)
 [![npm Downloads](https://s.pytes.me/f678004c)](https://s.pytes.me/2a8c886a)
 [![Support Me](https://s.pytes.me/4a1717aa)](https://buymeacoffee.com/pytesNET)
 [![plainJS](https://s.pytes.me/cb2d2d94)](https://s.pytes.me/21d65dff)
 [![License](https://s.pytes.me/8257ac72)](LICENSE.md)
 
-**Replace** and **Improve** your HTML `<select>` fields with style and without **jQuery**!
+The vanilla JavaScript solution to **LEVEL UP** and **IMPROVE** your HTML `<select>` fields!
 
 <p align="center" style="text-align:center"><a href="https://github.pytes.net/tail.select">
-<img src="https://repository-images.githubusercontent.com/150568173/e3ebbd80-a27d-11e9-9da1-c6caa6484bcc" style="width:auto;max-width:640px;" />
+<img src="https://repository-images.githubusercontent.com/150568173/1ad2ae00-a16e-11e9-9d27-4b29de95ebe6" style="width:auto;max-width:640px;" />
 </a></p>
 
-The **tail.select** script is back, re-written in vanilla JavaScript and ready to beautify and 
-extend your HTML `<select>` fields... again! Add a search bar, multi-selection utilities (such as 
-select all or none buttons), deselectability on single select fields, a perfect design and many 
-more user-friendly functions to your web-application.
+Create awesome and feature-rich single and multiple `<select>` fields using **tail.select**. You 
+don't need any additional library or JavaScript framework, because this vanilla JavaScript is 
+completely written without any additional dependency.
+
+The power of **tail.select** contains a configurable search field, multi-selection tools (such as 
+`All` and `None` buttons on your `<optgroup>`s), a deselectability on single `<select>` fields, 7 
+really beautiful designs (including bootstrap 2, 3, 4) with many different color schemes and many 
+more user-friendly functions to upgrade your websites and web applications.
 
 ----------------------------
 
 [Wanna see **tail.select** in action?](https://github.pytes.net/tail.select)
 
 [Wanna translate **tail.select** in your language?](https://github.com/pytesNET/tail.select/wiki/Help-Translating)
+
+**Already using V.0.5.x? [Check out the Migration Guide!](https://github.com/pytesNET/tail.select/wiki/Help-Translating)**
 
 Support
 -------
@@ -33,17 +39,19 @@ Then I would be extremely grateful for a coffee! (<b>Thanks to all Supporters</b
 
 Features
 --------
--   **Beautiful**. 5 different Designs in many color schemes...
+-   **Beautiful**. 7 different Designs in many color schemes...
 -   **Extensive**.
-    -   Search bar to find options quickly...
-    -   All / None optgroup selection buttons...
+    -   A search field to find options quickly...
+    -   All / None `<optgroup>` selection buttons...
     -   Add, Edit, Delete and Modifiy options at any time...
     -   De-selection on single select fields...
     -   ... and way more ...
--   **Configurable**. 36 settings and 3 bindable events...
--   **Translatable**. Already available in 10 languages...
--   **Zero Dependencies**. And written in vanilla JavaScript...
--   **Free/To/Use**. Because it's MIT licensed <3
+-   **Extendable**. Feature-Rich API to create all kinds of plugins...
+    -   with 4 already included and ready-to-use core-plugins.
+-   **Configurable**. 40 settings and many bindable events...
+-   **Translatable**. Already available in 10+ languages...
+-   **Zero Dependencies**. Just include and use...
+-   **Free/To/Use**. And also MIT Licensed <3
 
 Install & Embed
 ---------------
@@ -106,7 +114,7 @@ but I will keep a table of contents list here and some basic instructions.
 -   [HowTos, Tips & Tricks](https://www.github.com/pytesNET/tail.select/wiki/How-Tos)
 
 ### Files
-The `tail.select` package contains different JavaScript files:
+The `tail.select` package contains different directories and files.
 
 -   `js/tail.select(.min).js` The main JavaScript with `en` tranlation strings only.
 -   `js/tail.select-full(.min).js` The main JavaScript with ALL available translations.
@@ -151,57 +159,52 @@ about each single option!
 
 ```javascript
 tail.select("select", {
-        animate: true,              // [0.3.0]      Boolean
-        classNames: null,           // [0.2.0]      Boolean, String, Array, null
-        csvOutput: false,           // [0.3.4]      Boolean
-        csvSeparator: ",",          // [0.3.4]      String
-        descriptions: false,        // [0.3.0]      Boolean
-        deselect: false,            // [0.3.0]      Boolean
-        disabled: false,            // [0.5.0]      Boolean
-        height: 350,                // [0.2.0]      Integer, null
-        hideDisabled: false,        // [0.3.0]      Boolean
-        hideSelected: false,        // [0.3.0]      Boolean
-        items: {},                  // [0.3.0]      Object
-        locale: "en",               // [0.5.0]      String
-        linguisticRules: {          // [0.5.9]      Object
-            "е": "ё",
-            "a": "ä",
-            "o": "ö",
-            "u": "ü",
-            "ss": "ß"
-        },
-        multiple: false,            // [0.2.0]      Boolean
-        multiLimit: Infinity,       // [0.3.0]      Integer, Infinity
-        multiPinSelected: false,    // [0.5.0]      Boolean
-        multiContainer: false,      // [0.3.0]      Boolean, String
-        multiShowCount: true,       // [0.3.0]      Boolean
-        multiShowLimit: false,      // [0.5.0]      Boolean
-        multiSelectAll: false,      // [0.4.0]      Boolean
-        multiSelectGroup: true,     // [0.4.0]      Boolean
-        openAbove: null,            // [0.3.0]      Boolean, null
-        placeholder: null,          // [0.2.0]      String, null
-        search: false,              // [0.3.0]      Boolean
-        searchConfig: [             // [0.5.13]     Array
-            "text", "value"
-        ],
-        searchFocus: true,          // [0.3.0]      Boolean
-        searchMarked: true,         // [0.3.0]      Boolean
-        searchMinLength: 1,         // [0.5.13]     Integer
-        searchDisabled: true,       // [0.5.5]      Boolean
-        sortItems: false,           // [0.3.0]      String, Function, false
-        sortGroups: false,          // [0.3.0]      String, Function, false
-        sourceBind: false,          // [0.5.0]      Boolean
-        sourceHide: true,           // [0.5.0]      Boolean
-        startOpen: false,           // [0.3.0]      Boolean
-        stayOpen: false,            // [0.3.0]      Boolean
-        width: null,                // [0.2.0]      Integer, String, null
-        cbComplete: undefined,      // [0.5.0]      Function
-        cbEmpty: undefined,         // [0.5.0]      Function
-        cbLoopItem: undefined,      // [0.4.0]      Function
-        cbLoopGroup: undefined      // [0.4.0]      Function
+    classNames: false,                  // [0.3.0]      Boolean, String, Array
+    csvOutput: false,                   // [0.3.4]      Boolean, String
+    csvSeparator: ',',                  // [0.3.4]      String
+    descriptions: true,                 // [0.3.0]      Boolean
+    deselect: false,                    // [0.3.0]      Boolean
+    disabled: false,                    // [0.5.0]      Boolean
+    grouplessName: null,                // [0.6.0][NEW] String, null
+    height: 350,                        // [0.2.0]      Integer, String, null
+    hideDisabled: false,                // [0.3.0]      Boolean
+    hideEmpty: true,                    // [0.6.0][NEW] Boolean
+    hideHidden: true,                   // [0.6.0][NEW] Boolean
+    hideSelected: false,                // [0.3.0]      Boolean
+    items: { },                         // [0.3.0]      Object, Function
+    locale: 'en',                       // [0.5.0]      String
+    linguisticRules: { },               // [0.5.9]      Object
+    multiple: true,                     // [0.3.0]      Boolean
+    multiLimit: Infinity,               // [0.3.0]      Integer, Infinity
+    multiSelectAll: false,              // [0.4.0]      Boolean
+    multiSelectGroup: true,             // [0.4.0]      Boolean
+    on: { },                            // [0.6.0][NEW] Object
+    openAbove: null,                    // [0.3.0]      Boolean, null
+    placeholder: null,                  // [0.1.0]      String, Function, null
+    placeholderCount: null,             // [0.6.0][NEW] String, Function, null
+    plugins: { },                       // [0.6.0][NEW] Object
+    rtl: null,                          // [0.6.0][NEW] Boolean, null
+    search: false,                      // [0.3.0]      Boolean
+    searchConfig: ['text', 'value'],    // [0.5.13]     Array, Function
+    searchFocus: true,                  // [0.3.0]      Boolean
+    searchMarked: true,                 // [0.3.0]      Boolean
+    searchMinLength: 3,                 // [0.5.13]     Integer
+    sortItems: null,                    // [0.3.0]      String, Function, null
+    sortGroups: null,                   // [0.3.0]      String, Function, null
+    sortSearch: null,                   // [0.6.0][NEW] String, Function, null
+    sourceBind: false,                  // [0.5.0]      Boolean
+    sourceHide: true,                   // [0.5.0]      Boolean
+    startOpen: false,                   // [0.3.0]      Boolean
+    stayOpen: false,                    // [0.3.0]      Boolean, null
+    stickyGroups: false,                // [0.6.0][NEW] Boolean
+    theme: null,                        // [0.6.0][NEW] String, null
+    titleOverflow: 'break',             // [0.6.0][NEW] String
+    width: 250,                         // [0.2.0]      Integer, String, null
 });
 ```
 
 Copyright & License
 -------------------
-Published under the MIT-License; Copyright &copy; 2014 - 2019 SamBrishes, pytesNET
+Written by SamBrishes (sam@pytes.net), Lenivyy (lenivyy@pytes.net) and many awesome contributors!
+
+Published under the MIT-License; Copyright &copy; 2014 - 2020 pytesNET

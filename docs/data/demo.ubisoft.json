@@ -1,0 +1,3026 @@
+{
+    "fer-et-flamme": {
+        "key": "fer-et-flamme",
+        "value": "Fer et flamme",
+        "group": "Ubisoft",
+        "description": "Released in 1986 for Amstrad CPC."
+    },
+    "masque": {
+        "key": "masque",
+        "value": "Masque",
+        "group": "Ubisoft",
+        "description": "Released in 1986 for Atari ST, Amstrad CPC, MS-DOS."
+    },
+    "zombi": {
+        "key": "zombi",
+        "value": "Zombi",
+        "group": "Ubisoft",
+        "description": "Released in 1986 for Amstrad CPC, Amiga, Commodore 64, MS-DOS, Atari ST, ZX Spectrum."
+    },
+    "asphalt": {
+        "key": "asphalt",
+        "value": "Asphalt",
+        "group": "Ubisoft",
+        "description": "Released in 1987 for Amstrad CPC."
+    },
+    "final-command": {
+        "key": "final-command",
+        "value": "Final Command",
+        "group": "Ubisoft",
+        "description": "Released in 1987 for Amiga, Atari ST, Amstrad CPC."
+    },
+    "gabrielle": {
+        "key": "gabrielle",
+        "value": "Gabrielle",
+        "group": "Ubisoft",
+        "description": "Released in 1987 for Amstrad CPC, Atari ST, MS-DOS."
+    },
+    "inertie": {
+        "key": "inertie",
+        "value": "Inertie",
+        "group": "Ubisoft",
+        "description": "Released in 1987 for Amstrad CPC."
+    },
+    "l-anneau-de-zengara": {
+        "key": "l-anneau-de-zengara",
+        "value": "L'Anneau de Zengara",
+        "group": "Ubisoft",
+        "description": "Released in 1987 for Amstrad CPC, Atari ST."
+    },
+    "l-oeil-de-set": {
+        "key": "l-oeil-de-set",
+        "value": "L'Oeil de Set",
+        "group": "Ubisoft",
+        "description": "Released in 1987 for Amstrad CPC."
+    },
+    "la-chose-de-grotemburg": {
+        "key": "la-chose-de-grotemburg",
+        "value": "La Chose de Grotemburg",
+        "group": "Ubisoft",
+        "description": "Released in 1987 for Amstrad CPC."
+    },
+    "m-enfin": {
+        "key": "m-enfin",
+        "value": "M'Enfin",
+        "group": "Ubisoft",
+        "description": "Released in 1987 for Amstrad CPC."
+    },
+    "mange-cailloux": {
+        "key": "mange-cailloux",
+        "value": "Mange Cailloux",
+        "group": "Ubisoft",
+        "description": "Released in 1987 for Amstrad CPC."
+    },
+    "manhattan-95-light": {
+        "key": "manhattan-95-light",
+        "value": "Manhattan 95 Light",
+        "group": "Ubisoft",
+        "description": "Released in 1987 for Amstrad CPC."
+    },
+    "le-ma-tre-des-mes": {
+        "key": "le-ma-tre-des-mes",
+        "value": "Le Maître des Âmes",
+        "group": "Ubisoft",
+        "description": "Released in 1987 for Amstrad CPC, Atari ST, MS-DOS."
+    },
+    "le-n-cromancien": {
+        "key": "le-n-cromancien",
+        "value": "Le Nécromancien",
+        "group": "Ubisoft",
+        "description": "Released in 1987 for Amstrad CPC."
+    },
+    "peur-sur-amityville": {
+        "key": "peur-sur-amityville",
+        "value": "Peur sur Amityville",
+        "group": "Ubisoft",
+        "description": "Released in 1987 for Amstrad CPC."
+    },
+    "conspiration-de-l-an-iii": {
+        "key": "conspiration-de-l-an-iii",
+        "value": "Conspiration de l'An III",
+        "group": "Ubisoft",
+        "description": "Released in 1988 for Amstrad CPC."
+    },
+    "cybermind--planet-of-riddle": {
+        "key": "cybermind--planet-of-riddle",
+        "value": "Cybermind - Planet of Riddle",
+        "group": "Ubisoft",
+        "description": "Released in 1988 for Atari ST."
+    },
+    "exit": {
+        "key": "exit",
+        "value": "EXIT",
+        "group": "Ubisoft",
+        "description": "Released in 1988 for Amstrad CPC."
+    },
+    "hurlements": {
+        "key": "hurlements",
+        "value": "Hurlements",
+        "group": "Ubisoft",
+        "description": "Released in 1988 for Amstrad CPC, MS-DOS."
+    },
+    "l-ile": {
+        "key": "l-ile",
+        "value": "L'Ile",
+        "group": "Ubisoft",
+        "description": "Released in 1988 for Amstrad CPC."
+    },
+    "fred": {
+        "key": "fred",
+        "value": "Fred",
+        "group": "Ubisoft",
+        "description": "Released in 1989 for Amiga, Atari ST."
+    },
+    "great-courts": {
+        "key": "great-courts",
+        "value": "Great Courts",
+        "group": "Ubisoft",
+        "description": "Released in 1989 for Amiga, Atari Lynx, Commodore 64, Amstrad CPC, MS-DOS, Super Nintendo Entertainment System, Atari ST, ZX Spectrum."
+    },
+    "iron-lord": {
+        "key": "iron-lord",
+        "value": "Iron Lord",
+        "group": "Ubisoft",
+        "description": "Released in 1989 for Amiga, Commodore 64, Amstrad CPC, MS-DOS, Atari ST, ZX Spectrum."
+    },
+    "night-hunter": {
+        "key": "night-hunter",
+        "value": "Night Hunter",
+        "group": "Ubisoft",
+        "description": "Released in 1989 for Atari ST, Amstrad CPC."
+    },
+    "omeyad": {
+        "key": "omeyad",
+        "value": "Omeyad",
+        "group": "Ubisoft",
+        "description": "Released in 1989 for Amstrad CPC."
+    },
+    "puffy-s-saga": {
+        "key": "puffy-s-saga",
+        "value": "Puffy's Saga",
+        "group": "Ubisoft",
+        "description": "Released in 1989 for Amiga, Commodore 64, Amstrad CPC, MS-DOS, Atari ST, ZX Spectrum."
+    },
+    "skateball": {
+        "key": "skateball",
+        "value": "Skateball",
+        "group": "Ubisoft",
+        "description": "Released in 1989 for Amiga, Amstrad CPC, Amstrad GX4000, Atari ST, Commodore 64, MS-DOS, ZX Spectrum."
+    },
+    "sphaira": {
+        "key": "sphaira",
+        "value": "Sphaira",
+        "group": "Ubisoft",
+        "description": "Released in 1989 for Amstrad CPC."
+    },
+    "terres-et-conqu-rants": {
+        "key": "terres-et-conqu-rants",
+        "value": "Terres et Conquérants",
+        "group": "Ubisoft",
+        "description": "Released in 1989 for Amstrad CPC."
+    },
+    "twinworld": {
+        "key": "twinworld",
+        "value": "Twinworld",
+        "group": "Ubisoft",
+        "description": "Released in 1989 for Acorn Archimedes, Amiga, Amstrad CPC, Atari ST, Commodore 64."
+    },
+    "b-a-t": {
+        "key": "b-a-t",
+        "value": "B.A.T.",
+        "group": "Ubisoft",
+        "description": "Released in 1990 for Amiga, Amstrad CPC, Atari ST, Commodore 64, MS-DOS."
+    },
+    "the-chessmaster-2000": {
+        "key": "the-chessmaster-2000",
+        "value": "The Chessmaster 2000",
+        "group": "Ubisoft",
+        "description": "Released in 1990 for Amstrad CPC."
+    },
+    "pick-n-pile": {
+        "key": "pick-n-pile",
+        "value": "Pick 'n Pile",
+        "group": "Ubisoft",
+        "description": "Released in 1990 for Amiga, Apple IIGS, Atari 2600, Commodore 64, Amstrad CPC, macOS, Atari ST, ZX Spectrum."
+    },
+    "pro-tennis-tour": {
+        "key": "pro-tennis-tour",
+        "value": "Pro Tennis Tour",
+        "group": "Ubisoft",
+        "description": "Released in 1990 for Amstrad CPC."
+    },
+    "ranx": {
+        "key": "ranx",
+        "value": "RanX",
+        "group": "Ubisoft",
+        "description": "Released in 1990 for Amiga, MS-DOS, Atari ST."
+    },
+    "sauvez-yurk": {
+        "key": "sauvez-yurk",
+        "value": "Sauvez Yurk",
+        "group": "Ubisoft",
+        "description": "Released in 1990 for Amstrad CPC."
+    },
+    "unreal": {
+        "key": "unreal",
+        "value": "Unreal",
+        "group": "Ubisoft",
+        "description": "Released in 1990 for Amiga, MS-DOS, Atari ST."
+    },
+    "air-combat-aces": {
+        "key": "air-combat-aces",
+        "value": "Air Combat Aces",
+        "group": "Ubisoft",
+        "description": "Released in 1991 for Amiga."
+    },
+    "back-to-the-golden-age": {
+        "key": "back-to-the-golden-age",
+        "value": "Back to the Golden Age",
+        "group": "Ubisoft",
+        "description": "Released in 1991 for Amstrad CPC, Atari ST."
+    },
+    "great-courts-2": {
+        "key": "great-courts-2",
+        "value": "Great Courts 2",
+        "group": "Ubisoft",
+        "description": "Released in 1991 for Amiga, MS-DOS, Atari ST."
+    },
+    "b-a-t-ii--the-koshan-conspiracy": {
+        "key": "b-a-t-ii--the-koshan-conspiracy",
+        "value": "B.A.T. II - The Koshan Conspiracy",
+        "group": "Ubisoft",
+        "description": "Released in 1992 for Amiga, MS-DOS, Atari ST."
+    },
+    "dyna-blaster": {
+        "key": "dyna-blaster",
+        "value": "Dyna Blaster",
+        "group": "Ubisoft",
+        "description": "Released in 1992 for Amiga, MS-DOS, Atari ST."
+    },
+    "f1-pole-position": {
+        "key": "f1-pole-position",
+        "value": "F1 Pole Position",
+        "group": "Ubisoft",
+        "description": "Released in 1993 for Game Boy."
+    },
+    "indiana-jones-and-the-last-crusade": {
+        "key": "indiana-jones-and-the-last-crusade",
+        "value": "Indiana Jones and the Last Crusade",
+        "group": "Ubisoft",
+        "description": "Released in 1993 for Nintendo Entertainment System."
+    },
+    "jimmy-connors-pro-tennis-tour": {
+        "key": "jimmy-connors-pro-tennis-tour",
+        "value": "Jimmy Connors Pro Tennis Tour",
+        "group": "Ubisoft",
+        "description": "Released in 1993 for Nintendo Entertainment System, Super Nintendo Entertainment System."
+    },
+    "payuta": {
+        "key": "payuta",
+        "value": "Payuta",
+        "group": "Ubisoft",
+        "description": "Released in 1994 for Microsoft Windows."
+    },
+    "street-racer": {
+        "key": "street-racer",
+        "value": "Street Racer",
+        "group": "Ubisoft",
+        "description": "Released in 1994 for Amiga, MS-DOS, Game Boy, PlayStation, Sega Saturn, Sega Genesis, Super Nintendo Entertainment System."
+    },
+    "action-soccer": {
+        "key": "action-soccer",
+        "value": "Action Soccer",
+        "group": "Ubisoft",
+        "description": "Released in 1995 for MS-DOS."
+    },
+    "anvil-of-dawn": {
+        "key": "anvil-of-dawn",
+        "value": "Anvil of Dawn",
+        "group": "Ubisoft",
+        "description": "Released in 1995 for MS-DOS."
+    },
+    "rayman": {
+        "key": "rayman",
+        "value": "Rayman",
+        "group": "Ubisoft",
+        "description": "Released in 1995 for Microsoft Windows, PlayStation, Game Boy Color, Atari Jaguar, Sega Saturn, MS-DOS."
+    },
+    "alexi-lalas-red-hot-soccer": {
+        "key": "alexi-lalas-red-hot-soccer",
+        "value": "Alexi Lalas Red Hot Soccer",
+        "group": "Ubisoft",
+        "description": "Released in 1996 for Microsoft Windows."
+    },
+    "tim7": {
+        "key": "tim7",
+        "value": "TIM7",
+        "group": "Ubisoft",
+        "description": "Released in 1996 for Microsoft Windows."
+    },
+    "the-adventures-of-valdo--marie": {
+        "key": "the-adventures-of-valdo--marie",
+        "value": "The Adventures of Valdo & Marie",
+        "group": "Ubisoft",
+        "description": "Released in 1997 for Microsoft Windows."
+    },
+    "f1-pole-position-64": {
+        "key": "f1-pole-position-64",
+        "value": "F1 Pole Position 64",
+        "group": "Ubisoft",
+        "description": "Released in 1997 for Nintendo 64."
+    },
+    "pod--planet-of-death": {
+        "key": "pod--planet-of-death",
+        "value": "POD - Planet of Death",
+        "group": "Ubisoft",
+        "description": "Released in 1997 for Microsoft Windows."
+    },
+    "rayman-designer": {
+        "key": "rayman-designer",
+        "value": "Rayman Designer",
+        "group": "Ubisoft",
+        "description": "Released in 1997 for Microsoft Windows."
+    },
+    "rayman-gold": {
+        "key": "rayman-gold",
+        "value": "Rayman Gold",
+        "group": "Ubisoft",
+        "description": "Released in 1997 for Microsoft Windows."
+    },
+    "sub-culture": {
+        "key": "sub-culture",
+        "value": "Sub Culture",
+        "group": "Ubisoft",
+        "description": "Released in 1997 for Microsoft Windows."
+    },
+    "tennis-arena": {
+        "key": "tennis-arena",
+        "value": "Tennis Arena",
+        "group": "Ubisoft",
+        "description": "Released in 1997 for Sega Saturn, PlayStation."
+    },
+    "all-star-tennis-99": {
+        "key": "all-star-tennis-99",
+        "value": "All Star Tennis '99",
+        "group": "Ubisoft",
+        "description": "Released in 1998 for Nintendo 64, PlayStation, Game Boy Color."
+    },
+    "asghan-the-dragon-slayer": {
+        "key": "asghan-the-dragon-slayer",
+        "value": "Asghan: The Dragon Slayer",
+        "group": "Ubisoft",
+        "description": "Released in 1998 for Microsoft Windows."
+    },
+    "buck-bumble": {
+        "key": "buck-bumble",
+        "value": "Buck Bumble",
+        "group": "Ubisoft",
+        "description": "Released in 1998 for Nintendo 64."
+    },
+    "f1-racing-simulation": {
+        "key": "f1-racing-simulation",
+        "value": "F1 Racing Simulation",
+        "group": "Ubisoft",
+        "description": "Released in 1998 for Microsoft Windows."
+    },
+    "hexcite": {
+        "key": "hexcite",
+        "value": "Hexcite",
+        "group": "Ubisoft",
+        "description": "Released in 1998 for Game Boy Color."
+    },
+    "laura-s-happy-adventures": {
+        "key": "laura-s-happy-adventures",
+        "value": "Laura's Happy Adventures",
+        "group": "Ubisoft",
+        "description": "Released in 1998 for Microsoft Windows, Game Boy Color."
+    },
+    "rayman-forever": {
+        "key": "rayman-forever",
+        "value": "Rayman Forever",
+        "group": "Ubisoft",
+        "description": "Released in 1998 for Microsoft Windows."
+    },
+    "redline-racer": {
+        "key": "redline-racer",
+        "value": "Redline Racer",
+        "group": "Ubisoft",
+        "description": "Released in 1998 for Microsoft Windows."
+    },
+    "s-c-a-r-s": {
+        "key": "s-c-a-r-s",
+        "value": "S.C.A.R.S",
+        "group": "Ubisoft",
+        "description": "Released in 1998 for Nintendo 64, PlayStation, Microsoft Windows."
+    },
+    "shadow-gunner-the-robot-wars": {
+        "key": "shadow-gunner-the-robot-wars",
+        "value": "Shadow Gunner: The Robot Wars",
+        "group": "Ubisoft",
+        "description": "Released in 1998 for PlayStation."
+    },
+    "skull-caps": {
+        "key": "skull-caps",
+        "value": "Skull Caps",
+        "group": "Ubisoft",
+        "description": "Released in 1998 for Microsoft Windows."
+    },
+    "speed-busters-american-highways": {
+        "key": "speed-busters-american-highways",
+        "value": "Speed Busters: American Highways",
+        "group": "Ubisoft",
+        "description": "Released in 1998 for Microsoft Windows."
+    },
+    "alex-builds-his-farm": {
+        "key": "alex-builds-his-farm",
+        "value": "Alex Builds His Farm",
+        "group": "Ubisoft",
+        "description": "Released in 1999 for Microsoft Windows."
+    },
+    "all-you-can-play-10-racing-games": {
+        "key": "all-you-can-play-10-racing-games",
+        "value": "All You Can Play: 10 Racing Games",
+        "group": "Ubisoft",
+        "description": "Released in 1999 for Microsoft Windows."
+    },
+    "hell-copter": {
+        "key": "hell-copter",
+        "value": "Hell-Copter",
+        "group": "Ubisoft",
+        "description": "Released in 1999 for Microsoft Windows."
+    },
+    "hype-the-time-quest": {
+        "key": "hype-the-time-quest",
+        "value": "Hype: The Time Quest",
+        "group": "Ubisoft",
+        "description": "Released in 1999 for Microsoft Windows, PlayStation 2."
+    },
+    "imperialism-ii-age-of-exploration": {
+        "key": "imperialism-ii-age-of-exploration",
+        "value": "Imperialism II: Age of Exploration",
+        "group": "Ubisoft",
+        "description": "Released in 1999 for Microsoft Windows."
+    },
+    "monaco-grand-prix": {
+        "key": "monaco-grand-prix",
+        "value": "Monaco Grand Prix",
+        "group": "Ubisoft",
+        "description": "Released in 1999 for Nintendo 64, Dreamcast, PlayStation."
+    },
+    "monaco-grand-prix-racing-simulation-2": {
+        "key": "monaco-grand-prix-racing-simulation-2",
+        "value": "Monaco Grand Prix Racing Simulation 2",
+        "group": "Ubisoft",
+        "description": "Released in 1999 for Microsoft Windows."
+    },
+    "rayman-2-the-great-escape": {
+        "key": "rayman-2-the-great-escape",
+        "value": "Rayman 2: The Great Escape",
+        "group": "Ubisoft",
+        "description": "Released in 1999 for Microsoft Windows, Nintendo 64, Dreamcast, PlayStation."
+    },
+    "rocket-robot-on-wheels": {
+        "key": "rocket-robot-on-wheels",
+        "value": "Rocket: Robot on Wheels",
+        "group": "Ubisoft",
+        "description": "Released in 1999 for Nintendo 64."
+    },
+    "speed-devils": {
+        "key": "speed-devils",
+        "value": "Speed Devils",
+        "group": "Ubisoft",
+        "description": "Released in 1999 for Dreamcast."
+    },
+    "tom-clancy-s-rainbow-six-rogue-spear": {
+        "key": "tom-clancy-s-rainbow-six-rogue-spear",
+        "value": "Tom Clancy's Rainbow Six: Rogue Spear",
+        "group": "Ubisoft",
+        "description": "Released in 1999 for Microsoft Windows, macOS, Dreamcast, PlayStation."
+    },
+    "animorphs": {
+        "key": "animorphs",
+        "value": "Animorphs",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for Game Boy Color."
+    },
+    "arcatera-the-dark-brotherhood": {
+        "key": "arcatera-the-dark-brotherhood",
+        "value": "Arcatera: The Dark Brotherhood",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for Microsoft Windows."
+    },
+    "batman-beyond-return-of-the-joker": {
+        "key": "batman-beyond-return-of-the-joker",
+        "value": "Batman Beyond: Return of the Joker",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for Game Boy Color, PlayStation, Nintendo 64."
+    },
+    "disney-s-dinosaur": {
+        "key": "disney-s-dinosaur",
+        "value": "Disney's Dinosaur",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for Microsoft Windows, PlayStation, PlayStation 2, Dreamcast, Game Boy Color."
+    },
+    "donald-duck-goin-quackers": {
+        "key": "donald-duck-goin-quackers",
+        "value": "Donald Duck: Goin' Quackers",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for Microsoft Windows, PlayStation, Nintendo 64, Dreamcast, Game Boy Color, GameCube, PlayStation 2."
+    },
+    "grandia": {
+        "key": "grandia",
+        "value": "Grandia",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for PlayStation."
+    },
+    "grandia-2": {
+        "key": "grandia-2",
+        "value": "Grandia 2",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for Microsoft Windows, PlayStation 2, Dreamcast."
+    },
+    "infestation": {
+        "key": "infestation",
+        "value": "Infestation",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for Microsoft Windows."
+    },
+    "little-nicky": {
+        "key": "little-nicky",
+        "value": "Little Nicky",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for Game Boy Color."
+    },
+    "myst-masterpiece-edition": {
+        "key": "myst-masterpiece-edition",
+        "value": "Myst Masterpiece Edition",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for Microsoft Windows."
+    },
+    "pod-2--pod-speedzone": {
+        "key": "pod-2--pod-speedzone",
+        "value": "POD 2 / POD: Speedzone",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for Dreamcast."
+    },
+    "realmyst": {
+        "key": "realmyst",
+        "value": "RealMYST",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for Microsoft Windows, macOS."
+    },
+    "speed-devils-online-racing": {
+        "key": "speed-devils-online-racing",
+        "value": "Speed Devils Online Racing",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for Dreamcast."
+    },
+    "stupid-invaders": {
+        "key": "stupid-invaders",
+        "value": "Stupid Invaders",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for Dreamcast, Microsoft Windows."
+    },
+    "theocracy": {
+        "key": "theocracy",
+        "value": "Theocracy",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for Microsoft Windows."
+    },
+    "tom-clancy-s-rainbow-six-rogue-spear-urban-operations": {
+        "key": "tom-clancy-s-rainbow-six-rogue-spear-urban-operations",
+        "value": "Tom Clancy's Rainbow Six: Rogue Spear: Urban Operations",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for Microsoft Windows."
+    },
+    "tonic-trouble": {
+        "key": "tonic-trouble",
+        "value": "Tonic Trouble",
+        "group": "Ubisoft",
+        "description": "Released in 2000 for Microsoft Windows, Nintendo 64."
+    },
+    "alex-ferguson-s-player-manager-2001": {
+        "key": "alex-ferguson-s-player-manager-2001",
+        "value": "Alex Ferguson's Player Manager 2001",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for PlayStation."
+    },
+    "armored-core-2": {
+        "key": "armored-core-2",
+        "value": "Armored Core 2",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for PlayStation 2."
+    },
+    "batman-vengeance": {
+        "key": "batman-vengeance",
+        "value": "Batman: Vengeance",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Xbox, GameCube, PlayStation 2, Game Boy Advance, Microsoft Windows."
+    },
+    "batman-gotham-city-racer": {
+        "key": "batman-gotham-city-racer",
+        "value": "Batman: Gotham City Racer",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for PlayStation."
+    },
+    "batman-chaos-in-gotham": {
+        "key": "batman-chaos-in-gotham",
+        "value": "Batman: Chaos in Gotham",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Game Boy Color."
+    },
+    "battle-realms": {
+        "key": "battle-realms",
+        "value": "Battle Realms",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Microsoft Windows."
+    },
+    "business-tycoon": {
+        "key": "business-tycoon",
+        "value": "Business Tycoon",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Microsoft Windows."
+    },
+    "capitalism-2": {
+        "key": "capitalism-2",
+        "value": "Capitalism 2",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Microsoft Windows."
+    },
+    "conflict-zone": {
+        "key": "conflict-zone",
+        "value": "Conflict Zone",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Microsoft Windows, Dreamcast, PlayStation 2."
+    },
+    "conquest-frontier-wars": {
+        "key": "conquest-frontier-wars",
+        "value": "Conquest: Frontier Wars",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Microsoft Windows."
+    },
+    "dragon-riders-chronicles-of-pern": {
+        "key": "dragon-riders-chronicles-of-pern",
+        "value": "Dragon Riders: Chronicles of Pern",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Dreamcast, Microsoft Windows."
+    },
+    "evil-twin-cyprien-s-chronicles": {
+        "key": "evil-twin-cyprien-s-chronicles",
+        "value": "Evil Twin: Cyprien's Chronicles",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Dreamcast, PlayStation 2, Microsoft Windows."
+    },
+    "f1-racing-championship": {
+        "key": "f1-racing-championship",
+        "value": "F1 Racing Championship",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Microsoft Windows, PlayStation, Nintendo 64, PlayStation 2, Dreamcast."
+    },
+    "gunfighter-the-legend-of-jesse-james": {
+        "key": "gunfighter-the-legend-of-jesse-james",
+        "value": "Gunfighter: The Legend of Jesse James",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for PlayStation."
+    },
+    "il-2-sturmovik": {
+        "key": "il-2-sturmovik",
+        "value": "IL-2 Sturmovik",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Microsoft Windows."
+    },
+    "jade-cocoon-2": {
+        "key": "jade-cocoon-2",
+        "value": "Jade Cocoon 2",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for PlayStation 2."
+    },
+    "lunar-legend": {
+        "key": "lunar-legend",
+        "value": "Lunar Legend",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Game Boy Advance."
+    },
+    "mum-s-night-off": {
+        "key": "mum-s-night-off",
+        "value": "Mum's Night Off",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for PlayStation 2."
+    },
+    "myst-iii-exile": {
+        "key": "myst-iii-exile",
+        "value": "Myst III: Exile",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Microsoft Windows, macOS."
+    },
+    "planet-of-the-apes": {
+        "key": "planet-of-the-apes",
+        "value": "Planet of the Apes",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for PlayStation, Microsoft Windows."
+    },
+    "purple-elastic": {
+        "key": "purple-elastic",
+        "value": "Purple Elastic",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for PlayStation, Game Boy Color, Nintendo 64."
+    },
+    "rayman-2-revolution": {
+        "key": "rayman-2-revolution",
+        "value": "Rayman 2: Revolution",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for PlayStation 2."
+    },
+    "rayman-advance": {
+        "key": "rayman-advance",
+        "value": "Rayman Advance",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Game Boy Advance."
+    },
+    "rayman-m": {
+        "key": "rayman-m",
+        "value": "Rayman M",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Microsoft Windows, PlayStation 2."
+    },
+    "sunny-garcia-surfing": {
+        "key": "sunny-garcia-surfing",
+        "value": "Sunny Garcia Surfing",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for PlayStation 2."
+    },
+    "tom-clancy-s-ghost-recon": {
+        "key": "tom-clancy-s-ghost-recon",
+        "value": "Tom Clancy's Ghost Recon",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Microsoft Windows, Xbox, PlayStation 2, GameCube."
+    },
+    "tom-clancy-s-rainbow-six-rogue-spear-black-thorn": {
+        "key": "tom-clancy-s-rainbow-six-rogue-spear-black-thorn",
+        "value": "Tom Clancy's Rainbow Six: Rogue Spear: Black Thorn",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Microsoft Windows."
+    },
+    "worms-world-party": {
+        "key": "worms-world-party",
+        "value": "Worms World Party",
+        "group": "Ubisoft",
+        "description": "Released in 2001 for Microsoft Windows, PlayStation, Game Boy Advance, N-Gage."
+    },
+    "catz-5": {
+        "key": "catz-5",
+        "value": "Catz 5",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for Microsoft Windows."
+    },
+    "chessmaster-9000": {
+        "key": "chessmaster-9000",
+        "value": "Chessmaster 9000",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for Microsoft Windows, macOS."
+    },
+    "deathrow": {
+        "key": "deathrow",
+        "value": "Deathrow",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for Xbox."
+    },
+    "destroyer-command": {
+        "key": "destroyer-command",
+        "value": "Destroyer Command",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for Microsoft Windows."
+    },
+    "disney-s-pk-out-of-the-shadows": {
+        "key": "disney-s-pk-out-of-the-shadows",
+        "value": "Disney's PK: Out of the Shadows",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for GameCube, PlayStation 2."
+    },
+    "dogz-5": {
+        "key": "dogz-5",
+        "value": "Dogz 5",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for Microsoft Windows, Game Boy Advance."
+    },
+    "the-elder-scrolls-iii-morrowind": {
+        "key": "the-elder-scrolls-iii-morrowind",
+        "value": "The Elder Scrolls III: Morrowind",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for Microsoft Windows, Xbox."
+    },
+    "evolution-worlds": {
+        "key": "evolution-worlds",
+        "value": "Evolution Worlds",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for GameCube."
+    },
+    "hooters-road-trip": {
+        "key": "hooters-road-trip",
+        "value": "Hooters Road Trip",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for Microsoft Windows, PlayStation."
+    },
+    "ice-age-video-game": {
+        "key": "ice-age-video-game",
+        "value": "Ice Age (video game)",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for Game Boy Advance."
+    },
+    "marcel-desailly-pro-football": {
+        "key": "marcel-desailly-pro-football",
+        "value": "Marcel Desailly Pro Football",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for PlayStation."
+    },
+    "mike-tyson-boxing": {
+        "key": "mike-tyson-boxing",
+        "value": "Mike Tyson Boxing",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for Game Boy Advance."
+    },
+    "moto-racer-advance": {
+        "key": "moto-racer-advance",
+        "value": "Moto Racer Advance",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for Game Boy Advance."
+    },
+    "pro-rally-2002": {
+        "key": "pro-rally-2002",
+        "value": "Pro Rally 2002",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for PlayStation 2, GameCube."
+    },
+    "rayman-arena": {
+        "key": "rayman-arena",
+        "value": "Rayman Arena",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for Xbox, PlayStation 2, GameCube, Microsoft Windows."
+    },
+    "rayman-rush": {
+        "key": "rayman-rush",
+        "value": "Rayman Rush",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for PlayStation."
+    },
+    "rocky": {
+        "key": "rocky",
+        "value": "Rocky",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for Game Boy Advance, GameCube, PlayStation 2, Xbox."
+    },
+    "the-settlers-iv-mission-pack": {
+        "key": "the-settlers-iv-mission-pack",
+        "value": "The Settlers IV: Mission Pack",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for Microsoft Windows."
+    },
+    "the-settlers-iv-the-trojans-and-the-elixir-of-power": {
+        "key": "the-settlers-iv-the-trojans-and-the-elixir-of-power",
+        "value": "The Settlers IV: The Trojans and the Elixir of Power",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for Microsoft Windows."
+    },
+    "the-sum-of-all-fears": {
+        "key": "the-sum-of-all-fears",
+        "value": "The Sum of All Fears",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for GameCube, Microsoft Windows, Game Boy Advance."
+    },
+    "telefoot-manager": {
+        "key": "telefoot-manager",
+        "value": "Telefoot Manager",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for PlayStation."
+    },
+    "tom-clancy-s-splinter-cell": {
+        "key": "tom-clancy-s-splinter-cell",
+        "value": "Tom Clancy's Splinter Cell",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for Xbox, PlayStation 2, GameCube, Microsoft Windows."
+    },
+    "warlords-battlecry-ii": {
+        "key": "warlords-battlecry-ii",
+        "value": "Warlords Battlecry II",
+        "group": "Ubisoft",
+        "description": "Released in 2002 for Microsoft Windows."
+    },
+    "ape-escape-2": {
+        "key": "ape-escape-2",
+        "value": "Ape Escape 2",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for PlayStation 2."
+    },
+    "batman-rise-of-sin-tzu": {
+        "key": "batman-rise-of-sin-tzu",
+        "value": "Batman: Rise of Sin Tzu",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for Xbox, PlayStation 2."
+    },
+    "beyond-good--evil": {
+        "key": "beyond-good--evil",
+        "value": "Beyond Good & Evil",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for Xbox, PlayStation 2, GameCube, Microsoft Windows, PlayStation Network, Xbox Live Arcade."
+    },
+    "catching-granda-jimmy-battle-of-the-ages": {
+        "key": "catching-granda-jimmy-battle-of-the-ages",
+        "value": "Catching Granda Jimmy: Battle of the Ages",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for PlayStation 2, GameCube."
+    },
+    "charlie-s-angels": {
+        "key": "charlie-s-angels",
+        "value": "Charlie's Angels",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for PlayStation 2, GameCube."
+    },
+    "chessmaster": {
+        "key": "chessmaster",
+        "value": "Chessmaster",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for Xbox, PlayStation 2, Microsoft Windows."
+    },
+    "crouching-tiger-hidden-dragon": {
+        "key": "crouching-tiger-hidden-dragon",
+        "value": "Crouching Tiger, Hidden Dragon",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for Xbox, PlayStation 2, Game Boy Advance."
+    },
+    "csi-crime-scene-investigation": {
+        "key": "csi-crime-scene-investigation",
+        "value": "CSI: Crime Scene Investigation",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for Microsoft Windows, Xbox, macOS."
+    },
+    "downtown-run": {
+        "key": "downtown-run",
+        "value": "Downtown Run",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for Microsoft Windows, PlayStation 2, GameCube."
+    },
+    "gunfighter-ii-revenge-of-jesse-james": {
+        "key": "gunfighter-ii-revenge-of-jesse-james",
+        "value": "Gunfighter II: Revenge of Jesse James",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for PlayStation 2."
+    },
+    "lock-on-modern-air-combat": {
+        "key": "lock-on-modern-air-combat",
+        "value": "Lock On: Modern Air Combat",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for Microsoft Windows."
+    },
+    "monster-4x4-masters-of-metal": {
+        "key": "monster-4x4-masters-of-metal",
+        "value": "Monster 4x4: Masters of Metal",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for PlayStation 2, GameCube."
+    },
+    "prince-of-persia-the-sands-of-time": {
+        "key": "prince-of-persia-the-sands-of-time",
+        "value": "Prince of Persia: The Sands of Time",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for PlayStation 2, Xbox, GameCube, Game Boy Advance, Microsoft Windows."
+    },
+    "rayman-3-hoodlum-havoc": {
+        "key": "rayman-3-hoodlum-havoc",
+        "value": "Rayman 3: Hoodlum Havoc",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for Xbox, PlayStation 2, GameCube, Microsoft Windows, Game Boy Advance, macOS, N-Gage."
+    },
+    "shadowbane-the-rise-of-chaos": {
+        "key": "shadowbane-the-rise-of-chaos",
+        "value": "Shadowbane: The Rise of Chaos",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for Microsoft Windows."
+    },
+    "tom-clancy-s-ghost-recon-desert-siege": {
+        "key": "tom-clancy-s-ghost-recon-desert-siege",
+        "value": "Tom Clancy's Ghost Recon: Desert Siege",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for Microsoft Windows."
+    },
+    "tom-clancy-s-ghost-recon-island-thunder": {
+        "key": "tom-clancy-s-ghost-recon-island-thunder",
+        "value": "Tom Clancy's Ghost Recon: Island Thunder",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for Xbox, Microsoft Windows."
+    },
+    "tom-clancy-s-rainbow-six-3-raven-shield": {
+        "key": "tom-clancy-s-rainbow-six-3-raven-shield",
+        "value": "Tom Clancy's Rainbow Six 3: Raven Shield",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for Microsoft Windows, Xbox, PlayStation 2, GameCube."
+    },
+    "uru-ages-beyond-myst": {
+        "key": "uru-ages-beyond-myst",
+        "value": "Uru: Ages Beyond Myst",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for Microsoft Windows."
+    },
+    "warlords-iv-heroes-of-etheria": {
+        "key": "warlords-iv-heroes-of-etheria",
+        "value": "Warlords IV: Heroes of Etheria",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for Microsoft Windows."
+    },
+    "will-rock": {
+        "key": "will-rock",
+        "value": "Will Rock",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for Microsoft Windows."
+    },
+    "xiii": {
+        "key": "xiii",
+        "value": "XIII",
+        "group": "Ubisoft",
+        "description": "Released in 2003 for Xbox, PlayStation 2, GameCube, Microsoft Windows."
+    },
+    "alexander": {
+        "key": "alexander",
+        "value": "Alexander",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Microsoft Windows."
+    },
+    "asphalt-urban-gt": {
+        "key": "asphalt-urban-gt",
+        "value": "Asphalt Urban GT",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Mobile Phones, N-Gage, Nintendo DS."
+    },
+    "advance-guardian-heroes": {
+        "key": "advance-guardian-heroes",
+        "value": "Advance Guardian Heroes",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Game Boy Advance."
+    },
+    "ape-escape-pumped--primed": {
+        "key": "ape-escape-pumped--primed",
+        "value": "Ape Escape: Pumped & Primed",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for PlayStation 2."
+    },
+    "baldur-s-gate-dark-alliance": {
+        "key": "baldur-s-gate-dark-alliance",
+        "value": "Baldur's Gate: Dark Alliance",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for PlayStation 2."
+    },
+    "chessmaster-10th-edition": {
+        "key": "chessmaster-10th-edition",
+        "value": "Chessmaster 10th Edition",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Microsoft Windows."
+    },
+    "csi-dark-motives": {
+        "key": "csi-dark-motives",
+        "value": "CSI: Dark Motives",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Microsoft Windows, Nintendo DS."
+    },
+    "csi-miami": {
+        "key": "csi-miami",
+        "value": "CSI: Miami",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Microsoft Windows, iPhone."
+    },
+    "the-dukes-of-hazzard-return-of-the-general-lee": {
+        "key": "the-dukes-of-hazzard-return-of-the-general-lee",
+        "value": "The Dukes of Hazzard: Return of the General Lee",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Xbox, PlayStation 2."
+    },
+    "far-cry": {
+        "key": "far-cry",
+        "value": "Far Cry",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Microsoft Windows."
+    },
+    "il-2-sturmovik-forgotten-battles-ace-expansion-pack": {
+        "key": "il-2-sturmovik-forgotten-battles-ace-expansion-pack",
+        "value": "IL-2 Sturmovik: Forgotten Battles Ace Expansion Pack",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Microsoft Windows."
+    },
+    "myst-iv-revelation": {
+        "key": "myst-iv-revelation",
+        "value": "Myst IV: Revelation",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Microsoft Windows, macOS."
+    },
+    "pacific-fighters": {
+        "key": "pacific-fighters",
+        "value": "Pacific Fighters",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Microsoft Windows."
+    },
+    "the-political-machine": {
+        "key": "the-political-machine",
+        "value": "The Political Machine",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Microsoft Windows."
+    },
+    "prince-of-persia-warrior-within": {
+        "key": "prince-of-persia-warrior-within",
+        "value": "Prince of Persia: Warrior Within",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Xbox, PlayStation 2, GameCube, Microsoft Windows."
+    },
+    "rocky-legends": {
+        "key": "rocky-legends",
+        "value": "Rocky Legends",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Xbox, PlayStation 2."
+    },
+    "sherlock-holmes-secret-of-the-silver-earring": {
+        "key": "sherlock-holmes-secret-of-the-silver-earring",
+        "value": "Sherlock Holmes: Secret of the Silver Earring",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Microsoft Windows."
+    },
+    "sprung": {
+        "key": "sprung",
+        "value": "Sprung",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Nintendo DS."
+    },
+    "star-wars-trilogy-apprentice-of-the-force": {
+        "key": "star-wars-trilogy-apprentice-of-the-force",
+        "value": "Star Wars Trilogy: Apprentice of the Force",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Game Boy Advance."
+    },
+    "tom-clancy-s-ghost-recon-jungle-storm": {
+        "key": "tom-clancy-s-ghost-recon-jungle-storm",
+        "value": "Tom Clancy's Ghost Recon: Jungle Storm",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for PlayStation 2, N-Gage."
+    },
+    "tom-clancy-s-ghost-recon-2": {
+        "key": "tom-clancy-s-ghost-recon-2",
+        "value": "Tom Clancy's Ghost Recon 2",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Xbox, PlayStation 2, GameCube."
+    },
+    "tom-clancy-s-rainbow-six-3-raven-shield-athena-sword": {
+        "key": "tom-clancy-s-rainbow-six-3-raven-shield-athena-sword",
+        "value": "Tom Clancy's Rainbow Six 3: Raven Shield: Athena Sword",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Microsoft Windows."
+    },
+    "tom-clancy-s-rainbow-six-3-black-arrow": {
+        "key": "tom-clancy-s-rainbow-six-3-black-arrow",
+        "value": "Tom Clancy's Rainbow Six 3: Black Arrow",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Xbox."
+    },
+    "tom-clancy-s-splinter-cell-pandora-tomorrow": {
+        "key": "tom-clancy-s-splinter-cell-pandora-tomorrow",
+        "value": "Tom Clancy's Splinter Cell: Pandora Tomorrow",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Xbox, PlayStation 2, GameCube, Microsoft Windows."
+    },
+    "uru-the-path-of-the-shell": {
+        "key": "uru-the-path-of-the-shell",
+        "value": "Uru: The Path of the Shell",
+        "group": "Ubisoft",
+        "description": "Released in 2004 for Microsoft Windows."
+    },
+    "187-ride-or-die": {
+        "key": "187-ride-or-die",
+        "value": " 187: Ride or Die",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for PlayStation 2, Xbox."
+    },
+    "asphalt-2-urban-gt": {
+        "key": "asphalt-2-urban-gt",
+        "value": "Asphalt 2: Urban GT",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for N-Gage, Nintendo DS, PlayStation Portable."
+    },
+    "brothers-in-arms-d-day": {
+        "key": "brothers-in-arms-d-day",
+        "value": "Brothers in Arms: D-Day",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for PlayStation Portable."
+    },
+    "brothers-in-arms-earned-in-blood": {
+        "key": "brothers-in-arms-earned-in-blood",
+        "value": "Brothers in Arms: Earned in Blood",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Microsoft Windows, PlayStation 2, Xbox."
+    },
+    "brothers-in-arms-road-to-hill-30": {
+        "key": "brothers-in-arms-road-to-hill-30",
+        "value": "Brothers in Arms: Road to Hill 30",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Microsoft Windows, PlayStation 2, Xbox."
+    },
+    "cold-fear": {
+        "key": "cold-fear",
+        "value": "Cold Fear",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Microsoft Windows, Xbox, PlayStation 2."
+    },
+    "far-cry-instincts": {
+        "key": "far-cry-instincts",
+        "value": "Far Cry Instincts",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Xbox."
+    },
+    "flow-urban-dance-uprising": {
+        "key": "flow-urban-dance-uprising",
+        "value": "Flow: Urban Dance Uprising",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for PlayStation 2."
+    },
+    "heroes-of-the-pacific": {
+        "key": "heroes-of-the-pacific",
+        "value": "Heroes of the Pacific",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for PlayStation 2, Microsoft Windows, Xbox."
+    },
+    "battles-of-prince-of-persia": {
+        "key": "battles-of-prince-of-persia",
+        "value": "Battles of Prince of Persia",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Nintendo DS."
+    },
+    "kutaaa-the-dog-of-world": {
+        "key": "kutaaa-the-dog-of-world",
+        "value": "Kutaaa: The Dog of World",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Game Boy Advance."
+    },
+    "lunar-dragon-song": {
+        "key": "lunar-dragon-song",
+        "value": "Lunar: Dragon Song",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Nintendo DS."
+    },
+    "myst-v-end-of-ages": {
+        "key": "myst-v-end-of-ages",
+        "value": "Myst V: End of Ages",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Microsoft Windows, macOS."
+    },
+    "peter-jackson-s-king-kong": {
+        "key": "peter-jackson-s-king-kong",
+        "value": "Peter Jackson's King Kong",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Microsoft Windows, PlayStation 2, GameCube, Xbox, Xbox 360, PlayStation Portable, Nintendo DS, Game Boy Advance."
+    },
+    "prince-of-persia-the-two-thrones": {
+        "key": "prince-of-persia-the-two-thrones",
+        "value": "Prince of Persia: The Two Thrones",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Xbox, PlayStation 2, GameCube, Microsoft Windows, macOS."
+    },
+    "prince-of-persia-revelations": {
+        "key": "prince-of-persia-revelations",
+        "value": "Prince of Persia: Revelations",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for PlayStation Portable."
+    },
+    "rayman-ds": {
+        "key": "rayman-ds",
+        "value": "Rayman DS",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Nintendo DS."
+    },
+    "rayman-hoodlums-revenge": {
+        "key": "rayman-hoodlums-revenge",
+        "value": "Rayman: Hoodlums' Revenge",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Game Boy Advance."
+    },
+    "silent-hunter-iii": {
+        "key": "silent-hunter-iii",
+        "value": "Silent Hunter III",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Microsoft Windows."
+    },
+    "star-wars-episode-iii-revenge-of-the-sith": {
+        "key": "star-wars-episode-iii-revenge-of-the-sith",
+        "value": "Star Wars Episode III: Revenge of the Sith",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for PlayStation 2, Xbox, Game Boy Advance."
+    },
+    "the-settlers-heritage-of-kings": {
+        "key": "the-settlers-heritage-of-kings",
+        "value": "The Settlers: Heritage of Kings",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Microsoft Windows."
+    },
+    "tom-clancy-s-ghost-recon-2-summit-strike": {
+        "key": "tom-clancy-s-ghost-recon-2-summit-strike",
+        "value": "Tom Clancy's Ghost Recon 2: Summit Strike",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Xbox."
+    },
+    "tom-clancy-s-rainbow-six-3-raven-shield-iron-wrath": {
+        "key": "tom-clancy-s-rainbow-six-3-raven-shield-iron-wrath",
+        "value": "Tom Clancy's Rainbow Six 3: Raven Shield: Iron Wrath",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Microsoft Windows."
+    },
+    "tom-clancy-s-rainbow-six-lockdown": {
+        "key": "tom-clancy-s-rainbow-six-lockdown",
+        "value": "Tom Clancy's Rainbow Six: Lockdown",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Xbox, PlayStation 2, GameCube, Microsoft Windows."
+    },
+    "tom-clancy-s-splinter-cell-chaos-theory": {
+        "key": "tom-clancy-s-splinter-cell-chaos-theory",
+        "value": "Tom Clancy's Splinter Cell: Chaos Theory",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Xbox, PlayStation 2, GameCube, Microsoft Windows."
+    },
+    "tork-prehistoric-punk": {
+        "key": "tork-prehistoric-punk",
+        "value": "Tork: Prehistoric Punk",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Xbox."
+    },
+    "trollz-hair-affair": {
+        "key": "trollz-hair-affair",
+        "value": "Trollz: Hair Affair!",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Game Boy Advance."
+    },
+    "winnie-the-pooh-s-rumbly-tumbly-adventure": {
+        "key": "winnie-the-pooh-s-rumbly-tumbly-adventure",
+        "value": "Winnie the Pooh's Rumbly Tumbly Adventure",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Game Boy Advance, GameCube, PlayStation 2."
+    },
+    "yohoho-puzzle-pirates": {
+        "key": "yohoho-puzzle-pirates",
+        "value": "Yohoho! Puzzle Pirates",
+        "group": "Ubisoft",
+        "description": "Released in 2005 for Microsoft Windows."
+    },
+    "america-s-army-rise-of-a-soldier": {
+        "key": "america-s-army-rise-of-a-soldier",
+        "value": "America's Army: Rise of a Soldier",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Xbox."
+    },
+    "and-1-streetball": {
+        "key": "and-1-streetball",
+        "value": "AND 1 Streetball",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for PlayStation 2, Xbox."
+    },
+    "astonishia-story": {
+        "key": "astonishia-story",
+        "value": "Astonishia Story",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for PlayStation Portable."
+    },
+    "blazing-angels": {
+        "key": "blazing-angels",
+        "value": "Blazing Angels",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Xbox, Xbox 360, PlayStation 3, Microsoft Windows, Wii."
+    },
+    "call-of-juarez": {
+        "key": "call-of-juarez",
+        "value": "Call of Juarez",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Microsoft Windows, Xbox 360."
+    },
+    "csi-3-dimensions-of-murder": {
+        "key": "csi-3-dimensions-of-murder",
+        "value": "CSI: 3 Dimensions of Murder",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Microsoft Windows, PlayStation 2."
+    },
+    "dark-messiah-of-might-and-magic": {
+        "key": "dark-messiah-of-might-and-magic",
+        "value": "Dark Messiah of Might and Magic",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Microsoft Windows."
+    },
+    "devil-may-cry-3": {
+        "key": "devil-may-cry-3",
+        "value": "Devil May Cry 3",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Microsoft Windows."
+    },
+    "enchanted-arms": {
+        "key": "enchanted-arms",
+        "value": "Enchanted Arms",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Xbox 360, PlayStation 3."
+    },
+    "faces-of-war": {
+        "key": "faces-of-war",
+        "value": "Faces of War",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Microsoft Windows."
+    },
+    "far-cry-instincts-evolution": {
+        "key": "far-cry-instincts-evolution",
+        "value": "Far Cry Instincts Evolution",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Xbox."
+    },
+    "far-cry-instincts-predator": {
+        "key": "far-cry-instincts-predator",
+        "value": "Far Cry Instincts Predator",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Xbox 360."
+    },
+    "far-cry-vengeance": {
+        "key": "far-cry-vengeance",
+        "value": "Far Cry: Vengeance",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Wii."
+    },
+    "gt-pro-series": {
+        "key": "gt-pro-series",
+        "value": "GT Pro Series",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Wii."
+    },
+    "heroes-of-might-and-magic-v": {
+        "key": "heroes-of-might-and-magic-v",
+        "value": "Heroes of Might and Magic V",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Microsoft Windows, macOS."
+    },
+    "heroes-of-might-and-magic-v-hammers-of-fate": {
+        "key": "heroes-of-might-and-magic-v-hammers-of-fate",
+        "value": "Heroes of Might and Magic V: Hammers of Fate",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Microsoft Windows."
+    },
+    "import-tuner-challenge": {
+        "key": "import-tuner-challenge",
+        "value": "Import Tuner Challenge",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Xbox 360."
+    },
+    "lost-magic": {
+        "key": "lost-magic",
+        "value": "Lost Magic",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Nintendo DS."
+    },
+    "monster-4x4-world-circuit": {
+        "key": "monster-4x4-world-circuit",
+        "value": "Monster 4x4 World Circuit",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Wii."
+    },
+    "open-season": {
+        "key": "open-season",
+        "value": "Open Season",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Wii, PlayStation 2, PlayStation Portable, Microsoft Windows, Game Boy Advance, Xbox 360, Xbox, Nintendo DS, GameCube."
+    },
+    "paradise": {
+        "key": "paradise",
+        "value": "Paradise",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Microsoft Windows."
+    },
+    "rayman-raving-rabbids": {
+        "key": "rayman-raving-rabbids",
+        "value": "Rayman Raving Rabbids",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Wii, Game Boy Advance, PlayStation 2, Nintendo DS, Microsoft Windows, Xbox 360."
+    },
+    "red-steel": {
+        "key": "red-steel",
+        "value": "Red Steel",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Wii."
+    },
+    "star-wars-lethal-alliance": {
+        "key": "star-wars-lethal-alliance",
+        "value": "Star Wars: Lethal Alliance",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for PlayStation Portable, Nintendo DS."
+    },
+    "street-riders": {
+        "key": "street-riders",
+        "value": "Street Riders",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for PlayStation Portable."
+    },
+    "tom-clancy-s-ghost-recon-advanced-warfighter": {
+        "key": "tom-clancy-s-ghost-recon-advanced-warfighter",
+        "value": "Tom Clancy's Ghost Recon Advanced Warfighter",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Xbox, Xbox 360, Microsoft Windows, PlayStation 2."
+    },
+    "tom-clancy-s-rainbow-six-critical-hour": {
+        "key": "tom-clancy-s-rainbow-six-critical-hour",
+        "value": "Tom Clancy's Rainbow Six: Critical Hour",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Xbox."
+    },
+    "tom-clancy-s-rainbow-six-vegas": {
+        "key": "tom-clancy-s-rainbow-six-vegas",
+        "value": "Tom Clancy's Rainbow Six: Vegas",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Xbox 360, Microsoft Windows, PlayStation 3, PlayStation Portable."
+    },
+    "tom-clancy-s-splinter-cell-essentials": {
+        "key": "tom-clancy-s-splinter-cell-essentials",
+        "value": "Tom Clancy's Splinter Cell: Essentials",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for PlayStation Portable."
+    },
+    "tom-clancy-s-splinter-cell-double-agent": {
+        "key": "tom-clancy-s-splinter-cell-double-agent",
+        "value": "Tom Clancy's Splinter Cell: Double Agent",
+        "group": "Ubisoft",
+        "description": "Released in 2006 for Xbox, PlayStation 2, Microsoft Windows, Xbox 360, GameCube, Wii."
+    },
+    "assassin-s-creed": {
+        "key": "assassin-s-creed",
+        "value": "Assassin's Creed",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for PlayStation 3, Xbox 360, Microsoft Windows."
+    },
+    "america-s-army-true-soldiers": {
+        "key": "america-s-army-true-soldiers",
+        "value": "America's Army: True Soldiers",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Xbox 360."
+    },
+    "beowulf-the-game": {
+        "key": "beowulf-the-game",
+        "value": "Beowulf: The Game",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Microsoft Windows, PlayStation 3, Xbox 360, PlayStation Portable."
+    },
+    "blazing-angels-2-secret-missions-of-wwii": {
+        "key": "blazing-angels-2-secret-missions-of-wwii",
+        "value": "Blazing Angels 2: Secret Missions of WWII",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for PlayStation 3, Xbox 360, Microsoft Windows."
+    },
+    "csi-hard-evidence": {
+        "key": "csi-hard-evidence",
+        "value": "CSI: Hard Evidence",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Microsoft Windows, Xbox 360, Wii."
+    },
+    "the-dog-island": {
+        "key": "the-dog-island",
+        "value": "The Dog Island",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Wii, PlayStation 2."
+    },
+    "driver-parallel-lines": {
+        "key": "driver-parallel-lines",
+        "value": "Driver: Parallel Lines",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Microsoft Windows, Wii."
+    },
+    "driver-76": {
+        "key": "driver-76",
+        "value": "Driver 76",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for PlayStation Portable."
+    },
+    "heroes-of-might-and-magic-v-tribes-of-the-east": {
+        "key": "heroes-of-might-and-magic-v-tribes-of-the-east",
+        "value": "Heroes of Might and Magic V: Tribes of the East",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Microsoft Windows."
+    },
+    "imagine-animal-doctor": {
+        "key": "imagine-animal-doctor",
+        "value": "Imagine: Animal Doctor",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Nintendo DS."
+    },
+    "imagine-babyz": {
+        "key": "imagine-babyz",
+        "value": "Imagine: Babyz",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Nintendo DS."
+    },
+    "imagine-fashion-designer": {
+        "key": "imagine-fashion-designer",
+        "value": "Imagine: Fashion Designer",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Nintendo DS."
+    },
+    "imagine-figure-skater": {
+        "key": "imagine-figure-skater",
+        "value": "Imagine: Figure Skater",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Nintendo DS."
+    },
+    "imagine-master-chef": {
+        "key": "imagine-master-chef",
+        "value": "Imagine: Master Chef",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Nintendo DS."
+    },
+    "my-french-coach": {
+        "key": "my-french-coach",
+        "value": "My French Coach",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Nintendo DS, Wii."
+    },
+    "my-french-coach-level-2-intermediate": {
+        "key": "my-french-coach-level-2-intermediate",
+        "value": "My French Coach Level 2: Intermediate",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Nintendo DS."
+    },
+    "my-spanish-coach": {
+        "key": "my-spanish-coach",
+        "value": "My Spanish Coach",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Nintendo DS, Wii, PlayStation Portable."
+    },
+    "my-spanish-coach-level-2-intermediate": {
+        "key": "my-spanish-coach-level-2-intermediate",
+        "value": "My Spanish Coach Level 2: Intermediate",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Nintendo DS."
+    },
+    "my-word-coach": {
+        "key": "my-word-coach",
+        "value": "My Word Coach",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Nintendo DS, Wii."
+    },
+    "my-dutch-coach": {
+        "key": "my-dutch-coach",
+        "value": "My Dutch Coach",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Nintendo DS."
+    },
+    "naruto-rise-of-a-ninja": {
+        "key": "naruto-rise-of-a-ninja",
+        "value": "Naruto: Rise of a Ninja",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Xbox 360."
+    },
+    "no-more-heroes": {
+        "key": "no-more-heroes",
+        "value": "No More Heroes",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Wii."
+    },
+    "petz-dogz-2": {
+        "key": "petz-dogz-2",
+        "value": "Petz Dogz 2",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Wii, PlayStation 2."
+    },
+    "petz-catz-2": {
+        "key": "petz-catz-2",
+        "value": "Petz Catz 2",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Wii, PlayStation 2."
+    },
+    "prince-of-persia-rival-swords": {
+        "key": "prince-of-persia-rival-swords",
+        "value": "Prince of Persia: Rival Swords",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Wii, PlayStation Portable."
+    },
+    "prince-of-persia-classic": {
+        "key": "prince-of-persia-classic",
+        "value": "Prince of Persia Classic",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Xbox 360, iOS."
+    },
+    "pawly-pets-my-animal-hospital": {
+        "key": "pawly-pets-my-animal-hospital",
+        "value": "Pawly Pets: My Animal Hospital",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Microsoft Windows."
+    },
+    "rayman-raving-rabbids-2": {
+        "key": "rayman-raving-rabbids-2",
+        "value": "Rayman Raving Rabbids 2",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Wii, Nintendo DS."
+    },
+    "real-football-2008": {
+        "key": "real-football-2008",
+        "value": "Real Football 2008",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Nintendo DS."
+    },
+    "resident-evil-4": {
+        "key": "resident-evil-4",
+        "value": "Resident Evil 4",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Microsoft Windows."
+    },
+    "rocky-balboa": {
+        "key": "rocky-balboa",
+        "value": "Rocky Balboa",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for PlayStation Portable."
+    },
+    "silent-hunter-4-wolves-of-the-pacific": {
+        "key": "silent-hunter-4-wolves-of-the-pacific",
+        "value": "Silent Hunter 4: Wolves of the Pacific",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Microsoft Windows."
+    },
+    "surf-s-up": {
+        "key": "surf-s-up",
+        "value": "Surf's Up",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Xbox 360, PlayStation 3, Wii, PlayStation Portable, PlayStation 2, GameCube, Nintendo DS, Game Boy Advance, Microsoft Windows."
+    },
+    "the-settlers-ii-10th-anniversary": {
+        "key": "the-settlers-ii-10th-anniversary",
+        "value": "The Settlers II 10th Anniversary",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Microsoft Windows."
+    },
+    "the-settlers-rise-of-an-empire": {
+        "key": "the-settlers-rise-of-an-empire",
+        "value": "The Settlers: Rise of an Empire",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Microsoft Windows."
+    },
+    "tom-clancy-s-ghost-recon-advanced-warfighter-2": {
+        "key": "tom-clancy-s-ghost-recon-advanced-warfighter-2",
+        "value": "Tom Clancy's Ghost Recon Advanced Warfighter 2",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Xbox 360, PlayStation 3, Microsoft Windows."
+    },
+    "tmnt": {
+        "key": "tmnt",
+        "value": "TMNT",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Xbox 360, PlayStation 2, PlayStation 3, PlayStation Portable, Game Boy Advance, GameCube, Nintendo DS, Wii, Microsoft Windows."
+    },
+    "world-in-conflict": {
+        "key": "world-in-conflict",
+        "value": "World in Conflict",
+        "group": "Ubisoft",
+        "description": "Released in 2007 for Microsoft Windows."
+    },
+    "armored-core-for-answer": {
+        "key": "armored-core-for-answer",
+        "value": "Armored Core: For Answer",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for PlayStation 3, Xbox 360."
+    },
+    "armored-core-for-answer": {
+        "key": "armored-core-for-answer",
+        "value": "Armored Core: For Answer",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for PlayStation 3, Xbox 360."
+    },
+    "battle-of-giants-dinosaurs": {
+        "key": "battle-of-giants-dinosaurs",
+        "value": "Battle of Giants: Dinosaurs",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Nintendo DS."
+    },
+    "brothers-in-arms-hell-s-highway": {
+        "key": "brothers-in-arms-hell-s-highway",
+        "value": "Brothers in Arms: Hell's Highway",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "cesar-millan-s-the-dog-whisperer": {
+        "key": "cesar-millan-s-the-dog-whisperer",
+        "value": "Cesar Millan's The Dog Whisperer",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Nintendo DS, Microsoft Windows."
+    },
+    "circus-games": {
+        "key": "circus-games",
+        "value": "Circus Games",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Wii."
+    },
+    "csi-ny": {
+        "key": "csi-ny",
+        "value": "CSI: NY",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Microsoft Windows."
+    },
+    "dark-messiah-of-might-and-magic-elements": {
+        "key": "dark-messiah-of-might-and-magic-elements",
+        "value": "Dark Messiah of Might and Magic: Elements",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Xbox 360."
+    },
+    "emergency-heroes": {
+        "key": "emergency-heroes",
+        "value": "Emergency Heroes",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Wii."
+    },
+    "ener-g": {
+        "key": "ener-g",
+        "value": "Ener-G",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Nintendo DS."
+    },
+    "far-cry-2": {
+        "key": "far-cry-2",
+        "value": "Far Cry 2",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "haze": {
+        "key": "haze",
+        "value": "Haze",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for PlayStation 3."
+    },
+    "imagine-fashion-party": {
+        "key": "imagine-fashion-party",
+        "value": "Imagine: Fashion Party",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Wii."
+    },
+    "imagine-party-babyz": {
+        "key": "imagine-party-babyz",
+        "value": "Imagine: Party Babyz",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Wii."
+    },
+    "lost-via-domus": {
+        "key": "lost-via-domus",
+        "value": "Lost: Via Domus",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "movie-games": {
+        "key": "movie-games",
+        "value": "Movie Games",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Wii."
+    },
+    "my-fun-facts-coach": {
+        "key": "my-fun-facts-coach",
+        "value": "My Fun Facts Coach",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Nintendo DS."
+    },
+    "my-japanese-coach": {
+        "key": "my-japanese-coach",
+        "value": "My Japanese Coach",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Nintendo DS."
+    },
+    "my-chinese-coach": {
+        "key": "my-chinese-coach",
+        "value": "My Chinese Coach",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Nintendo DS."
+    },
+    "my-life-coach": {
+        "key": "my-life-coach",
+        "value": "My Life Coach",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Nintendo DS."
+    },
+    "my-sat-coach": {
+        "key": "my-sat-coach",
+        "value": "My SAT Coach",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Nintendo DS."
+    },
+    "my-weight-loss-coach": {
+        "key": "my-weight-loss-coach",
+        "value": "My Weight Loss Coach",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Nintendo DS."
+    },
+    "naruto-the-broken-bond": {
+        "key": "naruto-the-broken-bond",
+        "value": "Naruto: The Broken Bond",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Xbox 360."
+    },
+    "petz-crazy-monkeyz": {
+        "key": "petz-crazy-monkeyz",
+        "value": "Petz: Crazy Monkeyz",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Wii."
+    },
+    "petz-horsez-club": {
+        "key": "petz-horsez-club",
+        "value": "Petz: Horsez Club",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Wii."
+    },
+    "petz-rescue-wildlife-vet": {
+        "key": "petz-rescue-wildlife-vet",
+        "value": "Petz: Rescue Wildlife Vet",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Wii."
+    },
+    "petz-sports-dog-playground": {
+        "key": "petz-sports-dog-playground",
+        "value": "Petz Sports: Dog Playground",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Wii."
+    },
+    "prince-of-persia": {
+        "key": "prince-of-persia",
+        "value": "Prince of Persia",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Xbox 360, PlayStation 3, Microsoft Windows, macOS."
+    },
+    "rayman-raving-rabbids-tv-party": {
+        "key": "rayman-raving-rabbids-tv-party",
+        "value": "Rayman Raving Rabbids TV Party",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Wii, Nintendo DS."
+    },
+    "shaun-white-snowboarding": {
+        "key": "shaun-white-snowboarding",
+        "value": "Shaun White Snowboarding",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Wii, PlayStation 3, Xbox 360, Microsoft Windows."
+    },
+    "silent-hunter-iv-u-boat-mission": {
+        "key": "silent-hunter-iv-u-boat-mission",
+        "value": "Silent Hunter IV: U-Boat Mission",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Microsoft Windows."
+    },
+    "tom-clancy-s-endwar": {
+        "key": "tom-clancy-s-endwar",
+        "value": "Tom Clancy's EndWar",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Xbox 360, PlayStation 3, Nintendo DS, PlayStation Portable, Microsoft Windows."
+    },
+    "totally-spies-totally-party": {
+        "key": "totally-spies-totally-party",
+        "value": "Totally Spies! Totally Party",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Microsoft Windows, Wii, PlayStation 2."
+    },
+    "tom-clancy-s-rainbow-six-vegas-2": {
+        "key": "tom-clancy-s-rainbow-six-vegas-2",
+        "value": "Tom Clancy's Rainbow Six: Vegas 2",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Xbox 360, Microsoft Windows, PlayStation 3."
+    },
+    "tv-show-king-party": {
+        "key": "tv-show-king-party",
+        "value": "TV Show King Party",
+        "group": "Ubisoft",
+        "description": "Released in 2008 for Wii."
+    },
+    "academy-of-champions": {
+        "key": "academy-of-champions",
+        "value": "Academy of Champions",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Wii."
+    },
+    "anno-1404": {
+        "key": "anno-1404",
+        "value": "Anno 1404",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Microsoft Windows, Wii, Nintendo DS."
+    },
+    "assassin-s-creed-ii": {
+        "key": "assassin-s-creed-ii",
+        "value": "Assassin's Creed II",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for PlayStation 3, Xbox 360, Microsoft Windows, macOS."
+    },
+    "assassin-s-creed-bloodlines": {
+        "key": "assassin-s-creed-bloodlines",
+        "value": "Assassin's Creed: Bloodlines",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for PlayStation Portable."
+    },
+    "assassin-s-creed-alta-r-s-chronicles": {
+        "key": "assassin-s-creed-alta-r-s-chronicles",
+        "value": "Assassin's Creed: Altaïr's Chronicles",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Nintendo DS, iOS, WebOS, Microsoft Windows Phone."
+    },
+    "asterix-these-romans-are-crazy": {
+        "key": "asterix-these-romans-are-crazy",
+        "value": "Asterix: These Romans Are Crazy!",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Nintendo DS."
+    },
+    "battle-of-giants-dragons": {
+        "key": "battle-of-giants-dragons",
+        "value": "Battle of Giants: Dragons",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Nintendo DS."
+    },
+    "c-o-p--the-recruit": {
+        "key": "c-o-p--the-recruit",
+        "value": "C.O.P.: The Recruit",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Nintendo DS."
+    },
+    "call-of-juarez-bound-in-blood": {
+        "key": "call-of-juarez-bound-in-blood",
+        "value": "Call of Juarez: Bound in Blood",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Microsoft Windows, Xbox 360, PlayStation 3."
+    },
+    "cloudy-with-a-chance-of-meatballs": {
+        "key": "cloudy-with-a-chance-of-meatballs",
+        "value": "Cloudy with a Chance of Meatballs",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Microsoft Windows, Xbox 360, Wii, PlayStation 3, Nintendo DS, PlayStation Portable."
+    },
+    "cover-girl": {
+        "key": "cover-girl",
+        "value": "Cover Girl",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for PlayStation Portable."
+    },
+    "csi-deadly-intent": {
+        "key": "csi-deadly-intent",
+        "value": "CSI: Deadly Intent",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Microsoft Windows, Xbox 360, Wii, Nintendo DS."
+    },
+    "grey-s-anatomy-the-video-game": {
+        "key": "grey-s-anatomy-the-video-game",
+        "value": "Grey's Anatomy: The Video Game",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Microsoft Windows, Wii, Nintendo DS."
+    },
+    "hamsterz-life-2": {
+        "key": "hamsterz-life-2",
+        "value": "Hamsterz Life 2",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Nintendo DS."
+    },
+    "heroes-over-europe": {
+        "key": "heroes-over-europe",
+        "value": "Heroes Over Europe",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for PlayStation 3, Microsoft Windows, Xbox 360."
+    },
+    "imagine-gymnast": {
+        "key": "imagine-gymnast",
+        "value": "Imagine: Gymnast",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Nintendo DS."
+    },
+    "james-cameron-s-avatar-the-game": {
+        "key": "james-cameron-s-avatar-the-game",
+        "value": "James Cameron's Avatar: The Game",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Xbox 360, PlayStation 3, PlayStation Portable, Nintendo DS, Wii, Microsoft Windows."
+    },
+    "just-dance": {
+        "key": "just-dance",
+        "value": "Just Dance",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Wii."
+    },
+    "just-dance-kids": {
+        "key": "just-dance-kids",
+        "value": "Just Dance Kids",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Wii, PlayStation 3, Xbox 360."
+    },
+    "rabbids-go-home": {
+        "key": "rabbids-go-home",
+        "value": "Rabbids Go Home",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Wii, Nintendo DS."
+    },
+    "shaun-white-snowboarding-world-stage": {
+        "key": "shaun-white-snowboarding-world-stage",
+        "value": "Shaun White Snowboarding: World Stage",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Wii."
+    },
+    "style-lab-makeover": {
+        "key": "style-lab-makeover",
+        "value": "Style Lab: Makeover",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Nintendo DS."
+    },
+    "tenchu-shadow-assassins": {
+        "key": "tenchu-shadow-assassins",
+        "value": "Tenchu: Shadow Assassins",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Wii, PlayStation Portable."
+    },
+    "tom-clancy-s-h-a-w-x": {
+        "key": "tom-clancy-s-h-a-w-x",
+        "value": "Tom Clancy's H.A.W.X",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Microsoft Windows, Xbox 360, PlayStation 3."
+    },
+    "teenage-mutant-ninja-turtles-smash-up": {
+        "key": "teenage-mutant-ninja-turtles-smash-up",
+        "value": "Teenage Mutant Ninja Turtles: Smash-Up",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Wii, PlayStation 2."
+    },
+    "velvet-assassin": {
+        "key": "velvet-assassin",
+        "value": "Velvet Assassin",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Xbox 360, Microsoft Windows, macOS."
+    },
+    "wheelman": {
+        "key": "wheelman",
+        "value": "Wheelman",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Microsoft Windows, Xbox 360, PlayStation 3."
+    },
+    "world-in-conflict-soviet-assault": {
+        "key": "world-in-conflict-soviet-assault",
+        "value": "World in Conflict: Soviet Assault",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Microsoft Windows."
+    },
+    "your-shape": {
+        "key": "your-shape",
+        "value": "Your Shape",
+        "group": "Ubisoft",
+        "description": "Released in 2009 for Wii."
+    },
+    "assassin-s-creed-brotherhood": {
+        "key": "assassin-s-creed-brotherhood",
+        "value": "Assassin's Creed: Brotherhood",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for PlayStation 3, Xbox 360, Microsoft Windows, macOS."
+    },
+    "battle-tag": {
+        "key": "battle-tag",
+        "value": "Battle Tag",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Laser tag."
+    },
+    "battle-of-giants-dinosaurs-fight-for-survival": {
+        "key": "battle-of-giants-dinosaurs-fight-for-survival",
+        "value": "Battle of Giants: Dinosaurs Fight for Survival",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Nintendo DS."
+    },
+    "battle-of-giants-mutant-insects": {
+        "key": "battle-of-giants-mutant-insects",
+        "value": "Battle of Giants: Mutant Insects",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Nintendo DS."
+    },
+    "battle-of-giants-mutant-insects-revenge": {
+        "key": "battle-of-giants-mutant-insects-revenge",
+        "value": "Battle of Giants: Mutant Insects Revenge",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Nintendo DS."
+    },
+    "csi-fatal-conspiracy": {
+        "key": "csi-fatal-conspiracy",
+        "value": "CSI: Fatal Conspiracy",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Microsoft Windows, Xbox 360, PlayStation 3, Wii."
+    },
+    "dance-on-broadway": {
+        "key": "dance-on-broadway",
+        "value": "Dance on Broadway",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Wii, PlayStation 3."
+    },
+    "just-dance-2": {
+        "key": "just-dance-2",
+        "value": "Just Dance 2",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Wii."
+    },
+    "michael-jackson-the-experience": {
+        "key": "michael-jackson-the-experience",
+        "value": "Michael Jackson: The Experience",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Wii, Nintendo DS, PlayStation Portable, Xbox 360 Kinect, PlayStation Move."
+    },
+    "no-more-heroes-2-desperate-struggle": {
+        "key": "no-more-heroes-2-desperate-struggle",
+        "value": "No More Heroes 2: Desperate Struggle",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Wii."
+    },
+    "prince-of-persia": {
+        "key": "prince-of-persia",
+        "value": "Prince of Persia",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for iOS, Wii, Nintendo 3DS."
+    },
+    "prince-of-persia-the-forgotten-sands": {
+        "key": "prince-of-persia-the-forgotten-sands",
+        "value": "Prince of Persia: The Forgotten Sands",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Xbox 360, PlayStation 3, Wii, PlayStation Portable, Nintendo DS, Microsoft Windows."
+    },
+    "racket-sports": {
+        "key": "racket-sports",
+        "value": "Racket Sports",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for PlayStation 3, PlayStation Move."
+    },
+    "raving-rabbids-travel-in-time": {
+        "key": "raving-rabbids-travel-in-time",
+        "value": "Raving Rabbids Travel In Time",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Wii, Nintendo 3DS."
+    },
+    "red-record-ryan-duguid-s-story": {
+        "key": "red-record-ryan-duguid-s-story",
+        "value": "Red Record: Ryan Duguid's Story",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Xbox."
+    },
+    "red-steel-2": {
+        "key": "red-steel-2",
+        "value": "Red Steel 2",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Wii."
+    },
+    "r-u-s-e": {
+        "key": "r-u-s-e",
+        "value": "R.U.S.E.",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Wii, Xbox 360, PlayStation 3, Microsoft Windows, macOS."
+    },
+    "scott-pilgrim-vs-the-world-the-game": {
+        "key": "scott-pilgrim-vs-the-world-the-game",
+        "value": "Scott Pilgrim vs. the World: The Game",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for PlayStation Network, Xbox Live Arcade."
+    },
+    "shaun-white-skateboarding": {
+        "key": "shaun-white-skateboarding",
+        "value": "Shaun White Skateboarding",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Wii, PlayStation 3, Xbox 360, Microsoft Windows."
+    },
+    "the-settlers-7-paths-to-a-kingdom": {
+        "key": "the-settlers-7-paths-to-a-kingdom",
+        "value": "The Settlers 7: Paths to a Kingdom",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Microsoft Windows, macOS."
+    },
+    "tom-clancy-s-h-a-w-x-2": {
+        "key": "tom-clancy-s-h-a-w-x-2",
+        "value": "Tom Clancy's H.A.W.X 2",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Microsoft Windows, Xbox 360, PlayStation 3."
+    },
+    "tom-clancy-s-ghost-recon-predator": {
+        "key": "tom-clancy-s-ghost-recon-predator",
+        "value": "Tom Clancy's Ghost Recon Predator",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for PlayStation Portable."
+    },
+    "tom-clancy-s-splinter-cell-conviction": {
+        "key": "tom-clancy-s-splinter-cell-conviction",
+        "value": "Tom Clancy's Splinter Cell: Conviction",
+        "group": "Ubisoft",
+        "description": "Released in 2010 for Microsoft Windows, Xbox 360."
+    },
+    "the-adventures-of-tintin-the-secret-of-the-unicorn": {
+        "key": "the-adventures-of-tintin-the-secret-of-the-unicorn",
+        "value": "The Adventures of Tintin: The Secret of the Unicorn",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Microsoft Windows, iOS, Nintendo 3DS, PlayStation 3, Wii, Xbox 360."
+    },
+    "abba-you-can-dance": {
+        "key": "abba-you-can-dance",
+        "value": "ABBA: You Can Dance",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Wii."
+    },
+    "animaniacs": {
+        "key": "animaniacs",
+        "value": "Animaniacs",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Wii."
+    },
+    "anno-2070": {
+        "key": "anno-2070",
+        "value": "Anno 2070",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Microsoft Windows."
+    },
+    "assassin-s-creed-revelations": {
+        "key": "assassin-s-creed-revelations",
+        "value": "Assassin's Creed: Revelations",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for PlayStation 3, Xbox 360, Microsoft Windows."
+    },
+    "call-of-juarez-the-cartel": {
+        "key": "call-of-juarez-the-cartel",
+        "value": "Call of Juarez: The Cartel",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Microsoft Windows, Xbox 360, PlayStation 3."
+    },
+    "cubic-ninja": {
+        "key": "cubic-ninja",
+        "value": "Cubic Ninja",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Nintendo 3DS."
+    },
+    "driver-renegade-3d": {
+        "key": "driver-renegade-3d",
+        "value": "Driver: Renegade 3D",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Nintendo 3DS."
+    },
+    "driver-san-francisco": {
+        "key": "driver-san-francisco",
+        "value": "Driver: San Francisco",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for macOS, Microsoft Windows, PlayStation 3, Xbox 360, Wii, Nintendo 3DS."
+    },
+    "dungeon-hunter-alliance": {
+        "key": "dungeon-hunter-alliance",
+        "value": "Dungeon Hunter: Alliance",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for PlayStation 3, PlayStation Vita."
+    },
+    "from-dust": {
+        "key": "from-dust",
+        "value": "From Dust",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Microsoft Windows, PlayStation Network, Xbox Live Arcade."
+    },
+    "il-2-sturmovik-cliffs-of-dover": {
+        "key": "il-2-sturmovik-cliffs-of-dover",
+        "value": "IL-2 Sturmovik: Cliffs of Dover",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Microsoft Windows."
+    },
+    "james-noir-s-hollywood-crimes": {
+        "key": "james-noir-s-hollywood-crimes",
+        "value": "James Noir's Hollywood Crimes",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Nintendo 3DS, iOS."
+    },
+    "just-dance-summer-party": {
+        "key": "just-dance-summer-party",
+        "value": "Just Dance Summer Party",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Wii."
+    },
+    "just-dance-3": {
+        "key": "just-dance-3",
+        "value": "Just Dance 3",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Wii, PlayStation 3, Xbox 360."
+    },
+    "just-dance-kids-2": {
+        "key": "just-dance-kids-2",
+        "value": "Just Dance Kids 2",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Wii, PlayStation 3, Xbox 360."
+    },
+    "might--magic-heroes-vi": {
+        "key": "might--magic-heroes-vi",
+        "value": "Might & Magic: Heroes VI",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Microsoft Windows."
+    },
+    "ncis-the-game": {
+        "key": "ncis-the-game",
+        "value": "NCIS: The Game",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "outland": {
+        "key": "outland",
+        "value": "Outland",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for PlayStation Network, Xbox Live Arcade."
+    },
+    "rabbids-go-home-2-world-tour-crazy-adventures": {
+        "key": "rabbids-go-home-2-world-tour-crazy-adventures",
+        "value": "Rabbids Go Home 2: World Tour Crazy Adventures",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Nintendo 3DS."
+    },
+    "raving-rabbids-alive--kicking": {
+        "key": "raving-rabbids-alive--kicking",
+        "value": "Raving Rabbids Alive & Kicking",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Xbox 360."
+    },
+    "rayman-3d": {
+        "key": "rayman-3d",
+        "value": "Rayman 3D",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Nintendo 3DS."
+    },
+    "rayman-origins": {
+        "key": "rayman-origins",
+        "value": "Rayman Origins",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for PlayStation 3, Xbox 360, Wii, Nintendo 3DS, PlayStation Vita, Microsoft Windows."
+    },
+    "the-smurfs": {
+        "key": "the-smurfs",
+        "value": "The Smurfs",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Wii, Nintendo DS, Nintendo 3DS."
+    },
+    "the-smurfs-dance-party": {
+        "key": "the-smurfs-dance-party",
+        "value": "The Smurfs Dance Party",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Wii."
+    },
+    "tom-clancy-s-ghost-recon-shadow-wars": {
+        "key": "tom-clancy-s-ghost-recon-shadow-wars",
+        "value": "Tom Clancy's Ghost Recon: Shadow Wars",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Nintendo 3DS."
+    },
+    "zeit": {
+        "key": "zeit",
+        "value": "Zeit²",
+        "group": "Ubisoft",
+        "description": "Released in 2011 for Xbox 360, Microsoft Windows."
+    },
+    "assassin-s-creed-iii": {
+        "key": "assassin-s-creed-iii",
+        "value": "Assassin's Creed III",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for PlayStation 3, Xbox 360, Microsoft Windows, Wii U."
+    },
+    "assassin-s-creed-iii-liberation": {
+        "key": "assassin-s-creed-iii-liberation",
+        "value": "Assassin's Creed III: Liberation",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for PlayStation Vita."
+    },
+    "babel-rising-3d": {
+        "key": "babel-rising-3d",
+        "value": "Babel Rising 3D",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for PlayStation 3, Xbox 360, Microsoft Windows."
+    },
+    "espn-sports-connection": {
+        "key": "espn-sports-connection",
+        "value": "ESPN Sports Connection",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Wii U."
+    },
+    "far-cry-3": {
+        "key": "far-cry-3",
+        "value": "Far Cry 3",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "i-am-alive": {
+        "key": "i-am-alive",
+        "value": "I Am Alive",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Xbox 360, PlayStation 3, Microsoft Windows, Xbox Live Arcade, PlayStation Network."
+    },
+    "just-dance-best-of": {
+        "key": "just-dance-best-of",
+        "value": "Just Dance: Best Of",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Wii, PlayStation 3, Xbox 360."
+    },
+    "just-dance-4": {
+        "key": "just-dance-4",
+        "value": "Just Dance 4",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Wii, PlayStation 3, Xbox 360, Wii U."
+    },
+    "lumines-electronic-symphony": {
+        "key": "lumines-electronic-symphony",
+        "value": "Lumines Electronic Symphony",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for PlayStation Vita."
+    },
+    "marvel-avengers-battle-for-earth": {
+        "key": "marvel-avengers-battle-for-earth",
+        "value": "Marvel Avengers: Battle for Earth",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Xbox 360, Wii U."
+    },
+    "mad-riders": {
+        "key": "mad-riders",
+        "value": "Mad Riders",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "rocksmith": {
+        "key": "rocksmith",
+        "value": "Rocksmith",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Xbox 360, PlayStation 3, PlayStation 4, Microsoft Windows, macOS."
+    },
+    "shoot-many-robots": {
+        "key": "shoot-many-robots",
+        "value": "Shoot Many Robots",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for PlayStation 3, Xbox 360, Microsoft Windows."
+    },
+    "monster-4x4": {
+        "key": "monster-4x4",
+        "value": "Monster 4x4",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Nintendo 3DS."
+    },
+    "rabbids-matter-of-party": {
+        "key": "rabbids-matter-of-party",
+        "value": "Rabbids Matter of Party",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Wii, PlayStation Vita, Nintendo 3DS."
+    },
+    "rabbids-land": {
+        "key": "rabbids-land",
+        "value": "Rabbids Land",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Wii U."
+    },
+    "rabbids-rumble": {
+        "key": "rabbids-rumble",
+        "value": "Rabbids Rumble",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Nintendo 3DS."
+    },
+    "the-expendables-2-the-video-game": {
+        "key": "the-expendables-2-the-video-game",
+        "value": "The Expendables 2: The Video Game",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for PlayStation 3, Xbox 360, Microsoft Windows."
+    },
+    "the-hip-hop-dance-experience": {
+        "key": "the-hip-hop-dance-experience",
+        "value": "The Hip Hop Dance Experience",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Xbox 360, Wii."
+    },
+    "tom-clancy-s-ghost-recon-future-soldier": {
+        "key": "tom-clancy-s-ghost-recon-future-soldier",
+        "value": "Tom Clancy's Ghost Recon: Future Soldier",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Xbox 360, PlayStation 3, Microsoft Windows."
+    },
+    "tom-clancy-s-ghost-recon-online": {
+        "key": "tom-clancy-s-ghost-recon-online",
+        "value": "Tom Clancy's Ghost Recon Online",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Microsoft Windows, Wii U."
+    },
+    "trials-evolution": {
+        "key": "trials-evolution",
+        "value": "Trials Evolution",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Xbox Live Arcade."
+    },
+    "war-world": {
+        "key": "war-world",
+        "value": "War World",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Microsoft Windows."
+    },
+    "your-shape-fitness-evolved-2012": {
+        "key": "your-shape-fitness-evolved-2012",
+        "value": "Your Shape: Fitness Evolved 2012",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Xbox 360."
+    },
+    "zombiu": {
+        "key": "zombiu",
+        "value": "ZombiU",
+        "group": "Ubisoft",
+        "description": "Released in 2012 for Wii U."
+    },
+    "assassin-s-creed-iv-black-flag": {
+        "key": "assassin-s-creed-iv-black-flag",
+        "value": "Assassin's Creed IV: Black Flag",
+        "group": "Ubisoft",
+        "description": "Released in 2013 for Microsoft Windows, PlayStation 3, PlayStation 4, Xbox 360, Xbox One, Wii U."
+    },
+    "assassin-s-creed-freedom-cry": {
+        "key": "assassin-s-creed-freedom-cry",
+        "value": "Assassin's Creed: Freedom Cry",
+        "group": "Ubisoft",
+        "description": "Released in 2013 for Microsoft Windows, PlayStation 3, PlayStation 4, Xbox 360, Xbox One."
+    },
+    "assassin-s-creed-pirates": {
+        "key": "assassin-s-creed-pirates",
+        "value": "Assassin's Creed Pirates",
+        "group": "Ubisoft",
+        "description": "Released in 2013 for iOS, Android."
+    },
+    "call-of-juarez-gunslinger": {
+        "key": "call-of-juarez-gunslinger",
+        "value": "Call of Juarez: Gunslinger",
+        "group": "Ubisoft",
+        "description": "Released in 2013 for Microsoft Windows, Xbox 360, PlayStation 3."
+    },
+    "far-cry-3-blood-dragon": {
+        "key": "far-cry-3-blood-dragon",
+        "value": "Far Cry 3: Blood Dragon",
+        "group": "Ubisoft",
+        "description": "Released in 2013 for Microsoft Windows, PlayStation 3, Xbox 360."
+    },
+    "growtopia": {
+        "key": "growtopia",
+        "value": "Growtopia",
+        "group": "Ubisoft",
+        "description": "Released in 2016 for Android, Microsoft Windows, iOS, macOS."
+    },
+    "just-dance-2014": {
+        "key": "just-dance-2014",
+        "value": "Just Dance 2014",
+        "group": "Ubisoft",
+        "description": "Released in 2013 for PlayStation 3, PlayStation 4, Xbox 360, Xbox One, Wii, Wii U."
+    },
+    "the-mighty-quest-for-epic-loot": {
+        "key": "the-mighty-quest-for-epic-loot",
+        "value": "The Mighty Quest for Epic Loot",
+        "group": "Ubisoft",
+        "description": "Released in 2013 for Microsoft Windows."
+    },
+    "panzer-general-online": {
+        "key": "panzer-general-online",
+        "value": "Panzer General Online",
+        "group": "Ubisoft",
+        "description": "Released in 2013 for Microsoft Windows."
+    },
+    "rayman-legends": {
+        "key": "rayman-legends",
+        "value": "Rayman Legends",
+        "group": "Ubisoft",
+        "description": "Released in 2013 for PlayStation 3, Xbox 360, Microsoft Windows, PlayStation Vita, Wii U, Xbox One, PlayStation 4."
+    },
+    "shootmania-storm": {
+        "key": "shootmania-storm",
+        "value": "ShootMania Storm",
+        "group": "Ubisoft",
+        "description": "Released in 2013 for Microsoft Windows."
+    },
+    "spartacus-legends": {
+        "key": "spartacus-legends",
+        "value": "Spartacus Legends",
+        "group": "Ubisoft",
+        "description": "Released in 2013 for PlayStation 3, Xbox 360."
+    },
+    "the-smurfs-2": {
+        "key": "the-smurfs-2",
+        "value": "The Smurfs 2",
+        "group": "Ubisoft",
+        "description": "Released in 2013 for Xbox 360, Wii, PlayStation 3, Nintendo DS, Wii U."
+    },
+    "tom-clancy-s-splinter-cell-blacklist": {
+        "key": "tom-clancy-s-splinter-cell-blacklist",
+        "value": "Tom Clancy's Splinter Cell: Blacklist",
+        "group": "Ubisoft",
+        "description": "Released in 2013 for Microsoft Windows, Xbox 360, PlayStation 3, Wii U."
+    },
+    "trials-evolution-gold-edition": {
+        "key": "trials-evolution-gold-edition",
+        "value": "Trials Evolution: Gold Edition",
+        "group": "Ubisoft",
+        "description": "Released in 2013 for Microsoft Windows."
+    },
+    "your-shape-fitness-evolved-2013": {
+        "key": "your-shape-fitness-evolved-2013",
+        "value": "Your Shape: Fitness Evolved 2013",
+        "group": "Ubisoft",
+        "description": "Released in 2013 for Wii U."
+    },
+    "assassin-s-creed-rogue": {
+        "key": "assassin-s-creed-rogue",
+        "value": "Assassin's Creed Rogue",
+        "group": "Ubisoft",
+        "description": "Released in 2014 for PlayStation 3, Xbox 360, Microsoft Windows."
+    },
+    "assassin-s-creed-unity": {
+        "key": "assassin-s-creed-unity",
+        "value": "Assassin's Creed Unity",
+        "group": "Ubisoft",
+        "description": "Released in 2014 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "bot-squad": {
+        "key": "bot-squad",
+        "value": "Bot Squad",
+        "group": "Ubisoft",
+        "description": "Released in 2014 for iOS."
+    },
+    "child-of-light": {
+        "key": "child-of-light",
+        "value": "Child of Light",
+        "group": "Ubisoft",
+        "description": "Released in 2014 for PlayStation 3, PlayStation 4, PlayStation Vita, Wii U, Microsoft Windows, Xbox 360, Xbox One."
+    },
+    "far-cry-4": {
+        "key": "far-cry-4",
+        "value": "Far Cry 4",
+        "group": "Ubisoft",
+        "description": "Released in 2014 for Microsoft Windows, PlayStation 3, Xbox 360, PlayStation 4, Xbox One."
+    },
+    "just-dance-2015": {
+        "key": "just-dance-2015",
+        "value": "Just Dance 2015",
+        "group": "Ubisoft",
+        "description": "Released in 2014 for PlayStation 3, PlayStation 4, Xbox 360, Xbox One, Wii, Wii U."
+    },
+    "might--magic-x-legacy": {
+        "key": "might--magic-x-legacy",
+        "value": "Might & Magic X: Legacy",
+        "group": "Ubisoft",
+        "description": "Released in 2014 for Microsoft Windows."
+    },
+    "south-park-the-stick-of-truth": {
+        "key": "south-park-the-stick-of-truth",
+        "value": "South Park: The Stick of Truth",
+        "group": "Ubisoft",
+        "description": "Released in 2014 for PlayStation 3, PlayStation 4, Xbox 360, Xbox One, Microsoft Windows, Nintendo Switch."
+    },
+    "tetris-ultimate": {
+        "key": "tetris-ultimate",
+        "value": "Tetris Ultimate",
+        "group": "Ubisoft",
+        "description": "Released in 2014 for Microsoft Windows, Xbox One, PlayStation 4, Nintendo 3DS, PlayStation Vita."
+    },
+    "the-crew": {
+        "key": "the-crew",
+        "value": "The Crew",
+        "group": "Ubisoft",
+        "description": "Released in 2014 for Microsoft Windows, Xbox 360, Xbox One, PlayStation 4."
+    },
+    "trials-fusion": {
+        "key": "trials-fusion",
+        "value": "Trials Fusion",
+        "group": "Ubisoft",
+        "description": "Released in 2014 for PlayStation 4, Xbox 360, Xbox One, Microsoft Windows."
+    },
+    "valiant-hearts-the-great-war": {
+        "key": "valiant-hearts-the-great-war",
+        "value": "Valiant Hearts: The Great War",
+        "group": "Ubisoft",
+        "description": "Released in 2014 for PlayStation 3, PlayStation 4, Xbox 360, Xbox One, Microsoft Windows."
+    },
+    "watch-dogs": {
+        "key": "watch-dogs",
+        "value": "Watch Dogs",
+        "group": "Ubisoft",
+        "description": "Released in 2014 for Microsoft Windows, Xbox 360, Xbox One, PlayStation 3, PlayStation 4, Wii U."
+    },
+    "anno-2205": {
+        "key": "anno-2205",
+        "value": "Anno 2205",
+        "group": "Ubisoft",
+        "description": "Released in 2015 for Microsoft Windows."
+    },
+    "assassin-s-creed-identity": {
+        "key": "assassin-s-creed-identity",
+        "value": "Assassin's Creed Identity",
+        "group": "Ubisoft",
+        "description": "Released in 2015 for iOS, Android."
+    },
+    "assassin-s-creed-chronicles": {
+        "key": "assassin-s-creed-chronicles",
+        "value": "Assassin's Creed Chronicles",
+        "group": "Ubisoft",
+        "description": "Released in 2015–16 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "assassin-s-creed-syndicate": {
+        "key": "assassin-s-creed-syndicate",
+        "value": "Assassin's Creed Syndicate",
+        "group": "Ubisoft",
+        "description": "Released in 2015 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "driver-speedboat-paradise": {
+        "key": "driver-speedboat-paradise",
+        "value": "Driver Speedboat Paradise",
+        "group": "Ubisoft",
+        "description": "Released in 2015 for iOS, Android."
+    },
+    "grow-home": {
+        "key": "grow-home",
+        "value": "Grow Home",
+        "group": "Ubisoft",
+        "description": "Released in 2015 for Microsoft Windows, PlayStation 4."
+    },
+    "just-dance-2016": {
+        "key": "just-dance-2016",
+        "value": "Just Dance 2016",
+        "group": "Ubisoft",
+        "description": "Released in 2015 for PlayStation 3, PlayStation 4, Xbox 360, Xbox One, Wii, Wii U."
+    },
+    "tom-clancy-s-rainbow-six-siege": {
+        "key": "tom-clancy-s-rainbow-six-siege",
+        "value": "Tom Clancy's Rainbow Six Siege",
+        "group": "Ubisoft",
+        "description": "Released in 2015 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "toy-soldiers-war-chest": {
+        "key": "toy-soldiers-war-chest",
+        "value": "Toy Soldiers: War Chest",
+        "group": "Ubisoft",
+        "description": "Released in 2015 for Microsoft Windows, Xbox One, PlayStation 4."
+    },
+    "eagle-flight": {
+        "key": "eagle-flight",
+        "value": "Eagle Flight",
+        "group": "Ubisoft",
+        "description": "Released in 2016 for Microsoft Windows, PlayStation 4."
+    },
+    "far-cry-primal": {
+        "key": "far-cry-primal",
+        "value": "Far Cry Primal",
+        "group": "Ubisoft",
+        "description": "Released in 2016 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "grow-up": {
+        "key": "grow-up",
+        "value": "Grow Up",
+        "group": "Ubisoft",
+        "description": "Released in 2016 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "hungry-shark-evolution": {
+        "key": "hungry-shark-evolution",
+        "value": "Hungry Shark Evolution",
+        "group": "Ubisoft",
+        "description": "Released in 2016 for iOS, Android."
+    },
+    "just-dance-2017": {
+        "key": "just-dance-2017",
+        "value": "Just Dance 2017",
+        "group": "Ubisoft",
+        "description": "Released in 2016 for PlayStation 3, PlayStation 4, Xbox 360, Xbox One, Wii, Wii U, Nintendo Switch, Microsoft Windows."
+    },
+    "steep": {
+        "key": "steep",
+        "value": "Steep",
+        "group": "Ubisoft",
+        "description": "Released in 2016 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "tom-clancy-s-the-division": {
+        "key": "tom-clancy-s-the-division",
+        "value": "Tom Clancy's The Division",
+        "group": "Ubisoft",
+        "description": "Released in 2016 for PlayStation 4, Xbox One, Microsoft Windows."
+    },
+    "trials-of-the-blood-dragon": {
+        "key": "trials-of-the-blood-dragon",
+        "value": "Trials of The Blood Dragon",
+        "group": "Ubisoft",
+        "description": "Released in 2016 for PlayStation 4, Xbox One, Microsoft Windows."
+    },
+    "trackmania-turbo": {
+        "key": "trackmania-turbo",
+        "value": "TrackMania Turbo",
+        "group": "Ubisoft",
+        "description": "Released in 2016 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "watch-dogs-2": {
+        "key": "watch-dogs-2",
+        "value": "Watch Dogs 2",
+        "group": "Ubisoft",
+        "description": "Released in 2016 for Microsoft Windows, Xbox One, PlayStation 4."
+    },
+    "werewolves-within": {
+        "key": "werewolves-within",
+        "value": "Werewolves Within",
+        "group": "Ubisoft",
+        "description": "Released in 2016 for Microsoft Windows."
+    },
+    "assassin-s-creed-origins": {
+        "key": "assassin-s-creed-origins",
+        "value": "Assassin's Creed Origins",
+        "group": "Ubisoft",
+        "description": "Released in 2017 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "atomega": {
+        "key": "atomega",
+        "value": "Atomega",
+        "group": "Ubisoft",
+        "description": "Released in 2017 for Microsoft Windows."
+    },
+    "for-honor": {
+        "key": "for-honor",
+        "value": "For Honor",
+        "group": "Ubisoft",
+        "description": "Released in 2017 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "hungry-dragon": {
+        "key": "hungry-dragon",
+        "value": "Hungry Dragon",
+        "group": "Ubisoft",
+        "description": "Released in 2018 for iOS, Android."
+    },
+    "just-dance-2018": {
+        "key": "just-dance-2018",
+        "value": "Just Dance 2018",
+        "group": "Ubisoft",
+        "description": "Released in 2017 for PlayStation 3, PlayStation 4, Xbox 360, Xbox One, Wii, Wii U, Nintendo Switch, Microsoft Windows."
+    },
+    "mario--rabbids-kingdom-battle": {
+        "key": "mario--rabbids-kingdom-battle",
+        "value": "Mario + Rabbids Kingdom Battle",
+        "group": "Ubisoft",
+        "description": "Released in 2017 for Nintendo Switch."
+    },
+    "ode": {
+        "key": "ode",
+        "value": "Ode",
+        "group": "Ubisoft",
+        "description": "Released in 2017 for Microsoft Windows."
+    },
+    "south-park-the-fractured-but-whole": {
+        "key": "south-park-the-fractured-but-whole",
+        "value": "South Park: The Fractured but Whole",
+        "group": "Ubisoft",
+        "description": "Released in 2017 for PlayStation 4, Xbox One, Microsoft Windows, Nintendo Switch."
+    },
+    "star-trek-bridge-crew": {
+        "key": "star-trek-bridge-crew",
+        "value": "Star Trek: Bridge Crew",
+        "group": "Ubisoft",
+        "description": "Released in 2017 for PlayStation 4, Microsoft Windows."
+    },
+    "tom-clancy-s-ghost-recon-wildlands": {
+        "key": "tom-clancy-s-ghost-recon-wildlands",
+        "value": "Tom Clancy's Ghost Recon Wildlands",
+        "group": "Ubisoft",
+        "description": "Released in 2017 for Microsoft Windows, Xbox One, PlayStation 4."
+    },
+    "tom-clancy-s-shadowbreak": {
+        "key": "tom-clancy-s-shadowbreak",
+        "value": "Tom Clancy's ShadowBreak",
+        "group": "Ubisoft",
+        "description": "Released in 2017 for iOS, Android."
+    },
+    "far-cry-5": {
+        "key": "far-cry-5",
+        "value": "Far Cry 5",
+        "group": "Ubisoft",
+        "description": "Released in 2018 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "the-crew-2": {
+        "key": "the-crew-2",
+        "value": "The Crew 2",
+        "group": "Ubisoft",
+        "description": "Released in 2018 for Microsoft Windows, Xbox One, PlayStation 4."
+    },
+    "transference": {
+        "key": "transference",
+        "value": "Transference",
+        "group": "Ubisoft",
+        "description": "Released in 2018 for Xbox One, PlayStation 4, Microsoft Windows."
+    },
+    "assassin-s-creed-odyssey": {
+        "key": "assassin-s-creed-odyssey",
+        "value": "Assassin's Creed Odyssey",
+        "group": "Ubisoft",
+        "description": "Released in 2018 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "starlink-battle-for-atlas": {
+        "key": "starlink-battle-for-atlas",
+        "value": "Starlink: Battle for Atlas",
+        "group": "Ubisoft",
+        "description": "Released in 2018 for Nintendo Switch, Playstation 4, Xbox One."
+    },
+    "hungry-shark-world": {
+        "key": "hungry-shark-world",
+        "value": "Hungry Shark World",
+        "group": "Ubisoft",
+        "description": "Released in 2018 for Nintendo Switch, Playstation 4, Xbox One."
+    },
+    "trials-rising": {
+        "key": "trials-rising",
+        "value": "Trials Rising",
+        "group": "Ubisoft",
+        "description": "Released in 2019 for Microsoft Windows, PlayStation 4, Xbox One, Nintendo Switch."
+    },
+    "anno-1800": {
+        "key": "anno-1800",
+        "value": "Anno 1800",
+        "group": "Ubisoft",
+        "description": "Released in 2019 for Microsoft Windows."
+    },
+    "tom-clancy-s-the-division-2": {
+        "key": "tom-clancy-s-the-division-2",
+        "value": "Tom Clancy's The Division 2",
+        "group": "Ubisoft",
+        "description": "Released in 2019 for Microsoft Windows, PlayStation 4, Xbox One."
+    },
+    "skull--bones": {
+        "key": "skull--bones",
+        "value": "Skull & Bones",
+        "group": "Ubisoft",
+        "description": "Released in 2019 for Xbox One, PlayStation 4, Microsoft Windows."
+    }
+}

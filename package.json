@@ -1,21 +1,27 @@
 {
     "name": "tail.select",
-    "version": "0.5.16",
-    "description": "Create beautiful, functional and extensive (Multi) select fields, written in Vanilla without any dependencies!",
+    "version": "0.6.0",
+    "status": "beta",
+    "description": "The vanilla solution to level up your HTML <select> fields!",
     "keywords": [
         "select",
-        "selection",
-        "selectable",
+        "multiselect",
         "dropdown",
-        "choose",
+        "html",
+        "form",
+        "input",
+        "ui",
         "vanilla",
         "tail"
     ],
     "author": "SamBrishes <sam@pytes.net> (https://www.pytes.net)",
+    "contributors": [
+        "Lenivyy <lenivyy@pytes.net> (https://www.pytes.net)"
+    ],
     "license": "MIT",
     "homepage": "https://github.com/pytesNET/tail.select",
-
-    "main": "js/tail.select.js",
+    "copyright": "pytesNET <info@pytes.net>",
+    
     "bugs": {
         "url": "https://github.com/pytesNET/tail.select/issues",
         "email": "info@pytes.net"
@@ -24,12 +30,18 @@
         "type": "git",
         "url": "git+ssh://git@github.com/pytesNET/tail.select.git"
     },
+
     "devDependencies": {
-        "less": ">=3.5.0",
-        "clean-css": ">=4.1.0"
+        "dart-sass": "1.23.x - 1.25.x",
+        "typescript": "3.5.x - 3.7.x",
+        "uglify-es": "~3.3.x",
+        "uglify-js": "3.3.x - 3.5.x"
     },
+    "main": "dist/js/tail.select.js",
+    "browser": "dist/js/tail.select.js",
+    "jsdelivr": "dist/js/tail.select.js",
 
     "reveal": true,
-    "browser": "js/tail.select-full.js",
-    "jsdelivr": "js/tail.select-full.js"
+    "jquery": "tailselect",
+    "mootools": "tailselect"
 }

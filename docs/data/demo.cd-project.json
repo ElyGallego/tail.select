@@ -1,0 +1,50 @@
+{
+    "the-witcher": {
+        "key": "the-witcher",
+        "value": "The Witcher",
+        "group": "CD Project RED",
+        "description": "Released in 2007 for Win, OSX."
+    },
+    "the-witcher-2-assassins-of-kings": {
+        "key": "the-witcher-2-assassins-of-kings",
+        "value": "The Witcher 2: Assassins of Kings",
+        "group": "CD Project RED",
+        "description": "Released in 2011 for Win, OSX, Linux, X360."
+    },
+    "the-witcher-adventure-game": {
+        "key": "the-witcher-adventure-game",
+        "value": "The Witcher Adventure Game",
+        "group": "CD Project RED",
+        "description": "Released in 2014 for Win, OSX."
+    },
+    "the-witcher-3-wild-hunt": {
+        "key": "the-witcher-3-wild-hunt",
+        "value": "The Witcher 3: Wild Hunt",
+        "group": "CD Project RED",
+        "description": "Released in 2015 for Win, PS4, XBO."
+    },
+    "the-witcher-3-wild-hunt-hearts-of-stone": {
+        "key": "the-witcher-3-wild-hunt-hearts-of-stone",
+        "value": "The Witcher 3: Wild Hunt – Hearts of Stone",
+        "group": "CD Project RED",
+        "description": "Released in 2015 for Win, PS4, XBO."
+    },
+    "the-witcher-3-wild-hunt-blood-and-wine": {
+        "key": "the-witcher-3-wild-hunt-blood-and-wine",
+        "value": "The Witcher 3: Wild Hunt – Blood and Wine",
+        "group": "CD Project RED",
+        "description": "Released in 2016 for Win, PS4, XBO."
+    },
+    "gwent-the-witcher-card-game": {
+        "key": "gwent-the-witcher-card-game",
+        "value": "Gwent: The Witcher Card Game",
+        "group": "CD Project RED",
+        "description": "Released in 2016 for Win, PS4, XBO."
+    },
+    "cybunerpunk-2077": {
+        "key": "cyberpunk-2077",
+        "value": "Cyberpunk 2077",
+        "group": "CD Project RED",
+        "description": "Released in TBA für TBA"
+    }
+}

@@ -1,3 +1,16 @@
-# Auto detect text files and perform LF normalization
+##
+##  DETECT FILES / PERFORM LF NORMALIZATION
+##
 * text=auto
-css/* linguist-vendored
+
+
+##
+##  IGNORE LANGUAGEs
+##
+dist/* linguist-vendored
+docs/* linguist-vendored
+src/docs/* linguist-vendored
+src/locales/* linguist-vendored
+src/scss/* linguist-vendored
+src/synter/* linguist-vendored
+tests/* linguist-vendored

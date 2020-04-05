@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="content-language" content="en" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>tail.select - The vanilla JS solution to level up your HTML &lt;select&gt; fields!</title>
+
+        <!-- Common -->
+        <meta name="author" content="SamBrishes, pytesNET" />
+        <meta name="publisher" content="SamBrishes, pytesNET" />
+        <meta name="copyright" content="SamBrishes, pytesNET" />
+
+        <meta name="name" content="tail.select - The vanilla JS solution to level up your HTML &lt;select&gt; fields!" />
+        <meta name="description" content="tail.select is back: Create beautiful, functional and extensive (Multi) Select Fields with pure, vanilla JavaScript." />
+        <meta name="keywords" content="Select, Field, Multiple, Selectable, Choose, Chosen, HTML, JavaScript, JS, Vanilla, Pure, Form, Formular, Input, GitHub, OpenSource, Free." />
+
+        <!-- Dublin Core -->
+        <meta name="DC.Language" content="en" />
+        <meta name="DC.Creator" content="SamBrishes, pytesNET" />
+        <meta name="DC.Publisher" content="SamBrishes, pytesNET" />
+        <meta name="DC.Rights" content="SamBrishes, pytesNET" />
+        <meta name="DC.Description" content="tail.select is back: Create beautiful, functional and extensive (Multi) Select Fields with pure, vanilla JavaScript." />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="pytesNET" />
+        <meta name="twitter:creator" content="pytesNET" />
+        <meta name="twitter:title" content="tail.select - The vanilla JS solution to level up your HTML &lt;select&gt; fields!" />
+        <meta name="twitter:description" content="tail.select is back: Create beautiful, functional and extensive (Multi) Select Fields with pure, vanilla JavaScript." />
+
+        <!-- Open Graph -->
+        <meta name="og:type" content="website" />
+        <meta name="og:url" content="http://pytesNET.github.io/tail.select" />
+        <meta name="og:locale" content="en" />
+        <meta name="og:title" content="tail.select - The vanilla JS solution to level up your HTML &lt;select&gt; fields!" />
+        <meta name="og:site_name" content="tail.select - The vanilla JS solution to level up your HTML &lt;select&gt; fields!" />
+        <meta name="og:description" content="tail.select is back: Create beautiful, functional and extensive (Multi) Select Fields with pure, vanilla JavaScript." />
+
+        <!-- Assets -->
+        <link type="text/css" rel="stylesheet" href="css/octmoon.min.css" />
+        <link type="text/css" rel="stylesheet" href="css/milligram.min.css" />
+        <link type="text/css" rel="stylesheet" href="css/styles.min.css" />
+        <script type="text/javascript" src="js/prism.min.js"></script>
+        <script type="text/javascript" src="js/website.js"></script>
+        <script type="text/javascript" src="js/demo.js"></script>
+
+        <!-- Source CSS -->
+        <link type="text/css" rel="stylesheet" href="../dist/css/default/theme-default.css" />
+        <link type="text/css" rel="stylesheet" href="../dist/css/default/plugins/select-all.css" />
+
+        <!-- <link type="text/css" rel="stylesheet" href="../dist/css/harx/theme-harx.css" />
+        <link type="text/css" rel="stylesheet" href="../dist/css/harx/plugins/select-all.css" />-->
+
+        <!-- <link type="text/css" rel="stylesheet" href="../dist/css/bootstrap2/theme-bootstrap2.css" />
+        <link type="text/css" rel="stylesheet" href="../dist/css/bootstrap2/plugins/select-all.css" />-->
+
+        <!-- <link type="text/css" rel="stylesheet" href="../dist/css/bootstrap3/theme-bootstrap3.css" />
+        <link type="text/css" rel="stylesheet" href="../dist/css/bootstrap3/plugins/select-all.css" />-->
+
+        <!-- <link type="text/css" rel="stylesheet" href="../dist/css/bootstrap4/theme-bootstrap4.css" />
+        <link type="text/css" rel="stylesheet" href="../dist/css/bootstrap4/plugins/select-all.css" />-->
+
+        <!-- <link type="text/css" rel="stylesheet" href="../dist/css/chosen/theme-chosen.css" />
+        <link type="text/css" rel="stylesheet" href="../dist/css/chosen/plugins/select-all.css" />-->
+
+        <!-- <link type="text/css" rel="stylesheet" href="../dist/css/selectize/theme-selectize.css" />
+        <link type="text/css" rel="stylesheet" href="../dist/css/selectize/plugins/select-all.css" />-->
+
+        <!-- Source JS -->
+        <script type="text/javascript" src="../dist/js/tail.select.js"></script>
+        <script type="text/javascript" src="../dist/js/plugins/all.js"></script>
+        <script type="text/javascript" src="../dist/js/locales/all.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <div class="row row-no-padding">
+                    <div class="column column-50">
+                        <div class="header-logo">
+                            <a href="https://www.pytes.net" target="_blank" class="logo-developer">
+                                <img src="img/pytesnet-white.svg" alt="pytesNET Logo" />
+                            </a>
+
+                            <span class="slash">/</span>
+
+                            <a href="https://github.pytes.net/tail.select" target="_blank" class="logo-project">
+                                <span class="tail">tail</span>
+                                <span class="dot">.</span>
+                                <span class="name">select</span>
+                            </a>
+
+                            <div class="logo-projects">
+                                <span class="icon icon-triangle-down" data-toggle="active" data-target=".project-list"></span>
+                                
+                                <ul class="project-list">
+                                    <li class="list-item item-title">
+                                        <span class="tail">other</span><span class="dot">.</span><span class="name">Projects</span>
+                                    </li>
+                                    <li class="list-item"><a href="">
+                                        <span class="item-title">
+                                            <span class="tail">tail</span><span class="dot">.</span><span class="name">DateTime</span>
+                                        </span> 
+                                        <span class="item-slogan">A DateTime Picker</span>
+                                    </a></li>
+                                    <li class="list-item"><a href="">
+                                        <span class="item-title">
+                                            <span class="tail">tail</span><span class="dot">.</span><span class="name">writer</span>
+                                        </span> 
+                                        <span class="item-slogan">A Textarea Markup</span>
+                                    </a></li>
+                                    <li class="list-item"><a href="">
+                                        <span class="item-title">
+                                            <span class="tail">tail</span><span class="dot">.</span><span class="name">sortable</span>
+                                        </span> 
+                                        <span class="item-slogan">A Drag'n'Drop Library</span>
+                                    </a></li>
+                                    <li class="list-item item-close"><span class="icon icon-x" data-toggle="active" data-target=".project-list"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column column-50 text-right">
+                        <ul class="main-navi">
+                            <li class="navi-item">
+                                <a href="./index.html" class="item-link">Home</a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="./docs/index.html" class="item-link">Documentation</a>
+                            </li>
+                            <li class="navi-item active">
+                                <a href="./extensions.html" class="item-link">Extensions</a>
+                            </li>
+                            <li class="navi-item item-download">
+                                <a href="https://github.com/pytesNET/tail.select/zipball/master" class="item-link">.ZIP</a>
+                                <a href="https://github.com/pytesNET/tail.select/tarball/master" class="item-link">.TAR</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="showcase">
+            <div class="container">
+                <div class="row row-no-padding">
+                    <div class="column">
+                        tail.select Extensions
+                    </div>
+                </div>
+
+                <div class="rat-image">
+                    <img src="img/rat-white.svg" alt="Rat" />
+                </div>
+            </div>
+        </div>
+
+        <div class="toolbar">
+            <div class="container">
+                <div class="toolbar-inner clearfix">
+                    <div class="toolbar-left">
+                        <div class="toolbar-item">
+                            <b>Change Design</b>
+
+                            <div class="item-field clearfix icon-after">
+                                <div class="field-icon">
+                                    <span class="icon icon-gear"></span>
+                                </div>
+                                <select id="change-theme" class="field-select" onchange="storeStorage('#change-theme', 'select-theme');changedTheme();">
+                                    <option value="default">Design: Default</option>
+                                    <option value="harx">Design: Harx</option>
+                                    <option value="bootstrap2">Design: Bootstrap 2</option>
+                                    <option value="bootstrap3">Design: Bootstrap 3</option>
+                                    <option value="bootstrap4">Design: Bootstrap 4</option>
+                                    <option value="chosen">Design: Chosen</option>
+                                    <option value="selectize">Design: Selectize</option>
+                                </select>
+                                <img src onerror="selectStorage('#change-theme', 'select-theme');changedTheme(false);" style="display:none;visibility:hidden;" />
+                            </div>
+                        </div>
+
+                        <div class="toolbar-item">
+                            <b>Change Color Scheme</b>
+
+                            <div class="item-field clearfix icon-after">
+                                <div class="field-icon">
+                                    <span class="icon icon-paintcan"></span>
+                                </div>
+                                <select id="change-scheme" class="field-select" onchange="storeStorage('#change-scheme', 'select-scheme')">
+                                    <option data-theme="default" value="light-octicon">Color: Light (Octicon)</option>
+                                    <option data-theme="default" value="light-feather">Color: Light (Feather)</option>
+                                    <option data-theme="default" value="dark-octicon">Color: Dark (Octicon)</option>
+                                    <option data-theme="default" value="dark-feather">Color: Dark (Feather)</option>
+                                    
+                                    <option data-theme="harx" value="light-octicon" hidden>Color: Light (Octicon)</option>
+                                    <option data-theme="harx" value="light-feather" hidden>Color: Light (Feather)</option>
+                                    <option data-theme="harx" value="dark-octicon" hidden>Color: Dark (Octicon)</option>
+                                    <option data-theme="harx" value="dark-feather" hidden>Color: Dark (Feather)</option>
+                                    
+                                    <option data-theme="bootstrap2" value="default" hidden>Color: Default</option>
+                                    <option data-theme="bootstrap2" value="primary" hidden>Color: Primary</option>
+                                    <option data-theme="bootstrap2" value="info" hidden>Color: Info</option>
+                                    <option data-theme="bootstrap2" value="success" hidden>Color: Success</option>
+                                    <option data-theme="bootstrap2" value="warning" hidden>Color: Warning</option>
+                                    <option data-theme="bootstrap2" value="danger" hidden>Color: Danger</option>
+                                    <option data-theme="bootstrap2" value="funky" hidden>Color: Funky</option>
+                                    <option data-theme="bootstrap2" value="mystery" hidden>Color: Mystery</option>
+                                    <option data-theme="bootstrap2" value="invert" hidden>Color: Invert</option>
+                                    
+                                    <option data-theme="bootstrap3" value="default" hidden>Color: Default</option>
+                                    <option data-theme="bootstrap3" value="primary" hidden>Color: Primary</option>
+                                    <option data-theme="bootstrap3" value="info" hidden>Color: Info</option>
+                                    <option data-theme="bootstrap3" value="success" hidden>Color: Success</option>
+                                    <option data-theme="bootstrap3" value="warning" hidden>Color: Warning</option>
+                                    <option data-theme="bootstrap3" value="danger" hidden>Color: Danger</option>
+                                    <option data-theme="bootstrap3" value="invert" hidden>Color: Invert</option>
+                                    
+                                    <option data-theme="bootstrap4" value="default" hidden>Color: Default</option>
+                                    <option data-theme="bootstrap4" value="primary" hidden>Color: Primary</option>
+                                    <option data-theme="bootstrap4" value="secondary" hidden>Color: Secondary</option>
+                                    <option data-theme="bootstrap4" value="info" hidden>Color: Info</option>
+                                    <option data-theme="bootstrap4" value="success" hidden>Color: Success</option>
+                                    <option data-theme="bootstrap4" value="warning" hidden>Color: Warning</option>
+                                    <option data-theme="bootstrap4" value="danger" hidden>Color: Danger</option>
+                                    <option data-theme="bootstrap4" value="funky" hidden>Color: Funky</option>
+                                    <option data-theme="bootstrap4" value="mystery" hidden>Color: Mystery</option>
+                                    <option data-theme="bootstrap4" value="indigo" hidden>Color: Indigo</option>
+                                    <option data-theme="bootstrap4" value="teal" hidden>Color: Teal</option>
+                                    <option data-theme="bootstrap4" value="orange" hidden>Color: Orange</option>
+                                    <option data-theme="bootstrap4" value="invert" hidden>Color: Invert</option>
+                                    
+                                    <option data-theme="chosen" value="default" hidden>Color: Default</option>
+                                    <option data-theme="chosen" value="invert" hidden>Color: Invert</option>
+                                    
+                                    <option data-theme="selectize" value="default" hidden>Color: Default</option>
+                                    <option data-theme="selectize" value="legacy" hidden>Color: Legacy</option>
+                                    <option data-theme="selectize" value="invert" hidden>Color: Invert</option>
+                                </select>
+                                <img src onerror="selectStorage('#change-scheme', 'select-scheme')" style="display:none;visibility:hidden;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="toolbar-right">
+                        <div class="toolbar-item">
+                            <b>Change Language</b>
+
+                            <div class="item-field clearfix icon-after">
+                                <div class="field-icon">
+                                    <span class="icon icon-globe"></span>
+                                </div>
+                                <select id="change-locale" class="field-select" onchange="storeStorage('#change-locale', 'select-locale')">
+                                    <option value="de">Sprache: Deutsch</option>
+                                    <option value="en" selected="selected">Language: English</option>
+                                    <option value="es">Idioma: Español</option>
+                                    <option value="fa" style="direction:rtl;">زبان :فارسی</option>
+                                    <option value="fi">Kieli: Suomi</option>
+                                    <option value="fr">Langue: Français</option>
+                                    <option value="it">Lingua: Italiano</option>
+                                    <option value="no">Språk: Norsk</option>
+                                    <option value="pt_BR">Idioma: Português do Brasil</option>
+                                    <option value="ru">язык: русский</option>
+                                    <option value="tr">Dil: Türkçe</option>
+                                </select>
+                                <img src onerror="selectStorage('#change-locale', 'select-locale')" style="display:none;visibility:hidden;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="container">
+                <h1>AJAX Plugin</h1>
+
+                <div class="row">
+                    <div class="column column-40">
+                        <p class="text-center" style="margin:0;padding:0;">
+                            <b>Asynchronous Loader</b>
+                        </p>
+                        <p class="text-justify">
+                            The AJAX select Plugin allows you to load your set of select <code>&lt;option&gt;</code> 
+                            elements in an asynchronous way to speed up your website or web application.
+                        </p>
+                        <p class="text-justify">
+                            The AJAX functionallity can also only be triggered, when a search is applied. This is a 
+                            perfect way to search through hundreds or thousands of available options without showing 
+                            them all at once.
+                        </p>
+                    </div>
+                    <div class="column column-60">
+                        <div id="example-1" class="browser" data-onload="active-js">
+                            <div class="browser-header">
+                                <div class="header-bar">
+                                    <div class="bar-dots">
+                                        <div class="dot dot-red"></div>
+                                        <div class="dot dot-orange"></div>
+                                        <div class="dot dot-green"></div>
+                                    </div>
+                                </div>
+        
+                                <div class="header-bar header-bar-dark">
+                                    <ul class="bar-navi" data-handle="tabs" data-target="#example-1 .browser-content">
+                                        <li class="navi-item"><a href="#example-1-source-html">Source <span>HTML</span></a></li>
+                                        <li class="navi-item"><a href="#example-1-source-js">Source <span>JavaScript</span></a></li>
+                                        <li class="navi-item active"><a href="#example-1-preview">Preview</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="example-1-source-html" class="browser-content code" style="height:240px;">
+                                <pre class="language language-markup">
+                                    <code>&lt;select id="select-1" class="select select-default"&gt;</code>
+                                    <code>    &lt;option value="[...]"&gt; [...] &lt;/option&gt;</code>
+                                    <code>    &lt;!-- Another &lt;option&gt; elements --&gt;</code>
+                                    <code>&lt;/select&gt;</code>
+                                    <code>&nbsp;</code>
+                                    <code>&lt;select id="select-2" class="select select-default" multiple&gt;</code>
+                                    <code>    &lt;option value="[...]"&gt; [...] &lt;/option&gt;</code>
+                                    <code>    &lt;!-- Another &lt;option&gt; elements --&gt;</code>
+                                    <code>&lt;/select&gt;</code>
+                                </pre>
+                            </div>
+                            <div id="example-1-source-js" class="browser-content code" style="height:240px;">
+                                <pre class="language language-javascript">
+                                    <code class="less-important">document.addEventListener("DOMContentLoaded", function() {</code>
+                                    <code>&nbsp;</code>
+                                    <code>    tail.select("select.select-default");</code>
+                                    <code>&nbsp;</code>
+                                    <code class="less-important">});</code>
+                                </pre>
+                            </div>
+                            <div id="example-1-preview" class="browser-content active" style="height:240px;">
+                                <div class="example-inner text-center">
+                                    <span class="example-title">Single Select Field</span>
+                                    <select id="select-1" class="select select-demo select-ajax">
+                                        <option value="Atari 2600">Atari 2600</option>
+                                        <option value="Atari 2700" hidden>Atari 2700 (Prototype)</option>
+                                        <option value="Atari 800">Atari 800</option>
+                                        <option value="Atari 400">Atari 400</option>
+                                        <option value="Atari 5200">Atari 5200</option>
+                                        <option value="Atari 65-130">Atari 65XE / 130X</option>
+                                        <option value="Atari 7800">Atari 7800 ProSystem</option>
+                                        <option value="Atari Panther" disabled="">Atari Panther</option>
+                                        <option value="Atari Jaguar">Atari Jaguar</option>
+                                        <option value="Atari Jaguar 2" disabled="">Atari Jaguar 2</option>
+                                        <option value="Atari Flashback">Atari Flashback</option>
+                                        <option value="Atari Flashback II">Atari Flashback II</option>
+                                        <option value="Ataribox" disabled="">Ataribox</option>
+                                        <option value="Atari Lynx">Atari Lynx</option>
+                                        <option value="Microsoft XBox">Microsoft XBox</option>
+                                        <option value="Microsoft XBox 360">Microsoft XBox 360</option>
+                                        <option value="Microsoft XBox One">Microsoft XBox One (S | X)</option>
+                                        <option value="Microsoft Windows 95">Microsoft Windows 95</option>
+                                        <option value="Microsoft Windows 98">Microsoft Windows 98</option>
+                                        <option value="Microsoft Windows 2000 (ME)">Microsoft Windows 2000 (ME)</option>
+                                        <option value="Microsoft Windows XP">Microsoft Windows XP</option>
+                                        <option value="Microsoft Windows Vista">Microsoft Windows Vista</option>
+                                        <option value="Microsoft Windows 7">Microsoft Windows 7</option>
+                                        <option value="Microsoft Windows 8(.1)">Microsoft Windows 8(.1)</option>
+                                        <option value="Microsoft Windows 10">Microsoft Windows 10</option>
+                                        <option value="Nintendo Entertainment System">Nintendo Entertainment System</option>
+                                        <option value="Super Nintendo Entertainment System">Super Nintendo Entertainment System</option>
+                                        <option value="Nintendo GameBoy">Nintendo GameBoy</option>
+                                        <option value="Nintendo GameBoy Color">Nintendo GameBoy Color</option>
+                                        <option value="Nintendo GameBoy Advanced">Nintendo GameBoy Advanced</option>
+                                        <option value="Nintendo GameBoy Advanced SP">Nintendo GameBoy Advanced SP</option>
+                                        <option value="Nintendo DS (Lite)">Nintendo DS (Lite)</option>
+                                        <option value="Nintendo DSi">Nintendo DSi</option>
+                                        <option value="Nintendo 3DS (XL)">Nintendo 3DS (XL)</option>
+                                        <option value="Nintendo New 2DS / 3DS (XL)">Nintendo New 2DS / 3DS (XL)</option>
+                                        <option value="Nintendo 64">Nintendo 64</option>
+                                        <option value="Nintendo GameCube">Nintendo GameCube</option>
+                                        <option value="Nintendo Wii">Nintendo Wii</option>
+                                        <option value="Nintendo WiiU">Nintendo WiiU</option>
+                                        <option value="Nintendo Switch">Nintendo Switch</option>
+                                        <option value="SEGA SG-1000">SEGA SG-1000</option>
+                                        <option value="SEGA Master System">SEGA Master System</option>
+                                        <option value="SEGA Mega Drive">SEGA Genesis (Mega Drive)</option>
+                                        <option value="SEGA Game Gear">SEGA Game Gear</option>
+                                        <option value="SEGA CD (Mega CD)">SEGA CD (Mega CD)</option>
+                                        <option value="SEGA Pico">SEGA Pico</option>
+                                        <option value="SEGA 32X">SEGA 32X</option>
+                                        <option value="SEGA Saturn">SEGA Saturn</option>
+                                        <option value="SEGA Dreamcast">SEGA Dreamcast</option>
+                                        <option value="SEGA Advanced Pico Beena" hidden="hidden">SEGA Advanced Pico Beena</option>
+                                        <option value="Sony PlayStation One">Sony PlayStation (One)</option>
+                                        <option value="Sony PlayStation 2">Sony PlayStation 2 (Slim)</option>
+                                        <option value="Sony PlayStation 3">Sony PlayStation 3 (Slim)</option>
+                                        <option value="Sony PlayStation 4">Sony PlayStation 4 (Slim | Pro)</option>
+                                        <option value="Sony PlayStation Portable">Sony PlayStation Portable</option>
+                                        <option value="Sony PlayStation Vita">Sony PlayStation Vita</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="example-inner text-center">
+                                    <span class="example-title">Multiple Select Field</span>
+                                    <select id="select-2" name="hellow" class="select select-demo select-ajax-on" multiple>
+                                        <option value="Atari 2600">Atari 2600</option>
+                                        <option value="Atari 2700" hidden>Atari 2700 (Prototype)</option>
+                                        <option value="Atari 800">Atari 800</option>
+                                        <option value="Atari 400">Atari 400</option>
+                                        <option value="Atari 5200">Atari 5200</option>
+                                        <option value="Atari 65-130">Atari 65XE / 130X</option>
+                                        <option value="Atari 7800">Atari 7800 ProSystem</option>
+                                        <option value="Atari Panther" disabled="">Atari Panther</option>
+                                        <option value="Atari Jaguar">Atari Jaguar</option>
+                                        <option value="Atari Jaguar 2" disabled="">Atari Jaguar 2</option>
+                                        <option value="Atari Flashback">Atari Flashback</option>
+                                        <option value="Atari Flashback II">Atari Flashback II</option>
+                                        <option value="Ataribox" disabled="">Ataribox</option>
+                                        <option value="Atari Lynx">Atari Lynx</option>
+                                        <option value="Microsoft XBox">Microsoft XBox</option>
+                                        <option value="Microsoft XBox 360">Microsoft XBox 360</option>
+                                        <option value="Microsoft XBox One">Microsoft XBox One (S | X)</option>
+                                        <option value="Microsoft Windows 95">Microsoft Windows 95</option>
+                                        <option value="Microsoft Windows 98">Microsoft Windows 98</option>
+                                        <option value="Microsoft Windows 2000 (ME)">Microsoft Windows 2000 (ME)</option>
+                                        <option value="Microsoft Windows XP">Microsoft Windows XP</option>
+                                        <option value="Microsoft Windows Vista">Microsoft Windows Vista</option>
+                                        <option value="Microsoft Windows 7">Microsoft Windows 7</option>
+                                        <option value="Microsoft Windows 8(.1)">Microsoft Windows 8(.1)</option>
+                                        <option value="Microsoft Windows 10">Microsoft Windows 10</option>
+                                        <option value="Nintendo Entertainment System">Nintendo Entertainment System</option>
+                                        <option value="Super Nintendo Entertainment System">Super Nintendo Entertainment System</option>
+                                        <option value="Nintendo GameBoy">Nintendo GameBoy</option>
+                                        <option value="Nintendo GameBoy Color">Nintendo GameBoy Color</option>
+                                        <option value="Nintendo GameBoy Advanced">Nintendo GameBoy Advanced</option>
+                                        <option value="Nintendo GameBoy Advanced SP">Nintendo GameBoy Advanced SP</option>
+                                        <option value="Nintendo DS (Lite)">Nintendo DS (Lite)</option>
+                                        <option value="Nintendo DSi">Nintendo DSi</option>
+                                        <option value="Nintendo 3DS (XL)">Nintendo 3DS (XL)</option>
+                                        <option value="Nintendo New 2DS / 3DS (XL)">Nintendo New 2DS / 3DS (XL)</option>
+                                        <option value="Nintendo 64">Nintendo 64</option>
+                                        <option value="Nintendo GameCube">Nintendo GameCube</option>
+                                        <option value="Nintendo Wii">Nintendo Wii</option>
+                                        <option value="Nintendo WiiU">Nintendo WiiU</option>
+                                        <option value="Nintendo Switch">Nintendo Switch</option>
+                                        <option value="SEGA SG-1000">SEGA SG-1000</option>
+                                        <option value="SEGA Master System">SEGA Master System</option>
+                                        <option value="SEGA Mega Drive">SEGA Genesis (Mega Drive)</option>
+                                        <option value="SEGA Game Gear">SEGA Game Gear</option>
+                                        <option value="SEGA CD (Mega CD)">SEGA CD (Mega CD)</option>
+                                        <option value="SEGA Pico">SEGA Pico</option>
+                                        <option value="SEGA 32X">SEGA 32X</option>
+                                        <option value="SEGA Saturn">SEGA Saturn</option>
+                                        <option value="SEGA Dreamcast">SEGA Dreamcast</option>
+                                        <option value="SEGA Advanced Pico Beena" hidden="hidden">SEGA Advanced Pico Beena</option>
+                                        <option value="Sony PlayStation One">Sony PlayStation (One)</option>
+                                        <option value="Sony PlayStation 2">Sony PlayStation 2 (Slim)</option>
+                                        <option value="Sony PlayStation 3">Sony PlayStation 3 (Slim)</option>
+                                        <option value="Sony PlayStation 4">Sony PlayStation 4 (Slim | Pro)</option>
+                                        <option value="Sony PlayStation Portable">Sony PlayStation Portable</option>
+                                        <option value="Sony PlayStation Vita">Sony PlayStation Vita</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <div class="container">
+                <h1 class="text-right">Columns Plugin</h1>
+
+                <div class="row">
+                    <div class="column column-60">
+                        <div id="example-2" class="browser" data-onload="active-js">
+                            <div class="browser-header">
+                                <div class="header-bar">
+                                    <div class="bar-dots">
+                                        <div class="dot dot-red"></div>
+                                        <div class="dot dot-orange"></div>
+                                        <div class="dot dot-green"></div>
+                                    </div>
+                                </div>
+        
+                                <div class="header-bar header-bar-dark">
+                                    <ul class="bar-navi" data-handle="tabs" data-target="#example-2 .browser-content">
+                                        <li class="navi-item"><a href="#example-2-source-html">Source <span>HTML</span></a></li>
+                                        <li class="navi-item"><a href="#example-2-source-js">Source <span>JavaScript</span></a></li>
+                                        <li class="navi-item active"><a href="#example-2-preview">Preview</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="example-2-source-html" class="browser-content code" style="height:240px;">
+                                <pre class="language language-markup">
+                                    <code>&lt;select id="select-1" class="select select-optgroups"&gt;</code>
+                                    <code>    &lt;optgroup label="[...]"&gt;</code>
+                                    <code>        &lt;option value="[...]"&gt;[...]&lt;/option&gt;</code>
+                                    <code>    &lt;/optgroup&gt;</code>
+                                    <code>&lt;/select&gt;</code>
+                                    <code>&nbsp;</code>
+                                    <code>&lt;select id="select-2" class="select select-descriptions" multiple&gt;</code>
+                                    <code>    &lt;optgroup label="[...]"&gt;</code>
+                                    <code>        &lt;option value="[...]" data-description="[...]"&gt;[...]&lt;/option&gt;</code>
+                                    <code>    &lt;/optgroup&gt;</code>
+                                    <code>&lt;/select&gt;</code>
+                                </pre>
+                            </div>
+                            <div id="example-2-source-js" class="browser-content code" style="height:240px;">
+                                <pre class="language language-javascript">
+                                    <code class="less-important">document.addEventListener("DOMContentLoaded", function() {</code>
+                                    <code>&nbsp;</code>
+                                    <code>    tail.select("select.select-optgroups");</code>
+                                    <code>&nbsp;</code>
+                                    <code>    tail.select("select.select-descriptions", {</code>
+                                    <code>        stickyGroups: true</code>
+                                    <code>    });</code>
+                                    <code>&nbsp;</code>
+                                    <code class="less-important">});</code>
+                                </pre>
+                            </div>
+                            <div id="example-2-preview" class="browser-content active" style="height:240px;">
+                                <div class="example-inner text-center">
+                                    <span class="example-title">Showing OptGroups</span>
+                                    <select id="select-3" class="select select-demo select-columns">
+                                        <optgroup label="Atari">
+                                            <option value="Atari 2600">Atari 2600</option>
+                                            <option value="Atari 2700" hidden>Atari 2700 (Prototype)</option>
+                                            <option value="Atari 800">Atari 800</option>
+                                            <option value="Atari 400">Atari 400</option>
+                                            <option value="Atari 5200">Atari 5200</option>
+                                            <option value="Atari 65-130">Atari 65XE / 130X</option>
+                                            <option value="Atari 7800">Atari 7800 ProSystem</option>
+                                            <option value="Atari Panther" disabled="">Atari Panther</option>
+                                            <option value="Atari Jaguar">Atari Jaguar</option>
+                                            <option value="Atari Jaguar 2" disabled="">Atari Jaguar 2</option>
+                                            <option value="Atari Flashback">Atari Flashback</option>
+                                            <option value="Atari Flashback II">Atari Flashback II</option>
+                                            <option value="Ataribox" disabled="">Ataribox</option>
+                                            <option value="Atari Lynx">Atari Lynx</option>
+                                        </optgroup>
+                                        <optgroup label="Microsoft">
+                                            <option value="Microsoft XBox">Microsoft XBox</option>
+                                            <option value="Microsoft XBox 360">Microsoft XBox 360</option>
+                                            <option value="Microsoft XBox One">Microsoft XBox One (S | X)</option>
+                                            <option value="Microsoft Windows 95">Microsoft Windows 95</option>
+                                            <option value="Microsoft Windows 98">Microsoft Windows 98</option>
+                                            <option value="Microsoft Windows 2000 (ME)">Microsoft Windows 2000 (ME)</option>
+                                            <option value="Microsoft Windows XP">Microsoft Windows XP</option>
+                                            <option value="Microsoft Windows Vista">Microsoft Windows Vista</option>
+                                            <option value="Microsoft Windows 7">Microsoft Windows 7</option>
+                                            <option value="Microsoft Windows 8(.1)">Microsoft Windows 8(.1)</option>
+                                            <option value="Microsoft Windows 10">Microsoft Windows 10</option>
+                                        </optgroup>
+                                        <optgroup label="Nintendo">
+                                            <option value="Nintendo Entertainment System">Nintendo Entertainment System</option>
+                                            <option value="Super Nintendo Entertainment System">Super Nintendo Entertainment System</option>
+                                            <option value="Nintendo GameBoy">Nintendo GameBoy</option>
+                                            <option value="Nintendo GameBoy Color">Nintendo GameBoy Color</option>
+                                            <option value="Nintendo GameBoy Advanced">Nintendo GameBoy Advanced</option>
+                                            <option value="Nintendo GameBoy Advanced SP">Nintendo GameBoy Advanced SP</option>
+                                            <option value="Nintendo DS (Lite)">Nintendo DS (Lite)</option>
+                                            <option value="Nintendo DSi">Nintendo DSi</option>
+                                            <option value="Nintendo 3DS (XL)">Nintendo 3DS (XL)</option>
+                                            <option value="Nintendo New 2DS / 3DS (XL)">Nintendo New 2DS / 3DS (XL)</option>
+                                            <option value="Nintendo 64">Nintendo 64</option>
+                                            <option value="Nintendo GameCube">Nintendo GameCube</option>
+                                            <option value="Nintendo Wii">Nintendo Wii</option>
+                                            <option value="Nintendo WiiU">Nintendo WiiU</option>
+                                            <option value="Nintendo Switch">Nintendo Switch</option>
+                                        </optgroup>
+                                        <optgroup label="SEGA">
+                                            <option value="SEGA SG-1000">SEGA SG-1000</option>
+                                            <option value="SEGA Master System">SEGA Master System</option>
+                                            <option value="SEGA Mega Drive">SEGA Genesis (Mega Drive)</option>
+                                            <option value="SEGA Game Gear">SEGA Game Gear</option>
+                                            <option value="SEGA CD (Mega CD)">SEGA CD (Mega CD)</option>
+                                            <option value="SEGA Pico">SEGA Pico</option>
+                                            <option value="SEGA 32X">SEGA 32X</option>
+                                            <option value="SEGA Saturn">SEGA Saturn</option>
+                                            <option value="SEGA Dreamcast">SEGA Dreamcast</option>
+                                            <option value="SEGA Advanced Pico Beena" hidden="hidden">SEGA Advanced Pico Beena</option>
+                                        </optgroup>
+                                        <optgroup label="Sony">
+                                            <option value="Sony PlayStation One">Sony PlayStation (One)</option>
+                                            <option value="Sony PlayStation 2">Sony PlayStation 2 (Slim)</option>
+                                            <option value="Sony PlayStation 3">Sony PlayStation 3 (Slim)</option>
+                                            <option value="Sony PlayStation 4">Sony PlayStation 4 (Slim | Pro)</option>
+                                            <option value="Sony PlayStation Portable">Sony PlayStation Portable</option>
+                                            <option value="Sony PlayStation Vita">Sony PlayStation Vita</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+
+                                <div class="example-inner text-center">
+                                    <span class="example-title">Showing Descriptions</span>
+                                    <select id="select-4" class="select select-demo select-columns" multiple>
+                                        <optgroup label="Atari">
+                                            <option value="Atari 2600" data-description="Released in 1977">Atari 2600</option>
+                                            <option value="Atari 2700" data-description="Unreleased Prototype" hidden>Atari 2700 (Prototype)</option>
+                                            <option value="Atari 800" data-description="Released in 1979">Atari 800</option>
+                                            <option value="Atari 400" data-description="Released in 1979">Atari 400</option>
+                                            <option value="Atari 5200" data-description="Released in 1982">Atari 5200</option>
+                                            <option value="Atari 65-130" data-description="Released in 1985">Atari 65XE / 130X</option>
+                                            <option value="Atari 7800" data-description="Released in 1986">Atari 7800 ProSystem</option>
+                                            <option value="Atari Panther" data-description="<i>Canceled</i>" disabled="">Atari Panther</option>
+                                            <option value="Atari Jaguar" data-description="Released in 1993">Atari Jaguar</option>
+                                            <option value="Atari Jaguar 2" data-description="<i>Canceled</i>" disabled="">Atari Jaguar 2</option>
+                                            <option value="Atari Flashback" data-description="Released in 2005">Atari Flashback</option>
+                                            <option value="Atari Flashback II" data-description="Released in 2005">Atari Flashback II</option>
+                                            <option value="Ataribox" data-description="<i>Canceled</i>" disabled="">Ataribox</option>
+                                            <option value="Atari Lynx" data-description="Released in 1989">Atari Lynx</option>
+                                        </optgroup>
+                                        <optgroup label="Microsoft">
+                                            <option value="Microsoft XBox" data-description="Released in 2001">Microsoft XBox</option>
+                                            <option value="Microsoft XBox 360" data-description="Released in 2005">Microsoft XBox 360</option>
+                                            <option value="Microsoft XBox One" data-description="Released in 2013">Microsoft XBox One (S | X)</option>
+                                            <option value="Microsoft Windows 95" data-description="Released in 1995">Microsoft Windows 95</option>
+                                            <option value="Microsoft Windows 98" data-description="Released in 1998">Microsoft Windows 98</option>
+                                            <option value="Microsoft Windows 2000 (ME)" data-description="Released in 2000">Microsoft Windows 2000 (ME)</option>
+                                            <option value="Microsoft Windows XP" data-description="Released in 2001">Microsoft Windows XP</option>
+                                            <option value="Microsoft Windows Vista" data-description="Released in 2006">Microsoft Windows Vista</option>
+                                            <option value="Microsoft Windows 7" data-description="Released in 2006">Microsoft Windows 7</option>
+                                            <option value="Microsoft Windows 8(.1)" data-description="Released in 2012">Microsoft Windows 8(.1)</option>
+                                            <option value="Microsoft Windows 10" data-description="Released in 2015">Microsoft Windows 10</option>
+                                        </optgroup>
+                                        <optgroup label="Nintendo">
+                                            <option value="Nintendo Entertainment System" data-description="Released in 1985">Nintendo Entertainment System</option>
+                                            <option value="Super Nintendo Entertainment System" data-description="Released in 1992">Super Nintendo Entertainment System</option>
+                                            <option value="Nintendo 64" data-description="Released in 1996">Nintendo 64</option>
+                                            <option value="Nintendo GameCube" data-description="Released in 2001">Nintendo GameCube</option>
+                                            <option value="Nintendo Wii" data-description="Released in 2006">Nintendo Wii</option>
+                                            <option value="Nintendo WiiU" data-description="Released in 2012">Nintendo WiiU</option>
+                                            <option value="Nintendo Switch" data-description="Released in 2017">Nintendo Switch</option>
+                                            <option value="Nintendo GameBoy" data-description="Released in 1989">Nintendo GameBoy</option>
+                                            <option value="Nintendo GameBoy Color" data-description="Released in 1998">Nintendo GameBoy Color</option>
+                                            <option value="Nintendo GameBoy Advanced" data-description="Released in 2001">Nintendo GameBoy Advanced</option>
+                                            <option value="Nintendo GameBoy Advanced SP" data-description="Released in 2003">Nintendo GameBoy Advanced SP</option>
+                                            <option value="Nintendo DS (Lite)" data-description="Released in 2004/06">Nintendo DS (Lite)</option>
+                                            <option value="Nintendo DSi" data-description="Released in 2008/09">Nintendo DSi</option>
+                                            <option value="Nintendo 3DS (XL)" data-description="Released in 2011/12">Nintendo 3DS (XL)</option>
+                                            <option value="Nintendo New 2DS / 3DS (XL)" data-description="Released in 2015-17">Nintendo New 2DS / 3DS (XL)</option>
+                                        </optgroup>
+                                        <optgroup label="SEGA">
+                                            <option value="SEGA SG-1000" data-description="Released in 1983">SEGA SG-1000</option>
+                                            <option value="SEGA Master System" data-description="Released in 1986">SEGA Master System</option>
+                                            <option value="SEGA Genesis" data-description="Released in 1990">SEGA Genesis (Mega Drive)</option>
+                                            <option value="SEGA Game Gear" data-description="Released in 1990">SEGA Game Gear</option>
+                                            <option value="SEGA CD (Mega CD)" data-description="Released in 1991">SEGA CD (Mega CD)</option>
+                                            <option value="SEGA Pico" data-description="Released in 1993">SEGA Pico</option>
+                                            <option value="SEGA 32X" data-description="Released in 1994">SEGA 32X</option>
+                                            <option value="SEGA Saturn" data-description="Released in 1994">SEGA Saturn</option>
+                                            <option value="SEGA Dreamcast" data-description="Released in 1999">SEGA Dreamcast</option>
+                                            <option value="SEGA Advanced Pico Beena" data-description="Japan Exclusive" hidden="hidden">SEGA Advanced Pico Beena</option>
+                                        </optgroup>
+                                        <optgroup label="Sony">
+                                            <option value="Sony PlayStation One" data-description="Released in 1994">Sony PlayStation (One)</option>
+                                            <option value="Sony PlayStation 2" data-description="Released in 2000">Sony PlayStation 2 (Slim)</option>
+                                            <option value="Sony PlayStation 3" data-description="Released in 2006">Sony PlayStation 3 (Slim)</option>
+                                            <option value="Sony PlayStation 4" data-description="Released in 2013">Sony PlayStation 4 (Slim | Pro)</option>
+                                            <option value="Sony PlayStation Portable" data-description="Released in 2004">Sony PlayStation Portable</option>
+                                            <option value="Sony PlayStation Vita" data-description="Released in 2011">Sony PlayStation Vita</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column column-40">
+                        <p class="text-center" style="margin:0;padding:0;">
+                            <b>Columns and Collapse</b>
+                        </p>
+                        <p class="text-justify">
+                            The Columns select Plugin allows you to show multiple select <code>option</code> elements or 
+                            <code>optgroup</code>s side-by-side. Sometimes that doesn't just look better, it also 
+                            improves to user experience.
+                        </p>
+                        <p class="text-justify">
+                            Another functionallity, offered by this Plugin, is the possibility to <b>collapse</b> the single 
+                            <code>optgroup</code>s and the ungrouped options if <a href="">grouplessName</a> is set.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <div class="container">
+                <h1>Input Plugin</h1>
+
+                <div class="row">
+                    <div class="column column-40">
+                        <p class="text-center" style="margin:0;padding:0;">
+                            <b>Input and Create</b>
+                        </p>
+                        <p class="text-justify">
+                            The Input select Plugin turns the main label element into an editable input field, which 
+                            can also be used by the user to create new options themselves (if the <a href="">create</a> 
+                            option is enabled, of course).
+                        </p>
+                        <p class="text-justify">
+                            This plugin can perfectly be combined with the movement plugin below, which also "moves" 
+                            the selected options into the label element. Check out <a href="">the advanced examples</a> 
+                            for more informations.
+                        </p>
+                    </div>
+                    <div class="column column-60">
+                        <div id="example-3" class="browser" data-onload="active-js">
+                            <div class="browser-header">
+                                <div class="header-bar">
+                                    <div class="bar-dots">
+                                        <div class="dot dot-red"></div>
+                                        <div class="dot dot-orange"></div>
+                                        <div class="dot dot-green"></div>
+                                    </div>
+                                </div>
+        
+                                <div class="header-bar header-bar-dark">
+                                    <ul class="bar-navi" data-handle="tabs" data-target="#example-3 .browser-content">
+                                        <li class="navi-item"><a href="#example-3-source-html">Source <span>HTML</span></a></li>
+                                        <li class="navi-item"><a href="#example-3-source-js">Source <span>JavaScript</span></a></li>
+                                        <li class="navi-item active"><a href="#example-3-preview">Preview</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="example-3-source-html" class="browser-content" style="height:240px;">
+                                HTML
+                            </div>
+                            <div id="example-3-source-js" class="browser-content" style="height:240px;">
+                                JavaScript
+                            </div>
+                            <div id="example-3-preview" class="browser-content active" style="height:240px;">
+                                <div class="example-inner text-center">
+                                    <span class="example-title">Search on Single Field</span>
+                                    <select id="select-5" class="select select-demo select-input">
+                                        <optgroup label="Atari">
+                                            <option value="Atari 2600">Atari 2600</option>
+                                            <option value="Atari 2700" hidden>Atari 2700 (Prototype)</option>
+                                            <option value="Atari 800">Atari 800</option>
+                                            <option value="Atari 400">Atari 400</option>
+                                            <option value="Atari 5200">Atari 5200</option>
+                                            <option value="Atari 65-130">Atari 65XE / 130X</option>
+                                            <option value="Atari 7800">Atari 7800 ProSystem</option>
+                                            <option value="Atari Panther" disabled="">Atari Panther</option>
+                                            <option value="Atari Jaguar">Atari Jaguar</option>
+                                            <option value="Atari Jaguar 2" disabled="">Atari Jaguar 2</option>
+                                            <option value="Atari Flashback">Atari Flashback</option>
+                                            <option value="Atari Flashback II">Atari Flashback II</option>
+                                            <option value="Ataribox" disabled="">Ataribox</option>
+                                            <option value="Atari Lynx">Atari Lynx</option>
+                                        </optgroup>
+                                        <optgroup label="Microsoft">
+                                            <option value="Microsoft XBox">Microsoft XBox</option>
+                                            <option value="Microsoft XBox 360">Microsoft XBox 360</option>
+                                            <option value="Microsoft XBox One">Microsoft XBox One (S | X)</option>
+                                            <option value="Microsoft Windows 95">Microsoft Windows 95</option>
+                                            <option value="Microsoft Windows 98">Microsoft Windows 98</option>
+                                            <option value="Microsoft Windows 2000 (ME)">Microsoft Windows 2000 (ME)</option>
+                                            <option value="Microsoft Windows XP">Microsoft Windows XP</option>
+                                            <option value="Microsoft Windows Vista">Microsoft Windows Vista</option>
+                                            <option value="Microsoft Windows 7">Microsoft Windows 7</option>
+                                            <option value="Microsoft Windows 8(.1)">Microsoft Windows 8(.1)</option>
+                                            <option value="Microsoft Windows 10">Microsoft Windows 10</option>
+                                        </optgroup>
+                                        <optgroup label="Nintendo">
+                                            <option value="Nintendo Entertainment System">Nintendo Entertainment System</option>
+                                            <option value="Super Nintendo Entertainment System">Super Nintendo Entertainment System</option>
+                                            <option value="Nintendo GameBoy">Nintendo GameBoy</option>
+                                            <option value="Nintendo GameBoy Color">Nintendo GameBoy Color</option>
+                                            <option value="Nintendo GameBoy Advanced">Nintendo GameBoy Advanced</option>
+                                            <option value="Nintendo GameBoy Advanced SP">Nintendo GameBoy Advanced SP</option>
+                                            <option value="Nintendo DS (Lite)">Nintendo DS (Lite)</option>
+                                            <option value="Nintendo DSi">Nintendo DSi</option>
+                                            <option value="Nintendo 3DS (XL)">Nintendo 3DS (XL)</option>
+                                            <option value="Nintendo New 2DS / 3DS (XL)">Nintendo New 2DS / 3DS (XL)</option>
+                                            <option value="Nintendo 64">Nintendo 64</option>
+                                            <option value="Nintendo GameCube">Nintendo GameCube</option>
+                                            <option value="Nintendo Wii">Nintendo Wii</option>
+                                            <option value="Nintendo WiiU">Nintendo WiiU</option>
+                                            <option value="Nintendo Switch">Nintendo Switch</option>
+                                        </optgroup>
+                                        <optgroup label="SEGA">
+                                            <option value="SEGA SG-1000">SEGA SG-1000</option>
+                                            <option value="SEGA Master System">SEGA Master System</option>
+                                            <option value="SEGA Mega Drive">SEGA Genesis (Mega Drive)</option>
+                                            <option value="SEGA Game Gear">SEGA Game Gear</option>
+                                            <option value="SEGA CD (Mega CD)">SEGA CD (Mega CD)</option>
+                                            <option value="SEGA Pico">SEGA Pico</option>
+                                            <option value="SEGA 32X">SEGA 32X</option>
+                                            <option value="SEGA Saturn">SEGA Saturn</option>
+                                            <option value="SEGA Dreamcast">SEGA Dreamcast</option>
+                                            <option value="SEGA Advanced Pico Beena" hidden="hidden">SEGA Advanced Pico Beena</option>
+                                        </optgroup>
+                                        <optgroup label="Sony">
+                                            <option value="Sony PlayStation One">Sony PlayStation (One)</option>
+                                            <option value="Sony PlayStation 2">Sony PlayStation 2 (Slim)</option>
+                                            <option value="Sony PlayStation 3">Sony PlayStation 3 (Slim)</option>
+                                            <option value="Sony PlayStation 4">Sony PlayStation 4 (Slim | Pro)</option>
+                                            <option value="Sony PlayStation Portable">Sony PlayStation Portable</option>
+                                            <option value="Sony PlayStation Vita">Sony PlayStation Vita</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+
+                                <div class="example-inner text-center">
+                                    <span class="example-title">Search and Limitation</span>
+                                    <select id="select-6" class="select select-demo select-input" multiple>
+                                        <optgroup label="Atari">
+                                            <option value="Atari 2600">Atari 2600</option>
+                                            <option value="Atari 2700" hidden>Atari 2700 (Prototype)</option>
+                                            <option value="Atari 800">Atari 800</option>
+                                            <option value="Atari 400">Atari 400</option>
+                                            <option value="Atari 5200">Atari 5200</option>
+                                            <option value="Atari 65-130">Atari 65XE / 130X</option>
+                                            <option value="Atari 7800">Atari 7800 ProSystem</option>
+                                            <option value="Atari Panther" disabled="">Atari Panther</option>
+                                            <option value="Atari Jaguar">Atari Jaguar</option>
+                                            <option value="Atari Jaguar 2" disabled="">Atari Jaguar 2</option>
+                                            <option value="Atari Flashback">Atari Flashback</option>
+                                            <option value="Atari Flashback II">Atari Flashback II</option>
+                                            <option value="Ataribox" disabled="">Ataribox</option>
+                                            <option value="Atari Lynx">Atari Lynx</option>
+                                        </optgroup>
+                                        <optgroup label="Microsoft">
+                                            <option value="Microsoft XBox">Microsoft XBox</option>
+                                            <option value="Microsoft XBox 360">Microsoft XBox 360</option>
+                                            <option value="Microsoft XBox One">Microsoft XBox One (S | X)</option>
+                                            <option value="Microsoft Windows 95">Microsoft Windows 95</option>
+                                            <option value="Microsoft Windows 98">Microsoft Windows 98</option>
+                                            <option value="Microsoft Windows 2000 (ME)">Microsoft Windows 2000 (ME)</option>
+                                            <option value="Microsoft Windows XP">Microsoft Windows XP</option>
+                                            <option value="Microsoft Windows Vista">Microsoft Windows Vista</option>
+                                            <option value="Microsoft Windows 7">Microsoft Windows 7</option>
+                                            <option value="Microsoft Windows 8(.1)">Microsoft Windows 8(.1)</option>
+                                            <option value="Microsoft Windows 10">Microsoft Windows 10</option>
+                                        </optgroup>
+                                        <optgroup label="Nintendo">
+                                            <option value="Nintendo Entertainment System">Nintendo Entertainment System</option>
+                                            <option value="Super Nintendo Entertainment System">Super Nintendo Entertainment System</option>
+                                            <option value="Nintendo GameBoy">Nintendo GameBoy</option>
+                                            <option value="Nintendo GameBoy Color">Nintendo GameBoy Color</option>
+                                            <option value="Nintendo GameBoy Advanced">Nintendo GameBoy Advanced</option>
+                                            <option value="Nintendo GameBoy Advanced SP">Nintendo GameBoy Advanced SP</option>
+                                            <option value="Nintendo DS (Lite)">Nintendo DS (Lite)</option>
+                                            <option value="Nintendo DSi">Nintendo DSi</option>
+                                            <option value="Nintendo 3DS (XL)">Nintendo 3DS (XL)</option>
+                                            <option value="Nintendo New 2DS / 3DS (XL)">Nintendo New 2DS / 3DS (XL)</option>
+                                            <option value="Nintendo 64">Nintendo 64</option>
+                                            <option value="Nintendo GameCube">Nintendo GameCube</option>
+                                            <option value="Nintendo Wii">Nintendo Wii</option>
+                                            <option value="Nintendo WiiU">Nintendo WiiU</option>
+                                            <option value="Nintendo Switch">Nintendo Switch</option>
+                                        </optgroup>
+                                        <optgroup label="SEGA">
+                                            <option value="SEGA SG-1000">SEGA SG-1000</option>
+                                            <option value="SEGA Master System">SEGA Master System</option>
+                                            <option value="SEGA Mega Drive">SEGA Genesis (Mega Drive)</option>
+                                            <option value="SEGA Game Gear">SEGA Game Gear</option>
+                                            <option value="SEGA CD (Mega CD)">SEGA CD (Mega CD)</option>
+                                            <option value="SEGA Pico">SEGA Pico</option>
+                                            <option value="SEGA 32X">SEGA 32X</option>
+                                            <option value="SEGA Saturn">SEGA Saturn</option>
+                                            <option value="SEGA Dreamcast">SEGA Dreamcast</option>
+                                            <option value="SEGA Advanced Pico Beena" hidden="hidden">SEGA Advanced Pico Beena</option>
+                                        </optgroup>
+                                        <optgroup label="Sony">
+                                            <option value="Sony PlayStation One">Sony PlayStation (One)</option>
+                                            <option value="Sony PlayStation 2">Sony PlayStation 2 (Slim)</option>
+                                            <option value="Sony PlayStation 3">Sony PlayStation 3 (Slim)</option>
+                                            <option value="Sony PlayStation 4">Sony PlayStation 4 (Slim | Pro)</option>
+                                            <option value="Sony PlayStation Portable">Sony PlayStation Portable</option>
+                                            <option value="Sony PlayStation Vita">Sony PlayStation Vita</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="container">
+                <h1 class="text-right">Movement Plugin</h1>
+
+                <div class="row">
+                    <div class="column column-60">
+                        <div id="example-4" class="browser" data-onload="active-js">
+                            <div class="browser-header">
+                                <div class="header-bar">
+                                    <div class="bar-dots">
+                                        <div class="dot dot-red"></div>
+                                        <div class="dot dot-orange"></div>
+                                        <div class="dot dot-green"></div>
+                                    </div>
+                                </div>
+        
+                                <div class="header-bar header-bar-dark">
+                                    <ul class="bar-navi" data-handle="tabs" data-target="#example-4 .browser-content">
+                                        <li class="navi-item"><a href="#example-4-source-html">Source <span>HTML</span></a></li>
+                                        <li class="navi-item"><a href="#example-4-source-js">Source <span>JavaScript</span></a></li>
+                                        <li class="navi-item active"><a href="#example-4-preview">Preview</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="example-4-source-html" class="browser-content" style="height:240px;">
+                                HTML
+                            </div>
+                            <div id="example-4-source-js" class="browser-content" style="height:240px;">
+                                JavaScript
+                            </div>
+                            <div id="example-4-preview" class="browser-content active" style="height:240px;">
+                                Preview
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column column-40">
+                        <p class="text-center" style="margin:0;padding:0;">
+                            <b>Move like a Pro</b>
+                        </p>
+                        <p class="text-justify">
+                            The Movement select Plugin allows you to move selected options to custom containers or to 
+                            the main select label element. This can be perfectly used for tags or eMail receiver / cc / 
+                            bcc field.
+                        </p>
+                        <p class="text-justify">
+                            Another function of this plugin is to pin selected options on the top of the dropdown field, 
+                            which allows a way easier ser experience.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="container">
+                <div class="row footer-meta">
+                    <div class="column column-33">
+                        <b class="footer-title">Important Links</b>
+                        <ul class="footer-navi">
+                            <li class="navi-item">
+                                <a href="https://www.pytes.net" target="_blank">pytesNET - Our official Website</a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="https://www.github.com/pytesNET" target="_blank">pytesNET - Our GitHub Organization</a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="https://www.twitter.com/pytesNET" target="_blank">pytesNET - Our Twitter Profile</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column column-33 text-center">
+                        <div class="developed-by">
+                            <b class="footer-title">Developed By</b>
+                            <a href="https://www.pytes.net" target="_blank">
+                                <img src="img/pytesnet-white.svg" alt="pytesNET Logo" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="column column-33 text-right">
+                        <b class="footer-title">Other Cool Projects</b>
+                        <ul class="footer-navi">
+                            <li class="navi-item">
+                                <a href="https://github.pytes.net/tail.datetime">tail.datetime - DateTime Picker</a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="https://github.pytes.net/tail.writer">tail.writer - Textarea Markup</a>
+                            </li>
+                            <li class="navi-item disabled">
+                                <span>Coming Soon</span>
+                                <a href="https://github.pytes.net/tail.sortable">tail.sortable - Drag 'n' Drop Library</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row footer-copyright">
+                    <div class="column column-50">
+                        <br />
+                        <b>tail.select</b> is released under the MIT License<br />
+                        Copyright &copy; 2014 - 2020 <a href="https://www.pytes.net" target="_blank">SamBrishes, pytesNET</a>
+                    </div>
+                    <div class="column column-50 text-right">
+                        Star, Fork & Download on <a href="https://www.github.com/pytesNET/tail.select"><span class="icon icon-logo-github"></span></a><br />
+                        Build with <a href="https://milligram.io/" target="_blank">Milligram</a> and <a href="https://octicons.github.com/" target="_blank">Octicons</a><br />
+                        Powered by <a href="https://prismjs.com/" target="_blank">PrismJS</a> and <a href="https://leocs.me/menuspy/" target="_blank">MenuSpy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
