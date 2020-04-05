@@ -1,0 +1,965 @@
+<h1>Select Class</h1>
+<p>
+    The select class is the main handler which initiates and takes care about the complete <b>tail.select</b> script. 
+    Except the handling of the single &lt;option&gt; elements inside the source &lt;select&gt; field, because this gets 
+    processed and performed by the <a href="class-options.html">Options</a> class.
+</p>
+
+
+<h2 id="constructor">Main Constructor</h2>
+<p>
+    The main constructor does the first real initialization, which consists of adding a unique ID, sets the options 
+    <a href="options.html#option-multiple">multiple</a>, <a href="options.html#option-disabled">disabled</a> and 
+    <a href="options.html#option-placeholder">placeholder</a> (using the values of the source &lt;select&gt; field) and 
+    stores each single instance on the static <code>select.inst</code> variable. This means, that you can use the 
+    constructor on already initialized &lt;select&gt; fields without building up a new instance.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>element <span class="types"><code>String | Array | Object</code></span><span class="required">Required</span></dt>
+    <dd>
+        The selector <code>string</code>, which gets applied on the documents <code>.querySelectorAll()</code> function, 
+        for all &lt;select&gt; fields you want to tail.selectify. You can also directly pass the single HTMLElement or 
+        any array(-like object), such as an Array, a NodeList or a HTMLCollection, containing all the &lt;select&gt; 
+        fields you want.
+    </dd>
+
+    <dt>config <span class="types"><code>Object</code></span></dt>
+    <dd>
+        An object containing all key: value paired options you want to change from the default value. Each object gets 
+        cloned, so you can init multiple &lt;select&gt; fields with the same object, but change them individually later.
+        Check out the <a href="options.html">Options</a> page to see all available options.
+    </dd>
+
+    <dt>options <span class="types"><code>Object</code></span></dt>
+    <dd>
+        You can pass a custom or modified <a href="class-options.html">Options</a> class, which is used to handle the 
+        single &lt;option&gt; elements on all source &lt;select&gt; fields defined in the first parameter. Of course, 
+        your custom handler class MUST contain all core method names.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Void | Object | Array</code></span></dt>
+    <dd>
+        Passing a single HTMLElement object as first parameter will just return the single <b>tail.select</b> 
+        object instance on success or <code>void 0</code> alias undefined on error. (<b>Note:</b> If you're using the 
+        <code>new</code> keyword on the select constructor, which isn't recommended, an empty <code>Object</code> will 
+        return on error instead.)
+        <br><br>
+        Otherwise, if you passing just a selector string or an array(-like object), it will return an <code>Array</code> 
+        with all valid and created <b>tail.select</b> object instances or an empty array if no valid &lt;select&gt; 
+        field was available.
+    </dd>
+</dl>
+
+<pre class="mtop language-javascript"><code>
+tail.select(
+    "select",                   // The Selector / Element / Array(-Like Object)
+    { },                        // (Optional) Your Custom Configurations
+    tail.select.options         // (Optional) Your Custom Options Object
+);
+</code></pre>
+
+<p class="note">
+    <b>Keep in mind:</b> The <code>tail.select</code> constructor above works only on the ECMAScript 5 build using the 
+    window-global hooked method. Check out the <a href="basics.html#use-es5">Use Sections on the Basics Page</a> to 
+    learn more about that.
+
+</p>
+
+<h3 id="binding-jquery">jQuery Binding</h3>
+<p>
+    The <b>ECMAScript 5</b> build also contains a custom binding for the jQuery library. The <b>tail.select</b>
+    constructor is bind to <code>tailselect</code> (without the dot) and returns ALWAYS an Array containing all 
+    instance objects or an empty Array if no valid &lt;select&gt; field is available.
+</p>
+<pre class="language-javascript"><code>
+jQuery("select").tailselect(
+    { },                        // (Optional) Your Custom Configurations
+    tail.select.options         // (Optional) Your Custom Options Object
+);
+</code></pre>
+
+
+<h3 id="binding-mootools">MooTools Binding</h3>
+<p>
+    Next to jQuery you can also use the MooTools JavaScript library with the <b>ECMAScript 5</b> build. The 
+    <code>tailselect</code> method is also implemented in both core objects, <code>Element</code> and 
+    <code>Elements</code>, to replicate the original returning value. 
+</p>
+<p>
+    This means, if you're using the single <code>&dollar;</code> selector (which is an alias for <code>document.id</code>) 
+    you'll receive either the single <b>tail.select</b> instance object or just <code>void 0</code> alias undefined. 
+    Using the twice <code>&dollar;&dollar;</code> selector function will always return an Array containing all valid 
+    instance objects, or an empty Array if no valid &lt;select&gt; field is available.
+</p>
+<pre class="language-javascript"><code>
+&dollar;('my-select').tailselect(
+    { },                        // (Optional) Your Custom Configurations
+    tail.select.options         // (Optional) Your Custom Options Object
+);
+
+&dollar;&dollar;('select').tailselect(
+    { },                        // (Optional) Your Custom Configurations
+    tail.select.options         // (Optional) Your Custom Options Object
+);
+</code></pre>
+
+
+<h2 id="methods-internal">Internal Methods</h2>
+<p>
+    The following methods are marked as internal, so they shouldn't replaced by yourself. You can use Hooks and Filters, 
+    as described on the <a href="callbacks.html">Callbacks</a> page, to inject your own code or to completely 
+    take over a few of these.
+</p>
+
+<h3 id="method-_e">
+    ._e()
+    <span class="version version-added">Added in <b>0.5.8</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method handles the complete translation and localization of each available string. It allows to pass the 
+    string id as first, and a replacement object as second parameter.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>string <span class="types"><code>String</code></span><span class="required">Required</span></dt>
+    <dd>The string ID as it is stored in the <a href="#variable-__">.__</a> locale object variable.</dd>
+
+    <dt>replace <span class="types"><code>Object</code></span></dt>
+    <dd>A key: value paired object, where the <code>key</code> is the substring to be replaced with <code>value</code>.</dd>
+
+    <dt class="return"><span class="types"><code>String</code></span></dt>
+    <dd>
+        The localized, and with the <b>replace</b> object parsed, string on success or the passed first parameter on 
+        failure (such if the first parameter couldn't be found on the main <a href="#variable-__">.__</a> locale object).
+    </dd>
+</dl>
+
+
+<h3 id="method-_cls">
+    ._cls()
+    <span class="version version-new">New</span>
+    <span class="version version-added">Added in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method generates the class names required for the item element inside the main <b>tail.select</b> dropdown 
+    field. Custom class names can also directly passed as second parameter, using a space-separated string.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>item <span class="types"><code>Object</code></span><span class="required">Required</span></dt>
+    <dd>The source &lt;option&gt; HTMLElement object, which is used to generate the class names.</dd>
+
+    <dt>string <span class="types"><code>String</code></span></dt>
+    <dd>The custom class names as space-separated string, which gets prepended to the required ones.</dd>
+
+    <dt class="return"><span class="types"><code>String</code></span></dt>
+    <dd>
+        The string containing all required and custom class names.
+    </dd>
+</dl>
+
+
+<h3 id="method-init">
+    .init()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method initialize the <b>tail.select</b> instance on the first real initialization as well as everytime the 
+    <a href="method-reload">.reload()</a> method is called with passing <code>false</code> as first parameter.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt style="display:none;"></dt><dd><i>This method doesn't allow any arguments.</i></dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Select</b> instance object itself.</dd>
+</dl>
+
+
+<h3 id="method-build">
+    .build()
+    <span class="version version-new">New</span>
+    <span class="version version-added">Added in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method builds up all the elements required, and optionally used, by the <b>tail.select</b> script and should 
+    get called only by the internal <a href="method-init">.init()</a> method itself.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>self <span class="types"><code>Object</code></span><span class="required">Required</span></dt>
+    <dd>The first parameter is the instance object itself, which is used for the event listeners only.</dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Select</b> instance object itself.</dd>
+</dl>
+
+
+<h3 id="method-bind">
+    .bind()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method attach, detach and is served for the event listeners which are set on the main document object as well 
+    as on the source <b>select</b> field directly if the <a href="options.html#option-sourcebind">sourceBind</a>
+    option is enabled. The listener callback is stored on the <a href="#variable-listen">.listen</a> variable.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>arg <span class="types"><code>Object | null</code></span><span class="required">Required</span></dt>
+    <dd>
+        The first parameter can be different values. If it is the <code>Select</code> instance itself, it will attach 
+        the respective event listeners, if null is passed it will remove the attached listeners and if the 
+        <code>Event</code> object is present it will handle the respective events.
+    </dd>
+
+    <dt class="return"><span class="types"><code>any</code></span></dt>
+    <dd>
+        The returning value varies depending of the passed parameter.
+    </dd>
+</dl>
+
+
+<h3 id="method-calculate">
+    .calculate()
+    <span class="version version-new">New</span>
+    <span class="version version-added">Added in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method calculates the height of the <b>tail.select</b> dropdown field, depending on the used 
+    <a href="options.html#option-height">height</a> option and if a <code>.dropdown-inner</code> container is available.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt style="display:none;"></dt><dd><i>This method doesn't allow any arguments.</i></dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Select</b> instance object itself.</dd>
+</dl>
+
+
+<h2 id="methods-api">API Methods</h2>
+<p>
+    The API methods handles and controls the important things of the <b>tail.select</b> script. You can freely call them 
+    yourself, for example building up a more complex environment or a plugin. Just use them with care, because it may 
+    break up everything if you do something wrong.
+</p>
+
+
+<h3 id="method-trigger">
+    .trigger()
+    <span class="version version-added">Added in <b>0.4.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method does the most magical on the complete <b>tail.select</b> script, because it triggers the events, applies 
+    the filters and handles all attached hooks. It is the main interface between you, your script, all available 
+    plugins and the core system itself.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>type <span class="types"><code>String</code></span><span class="required">Required</span></dt>
+    <dd>
+        The callback type, which should be triggered. Use <code>event</code>, <code>filter</code> or <code>hook</code>. 
+        <b>Keep in mind</b> that each single event gets also triggered, with a <code>tail::</code>-prefixed name, on the 
+        main <b>tail.select</b> container.
+    </dd>
+    
+    <dt>name <span class="types"><code>String</code></span><span class="required">Required</span></dt>
+    <dd>
+        The callback name, for example <code>change</code> or <code>open</code>. Check out the <a href="callbacks.html">Callbacks</a> 
+        page to see all available events, filters and hooks.
+    </dd>
+
+    <dt>args <span class="types"><code>Array</code></span></dt>
+    <dd>
+        The arguments, which should be passed to the attached callback functions. This Array also gets added to the 
+        Event's own <code>detail</code> object, but only when the callback type is set to <code>event</code> of course.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Boolean | Array</code></span></dt>
+    <dd>
+        The returning value varies depending on the first parameter. If you trigger a hook and event it will always 
+        return a boolean value, which is only important for hooks. Triggered filters will always return the filtered 
+        args Array you've passed as third parameter.
+    </dd>
+</dl>
+
+
+<h3 id="method-query">
+    .query()
+    <span class="version version-added">Added in <b>0.5.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method starts building up the <b>tail.select</b> dropdown field using the method, which is passed as first 
+    parameter, called with the arguments passed as second one. The passed method MUST be a pseudo-generator (which  
+    returns all items one per one and False on the end) by using the <b>ECMAScript 5</b> build and a real-generator 
+    on the <b>ECMAScript 2015</b> (ES6) build.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>method <span class="types"><code>String | Function</code></span><span class="required">Required</span></dt>
+    <dd>
+        The method, which should be used for the query. This can be a string representation of an method, which is 
+        available in the <a href="class-options.html">Options</a> class or a direct callback function.
+    </dd>
+    
+    <dt>args <span class="types"><code>Array</code></span></dt>
+    <dd>
+        The arguments, which gets passed to the defined query method.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Select</b> instance object itself.</dd>
+</dl>
+
+
+<h3 id="method-render">
+    .render()
+    <span class="version version-new">New</span>
+    <span class="version version-added">Added in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method offers all available rendering functions, as used in the <a href="#method-query">query()</a> method, to 
+    build up the <b>tail.select</b> dropdown field. The core method contains rendering functions for the group and list 
+    items as well as for empty select fields.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>type <span class="types"><code>String | Function</code></span><span class="required">Required</span></dt>
+    <dd>
+        The render type, which should be used. The core method allows to pass 'empty', 'group' and 'item'.
+    </dd>
+    
+    <dt>data <span class="types"><code>any</code></span></dt>
+    <dd>
+        Some additional data, which is required for the rendering. It gets passed as first parameter on the respective 
+        render function.
+    </dd>
+    
+    <dt>query <span class="types"><code>Array | null</code></span></dt>
+    <dd>
+        The last query Array, as described on the <a href="#variable-_last_query">_last_query</a> variable. It gets 
+        passed as second parameter on the respective render function.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Object | False | null</code></span></dt>
+    <dd>
+        The returning value should always be the respective HTMLElement object, which will be used. Within the loop,
+        as used inside the <a href="#method-query">.query()</a> method, it is also allowed to return <code>null</code>,
+        which skips the current rendered group or item, or <code>false</code> which breaks the loop completely.
+    </dd>
+</dl>
+
+
+<h3 id="method-update">
+    .update()
+    <span class="version version-added">Added in <b>0.5.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method updates the <b>tail.select</b> script and triggers all required callbacks, when a state of an item 
+    (such as disabled, selected or hidden) gets changed. It also calls the <a href="#method-updatecsv">.updateCSV()</a> 
+    as well as the <a href="#method-updatelabel">.updateLabel()</a> methods.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>items <span class="types"><code>Array</code></span></dt>
+    <dd>
+        An Array, which elements are another Arrays consisting of the source &lt;option&gt; element and an object 
+        containing all done changes. <code>[[&lt;option&gt;, { selected: true }], ...]</code>. The update method will 
+        be completely skipped if this argument is either undefined or an empty Array.
+    </dd>
+    
+    <dt>trigger <span class="types"><code>Boolean</code></span></dt>
+    <dd>
+        A boolean value, which decides if the event callbacks should be triggered (<code>true</code>) or not 
+        (<code>false</code>).
+    </dd>
+    
+    <dt>force <span class="types"><code>Boolean</code></span></dt>
+    <dd>
+        A boolean value, which indicated if the changes has been forced or not. A force change, for example, is when 
+        more options has been selected as the <a href="options.html#option-multilimit">multiLimit</a> option allows.
+    </dd>
+    
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Select</b> instance object itself.</dd>
+</dl>
+
+
+<h3 id="method-updatecsv">
+    .updateCSV()
+    <span class="version version-added">Added in <b>0.5.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method just updates the CSV &lt;input /&gt; value, if the <a href="options.html#option-csv">csvOutput</a> 
+    option is enabled. It uses the filtered output of the <a href="#method-value">.value()</a> method and adds them 
+    directly.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt style="display:none;"></dt><dd><i>This method doesn't allow any arguments.</i></dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Select</b> instance object itself.</dd>
+</dl>
+
+
+<h3 id="method-updatelabel">
+    .updateLabel()
+    <span class="version version-added">Added in <b>0.5.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method updates the label and counter, as used on the <b>tail.select</b> label element, respecting also the 
+    used <a href="options.html#option-placeholder">placeholder</a> and <a href="options.html#option-placeholdercount">placeholderCount</a>
+    options.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>label <span class="types"><code>String</code></span></dt>
+    <dd>
+        You can pass a custom label string, but keep in mind that this may gets overwritten if the 
+        <a href="options.html#option-placeholder">placeholder</a> option is a callback function.
+    </dd>
+    
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Select</b> instance object itself.</dd>
+</dl>
+
+
+<h2 id="methods-public">Public Methods</h2>
+<p>
+    Public methods can freely used to command, configure or work with the <b>tail.select</b> instance. Just use them 
+    inside your scripts, however, keep the partially required parameters correctly.
+</p>
+
+<h3 id="method-open">
+    .open()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method opens the <b>tail.select</b> dropdown field, regardless of the state except it is already open. It also 
+    calls the <a href="#method-calculate">.calculate()</a> method to redefine the dropdown's height and focus on the 
+    search input field if both <a href="options.html#search">search</a> and <a href="options.html#option-searchfocus">searchFocus</a> 
+    are enabled.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt style="display:none;"></dt><dd><i>This method doesn't allow any arguments.</i></dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Select</b> instance object itself.</dd>
+</dl>
+
+
+<h3 id="method-close">
+    .close()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method closes the <b>tail.select</b> dropdown field, regardless of the state except it is already closed. It 
+    also removes the height properties, which has been set by <a href="#method-calculate">.calculate()</a>, again.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt style="display:none;"></dt><dd><i>This method doesn't allow any arguments.</i></dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Select</b> instance object itself.</dd>
+</dl>
+
+
+<h3 id="method-toggle">
+    .toggle()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method just toggles the <b>tail.select</b> dropdown field by calling <a href="#method-open">.open()</a> or 
+    <a href="#method-close">.close()</a>, depending if the dropdown field is opened or closed.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt style="display:none;"></dt><dd><i>This method doesn't allow any arguments.</i></dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Select</b> instance object itself.</dd>
+</dl>
+
+
+<h3 id="method-reload">
+    .reload()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method allows to reload the <b>tail.select</b> instance, which may must be done if you change something on 
+    the source &lt;select&gt; field or you change any important option using <a href="#method-set">.set()</a>. This 
+    method also gets called by a few <a href="class-options.html">Options</a> class methods.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>soft <span class="types"><code>Boolean</code></span></dt>
+    <dd>
+        Passing <code>true</code> will just re-call the <a href="#method-query">.query()</a> method with the last used 
+        arguments. Otherwise, by using <code>false</code>, the complete instance gets removed and rebuild calling the 
+        methods <a href="#method-remove">.remove(false)</a> and <a href="#method-init">.init()</a>.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Select</b> instance object itself.</dd>
+</dl>
+
+
+<h3 id="method-remove">
+    .remove()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method removes the complete <b>tail.select</b> instance as well as all changes made on the source &lt;select&gt; 
+    field as far as possible. You can just prevent the deletion of later-added options, for example using the 
+    <a href="options.html#option-items">items</a> option, by passing <code>true</code> as first parameter.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>keep <span class="types"><code>Boolean</code></span></dt>
+    <dd>
+        This argument allows you to keep (<code>true</code>) options and optgroups which has been added later, using the 
+        <a href="options.html#option-items">items</a> option or the <a href="class-options.html#method-set">.set()</a> 
+        method on the Options class. The default is <code>false</code>, which means that all added &lt;option&gt; 
+        elements gets removed too.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Select</b> instance object itself.</dd>
+</dl>
+
+
+<h3 id="method-get">
+    .get()
+    <span class="version version-new">New</span>
+    <span class="version version-added">Added in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method allows you to get the value of an option set using the main <a href="#constructor">Select Constructor</a> 
+    or at any time later using the <a href="#method-set">.set()</a> method. <b>Keep in Mind:</b> The default option 
+    values are NO LONGER stored in the script files itself, so if you didn't set the option on your own, you won't 
+    receive the real value (unless you pass them as second parameter).
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>key <span class="types"><code>String</code></span><span class="required">Required</span></dt>
+    <dd>
+        The option key as string.
+    </dd>
+
+    <dt>def <span class="types"><code>any</code></span></dt>
+    <dd>
+        The default value, if the option key isn't set.
+    </dd>
+
+    <dt class="return"><span class="types"><code>any</code></span></dt>
+    <dd>
+        This method returns the respective value of the option key you passed or the second parameter if the option key 
+        doesn't exist. If you don't pass a second parameter <code>void 0</code> will return.
+    </dd>
+</dl>
+
+
+<h3 id="method-set">
+    .set()
+    <span class="version version-new">New</span>
+    <span class="version version-added">Added in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method allows you to set and change the value of an option. Keep in mind, that you need to 
+    <a href="#method-reload">.reload()</a> the <b>tail.select</b> instance yourself if you set or change any option 
+    which influence the script, the main elements or the source &lt;select&gt; field.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>key <span class="types"><code>String | Object</code></span><span class="required">Required</span></dt>
+    <dd>
+        The respective option key you want to change as string, you can also pass an object containing multiple 
+        key: value paired properties to change multiple options at once.
+    </dd>
+
+    <dt>value <span class="types"><code>any</code></span></dt>
+    <dd>
+        The new value, which should be set. This works only if the first parameter is a string, of course.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Select</b> instance object itself.</dd>
+</dl>
+
+
+<h3 id="method-enable">
+    .enable()
+    <span class="version version-added">Added in <b>0.5.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method enables the <b>tail.select</b> instance as well as the source &lt;select&gt; field, and soft-reloads
+    the instance using the <a href="#method-reload">.reload()</a> method.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>reload <span class="types"><code>Boolean</code></span></dt>
+    <dd>
+        A boolean value, which decides if the <a href="#method-reload">.reload()</a> method should be called 
+        (<code>true</code>) or not (<code>false</code>).
+    </dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Select</b> instance object itself.</dd>
+</dl>
+
+
+<h3 id="method-disable">
+    .disable()
+    <span class="version version-added">Added in <b>0.5.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method disabled the <b>tail.select</b> instance as well as the source &lt;select&gt; field, and soft-reloads
+    the instance using the <a href="#method-reload">.reload()</a> method.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>reload <span class="types"><code>Boolean</code></span></dt>
+    <dd>
+        A boolean value, which decides if the <a href="#method-reload">.reload()</a> method should be called 
+        (<code>true</code>) or not (<code>false</code>).
+    </dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Select</b> instance object itself.</dd>
+</dl>
+
+
+<h3 id="method-on">
+    .on()
+    <span class="version version-added">Added in <b>0.4.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method allows you to add your own event, filter and hook callbacks to the instance. You can also use the
+    <a href="options.html#option-on">on</a> option to attach your callbacks directly to the first initialization. 
+    Check out the <a href="callbacks.html">Callbacks</a> page to see all available callbacks.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>name <span class="types"><code>String | Array</code></span><span class="required">Required</span></dt>
+    <dd>
+        The callback name as string, you can also pass multiple callback names as Array which all gets attached with 
+        the same callback function, passed as second parameter.
+    </dd>
+
+    <dt>func <span class="types"><code>Function</code></span><span class="required">Required</span></dt>
+    <dd>
+        The callback function, which should get called, on all passed callback names defined on the first parameter.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Select</b> instance object itself.</dd>
+</dl>
+
+
+<h3 id="method-value">
+    .value()
+    <span class="version version-added">Added in <b>0.5.13</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method allows you to receive the current selected values in different formats.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>format <span class="types"><code>String</code></span></dt>
+    <dd>
+        The format of how the value should be returned ('auto' is the default). 
+
+        <div style="padding:2.0rem;">
+            <span style="width:60px;display:inline-block;"><code>csv</code></span> Returns all values as string, separated using the <a href="options.html#option-csvseparator">csvSeparator</a> option<br />
+            <span style="width:60px;display:inline-block;"><code>nodes</code></span> Returns all option elements as NodeList object.<br />
+            <span style="width:60px;display:inline-block;"><code>array</code></span> Returns all values inside an array.<br />
+            <span style="width:60px;display:inline-block;"><code>auto</code></span> Use 'csv' on single, and 'array' on multiple &lt;select&gt; fields.<br />
+        </div>
+    </dd>
+
+    <dt class="return"><span class="types"><code>String | Array | Object</code></span></dt>
+    <dd>This method returns the selected option (values) as described above.</dd>
+</dl>
+
+
+<h2 id="methods-internal">Variables</h2>
+<p>
+    The Select class offers the following variables, which we strongly discourage changing it, unless you really know 
+    what you're doing and what may happens if you're doing it wrong. However, you can still use them as readonlys for 
+    your own script, just handle them with care.
+</p>
+
+<h3 id="variable-__">.__</h3>
+<p>
+    This variable contains the translation string object of the current set <a href="">locale</a> option. It is used 
+    mainly on the <a href="">._e()</a> method.
+</p>
+
+<h3 id="variable-_select">._select</h3>
+<p>
+    This variable contains the HTMLElement object of the main <b>tail.select</b> container and can be used, for example, 
+    to catch triggered events using the <code>.addEventListener()</code> function.
+</p>
+
+<h3 id="variable-_label">._label</h3>
+<p>
+    This variable contains the main HTMLElement object for the label, which prints the <a href="">placeholder</a> and 
+    <a href="">placeholderCount</a> options as well as the arrow toggle button.
+</p>
+
+<h3 id="variable-_dropdown">._dropdown</h3>
+<p>
+    This variable contains the main HTMLElement object for the dropdown field, which contains the search container, 
+    if the <a href="">search</a> option is enabled, as well as the dropdown-inner container which contains all the 
+    &lt;ul&gt; and &lt;li&gt; list elements.
+</p>
+
+<h3 id="variable-_search">._search</h3>
+<p>
+    This variable contains the main HTMLElement object for the serch field, which itself contains the respective 
+    &lt;input /&gt; input field only.
+</p>
+
+<h3 id="variable-_csv">._csv</h3>
+<p>
+    This variable contains the hidden &lt;input /&gt; field HTMLElement object as used for the <a href="">csvOutput</a> 
+    option, even if this option is disabled!
+</p>
+
+<h3 id="variable-_last_query">._last_query</h3>
+<p>
+    This variable contains the last used arguments of the <a href="">.query()</a> method, which consists of the used 
+    query method as first and the query arguments as array as second parameter.
+</p>
+
+<h3 id="variable-id">.id</h3>
+<p>
+    This variable contains the unique <b>tail.select</b> id, which has been counted up on the first real 
+    initialization. It is used on the id attribute of the main container and linked on the source &lt;select&gt; element.
+</p>
+
+<h3 id="variable-e">.e</h3>
+<p>
+    This variable contains the source &lt;select&gt; HTMLElement object.
+</p>
+
+<h3 id="variable-con">.con</h3>
+<p>
+    This variable contains the configuration object of all options, which has been set using the <b>tail.select()</b>
+    constructor or the <a href="">.set()</a> method. At least this object contains ALWAYS the 'multiple', 'disabled', 
+    'required' and 'placeholder' keys (even if the last one is maybe set to <code>undefined</code>).
+</p>
+
+<h3 id="variable-listen">.listen</h3>
+<p>
+    This variable contains just the event listener callback function, set in the <a href="">.init()</a> method and used 
+    only within the <a href="">.bind()</a> method. The function also just returns <a href="">.bind()</a> itself, which 
+    <code>this</code> argument has been bind to the respective instance itself.
+</p>
+
+<h3 id="variable-callbacks">.callbacks</h3>
+<p>
+    This variable contains all callback functions for the events, filters and hooks, which has been set by the 
+    <a href="">.on()</a> method or the <a href="">on</a> option.
+</p>
+
+<h3 id="variable-options">.options</h3>
+<p>
+    This variable contains the <a href="">Options</a> class, respectivly it's instance after the <a href="">.init()</a> 
+    method has been applied the first time.
+</p>
+
+<h3 id="variable-plugins">.plugins</h3>
+<p>
+    This variable contains the <a href="">Plugins</a> class instance.
+</p>
+
+
+<h2 id="methods-removed">Removed Methods</h2>
+<p>
+    The following methods has been removed or replaced.
+</p>
+
+<h3 id="removed-callback">
+    .callback()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-removed">Removed in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method was used prior version 0.6.0 for the communication between the <a href="class-options.html">Options</a> 
+    class and the Select class. The existing method <a href="#method-update">.update()</a> is now used instead.
+</p>
+
+
+<h3 id="removed-calc">
+    .calc()
+    <span class="version version-added">Added in <b>0.5.0</b></span>
+    <span class="version version-removed">Removed in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method was used prior version 0.6.0 to calculate the height of the dropdown field. For a clear naming it was 
+    renamed into <a href="#method-update">.calculate()</a>.
+</p>
+
+
+<h3 id="removed-cbgroup">
+    .cbGroup()
+    <span class="version version-added">Added in <b>0.4.0</b></span>
+    <span class="version version-removed">Removed in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method was used prior version 0.6.0 to generate / render the single dropdown item groups. The new 
+    <a href="#method-remder">.render()</a> method, using "group" as first parameter, is now used instead.
+</p>
+
+
+<h3 id="removed-cbitem">
+    .cbItem()
+    <span class="version version-added">Added in <b>0.4.0</b></span>
+    <span class="version version-removed">Removed in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method was used prior version 0.6.0 to generate / render the single dropdown items. The new 
+    <a href="#method-remder">.render()</a> method, using "item" as first parameter, is now used instead.
+</p>
+
+
+<h3 id="removed-choose">
+    .choose()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-removed">Removed in <b>0.5.0</b></span>
+</h3>
+<p>
+    This method was used prior version 0.5.0 as alias for the <a href="class-options.html">Options</a> class to 
+    handle the single &lt;option&gt;s on the source &lt;select&gt; field.
+</p>
+
+
+<h3 id="removed-choose">
+    .config()
+    <span class="version version-added">Added in <b>0.4.0</b></span>
+    <span class="version version-removed">Removed in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method was used prior version 0.6.0 to get or set (parts of) the configuration object. It has been replaced 
+    by the new <a href="#method-get">.get()</a> and <a href="#method-set">.set()</a> methods.
+</p>
+
+
+<h3 id="removed-setlabel">
+    .setLabel()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-removed">Removed in <b>0.5.0</b></span>
+</h3>
+<p>
+    This method was used prior version 0.5.0 to handle and set the current placeholder label on the main 
+    <b>tail.select</b> label element. It has been replaced with the <a href="#method-updatelabel">.updateLabel()</a>
+    method.
+</p>
+
+
+<h3 id="removed-setcontainer">
+    .setContainer()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-removed">Removed in <b>0.5.0</b></span>
+</h3>
+<p>
+    This method was used prior version 0.5.0 as the <a href="options.html#removed-multicountainer">multiContainer</a> 
+    option and functions were still part of the core system. This behaviour was replaced by the 
+    <a href="#removed-updatecontainer">.updateContainer()</a> method, which itself has been removed in version 0.6.0 
+    and is now available on the <a href="">select-movement</a> Plugin.
+</p>
+
+
+<h3 id="removed-choose">
+    .setCSVInput()
+    <span class="version version-added">Added in <b>0.4.0</b></span>
+    <span class="version version-removed">Removed in <b>0.5.0</b></span>
+</h3>
+<p>
+    This method was used prior version 0.5.0 to handle and set the CSV &lt;input /&gt; value, as used by the 
+    <a href="options.html#option-csvoutput">csvOutput</a> option. It has been replaced with the 
+    <a href="#method-updatecsv">.updateCSV()</a> method.
+</p>
+
+
+<h3 id="removed-choose">
+    .setCounter()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-removed">Removed in <b>0.5.0</b></span>
+</h3>
+<p>
+    This method was used prior version 0.5.0 to calculate and print the counter element inside the main 
+    <b>tail.select</b> label container. This functionallity is still available, but has been add to the 
+    <a href="#method-updatelabel">.updateLabel()</a> method.
+</p>
+
+
+<h3 id="removed-updatecontainer">
+    .updateContainer()
+    <span class="version version-added">Added in <b>0.5.0</b></span>
+    <span class="version version-removed">Removed in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method as used prior version 0.6.0 as the <a href="options.html#removed-multicountainer">multiContainer</a> 
+    option and functions were still a part of the core system. The complete behaviour has now been moved to the new 
+    <a href="">select-movement</a> Plugin.
+</p>
+
+
+<h3 id="removed-updatepin">
+    .updatePin()
+    <span class="version version-added">Added in <b>0.5.0</b></span>
+    <span class="version version-removed">Removed in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method as used prior version 0.6.0 as the <a href="options.html#removed-multipinselected">multiPinSelected</a> 
+    option and functions were still a part of the core system. The complete behaviour has now been moved to the new 
+    <a href="">select-movement</a> Plugin.
+</p>

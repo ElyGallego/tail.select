@@ -1,0 +1,213 @@
+/*
+ |  WHAT IS THIS FILE?
+ |  The 'build.synt' file contains all distribution file declarations, such as the module factory 
+ |  container for the single JavaScripts, which gets rendered using the node.js SYNTER environment.
+ |
+ |
+ |  More informations can be found on the following README:
+ |  https://www.github.com/pytesNET/tail.select/src/synter/README.md
+ |
+ |
+ |  THIS FILE looks better using the SYNTAX HIGHLIGHTING plugin for VISUAL STUDIO CODE:
+ |  https://www.github.com/pytesNET/tail.select/src/synter/vscode
+ */
+
+/*
+ |  PART :: COPYRIGHT HEADER
+ |  @used   main-es5, main-es6, plugin-es5, plugin-es6, locale-es5, locale-es6, stylesheet
+ */
+:part copyright @js
+    /*!
+     |  {{ $data.name }} - {{ $data.description }}
+     |  @file       {{ $path }}{{ $file }}
+     |  @authors    {{ $data.author }}
+     |              {{ $data.contributors }}
+     |  @version    {{ $data.version }} - {{ @capitalize($data.status) }}{{ @is($build, " : $build") }}
+     |
+     |  @website    {{ $data.homepage }}
+     |  @license    X11 / MIT License
+     |  @copyright  Copyright © 2014 - {{ $date.year }} {{ $data.copyright }}
+     */
+:end
+
+
+/*
+ |  PART :: REGISTER STRINGS
+ |  @used   plugin-es5, plugin-es6
+ */
+:part plugin indent="4" indenter="space" @js
+    /** %if(@is($plugin)) **/
+    /*
+     |  {{ $plugin.name }}
+     |  @description    {{ $plugin.description }}
+     */
+    /** %endif **/
+    /** $source **/
+:end
+
+
+/*
+ |  PART :: REGISTER STRINGS
+ |  @used   locale-es5, locale-es6
+ */
+:part locale indent="4" indenter="space" @js
+    /*
+     |  @author     {{ $locale.author }}{{ @is($locale.author_url, " - ($locale.author_url)") }}
+     |  @source     {{ $locale.source }}
+     */
+    select.strings.add(/** @quote($locale.locale, true) **/, {
+        /** $locale.strings **/
+    });
+:end
+
+
+/*
+ |  TEMPLATE :: MAIN SCRIPT [ES5]
+ */
+:template main-es5 @js
+    /** @part("copyright") **/
+    ;(function (root, factory) {
+        if (typeof define === "function" && define.amd) {
+            define(/** @quote($data.name) **/, [], function () { return factory(root, root.document); });
+        } else if (typeof module === "object" && module.exports) {
+            module.exports = function (root, document) {
+                return factory(root, document || root.document);
+            }
+        } else {
+            if (typeof root.tail === "undefined") {
+                root.tail = {};
+            }
+            root./** $data.name **/ = factory(root, root.document);
+
+            if (typeof jQuery !== "undefined") {
+                jQuery.fn./** $data.jquery **/ = function(c, o) {
+                    return this.map(function () { return /** $data.name **/(this, c, o); }).get();
+                };
+            }
+            if (typeof MooTools !== "undefined") {
+                Element.implement({ /** $data.mootools **/: function (c, o) { return /** $data.name **/(this, c, o); } });
+                Elements.implement({ /** $data.mootools **/: function (c, o) { return /** $data.name **/(this, c, o); } });
+            }
+        }
+    }((typeof window !== "undefined"? window: (typeof global !== "undefined")? global: this), function (w, d) {
+        "use strict";
+        /** $source **/
+        return Select;
+    }));
+:end
+
+
+/*
+ |  TEMPLATE :: MAIN SCRIPT [ES6]
+ */
+:template main-es6 @js
+    /** @part("copyright") **/
+    let { select, options } = (function (w, d) {
+        "use strict";
+        /** $source **/
+        return { select: Select, options: Options };
+    })(window, window.document);
+    export { select, options };
+:end
+
+
+/*
+ |  TEMPLATE :: PLUGIN FILE [ES5]
+ */
+:template plugin-es5 @js
+    /** @part("copyright") **/
+    ;(function (root, factory) {
+        if (typeof define === "function" && define.amd) {
+            define([/** @quote($data.name) **/], factory);
+        } else if (typeof module === "object" && module.exports) {
+            module.exports = factory;
+        } else {
+            factory(root./** $data.name **/);
+        }
+    }((typeof window !== "undefined"? window: (typeof global !== "undefined")? global: this), function (select) {
+        "use strict";
+
+        /** @part("plugin") **/
+        return select;
+    }));
+:end
+
+
+/*
+ |  TEMPLATE :: PLUGIN FILE [ES6]
+ */
+:template plugin-es6 @js
+    /** @part("copyright") **/
+    export function plugin(select) {
+        "use strict";
+        
+        /** @part("plugin") **/
+        return select;
+    }
+:end
+
+
+/*
+ |  TEMPLATE :: LOCALE FILE [ES5]
+ */
+:template locale-es5 @js
+    /** @part("copyright") **/
+    ;(function (root, factory) {
+        if (typeof define === "function" && define.amd) {
+            define([/** @quote($data.name) **/], factory);
+        } else if (typeof module === "object" && module.exports) {
+            module.exports = factory;
+        } else {
+            factory(root./** $data.name **/);
+        }
+    }((typeof window !== "undefined"? window: (typeof global !== "undefined")? global: this), function (select) {
+        "use strict";
+
+    /** @part("locale") **/
+        return select;
+    }));
+:end
+
+
+/*
+ |  TEMPLATE :: LOCALE FILE [ES6]
+ */
+:template locale-es6 @js
+    /** @part("copyright") **/
+    export function locale(select) {
+        "use strict";
+
+    /** @part("locale") **/
+        return select;
+    }
+:end
+
+
+/*
+ |  TEMPLATE :: STYLESHEETs
+ */
+:template stylesheet @css
+    @charset "UTF-8";
+    /** @part("copyright") **/
+    
+    /** $source **/
+:end
+
+
+/*
+ |  TEMPLATE :: JAVASCRIPT MINIFIED
+ */
+:template minified-js @js
+    /*! pytesNET/{{ $data.name }} v{{ $data.version }}-{{ $data.status }} | {{ $build }} | @copyright {{ $data.copyright }} */
+    /** $source **/
+:end
+
+
+/*
+ |  TEMPLATE :: STYLESHEET MINIFIED
+ */
+:template minified-css @css
+    @charset "UTF-8";
+    /*! pytesNET/{{ $data.name }} v{{ $data.version }}-{{ $data.status }} | @copyright {{ $data.copyright }} */
+    /** $source **/
+:end

@@ -1,0 +1,93 @@
+//
+//  MIXINS :: [W]HITE [OR] [B]LACK
+// 
+//  @param  color   The color which should be checked.
+//  @param  number  The percentage of the lightness that turns white into black.
+//
+@mixin worb($color, $percent: 70%) {
+    @if lightness($color) > $percent {
+        color: black;
+    } @else {
+        color: white;
+    }
+}
+
+
+//
+//  MIXINS :: BORDER
+// 
+//  @oaram  unit    The border width.
+//  @param  style   The border style.
+//  @param  color   The border color.
+//  @param  unit    The border radius or null to set no radius at all.
+//
+@mixin border($width: 1px, $style: solid, $color: transparent, $radius: null) {
+    border-width: $width;
+    border-style: $style;
+    border-color: $color;
+
+    @if $radius != null {
+        border-radius: $radius;
+    }
+}
+
+
+//
+//  MIXINS :: TRANSFORM 
+//  
+//  @param  multi   The transform value.
+//
+@mixin transform($transform) {
+    transform: $transform;
+    -webkit-transform: $transform;
+}
+
+
+//
+//  MIXINS :: ANIMATION
+//  
+//  @param  multi   The animation value.
+//
+@mixin animation($animation...) {
+    animation: $animation;
+    -webkit-animation: $animation;
+}
+
+
+//
+//  MIXINS :: PREFIX
+// 
+//  @param  prop    The CSS property key.
+//  @param  multi   The CSS property value.
+//  @param  bool    TRUE to add a `-ms` prefix.
+//  @param  bool    TRUE to add a `-moz` prefix.
+//  @param  bool    TRUE to add a `-webkit` prefix.
+//
+@mixin prefix($property, $value, $ms: false, $moz: true, $webkit: true) {
+    #{$property}: $value;
+    @if $ms {
+        -ms-#{$property}: $value;
+    }
+    @if $moz {
+        -moz-#{$property}: $value;
+    }
+    @if $webkit {
+        -webkit-#{$property}: $value;
+    }
+}
+
+
+//
+//  MIXINS :: GRADIENT 
+// 
+//  @param  multi   The starting gradient.
+//  @param  multi   The ending gradient.
+//
+@mixin gradient($startColor, $endColor) {
+    background-color: mix($startColor, $endColor, 60%);
+    background-image: linear-gradient(to bottom, $startColor, $endColor);
+    background-image: -o-linear-gradient(top, $startColor, $endColor);
+    background-image: -moz-linear-gradient(top, $startColor, $endColor);
+    background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+    background-repeat: repeat-x;
+}

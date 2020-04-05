@@ -1,0 +1,76 @@
+//
+//  SELECT-MOVEMENT PLUGIN
+//
+@import "../base/_Functions";
+@import "../base/_Mixins";
+@import "../base/_Icons";
+@import "_Config";
+
+
+//
+//  STYLES
+//
+
+.tail-select-container {
+    margin: 10px 0;
+    padding: 3px;
+    display: block;
+    @include border(1px, solid, darken(white, 15%), 5px);
+
+    *, *:before, *:after{
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+    .select-item {
+        height: 26px;
+        margin: 2px;
+        padding: 0;
+        opacity: 0.75;
+        display: inline-block;
+        position: relative;
+        vertical-align: top;
+        transition: opacity 142ms linear;
+
+        &:hover {
+            opacity: 1.0;
+        }
+        .item-title {
+            cursor: default;
+            color: white;
+            height: 26px;
+            margin: 0;
+            padding: 3px 25px 3px 5px;
+            display: block;
+            font-size: 90%;
+            font-weight: 600;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, .15);
+            border-radius: 3px;
+            background-size: 200% 100%;
+            background-image: linear-gradient(to right, map-get($color-primary, light) 50%, map-get($color-secondary, light) 50%);
+            background-position: left bottom;
+            transition: opacity 142ms linear, background 250ms linear;
+        }
+        .item-unselect {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            cursor: pointer;
+            width: auto;
+            height: 26px;
+            margin: 0;
+            padding: 4px 12px 3px 11px;
+            display: inline-block;
+            position: absolute;
+            vertical-align: top;
+            border-radius: 0 3px 3px 0;
+            background-size: 16px 16px;
+            background-color: transparent;
+            background-repeat: no-repeat;
+            background-position: center center;
+            @include icon("deselect", "#ffffff", "octicons");
+        }
+        .item-unselect:hover + .item-title {
+            background-position: right bottom;
+        }
+    }
+}

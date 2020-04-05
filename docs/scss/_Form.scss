@@ -1,0 +1,128 @@
+
+// Form
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+input[type='text'], input[type='password'], input[type='number'], textarea, select, 
+input[type='email'], input[type='search'], input[type='tel'], input[type='url'] {
+	width: 100%;
+	height: 3.8rem;
+    margin: 0 0 1.5rem 0;
+	padding: .6rem 1.0rem; // The .6rem vertically centers text on FF, ignored by Webkit
+    background-color: transparent;
+	appearance: none; // Removes awkward default styles on some inputs for iOS
+    @include border(.1rem, solid, $color-quaternary, .4rem);
+    @include shadow(none);
+
+	&:focus {
+		border-color: $color-primary;
+        outline: 0;
+    }
+}
+select {
+	padding-right: 3.0rem;
+	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 29 14" width="29"><path fill="#d1d1d1" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>') center right no-repeat;
+
+	&:focus {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 29 14" width="29"><path fill="#9b4dca" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>');
+    }
+}
+select::-ms-expand {
+    display: none;
+}
+textarea {
+    min-height: 6.5rem;
+}
+label, legend {
+	margin-bottom: .5rem;
+	display: block;
+	font-size: 1.6rem;
+	font-weight: 700;
+}
+fieldset {
+    margin: 0 0 1.5rem 0;
+	padding: 0;
+	border-width: 0;
+}
+input[type='checkbox'], input[type='radio'] {
+	display: inline-block;
+}
+.label-inline {
+	display: inline-block;
+	font-weight: normal;
+	margin-left: .5rem;
+}
+
+// Buttons
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.button, button, input[type='button'], input[type='reset'], input[type='submit'] {
+    color: $color-initial;
+	cursor: pointer;
+	height: 3.8rem;
+    margin: 0 0 1.0rem 0;
+	padding: 0 3.0rem;
+	display: inline-block;
+	font-size: 1.1rem;
+	text-align: center;
+	font-weight: 700;
+	line-height: 3.8rem;
+	white-space: nowrap;
+	text-transform: uppercase;
+	letter-spacing: .1rem;
+	text-decoration: none;
+    background-color: $color-primary;
+    @include border(.1rem, solid, $color-primary, .4rem);
+
+	&:focus, &:hover {
+        color: $color-initial;
+        outline: 0;
+        background-color: $color-secondary;
+        border-color: $color-secondary;
+    }
+
+	&[disabled] {
+		cursor: default;
+		opacity: .5;
+
+		&:focus, &:hover {
+			background-color: $color-primary;
+            border-color: $color-primary;
+        }
+    }
+
+	&.button-outline {
+        color: $color-primary;
+        background-color: transparent;
+
+		&:focus, &:hover {
+            color: $color-secondary;
+            border-color: $color-secondary;
+            background-color: transparent;
+        }
+
+		&[disabled] {
+			&:focus, &:hover {
+                color: $color-primary;
+                border-color: inherit;
+            }
+        }
+    }
+
+	&.button-clear {
+		color: $color-primary;
+		background-color: transparent;
+		border-color: transparent;
+
+		&:focus, &:hover {
+            color: $color-secondary;
+			border-color: transparent;
+			background-color: transparent;
+        }
+
+		&[disabled] {
+			&:focus, &:hover {
+                color: $color-primary;
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "author":       "Anthony Rabine",
+    "author_url":   "https://github.com/arabine",
+
+    "strings": {
+        "buttonAll":        "Tous",
+        "buttonNone":       "Aucun",
+        "disabled":         "Ce champs est désactivé",
+        "empty":            "Aucune option disponible",
+        "emptySearch":      "Aucune option trouvée",
+        "multiple":         "Choisissez une option...",
+        "multipleCount":    [
+            "var num = args['[1]'];",
+            "return 'Choisissez jusqu\\'à [1] ' + (num === 1? 'option': 'options') + '...';"
+        ],
+        "multipleLimit":    "Aucune autre option sélectionnable",
+        "search":           "Rechercher...",
+        "single":           "Choisissez une option..."
+    },
+    "source":       "https://github.com/pytesNET/tail.select/issues/11"
+}

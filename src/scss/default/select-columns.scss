@@ -1,0 +1,113 @@
+//
+//  SELECT-COLUMNS PLUGIN
+//
+@import "../base/_Functions";
+@import "../base/_Mixins";
+@import "../base/_Icons";
+@import "_Config";
+
+
+//
+//  STYLES
+//
+.tail-select.theme-default {
+    .dropdown-inner {
+        ul {
+            transition: max-height 250ms linear;
+
+            &.collapsed {
+                overflow: hidden;
+                max-height: 40px !important;
+
+                &:last-child {
+                    margin-bottom: 15px;
+                }
+            }
+            li.optgroup-title {
+                padding-right: 25px;
+                position: relative;
+
+                span.optgroup-collapse {
+                    right: 5px;
+                    cursor: pointer;
+                    width: 20px;
+                    height: 20px;
+                    position: absolute;
+                    text-align: center;
+                    border-radius: 3px;
+                    transition: background 142ms linear;
+
+                    &:after {
+                        width: 0;
+                        height: 0;
+                        margin: 8px auto 0 auto;
+                        padding: 0;
+                        z-index: 25;
+                        content: "";
+                        opacity: 0.5;
+                        display: block;
+                        border-top: 5px dashed;
+                        border-top: 5px solid\9;
+                        border-right: 5px solid transparent;
+                        border-left: 5px solid transparent;
+                        text-shadow: none;
+                        transition: opacity 142ms linear, transform 142ms linear;
+                    }
+                    &:hover {
+                        background-color: darken(white, 10%);
+
+                        &:after {
+                            opacity: 1.0;
+                        }
+                    }
+                }
+            }
+            &.collapsed li.optgroup-title {
+                span.optgroup-collapse {
+                    background-color: darken(white, 10%);
+                
+                    &:after {
+                        opacity: 1.0;
+                        @include transform(rotate(180deg));
+                    }
+                }
+            }
+        }
+    }
+    .dropdown-inner.dropdown-columns {
+        display: flex;
+        align-items: stretch;
+        flex-wrap: wrap;
+        flex-direction: row;
+
+        .inner-column {
+            width: 100%;
+            padding: 10px 0;
+            @include border(0 0 0 1px, solid, darken(white, 10%));
+
+            &:first-child {
+                margin-left: 0;
+                border-left: 0;
+            }
+            ul {
+                li {
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    white-space: nowrap;
+                }
+            }
+        }
+        &.columns-2 .inner-column {
+            width: 50%;
+        }
+        &.columns-3 .inner-column {
+            width: calc(100% / 3);
+        }
+        &.columns-4 .inner-column {
+            width: 25%;
+        }
+        &.columns-5 .inner-column {
+            width: 20%;
+        }
+    }
+}

@@ -1,0 +1,605 @@
+//
+//  DEFAULT DESIGN
+//
+@import "../base/_Functions";
+@import "../base/_Mixins";
+@import "../base/_Icons";
+@import "_Config";
+
+
+//
+//  KEYFRAMEs
+//
+@keyframes textscroll {
+    70% {
+        padding-left: 0px;
+    }
+    100% {
+        padding-left: 0px;
+    }
+}
+@-webkit-keyframes textscroll {
+    70% {
+        padding-left: 0px;
+    }
+    100% {
+        padding-left: 0px;
+    }
+}
+
+
+//
+//  STYLES :: DEFAULT
+//
+
+/* @start GENERAL */
+.tail-select-theme-name:after {
+    content: "harx-light"; // <theme-name>-<default-scheme>
+}
+.tail-select.theme-harx {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    font-size: $font-size;
+    line-height: $font-height;
+    font-family: $font-family;
+    outline: none;
+    box-sizing: border-box;
+    @include prefix(user-select, none, true, true, true);
+
+    *, *:before, *:after{
+        box-sizing: border-box;
+    }
+    div, ul, li {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+    mark {
+        @include worb(map-get($color-secondary, light));
+        background-color: map-get($color-secondary, light);
+    }
+    button {
+        height: auto;
+        outline: 0;
+        display: inline-block;
+        text-shadow: none;
+        font-weight: normal;
+        letter-spacing: 0;
+        text-transform: none;
+        vertical-align: top;
+
+        &.select-all, &.select-none {
+            color: darken(white, 50%);
+            margin: 2px 0;
+            padding: 4px 7px;
+            font-size: 85%;
+            line-height: 1;
+            border: 0;
+            border-radius: $border-radius - 2px;
+            background-color: darken(map-get($color-background, light), 5%);
+            box-shadow: none;
+            transition: color 142ms linear, border 142ms linear, background 142ms linear;
+
+            &:hover {
+                @include worb(map-get($color-primary, light));
+                background-color: map-get($color-primary, light);
+            }
+        }
+    }
+    &.disabled button, button:disabled {
+        &.select-all, &.select-none {
+            color: darken(white, 25%);
+            background-color: darken(white, 25%);
+        }
+    }
+    input[type='text'] {
+        color: lighten(map-get($color-text, light), 10%);
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 10px 15px;
+        display: inline-block;
+        outline: 0;
+        font-size: 90%;
+        vertical-align: top;
+        background-color: transparent;
+        box-shadow: none;
+        transition: color 142ms linear;
+        @include border(0, solid, transparent, 0);
+
+        &:hover {
+            color: map-get($color-text, light);
+        }
+        &:focus {
+            color: map-get($color-primary, light);
+        }
+    }
+    &.disabled input[type='text'] {
+        color: lighten(map-get($color-text, light), 20%);
+    }
+}
+/* @end GENERAL */
+
+/* @start LABEL */
+.tail-select.theme-harx .select-label {
+    cursor: pointer;
+    color: map-get($color-text, light);
+    width: 100%;
+    margin: 0;
+    padding: 5px 30px 6px 15px;
+    display: block;
+    z-index: 27;
+    position: relative;
+    text-align: left;
+    background-color: white;
+    box-shadow: map-get($shadow-master, light);
+    transition: background 142ms linear, box-shadow 142ms linear;
+    @include border(0px, solid, transparent, 34px);
+
+    &:before {
+        top: 9px;
+        right: 9px;
+        width: 24px;
+        height: 14px;
+        opacity: 1;
+        content: "";
+        display: inline-block;
+        position: absolute;
+        background-color: transparent;
+        transition: background 142ms linear;
+        @include border(1px, solid, transparent, 10px);
+    }
+    &:after {
+        top: 14px;
+        right: 16px;
+        color: fadeout(map-get($color-text, light), 35%);
+        width: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        z-index: 25;
+        content: "";
+        display: inline-block;
+        position: absolute;
+        border-top: 5px dashed;
+        border-top: 5px solid\9;
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+        text-shadow: none;
+        transition: top 142ms linear, color 142ms linear, transform 142ms linear;
+    }
+    .label-count, .label-inner {
+        width: auto;
+        margin: 0;
+        text-align: left;
+        vertical-align: top;
+    }
+    .label-count {
+        float: left;
+        color: map-get($color-text, light);
+        margin: 0 5px 0 0;
+        padding: 0 7px 0 0;
+        font-size: 11.844px;
+        font-weight: bold;
+        text-shadow: none;
+        white-space: nowrap;
+        vertical-align: top;
+        @include border(0px 1px 0 0, solid, darken(white, 10%), 0px);
+    }
+    .label-inner {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;    
+        text-overflow: ellipsis;
+    }
+}
+.tail-select.theme-harx {
+    &:hover .select-label, &:focus .select-label {
+        z-index: 27;
+        transition: z-index 0ms linear 0ms;
+
+        &:before {
+            background-color: darken(white, 10%);
+        }
+        &:after {
+            color: fadeout(map-get($color-text, light), 15%);
+        }
+    }
+    &:hover .select-label, &:focus .select-label, &.active .select-label {
+        box-shadow: map-get($shadow-active, light);
+
+        .label-count, .label-inner{
+            opacity: 1.0;
+        }
+    }
+    &.active .select-label {
+        z-index: 30;
+
+        &:before {
+            background-color: map-get($color-secondary, light);
+        }
+        &:after {
+            top: 13px;
+            color: white;
+            @include transform(rotate(180deg));
+        }
+    }
+    &.disabled .select-label {
+        cursor: not-allowed;
+        box-shadow: map-get($shadow-disabled, light);
+    }
+}
+/* @end LABEL */
+
+/* @start DROPDOWN */
+.tail-select.theme-harx .select-dropdown {
+    top: 100%;
+    left: 0;
+    color: map-get($color-text, light);
+    height: auto;
+    max-height: 0;
+    margin-top: 9px;
+    z-index: 30;
+    overflow: hidden;
+    position: absolute;
+    border: 0;
+    border-radius: $border-radius;
+    background-color: white;
+    transition: max-height 142ms linear;
+
+    &.cloned {
+        min-height: auto;
+        max-height: none;
+        opacity: 0;
+        visibility: hidden;
+    }
+    .dropdown-search {
+        position: relative;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+        @include border( 0 0 1px 0, solid, darken(white, 10%));
+    }
+    .dropdown-inner {
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    .dropdown-empty {
+        color: lighten(map-get($color-text, light), 15%);
+        padding: 16px 0;
+        display: block;
+        font-size: 95%;
+        text-align: center;
+        font-style: italic;
+    }
+    .dropdown-action {
+        top: 3px;
+        right: 15px;
+        width: auto;
+        margin: 0;
+        padding: 7px 0;
+        z-index: 35;
+        display: inline-block;
+        position: absolute;
+        text-align: center;
+    }
+    
+    ul, li {
+        position: relative;
+        list-style: none;
+    }
+    &.title-break {
+        ul li {
+            overflow: visible;
+            white-space: normal;
+            text-overflow: none;
+        }
+    }
+    &.title-clip {
+        ul li {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+    &.title-scroll {
+        ul li {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
+            &:hover span.option-title,
+            &.hover span.option-title {
+                @include animation(textscroll 2.0s infinite ease-in-out 250ms);
+            }
+        }
+    }
+    ul {
+        padding: 7px;
+
+        li {
+            color: map-get($color-text, light);
+            margin: 1px 0;
+            padding: 4px 10px 4px 35px;
+            font-size: 95%;
+            text-align: left;
+            font-weight: normal;
+            text-shadow: none;
+    
+            &.optgroup-title {
+                color: map-get($color-text, light);
+                width: auto;
+                cursor: default;
+                margin: 9px -4px 0 -4px;
+                padding: 6px 10px;
+                text-shadow: none;
+    
+                b {
+                    font-weight: 600;
+                }
+                button {
+                    float: right;
+                    margin-left: 2px;
+                    opacity: 0;
+                }
+                &.optgroup-sticky {
+                    top: -1px;
+                    z-index: 50;
+                    position: sticky;
+
+                    &.moving {
+                        background-color: map-get($color-background, light);
+                        box-shadow: map-get($shadow-moving, light);
+                    }
+                }
+            }
+        }
+        &:hover li.optgroup-title button {
+            opacity: 1;
+        }
+    }
+    
+    // Dropdown Options
+    li.dropdown-option {
+        cursor: pointer;
+        color: map-get($color-text, light);
+        border-radius: $border-radius;
+
+        &:before {
+            top: 50%;
+            left: 10px;
+            width: 15px;
+            height: 15px;
+            margin: -7.5px 0 0 0;
+            padding: 0;
+            z-index: 21;
+            display: inline-block;
+            content: "";
+            opacity: 0;
+            position: absolute;
+            vertical-align: top;
+            background-repeat: no-repeat;
+            background-position: center center;
+            transition: opacity 250ms ease;
+        }
+        .option-description {
+            color: lighten(map-get($color-text, light), 10%);
+            width: auto;
+            margin: 0;
+            padding: 0;
+            display: block;
+            font-size: 10px;
+            text-align: left;
+            line-height: 14px;
+        }
+        &:hover, &.hover {
+            color: map-get($color-primary, light);
+            background-color: fadeout(map-get($color-primary, light), 92.5%);
+        }
+        &.disabled, &.hidden {
+            cursor: not-allowed;
+            color: fadeout(map-get($color-text, light), 50%);
+            background-color: fadeout(map-get($color-text, light), 95.175%);
+
+            .option-description {
+                color: fadeout(map-get($color-text, light), 60%);
+            }
+        }
+        &.selected {
+            color: map-get($color-primary, light);
+            background-color: fadeout(map-get($color-primary, light), 90%);
+
+            .option-description {
+                color: lighten(map-get($color-primary, light), 15%);
+            }
+        }
+    }
+}
+.tail-select.theme-harx {
+    &.active {
+        &:before, &:after {
+            top: 100%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            margin-top: -4px;
+            margin-left: -14px;
+            content: "";
+            z-index: 35;
+            position: absolute;
+            @include border(0 14px 13px 14px, solid, transparent transparent rgba(0, 0, 0, 0.25) transparent);
+        }
+        &:after {
+            margin-top: -3px;
+            margin-left: -13px;
+            border-width: 0 13px 12px 13px;
+            border-color: transparent transparent white transparent;
+        }
+
+        &.open-top {
+            &:before {
+                top: auto;
+                bottom: 100%;
+                margin: 0 0 -4px -14px;
+                border-width: 13px 14px 0 14px;
+                border-color: rgba(0, 0, 0, 0.25) transparent transparent transparent;
+            }
+            &:after {
+                top: auto;
+                bottom: 100%;
+                margin: 0 0 -3px -13px;
+                border-width: 12px 13px 0 13px;
+                border-color: white transparent transparent transparent;
+            }
+        }
+    }
+    &.no-animation .select-dropdown {
+        transition: none;
+    }
+    &.open-top .select-dropdown {
+        top: auto;
+        bottom: 100%;
+        margin: 0 0 9px 0;
+        border-radius: 3px;
+    }
+    &.active .select-dropdown {
+        z-index: 29;
+        box-shadow: map-get($shadow-active, light);
+    }
+}
+
+// Dropdown States
+.tail-select.theme-harx {
+    &.hide-selected .select-dropdown li.dropdown-option.selected,
+    &.hide-disabled .select-dropdown li.dropdown-option.disabled,
+    &.hide-hidden .select-dropdown li.dropdown-option.hidden {
+        display: none;
+    }
+
+    // State :: Normal
+    .select-dropdown li.dropdown-option {
+        &:before {
+            @include icon("select", map-get($color-text, light));
+        }
+        &:hover:before, &.hover:before {
+            opacity: 0.5;
+        }
+    }
+    &.multiple .select-dropdown li.dropdown-option {
+        &:before {
+            @include icon("m-select", map-get($color-text, light));
+        }
+    }
+
+    // State :: Selected
+    .select-dropdown li.dropdown-option.selected {
+        &:before {
+            opacity: 0.85;
+            @include icon("selected", map-get($color-text, light));
+        }
+    }
+    &.multiple .select-dropdown li.dropdown-option.selected {
+        &:before {
+            @include icon("m-selected", map-get($color-text, light));
+        }
+    }
+
+    // State :: Deselect
+    &.deselectable .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden) {
+        &:hover:before, &.hover:before {
+            opacity: 0.85;
+            @include icon("deselect", map-get($color-text, light));
+        }
+    }
+    &.multiple .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden) {
+        &:hover:before, &.hover:before {
+            @include icon("m-deselect", map-get($color-text, light));
+        }
+    }
+
+    // State :: Disabled
+    .select-dropdown li.dropdown-option.disabled,
+    .select-dropdown li.dropdown-option.hidden {
+        &:before {
+            opacity: 0.5;
+            @include icon("disabled", map-get($color-text, light));
+        }
+        &:hover:before, &.hover:before {
+            opacity: 0.5;
+        }
+    }
+    &.multiple .select-dropdown li.dropdown-option.disabled,
+    &.multiple .select-dropdown li.dropdown-option.hidden {
+        &:before {
+            @include icon("m-disabled", map-get($color-text, light));
+        }
+    }
+}
+
+// Feather Icons
+.tail-select.theme-harx.scheme-light-feather {
+    li.dropdown-option {
+        &:before {
+            width: 18px;
+            height: 18px;
+            margin: -9px 0 0 0;
+        }
+    }
+    .select-dropdown li.dropdown-option {
+        &:before {
+            @include icon("select", map-get($color-text, light), "feather");
+        }
+    }
+    &.multiple .select-dropdown li.dropdown-option {
+        &:before {
+            @include icon("m-select",  map-get($color-text, light), "feather");
+        }
+    }
+
+    // State :: Selected
+    .select-dropdown li.dropdown-option.selected {
+        &:before {
+            @include icon("selected", map-get($color-text, light), "feather");
+        }
+    }
+    &.multiple .select-dropdown li.dropdown-option.selected {
+        &:before {
+            @include icon("m-selected", map-get($color-text, light), "feather");
+        }
+    }
+
+    // State :: Deselect
+    &.deselectable .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden) {
+        &:hover:before, &.hover:before {
+            @include icon("deselect", map-get($color-text, light), "feather");
+        }
+    }
+    &.multiple .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden) {
+        &:hover:before, &.hover:before {
+            @include icon("m-deselect", map-get($color-text, light), "feather");
+        }
+    }
+
+    // State :: Disabled
+    .select-dropdown li.dropdown-option.disabled,
+    .select-dropdown li.dropdown-option.hidden {
+        &:before {
+            @include icon("disabled", map-get($color-text, light), "feather");
+        }
+    }
+    &.multiple .select-dropdown li.dropdown-option.disabled,
+    &.multiple .select-dropdown li.dropdown-option.hidden {
+        &:before {
+            @include icon("m-disabled", map-get($color-text, light), "feather");
+        }
+    }
+}
+/* @end DROPDOWN */
+
+
+//
+//  STYLES :: DARK
+//

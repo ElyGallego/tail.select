@@ -1,0 +1,2278 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="content-language" content="en" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>tail.select / Documentation / Public Options</title>
+
+        <!-- Common -->
+        <meta name="author" content="SamBrishes, pytesNET" />
+        <meta name="publisher" content="SamBrishes, pytesNET" />
+        <meta name="copyright" content="SamBrishes, pytesNET" />
+
+        <meta name="name" content="tail.select / Documentation / Public Options" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <!-- Dublin Core -->
+        <meta name="DC.Language" content="en" />
+        <meta name="DC.Creator" content="SamBrishes, pytesNET" />
+        <meta name="DC.Publisher" content="SamBrishes, pytesNET" />
+        <meta name="DC.Rights" content="SamBrishes, pytesNET" />
+        <meta name="DC.Description" content="" />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="pytesNET" />
+        <meta name="twitter:creator" content="pytesNET" />
+        <meta name="twitter:title" content="tail.select / Documentation / Public Options" />
+        <meta name="twitter:description" content="" />
+
+        <!-- Open Graph -->
+        <meta name="og:type" content="website" />
+        <meta name="og:url" content="http://pytesNET.github.io/tail.select" />
+        <meta name="og:locale" content="en" />
+        <meta name="og:title" content="tail.select / Documentation / Public Options" />
+        <meta name="og:site_name" content="tail.select - The vanilla JS solution to level up your HTML &lt;select&gt; fields!" />
+        <meta name="og:description" content="" />
+
+        <!-- Assets -->
+        <link type="text/css" rel="stylesheet" href="../css/octmoon.min.css" />
+        <link type="text/css" rel="stylesheet" href="../css/milligram.min.css" />
+        <link type="text/css" rel="stylesheet" href="../css/styles.min.css" />
+        <script type="text/javascript" src="../js/menuspy.min.js"></script>
+        <script type="text/javascript" src="../js/prism.min.js"></script>
+        <script type="text/javascript" src="../js/website.js"></script>
+        <script type="text/javascript" src="../js/demo.js"></script>
+
+        <!-- Source -->
+        <link type="text/css" rel="stylesheet" href="../../dist/css/default/theme-default.css" />
+        <script type="text/javascript" src="../../dist/js/tail.select.js"></script>
+        <script type="text/javascript" src="../../dist/js/plugins/all.js"></script>
+        <script type="text/javascript" src="../../dist/js/locales/all.js"></script>
+    </head>
+    <body>
+        <div class="header header-static">
+            <div class="container">
+                <div class="row row-no-padding">
+                    <div class="column column-50">
+                        <div class="header-logo">
+                            <a href="https://www.pytes.net" target="_blank" class="logo-developer">
+                                <img src="../img/pytesnet-white.svg" title="pyteesNET Logo" />
+                            </a>
+
+                            <span class="slash">/</span>
+
+                            <a href="https://github.pytes.net/tail.select" target="_blank" class="logo-project">
+                                <span class="tail">tail</span>
+                                <span class="dot">.</span>
+                                <span class="name">select</span>
+                            </a>
+
+                            <div class="logo-projects">
+                                <span class="icon icon-triangle-down" data-toggle="active" data-target=".project-list"></span>
+                                
+                                <ul class="project-list">
+                                    <li class="list-item item-title">
+                                        <span class="tail">other</span><span class="dot">.</span><span class="name">Projects</span>
+                                    </li>
+                                    <li class="list-item"><a href="">
+                                        <span class="item-title">
+                                            <span class="tail">tail</span><span class="dot">.</span><span class="name">DateTime</span>
+                                        </span> 
+                                        <span class="item-slogan">A DateTime Picker</span>
+                                    </a></li>
+                                    <li class="list-item"><a href="">
+                                        <span class="item-title">
+                                            <span class="tail">tail</span><span class="dot">.</span><span class="name">writer</span>
+                                        </span> 
+                                        <span class="item-slogan">A Textarea Markup</span>
+                                    </a></li>
+                                    <li class="list-item"><a href="">
+                                        <span class="item-title">
+                                            <span class="tail">tail</span><span class="dot">.</span><span class="name">sortable</span>
+                                        </span> 
+                                        <span class="item-slogan">A Drag'n'Drop Library</span>
+                                    </a></li>
+                                    <li class="list-item item-close"><span class="icon icon-x" data-toggle="active" data-target=".project-list"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column column-50 text-right">
+                        <ul class="main-navi">
+                            <li class="navi-item">
+                                <a href="../index.html" class="item-link">Home</a>
+                            </li>
+                            <li class="navi-item active">
+                                <a href="../docs/index.html" class="item-link">Documentation</a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="../plugins.html" class="item-link">Plugins</a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="../themes.html" class="item-link">Themes</a>
+                            </li>
+                            <li class="navi-item item-download">
+                                <a href="https://github.com/pytesNET/tail.select/zipball/master" class="item-link">.ZIP</a>
+                                <a href="https://github.com/pytesNET/tail.select/tarball/master" class="item-link">.TAR</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-title">
+            <div class="container">
+                <div class="title-inner">Documentation / Public Options</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="container">
+                <main class="content-page">
+                    <header class="page-header">
+                        <div class="last-author" data-tooltip="Author"><span class="icon icon-person"></span> SamBrishes, pytesNET</div>
+                        <div class="last-update" data-tooltip="Last Update"><span class="icon icon-calendar"></span> Apr. 04, 2020</div>
+                        <div class="last-version" data-tooltip="Package Version"><span class="icon icon-tag"></span> 0.6.0 - Beta</div>
+                    </header>
+
+                    <article class="page-content">
+                        <h1 id="options">Public Options</h1>
+                        <p>
+                            The current version of our <b>tail.select</b> library contains 41 settings. All of these can be passed directly as
+                            second parameter on the main <a href=""><code>tail.select()</code> constructor</a>, but keep in mind that a few
+                            settings (such as <a href="#option-disabled">disabled</a> and <a href="#option-multiple">multiple</a>) gets
+                            overwritten by the source &lt;select&gt; HTML element itself, but only on the first real initialization<span class="color-red">*</span>.
+                            However, you still can change them at any time later using the <a href="class-select.html#method-set">.set()</a> method.
+                        </p>
+                        <p class="note">
+                            <b>Explanation:</b> The first real initialization<span class="color-red">*</span> happens, when the constructor is called on &lt;select&gt; elements, which aren't
+                            already instantiated by a tail.select() contructor before.
+                        </p>
+                        <div class="spoiler">
+                            <div class="spoiler-title" data-toggle="active" data-target=":parent">Show all Options (with Defaults)</div>
+                            <div class="spoiler-content content-max">
+                                <p>
+                                    Below you'll find all options, listed with the respective default values.
+                                </p>
+                        
+<pre class="language-javascript"><code>
+tail.select(".select", {
+    classNames: false,                  // [0.3.0]      Boolean, String, Array
+    csvOutput: false,                   // [0.3.4]      Boolean, String
+    csvSeparator: ',',                  // [0.3.4]      String
+    descriptions: true,                 // [0.3.0]      Boolean
+    deselect: false,                    // [0.3.0]      Boolean
+    disabled: false,                    // [0.5.0]      Boolean
+    grouplessName: null,                // [0.6.0][NEW] String, null
+    height: 350,                        // [0.2.0]      Integer, String, null
+    hideDisabled: false,                // [0.3.0]      Boolean
+    hideEmpty: true,                    // [0.6.0][NEW] Boolean
+    hideHidden: true,                   // [0.6.0][NEW] Boolean
+    hideSelected: false,                // [0.3.0]      Boolean
+    items: { },                         // [0.3.0]      Object, Function
+    locale: 'en',                       // [0.5.0]      String
+    linguisticRules: { },               // [0.5.9]      Object
+    multiple: true,                     // [0.3.0]      Boolean
+    multiLimit: Infinity,               // [0.3.0]      Integer, Infinity
+    multiSelectAll: false,              // [0.4.0]      Boolean
+    multiSelectGroup: true,             // [0.4.0]      Boolean
+    on: { },                            // [0.6.0][NEW] Object
+    openAbove: null,                    // [0.3.0]      Boolean, null
+    placeholder: null,                  // [0.3.0]      String, Function, null
+    placeholderCount: null,             // [0.6.0][NEW] String, Function, null
+    plugins: { },                       // [0.6.0][NEW] Object
+    rtl: null,                          // [0.6.0][NEW] Boolean, null
+    search: false,                      // [0.3.0]      Boolean
+    searchConfig: ['text', 'value'],    // [0.5.13]     Array, Function
+    searchFocus: true,                  // [0.3.0]      Boolean
+    searchMarked: true,                 // [0.3.0]      Boolean
+    searchMinLength: 3,                 // [0.5.13]     Integer
+    sortItems: null,                    // [0.3.0]      String, Function, null
+    sortGroups: null,                   // [0.3.0]      String, Function, null
+    sortSearch: null,                   // [0.6.0][NEW] String, Function, null
+    sourceBind: false,                  // [0.5.0]      Boolean
+    sourceHide: true,                   // [0.5.0]      Boolean
+    startOpen: false,                   // [0.3.0]      Boolean
+    stayOpen: false,                    // [0.3.0]      Boolean, null
+    stickyGroups: false,                // [0.6.0][NEW] Boolean
+    titleOverflow: 'break',             // [0.6.0][NEW] String **EXPERIMENTAL**
+    theme: null,                        // [0.6.0][NEW] String, null
+    width: null                         // [0.2.0]      Integer, String, null
+});
+                        </code></pre>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-classnames">
+                            classNames
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                        </h2>
+                        <p>
+                            This option allows you to add additional class names to the main <b>tail.select</b> container element. You can pass
+                            the class names as space-separated <code>string</code>, or within an <code>Array</code>,
+                            or you also can just use <code>true</code> to copy the class names of the source &lt;select&gt; HTML field.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean | String | Array</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>false</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl>
+                                    <dt>Version 0.3.0</dt>
+                                    <dd>The option <code>copy_class</code> was used prior version 0.3.0 (when tail.select was still a jQuery script).</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-csvoutput">
+                            csvOutput
+                            <span class="version version-added">Added in <b>0.3.4</b></span>
+                            <span class="version version-changed">Updated in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option creates a hidden &lt;input /&gt; HTML field containing all selected option values separated as defined
+                            in <a href="#option-csvseparator">csvSeparator</a>. Use <code>true</code> to use the content of the
+                            <code>data-name</code> attribute or, if not available, take over the direct name attribute of the source &lt;select&gt;
+                            field. You can also pass a <code>string</code> to this option, which gets used as name attribute value.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean | String</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>false</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl>
+                                    <dt>Version 0.6.0</dt>
+                                    <dd>You can now also define the name value as custom <code>data-name</code> attribute on the source &lt;select&gt; field</dd>
+                                    <dd>You can now also pass a <code>string</code> to this option, which gets used as name value.</dd>
+                                    <dt>Version 0.5.0</dt>
+                                    <dd>The name attribute of the source &lt;select&gt; field gets now removed, when this option is used.</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-csvseparator">
+                            csvSeparator
+                            <span class="version version-added">Added in <b>0.3.4</b></span>
+                        </h2>
+                        <p>
+                            This option defines the character used to separate the values of all selected options, and is used by the
+                            API method <a href="">.value()</a> which also covers up the hidden &lt;input /&gt; field created by the
+                            <a href="#option-csvoutput">csvOutput</a> option. This option has no affect on single &lt;select&gt; fields.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>String</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>","</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-descriptions">
+                            descriptions
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                            <span class="version version-changed">Updated in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option enables and disables the rendering of additional descriptions, below the options title inside the
+                            <b>tail.select</b> dropdown list. The description text must be written down on the respective &lt;option&gt;
+                            elements itself using the additional <code>data-description</code> attribute.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>true</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl>
+                                    <dt>Version 0.6.0</dt>
+                                    <dd>The default value of this option has been changed to <code>true</code>.</dd>
+                                    <dt>Version 0.3.0</dt>
+                                    <dd>The option <code>description</code> was used prior version 0.3.0 (when tail.select was still a jQuery script).</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-deselect">
+                            deselect
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                        </h2>
+                        <p>
+                            This option forces and activates the deselectability on single &lt;select&gt; fields. The respective fields also
+                            gets "cleared" on the first real initialization, unless you set the <code>selected</code> attribute on an
+                            &lt;option&gt; element yourself.
+                        </p>
+                        <p class="note">
+                            <b>Good to know:</b> A HTML form with an empty single &lt;select&gt; field will still passes an empty string to your
+                            backend script!
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>false</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl>
+                                    <dt>Version 0.3.0</dt>
+                                    <dd>The option <code>single_deselect</code> was used prior version 0.3.0 (when tail.select was still a jQuery script).</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-disabled">
+                            disabled
+                            <span class="version version-added">Added in <b>0.5.0</b></span>
+                        </h2>
+                        <p>
+                            This option enables and disables the disabled state on the source &lt;select&gt; HTML field, as well as on the
+                            respective <b>tail.select</b> instance. Keep in mind, that this value gets overwritten by the source &lt;select&gt;
+                            element on the first real initialization, but you can change it at any time later using the
+                            <a href="">.config()</a>, <a href="#">.enable()</a> and <a href="#">.disable()</a> methods.
+                        </p>
+                        <p class="note">
+                            <b>Good to know:</b> The <b>tail.select</b> library copies the HTML behaviour of
+                            disabled &lt;select&gt; HTML elements, which means, that you can't open the dropdown field (unless you call the
+                            <a href="">.open()</a> and <a href="#">.close()</a> methods on your own). Check out this <a href="">Workaround</a>
+                            if you want open the dropdown fields without calling methods.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>false</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-grouplessname">
+                            grouplessName
+                            <span class="version version-new">New</span>
+                            <span class="version version-added">Added in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option allows you to add a group header title, within the <b>tail.select</b> dropdown field, for all ungrouped
+                            options available.
+                        </p>
+                        <p class="note">
+                            <b>Good to know:</b> This option won't change the way you're calling and working with ungrouped options on the
+                            <code>Options</code> class methods (so by passing <code>#</code>). This setting also doesn't create a new
+                            &lt;optgroup&gt; element on the source &lt;select&gt; field!
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>String | null</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>null</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-height">
+                            height
+                            <span class="version version-added">Added in <b>0.2.0</b></span>
+                            <span class="version version-changed">Updated in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option sets the max-height of the dropdown container. Just pass an <code>integer</code> or a <code>string</code>
+                            with any number and the unit type of choice, to calculate the height into a pixel unit. You can also define the
+                            height based on the maximum amount of options to be displayed, by passing a string starting with a colon and
+                            followed by the number of options. (ex.: <code>":10"</code>).
+                        </p>
+                        <p>
+                            It's not recommended, but you also can set this option to <code>null</code> which will always use the maximum
+                            required and available space as max-height value, depending on <a href="#option-openabove">openAbove</a>.
+                        </p>
+                        <p class="note">
+                            <b>Good to know:</b> The passed height will always contain the height of the search field too, if enabled, unless
+                            you're using the new ":&lt;number&gt;" syntax.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Integer | String | null</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>350</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl>
+                                    <dt>Version 0.6.0</dt>
+                                    <dd>The value can now be any unit type you want to use, just pass them as string.</dd>
+                                    <dd>
+                                        Add the possibility to calculate the height based on the number of options using the ":&lt;number&gt;"
+                                        syntax.
+                                    </dd>
+                                    <dd>Using <code>null</code> will now use the maximum possible space available as max-height value.</dd>
+                                    <dt>Version 0.4.0</dt>
+                                    <dd>The default value for this option has been changed to 350.</dd>
+                                    <dt>Version 0.3.0</dt>
+                                    <dd>This option now allows also to use <code>null</code> to set no max-height value at all.</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-hidedisabled">
+                            hideDisabled
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                            <span class="version version-changed">Updated in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option skips or hides disabled &lt;option&gt;s. Passing <code>true</code> will hide them using an additional
+                            class name, as described <a href="">here</a>, <code>null</code> will skip them before they gets passed back to the
+                            <a href="">.query()</a> method and <code>false</code> will just show them.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean | null</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>false</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl>
+                                    <dt>Version 0.6.0</dt>
+                                    <dd>
+                                        This option skips disabled items now completely, when <code>null</code> is passed and just hides them
+                                        using the respective CSS Class name on <code>true</code>.
+                                    </dd>
+                                    <dt>Version 0.3.0</dt>
+                                    <dd>The option <code>hide_disabled</code> was used prior version 0.3.0 (when tail.select was still a jQuery script).</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-hideempty">
+                            hideEmpty
+                            <span class="version version-new">New</span>
+                            <span class="version version-added">Added in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option skips all &lt;option&gt; elements, which value attribute is empty. It's a common practice having an
+                            empty valued &lt;option&gt; as first child to act as a placeholder.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>true</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-hidehidden">
+                            hideHidden
+                            <span class="version version-new">New</span>
+                            <span class="version version-added">Added in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option skips or hides hidden &lt;option&gt;s. Passing <code>true</code> will hide them using an additional
+                            class name, as described <a href="">here</a>, <code>null</code> will skip them before they gets passed back to the
+                            <a href="">.query()</a> method and <code>false</code> will just show them.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean | null</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>true</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-hideselected">
+                            hideSelected
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                            <span class="version version-changed">Updated in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option skips or hides disabled &lt;option&gt;s. Passing <code>true</code> will hide them using an additional
+                            class name, as described <a href="">here</a>, <code>null</code> will skip them before they gets passed back to the
+                            <a href="">.query()</a> method and <code>false</code> will just show them.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean | null</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>false</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl>
+                                    <dt>Version 0.6.0</dt>
+                                    <dd>
+                                        This option skips selected items now completely, when <code>null</code> is passed and just hides them
+                                        using the respective CSS Class name on <code>true</code>.
+                                    </dd>
+                                    <dt>Version 0.3.0</dt>
+                                    <dd>The option <code>multi_hide_selected</code> was used prior version 0.3.0 (when tail.select was still a jQuery script).</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-items">
+                            items
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                            <span class="version version-changed">Updated in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option allows you to add new items, which gets added to the <b>tail.select</b> instance as well as to the
+                            source &lt;select&gt; HTML field. You need to pass your items as <code>key: value</code> paired Object, while the
+                            value can either be just the innerText value or another object containing at least a value property with the
+                            respective innerText string.
+                        </p>
+                        <div class="spoiler">
+                            <div class="spoiler-title" data-toggle="active" data-target=":parent">Simple Example <span class="octicon octicon-triangle-down"></span></div>
+                            <div class="spoiler-content">
+                                <p>
+                                    The simple example doesn't allow any additional attributes, so you can't pre-select, disable or hide anything. They
+                                    just gets shown normally and added as ungrouped items.
+                                </p>
+                        
+<pre class="language-javascript"><code>
+tail.select(".select", {
+    items: {
+        option1: "Option 1",
+        option2: "Option 2",
+        option3: "Option 3"
+    }
+});
+                        </code></pre>
+                            </div>
+                        </div>
+                        <div class="spoiler">
+                            <div class="spoiler-title" data-toggle="active" data-target=":parent">Advanced Example <span class="octicon octicon-triangle-down"></span></div>
+                            <div class="spoiler-content">
+                                <p>
+                                    The more advanced way allows you to define each state and attribute of the new &lt;option&gt; element, as well as
+                                    the optgroup and position where the new item should be added. The general known keys are:
+                                </p>
+                        
+                                <dl>
+                                    <dt>value</dt>
+                                    <dd>
+                                        The value is required and used as title (innerText) of the respective &lt;option&gt;. Don't be confused with the
+                                        value attribute used on the &lt;option&gt;-element, because this will be the assigned key property (so
+                                        <code>option1</code> on the example below).
+                                    </dd>
+                        
+                                    <dt>optgroup (or group)</dt>
+                                    <dd>
+                                        The &lt;optgroup&gt; label, where the new &lt;option&gt; should be added to. Skip this property or just use
+                                        <code>#</code> to add the new &lt;option&gt; as ungrouped item. The &lt;optgroup&gt; get created automatically,
+                                        when no &lt;optgroup&gt; with this label could be found.
+                                    </dd>
+                        
+                                    <dt>position</dt>
+                                    <dd>
+                                        The position number where the new &lt;option&gt; should be added. Use <code>-1</code> to add the new &lt;option&gt;
+                                        on the end, or use the respective number for example <code>0</code> for the first position.
+                                    </dd>
+                        
+                                    <dt>selected</dt>
+                                    <dd>The boolean value of the desired <code>selected</code> state.</dd>
+                        
+                                    <dt>disabled</dt>
+                                    <dd>The boolean value of the desired <code>disabled</code> state.</dd>
+                        
+                                    <dt>hidden</dt>
+                                    <dd>The boolean value of the desired <code>hidden</code> state.</dd>
+                        
+                                    <dt>description</dt>
+                                    <dd>The content for the <code>data-description</code> option attribute.</dd>
+                        
+                                    <dt>data-*</dt>
+                                    <dd>You can also add your own custom <code>data-*</code> attributes to the new &lt;option&gt; element.</dd>
+                                </dl>
+                        
+<pre class="language-javascript"><code>
+tail.select(".select", {
+    items: {
+        option1: {
+            value:          "The Value Property is required!",
+            group:          "My Optgroup",
+            position:       -1,
+            selected:       false,
+            disabled:       false,
+            hidden:         false,
+            description:    "My Description Text"
+        }
+    }
+});
+                        </code></pre>
+                            </div>
+                        </div>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Object | Function</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>{ }</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl>
+                                    <dt>Version 0.6.0</dt>
+                                    <dd>Clearfied the available object structures, which are available for this option.</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-locale">
+                            locale
+                            <span class="version version-added">Added in <b>0.5.0</b></span>
+                        </h2>
+                        <p>
+                            This option sets and changes the localization of the complete <b>tail.select</b> instance, if the desired locale is
+                            embed and fully available at this time. Check out the <a href="">Translation</a> page to see which languages are
+                            currently available.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>String</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>"en"</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-linguisticrules">
+                            linguisticRules
+                            <span class="version version-added">Added in <b>0.5.9</b></span>
+                            <span class="version version-changed">Updated in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option contains an object with all available linguistic rules, which gets applied on the search function to
+                            changes language-depending characters into English ones. The English equivalent character is set as a property and
+                            the language-specific character as a value, in German it would look like this <code>{ 'a': 'ä', 'o': 'ö', 'u': 'ü', 'ss': 'ß' }</code>.
+                        </p>
+                        <p>
+                            Each <b>tail.select</b> language file adds his own lingustic rules to this object. Check out the
+                            <a href="">Translation</a> page to see which characters are already included. You can also disable the use of the
+                            lingustic rules, by adding 'strict' to the <a href="#option-searchconfig">searchConfig</a> option.
+                        </p>
+                        <p class="note">
+                            <b>Example:</b>  In German you are able to write Street as "Straße" (using an 'Eszett') and 'Strasse'
+                            (using two 'ss'), by applying the lingustic rules you're able to use both spellings to find the same results.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Object</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>{ }</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl>
+                                    <dt>Version 0.6.0</dt>
+                                    <dd>The lingustic rules gets now set by the respective included language files.</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-multiple">
+                            multiple
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                        </h2>
+                        <p>
+                            This option enables and disables the multiple state on the source &lt;select&gt; HTML field, as well as on the
+                            respective <b>tail.select</b> instance. Keep in mind, that this value gets overwritten by the source &lt;select&gt;
+                            element on the first real initialization, but you can change it at any time later using the
+                            <a href="">.config()</a> method.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>true</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-multilimit">
+                            multiLimit
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                            <span class="version version-changed">Updated in <b>0.5.0</b></span>
+                        </h2>
+                        <p>
+                            This option limits the number of selectable options, just pass the amount of options as integer. You can also use
+                            the global object <code>Infinity</code> to disable any limit at all, or use 0 to disallow any selection at all.
+                            Of course, this setting affects multiple &lt;select&gt; fields and instances only!
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Integer | Infinity</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>Infinity</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl>
+                                    <dt>Version 0.5.0</dt>
+                                    <dd>You can now also pass <code>Infinity</code>, which is also the new default value, to disable any limit at all.</dd>
+                                    <dt>Version 0.3.0</dt>
+                                    <dd>The option <code>multi_limit</code> was used prior version 0.3.0 (when tail.select was still a jQuery script).</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-multiselectall">
+                            multiSelectAll
+                            <span class="version version-added">Added in <b>0.4.0</b></span>
+                        </h2>
+                        <p>
+                            This option displays an 'All' and 'None' action button on the top of the <b>tail.select</b> dropdown list. These
+                            just allows to select and unselect all non-disabled, non-hidden items and is only available on multiple
+                            &lt;select&gt; fields and instances.
+                        </p>
+                        <p class="note">
+                            <b>Good to know:</b> It also takes care of the <a href="#option-multilimit">multiLimit</a> option and selects only
+                            as many options as possible from top to bottom.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>false</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-multiselectgroup">
+                            multiSelectGroup
+                            <span class="version version-added">Added in <b>0.4.0</b></span>
+                        </h2>
+                        <p>
+                            This option displays an 'All' and 'None' action button on the top of each &lt;optgroup&gt; based dropdown header,
+                            excluding the non-grouped items section unless the <a href="#option-grouplessname">grouplessName</a> option is set.
+                            Of course this option is only available on multiple &lt;select&gt; fields and instances.
+                        </p>
+                        <p class="note">
+                            <b>Good to know:</b> It also takes care of the <a href="#option-multilimit">multiLimit</a> option and selects only
+                            as many options as possible from top to bottom.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>true</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-on">
+                            on
+                            <span class="version version-new">New</span>
+                            <span class="version version-added">Added in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option allows you to apply one or more hooks directly on the first real initialization, which is required if
+                            you need to interact with the dropdown building methods, for example. Just pass the name of the hook, callback or
+                            event als key (as described on the <a href="">.on()</a> Method) and your callback function as value.
+                        </p>
+                        <p class="note">
+                            <b>Good to know:</b> This new option replaces the <a href="">cbLoopItem</a>, <a href="">cbLoopGroup</a> and
+                            <a href="">cbEmpty</a> options.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Object</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>{ }</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-openabove">
+                            openAbove
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                        </h2>
+                        <p>
+                            This option determines where the <b>tail.select</b> dropdown field should be opened. Use <code>true</code> to force
+                            the dropdown field always above the label itself, <code>false</code> to do the opposite or keep this setting to
+                            <code>null</code>, which will prefer the bottom location unless there is no room left.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean | null</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>null</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-placeholder">
+                            placeholder
+                            <span class="version version-added">Added in <b>0.1.0</b></span>
+                            <span class="version version-changed">Updated in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option sets a custom placeholder on the respective <b>tail.select</b> instances, which can be directly passed
+                            as string or as callback function. Keep in mind, that this option gets overwritten by the <code>data-placeholder</code>
+                            attribute of the source &lt;select&gt; field on the first real initialization.
+                        </p>
+                        <p>
+                            The callback function gets triggered every time the API Method <a href="methods-select.html#method-updatelabel">.updateLabel()</a>
+                            is called. It gets passed the respective <b>tail.select</b> instance as <code>this</code> argument as well as the
+                            following four parameters. This function MUST always return a string back, if you don't want to change anything
+                            just return the first passed parameter.
+                        </p>
+                        
+                        <p><b>Callback Arguments</b></p>
+                        <dl class="side-by-side">
+                            <dt>string</dt>
+                            <dd>The complete parsed label string, which would be used per default.</dd>
+                        
+                            <dt>label</dt>
+                            <dd>The unparsed label locale id.</dd>
+                        
+                            <dt>count</dt>
+                            <dd>The unparsed count string or null if no count should be shown.</dd>
+                        
+                            <dt>replace</dt>
+                            <dd>
+                                The replacement object, which contains 3 properties:
+                        
+                                <ul>
+                                    <li><code>'[0]': &lt;value&gt;</code> - The number of selected options.</li>
+                                    <li><code>'[1]': &lt;value&gt;</code> - The multiLimit option value or <code>&amp;infin;</code> (&infin;).</li>
+                                    <li><code>'[2]': &lt;value&gt;</code> - The number of still selectable options.</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>String | Function | null</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>null</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl>
+                                    <dt>Version 0.6.0</dt>
+                                    <dd>This option can now also contain a callback function.</dd>
+                                    <dd>This option doesn't get replaced by the invalid "placeholder" attribute anymore.</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-placeholdercount">
+                            placeholderCount
+                            <span class="version version-new">New</span>
+                            <span class="version version-added">Added in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option sets the count / limit string left to the placeholder (or right of it if <a href="#option-rtl">rtl</a>
+                            is enabled). You can either use a string containing one of the following words, or a callback function. Keep in
+                            mind that this option works only on multiple &lt;select&gt; fields.
+                        </p>
+                        
+                        <p><b>Possible Strings</b></p>
+                        <dl class="side-by-side">
+                            <dt>count-up</dt>
+                            <dd>Shows the number of selected options.</dd>
+                        
+                            <dt>count-down</dt>
+                            <dd>Shows the number of options that still can be selected depending on the <a href="#option-multilimit">multiLimit</a>
+                                option. If this option is set to <code>Infinity</code> the number of selectable, not-selected options gets returned.</dd>
+                        
+                            <dt>limit</dt>
+                            <dd>Shows the static <a href="#option-multilimit">multiLimit</a> number or &infin; if set to <code>Infinity</code>.</dd>
+                        
+                            <dt>both</dt>
+                            <dd>Combines 'count-up' / 'limit', including the slash.</dd>
+                        </dl>
+                        
+                        <p><b>Callback</b></p>
+                        <p>
+                            The callback function gets triggered every time the API Method <a href="methods-select.html#method-updatelabel">.updateLabel()</a>
+                            is called. It gets passed the respective <b>tail.select</b> instance as <code>this</code> argument as well as the
+                            following two parameters. You can return one of the property values (as shown on the replace parameter), any kind of
+                            string or just null to skip the count part at all.
+                        </p>
+                        
+                        <p><b>Callback Arguments</b></p>
+                        <dl class="side-by-side">
+                            <dt>label</dt>
+                            <dd>The unparsed label locale id.</dd>
+                        
+                            <dt>replace</dt>
+                            <dd>
+                                The replacement object, which contains 3 properties:
+                        
+                                <ul>
+                                    <li><code>'[0]': &lt;value&gt;</code> - The number of selected options.</li>
+                                    <li><code>'[1]': &lt;value&gt;</code> - The multiLimit option value or <code>&amp;infin;</code> (&infin;).</li>
+                                    <li><code>'[2]': &lt;value&gt;</code> - The number of still selectable options.</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        
+                        <p class="note">
+                            <b>Good to know:</b> This new option replaces the <a href="">multiShowCount</a> and <a href="">multiShowLimit</a> options.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>String | Function | null</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>null</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-plugins">
+                            plugins
+                            <span class="version version-new">New</span>
+                            <span class="version version-added">Added in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option allows you to enable the plugins, you already have included in your HTML document. Use the plugin name
+                            as key and an object containing the respective options (also key: value paired) as value.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Object</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>{ }</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-rtl">
+                            rtl
+                            <span class="version version-new">New</span>
+                            <span class="version version-added">Added in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option enables and disables the 'right-to-left' text direction on the complete <b>tail.select</b> instance, but
+                            not on the source &lt;select&gt; HTML field. Keep this option to <code>null</code> to enable the rtl direction only
+                            on the following locale keys: "ar", "he", "mdr", "sam" and "syr".
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean | null</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>null</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-search">
+                            search
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                        </h2>
+                        <p>
+                            This option shows and hides the search &lt;input /&gt; field on top of the <b>tail.select</b> dropdown list. You can
+                            configure the search function with the following options (all prefixed with `search`) and the
+                            <a href="#option-linguisticrules">linguisticRules</a> option.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>false</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-searchconfig">
+                            searchConfig
+                            <span class="version version-added">Added in <b>0.5.13</b></span>
+                        </h2>
+                        <p>
+                            This option allows you to highly configure or completely take over the search functionality and has been written
+                            by <a href="https://github.com/pytesNET/tail.select/pull/63">@Calak</a> (Many Thanks!). To configure the
+                            search system, just pass an Array with one ore more of the following keys (you can also pass just one single key
+                            as string too). To take over the search completely, just pass a function.
+                        </p>
+                        
+                        <dl class="side-by-side">
+                            <dt>any</dt>
+                            <dd>Search in all available attributes and in the &lt;option&gt;s value and innerText too.</dd>
+                        
+                            <dt>attributes</dt>
+                            <dd>Search in all available attributes.</dd>
+                        
+                            <dt>value</dt>
+                            <dd>Search in the &lt;option&gt;s value and innerText.</dd>
+                        
+                            <dt>text</dt>
+                            <dd>Perform a textual search, which removes the most special characters.</dd>
+                        
+                            <dt>regex</dt>
+                            <dd>Perform a regular espression pattern search.</dd>
+                        
+                            <dt>case</dt>
+                            <dd>Force a case-sensitive search.</dd>
+                        
+                            <dt>strict</dt>
+                            <dd>Prevent applying the linguistic rules, as defined in the <a href="#option-linguisticrules">linguisticRules</a> option.</dd>
+                        
+                            <dt>word</dt>
+                            <dd>Force the search value to be a whole / outstanding word.</dd>
+                        </dl>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>String | Array | Function</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>[ "text", "value" ]</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-searchfocus">
+                            searchFocus
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                        </h2>
+                        <p>
+                            This option sets the documents focus directly on the search &lt;input /&gt; field when the <b>tail.select</b>
+                            dropdown field gets opened. This allows the user to directly type in the searched option.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>true</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-searchmarked">
+                            searchMarked
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                        </h2>
+                        <p>
+                            This option enables and disables the highlighting of the search term found in the options innerText. The respective
+                            term part gets wrapped up in a &lt;mark&gt; HTML element, which may won't work if a custom item renderer is used.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>true</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-searchminlength">
+                            searchMinLength
+                            <span class="version version-added">Added in <b>0.5.13</b></span>
+                        </h2>
+                        <p>
+                            This option sets the minimum number of characters, which are required to trigger a search query. It is not
+                            recommended to set this value to 1, however, there are some understandable reasons for doing this anyway.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Integer</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>3</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-sortitems">
+                            sortItems
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                            <span class="version version-changed">Updated in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option configures the order of the options on each single group (also on the ungrouped group). Keep this
+                            option to <code>null</code> to keep the current order, use 'ASC' or 'DESC' to force an alphabetical order or pass
+                            your own callback function.
+                        </p>
+                        <p>
+                            The callback function gets called with the <code>Options</code> instance as <code>this</code> argument as well as
+                            an iterable object as first and only parameter. The function MUST return an iterable object back, which can also
+                            be an empty array, to skip all options of the respective group.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>String | Function | null</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>null</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl>
+                                    <dt>Version 0.6.0</dt>
+                                    <dd>The default value is now set to <code>null</code>, boolean values are no longer supported.</dd>
+                                    <dt>Version 0.4.0</dt>
+                                    <dd>This option is used as plain callback now, instead of using inside the JavaScript own <code>.sort()</code> function.</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-sortgroups">
+                            sortGroups
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                            <span class="version version-changed">Updated in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option configures the order of all available groups. Keep this to <code>null</code> to keep the current order,
+                            use 'ASC' or 'DESC' to force an alphabetical order or pass your own callback function. The ungrouped group
+                            placeholder, shown as '#', will be always added as first group AFTER the sorting has been done.
+                        </p>
+                        <p>
+                            The callback function gets called with the <code>Options</code> instance as <code>this</code> argument as well as
+                            an Array with all available &lt;optgroup&gt; labels as first an only parameter. The function MUST return an Array
+                            back, which can also be empty to skip all optgroups.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>String | Function | null</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>null</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl>
+                                    <dt>Version 0.6.0</dt>
+                                    <dd>The default value is now set to <code>null</code>, boolean values are no longer supported.</dd>
+                                    <dt>Version 0.4.0</dt>
+                                    <dd>This option is used as plain callback now, instead of using inside the JavaScript own <code>.sort()</code> function.</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-sortsearch">
+                            sortSearch
+                            <span class="version version-new">New</span>
+                            <span class="version version-added">Added in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option configures the order of all listed options, which results from a search query. Keep this to <code>null</code>
+                            to keep the current order, use 'ASC' or 'DESC' to force an alphabetical order or pass your own callback function.
+                        </p>
+                        <p>
+                            The callback function gets called with the <code>Options</code> instance as <code>this</code> argument as well as
+                            an iterable object as first and only parameter. The function MUST return an iterable object back, which can also
+                            be an empty array, to skip all options of the search query.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>String | Function | null</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>null</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-sourcebind">
+                            sourceBind
+                            <span class="version version-added">Added in <b>0.5.0</b></span>
+                        </h2>
+                        <p>
+                            This option allows you to hook an Event Listener to the source &lt;select&gt; element. Thus, all valid changes will
+                            also taken over to the <b>tail.select</b> instance. Invalid changes (such as selecting more items as the
+                            <a href="#option-multilimit">multiLimit</a> option allows) will be rejected and reseted on the source field.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>false</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-sourcehide">
+                            sourceHide
+                            <span class="version version-added">Added in <b>0.5.0</b></span>
+                        </h2>
+                        <p>
+                            This option handles the display and visibility states of the source &lt;select&gt; field and the <b>tail.select</b>
+                            instance. Which means if the source &lt;select&gt; field is already hidden before the initialization (using
+                            <code>display: none;</code> or <code>visibility: hidden;</code>), the main <b>tail.select</b> element gets hidden
+                            with the same state too, otherwise the source &lt;select&gt; field gets hidden using a non-important
+                            <code>display: none;</code> CSS property to its style attribute.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>false</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-startopen">
+                            startOpen
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                        </h2>
+                        <p>
+                            This option enables and disables the call of the <a href="">.open()</a> method, which opens the <b>tail.select</b>
+                            dropdown field, directly after the initialization has been completed.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>false</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-stayopen">
+                            stayOpen
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                        </h2>
+                        <p>
+                            This option enables and disables the call of the <a href="">.close()</a> method. which closes the <b>tail.select</b>
+                            dropdown field, when the user interacts inside or outside the <b>tail.select</b> elements, <b>unless</b> the click
+                            event targets the pull down button inside the label.
+                        </p>
+                        <p>
+                            Set this option to <code>true</code> to never close the dropdown field even if the user clicks outside of it. Use
+                            <code>null</code> to close the dropdown only if the user clicks outside of it. Use <code>false</code> to close the
+                            dropdown if the user clicks outside of it or if an selection has been made on single instances or on multiple
+                            instances, but only if the <a hreF="#option-multilimit">multiLimit</a> option is set (at least to 1) and reached.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean | null</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>false</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl>
+                                    <dt>Version 0.6.0</dt>
+                                    <dd>This option now closes also multiple &lt;select&gt;s, if set to <code>false</code> and the multiLimit is set and reached.</dd>
+                                    <dd>
+                                        This option now allows to pass the value <code>null</code> too, which closes the dropdown if the click
+                                        event targets outside the <b>tail.select</b> instance.
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-stickygroups">
+                            stickyGroups
+                            <span class="version version-new">New</span>
+                            <span class="version version-added">Added in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option sticks the &lt;optgroup&gt; header title, within the <b>tail.select</b> dropdown field, on the top of
+                            the options group when scrolling through its items. This also works on ungrouped items if the
+                            <a href="#option-grouplessname">grouplessName</a> option is set.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Boolean</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>false</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-theme">
+                            theme
+                            <span class="version version-new">New</span>
+                            <span class="version version-added">Added in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option sets the used theme, as well as the scheme (depending on the used theme), of the <b>tail.select</b>
+                            instance. You can either set the "theme-scheme" string by yourself, or you keep this option to <code>null</code>
+                            which tries to detect the included theme (which works on all official themes).
+                        </p>
+                        <p class="note">
+                            <b>Good to know:</b> The theme auto detection requires the settlement of the unused '.tail-select-theme-name'
+                            selector, containing just a <code>content: 'theme-scheme';</code> property, on the CSS stylesheet.
+                            <a href="">Read more about this here</a>.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>String | null</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>null</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-titleoverflow">
+                            titleOverflow
+                            <span class="version version-new">New</span>
+                            <span class="version version-deprecated"><b>EXPERIMENTAL</b></span>
+                            <span class="version version-added">Added in <b>0.6.0</b></span>
+                        </h2>
+                        <p>
+                            This option allows you to set the behaviour on too long option titles within the <b>tail.select</b> dropdown field.
+                            You can either break up the text onto multiple lines (using <code>'break'</code>), clip them and show an
+                            <code>'…'</code> on the end of it (using <code>'clip'</code>) or let them scroll to show the complete text, if the
+                            cursor points over it (using <code>'scroll'</code>).
+                        </p>
+                        <p class="note">
+                            <b>Keep in mind:</b> The available option <code>'scroll'</code> is <b>EXPERIMENTAL</b> and doesn't may work as expected!
+                        </p>
+                        <p><b>Available Values</b></p>
+                        <dl class="side-by-side">
+                            <dt>break</dt>
+                            <dd>Breaks up the text onto multiple lines.</dd>
+                        
+                            <dt>clip</dt>
+                            <dd>Clips the text and adds an '…' on the end.</dd>
+                        
+                            <dt>scroll</dt>
+                            <dd>Clips the text and adds an '…' on the end, but scrolls if the cursor is over it.</dd>
+                        </dl>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>String</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>'break'</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl><dt style="display:none;"></dt><dd><i>No Changes available.</i></dd></dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="option-width">
+                            width
+                            <span class="version version-added">Added in <b>0.2.0</b></span>
+                            <span class="version version-changed">Updated in <b>0.5.0</b></span>
+                        </h2>
+                        <p>
+                            This option sets the width of the main <b>tail.select</b> container. You can pass an integer, which gets changed
+                            into px, or any number and the unit type of choose as string. You can also keep this option to <code>null</code> to
+                            take over the width of the source &lt;select&gt; element itself.
+                        </p>
+                        <div class="option-footer">
+                            <ul class="footer-navi">
+                                <li class="navi-item item-changelog" data-toggle="active" data-target=":parent:parent">Changelog <span class="octicon octicon-triangle-down"></span></li>
+                                <li class="navi-item item-types" data-tooltip="Available Value Types"><code>Integer | String | null</code></li>
+                                <li class="navi-item item-default" data-tooltip="Default Value"><code>null</code></li>
+                            </ul>
+                            <div class="footer-changelog">
+                                <dl>
+                                    <dt>Version 0.5.0</dt>
+                                    <dd>The value can now be any unit type you want to use, just pass them as string.</dd>
+                                    <dt>Version 0.4.0</dt>
+                                    <dd>The <code>'auto'</code> value has been removed.</dd>
+                                    <dd>The <code>null</code> value takes over the behaviour from <code>'auto'</code>.</dd>
+                                    <dt>Version 0.3.0</dt>
+                                    <dd>This option now allows to pass <code>'auto'</code> to use the width of the source &lt;select&gt; field.</dd>
+                                    <dd>This option now allows to pass <code>null</code> to set no width at all.</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        
+                        <h2 id="removed-options">Removed Options <span class="version version-removed">Removed</span></h2>
+                        <p>
+                            The following options has been removed.
+                        </p>
+                        
+                        <h3 id="removed-animate">
+                            animate
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                            <span class="version version-removed">Removed in <b>0.6.0</b></span>
+                        </h3>
+                        <p>
+                            This option enabled or disabled the default animation behaviour when opening or closing the <b>tail.select</b>
+                            dropdown field, which isn't longer handled by JavaScript since version 0.6.0. The animation is now done by CSS only,
+                            all core themes allow to disable it by adding the class name <code>no-animation</code>, for example with the
+                            <a href="#option-classnames">classNames</a> option.
+                        </p>
+                        
+                        
+                        <h3 id="removed-bindsourceselect">
+                            bindSourceSelect
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                            <span class="version version-removed">Removed in <b>0.5.0</b></span>
+                        </h3>
+                        <p>
+                            This option is still available, but has been renamed into <a href="#option-sourcebind">sourceBind</a>.
+                        </p>
+                        
+                        
+                        <h3 id="removed-cbcomplete">
+                            cbComplete
+                            <span class="version version-added">Added in <b>0.5.0</b></span>
+                            <span class="version version-removed">Removed in <b>0.6.0</b></span>
+                        </h3>
+                        <p>
+                            This option has been replaced by the new callback and hook system. Checkout the <a href="">.on()</a> method for
+                            more informations, add callbacks directly using the new <a href="#option-on">on option</a>.
+                        </p>
+                        
+                        
+                        <h3 id="removed-cbempty">
+                            cbEmpty
+                            <span class="version version-added">Added in <b>0.5.0</b></span>
+                            <span class="version version-removed">Removed in <b>0.6.0</b></span>
+                        </h3>
+                        <p>
+                            This option has been replaced by the new callback and hook system. Checkout the <a href="">.on()</a> method for
+                            more informations, add callbacks directly using the new <a href="#option-on">on option</a>.
+                        </p>
+                        
+                        
+                        <h3 id="removed-cbloopitem">
+                            cbLoopItem
+                            <span class="version version-added">Added in <b>0.4.0</b></span>
+                            <span class="version version-removed">Removed in <b>0.6.0</b></span>
+                        </h3>
+                        <p>
+                            This option has been replaced by the new callback and hook system. Checkout the <a href="">.on()</a> method for
+                            more informations, add callbacks directly using the new <a href="#option-on">on option</a>.
+                        </p>
+                        
+                        
+                        <h3 id="removed-cbloopgroup">
+                            cbLoopGroup
+                            <span class="version version-added">Added in <b>0.4.0</b></span>
+                            <span class="version version-removed">Removed in <b>0.6.0</b></span>
+                        </h3>
+                        <p>
+                            This option has been replaced by the new callback and hook system. Checkout the <a href="">.on()</a> method for
+                            more informations, add callbacks directly using the new <a href="#option-on">on option</a>.
+                        </p>
+                        
+                        
+                        <h3 id="removed-hideselect">
+                            hideSelect
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                            <span class="version version-removed">Removed in <b>0.5.0</b></span>
+                        </h3>
+                        <p>
+                            This option is still available, but has been renamed into <a href="#option-sourcehide">sourceHide</a>.
+                        </p>
+                        
+                        
+                        <h3 id="removed-multicountainer">
+                            multiContainer
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                            <span class="version version-removed">Removed in <b>0.6.0</b></span>
+                        </h3>
+                        <p>
+                            This option and its functionality has been completely removed. Check out the <a href="">select-movement</a> Plugin
+                            for an adequate replacement.
+                        </p>
+                        
+                        
+                        <h3 id="removed-multipinselected">
+                            multiPinSelected
+                            <span class="version version-added">Added in <b>0.5.0</b></span>
+                            <span class="version version-removed">Removed in <b>0.6.0</b></span>
+                        </h3>
+                        <p>
+                            This option and its functionality has been completely removed. Check out the <a href="">select-movement</a> Plugin
+                            for an adequate replacement.
+                        </p>
+                        
+                        
+                        <h3 id="removed-multishowcount">
+                            multiShowCount
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                            <span class="version version-removed">Removed in <b>0.6.0</b></span>
+                        </h3>
+                        <p>
+                            This option has been replaced by the new <a href="#option-placeholdercount">placeholderCount</a> option, which
+                            combines this and the <a href="#removed-multishowlimit">multiShowLimit</a> settings with a new syntax.
+                        </p>
+                        
+                        
+                        <h3 id="removed-multishowlimit">
+                            multiShowLimit
+                            <span class="version version-added">Added in <b>0.3.0</b></span>
+                            <span class="version version-removed">Removed in <b>0.6.0</b></span>
+                        </h3>
+                        <p>
+                            This option has been replaced by the new <a href="#option-placeholdercount">placeholderCount</a> option, which
+                            combines this and the <a href="#removed-multishowcount">multiShowCount</a> settings with a new syntax.
+                        </p>
+                        
+                        
+                        <h3 id="removed-searchdisabled">
+                            searchDisabled
+                            <span class="version version-added">Added in <b>0.5.5</b></span>
+                            <span class="version version-removed">Removed in <b>0.6.0</b></span>
+                        </h3>
+                        <p>
+                            This option has been replaced with the existing <a href="#option-hidedisabled">hideDisabled</a> option.
+                        </p></article>
+                    
+                    <footer class="page-footer">
+                        <div class="footer-author"></div>
+                        <div class="footer-last-update"></div>
+                        <div class="footer-tags"></div>
+                    </footer>
+                </main>
+
+                <div class="content-sidebar">
+                    <div class="widget widget-toc">
+                        <div class="widget-title">Table of Content</div>
+                        <div class="widget-content">
+                            
+                            <ul class="toc-navi navi-depth-1">
+                                <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                    <a href="index.html#documentation" title="Documentation">Documentation</a>
+                            
+                                <ul class="toc-sub-navi navi-depth-2">
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="index.html#translations" title="Translations">Translations</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="index.html#translations-add" title="Create a new Translation">Create a new Translation</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                </ul>
+                                </li>
+                                <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                    <a href="basics.html#basics" title="Installation & Usage">Installation & Usage</a>
+                            
+                                <ul class="toc-sub-navi navi-depth-2">
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="basics.html#explanation" title="Explaning the Versions">Explaning the Versions</a>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="basics.html#get" title="Get tail.select">Get tail.select</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="basics.html#package-manager" title="Using a Package Manager">Using a Package Manager</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="basics.html#cdn" title="Using a CDN">Using a CDN</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="basics.html#use-es5" title="Use tail.select (ES5)">Use tail.select (ES5)</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="basics.html#use-es6" title="Use tail.select (ES6)">Use tail.select (ES6)</a>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="basics.html#configure" title="Configure tail.select">Configure tail.select</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="basics.html#constructor" title="Constructor">Constructor</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                </ul>
+                                </li>
+                                <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                    <a href="options.html#options" title="Public Options">Public Options</a>
+                            
+                                <ul class="toc-sub-navi navi-depth-2">
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-classnames" title="classNames">classNames</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-csvoutput" title="csvOutput">csvOutput</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-csvseparator" title="csvSeparator">csvSeparator</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-descriptions" title="descriptions">descriptions</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-deselect" title="deselect">deselect</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-disabled" title="disabled">disabled</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-grouplessname" title="grouplessName">grouplessName</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-height" title="height">height</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-hidedisabled" title="hideDisabled">hideDisabled</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-hideempty" title="hideEmpty">hideEmpty</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-hidehidden" title="hideHidden">hideHidden</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-hideselected" title="hideSelected">hideSelected</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-items" title="items">items</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-locale" title="locale">locale</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-linguisticrules" title="linguisticRules">linguisticRules</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-multiple" title="multiple">multiple</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-multilimit" title="multiLimit">multiLimit</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-multiselectall" title="multiSelectAll">multiSelectAll</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-multiselectgroup" title="multiSelectGroup">multiSelectGroup</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-on" title="on">on</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-openabove" title="openAbove">openAbove</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-placeholder" title="placeholder">placeholder</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-placeholdercount" title="placeholderCount">placeholderCount</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-plugins" title="plugins">plugins</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-rtl" title="rtl">rtl</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-search" title="search">search</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-searchconfig" title="searchConfig">searchConfig</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-searchfocus" title="searchFocus">searchFocus</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-searchmarked" title="searchMarked">searchMarked</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-searchminlength" title="searchMinLength">searchMinLength</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-sortitems" title="sortItems">sortItems</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-sortgroups" title="sortGroups">sortGroups</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-sortsearch" title="sortSearch">sortSearch</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-sourcebind" title="sourceBind">sourceBind</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-sourcehide" title="sourceHide">sourceHide</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-startopen" title="startOpen">startOpen</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-stayopen" title="stayOpen">stayOpen</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-stickygroups" title="stickyGroups">stickyGroups</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-theme" title="theme">theme</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-titleoverflow" title="titleOverflow">titleOverflow</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="options.html#option-width" title="width">width</a>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="options.html#removed-options" title="Removed Options">Removed Options</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-animate" title="animate">animate</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-bindsourceselect" title="bindSourceSelect">bindSourceSelect</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-cbcomplete" title="cbComplete">cbComplete</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-cbempty" title="cbEmpty">cbEmpty</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-cbloopitem" title="cbLoopItem">cbLoopItem</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-cbloopgroup" title="cbLoopGroup">cbLoopGroup</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-hideselect" title="hideSelect">hideSelect</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-multicountainer" title="multiContainer">multiContainer</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-multipinselected" title="multiPinSelected">multiPinSelected</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-multishowcount" title="multiShowCount">multiShowCount</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-multishowlimit" title="multiShowLimit">multiShowLimit</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="options.html#removed-searchdisabled" title="searchDisabled">searchDisabled</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                </ul>
+                                </li>
+                                <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                    <a href="class-select.html#null" title="Select Class">Select Class</a>
+                            
+                                <ul class="toc-sub-navi navi-depth-2">
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="class-select.html#constructor" title="Main Constructor">Main Constructor</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#binding-jquery" title="jQuery Binding">jQuery Binding</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#binding-mootools" title="MooTools Binding">MooTools Binding</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="class-select.html#methods-internal" title="Internal Methods">Internal Methods</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-_e" title="._e()">._e()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-_cls" title="._cls()">._cls()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-init" title=".init()">.init()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-build" title=".build()">.build()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-bind" title=".bind()">.bind()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-calculate" title=".calculate()">.calculate()</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="class-select.html#methods-api" title="API Methods">API Methods</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-trigger" title=".trigger()">.trigger()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-query" title=".query()">.query()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-render" title=".render()">.render()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-update" title=".update()">.update()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-updatecsv" title=".updateCSV()">.updateCSV()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-updatelabel" title=".updateLabel()">.updateLabel()</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="class-select.html#methods-public" title="Public Methods">Public Methods</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-open" title=".open()">.open()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-close" title=".close()">.close()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-toggle" title=".toggle()">.toggle()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-reload" title=".reload()">.reload()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-remove" title=".remove()">.remove()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-get" title=".get()">.get()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-set" title=".set()">.set()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-enable" title=".enable()">.enable()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-disable" title=".disable()">.disable()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-on" title=".on()">.on()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#method-value" title=".value()">.value()</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="class-select.html#methods-internal" title="Variables">Variables</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-__" title=".__">.__</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-_select" title="._select">._select</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-_label" title="._label">._label</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-_dropdown" title="._dropdown">._dropdown</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-_search" title="._search">._search</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-_csv" title="._csv">._csv</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-_last_query" title="._last_query">._last_query</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-id" title=".id">.id</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-e" title=".e">.e</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-con" title=".con">.con</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-listen" title=".listen">.listen</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-callbacks" title=".callbacks">.callbacks</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-options" title=".options">.options</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#variable-plugins" title=".plugins">.plugins</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="class-select.html#methods-removed" title="Removed Methods">Removed Methods</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-callback" title=".callback()">.callback()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-calc" title=".calc()">.calc()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-cbgroup" title=".cbGroup()">.cbGroup()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-cbitem" title=".cbItem()">.cbItem()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-choose" title=".choose()">.choose()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-choose" title=".config()">.config()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-setlabel" title=".setLabel()">.setLabel()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-setcontainer" title=".setContainer()">.setContainer()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-choose" title=".setCSVInput()">.setCSVInput()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-choose" title=".setCounter()">.setCounter()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-updatecontainer" title=".updateContainer()">.updateContainer()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-select.html#removed-updatepin" title=".updatePin()">.updatePin()</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                </ul>
+                                </li>
+                                <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                    <a href="class-options.html#null" title="Options Class">Options Class</a>
+                            
+                                <ul class="toc-sub-navi navi-depth-2">
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#constructor" title="Main Constructor">Main Constructor</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-create" title=".create()">.create()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-get" title=".get()">.get()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-getgroups" title=".getGroups()">.getGroups()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-count" title=".count()">.count()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-set" title=".set()">.set()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-add" title=".add()">.add()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-handle" title=".handle()">.handle()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-select" title=".select()">.select()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-unselect" title=".unselect()">.unselect()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-disable" title=".disable()">.disable()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-enable" title=".enable()">.enable()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-hide" title=".hide()">.hide()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-show" title=".show()">.show()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-toggle" title=".toggle()">.toggle()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-reload" title=".reload()">.reload()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-applylinguisticrules" title=".applyLinguisticRules()">.applyLinguisticRules()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-find" title=".find()">.find()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-finder" title=".finder()">.finder()</a>
+                                    </li>
+                                    <li class="navi-item" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#method-walker" title=".walker()">.walker()</a>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="class-options.html#methods-removed" title="Removed Methods">Removed Methods</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-options.html#removed-all" title="all()">all()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-options.html#removed-init" title="init()">init()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-options.html#removed-invert" title="is()">is()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-options.html#removed-invert" title="invert()">invert()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-options.html#removed-move" title=".move()">.move()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-options.html#removed-remove" title=".remove()">.remove()</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="class-options.html#removed-walk" title="walk()">walk()</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                </ul>
+                                </li>
+                                <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                    <a href="callbacks.html#null" title="Callbacks">Callbacks</a>
+                            
+                                <ul class="toc-sub-navi navi-depth-2">
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="callbacks.html#null" title="Events">Events</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="change">change</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="limit">limit</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="open">open</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="close">close</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="enable">enable</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="disable">disable</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="results">results</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="noresults">noresults</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="callbacks.html#null" title="Filters">Filters</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="query">query</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="query#walk">query#walk</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="render">render</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="render#&lt;type&gt;">render#&lt;type&gt;</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="dropdown">dropdown</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="update">update</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="update#csv">update#csv</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="update#label">update#label</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                    <li class="navi-item item-has-sub" data-toggle="show" data-strict="true">
+                                        <a href="callbacks.html#null" title="Hooks">Hooks</a>
+                            
+                                    <ul class="toc-sub-navi navi-depth-3">
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="init:&lt;position&gt;">init:&lt;position&gt;</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="build:&lt;position&gt;">build:&lt;position&gt;</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="bind:&lt;position&gt;">bind:&lt;position&gt;</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="query:&lt;position&gt;">query:&lt;position&gt;</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="update:&lt;position&gt;">update:&lt;position&gt;</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="reload:&lt;position&gt;">reload:&lt;position&gt;</a>
+                                        </li>
+                                        <li class="navi-item" data-toggle="show" data-strict="true">
+                                            <a href="callbacks.html#null" title="remove:&lt;position&gt;">remove:&lt;position&gt;</a>
+                                        </li>
+                                    </ul>
+                                    </li>
+                                </ul>
+                                </li>
+                                <li class="navi-item" data-toggle="show" data-strict="true">
+                                    <a href="plugins.html#null" title="Plugin API">Plugin API</a>
+                                </li>
+                                <li class="navi-item" data-toggle="show" data-strict="true">
+                                    <a href="theming.html#null" title="Theming API">Theming API</a>
+                                </li>
+                                <li class="navi-item" data-toggle="show" data-strict="true">
+                                    <a href="migrate.html#null" title="Migration Guides">Migration Guides</a>
+                                </li>
+                                <li class="navi-item" data-toggle="show" data-strict="true">
+                                    <a href="how-to-do.html#null" title="Smart Tips & Tricks">Smart Tips & Tricks</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="container">
+                <div class="row footer-meta">
+                    <div class="column column-33">
+                        <b class="footer-title">Important Links</b>
+                        <ul class="footer-navi">
+                            <li class="navi-item">
+                                <a href="https://www.pytes.net" target="_blank">pytesNET - Our official Website</a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="https://www.github.com/pytesNET" target="_blank">pytesNET - Our GitHub Organization</a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="https://www.twitter.com/pytesNET" target="_blank">pytesNET - Our Twitter Profile</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column column-33 text-center">
+                        <div class="developed-by">
+                            <b class="footer-title">Developed By</b>
+                            <a href="https://www.pytes.net" target="_blank">
+                                <img src="../img/pytesnet-white.svg" alt="pytesNET Logo" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="column column-33 text-right">
+                        <b class="footer-title">Other Cool Projects</b>
+                        <ul class="footer-navi">
+                            <li class="navi-item">
+                                <a href="https://github.pytes.net/tail.datetime">tail.datetime - DateTime Picker</a>
+                            </li>
+                            <li class="navi-item">
+                                <a href="https://github.pytes.net/tail.writer">tail.writer - Textarea Markup</a>
+                            </li>
+                            <li class="navi-item disabled">
+                                <span>Coming Soon</span>
+                                <a href="https://github.pytes.net/tail.sortable">tail.sortable - Drag 'n' Drop Library</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row footer-copyright">
+                    <div class="column column-50">
+                        <br />
+                        <b>tail.select</b> is released under the MIT License<br />
+                        Copyright &copy; 2014 - 2020 <a href="https://www.pytes.net" target="_blank">SamBrishes, pytesNET</a>
+                    </div>
+                    <div class="column column-50 text-right">
+                        Star, Fork & Download on <a href="https://www.github.com/pytesNET/tail.select"><span class="icon icon-logo-github"></span></a><br />
+                        Build with <a href="https://milligram.io/" target="_blank">Milligram</a> and <a href="https://octicons.github.com/" target="_blank">Octicons</a><br />
+                        Powered by <a href="https://prismjs.com/" target="_blank">PrismJS</a> and <a href="https://leocs.me/menuspy/" target="_blank">MenuSpy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

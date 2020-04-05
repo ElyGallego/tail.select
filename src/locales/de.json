@@ -1,0 +1,27 @@
+{
+    "author":       "SamBrishes",
+    "author_url":   "https://www.github.com/SamBrishes",
+
+    "strings": {
+        "buttonAll":        "Alle",
+        "buttonNone":       "Keine",
+        "disabled":         "Das Feld ist deaktiviert",
+        "empty":            "Keine Optionen verfügbar",
+        "emptySearch":      "Keine Optionen gefunden",
+        "multiple":         "Wähle eine oder mehrere Optionen...",
+        "multipleCount":    [
+            "var num = args['[1]'];",
+            "return 'Wähle bis zu [1] ' + (num === 1? 'Option': 'Optionen') + '...';"
+        ],
+        "multipleLimit":    "Keine weiteren Optionen wählbar",
+        "search":           "Tippen um zu suchen...",
+        "single":           "Wähle eine Option..."
+    },
+    "linguisticRules": {
+        "a": "ä",
+        "o": "ö",
+        "u": "ü",
+        "ss": "ß"
+    },
+    "source":       "<internal>"
+}

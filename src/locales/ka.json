@@ -1,0 +1,18 @@
+{
+    "author":       "Sandro Pirtskhalava",
+    "author_url":   "https://github.com/spirtskhalava",
+
+    "strings": {
+        "buttonAll":        "ყველას მონიშვნა",
+        "buttonNone":       "ყველას გაუქმება",
+        "disabled":         "ველი გაუქმებულია",
+        "empty":            "ოფცია არ არის ხელმისაწვდომი",
+        "emptySearch":      "ოფცია ვერ მოიძებნა",
+        "multiple":         "აირჩიეთ ოფცია...",
+        "multipleCount":    "აირჩიეთ [0]-ზე მეტი ოფცია...",
+        "multipleLimit":    "თქვენ არ შეგიძლიათ მეტი ოფციის არჩევა",
+        "search":           "ძებნისთვის აკრიფეთ...",
+        "single":           "აირჩიეთ ოფცია..."
+    },
+    "source":  "https://github.com/pytesNET/tail.select/issues/122"
+}

@@ -1,0 +1,18 @@
+{
+    "author":       "MrJavadAdib",
+    "author_url":   "https://github.com/MrJavadAdib",
+
+    "strings": {
+        "buttonAll":        "همه",
+        "buttonNone":       "هیچ‌کدام",
+        "disabled":         "غیرفعال",
+        "empty":            "خالی",
+        "emptySearch":      "خالی کردن جستجو",
+        "multiple":         "نگهدارنده چندتایی",
+        "multipleCount":    "نگهدارنده چندتایی",
+        "multipleLimit":    "محدودیت",
+        "search":           "جستجو",
+        "single":           "نگهدارنده"
+    },
+    "source":  "https://github.com/pytesNET/tail.select/pull/115"
+}

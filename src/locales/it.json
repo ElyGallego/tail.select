@@ -1,0 +1,18 @@
+{
+    "author":       "Alberto Vincenzi",
+    "author_url":   "https://github.com/albertovincenzi",
+
+    "strings": {
+        "buttonAll":        "Tutti",
+        "buttonNone":       "Nessuno",
+        "disabled":         "Questo Campo è disabilitato",
+        "empty":            "Nessuna voce disponibile",
+        "emptySearch":      "Nessuna voce trovata",
+        "multiple":         "Seleziona una Voce...",
+        "multipleCount":    "Selezione limitata a [1] Voci...",
+        "multipleLimit":    "Non puoi selezionare più Voci",
+        "search":           "Digita per cercare...",
+        "single":           "Seleziona una Voce..."
+    },
+    "source":       "https://github.com/pytesNET/tail.select/issues/43"
+}

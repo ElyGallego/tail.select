@@ -1,0 +1,77 @@
+
+// Function :: Fade-Out
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+@function fadeout($color, $alpha) {
+    @if $alpha > 1 {
+        $alpha: $alpha / 100;
+    }
+    @return transparentize($color, $alpha);
+}
+
+// Function :: Fade-In
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+@function fadein($color, $alpha) {
+    @if $alpha > 1 {
+        $alpha: $alpha / 100;
+    }
+    @return opacify($color, $alpha);
+}
+
+
+// Border
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin border($width: 1px, $style: solid, $color: transparent, $radius: 0) {
+    border-width: $width;
+    border-style: $style;
+    border-color: $color;
+    @if $radius != 0 {
+        border-radius: $radius;
+    }
+}
+
+
+// Box Shadow
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin shadow($shadows...) {
+    box-shadow: $shadows;
+    -webkit-box-shadow: $shadows;
+}
+
+
+// Transition
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin transition($transitions...) {
+    transition: $transitions;
+    -webkit-transition: $transitions;
+}
+
+
+// Transform
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin transform($transform) {
+    transform: $transform;
+    -moz-transform: $transform;
+    -webkit-transform: $transform;
+}
+
+
+// Animation
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin animation($animation) {
+    animation: $animation;
+    -moz-animation: $animation;
+    -webkit-animation: $animation;
+}
+
+
+// Prefix
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+@mixin prefix($property, $value, $moz: true, $webkit: true) {
+    #{$property}: $value;
+    @if $moz {
+        -moz-#{$property}: $value;
+    }
+    @if $webkit {
+        -webkit-#{$property}: $value;
+    }
+}

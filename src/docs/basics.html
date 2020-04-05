@@ -1,0 +1,250 @@
+<h1 id="basics">Installation & Usage</h1>
+<p>
+    The <b>tail.select</b> script is available as global hooked and AMD-ready <b>ECMAScript 5</b> version, which is 
+    compatible with the Internet Explorer 10 and above, as well as <b>ECMAScript 2015</b> module (also known as ES6) 
+    which requires a more modern browser (but should also be compatible with the EdgeHTML and EdgeChromium browsers).
+</p>
+
+<h2 id="explanation">Explaning the Versions</h2>
+<p class="subtitle">ECMAScript 5</p>
+<p>
+    The ECMAScript 5 build should ALWAYS be used, when building up a website or a web-based platform, also if you don't 
+    care about Internet Explorer or other Older-Browser at all. Wherever possible, "more modern" JavaScript language 
+    features are tried, containing always a fallback solution if they aren't available. It's perfect to offer your 
+    website for many people as possible.
+</p>
+
+<p class="subtitle">ECMAScript 2015 (ES6)</p>
+<p>
+    The ECMAScript 2015 build should ONLY be used, when building up a <b>ES6 module-based</b> website or web 
+    application, which was only developed for modern browsers anyway. It just uses "modern" JavaScript language 
+    features, which has been marked as stable and integrated in the well-known browser-engines for "enough" time.
+</p>
+
+<h2 id="get">Get tail.select</h2>
+<p>
+    You can download the latest stable version on <a href="">GitHubs Release page</a> at any time, or by using the 
+    above <b>ZIP</b> and <b>TAR</b> buttons on the main navigation. Keep in mind, that it isn't recommended to 
+    download the latest master branch, because it may contains changes and updates which aren't fully tested and may 
+    gets rejected later.
+</p>
+
+<h3 id="package-manager">Using a Package Manager</h3>
+<p>
+    You can also download the latest release using the package managers npm, yarn or bower. Don't install them globally, 
+    because this wouldn't work, even if the ECMAScript 5 build contains a node.js module loader interface. The 
+    <b>tail.select</b> script is not compatible with node.js!
+</p>
+<pre><code>npm install tail.select --save</code></pre>
+<pre><code>yarn add tail.select --save</code></pre>
+<pre><code>bower install tail.select --save</code></pre>
+
+<h3 id="cdn">Using a CDN</h3>
+<p>
+    A CDN may speed up your website and is a helpy little possibility to easily add the <b>tail.select</b> script to 
+    online Editors and IDEs like <a href="https://jsfiddle.net/" target="_blank">jsFiddle</a> or <a href="https://codepen.io" target="_blank">CodePen.io</a>.
+    Just visit the following URLs and navigate to the respective files you want to include:
+</p>
+<pre><code><a href="https://cdn.jsdelivr.net/npm/tail.select@latest/" target="_blank">https://cdn.jsdelivr.net/npm/tail.select@latest/</a></code></pre>
+<pre><code><a href="https://unpkg.com/tail.select/" target="_blank">https://unpkg.com/tail.select/</a></code></pre>
+
+<h2 id="use-es5">Use tail.select (ES5)</h2>
+<p>
+    We recommend to include the Stylesheets you need within your HTML header (between the &lt;head&gt; tags) and the 
+    JavaScript files directly after the starting (or before the ending) &lt;body&gt; tag. The plugins and language files 
+    should ALWAYS be embed AFTER the main JavaScript.
+</p>
+<p class="note">
+    It is ALWAYS recommended to include the minified versions of the Stylesheets and JavaScript files, since it reduces 
+    the loading time for your visitors. Just for development or debugging purposes you should include the unminified 
+    files (The Stylesheets also contains a respective SourceMap pointing to the scss development files). 
+</p>
+
+
+<p id="global-example" class="subtitle">Global Example</p>
+<pre class="language-markup"><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8" /&gt;
+
+        &lt;link type="text/css" rel="stylesheet" href="dist/css/default/tail.select-default.min.css" /&gt;
+        &lt;link type="text/css" rel="stylesheet" href="dist/css/default/plugins/tail.select-{plugin}.min.css" /&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;script type="text/javascript" src="dist/js/tail.select.min.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" src="dist/js/plugins/tail.select-{plugin}.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript" src="dist/js/langs/tail.select-{lang}.js"&gt;&lt;/script&gt;
+
+        &lt;select&gt;
+            &lt;option&gt;My Option&lt;/option&gt;
+        &lt;/select&gt;
+
+        &lt;script type="text/javascript"&gt;
+            document.addEventListener("DOMContentLoaded", function(){
+                tail.select("select", { /* Your Options */ });
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p id="amd-example" class="subtitle">AMD Example</p>
+<pre class="language-markup"><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8" /&gt;
+
+        &lt;link type="text/css" rel="stylesheet" href="dist/css/default/tail.select-default.min.css" /&gt;
+        &lt;link type="text/css" rel="stylesheet" href="dist/css/default/plugins/tail.select-all.min.css" /&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;script type="text/javascript" src="dist/js/require.min.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript"&gt;
+            // In this example, we assume that your JavaScript files
+            //    are in the directory './dist/js/*' on your root folder
+            require([
+                "dist/js/tail.select",
+                "dist/js/plugins/select-all",
+                "dist/js/langs/all"
+            ], function(select, plugin, locale) {
+                plugin(select);     // Load Plugins
+                locale(select);     // Load Locales
+
+                select("select", { /* Your Options */ });
+            });
+        &lt;/script&gt;
+
+        &lt;select&gt;
+            &lt;option&gt;My Option&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2 id="use-es6">Use tail.select (ES6)</h2>
+<p>
+    We recommend to include the Stylesheets you need within your HTML header (between both &lt;head&gt; tags) and since
+    you're using the ECMAScript 2015 (ES6) edition, you don't need to include the JavaScript files anywhere on your HTML 
+    document, instead just import them using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import" target="_blank">import (MDN)</a>
+    statement like the example below.
+</p>
+
+<p id="module-example" class="subtitle">Module Example</p>
+<pre class="language-markup"><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8" /&gt;
+
+        &lt;link type="text/css" rel="stylesheet" href="dist/css/default/tail.select-default.min.css" /&gt;
+        &lt;link type="text/css" rel="stylesheet" href="dist/css/default/plugins/tail.select-all.min.css" /&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;script type="text/javascript" src="dist/js/require.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript"&gt;
+            // In this example, we assume that your JavaScript files
+            //    are in the directory './dist/es/*' on your root folder
+            import { select, options } from "./dist/es/tail.select.js";
+            import { plugin as plugs } from "./dist/es/plugins/select-all.js"
+            import { locale as langs } from "./dist/es/langs/all.js";
+
+            document.addEventListener("DOMContentLoaded", function() {
+                plugs(select);      // Load Plugins
+                langs(select);      // Load Locales
+
+                select("select");
+            });
+        &lt;/script&gt;
+
+        &lt;select&gt;
+            &lt;option&gt;My Option&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2 id="configure">Configure tail.select</h2>
+<p>
+    Now you can start to configure the <b>tail.select</b> environment, which works the same on both versions (ES5, ES6).
+    Just keep in mind that the used variable, where the select contructor is behind, varies depending how and which 
+    build you're including.
+</p>
+<p>
+    The global window injection, as shown <a href="#global-example">on the first example</a>, adds the global variable 
+    <b>tail</b> to the global <code>window</code> object which itself contains the main constructor on <code>select</code>. 
+    The AMD module, as shown <a href="#amd-example">on the second example</a>, just returns the <code>select</code> class 
+    itself and the ES6 module, as shown <a href="#module-example">on the third example</a>, the <code>select</code> as 
+    well as the <code>options</code> classes.
+</p>
+<p>
+    In the example below, we assume that you're using the global window injection.
+</p>
+
+<h3 id="constructor">Constructor</h3>
+<p>
+    The following code just shows a small example, to learn more about the select constructor check out the 
+    <a href="class-select.html#constructor">Select Class</a> documentation page, the explanation about each 
+    single option can be found on the <a href="options.html">options</a> page.
+</p>
+
+<pre class="language-javascript"><code>
+//
+//  tail.select (
+//      @param      The &lt;select&gt; elements or the respective selector string
+//      @param      The options object (the following ones are just the defaults!)
+//      @param      Custom Options class, pass nothing to use the default one
+//  );
+//
+//  You only need to pass the options you're changing the same goes for the third
+//      ... parameter just pass the Options class if you're using a custom one!
+//
+tail.select(
+    "select",                   // Selector String
+    {                           // Default Options Object
+        classNames: false,
+        csvOutput: false,
+        csvSeparator: ',',
+        descriptions: true,
+        deselect: false,
+        disabled: false,
+        grouplessName: null,
+        height: 350,
+        hideDisabled: false,
+        hideEmpty: true,
+        hideHidden: true,
+        hideSelected: false,
+        items: { },
+        locale: 'en',
+        linguisticRules: { },
+        multiple: true,
+        multiLimit: Infinity,
+        multiSelectAll: false,
+        multiSelectGroup: true,
+        on: { },
+        openAbove: null,
+        placeholder: null,
+        placeholderCount: null,
+        plugins: { },
+        rtl: null,
+        search: false, 
+        searchConfig: ['text', 'value'],
+        searchFocus: true,
+        searchMarked: true,
+        searchMinLength: 3,
+        sortItems: null,
+        sortGroups: null,
+        sortSearch: null,
+        sourceBind: false,
+        sourceHide: true,
+        startOpen: false,
+        stayOpen: false,
+        stickyGroups: false,
+        titleOverflow: 'break',
+        theme: null,
+        width: null
+    }, 
+    tail.select.options         // Default Options Class
+);
+</code></pre>

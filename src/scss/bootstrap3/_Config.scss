@@ -1,0 +1,49 @@
+//
+//  THEME CONFIGURATION
+//
+
+
+//
+//  FONT SETTINGS
+//
+$font-family:       "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-size:         14px;
+$font-height:       1.42857143;
+
+
+//
+//  GENERAL SETTINGs
+//
+$border-radius:     4px;
+
+
+//
+//  FONT SETTINGS
+//
+$color-text: (
+    default:        #333333,
+    primary:        white,
+    info:           white,
+    success:        white,
+    warning:        white,
+    danger:         white,
+    funky:          white,
+    mystery:        white,
+    invert:         white,
+);
+$color-primary: (
+    default:        ( #FFFFFF, #E6E6E6 ),
+    primary:        ( #337AB7, darken(#337AB7, 15%) ),
+    info:           ( #5BC0DE, darken(#5BC0DE, 15%) ),
+    success:        ( #5CB85C, darken(#5CB85C, 15%) ),
+    warning:        ( #F0DE4E, darken(#F0DE4E, 15%) ),
+    danger:         ( #D9534F, darken(#D9534F, 15%) ),
+    invert:         ( #333333, #181818 ),
+);
+$color-secondary: (
+    default:        #337AB7
+);
+$color-separators: (
+    default:        #CCCCCC
+);
+

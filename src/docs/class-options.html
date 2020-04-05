@@ -1,0 +1,745 @@
+<h1>Options Class</h1>
+<p>
+    The Options class handles the single &lt;option&gt; elements inside the source &lt;select&gt; fields. It offers 
+    different methods to add, get, modify, remove and walk through the single items offering a few alias methods for 
+    an easier usage.
+</p>
+
+
+<h2 id="constructor">
+    Main Constructor
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h2>
+<p>
+    The main construtor is called inside the <a href="class-select.html#method-init">Select.init()</a> method and just 
+    requires the respective <b>tail.select</b> instance as first and only parameter. It prepares the single &lt;option&gt; 
+    elements with the assurance that each one has a value attribute and it forces the deselectability if the 
+    <a href="options.html#option-deselect">deselect</a> option is enabled on single &lt;select&gt; fields.
+</p>
+
+
+<h2 id="method-create">
+    .create()
+    <span class="version version-new">New</span>
+    <span class="version version-added">Added in <b>0.6.0</b></span>
+</h2>
+<p>
+    This helper methods easily creates a new valid &lt;option&gt; element containing at least an inner text as well as 
+    a <code>value</code> attribute.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>value <span class="types"><code>String</code></span><span class="required">Required</span></dt>
+    <dd>The value attribute used on the new HTMLOptionElement object.</dd>
+
+    <dt>text <span class="types"><code>String</code></span><span class="required">Required</span></dt>
+    <dd>The innerText value used on the new HTMLOptionElement object.</dd>
+
+    <dt>data <span class="types"><code>Object</code></span></dt>
+    <dd>
+        An addiitonal object containing all attributes and states you want to set on the new HTMLOptionElement object. 
+        The object keys 'group', 'optgroup' and 'position' (as used on the <a href="#method-add">.add()</a> method) are 
+        skipped, and you can use 'description' (instead of 'data-description').
+    </dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>
+        This method ALWAYS returns the HTMLElementObject, created with the respective parameters.
+    </dd>
+</dl>
+
+
+<h2 id="method-get">
+    .get()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h2>
+<p>
+    This method allows you to select all available, or just a bunch of specific options depending on the parameter 
+    you've passed. In Fact it builds up a selector string and uses them inside (or including) the source &lt;select&gt; 
+    element.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>value <span class="types"><code>String | null</code></span></dt>
+    <dd>
+        You can either pass the value of a specific &lt;option&gt; element or the position number (which can also be 
+        negative to start counting from the end). Keep this argument on <code>null</code> to disable this selection 
+        restriction. Passing an Object will cancel this method and returns itself back again.
+    </dd>
+
+    <dt>group <span class="types"><code>String | null</code></span></dt>
+    <dd>
+        You can either pass the &lt;optgroup&gt; label value (or use <code>#</code> for the ungrouped group), to 
+        restrict the selection to this single group or you keep this on <code>null</code> to disable this selection 
+        restriction.
+    </dd>
+
+    <dt>checked <span class="types"><code>Boolean | null</code></span></dt>
+    <dd>
+        Pass <code>true</code> to explicit get selected options, <code>false</code> to explicit exclude them or just
+        <code>null</code> to disable this selection restriction.
+    </dd>
+
+    <dt>disabled <span class="types"><code>Boolean | null</code></span></dt>
+    <dd>
+        Pass <code>true</code> to explicit get disabled options, <code>false</code> to explicit exclude them or just
+        <code>null</code> to disable this selection restriction.
+    </dd>
+
+    <dt>hidden <span class="types"><code>Boolean | null</code></span></dt>
+    <dd>
+        Pass <code>true</code> to explicit get hidden options, <code>false</code> to explicit exclude them or just
+        <code>null</code> to disable this selection restriction.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>
+        This method returns an Array with all selected &lt;option&gt; elements, selected using the passed arguments or 
+        the first parameter itself, if it is an Object.
+    </dd>
+</dl>
+
+
+<h2 id="method-getgroups">
+    .getGroups()
+    <span class="version version-new">New</span>
+    <span class="version version-added">Added in <b>0.6.0</b></span>
+</h2>
+<p>
+    This method allows you to select all &lt;optgroup&gt; HTMLOptGroupElements or just the respective label attributes 
+    (depending on the first parameter), inside the source &lt;select&gt; field.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>objects <span class="types"><code>Boolean</code></span></dt>
+    <dd>
+        Pass <code>true</code> to explicit return the &lt;optgroup&gt; elements inside a NodeList Object, pass <code>false</code> 
+        or just skip this parameter to just return the label values within an Array.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Object | Array</code></span></dt>
+    <dd>
+        All available &lt;optgroup&gt; elements as NodeList or just the label strings inside an Array.
+    </dd>
+</dl>
+
+
+<h2 id="method-count">
+    .count()
+    <span class="version version-new">New</span>
+    <span class="version version-added">Added in <b>0.6.0</b></span>
+</h2>
+<p>
+    This method allows you to count the available &lt;option&gt; elements within the source &lt;select&gt; field. It 
+    allows using the same arguments structure, with Exception of the first on, as used on the 
+    <a href="#method-get">.get()</a> method.
+</p>
+
+<dl class="arguments">
+    <dt>group <span class="types"><code>String | null</code></span></dt>
+    <dd>
+        You can either pass the &lt;optgroup&gt; label value (or use <code>#</code> for the ungrouped group), to 
+        restrict the selection to this single group or you keep this on <code>null</code> to disable this selection 
+        restriction.
+    </dd>
+
+    <dt>checked <span class="types"><code>Boolean | null</code></span></dt>
+    <dd>
+        Pass <code>true</code> to explicit get selected options, <code>false</code> to explicit exclude them or just
+        <code>null</code> to disable this selection restriction.
+    </dd>
+
+    <dt>disabled <span class="types"><code>Boolean | null</code></span></dt>
+    <dd>
+        Pass <code>true</code> to explicit get disabled options, <code>false</code> to explicit exclude them or just
+        <code>null</code> to disable this selection restriction.
+    </dd>
+
+    <dt>hidden <span class="types"><code>Boolean | null</code></span></dt>
+    <dd>
+        Pass <code>true</code> to explicit get hidden options, <code>false</code> to explicit exclude them or just
+        <code>null</code> to disable this selection restriction.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Number</code></span></dt>
+    <dd>
+        The number of &lt;option&gt; elements inside the source &lt;select&gt; field, depending on the arguments you 
+        passed. If you pass nothing, it returns the number of all currently available elements.
+    </dd>
+</dl>
+
+
+<h2 id="method-set">
+    .set()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h2>
+<p>
+    This method allows you to set a new &lt;option&gt; element within the source &lt;select&gt; field. This is also used 
+    on the <a href="#method-add">.add()</a> method.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>item <span class="types"><code>String</code></span><span class="required">Required</span></dt>
+    <dd>
+        You can pass either a single HTMLElement object or multiple ones inside an Array.
+    </dd>
+
+    <dt>group <span class="types"><code>String</code></span><span class="required">Required</span></dt>
+    <dd>
+        The group label value (use <code>#</code> for the ungrouped group), where the new &lt;option&gt; elements should
+        be added. If the label doesn't exist, it will create and add a new one. 
+    </dd>
+
+    <dt>position <span class="types"><code>Object</code></span></dt>
+    <dd>
+        The position number, where the new &lt;option&gt; element(s) should be added. The default value is <code>-1</code>,
+        which sets the option always on the end of the list.
+    </dd>
+
+    <dt>reload <span class="types"><code>Object</code></span></dt>
+    <dd>
+        This argument soft <a href="class-select.html#method-reload">.reload()</a>s the dropdown field after all passed 
+        &lt;option&gt; elements (see first parameter) has been set. Use <code>false</code> to disable this behaviour.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Options</b> instance object itself.</dd>
+</dl>
+
+
+<h2 id="method-add">
+    .add()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h2>
+<p>
+    This method allows you to add a bunch of new &lt;option&gt; elements, within the source &lt;select&gt; field, using 
+    a well-formatted Object as first argument. This object gets parsed, created with the <a href="#method-create">.create()</a> 
+    method and gets finally added using <a href="#method-set">.set()</a>.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>data <span class="types"><code>Object</code></span><span class="required">Required</span></dt>
+    <dd>
+        The data object, containing all items you want to add. Check out the <a href="options.html#option-item">items</a> 
+        option to see how this Object MUST be.
+    </dd>
+
+    <dt>group <span class="types"><code>String</code></span><span class="required">Required</span></dt>
+    <dd>
+        The group label value (use <code>#</code> for the ungrouped group), where the new items should be added. This 
+        argument doesn't has any effect, if the first argument already contains the single optgroup labels.
+    </dd>
+
+    <dt>reload <span class="types"><code>Object</code></span></dt>
+    <dd>
+        This argument soft <a href="class-select.html#method-reload">.reload()</a>s the dropdown field after all passed 
+        &lt;option&gt; elements (see first parameter) has been added. Use <code>false</code> to disable this behaviour.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Object</code></span></dt>
+    <dd>This method always returns the <b>Options</b> instance object itself.</dd>
+</dl>
+
+
+<h2 id="method-handle">
+    .handle()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h2>
+<p>
+    This method changes all states, as defined in the second parameter, on all elements of the first parameter. It 
+    also calls the Select own <a href="class-select.html#method-update">.update()</a> method to communicate all 
+    changes on all items, unless you prevent this call by passing <code>true</code> as third parameter.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>items <span class="types"><code>String | Array | Object | null</code></span><span class="required">Required</span></dt>
+    <dd>
+        Pass an HTMLElementOption, a NodeList or a HTMLCollection containing all &lt;opton&gt;s which should be 
+        changed. You can also pass a single string or an Array, which gets applied to the <a href="#method-get">.get()</a> 
+        method. You can also pass <code>null</code> which will change all available &lt;option&gt; elements at once.
+    </dd>
+
+    <dt>states <span class="types"><code>Object</code></span><span class="required">Required</span></dt>
+    <dd>
+        A state object, where the state name you want to change is the key pointing to the new state value (using a 
+        boolean value) or <code>null</code> to toggle the respective state. A state object can contain multiple states 
+        at once, for example: <code>{ selected: null, disabled: true }</code> will toggle the selected state and disable 
+        the option regardless if it is selected or not.
+    </dd>
+
+    <dt>prevent <span class="types"><code>Boolean</code></span></dt>
+    <dd>
+        Using <code>true</code> prevents the call of the parent <a href="class-select.html#method-update">.update()</a> 
+        method, otherwise it gets called with the changed items Array as described on the returning value below.
+    </dd>
+
+    <dt>force <span class="types"><code>Boolean</code></span></dt>
+    <dd>
+        Using <code>true</code> will force the change (which effects the 'selected' state only), even if it shouldn't be 
+        possible. For example: Set this to true to select another &lt;option&gt; even if the <a href="options.html#option-multilimit">multiLimit</a> 
+        is already reached.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Array</code></span></dt>
+    <dd>
+        An Array, which elements are another Arrays consisting of the source &lt;option&gt; element and an object 
+        containing all done state changes. For example: <code>[ [&lt;option&gt;, { selected: true }], ... ]</code>.
+    </dd>
+</dl>
+
+
+<h2 id="method-select">
+    .select()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h2>
+<p>
+    This method is just an alias for <a href="#method-handle">.handle()</a> and allows to easily select one or more 
+    or just all available &lt;option&gt; elements.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>items <span class="types"><code>String | Array | Object</code></span></dt>
+    <dd>Check out the first argument on the <a href="#method-handle">.handle()</a> method.</dd>
+
+    <dt>prevent <span class="types"><code>Boolean</code></span></dt>
+    <dd>Check out the third argument on the <a href="#method-handle">.handle()</a> method.</dd>
+
+    <dt class="return"><span class="types"><code>Array</code></span></dt>
+    <dd>Check out the returning value on the <a href="#method-handle">.handle()</a> method.</dd>
+</dl>
+
+
+<h2 id="method-unselect">
+    .unselect()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h2>
+<p>
+    This method is just an alias for <a href="#method-handle">.handle()</a> and allows to easily unselect one or more 
+    or just all selected &lt;option&gt; elements.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>items <span class="types"><code>String | Array | Object</code></span></dt>
+    <dd>Check out the first argument on the <a href="#method-handle">.handle()</a> method.</dd>
+
+    <dt>prevent <span class="types"><code>Boolean</code></span></dt>
+    <dd>Check out the third argument on the <a href="#method-handle">.handle()</a> method.</dd>
+
+    <dt class="return"><span class="types"><code>Array</code></span></dt>
+    <dd>Check out the returning value on the <a href="#method-handle">.handle()</a> method.</dd>
+</dl>
+
+
+<h2 id="method-disable">
+    .disable()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h2>
+<p>
+    This method is just an alias for <a href="#method-handle">.handle()</a> and allows to easily disable one or more 
+    or just all available &lt;option&gt; elements.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>items <span class="types"><code>String | Array | Object</code></span></dt>
+    <dd>Check out the first argument on the <a href="#method-handle">.handle()</a> method.</dd>
+
+    <dt>prevent <span class="types"><code>Boolean</code></span></dt>
+    <dd>Check out the third argument on the <a href="#method-handle">.handle()</a> method.</dd>
+
+    <dt class="return"><span class="types"><code>Array</code></span></dt>
+    <dd>Check out the returning value on the <a href="#method-handle">.handle()</a> method.</dd>
+</dl>
+
+
+<h2 id="method-enable">
+    .enable()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h2>
+<p>
+    This method is just an alias for <a href="#method-handle">.handle()</a> and allows to easily enable one or more 
+    or just all disabled &lt;option&gt; elements.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>items <span class="types"><code>String | Array | Object</code></span></dt>
+    <dd>Check out the first argument on the <a href="#method-handle">.handle()</a> method.</dd>
+
+    <dt>prevent <span class="types"><code>Boolean</code></span></dt>
+    <dd>Check out the third argument on the <a href="#method-handle">.handle()</a> method.</dd>
+
+    <dt class="return"><span class="types"><code>Array</code></span></dt>
+    <dd>Check out the returning value on the <a href="#method-handle">.handle()</a> method.</dd>
+</dl>
+
+
+<h2 id="method-hide">
+    .hide()
+    <span class="version version-new">New</span>
+    <span class="version version-added">Added in <b>0.6.0</b></span>
+</h2>
+<p>
+    This method is just an alias for <a href="#method-handle">.handle()</a> and allows to easily hide one or more 
+    or just all available &lt;option&gt; elements.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>items <span class="types"><code>String | Array | Object</code></span></dt>
+    <dd>Check out the first argument on the <a href="#method-handle">.handle()</a> method.</dd>
+
+    <dt>prevent <span class="types"><code>Boolean</code></span></dt>
+    <dd>Check out the third argument on the <a href="#method-handle">.handle()</a> method.</dd>
+
+    <dt class="return"><span class="types"><code>Array</code></span></dt>
+    <dd>Check out the returning value on the <a href="#method-handle">.handle()</a> method.</dd>
+</dl>
+
+
+<h2 id="method-show">
+    .show()
+    <span class="version version-new">New</span>
+    <span class="version version-added">Added in <b>0.6.0</b></span>
+</h2>
+<p>
+    This method is just an alias for <a href="#method-handle">.handle()</a> and allows to easily show one or more 
+    or just all hidden &lt;option&gt; elements.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>items <span class="types"><code>String | Array | Object</code></span></dt>
+    <dd>Check out the first argument on the <a href="#method-handle">.handle()</a> method.</dd>
+
+    <dt>prevent <span class="types"><code>Boolean</code></span></dt>
+    <dd>Check out the third argument on the <a href="#method-handle">.handle()</a> method.</dd>
+
+    <dt class="return"><span class="types"><code>Array</code></span></dt>
+    <dd>Check out the returning value on the <a href="#method-handle">.handle()</a> method.</dd>
+</dl>
+
+
+<h2 id="method-toggle">
+    .toggle()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h2>
+<p>
+    This method is just an alias for <a href="#method-handle">.handle()</a> and allows to easily toggle a single state 
+    on one or more or just all &lt;option&gt; elements.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>items <span class="types"><code>String | Array | Object</code></span></dt>
+    <dd>Check out the first argument on the <a href="#method-handle">.handle()</a> method.</dd>
+
+    <dt>state <span class="types"><code>String</code></span><span class="required">Required</span></dt>
+    <dd>The state you want to toggle: 'selected', 'disabled' or 'hidden'.</dd>
+
+    <dt>prevent <span class="types"><code>Boolean</code></span></dt>
+    <dd>Check out the third argument on the <a href="#method-handle">.handle()</a> method.</dd>
+
+    <dt class="return"><span class="types"><code>Array</code></span></dt>
+    <dd>Check out the returning value on the <a href="#method-handle">.handle()</a> method.</dd>
+</dl>
+
+
+<h2 id="method-reload">
+    .reload()
+    <span class="version version-new">New</span>
+    <span class="version version-added">Added in <b>0.6.0</b></span>
+</h2>
+<p>
+    This method applies all changes, which has been made on the &lt;option&gt; elements of the source &lt;select&gt; 
+    field and calls the Select own <a href="class-select.html#method-update">.update()</a> method to communicate all 
+    changes on all items, unless you prevent this call by passing <code>true</code> as first parameter.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>prevent <span class="types"><code>Boolean</code></span></dt>
+    <dd>
+        Using <code>true</code> prevents the call of the parent <a href="class-select.html#method-update">.update()</a> 
+        method, otherwise it gets called with the changed items Array as described on the returning value below.
+    </dd>
+
+    <dt>force <span class="types"><code>Boolean</code></span></dt>
+    <dd>
+        Using <code>true</code> will force the change (which effects the 'selected' state only), even if it shouldn't be 
+        possible. For example: Set this to true to select another &lt;option&gt; even if the <a href="options.html#option-multilimit">multiLimit</a> 
+        is already reached.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Array</code></span></dt>
+    <dd>
+        An Array, which elements are another Arrays consisting of the source &lt;option&gt; element and an object 
+        containing all done state changes. For example: <code>[ [&lt;option&gt;, { selected: true }], ... ]</code>.
+    </dd>
+</dl>
+
+
+<h2 id="method-applylinguisticrules">
+    .applyLinguisticRules()
+    <span class="version version-added">Added in <b>0.5.13</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h2>
+<p>
+    This helper method applies all configured <a href="options.html#option-linguisticrules">linguisticRules</a> to the 
+    search term, used on the <a href="#method-find">.find()</a> query method only.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>items <span class="types"><code>String | Array | Object</code></span></dt>
+    <dd>Check out the first argument on the <a href="#method-handle">.handle()</a> method.</dd>
+
+    <dt>state <span class="types"><code>String</code></span><span class="required">Required</span></dt>
+    <dd>The state you want to toggle: 'selected', 'disabled' or 'hidden'.</dd>
+
+    <dt>prevent <span class="types"><code>Boolean</code></span></dt>
+    <dd>Check out the third argument on the <a href="#method-handle">.handle()</a> method.</dd>
+
+    <dt class="return"><span class="types"><code>Array</code></span></dt>
+    <dd>Check out the returning value on the <a href="#method-handle">.handle()</a> method.</dd>
+</dl>
+
+
+<h2 id="method-find">
+    .find()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h2>
+<p>
+    This method walks through all available &lt;option&gt; fields and applies the search term (first parameter). 
+    Keep in mind that selected, disabled or hidden &lt;option&gt; fields gets skipped if the respective option 
+    <a href="options.html#option-hideselected">hideSelected</a>, <a href="options.html#option-hidedisabled">hideDisabled</a> 
+    or <a href="options.html#option-hideHidden">hideHidden</a> is set to <code>null</code>.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>search <span class="types"><code>String</code></span> <span class="required">Required</span></dt>
+    <dd>The search term, which should be applied.</dd>
+
+    <dt>config <span class="types"><code>String | Function | null</code></span></dt>
+    <dd>
+        The search configuration, which can either be a function or an array with one or more configuration strings. 
+        Check out the <a href="options.html#option-searchconfig">searchConfig</a> option for more informations.
+    </dd>
+
+    <dt>order <span class="types"><code>String | Function | null</code></span></dt>
+    <dd>
+        The ordering instruction for the search results. You can either use 'ASC' or 'DESC' as string, or pass an custom 
+        order callback function. Pass nothing or null to keep the current order. Check out the <a href="options.html#option-sortsearch">sortSearch</a>
+        option for more informations.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Array</code></span></dt>
+    <dd>An Array with all resulting &lt;option&gt; elements.</dd>
+</dl>
+
+
+<h2 id="method-finder">
+    .finder()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h2>
+<p>
+    The finder method calls the <a href="#method-find">.find()</a> method and returns the result either as Pseudo-Generator 
+    or as real Generator, depending on which build you're using. Keep in mind that selected, disabled or hidden &lt;option&gt;
+    elements gets skipped if the respective option <a href="options.html#option-hideselected">hideSelected</a>, 
+    <a href="options.html#option-hidedisabled">hideDisabled</a> or <a href="options.html#option-hideHidden">hideHidden</a>
+    is set to <code>null</code>.
+</p>
+
+<p class="subtitle">ECMAScript 5</p>
+<p>
+    The Pseudo-Generator, as used on the <b>ECMAscript 5</b> build, returns each single item one per one and <code>false</code>
+    if not item is left. Of course, you can break the loop before reaching the end, which requires you to call this 
+    method again by passing <code>reset</code> as <code>this</code> argument.
+</p>
+
+<p class="subtitle">ECMAScript 2015</p>
+<p>
+    The real Generator, as used on the <b>ECMAScript 2015</b> build, <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/yield" target="_blank">yields (MDN)</a>  
+    each single item until it reaches the end or you break the loop on your own. You don't need to reset them, since 
+    real generators doesn't need to be reseted.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>search <span class="types"><code>String</code></span> <span class="required">Required</span></dt>
+    <dd>Check out the first argument on the <a href="#method-find">.find()</a> method.</dd>
+
+    <dt>config <span class="types"><code>String | Function | null</code></span></dt>
+    <dd>Check out the second argument on the <a href="#method-find">.find()</a> method.</dd>
+
+    <dt>order <span class="types"><code>String | Function | null</code></span></dt>
+    <dd>Check out the third argument on the <a href="#method-find">.find()</a> method.</dd>
+
+    <dt class="return"><span class="types"><code>Object | False | *Generator</code></span></dt>
+    <dd>
+        Returns the single &lt;option&gt; objects one by one or <code>false</code> if no item is left on the <b>ECMAScript 5</b> 
+        build, or a real Generator on the <b>ECMAScript 2015</b> build.
+    </dd>
+</dl>
+
+
+<h2 id="method-walker">
+    .walker()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-changed">Updated in <b>0.6.0</b></span>
+</h2>
+<p>
+    The walker method returns each single &lt;option&gt; element either as Pseudo-Generator or as real Generator, 
+    depending on which build you're using. Keep in mind that selected, disabled or hidden &lt;option&gt;
+    elements gets skipped if the respective option <a href="options.html#option-hideselected">hideSelected</a>, 
+    <a href="options.html#option-hidedisabled">hideDisabled</a> or <a href="options.html#option-hideHidden">hideHidden</a>
+    is set to <code>null</code>.
+</p>
+
+<p class="subtitle">ECMAScript 5</p>
+<p>
+    The Pseudo-Generator, as used on the <b>ECMAscript 5</b> build, returns each single item one per one and <code>false</code>
+    if not item is left. Of course, you can break the loop before reaching the end, which requires you to reset it on 
+    method again by passing <code>reset</code> as <code>this</code> argument.
+</p>
+
+<p class="subtitle">ECMAScript 2015</p>
+<p>
+    The real Generator, as used on the <b>ECMAScript 2015</b> build, <a href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/yield" target="_blank">yields (MDN)</a>  
+    each single item until it reaches the end or you break the loop on your own. You don't need to reset them, since 
+    real generators doesn't need to be reseted.
+</p>
+
+<p class="subtitle">Arguments</p>
+<dl class="arguments">
+    <dt>orderg <span class="types"><code>String | Function | null</code></span></dt>
+    <dd>
+        The ordering instruction for the &lt;optgroup&gt; labels. You can either use 'ASC' or 'DESC' as string, or pass 
+        an custom order callback function. Pass nothing or null to keep the current order. Check out the 
+        <a href="options.html#option-sortgroups">sortGroups</a> option for more informations.
+    </dd>
+    
+    <dt>orderi <span class="types"><code>String | Function | null</code></span></dt>
+    <dd>
+        The ordering instruction for the &lt;option&gt; objects. You can either use 'ASC' or 'DESC' as string, or pass 
+        an custom order callback function. Pass nothing or null to keep the current order. Check out the 
+        <a href="options.html#option-sortitems">sortItems</a> option for more informations.
+    </dd>
+
+    <dt class="return"><span class="types"><code>Object | False | *Generator</code></span></dt>
+    <dd>
+        
+        Returns the single &lt;option&gt; objects one by one or <code>false</code> if no item is left on the <b>ECMAScript 5</b> 
+        build, or a real Generator on the <b>ECMAScript 2015</b> build.
+    </dd>
+</dl>
+
+
+<h2 id="methods-removed">Removed Methods</h2>
+<p>
+    The following methods has been removed or replaced.
+</p>
+
+
+<h3 id="removed-all">
+    all()
+    <span class="version version-added">Added in <b>0.5.0</b></span>
+    <span class="version version-removed">Removed in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method allowed to loop and handle all available &lt;option&gt; fields at once. Since Version 0.6.0 you can 
+    achieve the same by calling the <a href="#method-handle">.handle()</a> method, or one of his alias methods, 
+    using <code>null</code> as first parameter.
+</p>
+
+
+<h3 id="removed-init">
+    init()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-removed">Removed in <b>0.5.0</b></span>
+</h3>
+<p>
+    This method initialized the Options instance, which is now completely done by the constructor and doesn't require
+    an own method anymore.
+</p>
+
+
+<h3 id="removed-invert">
+    is()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-removed">Removed in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method has been removed to keep the source a few lines smaller. Since Version 0.6.0 the <b>tail.select</b>
+    script also works directly with the single &lt;option&gt; elements, instead of storing and handling them on our 
+    own. So please use the source code as well instead!
+</p>
+
+
+<h3 id="removed-invert">
+    invert()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-removed">Removed in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method inverted the passed state on all (passed) items. Since Version 0.6.0 you can achieve the same by 
+    calling the <a href="#method-handle">.handle()</a> or <a href="#method-handle">.toggle()</a> method, using 
+    <code>null</code> as first parameter as well as on the respective state.
+</p>
+
+
+<h3 id="removed-move">
+    .move()
+    <span class="version version-added">Added in <b>0.5.0</b></span>
+    <span class="version version-removed">Removed in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method has been removed to keep the source a few lines smaller. Since Version 0.6.0 the <b>tail.select</b>
+    script also works directly with the single &lt;option&gt; elements, instead of storing and handling them on our 
+    own. So please use the source code as well instead!
+</p>
+
+
+<h3 id="removed-remove">
+    .remove()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-removed">Removed in <b>0.6.0</b></span>
+</h3>
+<p>
+    This method has been removed to keep the source a few lines smaller. Since Version 0.6.0 the <b>tail.select</b>
+    script also works directly with the single &lt;option&gt; elements, instead of storing and handling them on our 
+    own. So please use the source code as well instead!
+</p>
+
+
+<h3 id="removed-walk">
+    walk()
+    <span class="version version-added">Added in <b>0.3.0</b></span>
+    <span class="version version-removed">Removed in <b>0.5.0</b></span>
+</h3>
+<p>
+    This method has been removed to keep the source a few lines smaller. Since Version 0.6.0 the <b>tail.select</b>
+    script also works directly with the single &lt;option&gt; elements, instead of storing and handling them on our 
+    own. So please use the source code as well instead!
+</p>

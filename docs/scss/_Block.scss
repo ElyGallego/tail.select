@@ -1,0 +1,233 @@
+
+// Base
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// Set box-sizing globally to handle padding and border widths
+*, *:after, *:before {
+	box-sizing: inherit;
+    -webkit-box-sizing: inherit;
+}
+
+// The base font-size is set at 62.5% for having the convenience
+// of sizing rems in a way that is similar to using px: 1.6rem = 16px
+html {
+    font-size: 62.5%;
+    background-color: $bg-primary;
+	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+// Default body styles
+body {
+    color: lighten($color-secondary, 15%);
+    margin: 0;
+    padding: 0;
+	font-size: 1.8em;
+	font-weight: 400;
+	line-height: 1.6;
+	font-family: 'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+
+// Block Elements
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 5rem;
+	margin-bottom: 2.0rem;
+    font-weight: 300;
+    
+    &:first-child, &.first {
+        margin-top: 0;
+    }
+}
+h1 {
+    padding-bottom: 1.5rem;
+	font-size: 4.6rem;
+    line-height: 1.2;
+    @include border(0 0 1px 0, solid, darken(white, 72%));
+}
+h2 {
+    padding-bottom: 1.5rem;
+	font-size: 3.6rem;
+	line-height: 1.25;
+    @include border(0 0 1px 0, solid, darken(white, 72%));
+}
+h3 {
+	font-size: 2.8rem;
+	line-height: 1.3;
+}
+h4 {
+	font-size: 2.2rem;
+	line-height: 1.35;
+}
+h5 {
+	font-size: 1.8rem;
+	line-height: 1.5;
+}
+h6 {
+	font-size: 1.6rem;
+	line-height: 1.4;
+}
+
+hr {
+	margin: 3.0rem 0;
+    @include border(0 0 .1rem 0, solid, $color-tertiary);
+}
+
+p {
+    margin: 0 0 3.0rem 0;
+
+    &.subtitle {
+        margin: 0 0 1.0rem 0;
+        font-weight: 600;
+        font-size: 105%;
+    }
+}
+
+blockquote {
+	margin-left: 0;
+	margin-right: 0;
+	padding: 1rem 1.5rem;
+    @include border(.3rem, solid, $color-quaternary);
+
+    *:last-child {
+        margin-bottom: 0
+    }
+}
+
+
+// Image
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+img {
+    max-width: 100%;
+}
+
+
+// List
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+dl, ol, ul {
+    margin-top: 0;
+    padding-left: 0;
+    list-style: none;
+
+    code {
+        font-size: 100%;
+        line-height: 100%;
+        vertical-align: baseline;
+    }
+	dl, ol, ul {
+        margin: 1.5rem 0 1.5rem 3.0rem;
+    }
+    dt {
+        margin-bottom: 0;
+        font-weight: 600;
+
+        &:first-child {
+            margin-top: 2.0rem;
+        }
+    }
+    dd {
+        margin: 0 0 1.0rem 0;
+        padding: 1.0rem;
+        font-size: 85%;
+        
+        &:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+    }
+}
+dl.arguments {
+    dt {
+        &:before {
+            opacity: 0.5;
+            content: "<arg> ";
+        }
+        &.return:before {
+            opacity: 0.75;
+            content: "<return> ";
+        }
+        .types {
+            float: right;
+            padding: 9px 10px 8px 10px;
+            background-color: darken($bg-primary, 5%);
+            border-radius: 0.3rem;
+
+            code {
+                color: inherit;
+                margin: 0;
+                padding: 0;
+                display: block;
+                font-size: 1.15rem;
+                font-weight: 400;
+                line-height: 1;
+                background-color: transparent;
+            }
+        }
+        .required {
+            float: right;
+            color: #101010;
+            margin: 0 5px;
+            padding: 9px 10px 8px 10px;
+            font-size: 1.15rem;
+            font-weight: 400;
+            line-height: 1;
+            background-color: darken(white, 15%);
+            border-radius: 0.3rem;
+        }
+    }
+    dd {
+        i {
+            opacity: 0.5;
+        }
+    }
+}
+dl.side-by-side {
+    margin: -2.0rem 0 4.0rem 0;
+    display: grid;
+    grid-template-columns: 150px auto;
+
+    dt, dd {
+        margin: 0 0 1.0rem 0;
+        padding: 0.5rem;
+        font-size: 90%;
+        line-height: 1;
+    }
+}
+ol {
+    list-style: decimal inside;
+}
+
+ul {
+    list-style: circle inside;
+}
+
+li {
+    margin-bottom: 1.0rem;
+}
+
+
+// Table
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+table {
+	border-spacing: 0;
+    width: 100%;
+}
+td, th {
+    padding: 1.2rem 1.5rem;
+    font-size: 1.4rem;
+	text-align: left;
+	border-bottom: .1rem solid darken(white, 70%);
+
+	&:first-child {
+        padding-left: 0;
+    }
+
+	&:last-child {
+        padding-right: 0;
+    }
+}

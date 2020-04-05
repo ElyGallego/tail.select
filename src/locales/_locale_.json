@@ -1,0 +1,18 @@
+{
+    "author":       "",
+    "author_url":   "",
+
+    "strings": {
+        "buttonAll":        "",
+        "buttonNone":       "",
+        "disabled":         "",
+        "empty":            "",
+        "emptySearch":      "",
+        "multiple":         "...",
+        "multipleCount":    "...",
+        "multipleLimit":    "",
+        "search":           "...",
+        "single":           "..."
+    },
+    "source":  ""
+}

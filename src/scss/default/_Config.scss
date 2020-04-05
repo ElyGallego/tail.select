@@ -1,0 +1,46 @@
+//
+//  THEME CONFIGURATION
+//
+
+//
+//  FONT SETTINGS
+//
+$font-family:       inherit;
+$font-size:         14px;
+$font-height:       1.5;
+
+
+//
+//  COLOR SETTINGS
+//
+$color-text:        ( light: #303236, dark: #FFFFFF );
+$color-primary:     ( light: #3C82E6, dark: #3C82E6 );
+$color-secondary:   ( light: #DC4650, dark: #DC4650 );
+$color-background:  ( light: #FFFFFF, dark: #262626 );
+
+
+//
+//  GENERAL SETTINGS
+//
+$border-radius:     3px;
+
+
+//
+//  DESIGN SETTINGS
+//
+$shadow-master:     (
+    light: (0 1px 1px 1px rgba(0, 0, 0, .1), 0 0 1px 1px rgba(0, 0, 0, .25)),
+    dark:  (0 0 0 1px rgba(0, 0, 0, .9), 0 6px 4px -4px rgba(0, 0, 0, .75))
+);
+$shadow-active:     (
+    light: (0 1px 1px 1px rgba(0, 0, 0, .1), 0 0 1px 1px map-get($color-primary, light)),
+    dark:  (0 0 0 1px map-get($color-primary, dark), 0 6px 4px -4px rgba(0, 0, 0, .75))
+);
+$shadow-disabled:   (
+    light: (0 0 1px 1px rgba(0, 0, 0, .35)),
+    dark:  (0 0 1px 1px rgba(0, 0, 0, .35))
+);
+$shadow-moving:     (
+    light: (0 1px 0 0 rgb(0, 0, 0, .1), 0 1px 2px rgba(0, 0, 0, .25)),
+    dark:  (0 1px 0 0 rgb(0, 0, 0, .1), 0 1px 2px rgba(0, 0, 0, .25))
+);

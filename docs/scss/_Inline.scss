@@ -1,0 +1,21 @@
+
+// Inline Elements
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+a {
+    color: lighten($color-orange, 25%);
+	text-decoration: none;
+    @include transition(color 142ms linear);
+
+	&:focus, &:hover {
+        color: $color-orange;
+    }
+}
+
+b, strong {
+    font-weight: 600;
+}
+
+i, em {
+    font-style: italic;
+}

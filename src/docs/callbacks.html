@@ -1,0 +1,125 @@
+<h1>Callbacks</h1>
+<p>
+    The <b>tail.select</b> environment offers you 3 different types of callbacks, where you can place your own code, 
+    interact with a specific part of the <b>tail.select</b> script or also completely take-over an entire workflow of 
+    the method itself.
+</p>
+<p>
+    You can add each callback type using the <a href="">on</a> option on the main <b>tail.select()</b> constructor or 
+    at any time after the initialization using the <a href="">.on()</a> method on the respective instance.
+</p>
+
+
+<h2>Events</h2>
+<p>"Something happened, and you may need to know it!"</p>
+<p>
+    Events gets triggered everytime, when some (user) interaction happens, such as the dropdown field gets opened, the 
+    bunch of options gets rendered in the <b>tail.select</b> dropdown field or an item gets selected, disabled or hidden. 
+</p>
+<p>
+    Events gets also attached and triggered on the main <b>tail.select</b> container, which means that you can catch 
+    them using <code>.addEventListener()</code> next to the own <a href="">.on()</a> method. 
+</p>
+<p class="note">
+    <b>Good to Know:</b> Changing a state on an item gets also triggered on the source &lt;select&gt; field!
+</p>
+
+<h3>change</h3>
+<p></p>
+
+<h3>limit</h3>
+<p></p>
+
+<h3>open</h3>
+<p></p>
+
+<h3>close</h3>
+<p></p>
+
+<h3>enable</h3>
+<p></p>
+
+<h3>disable</h3>
+<p></p>
+
+<h3>results</h3>
+<p></p>
+
+<h3>noresults</h3>
+<p></p>
+
+
+<h2>Filters</h2>
+<p>"Something has been created, and you may want to change it!"</p>
+<p>
+    Filters gets triggered everytime, when something important has been created or initialized, such as a rendered 
+    dropdown item or the method and arguments of a single <a href="">.query()</a>. Attached callback functions will 
+    always gets passed the respective arguments, which you're able to change and MUST return the arguments again (even 
+    if you don't changed them).
+</p>
+<p class="note">
+    <b>Good to Know:</b> It's highly important to ALWAYS return ALL arguments in the same order. Otherwise the script 
+    will break!
+</p>
+
+<h3>query</h3>
+<p></p>
+
+<h3>query#walk</h3>
+<p></p>
+
+<h3>render</h3>
+<p></p>
+
+<h3>render#&lt;type&gt;</h3>
+<p></p>
+
+<h3>dropdown</h3>
+<p></p>
+
+<h3>update</h3>
+<p></p>
+
+<h3>update#csv</h3>
+<p></p>
+
+<h3>update#label</h3>
+<p></p>
+
+
+<h2>Hooks</h2>
+<p>"Something is or has been done, and you may want to intervene!"</p>
+<p>
+    Hooks gets triggered everytime on the top and the bottom of important <a href="">Select()</a> methods, and ALWAYS 
+    contains a <code>:before</code> or <code>:after</code> on the callback name. Both types gets ALWAYS passed the 
+    arguments with which the respective method itself was called too.
+</p>
+<p>
+    The <code>:before</code> hook allows you to prepend your own code or to completely take-over the entire workflow of 
+    the respective method, depending if you return <code>true</code> (prepend) or <code>false</code> (take-over) on your 
+    callback function. The <code>:after</code> hook just allows you to append your own code on the bottom of the method.
+</p>
+<p class="note">
+    <b>Good to Know:</b> Just one of the attached callbacks needs to return <code>false</code> to skip the entire workflow!
+</p>
+
+<h3>init:&lt;position&gt;</h3>
+<p></p>
+
+<h3>build:&lt;position&gt;</h3>
+<p></p>
+
+<h3>bind:&lt;position&gt;</h3>
+<p></p>
+
+<h3>query:&lt;position&gt;</h3>
+<p></p>
+
+<h3>update:&lt;position&gt;</h3>
+<p></p>
+
+<h3>reload:&lt;position&gt;</h3>
+<p></p>
+
+<h3>remove:&lt;position&gt;</h3>
+<p></p>

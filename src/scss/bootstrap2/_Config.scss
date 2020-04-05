@@ -1,0 +1,50 @@
+//
+//  THEME CONFIGURATION
+//
+
+
+//
+//  FONT SETTINGs
+//
+$font-family:       "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-size:         14px;
+$font-height:       20px;
+
+
+//
+//  GENERAL SETTINGs
+//
+$border-radius:     4px;
+
+
+//
+//  COLOR SETTINGs
+//
+$color-text: (
+    default:        #333333,
+    primary:        white,
+    info:           white,
+    success:        white,
+    warning:        white,
+    danger:         white,
+    funky:          white,
+    mystery:        white,
+    invert:         white,
+);
+$color-primary: (
+    default:        ( #FFFFFF, #E6E6E6 ),
+    primary:        ( #0088cc, #0044cc ),
+    info:           ( #5bc0de, #2f96b4 ),
+    success:        ( #62c462, #51a351 ),
+    warning:        ( #fbb450, #f89406 ),
+    danger:         ( #ee5f5b, #bd362f ),
+    funky:          ( #c3325f, #9a284b ),
+    mystery:        ( #7a43b6, #613591 ),
+    invert:         ( #444444, #222222 ),
+);
+$color-secondary: (
+    default:        #0088CC
+);
+$color-separators: (
+    default:        #CCCCCC
+);

@@ -1,0 +1,25 @@
+{
+    "name": "synt",
+    "displayName": "SYNTER - Template Environment Rebuilder",
+    "description": "Synt Template Environment Rebuilder, developed for our tail projects.",
+    "version": "0.1.0",
+    "engines": {
+        "vscode": "^1.41.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "synt",
+            "aliases": ["Synter", "synter"],
+            "extensions": [".synt", ".synter"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "synt",
+            "scopeName": "source.synt",
+            "path": "./syntaxes/synt.tmLanguage.json"
+        }]
+    }
+}

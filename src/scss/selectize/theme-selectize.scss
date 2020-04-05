@@ -1,0 +1,17 @@
+//
+//  SELECTIZE DESIGN
+//
+@import "../base/_Functions";
+@import "../base/_Mixins";
+@import "_Config";
+
+
+//
+//  STYLES
+//
+
+/* @start GENERAL */
+.tail-select-theme-name:after {
+    content: "selectize-default"; // <theme-name>-<default-scheme>
+}
+/* @end GENERAL */

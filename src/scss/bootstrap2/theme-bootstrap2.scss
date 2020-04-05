@@ -1,0 +1,497 @@
+//
+//  BOOTSTRAP2 DESIGN
+//
+@import "../base/_Functions";
+@import "../base/_Mixins";
+@import "../base/_Icons";
+@import "_Config";
+
+
+//
+//  KEYFRAMEs
+//
+@keyframes textscroll {
+    70% {
+        padding-left: 0px;
+    }
+    100% {
+        padding-left: 0px;
+    }
+}
+@-webkit-keyframes textscroll {
+    70% {
+        padding-left: 0px;
+    }
+    100% {
+        padding-left: 0px;
+    }
+}
+
+
+//
+//  STYLES
+//
+
+/* @start GENERAL */
+.tail-select-theme-name:after {
+    content: "bootstrap2-default"; // <theme-name>-<default-scheme>
+}
+.tail-select.theme-bootstrap2 {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    font-size: $font-size;
+    line-height: $font-height;
+    font-family: $font-family;
+    outline: none;
+    box-sizing: border-box;
+    @include prefix(user-select, none, true, true, true);
+
+    *, *:before, *:after{
+        box-sizing: border-box;
+    }
+    div, ul, li {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+    mark {
+        @include worb(map-get($color-secondary, default));
+        background-color: map-get($color-secondary, default);
+    }
+    button {
+        height: auto;
+        outline: none;
+        display: inline-block;
+        text-shadow: none;
+        vertical-align: top;
+
+        &.select-all, &.select-none {
+            color: lighten(map-get($color-text, default), 46.5%);
+            margin: 0 2px;
+            padding: 2px 6px;
+            font-size: 10px;
+            line-height: 14px;
+            background-color: transparent;
+            box-shadow: none;
+            transition: color 142ms linear, border 142ms linear, background 142ms linear;
+            @include border(1px, solid, map-get($color-separators, default), 3px);
+        }
+        &.select-all {
+            &:hover {
+                color: #62C462;
+                border-color: #62C462;
+            }
+        }
+        &.select-none {
+            &:hover {
+                color: #EE5F5B;
+                border-color: #EE5F5B;
+            }
+        }
+    }
+    &.disabled button, button:disabled {
+        &.select-all, &.select-none {
+            color: map-get($color-separators, default);
+            border-color: map-get($color-separators, default);
+            background-color: #f0f0f0;
+        }
+    }
+    input[type="text"] {
+        color: map-get($color-text, default);
+        width: 100%;
+        height: 30px;
+        margin: 0;
+        padding: 4px 6px;
+        display: inline-block;
+        font-size: 12px;
+        line-height: 30px;
+        vertical-align: middle;
+        background-color: transparent;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        transition: border 142ms linear, box-shadow 142ms linear;
+        @include border(1px, solid, map-get($color-separators, default), 3px);
+
+        &:hover {
+            color: map-get($color-text, default);
+            border-color: darken(map-get($color-separators, default), 10%);
+        }
+        &:focus {
+            color: map-get($color-secondary, default);
+            border-color: map-get($color-secondary, default);
+        }
+        &:disabled {
+            color: map-get($color-separators, default);
+            border-color: map-get($color-separators, default);
+            background-color: #f0f0f0;
+        }
+    }
+}
+/* @end GENERAL */
+
+/* @start LABEL */
+.tail-select.theme-bootstrap2 .select-label {
+    cursor: pointer;
+    color: map-get($color-text, default);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+    position: relative;
+    text-align: left;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, .75);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    @include gradient(nth(map-get($color-primary, default), 1), nth(map-get($color-primary, default), 2));
+    @include border(1px, solid, map-get($color-separators, default), $border-radius);
+
+    &:before, &:after {
+        margin: 0;
+        padding: 0;
+        content: "";
+        display: inline-block;
+        position: absolute;
+        text-shadow: none;
+        vertical-align: top;
+    }
+    &:after {
+        top: 0;
+        right: 0;
+        width: 28px;
+        height: 28px;
+        z-index: 24;
+        @include gradient(nth(map-get($color-primary, default), 1), nth(map-get($color-primary, default), 2));
+        @include border(0 0 0 1px, solid, map-get($color-separators, default), 0 2px 2px 0);
+    }
+    &:before {
+        top: 3px;
+        right: 9px;
+        width: 0;
+        height: 0;
+        margin-top: 9px;
+        z-index: 25;
+        border-top: 5px dashed;
+        border-top: 5px solid\9;
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+        text-shadow: none;
+        transition: transform 142ms linear;
+    }
+    &:hover:after {
+        background-color: nth(map-get($color-primary, default), 2);
+        background-position: 0 -15px;
+        transition: background-position .1s linear;
+    }
+    .label-count, .label-inner {
+        width: auto;
+        margin: 0;
+        padding: 4px 12px;
+        display: inline-block;
+        text-align: left;
+        vertical-align: top;
+    }
+    .label-count {
+        float: left;
+        color: nth(map-get($color-primary, default), 2);
+        margin: 7px -2px 7px 8px;
+        padding: 2px 9px 2px 9px;
+        font-size: 11.844px;
+        font-weight: bold;
+        line-height: 12px;
+        text-shadow: none;
+        white-space: nowrap;
+        background-color: white;
+        border-radius: 9px;
+    }
+    .label-inner {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;    
+        text-overflow: ellipsis;
+    }
+}
+.tail-select.theme-bootstrap2.active .select-label {
+    &:after {
+        background-color: nth(map-get($color-primary, default), 2);
+        background-position: 0 -15px;
+        transition: background-position .1s linear;
+        box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    }
+    &:before {
+        @include transform(rotate(180deg));
+    }
+}
+/* @end LABEL */
+
+/* @start DROPDOWN */
+.tail-select.theme-bootstrap2 .select-dropdown {
+    top: 100%;
+    left: 0;
+    color: map-get($color-text, default);
+    height: auto;
+    max-height: 0;
+    margin: 2px 0 0;
+    z-index: 25;
+    overflow: hidden;
+    position: absolute;
+    background-color: white;
+    transition: max-height 142ms linear;
+    @include border(1px, solid, transparent, 6px);
+
+    &.cloned {
+        min-height: auto;
+        max-height: none;
+        opacity: 0;
+        visibility: hidden;
+    }
+    .dropdown-search {
+        padding: 10px;
+        position: relative;
+        @include border(0 0 1px 0, solid, map-get($color-separators, default));
+    }
+    .dropdown-inner {
+        padding: 1px 0;
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    .dropdown-empty {
+        margin: 0;
+        padding: 9px 0;
+        display: block;
+        font-size: 12px;
+        text-align: center;
+    }
+    .dropdown-action {
+        top: 8px;
+        right: 15px;
+        width: auto;
+        margin: 0;
+        padding: 7px 0;
+        z-index: 35;
+        display: inline-block;
+        position: absolute;
+        text-align: center;
+    }
+    ul, li {
+        position: relative;
+        list-style: none;
+    }
+    &.title-break {
+        ul li {
+            overflow: visible;
+            white-space: normal;
+            text-overflow: none;
+        }
+    }
+    &.title-clip {
+        ul li {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+    &.title-scroll {
+        ul li {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
+            &:hover span.option-title,
+            &.hover span.option-title {
+                @include animation(textscroll 2.0s infinite ease-in-out 250ms);
+            }
+        }
+    }
+    ul {
+        li {
+            color: map-get($color-text, default);
+            padding: 5px 26px;
+            position: relative;
+            font-size: 95%;
+            text-align: left;
+            font-weight: normal;
+
+            &:first-of-type {
+                margin-top: 7px;
+            }
+            &:last-of-type {
+                margin-bottom: 7px;
+            }
+            &.optgroup-title {
+                color: fadeout(map-get($color-text, default), 30%);
+                cursor: default;
+                margin: 9px 0 0 0;
+                padding: 4px 15px;
+                text-shadow: none;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+    
+                b {
+                    font-weight: 600;
+                }
+                button {
+                    float: right;
+                    opacity: 0;
+                    font-weight: 400;
+                    text-transform: none;
+                }
+                &.optgroup-sticky {
+                    top: -1px;
+                    z-index: 50;
+                    position: sticky;
+
+                    &.moving {
+                        background-color: white;
+                        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.15);
+                    }
+                }
+            }
+        }
+        &:hover li.optgroup-title button {
+            opacity: 1;
+        }
+    }
+
+    // Dropdown Options
+    li.dropdown-option {
+        cursor: pointer;
+        color: map-get($color-text, default);
+
+        &:before {
+            top: 50%;
+            left: 6px;
+            width: 15px;
+            height: 15px;
+            margin: -7.5px 0 0 0;
+            padding: 0;
+            z-index: 21;
+            display: inline-block;
+            content: "";
+            position: absolute;
+            vertical-align: top;
+            background-repeat: no-repeat;
+            background-position: center center;
+            transition: opacity 250ms ease;
+        }
+        .option-description {
+            color: fadeout(map-get($color-text, default), 30%);
+            width: auto;
+            margin: 0;
+            padding: 0;
+            display: block;
+            font-size: 10px;
+            text-align: left;
+            line-height: 14px;
+        }
+
+        &:hover, &.hover {
+            color: white;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+            @include gradient(map-get($color-secondary, default), darken(map-get($color-secondary, default), 5%));
+
+            .option-description {
+                color: fadeout(white, 15%);
+            }
+        }
+        &.disabled, &.hidden {
+            color: #999999;
+            cursor: not-allowed;
+            text-shadow: none;
+            background-color: darken(white, 5%);
+            background-image: none;
+
+            .option-description {
+                color: lighten(#999999, 15%);
+            }
+        }
+        &.selected {
+            color: nth(map-get($color-primary, primary), 1);
+
+            &:hover, &.hover {
+                color: white;
+            }
+            .option-description {
+                color: lighten(nth(map-get($color-primary, primary), 1), 15%);
+            }
+        }
+    }
+}
+.tail-select.theme-bootstrap2 {
+    &.no-animation .select-dropdown {
+        transition: none;
+    }
+    &.open-top .select-dropdown {
+        top: auto;
+        bottom: 100%;
+        margin: 0;
+    }
+    &.active .select-dropdown {
+        z-index: 29;
+        border-color: rgba(0, 0, 0, 0.2);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+// Dropdown States
+.tail-select.theme-bootstrap2 {
+    &.hide-selected .select-dropdown li.dropdown-option.selected,
+    &.hide-disabled .select-dropdown li.dropdown-option.disabled,
+    &.hide-hidden .select-dropdown li.dropdown-option.hidden {
+        display: none;
+    }
+
+    // State :: Seleced
+    .select-dropdown li.dropdown-option.selected {
+        &:before {
+            @include icon("select", black);
+        }
+        &:hover:before, &.hover:before {
+            @include icon("select", white);
+        }
+    }
+
+    // State :: Deselect
+    &.deselectable .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden),
+    &.multiple .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden) {
+        &:hover:before, &.hover:before {
+            @include icon("deselect", white);
+        }
+    }
+}
+/* @end DROPDOWN */
+
+
+//
+//  STYLES :: SCHEMES
+//
+$colors: primary, info, success, warning, danger, funky, mystery, invert;
+
+/* @start COLOR SCHEMES */
+@each $color in $colors {
+    .tail-select.theme-bootstrap2.scheme-#{$color} {
+        .select-label {
+            color: map-get($color-text, $color);
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+            border-color: rgba(0, 0, 0, .1) rgba(0, 0, 0, .1) fadein(rgba(0, 0, 0, .1), 15%);
+            @include gradient(nth(map-get($color-primary, $color), 1), nth(map-get($color-primary, $color), 2));
+            
+            &:after {
+                border-color: rgba(0, 0, 0, 0.1);
+                box-shadow: inset 1px 0 0 rgba(255, 255, 255, .125), 
+                            inset 0 1px 0 rgba(255, 255, 255, .2), 
+                            0 1px 2px rgba(0, 0, 0, .05);
+                @include gradient(nth(map-get($color-primary, $color), 1), nth(map-get($color-primary, $color), 2));
+            }
+        }
+        &.active .select-label:after, .select-label:hover:after {
+            background-color: nth(map-get($color-primary, $color), 2);
+        }
+        &.active .select-label:after {
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0, .05);
+        }
+    }
+}
+/* @end COLOR SCHEMES */

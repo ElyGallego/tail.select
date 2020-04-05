@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "alwaysStrict": false,
+        "lib": ["dom", "es5", "es6"],
+        "locale": "en",
+        "outDir": "../../../dist/js/plugins/",
+        "module": "AMD",
+        "newLine": "lf",
+        "removeComments": true,
+        "sourceMap": false,
+        "target": "es5"
+    },
+    "files": [
+        "select-ajax.ts",
+        "select-columns.ts",
+        "select-input.ts",
+        "select-movement.ts"
+    ]
+}

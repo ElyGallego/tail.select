@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "alwaysStrict": false,
+        "lib": ["dom", "es5", "es6"],
+        "locale": "en",
+        "outDir": "../../dist/js/",
+        "outFile": "",
+        "module": "AMD",
+        "newLine": "lf",
+        "removeComments": true,
+        "sourceMap": false,
+        "target": "es5"
+    },
+    "files": [
+        "select.ts"
+    ]
+}

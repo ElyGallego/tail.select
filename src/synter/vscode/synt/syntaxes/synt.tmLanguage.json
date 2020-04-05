@@ -1,0 +1,180 @@
+{
+    "name": "SYNTER - Synt Template Environment Rebuilder",
+    "scopeName": "source.synt",
+    
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#tags"
+        }
+    ],
+
+    "repository": {
+        "tags": {
+            "patterns": [
+                {
+                    "begin": "(^)?(?=:(?i:template|part)\\b(?!-))",
+                    "end": "(?!\\G)([ \\t]*$\\n?)?",
+                    "patterns": [
+                        {
+                            "begin": "(?i)(:)(template|part)(?= )",
+                            "beginCaptures": {
+                                "1": {
+                                    "name": "keyword.control.synder"
+                                },
+                                "2": {
+                                    "name": "keyword.control.synder"
+                                },
+                                "3": {
+                                    "name": "keyword.control.synder"
+                                }
+                            },
+                            "end": "(?i)(:)(end)\\s*",
+                            "endCaptures": {
+                                "1": {
+                                    "name": "keyword.control.synder"
+                                },
+                                "2": {
+                                    "name": "keyword.control.synder"
+                                }
+                            },
+                            "patterns": [
+                                {
+                                    "begin": "\\G",
+                                    "end": "(\\n)",
+                                    "include": "#attributes"
+                                }, 
+                                {
+                                    "begin": "(@css)",
+                                    "beginCaptures": {
+                                        "1": {
+                                            "name": "constant.character.escape.synder"
+                                        }
+                                    },
+                                    "end": "(?=:(?i:end))",
+                                    "name": "source.css",
+                                    "patterns": [
+                                        {
+                                            "begin": "^(    |\t)",
+                                            "end": "$",
+                                            "patterns": [
+                                                {
+                                                    "include": "source.css"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "begin": "(@js)",
+                                    "beginCaptures": {
+                                        "1": {
+                                            "name": "constant.character.escape.synder"
+                                        }
+                                    },
+                                    "end": "(?=:(?i:end))",
+                                    "name": "source.js",
+                                    "patterns": [
+                                        {
+                                            "begin": "^(    |\t)",
+                                            "end": "$",
+                                            "patterns": [
+                                                {
+                                                    "include": "source.js"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "attributes": {
+            "patterns": [
+                {
+                    "begin": "\\b([\\w-]+)\\b(?![=])",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "entity.name.class.synder"
+                        },
+                        "1": {
+                            "name": "entity.name.class.synder"
+                        }
+                    },
+                    "end": "(?=\\s+)"
+                },
+                {
+                    "begin": "(name|indent|indenter|syntax)(?![\\w:-])",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "entity.other.attribute-name.synder"
+                        }
+                    },
+                    "end": "(?=\\s*+[^=\\s])",
+                    "name": "meta.attribute.synder",
+                    "patterns": [
+                        {
+                            "begin": "=",
+                            "beginCaptures": {
+                                "0": {
+                                    "name": "punctuation.separator.key-value.synder"
+                                }
+                            },
+                            "end": "(?<=[^\\s=])(?!\\s*=)",
+                            "patterns": [
+                                {
+                                    "begin": "\"",
+                                    "beginCaptures": {
+                                        "0": {
+                                            "name": "punctuation.definition.string.begin.synder"
+                                        }
+                                    },
+                                    "end": "\"",
+                                    "endCaptures": {
+                                        "0": {
+                                            "name": "punctuation.definition.string.end.synder"
+                                        }
+                                    },
+                                    "name": "string.quoted.double.synder"
+                                },
+                                {
+                                    "begin": "'",
+                                    "beginCaptures": {
+                                        "0": {
+                                            "name": "punctuation.definition.string.begin.synder"
+                                        }
+                                    },
+                                    "end": "'",
+                                    "endCaptures": {
+                                        "0": {
+                                            "name": "punctuation.definition.string.end.synder"
+                                        }
+                                    },
+                                    "name": "string.quoted.single.synder"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "begin": "/\\*",
+                    "end": "\\*/",
+                    "name": "comment.block.synder"
+                },
+                {
+                    "match": "//.*",
+                    "name": "comment.line.synder"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,425 @@
+//
+//  BOOTSTRAP4 DESIGN
+//
+@import "../base/_Functions";
+@import "../base/_Mixins";
+@import "_Config";
+
+
+//
+//  STYLES
+//
+
+/* @start GENERAL */
+.tail-select-theme-name:after {
+    content: "bootstrap4-default"; // <theme-name>-<default-scheme>
+}
+.tail-select.theme-bootstrap4 {
+    width: 275px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    font-size: $font-size;
+    line-height: $font-height;
+    font-family: $font-family;
+    outline: none;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+
+    &, &:before, &:after{
+        box-sizing: border-box;
+    }
+    mark {
+        color: white;
+        background-color: $color-secondary;
+    }
+    button {
+        height: auto;
+        outline: none;
+        display: inline-block;
+        text-shadow: none;
+        vertical-align: top;
+
+        &.select-all, &.select-none {
+            color: lighten($color-text, 46.5%);
+            margin: 0 2px;
+            padding: 2px 6px;
+            font-size: 10px;
+            line-height: 14px;
+            background-color: transparent;
+            box-shadow: none;
+            transition: color 142ms linear, border 142ms linear, background 142ms linear;
+            @include border(1px, solid, $color-separators, 3px);
+        }
+        &.select-all {
+            &:hover {
+                color: #62C462;
+                border-color: #62C462;
+            }
+        }
+        &.select-none {
+            &:hover {
+                color: #EE5F5B;
+                border-color: #EE5F5B;
+            }
+        }
+    }
+    &.disabled button, button:disabled {
+        &.select-all, &.select-none {
+            color: $color-separators;
+            border-color: $color-separators;
+            background-color: #f0f0f0;
+        }
+    }
+    input[type="text"] {
+        color: $color-text;
+        width: 100%;
+        height: 30px;
+        margin: 0;
+        padding: .25rem .5rem;
+        display: inline-block;
+        font-size: .875rem;
+        line-height: 1.5;
+        vertical-align: middle;
+        background-color: transparent;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        transition: border 142ms linear, box-shadow 142ms linear;
+        @include border(1px, solid, $color-separators, 0.2rem);
+
+        &:hover {
+            color: $color-text;
+            border-color: darken($color-separators, 10%);
+        }
+        &:focus {
+            color: $color-secondary;
+            border-color: $color-secondary;
+        }
+        &:disabled {
+            color: $color-separators;
+            border-color: $color-separators;
+            background-color: #f0f0f0;
+        }
+    }
+}
+/* @end GENERAL */
+
+/* @start LABEL */
+.tail-select.theme-bootstrap4 .select-label {
+    cursor: pointer;
+    color: $color-text;
+    width: 100%;
+    margin: 0;
+    padding: 0 30px 0 0;
+    display: block;
+    position: relative;
+    text-align: left;
+    background-color: white;
+    background-image: url("image/svg+xml;charset=UTF-8," + replace($image-dropdown, "%s", $color-text));
+    background-repeat: no-repeat;
+    background-position: center right .75rem;
+    background-size: 8px 10px;
+    transition: border 142ms linear, background 142ms linear, box-shadow 142ms linear;
+    @include border(1px, solid, $color-separators, 3px);
+
+    &:hover {
+        color: $color-text;
+        border-color: darken($color-separators, 7.5%);
+        background-color: darken(white, 7.5%);
+    }
+    .label-count, .label-inner {
+        width: auto;
+        margin: 0;
+        display: inline-block;
+        text-align: left;
+        vertical-align: top;
+    }
+    .label-count {
+        float: left;
+        color: $color-text;
+        margin: 10px -3px 0 9px;
+        padding: .25em .4em;
+        font-size: 75%;
+        font-weight: 700;
+        line-height: 1;
+        text-shadow: none;
+        white-space: nowrap;
+        border-radius: 0.25rem;
+        background-color: white;
+    }
+    .label-inner {
+        margin: 0;
+        padding: .375rem .75rem;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;    
+        text-overflow: ellipsis;
+    }
+}
+.tail-select.theme-bootstrap4.active .select-label {
+    color: $color-text;
+    border-color: $color-secondary;
+    background-color: darken(white, 7.5%);
+    box-shadow: 0 0 0 .2rem fadeout($color-secondary, 65%);
+}
+/* @end LABEL */
+
+/* @start DROPDOWN */
+.tail-select.theme-bootstrap4 .select-dropdown {
+    top: 100%;
+    left: 0;
+    color: $color-text;
+    width: 100%;
+    margin: 0.125rem 0 0;
+    padding: 0;
+    z-index: 27;
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    @include border(1px, solid, rgba(0, 0, 0, 0.15), .25rem);
+
+    .dropdown-search {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+        display: block;
+        @include border( 0 0 1px 0, solid, $color-separators);
+    }
+    .dropdown-inner {
+        width: 100%;
+        margin: 0;
+        padding: 1px 0;
+        display: block;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    .dropdown-empty {
+        margin: 0;
+        padding: 1.25rem 1.75rem;
+        display: block;
+        font-size: .875rem;
+        text-align: center;
+        font-weight: 400;
+        line-height: 1.2;
+    }
+    .dropdown-action {
+        top: 8px;
+        right: 15px;
+        width: auto;
+        margin: 0;
+        padding: 7px 0;
+        z-index: 35;
+        display: inline-block;
+        position: absolute;
+        text-align: center;
+    }
+    ul, li {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: block;
+        position: relative;
+        list-style: none;
+    }
+    ul {
+        li {
+            color: $color-text;
+            padding: .25rem 1.75rem;
+            text-align: left;
+            font-weight: normal;
+    
+            &:first-of-type {
+                margin-top: 0.5rem;
+            }
+            &:last-of-type {
+                margin-bottom: 0.5rem;
+            }
+            &.optgroup-title {
+                color: fadeout($color-text, 30%);
+                cursor: default;
+                margin: 0;
+                padding: .5rem 1.5rem;
+                font-size: 11px;
+                font-weight: bold;
+                line-height: 20px;
+                text-shadow: none;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+    
+                b {
+                    font-size: .875rem;
+                    font-weight: 400;
+                    line-height: 1.2;
+                    text-shadow: none;
+                    letter-spacing: 0;
+                    text-transform: none;
+                }
+                button {
+                    float: right;
+                    opacity: 0;
+                }
+            }
+        }
+        &:hover li button {
+            opacity: 1;
+        }
+    }
+
+    // Dropdown Option
+    ul {
+        li.dropdown-option {
+            cursor: pointer;
+            color: $color-text;
+    
+            &:before {
+                top: 0;
+                left: 0;
+                width: 30px;
+                height: 33px;
+                margin: 0;
+                padding: 0;
+                z-index: 21;
+                display: inline-block;
+                content: "";
+                position: absolute;
+                vertical-align: top;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+            .option-description {
+                color: fadeout($color-text, 30%);
+                width: auto;
+                margin: 0;
+                padding: 0;
+                display: block;
+                font-size: 10px;
+                text-align: left;
+                line-height: 14px;
+            }
+        }
+    }
+}
+
+// Dropdown States
+.tail-select.theme-bootstrap4 {
+    &.hide-selected .select-dropdown li.dropdown-option.selected,
+    &.hide-disabled .select-dropdown li.dropdown-option.disabled,
+    &.hide-hidden .select-dropdown li.dropdown-option.hidden {
+        display: none;
+    }
+
+    // State :: Normal
+    .select-dropdown li.dropdown-option {
+        &:hover:before, &.hover:before {
+            color: $color-text;
+            background-color: mix($color-primary, lighten($color-text, 80%), 5%);
+        }
+    }
+
+    // State :: Selected
+    .select-dropdown li.dropdown-option.selected {
+        color: $color-secondary;
+
+        &:before {
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC\
+            9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij48cGF0aCBkPSJNMTIgNWwtOCA4LTQtN\
+            CAxLjUtMS41TDQgMTBsNi41LTYuNUwxMiA1eiIvPjwvc3ZnPg==");
+        }
+    }
+
+    // State :: Deselectable
+    &.multiple .select-dropdown li.dropdown-option.selected,
+    &.deselectable .select-dropdown li.dropdown-option.selected {
+        &:hover:before, &.hover:before {
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC\
+            9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij48cGF0aCBkPSJNNy40OCA4bDMuNzUgM\
+            y43NS0xLjQ4IDEuNDhMNiA5LjQ4bC0zLjc1IDMuNzUtMS40OC0xLjQ4TDQuNTIgOCAuNzcgNC4yNWwxLjQ4LTEuNDhMNiA2\
+            LjUybDMuNzUtMy43NSAxLjQ4IDEuNDhMNy40OCA4eiIvPjwvc3ZnPg==");
+        }
+    }
+
+    // State :: Disabled
+    &.disabled .select-dropdown li.dropdown-option,
+    .select-dropdown li.dropdown-option.disabled {
+        cursor: not-allowed;
+        color: fadeout($color-text, 65%);
+        text-shadow: 0 1px 0 fadeout($color-text, 50%), 0 -1px 0 fadeout($color-text, 50%);
+        background-color: fade($color-text, 2%);
+    }
+}
+/* @end DROPDOWN */
+
+/* @start SCHEME :: PRIMARY */
+    //@color-primary: #007BFF;
+    //@color-secondary: #007BFF;
+    //@color-separators: #007BFF;
+/* @end SCHEME :: PRIMARY */
+
+/* @start SCHEME :: SECONDARY */
+    //@color-primary: #6C757D;
+    //@color-secondary: #6C757D;
+    //@color-separators: transparent;
+/* @end SCHEME :: SECONDARY */
+
+/* @start SCHEME :: INFO */
+    //@color-primary: #17A2B8;
+    //@color-secondary: #17A2B8;
+    //@color-separators: transparent;
+/* @end SCHEME :: INFO */
+
+/* @start SCHEME :: SUCCESS */
+    //@color-primary: #28A745;
+    //@color-secondary: #28A745;
+    //@color-separators: transparent;
+/* @end SCHEME :: SUCCESS */
+
+/* @start SCHEME :: WARNING */
+    //@color-primary: #FFC107;
+    //@color-secondary: #FFC107;
+    //@color-separators: transparent;
+/* @end SCHEME :: WARNING */
+
+/* @start SCHEME :: DANGER */
+    //@color-primary: #DC3545;
+    //@color-secondary: #DC3545;
+    //@color-separators: transparent;
+/* @end SCHEME :: DANGER */
+
+/* @start SCHEME :: FUNKY */
+    //@color-primary: #E83E8C;
+    //@color-secondary: #E83E8C;
+    //@color-separators: transparent;
+/* @end SCHEME :: FUNKY */
+
+/* @start SCHEME :: MYSTERY */
+    //@color-primary: #6F42C1;
+    //@color-secondary: #6F42C1;
+    //@color-separators: transparent;
+/* @end SCHEME :: MYSTERY */
+
+/* @start SCHEME :: INDIGO */
+    //@color-primary: #6610F2;
+    //@color-secondary: #6610F2;
+    //@color-separators: transparent;
+/* @end SCHEME :: INDIGO */
+
+/* @start SCHEME :: TEAL */
+    //@color-primary: #20C997;
+    //@color-secondary: #20C997;
+    //@color-separators: transparent;
+/* @end SCHEME :: TEAL */
+
+/* @start SCHEME :: ORANGE */
+    //@color-primary: #fD7E14;
+    //@color-secondary: #fD7E14;
+    //@color-separators: transparent;
+/* @end SCHEME :: ORANGE */
+
+/* @start SCHEME :: INVERT */
+    //@color-primary: #343a40;
+    //@color-secondary: #343a40;
+    //@color-separators: transparent;
+/* @end SCHEME :: INVERT */
