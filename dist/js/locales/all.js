@@ -78,6 +78,23 @@
     });
 
     /*
+     |  @author     abdulhalim - (https://github.com/abdulhalim)
+     |  @source     https://github.com/pytesNET/tail.select/issues/129
+     */
+    select.strings.add("fa_IR", {
+        buttonAll: "همه",
+        buttonNone: "هیچکدام",
+        disabled: "کادر غیرفعال است",
+        empty: "انتخابی موجود نیست",
+        emptySearch: "انتخابی یافت نشد",
+        multiple: "یک گزینه ای را انتخاب کنید",
+        multipleCount: "حداکثر انتخاب تا:[0] را محدود کنید ...",
+        multipleLimit: "نمیتوانید گزینه‌های بیشتری داشته باشید",
+        search: "برای جستجو تایپ کنید...",
+        single: "یک گزینه ای را انتخاب کنید"
+    });
+
+    /*
      |  @author     Noxludio - (https://github.com/noxludio)
      |  @source     https://github.com/pytesNET/tail.select/pull/35
      */

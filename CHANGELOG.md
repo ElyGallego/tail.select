@@ -134,6 +134,12 @@ Version 0.6.0 - Beta
 -   Add: The language objects are now stored as JSON files and gets parsed through the new node script.
 -   Add: The new Farsi Translation for Persians.
     - Thanks to [#115](https://github.com/pytesNET/tail.select/pull/115).
+-   Add: The new Georgian Translation.
+    - Thanks to [#122](https://github.com/pytesNET/tail.select/issues/122).
+-   Add: The new Lithuanian Translation.
+    - Thanks to [#124](https://github.com/pytesNET/tail.select/issues/124).
+-   Add: The new Persian Translation for Iran.
+    - Thanks to [#124](https://github.com/pytesNET/tail.select/issues/124).
 -   Add: The new `Strings.add()` method replaces `.register()` and `.modify()`.
 -   Add: The new `Plugins` class / API, which allows to hook to each created `tail.select` instance.
 -   Update: The helper methods are now available through `Select.__helpers` (`tail.select.__helpers`).

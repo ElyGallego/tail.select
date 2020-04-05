@@ -1,0 +1,18 @@
+{
+    "author":       "abdulhalim",
+    "author_url":   "https://github.com/abdulhalim",
+
+    "strings": {
+        "buttonAll":        "همه",
+        "buttonNone":       "هیچکدام",
+        "disabled":         "کادر غیرفعال است",
+        "empty":            "انتخابی موجود نیست",
+        "emptySearch":      "انتخابی یافت نشد",
+        "multiple":         "یک گزینه ای را انتخاب کنید",
+        "multipleCount":    "حداکثر انتخاب تا:[0] را محدود کنید ...",
+        "multipleLimit":    "نمیتوانید گزینه‌های بیشتری داشته باشید",
+        "search":           "برای جستجو تایپ کنید...",
+        "single":           "یک گزینه ای را انتخاب کنید"
+    },
+    "source":  "https://github.com/pytesNET/tail.select/issues/129"
+}

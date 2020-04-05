@@ -454,7 +454,6 @@ module.exports = class Synter {
             let filename = file.replace(/\$name0/g, name.split("-")[0]).replace(/\$name1/g, name.split("-")[1]).replace(/\$name/g, name);
             
             // Set
-                console.log("min:" + template);
             let content = this.synt.renderSync(template, filename, code);
             this.content.push([name, content]);
 
@@ -568,7 +567,6 @@ module.exports = class Synter {
                 }
 
                 // Write Content
-                console.log("min:" + template);
                 let content = this.synt.renderSync(template, filename, minified.code);
                 this.minified.push([name, content]);
                 fs.writeFileSync(outfile.replace("$name", name), content);
