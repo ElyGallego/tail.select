@@ -3,16 +3,17 @@
     "author_url":   "",
 
     "strings": {
-        "buttonAll":        "",
-        "buttonNone":       "",
-        "disabled":         "",
-        "empty":            "",
-        "emptySearch":      "",
-        "multiple":         "...",
-        "multipleCount":    "...",
-        "multipleLimit":    "",
-        "search":           "...",
-        "single":           "..."
+        "buttonAll":        "All",
+        "buttonNone":       "None",
+        "disabled":         "This field is disabled",
+        "empty":            "No options available",
+        "emptySearch":      "No options found",
+        "multiple":         "Choose one or more options...",
+        "multipleCount":    "Choose up to [1] options...",
+        "multipleLimit":    "No more options selectable...",
+        "multipleList":     "[0] options selected",
+        "search":           "Tap to search...",
+        "single":           "Choose an option..."
     },
     "source":  ""
 }
