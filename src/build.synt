@@ -30,6 +30,14 @@
      */
 :end
 
+/*
+ |  PART :: COPYRIGHT HEADER
+ |  @used   main-es5, main-es6, plugin-es5, plugin-es6, locale-es5, locale-es6, stylesheet
+ */
+:part copyright-min @js
+    /*! pytesNET/{{ $data.name }} v{{ $data.version }}-{{ $data.status }}{{ @is($build, " | $build") }} | @copyright {{ $data.copyright }} */
+:end
+
 
 /*
  |  PART :: REGISTER STRINGS
@@ -198,7 +206,7 @@
  |  TEMPLATE :: JAVASCRIPT MINIFIED
  */
 :template minified-js @js
-    /*! pytesNET/{{ $data.name }} v{{ $data.version }}-{{ $data.status }} | {{ $build }} | @copyright {{ $data.copyright }} */
+    /** @part("copyright-min") **/
     /** $source **/
 :end
 
@@ -208,6 +216,6 @@
  */
 :template minified-css @css
     @charset "UTF-8";
-    /*! pytesNET/{{ $data.name }} v{{ $data.version }}-{{ $data.status }} | @copyright {{ $data.copyright }} */
+    /** @part("copyright-min") **/
     /** $source **/
 :end
