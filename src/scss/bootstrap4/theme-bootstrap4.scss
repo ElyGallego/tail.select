@@ -3,6 +3,8 @@
 //
 @import "../base/_Functions";
 @import "../base/_Mixins";
+@import "../base/_Keyframes";
+@import "../base/_Icons";
 @import "_Config";
 
 
@@ -15,7 +17,7 @@
     content: "bootstrap4-default"; // <theme-name>-<default-scheme>
 }
 .tail-select.theme-bootstrap4 {
-    width: 275px;
+    width: auto;
     margin: 0;
     padding: 0;
     display: inline-block;
@@ -24,17 +26,20 @@
     line-height: $font-height;
     font-family: $font-family;
     outline: none;
-    user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
+    @include prefix(user-select, none, true, true, true);
 
     &, &:before, &:after{
         box-sizing: border-box;
     }
+    div, ul, li {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
     mark {
-        color: white;
-        background-color: $color-secondary;
+        @include worb(map-get($color-secondary, default));
+        background-color: map-get($color-secondary, default);
     }
     button {
         height: auto;
@@ -44,7 +49,7 @@
         vertical-align: top;
 
         &.select-all, &.select-none {
-            color: lighten($color-text, 46.5%);
+            color: lighten(map-get($color-text, default), 46.5%);
             margin: 0 2px;
             padding: 2px 6px;
             font-size: 10px;
@@ -52,7 +57,7 @@
             background-color: transparent;
             box-shadow: none;
             transition: color 142ms linear, border 142ms linear, background 142ms linear;
-            @include border(1px, solid, $color-separators, 3px);
+            @include border(1px, solid, map-get($color-separators, default), $border-radius);
         }
         &.select-all {
             &:hover {
@@ -69,13 +74,13 @@
     }
     &.disabled button, button:disabled {
         &.select-all, &.select-none {
-            color: $color-separators;
-            border-color: $color-separators;
+            color: map-get($color-separators, default);
+            border-color: map-get($color-separators, default);
             background-color: #f0f0f0;
         }
     }
     input[type="text"] {
-        color: $color-text;
+        color: map-get($color-text, default);
         width: 100%;
         height: 30px;
         margin: 0;
@@ -87,19 +92,19 @@
         background-color: transparent;
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
         transition: border 142ms linear, box-shadow 142ms linear;
-        @include border(1px, solid, $color-separators, 0.2rem);
+        @include border(1px, solid, map-get($color-separators, default), $border-radius);
 
         &:hover {
-            color: $color-text;
-            border-color: darken($color-separators, 10%);
+            color: map-get($color-text, default);
+            border-color: darken(map-get($color-separators, default), 10%);
         }
         &:focus {
-            color: $color-secondary;
-            border-color: $color-secondary;
+            color: map-get($color-secondary, default);
+            border-color: map-get($color-secondary, default);
         }
         &:disabled {
-            color: $color-separators;
-            border-color: $color-separators;
+            color: map-get($color-separators, default);
+            border-color: map-get($color-separators, default);
             background-color: #f0f0f0;
         }
     }
@@ -109,7 +114,7 @@
 /* @start LABEL */
 .tail-select.theme-bootstrap4 .select-label {
     cursor: pointer;
-    color: $color-text;
+    color: map-get($color-text, default);
     width: 100%;
     margin: 0;
     padding: 0 30px 0 0;
@@ -117,16 +122,16 @@
     position: relative;
     text-align: left;
     background-color: white;
-    background-image: url("image/svg+xml;charset=UTF-8," + replace($image-dropdown, "%s", $color-text));
+    background-image: url("image/svg+xml;charset=UTF-8," + replace($image-dropdown, "%s", map-get($color-text, default)));
     background-repeat: no-repeat;
     background-position: center right .75rem;
     background-size: 8px 10px;
     transition: border 142ms linear, background 142ms linear, box-shadow 142ms linear;
-    @include border(1px, solid, $color-separators, 3px);
+    @include border(1px, solid, map-get($color-separators, default), $border-radius);
 
     &:hover {
-        color: $color-text;
-        border-color: darken($color-separators, 7.5%);
+        color: map-get($color-text, default);
+        border-color: darken(map-get($color-separators, default), 7.5%);
         background-color: darken(white, 7.5%);
     }
     .label-count, .label-inner {
@@ -138,7 +143,7 @@
     }
     .label-count {
         float: left;
-        color: $color-text;
+        color: map-get($color-text, default);
         margin: 10px -3px 0 9px;
         padding: .25em .4em;
         font-size: 75%;
@@ -159,10 +164,10 @@
     }
 }
 .tail-select.theme-bootstrap4.active .select-label {
-    color: $color-text;
-    border-color: $color-secondary;
+    color: map-get($color-text, default);
+    border-color: map-get($color-secondary, default);
     background-color: darken(white, 7.5%);
-    box-shadow: 0 0 0 .2rem fadeout($color-secondary, 65%);
+    box-shadow: 0 0 0 .2rem fadeout(map-get($color-secondary, default), 65%);
 }
 /* @end LABEL */
 
@@ -170,36 +175,37 @@
 .tail-select.theme-bootstrap4 .select-dropdown {
     top: 100%;
     left: 0;
-    color: $color-text;
-    width: 100%;
+    color: map-get($color-text, default);
+    height: auto;
+    max-height: 0;
     margin: 0.125rem 0 0;
     padding: 0;
-    z-index: 27;
-    display: none;
+    z-index: 25;
+    overflow: hidden;
     position: absolute;
     background-color: white;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-    @include border(1px, solid, rgba(0, 0, 0, 0.15), .25rem);
+    transition: max-height 142ms linear;
+    @include border(1px, solid, transparent, $border-radius);
 
+    &.cloned {
+        min-height: auto;
+        max-height: none;
+        opacity: 0;
+        visibility: hidden;
+    }
     .dropdown-search {
-        width: 100%;
-        margin: 0;
         padding: 10px;
-        display: block;
-        @include border( 0 0 1px 0, solid, $color-separators);
+        @include border( 0 0 1px 0, solid, map-get($color-separators, default));
     }
     .dropdown-inner {
-        width: 100%;
-        margin: 0;
         padding: 1px 0;
-        display: block;
+        position: relative;
         overflow-x: hidden;
         overflow-y: auto;
     }
     .dropdown-empty {
         margin: 0;
         padding: 1.25rem 1.75rem;
-        display: block;
         font-size: .875rem;
         text-align: center;
         font-weight: 400;
@@ -217,16 +223,38 @@
         text-align: center;
     }
     ul, li {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        display: block;
         position: relative;
         list-style: none;
     }
+    &.title-break {
+        ul li {
+            overflow: visible;
+            white-space: normal;
+            text-overflow: none;
+        }
+    }
+    &.title-clip {
+        ul li {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+    &.title-scroll {
+        ul li {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
+            &:hover span.option-title,
+            &.hover span.option-title {
+                @include animation(textscroll 2.0s infinite ease-in-out 250ms);
+            }
+        }
+    }
     ul {
         li {
-            color: $color-text;
+            color: map-get($color-text, default);
             padding: .25rem 1.75rem;
             text-align: left;
             font-weight: normal;
@@ -238,7 +266,7 @@
                 margin-bottom: 0.5rem;
             }
             &.optgroup-title {
-                color: fadeout($color-text, 30%);
+                color: fadeout(map-get($color-text, default), 30%);
                 cursor: default;
                 margin: 0;
                 padding: .5rem 1.5rem;
@@ -269,37 +297,78 @@
     }
 
     // Dropdown Option
-    ul {
-        li.dropdown-option {
-            cursor: pointer;
-            color: $color-text;
-    
-            &:before {
-                top: 0;
-                left: 0;
-                width: 30px;
-                height: 33px;
-                margin: 0;
-                padding: 0;
-                z-index: 21;
-                display: inline-block;
-                content: "";
-                position: absolute;
-                vertical-align: top;
-                background-repeat: no-repeat;
-                background-position: center center;
-            }
+    li.dropdown-option {
+        cursor: pointer;
+        color: map-get($color-text, default);
+
+        &:before {
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 33px;
+            margin: 0;
+            padding: 0;
+            z-index: 21;
+            display: inline-block;
+            content: "";
+            position: absolute;
+            vertical-align: top;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        .option-description {
+            color: fadeout(map-get($color-text, default), 30%);
+            width: auto;
+            margin: 0;
+            padding: 0;
+            display: block;
+            font-size: 10px;
+            text-align: left;
+            line-height: 14px;
+        }
+
+        &:hover, &.hover {
+            background-color: #f5f5f5;
+
             .option-description {
-                color: fadeout($color-text, 30%);
-                width: auto;
-                margin: 0;
-                padding: 0;
-                display: block;
-                font-size: 10px;
-                text-align: left;
-                line-height: 14px;
+                color: fadeout(white, 15%);
             }
         }
+        &.disabled, &.hidden {
+            color: #999999;
+            cursor: not-allowed;
+            text-shadow: none;
+            background: none;
+
+            .option-description {
+                color: lighten(#999999, 15%);
+            }
+        }
+        &.selected {
+            color: nth(map-get($color-primary, primary), 1);
+
+            &:hover, &.hover {
+                color: map-get($color-text, default);
+            }
+            .option-description {
+                color: lighten(nth(map-get($color-primary, primary), 1), 15%);
+            }
+        }
+    }
+}
+.tail-select.theme-bootstrap4 {
+    &.no-animation .select-dropdown {
+        transition: none;
+    }
+    &.open-top .select-dropdown {
+        top: auto;
+        bottom: 100%;
+        margin: 0;
+    }
+    &.active .select-dropdown {
+        z-index: 29;
+        border-color: rgba(0, 0, 0, 0.15);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
     }
 }
 
@@ -311,115 +380,23 @@
         display: none;
     }
 
-    // State :: Normal
-    .select-dropdown li.dropdown-option {
-        &:hover:before, &.hover:before {
-            color: $color-text;
-            background-color: mix($color-primary, lighten($color-text, 80%), 5%);
-        }
-    }
-
-    // State :: Selected
+    // State :: Seleced
     .select-dropdown li.dropdown-option.selected {
-        color: $color-secondary;
-
         &:before {
-            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC\
-            9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij48cGF0aCBkPSJNMTIgNWwtOCA4LTQtN\
-            CAxLjUtMS41TDQgMTBsNi41LTYuNUwxMiA1eiIvPjwvc3ZnPg==");
+            @include icon("select", black);
         }
-    }
-
-    // State :: Deselectable
-    &.multiple .select-dropdown li.dropdown-option.selected,
-    &.deselectable .select-dropdown li.dropdown-option.selected {
         &:hover:before, &.hover:before {
-            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC\
-            9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDEyIDE2Ij48cGF0aCBkPSJNNy40OCA4bDMuNzUgM\
-            y43NS0xLjQ4IDEuNDhMNiA5LjQ4bC0zLjc1IDMuNzUtMS40OC0xLjQ4TDQuNTIgOCAuNzcgNC4yNWwxLjQ4LTEuNDhMNiA2\
-            LjUybDMuNzUtMy43NSAxLjQ4IDEuNDhMNy40OCA4eiIvPjwvc3ZnPg==");
+            @include icon("select", black);
         }
     }
 
-    // State :: Disabled
-    &.disabled .select-dropdown li.dropdown-option,
-    .select-dropdown li.dropdown-option.disabled {
-        cursor: not-allowed;
-        color: fadeout($color-text, 65%);
-        text-shadow: 0 1px 0 fadeout($color-text, 50%), 0 -1px 0 fadeout($color-text, 50%);
-        background-color: fade($color-text, 2%);
+    // State :: Deselect
+    &.deselectable .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden),
+    &.multiple .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden) {
+        &:hover:before, &.hover:before {
+            @include icon("deselect", black);
+        }
     }
 }
 /* @end DROPDOWN */
 
-/* @start SCHEME :: PRIMARY */
-    //@color-primary: #007BFF;
-    //@color-secondary: #007BFF;
-    //@color-separators: #007BFF;
-/* @end SCHEME :: PRIMARY */
-
-/* @start SCHEME :: SECONDARY */
-    //@color-primary: #6C757D;
-    //@color-secondary: #6C757D;
-    //@color-separators: transparent;
-/* @end SCHEME :: SECONDARY */
-
-/* @start SCHEME :: INFO */
-    //@color-primary: #17A2B8;
-    //@color-secondary: #17A2B8;
-    //@color-separators: transparent;
-/* @end SCHEME :: INFO */
-
-/* @start SCHEME :: SUCCESS */
-    //@color-primary: #28A745;
-    //@color-secondary: #28A745;
-    //@color-separators: transparent;
-/* @end SCHEME :: SUCCESS */
-
-/* @start SCHEME :: WARNING */
-    //@color-primary: #FFC107;
-    //@color-secondary: #FFC107;
-    //@color-separators: transparent;
-/* @end SCHEME :: WARNING */
-
-/* @start SCHEME :: DANGER */
-    //@color-primary: #DC3545;
-    //@color-secondary: #DC3545;
-    //@color-separators: transparent;
-/* @end SCHEME :: DANGER */
-
-/* @start SCHEME :: FUNKY */
-    //@color-primary: #E83E8C;
-    //@color-secondary: #E83E8C;
-    //@color-separators: transparent;
-/* @end SCHEME :: FUNKY */
-
-/* @start SCHEME :: MYSTERY */
-    //@color-primary: #6F42C1;
-    //@color-secondary: #6F42C1;
-    //@color-separators: transparent;
-/* @end SCHEME :: MYSTERY */
-
-/* @start SCHEME :: INDIGO */
-    //@color-primary: #6610F2;
-    //@color-secondary: #6610F2;
-    //@color-separators: transparent;
-/* @end SCHEME :: INDIGO */
-
-/* @start SCHEME :: TEAL */
-    //@color-primary: #20C997;
-    //@color-secondary: #20C997;
-    //@color-separators: transparent;
-/* @end SCHEME :: TEAL */
-
-/* @start SCHEME :: ORANGE */
-    //@color-primary: #fD7E14;
-    //@color-secondary: #fD7E14;
-    //@color-separators: transparent;
-/* @end SCHEME :: ORANGE */
-
-/* @start SCHEME :: INVERT */
-    //@color-primary: #343a40;
-    //@color-secondary: #343a40;
-    //@color-separators: transparent;
-/* @end SCHEME :: INVERT */

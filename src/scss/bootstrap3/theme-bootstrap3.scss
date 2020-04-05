@@ -3,6 +3,7 @@
 //
 @import "../base/_Functions";
 @import "../base/_Mixins";
+@import "../base/_Keyframes";
 @import "../base/_Icons";
 @import "_Config";
 
@@ -388,7 +389,7 @@
             color: nth(map-get($color-primary, primary), 1);
 
             &:hover, &.hover {
-                color: white;
+                color: map-get($color-text, default);
             }
             .option-description {
                 color: lighten(nth(map-get($color-primary, primary), 1), 15%);
@@ -426,7 +427,7 @@
             @include icon("select", black);
         }
         &:hover:before, &.hover:before {
-            @include icon("select", white);
+            @include icon("select", black);
         }
     }
 
@@ -434,7 +435,7 @@
     &.deselectable .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden),
     &.multiple .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden) {
         &:hover:before, &.hover:before {
-            @include icon("deselect", white);
+            @include icon("deselect", black);
         }
     }
 }
@@ -453,12 +454,11 @@ $colors: primary, info, success, warning, danger, invert;
             color: map-get($color-text, $color);
             text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
             border-color: rgba(0, 0, 0, .1) rgba(0, 0, 0, .1) fadein(rgba(0, 0, 0, .1), 15%);
+            background-color: nth(map-get($color-primary, $color), 1);
             
             &:after {
                 border-color: rgba(0, 0, 0, 0.1);
-                box-shadow: inset 1px 0 0 rgba(255, 255, 255, .125), 
-                            inset 0 1px 0 rgba(255, 255, 255, .2), 
-                            0 1px 2px rgba(0, 0, 0, .05);
+                background-color: nth(map-get($color-primary, $color), 1);
             }
         }
         &.active .select-label:after, .select-label:hover:after {

@@ -4,13 +4,29 @@
  |  @file       ./dist/css/bootstrap3/theme-bootstrap3.css
  |  @authors    SamBrishes <sam@pytes.net> (https://www.pytes.net)
  |              Lenivyy <lenivyy@pytes.net> (https://www.pytes.net)
- |  @version    0.6.0 - Beta
+ |  @version    0.6.0 - Beta : ECMAScript 2015
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
  |  @copyright  Copyright © 2014 - 2020 pytesNET <info@pytes.net>
  */
 
+@keyframes textscroll {
+    70% {
+        padding-left: 0px;
+    }
+    100% {
+        padding-left: 0px;
+    }
+}
+@-webkit-keyframes textscroll {
+    70% {
+        padding-left: 0px;
+    }
+    100% {
+        padding-left: 0px;
+    }
+}
 /* @start GENERAL */
 .tail-select-theme-name:after {
     content: "bootstrap3-default";
@@ -383,7 +399,7 @@
     color: #337AB7;
 }
 .tail-select.theme-bootstrap3 .select-dropdown li.dropdown-option.selected:hover, .tail-select.theme-bootstrap3 .select-dropdown li.dropdown-option.selected.hover {
-    color: white;
+    color: #333333;
 }
 .tail-select.theme-bootstrap3 .select-dropdown li.dropdown-option.selected .option-description {
     color: #63a0d4;
@@ -410,10 +426,10 @@
     background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%2212%22%20height%3D%2216%22%20viewBox%3D%220%200%2012%2016%22%3E%3Cpath%20fill%3D%22black%22%20d%3D%22M12%205l-8%208-4-4%201.5-1.5L4%2010l6.5-6.5L12%205z%22/%3E%3C/svg%3E");
 }
 .tail-select.theme-bootstrap3 .select-dropdown li.dropdown-option.selected:hover:before, .tail-select.theme-bootstrap3 .select-dropdown li.dropdown-option.selected.hover:before {
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%2212%22%20height%3D%2216%22%20viewBox%3D%220%200%2012%2016%22%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M12%205l-8%208-4-4%201.5-1.5L4%2010l6.5-6.5L12%205z%22/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%2212%22%20height%3D%2216%22%20viewBox%3D%220%200%2012%2016%22%3E%3Cpath%20fill%3D%22black%22%20d%3D%22M12%205l-8%208-4-4%201.5-1.5L4%2010l6.5-6.5L12%205z%22/%3E%3C/svg%3E");
 }
 .tail-select.theme-bootstrap3.deselectable .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden):hover:before, .tail-select.theme-bootstrap3.deselectable .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden).hover:before, .tail-select.theme-bootstrap3.multiple .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden):hover:before, .tail-select.theme-bootstrap3.multiple .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden).hover:before {
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%2212%22%20height%3D%2216%22%20viewBox%3D%220%200%2012%2016%22%3E%3Cpath%20fill%3D%22white%22%20d%3D%22M7.48%208l3.75%203.75-1.48%201.48L6%209.48l-3.75%203.75-1.48-1.48L4.52%208%20.77%204.25l1.48-1.48L6%206.52l3.75-3.75%201.48%201.48L7.48%208z%22/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%2212%22%20height%3D%2216%22%20viewBox%3D%220%200%2012%2016%22%3E%3Cpath%20fill%3D%22black%22%20d%3D%22M7.48%208l3.75%203.75-1.48%201.48L6%209.48l-3.75%203.75-1.48-1.48L4.52%208%20.77%204.25l1.48-1.48L6%206.52l3.75-3.75%201.48%201.48L7.48%208z%22/%3E%3C/svg%3E");
 }
 
 /* @end DROPDOWN */
@@ -422,10 +438,11 @@
     color: white;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    background-color: #337AB7;
 }
 .tail-select.theme-bootstrap3.scheme-primary .select-label:after {
     border-color: rgba(0, 0, 0, 0.1);
-    box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    background-color: #337AB7;
 }
 .tail-select.theme-bootstrap3.scheme-primary.active .select-label:after, .tail-select.theme-bootstrap3.scheme-primary .select-label:hover:after {
     background-color: #22527b;
@@ -438,10 +455,11 @@
     color: white;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    background-color: #5BC0DE;
 }
 .tail-select.theme-bootstrap3.scheme-info .select-label:after {
     border-color: rgba(0, 0, 0, 0.1);
-    box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    background-color: #5BC0DE;
 }
 .tail-select.theme-bootstrap3.scheme-info.active .select-label:after, .tail-select.theme-bootstrap3.scheme-info .select-label:hover:after {
     background-color: #28a1c5;
@@ -454,10 +472,11 @@
     color: white;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    background-color: #5CB85C;
 }
 .tail-select.theme-bootstrap3.scheme-success .select-label:after {
     border-color: rgba(0, 0, 0, 0.1);
-    box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    background-color: #5CB85C;
 }
 .tail-select.theme-bootstrap3.scheme-success.active .select-label:after, .tail-select.theme-bootstrap3.scheme-success .select-label:hover:after {
     background-color: #3d8b3d;
@@ -470,10 +489,11 @@
     color: white;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    background-color: #F0DE4E;
 }
 .tail-select.theme-bootstrap3.scheme-warning .select-label:after {
     border-color: rgba(0, 0, 0, 0.1);
-    box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    background-color: #F0DE4E;
 }
 .tail-select.theme-bootstrap3.scheme-warning.active .select-label:after, .tail-select.theme-bootstrap3.scheme-warning .select-label:hover:after {
     background-color: #dfc813;
@@ -486,10 +506,11 @@
     color: white;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    background-color: #D9534F;
 }
 .tail-select.theme-bootstrap3.scheme-danger .select-label:after {
     border-color: rgba(0, 0, 0, 0.1);
-    box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    background-color: #D9534F;
 }
 .tail-select.theme-bootstrap3.scheme-danger.active .select-label:after, .tail-select.theme-bootstrap3.scheme-danger .select-label:hover:after {
     background-color: #b52b27;
@@ -502,10 +523,11 @@
     color: white;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    background-color: #333333;
 }
 .tail-select.theme-bootstrap3.scheme-invert .select-label:after {
     border-color: rgba(0, 0, 0, 0.1);
-    box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.125), inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    background-color: #333333;
 }
 .tail-select.theme-bootstrap3.scheme-invert.active .select-label:after, .tail-select.theme-bootstrap3.scheme-invert .select-label:hover:after {
     background-color: #181818;

@@ -132,6 +132,40 @@
     });
 
     /*
+     |  @author     Sandro Pirtskhalava - (https://github.com/spirtskhalava)
+     |  @source     https://github.com/pytesNET/tail.select/issues/122
+     */
+    select.strings.add("ka", {
+        buttonAll: "ყველას მონიშვნა",
+        buttonNone: "ყველას გაუქმება",
+        disabled: "ველი გაუქმებულია",
+        empty: "ოფცია არ არის ხელმისაწვდომი",
+        emptySearch: "ოფცია ვერ მოიძებნა",
+        multiple: "აირჩიეთ ოფცია...",
+        multipleCount: "აირჩიეთ [0]-ზე მეტი ოფცია...",
+        multipleLimit: "თქვენ არ შეგიძლიათ მეტი ოფციის არჩევა",
+        search: "ძებნისთვის აკრიფეთ...",
+        single: "აირჩიეთ ოფცია..."
+    });
+
+    /*
+     |  @author     Apskaita5 - (https://github.com/Apskaita5)
+     |  @source     https://github.com/pytesNET/tail.select/issues/124
+     */
+    select.strings.add("lt", {
+        buttonAll: "Visi",
+        buttonNone: "Nei vienas",
+        disabled: "Šis laukelis išjungtas",
+        empty: "Nėra pasirinkimų",
+        emptySearch: "Nepavyko rasti pasirinktimų",
+        multiple: "Pasirinkite variantą...",
+        multipleCount: "Pasirinkite iki [0] variantų...",
+        multipleLimit: "Jūs negalite pasirinkti daugiau variantų",
+        search: "Įrašykite paieškos teksto fragmentą...",
+        single: "Pasirinkite variantą..."
+    });
+
+    /*
      |  @author     WoxVold - (https://github.com/woxvold)
      |  @source     https://github.com/pytesNET/tail.select/issues/45
      */

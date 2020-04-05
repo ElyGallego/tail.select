@@ -1,17 +1,343 @@
 //
-//  CHOSEN DESIGN
+//  <NAME> DESIGN
 //
 @import "../base/_Functions";
 @import "../base/_Mixins";
+@import "../base/_Keyframes";
+@import "../base/_Icons";
 @import "_Config";
 
 
 //
-//  STYLES
+//  STYLES :: <NAME>
 //
+$name: "chosen";
 
 /* @start GENERAL */
 .tail-select-theme-name:after {
     content: "chosen-default"; // <theme-name>-<default-scheme>
 }
+.tail-select.theme-#{$name} {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    font-size: $font-size;
+    line-height: $font-height;
+    font-family: $font-family;
+    outline: none;
+    box-sizing: border-box;
+    @include prefix(user-select, none, true, true, true);
+
+    *, *:before, *:after{
+        box-sizing: border-box;
+    }
+    div, ul, li {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+    mark {
+        
+    }
+    button {
+        height: auto;
+        outline: 0;
+        display: inline-block;
+        text-shadow: none;
+        font-weight: normal;
+        letter-spacing: 0;
+        text-transform: none;
+        vertical-align: top;
+
+        &.select-all, &.select-none {
+            color: darken(white, 50%);
+            margin: 1px 0;
+            padding: 4px 7px;
+            font-size: 85%;
+            line-height: 1;
+            border: 0;
+            border-radius: $border-radius 0 0 $border-radius;
+            box-shadow: none;
+            background-color: darken(white, 10%);
+            transition: color 142ms linear, opacity 142ms linear, background 142ms linear;
+
+            &:hover {
+
+            }
+        }
+    }
+    &.disabled button, button:disabled {
+        &.select-all, &.select-none {
+            background-color: transparent;
+        }
+    }
+    input[type='text'] {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 10px 15px;
+        display: inline-block;
+        outline: 0;
+        font-size: 90%;
+        vertical-align: top;
+        background-color: transparent;
+        box-shadow: none;
+        transition: color 142ms linear;
+        @include border(0, solid, transparent, 0);
+
+        &:hover {
+        }
+        &:focus {
+        }
+    }
+    &.disabled input[type='text'] {
+    }
+}
 /* @end GENERAL */
+
+/* @start LABEL */
+.tail-select.theme-#{$name} .select-label {
+    cursor: pointer;
+    width: 100%;
+    margin: 0;
+    padding: 5px 30px 5px 10px;
+    display: block;
+    z-index: 20;
+    position: relative;
+    text-align: left;
+    transition: background 142ms linear, box-shadow 142ms linear, z-index 0ms linear 142ms;
+    @include border(0px, solid, transparent, $border-radius);
+}
+.tail-select.theme-#{$name} {
+    &:hover .select-label, &:focus .select-label {
+        z-index: 27;
+        transition: z-index 0ms linear 0ms;
+    }
+    &:hover .select-label, &:focus .select-label, &.active .select-label {
+        &:after {
+            opacity: .85;
+        }
+        .label-count, .label-inner{
+            opacity: 1.0;
+        }
+    }
+    &.active .select-label {
+        z-index: 30;
+
+        &:after{
+            opacity: 0.85;
+            @include transform(rotate(180deg));
+        }
+    }
+    &.disabled .select-label {
+        cursor: not-allowed;
+    }
+}
+/* @end LABEL */
+
+/* @start DROPDOWN */
+.tail-select.theme-#{$name} .select-dropdown {
+    top: 100%;
+    left: 0;
+    height: auto;
+    max-height: 0;
+    z-index: 25;
+    overflow: hidden;
+    position: absolute;
+    transition: max-height 142ms linear;
+    
+    &.cloned {
+        min-height: auto;
+        max-height: none;
+        opacity: 0;
+        visibility: hidden;
+    }
+    .dropdown-search {
+        position: relative;
+    }
+    .dropdown-inner {
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    .dropdown-empty {
+        padding: 16px 0;
+        display: block;
+        font-size: 95%;
+        text-align: center;
+        font-style: italic;
+    }
+    .dropdown-action {
+        top: 3px;
+        right: 15px;
+        width: auto;
+        margin: 0;
+        padding: 7px 0;
+        z-index: 35;
+        display: inline-block;
+        position: absolute;
+        text-align: center;
+    }
+    ul, li {
+        position: relative;
+        list-style: none;
+    }
+    &.title-break {
+        ul li {
+            overflow: visible;
+            white-space: normal;
+            text-overflow: none;
+        }
+    }
+    &.title-clip {
+        ul li {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+    &.title-scroll {
+        ul li {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
+            &:hover span.option-title,
+            &.hover span.option-title {
+                @include animation(textscroll 2.0s infinite ease-in-out 250ms);
+            }
+        }
+    }
+    ul {
+        li {
+            padding: 7px 10px 7px 35px;
+            font-size: 95%;
+            text-align: left;
+            font-weight: normal;
+            text-shadow: none;
+
+            &:first-of-type {
+                margin-top: 7px;
+            }
+            &:last-of-type {
+                margin-bottom: 7px;
+            }
+            &.optgroup-title {
+                cursor: default;
+                margin: 9px 0 0 0;
+                padding-left: 10px;
+
+                b {
+                    font-weight: 600;
+                }
+                button {
+                    float: right;
+                    opacity: 0;
+                }
+                &.optgroup-sticky {
+                    top: -1px;
+                    z-index: 50;
+                    position: sticky;
+
+                    &.moving {
+                    }
+                }
+            }
+        }
+        &:hover li.optgroup-title button {
+            opacity: 1;
+        }
+    }
+
+    // Dropdown Options
+    li.dropdown-option {
+        cursor: pointer;
+        transition: color 250ms ease, background 250ms ease;
+
+        &:before {
+            top: 50%;
+            left: 10px;
+            width: 15px;
+            height: 15px;
+            margin: -7.5px 0 0 0;
+            padding: 0;
+            z-index: 21;
+            display: inline-block;
+            content: "";
+            opacity: 0;
+            position: absolute;
+            vertical-align: top;
+            background-repeat: no-repeat;
+            background-position: center center;
+            transition: opacity 250ms ease;
+        }
+        .option-description {
+            width: auto;
+            margin: 0;
+            padding: 0;
+            display: block;
+            font-size: 10px;
+            text-align: left;
+            line-height: 14px;
+            transition: color 250ms ease;
+        }
+
+        &:hover, &.hover {
+        }
+        &.disabled, &.hidden {
+            cursor: not-allowed;
+
+            .option-description {
+            }
+        }
+        &.selected {
+            .option-description {
+            }
+        }
+    }
+}
+.tail-select.theme-#{$name} {
+    &.no-animation .select-dropdown {
+        transition: none;
+    }
+    &.open-top .select-dropdown {
+        top: auto;
+        bottom: 100%;
+        margin: 0;
+        border-radius: $border-radius $border-radius 0 0;
+    }
+    &.active .select-dropdown {
+        z-index: 29;
+    }
+}
+
+// Dropdown States
+.tail-select.theme-#{$name} {
+    &.hide-selected .select-dropdown li.dropdown-option.selected,
+    &.hide-disabled .select-dropdown li.dropdown-option.disabled,
+    &.hide-hidden .select-dropdown li.dropdown-option.hidden {
+        display: none;
+    }
+
+    // State :: Seleced
+    .select-dropdown li.dropdown-option.selected {
+        &:before {
+            @include icon("select", black);
+        }
+        &:hover:before, &.hover:before {
+            @include icon("select", white);
+        }
+    }
+
+    // State :: Deselect
+    &.deselectable .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden),
+    &.multiple .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden) {
+        &:hover:before, &.hover:before {
+            @include icon("deselect", white);
+        }
+    }
+}
+/* @end DROPDOWN */
