@@ -108,7 +108,6 @@
             return false;
         },
         "query:after": function () {
-            console.log(this._label.querySelector("input"));
             this._label.querySelector("input").focus();
             return true;
         },

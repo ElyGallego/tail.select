@@ -1,3 +1,3 @@
 @charset "UTF-8";
-/*! pytesNET/tail.select v0.6.0-beta | @copyright pytesNET <info@pytes.net> */
+/*! pytesNET/tail.select v0.6.0-beta | ECMAScript 2015 | @copyright pytesNET <info@pytes.net> */
 .tail-select.theme-default .select-label.label-input{cursor:text}.tail-select.theme-default .select-label.label-input input[type=text]{width:2px;margin:0 5px;padding:2px 0;line-height:17px}.tail-select.theme-default .select-label.label-input .label-search{width:auto;display:inline-block}.tail-select.theme-default .select-label.label-input .search-width{width:auto;opacity:0;position:absolute;visibility:hidden}.tail-select.theme-default .select-dropdown .dropdown-create{margin:0;padding:15px 0;display:block;text-align:center}.tail-select.theme-default .select-dropdown .dropdown-create b{font-weight:600;line-height:16px;letter-spacing:1px;text-transform:uppercase}.tail-select.theme-default .select-dropdown .dropdown-create span{color:#3c82e6;display:block;font-size:95%}
