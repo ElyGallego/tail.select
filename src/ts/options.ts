@@ -249,6 +249,29 @@ class Options {
         return (reload && this.parent.reload(true))? this: this;
     }
 
+
+    /*
+     |  CORE :: REMOVE OPTION[s]
+     |  @since  0.3.0 [0.6.0]
+     |
+     |  @param  multi   See .get() for more informations.
+     |                  Pass multiple values, which should be passed to .get(), as ARRAY.
+     |  @param  bool    TRUE to reload the dropdown list, FALSE to prevent reloading.
+     |
+     |  @return this    The Options instance.
+     */
+    remove(item: any, reload: boolean = true): Options {
+        if(!(item instanceof HTMLOptionElement)) {
+            let items = this.get[(item instanceof Array)? "apply": "call"](this, item);
+            for(let i = 0; i < items.length; i++) {
+                this.remove(items[i], false);
+            }
+            return (reload && this.parent.reload(true))? this: this;
+        }
+        item.parentElement.removeChild(item);
+        return (reload && this.parent.reload(true))? this: this;
+    }
+
     /*
      |  HANDLER :: HANDLE STATEs
      |  @since  0.3.0 [0.6.0]

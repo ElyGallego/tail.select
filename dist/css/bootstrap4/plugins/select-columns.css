@@ -4,13 +4,100 @@
  |  @file       ./dist/css/bootstrap4/plugins/select-columns.css
  |  @authors    SamBrishes <sam@pytes.net> (https://www.pytes.net)
  |              Lenivyy <lenivyy@pytes.net> (https://www.pytes.net)
- |  @version    0.6.0 - Beta : ECMAScript 2015
+ |  @version    0.6.0 - Beta
  |
  |  @website    https://github.com/pytesNET/tail.select
  |  @license    X11 / MIT License
  |  @copyright  Copyright © 2014 - 2020 pytesNET <info@pytes.net>
  */
 
-
+.tail-select.theme-bootstrap4 .dropdown-inner ul {
+    transition: max-height 250ms linear;
+}
+.tail-select.theme-bootstrap4 .dropdown-inner ul.collapsed {
+    overflow: hidden;
+    max-height: 40px !important;
+}
+.tail-select.theme-bootstrap4 .dropdown-inner ul.collapsed:last-child {
+    margin-bottom: 15px;
+}
+.tail-select.theme-bootstrap4 .dropdown-inner ul li.optgroup-title {
+    padding-right: 25px;
+    position: relative;
+}
+.tail-select.theme-bootstrap4 .dropdown-inner ul li.optgroup-title span.optgroup-collapse {
+    right: 5px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    text-align: center;
+    border-radius: 3px;
+    transition: background 142ms linear;
+}
+.tail-select.theme-bootstrap4 .dropdown-inner ul li.optgroup-title span.optgroup-collapse:after {
+    width: 0;
+    height: 0;
+    margin: 8px auto 0 auto;
+    padding: 0;
+    z-index: 25;
+    content: "";
+    opacity: 0.5;
+    display: block;
+    border-top: 5px dashed;
+    border-top: 5px solid\9 ;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    text-shadow: none;
+    transition: opacity 142ms linear, transform 142ms linear;
+}
+.tail-select.theme-bootstrap4 .dropdown-inner ul li.optgroup-title span.optgroup-collapse:hover {
+    background-color: #e6e6e6;
+}
+.tail-select.theme-bootstrap4 .dropdown-inner ul li.optgroup-title span.optgroup-collapse:hover:after {
+    opacity: 1;
+}
+.tail-select.theme-bootstrap4 .dropdown-inner ul.collapsed li.optgroup-title span.optgroup-collapse {
+    background-color: #e6e6e6;
+}
+.tail-select.theme-bootstrap4 .dropdown-inner ul.collapsed li.optgroup-title span.optgroup-collapse:after {
+    opacity: 1;
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+}
+.tail-select.theme-bootstrap4 .dropdown-inner.dropdown-columns {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.tail-select.theme-bootstrap4 .dropdown-inner.dropdown-columns .inner-column {
+    width: 100%;
+    padding: 10px 0;
+    border-width: 0 0 0 1px;
+    border-style: solid;
+    border-color: #e6e6e6;
+}
+.tail-select.theme-bootstrap4 .dropdown-inner.dropdown-columns .inner-column:first-child {
+    margin-left: 0;
+    border-left: 0;
+}
+.tail-select.theme-bootstrap4 .dropdown-inner.dropdown-columns .inner-column ul li {
+    margin-top: 0;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+.tail-select.theme-bootstrap4 .dropdown-inner.dropdown-columns.columns-2 .inner-column {
+    width: 50%;
+}
+.tail-select.theme-bootstrap4 .dropdown-inner.dropdown-columns.columns-3 .inner-column {
+    width: calc(100% / 3);
+}
+.tail-select.theme-bootstrap4 .dropdown-inner.dropdown-columns.columns-4 .inner-column {
+    width: 25%;
+}
+.tail-select.theme-bootstrap4 .dropdown-inner.dropdown-columns.columns-5 .inner-column {
+    width: 20%;
+}
 
 /*# sourceMappingURL=select-bootstrap4.css.map */

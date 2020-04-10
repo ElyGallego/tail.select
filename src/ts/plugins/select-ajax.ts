@@ -60,8 +60,8 @@ var hooks: any = {
             return true;
         }
         let label = (this.get("ajaxOn") === "init")? "loading": void 0;
-        let loading = (function(){
-            let load = this.render("ajax-loading", null, [method, args]);
+        let loading = (function(input) {
+            let load = this.render(`ajax-${input? "waiting": "loading"}`, null, [method, args]);
             let root = select.__.create("DIV", "dropdown-inner");
                 root.appendChild(load);
             
@@ -69,9 +69,14 @@ var hooks: any = {
             this._dropdown[(inner? "replace": "append") + "Child"](root, inner);
         }).bind(this);
 
+        // AJAX :: Input
+        if(this.get("ajaxOn") === "input" && method === "finder") {
+            this._ajax = true;
+        }
+
         // AJAX :: Waiting
         if(!this._ajax) {
-            loading();
+            loading(this.get("ajaxOn") === "input");
         }
 
         // AJAX :: Active
@@ -83,7 +88,7 @@ var hooks: any = {
                 this._ajax_call = true;
                 
                 (function(self) {
-                    loading();
+                    loading(0);
                     setTimeout(function(){ ajaxHandler.call(self, method, args); }, 0);
                 }).call(this, this);
             } else {
@@ -115,18 +120,29 @@ var hooks: any = {
         return false;
     },
 
+    "query:after": function() {
+        console.log(this._label.querySelector("input"));
+        this._label.querySelector("input").focus();
+        return true;
+    },
+
     /*
      |  FILTER :: EXTEND RENDER OBJECT
      |  @since  0.6.0 [0.6.0]
      */
     "render": function(types: Object): Array<any> {
+        types["ajax-waiting"] = function(string) {
+            let span = select.__.create("DIV", "dropdown-ajax dropdown-ajax-waiting");
+            span.innerHTML = `<span>${string || this._e("waiting")}</span>`;
+            return span;
+        };
         types["ajax-loading"] = function() {
-            let span = select.__.create("DIV", "dropdown-ajax-loading");
+            let span = select.__.create("DIV", "dropdown-ajax dropdown-ajax-loading");
             span.innerHTML = `<span>${this._e("loading")}</span>`;
             return span;
         };
         types["ajax-error"] = function(string) {
-            let span = select.__.create("DIV", "dropdown-ajax-error");
+            let span = select.__.create("DIV", "dropdown-ajax dropdown-ajax-error");
             span.innerHTML = `<span>${string || this._e("error")}</span>`;
             return span;
         };
@@ -145,9 +161,9 @@ let ajaxHandler = function(method: string, args: Array<any>): void {
                 for(let key in self._ajax_result) {
                     let item = self._ajax_result[key];
                     if(typeof item === "string" || item instanceof HTMLElement) {
-                        self.options.remove(key, false);
+                        self.options.remove(key, true);
                     } else {
-                        self.options.remove([key, item.group || item.optgroup || "#"], false);
+                        self.options.remove([key, item.group || item.optgroup || "#"], true);
                     }
                 }
             }
@@ -181,3 +197,4 @@ let ajaxHandler = function(method: string, args: Array<any>): void {
 select.plugins.add("ajax", options, hooks);
 select.strings.en["error"] = "An Error is occured";
 select.strings.en["loading"] = "Loading";
+select.strings.en["waiting"] = "Waiting for input";

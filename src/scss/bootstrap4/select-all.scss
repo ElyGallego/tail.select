@@ -3,13 +3,14 @@
 //
 @import "../base/_Functions";
 @import "../base/_Mixins";
+@import "../base/_Icons";
 @import "_Config";
 
 
 //
-//  PLUGINS
+//  LOAD PLUGINS
 //
-@import "select-ajax.scss";
-@import "select-columns.scss";
-@import "select-input.scss";
-@import "select-movement.scss";
+@import "select-ajax";
+@import "select-columns";
+@import "select-input";
+@import "select-movement";

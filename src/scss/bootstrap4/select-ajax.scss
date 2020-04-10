@@ -3,4 +3,118 @@
 //
 @import "../base/_Functions";
 @import "../base/_Mixins";
+@import "../base/_Icons";
 @import "_Config";
+
+
+//
+//  KEYFRAMES
+//
+@keyframes tail-loading {
+    0% {
+        @include transform(rotate(0deg));
+    }
+    100% {
+        @include transform(rotate(359deg));
+    }
+}
+@-webkit-keyframes tail-loading {
+    0% {
+        @include transform(rotate(0deg));
+    }
+    100% {
+        @include transform(rotate(359deg));
+    }
+}
+@keyframes tail-pulse {
+    0% {
+        opacity: 0.3125;
+    }
+    50% {
+        opacity: 0.8175;
+    }
+    100% {
+        opacity: 0.3125;
+    }
+}
+@-webkit-keyframes tail-pulse {
+    0% {
+        opacity: 0.3125;
+    }
+    50% {
+        opacity: 0.8175;
+    }
+    100% {
+        opacity: 0.3125;
+    }
+}
+
+
+//
+//  STYLES
+//
+.tail-select.theme-bootstrap4 .select-dropdown {
+    .dropdown-ajax {
+        margin: 0;
+        padding: 10px 0;
+        display: block;
+
+        &:before {
+            width: 22px;
+            height: 24px;
+            margin: 12px auto 10px auto;
+            padding: 0;
+            content: "";
+            display: block;
+            opacity: 0.5;
+            background-size: 32px 28px;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        span {
+            opacity: 0.3125;
+            display: block;
+            font-size: 95%;
+            text-align: center;
+            font-weight: 600;
+            line-height: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    }
+
+    .dropdown-ajax-loading {
+        &:before {
+            @include icon("loading", #323232, "octicons");
+            animation: tail-loading 1.0s infinite ease-in-out;
+            -webkit-animation: tail-loading 1.0s infinite ease-in-out;
+        }
+        span {
+            display: none;
+            animation: tail-pulse 4.0s infinite ease-in-out;
+            -webkit-animation: tail-pulse 4.0s infinite ease-in-out;
+        }
+    }
+
+    .dropdown-ajax-error {
+        &:before {
+            opacity: 0.5;
+            background-size: 26px 26px;
+            @include icon("deselect", map-get($color-text, light), "octicons");
+        }
+        span {
+            margin: -5px 0 5px 0;
+            opacity: 1;
+        }
+    }
+
+    .dropdown-ajax-waiting {
+        &:before {
+            display: none;
+        }
+        span {
+            padding: 20px 0;
+            opacity: 1;
+        }
+    }
+}

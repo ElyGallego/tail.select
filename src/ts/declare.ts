@@ -344,18 +344,6 @@ declare interface Options {
     add(data: object, group?: string | null, reload?: boolean): Options
 
     /*
-     |  HANDLER :: EDIT OPTIONS
-     |  This method allows you to edit and mode multiple existing <option> elements.
-     */
-    edit(item: any, changes: object, reload?: boolean): Options
-
-    /*
-     |  HANDLER :: MOVE OPTIONS
-     |  This method is just an alias for `.set()`.
-     */
-    move(item: any, group?: string | null, position?: number, reload?: boolean): Options
-
-    /*
      |  HANDLER :: REMOVE OPTIONS
      */
     remove(item: any, reload?: boolean): Options

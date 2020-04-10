@@ -269,6 +269,18 @@
             }
             return (reload && this.parent.reload(true)) ? this : this;
         };
+        Options.prototype.remove = function (item, reload) {
+            if (reload === void 0) { reload = true; }
+            if (!(item instanceof HTMLOptionElement)) {
+                var items = this.get[(item instanceof Array) ? "apply" : "call"](this, item);
+                for (var i = 0; i < items.length; i++) {
+                    this.remove(items[i], false);
+                }
+                return (reload && this.parent.reload(true)) ? this : this;
+            }
+            item.parentElement.removeChild(item);
+            return (reload && this.parent.reload(true)) ? this : this;
+        };
         Options.prototype.handle = function (item, state, prevent, force) {
             if (!(item instanceof HTMLOptionElement)) {
                 var items = this.get[(item instanceof Array) ? "apply" : "call"](this, item);
@@ -965,7 +977,7 @@
                         return li;
                     }
                 }])[0];
-            return this.trigger("filter", "render#" + type, [types[type].apply(this, [data, query])])[0];
+            return this.trigger("filter", "render#" + type, [types[type].apply(this, [data, query]), data, query])[0];
         };
         Select.prototype.update = function (items, trigger, force) {
             if (trigger === void 0) { trigger = true; }
@@ -1028,7 +1040,7 @@
                         label = (value.length === limit) ? "multipleLimit" : "multipleCount";
                         break;
                     case !this.get("multiple"):
-                        label = (this.value("nodes")[0] && this.value("nodes")[0].innerText) || "single";
+                        label = (this.value("nodes")[0] && this.value("nodes")[0].innerHTML) || "single";
                         break;
                     default:
                         label = (this.get("multiple")) ? "multiple" : "single";

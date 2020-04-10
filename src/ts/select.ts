@@ -711,7 +711,7 @@ class Select {
         }])[0];
 
         // Render & Return
-        return this.trigger("filter", `render#${type}`, [types[type].apply(this, [data, query])])[0];
+        return this.trigger("filter", `render#${type}`, [types[type].apply(this, [data, query]), data, query])[0];
     }
     
     /*
@@ -804,7 +804,7 @@ class Select {
                 case this.get("multiple") && limit !== Infinity:
                     label = (value.length === limit)? "multipleLimit": "multipleCount"; break;
                 case !this.get("multiple"):
-                    label = (this.value("nodes")[0] && this.value("nodes")[0].innerText) || "single"; break;
+                    label = (this.value("nodes")[0] && this.value("nodes")[0].innerHTML) || "single"; break;
                 default:
                     label = (this.get("multiple"))? "multiple": "single"; break;
             }

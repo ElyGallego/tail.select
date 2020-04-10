@@ -25,6 +25,7 @@
     font-size: $font-size;
     line-height: $font-height;
     font-family: $font-family;
+    vertical-align: middle;
     outline: none;
     @include prefix(user-select, none, true, true, true);
 
@@ -122,18 +123,13 @@
     position: relative;
     text-align: left;
     background-color: white;
-    background-image: url("image/svg+xml;charset=UTF-8," + replace($image-dropdown, "%s", map-get($color-text, default)));
+    background-image: url("data:image/svg+xml;charset=UTF-8," + encode(replace($image-dropdown, "%s", map-get($color-text, default))));
     background-repeat: no-repeat;
     background-position: center right .75rem;
     background-size: 8px 10px;
-    transition: border 142ms linear, background 142ms linear, box-shadow 142ms linear;
+    transition: border .15s linear, background .15s linear, box-shadow .15s linear;
     @include border(1px, solid, map-get($color-separators, default), $border-radius);
 
-    &:hover {
-        color: map-get($color-text, default);
-        border-color: darken(map-get($color-separators, default), 7.5%);
-        background-color: darken(white, 7.5%);
-    }
     .label-count, .label-inner {
         width: auto;
         margin: 0;
@@ -156,18 +152,53 @@
     }
     .label-inner {
         margin: 0;
-        padding: .375rem .75rem;
+        padding: 6px 12px;
         display: block;
         overflow: hidden;
         white-space: nowrap;    
         text-overflow: ellipsis;
     }
 }
-.tail-select.theme-bootstrap4.active .select-label {
+.tail-select.theme-bootstrap4.form-control {
+    &.active {
+        border-color: map-get($color-secondary, default);
+        box-shadow: 0 0 0 .2rem rgba(128,189,255,.5)
+    }
+    .select-label {
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background-color: transparent;
+    }
+    &.form-control-sm {
+        font-size: 14px;
+
+        .select-label {
+            background-position: top .65rem right .65rem;
+
+            .label-inner {
+                padding-top: .25rem; 
+                padding-bottom: .25rem; 
+            }
+        }
+    }
+    &.form-control-lg {
+        font-size: 20px;
+
+        .select-label {
+            background-position: top 1.2rem right 0.9rem;
+
+            .label-inner {
+                padding-top: .5rem;
+                padding-bottom: .5rem;
+            }
+        }
+    }
+}
+.tail-select.theme-bootstrap4.active:not(.form-control) .select-label {
     color: map-get($color-text, default);
     border-color: map-get($color-secondary, default);
-    background-color: darken(white, 7.5%);
-    box-shadow: 0 0 0 .2rem fadeout(map-get($color-secondary, default), 65%);
+    box-shadow: 0 0 0 .2rem rgba(128,189,255,.5)
 }
 /* @end LABEL */
 
@@ -183,7 +214,8 @@
     z-index: 25;
     overflow: hidden;
     position: absolute;
-    background-color: white;
+    font-size: 16px;
+    background-color: transparent;
     transition: max-height 142ms linear;
     @include border(1px, solid, transparent, $border-radius);
 
@@ -255,7 +287,7 @@
     ul {
         li {
             color: map-get($color-text, default);
-            padding: .25rem 1.75rem;
+            padding: .25rem .25rem .25rem 1.75rem;
             text-align: left;
             font-weight: normal;
     
@@ -316,8 +348,11 @@
             background-repeat: no-repeat;
             background-position: center center;
         }
+        &.hide-icon:before {
+            display: none;
+        }
         .option-description {
-            color: fadeout(map-get($color-text, default), 30%);
+            color: fadeout(map-get($color-text, default), 20%);
             width: auto;
             margin: 0;
             padding: 0;
@@ -331,7 +366,7 @@
             background-color: #f5f5f5;
 
             .option-description {
-                color: fadeout(white, 15%);
+                color: fadeout(map-get($color-text, default), 20%);
             }
         }
         &.disabled, &.hidden {
@@ -345,13 +380,15 @@
             }
         }
         &.selected {
-            color: nth(map-get($color-primary, primary), 1);
+            color: white;
+            background-color: nth(map-get($color-primary, primary), 1);
 
             &:hover, &.hover {
-                color: map-get($color-text, default);
+                color: white;
+                background-color: lighten(nth(map-get($color-primary, primary), 1), 15%);
             }
             .option-description {
-                color: lighten(nth(map-get($color-primary, primary), 1), 15%);
+                color: fadeout(white, 15%);
             }
         }
     }
@@ -368,6 +405,7 @@
     &.active .select-dropdown {
         z-index: 29;
         border-color: rgba(0, 0, 0, 0.15);
+        background-color: white;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
     }
 }
@@ -383,10 +421,10 @@
     // State :: Seleced
     .select-dropdown li.dropdown-option.selected {
         &:before {
-            @include icon("select", black);
+            @include icon("select", white);
         }
         &:hover:before, &.hover:before {
-            @include icon("select", black);
+            @include icon("select", white);
         }
     }
 
@@ -394,7 +432,7 @@
     &.deselectable .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden),
     &.multiple .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden) {
         &:hover:before, &.hover:before {
-            @include icon("deselect", black);
+            @include icon("deselect", white);
         }
     }
 }

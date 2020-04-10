@@ -115,6 +115,8 @@ Version 0.6.0 - Beta
 -   Add: The new Functions `@fadein()` and `@fadeout()` for an easier Adaption of the alpha channel.
 -   Add: The new Mixin `@worb()` to use white or black color depending on the lightness. 
 -   Add: The new Mixins `@animation()` and `@prefix()` to prefix CSS properties.
+-   Add: The new additional class names `form-control`, `form-control-sm` and `form-control-lg` for
+    the re-designed Bootstrap-4 design.
 -   Update: The main class name `deselect` has been renamed into `deselectable`.
 -   Update: The button class names has been renamed into `select-all` and `select-none`.
 -   Update: Many other small and particular changes on all available themes.
@@ -139,7 +141,7 @@ Version 0.6.0 - Beta
 -   Add: The new Lithuanian Translation.
     - Thanks to [#124](https://github.com/pytesNET/tail.select/issues/124).
 -   Add: The new Persian Translation for Iran.
-    - Thanks to [#124](https://github.com/pytesNET/tail.select/issues/124).
+    - Thanks to [#129](https://github.com/pytesNET/tail.select/issues/129).
 -   Add: The new `Strings.add()` method replaces `.register()` and `.modify()`.
 -   Add: The new `Plugins` class / API, which allows to hook to each created `tail.select` instance.
 -   Update: The helper methods are now available through `Select.__helpers` (`tail.select.__helpers`).

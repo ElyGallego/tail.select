@@ -19,6 +19,7 @@ var options: any = {
  |  PLUGIN HOOKS
  */
 var hooks: any = {
+    
     /*
      |  HOOK :: CHECK OPTIONs
      |  @since  0.6.0 [0.6.0]

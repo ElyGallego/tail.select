@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>eMail Form w\ tail.select & Bootstrap 4</title>
+        
+        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="../../dist/css/bootstrap4/theme-bootstrap4.min.css" />
+        <link type="text/css" rel="stylesheet" href="../../dist/css/bootstrap4/plugins/select-all.min.css" />
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/md5.js"></script>
+        <script type="text/javascript" src="../../dist/js/tail.select.js"></script>
+        <script type="text/javascript" src="../../dist/js/plugins/all.js"></script>
+
+        <!-- tail.select Source :: The following code makes tail.select more awesome. -->
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+
+                /*
+                 |  THE 'FROM' FIELD
+                 */
+                var single = tail.select(document.getElementById("email-from"), {
+                    width: "100%",
+                    classNames: "form-control",
+                    on: {
+                        // The filter below allows to adapt / change the rendered dropdown items
+                        "render#item": function(item /* The rendered list item */, option /*The <option> element */, query /* The used query */) {
+
+                            // The title text is wrapped in a span.option-title element
+                            var title = item.querySelector(".option-title");
+
+                            // Fetch eMail address, build Gravatar URL
+                            var email = option.value.slice(option.value.indexOf("<") + 1, option.value.indexOf(">"))
+                            var gravatar = "https://www.gravatar.com/avatar/" + md5(email.trim());
+
+                            // Create Gravatar <img> element and insert it before the title text
+                            var image = document.createElement("img");
+                                image.src = gravatar;
+                                image.alt = "Gravatar";
+                                image.setAttribute("width", "40px");
+                                image.setAttribute("height", "40px");
+                                image.style.cssText = "float:left;margin: -1px 8px 4px -20px;z-index: 30;position:relative;border-radius: 3px;";
+                            item.insertBefore(image, title);
+                            item.style.paddingTop = "0.5rem";
+                            item.style.paddingBottom = "0.5rem";
+                            
+                            // Return the adapted list item element back
+                            // The Return value ALWAYS must be an ARRAY!
+                            return [item];
+                        }
+                    }
+                });
+
+
+                /*
+                 |  THE 'PRIORITY' FIELD
+                 */
+                var priority = tail.select("select.priority", {
+                    width: "105px",
+                    classNames: "form-control form-control-sm",
+                    openAbove: true,
+                    on: {
+                        // The filter below allows to adapt / change the rendered dropdown items
+                        "render#item": function(item /* The rendered list item */, option /*The <option> element */, query /* The used query */) {
+
+                            // Create the dot element
+                            var dot = document.createElement("span");
+                                dot.className = "d-inline-block rounded-circle";
+                                dot.style.cssText = "width:10px;height:10px;margin: -1px 6px 0 -20px;z-index:30;position:relative;border:2px solid white;";
+
+                            // Add a color, depending on the option value
+                            if(option.value == "high") {
+                                dot.classList.add("bg-danger");
+                            } else if(option.value == "normal") {
+                                dot.classList.add("bg-success");
+                            } else if(option.value == "low") {
+                                dot.classList.add("bg-secondary");
+                            }
+
+                            // Add the dot before the span.option-title element
+                            item.classList.add("hide-icon");
+                            item.insertBefore(dot, item.querySelector(".option-title"));
+                            
+                            // Return the adapted list item element back
+                            // The Return value ALWAYS must be an ARRAY!
+                            return [item];
+                        },
+
+                        // The filter below allows to adapt the label elements
+                        "update#label": function(string /* The current string */, label /* The label text */, count /* The option count */, replace /* The replacement Array */) {
+
+                            // Create the dot element
+                            var dot = document.createElement("span");
+                                dot.className = "d-inline-block rounded-circle";
+                                dot.style.cssText = "width:10px;height:10px;margin:0 5px 0 -4px;border:2px solid white;";
+
+                            // Add a color, depending on the selected value text
+                            if(label == "High") {
+                                dot.classList.add("bg-danger");
+                            } else if(label == "Normal") {
+                                dot.classList.add("bg-success");
+                            } else if(label == "Low") {
+                                dot.classList.add("bg-secondary");
+                            }
+
+                            // Build the label string
+                            string = '<span class="label-inner" style="display:inline-block;">' + dot.outerHTML + label + '</span>';
+
+                            // Return the label string element back
+                            // The Return value ALWAYS must be an ARRAY!
+                            return [string, label, count, replace];
+                        }
+                    }
+                });
+
+
+                /*
+                 |  THE 'CC' && 'BCC' FIELDs
+                 */
+                var multiple = tail.select("select[multiple]", {
+                    width: "100%",
+                    classNames: "form-control",
+                    search: true,
+                    plugins: {
+
+                        // Allows to fetch items in a asynchonous way
+                        ajax: {
+                            ajax: true,
+                            ajaxOn: "input",
+
+                            // The AJAX Callback function, keep in mind that this function is 
+                            // just for demonstration purposes.
+                            ajaxCallback: function(method /* The query method */, args /* The query arguments */) {
+                                console.log(method, args);
+                                if(method !== "finder") {
+                                    return null;
+                                }
+
+                                return this.success({
+                                    "sambrishes@gmx.net": {
+                                        text: "Sam <sambrishes@gmx.net>"
+                                    }
+                                }, false);
+                            },
+                            
+                            // The ajaxSearch option MUST be true when using "input" on ajaxOn
+                            ajaxSearch: true,
+
+                            // Reset on each new input
+                            ajaxReset: true
+                        },
+
+                        // Turns the select label element into an interactive input field.
+                        input: {
+
+                            // Allows to create options
+                            create: true
+                        },
+
+                        // Allows to "move" selected values to the label element.
+                        movement: {
+
+                        }
+                    }
+                });
+            });
+        </script>
+
+        <!-- Demonstration Source :: The following code is JUST for the demonstration page. -->
+        <style type="text/css">
+            a[data-toggle="collapse"].collapsed .collapsed {
+                display: inline;
+            }
+            a[data-toggle="collapse"].collapsed .not-collapsed {
+                display: none;
+            }
+            a[data-toggle="collapse"]:not(.collapsed) .collapsed {
+                display: none;
+            }
+            a[data-toggle="collapse"]:not(.collapsed) .not-collapsed {
+                display: inline;
+            }
+        </style>
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+                $('[data-toggle="tooltip"]').tooltip()
+
+                var collapse = document.querySelector('a[data-toggle="collapse"]');
+                if(collapse) {
+                    collapse.addEventListener("click", function() {
+                        console.log(this.classList.contains("collapsed"));
+                        if(this.classList.contains("collapsed")) {
+                            this.classList.add("text-danger");
+                            this.classList.remove("text-success");
+                        } else {
+                            this.classList.add("text-success");
+                            this.classList.remove("text-danger");
+                        }
+                    });
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container mt-5 mb-5 pb-5">
+            <h1 class="display-4">Basic eMail Form</h1>
+            <p class="lead mb-5 pl-1">
+                Using Bootstrap 4 and the power of <b>tail.select</b>
+            </p>
+
+            <div class="card shadow bg-white rounded">
+                <div class="card-header">
+                    <span class="oi oi-envelope-closed mr-2 text-muted" style="margin-top:4px;vertical-align: top;"></span>Write a new eMail
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><span class="oi oi-person"></span><span style="width: 3rem;text-align:right;">From</span></span>
+                                </div>
+                                <select id="email-from" name="email[from]" data-placeholder="From" class="default">
+                                    <option value="pytesNET &lt;info@pytes.net&gt;" data-description="The main eMail address">pytesNET &lt;info@pytes.net&gt;</option>
+                                    <option value="SamBrishes &lt;sam@pytes.net&gt;" data-description="Sam's eMail account">SamBrishes &lt;sam@pytes.net&gt;</option>
+                                    <option value="Lenivyy &lt;lenivyy@pytes.net&gt;" data-description="Lenivyy's eMail account">Lenivyy &lt;lenivyy@pytes.net&gt;</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-0">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><span class="oi oi-people"></span><span style="width: 3rem;text-align:right;">To</span></span>
+                                </div>
+                                <select id="email-to" name="email[to]" data-placeholder="Type in a name or eMail address" multiple></select>
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Address Book">
+                                        <span class="oi oi-book" style="font-size:14px;"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="advanced-form" class="collapse mb-0">
+                            <div class="form-group mt-3 mb-0">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><span class="oi oi-people"></span><span style="width: 3rem;text-align:right;">CC</span></span>
+                                    </div>
+                                    <select id="email-cc" name="email[cc]" data-placeholder="Type in a name or eMail address" multiple></select>
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Address Book">
+                                            <span class="oi oi-book" style="font-size:14px;"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-0">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><span class="oi oi-people"></span><span style="width: 3rem;text-align:right;">BCC</span></span>
+                                    </div>
+                                    <select id="email-bcc" name="email[bcc]" data-placeholder="Type in a name or eMail address" multiple></select>
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Address Book">
+                                            <span class="oi oi-book" style="font-size:14px;"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-right mt-1 mb-3 pr-4">
+                            <a href="#advanced-form" class="text-success collapsed" style="font-size: 0.75rem;" data-toggle="collapse">
+                                <span class="not-collapsed">Hide CC / BCC</span>
+                                <span class="collapsed">Show CC / BCC</span>
+                            </a>
+                        </div>
+
+                        <div class="form-group pt-3">
+                            <input type="text" id="email-subject" name="email[subject]" placeholder="Your Subject" class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <textarea id="email-content" name="email[content]" placeholder="Your eMail Text" class="form-control " style="min-height: 10rem;"></textarea>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <select name="email[priority]" class="priority">
+                                    <optgroup label="Priority">
+                                        <option value="high">High</option>
+                                        <option value="normal" selected>Normal</option>
+                                        <option value="low">Low</option>
+                                    </optgroup>
+                                </select>
+                                <button type="button" class="btn btn-sm btn-secondary ml-2" disabled style="cursor:not-allowed;"><span class="oi oi-paperclip mr-1"></span>Upload Attachments</button>
+                                <button class="btn btn-success invisible">Placeholder</button>
+                            </div>
+                            <div class="text-right">
+                                <button type="reset" class="btn btn-sm btn-light text-danger"><span class="oi oi-trash"></span></button>
+                                <button class="btn btn-sm btn-light">Save as Draft</button>
+                                <button type="submit" class="btn btn-success">Send eMail</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-5 mb-5 border-top">
+            <h2 class="display-4 mt-5 mb-3">Description</h2>
+            <div class="row">
+                <div class="col-sm">
+                    <h3 class="font-weight-light mt-3 mb-4">About the Design</h3>
+                    <p class="lead text-justify">
+                        The tail.select JavaScript library is optmized for the Bootstrap 4 CSS Framework. You simple need 
+                        to add the additional class name <code class="text-primary">form-control</code>, using the <a href="">classNames option</a>, 
+                        to prepare the script for the behaviours of Bootstrap.
+                    </p>
+                    <p class="lead text-justify">
+                        You can also use the basic Bootstrap 4 css theme itself, <b>without using the Bootstrap 4</b> 
+                        Framwork at all. The tail.select design is written as a "stand-alone" stylesheet, just a few 
+                        stylings are only available together with the Framework.
+                    </p>
+                </div>
+                <div class="col-sm">
+                    <h3 class="font-weight-light mt-3 mb-4">About the Script</h3>
+                    <p class="lead text-justify">
+                        We're using the core <a href="">AJAX</a>, <a href="">Input</a> and <a href="">Movement</a> plugin 
+                        for this example, which are all already included in the package. Keep in mind, that you can 
+                        achieve way more cool stuff using them with the tail.select library!
+                    </p>
+                    <p class="lead text-justify">
+                        Next to the plugins we're also using a few lines of code, which is enough to connect the 
+                        <kbd>To</kbd>, <kbd>CC</kbd> and <kbd>BCC</kbd> fields together. That way, it is not possible to 
+                        use the same item (eMail address) on more then one field at the same time (Try it).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container pt-5 mt-5 mb-5 border-top">
+            <div class="text-center">
+                <p class="lead text-center">
+                    Designed with <a href="https://getbootstrap.com">Bootstrap 4</a> and <a href="https://useiconic.com/open">Open Iconic</a>
+                </p>
+                <p class="lead text-center">
+                    Using the <a href="">tail.select</a> library written by pytes<b>NET</b>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
