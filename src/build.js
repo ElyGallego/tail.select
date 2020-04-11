@@ -16,7 +16,7 @@
  |  INIT SYNTER DEPENDENCY
  */
 const Synter = require("./synter/synter.js");
-const synter = new Synter("../");
+const synter = new Synter(__dirname + "/");
 
 /*
  |  SYNTER COMMUNICATOR
