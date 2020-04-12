@@ -29,6 +29,9 @@
         "type": "git",
         "url": "git+ssh://git@github.com/pytesNET/tail.select.git"
     },
+    "engines": {
+        "node": "12.x"
+    },
     "devDependencies": {
         "node-sass": "4.12.x",
         "typescript": "3.5.x - 3.7.x",
