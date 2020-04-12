@@ -100,7 +100,7 @@
         &:before {
             opacity: 0.5;
             background-size: 26px 26px;
-            @include icon("deselect", map-get($color-text, light), "octicons");
+            @include icon("deselect", map-get($color-text, default), "octicons");
         }
         span {
             margin: -5px 0 5px 0;

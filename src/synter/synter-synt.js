@@ -21,24 +21,14 @@ module.exports = class SynterSynt {
      |  Variables       $[variable]
      |                  $[namespace].[variable]
      */
-    regex = {
-        functions: /(?:\/\*\*(?: )*\@([a-z]+)(?: )*\((.*)\)(?: )*(?: )*\*\*\/|\{\{(?: )*\@([a-z]+)(?: )*\((.*?)\)(?: )*\}\})/g,
-        statements: '',
-        variables: /(?:\/\*\*(?: )*\$([a-z_.-]+)(?: )*\*\*\/|\{\{(?: )*\$([a-z_.-]+)(?: )*\}\})/g,
-        variable: /\$([a-z_.-]+)/gi
-    };
-
-    /*
-     |  SYNT :: TEMPLATE MODULES
-     |  Contains all template modules, which are provided by the synder file.
-     */
-    templates = { }
-
-    /*
-     |  SYNT :: PART MODULES
-     |  Contains all part modules, which are provided by the synder file.
-     */
-    parts = { }
+    get regex() {
+        return {
+            functions: /(?:\/\*\*(?: )*\@([a-z]+)(?: )*\((.*)\)(?: )*(?: )*\*\*\/|\{\{(?: )*\@([a-z]+)(?: )*\((.*?)\)(?: )*\}\})/g,
+            statements: '',
+            variables: /(?:\/\*\*(?: )*\$([a-z_.-]+)(?: )*\*\*\/|\{\{(?: )*\$([a-z_.-]+)(?: )*\}\})/g,
+            variable: /\$([a-z_.-]+)/gi
+        };
+    }
 
     /*
      |  SYNT :: TEMPLATE FUNCTIONS
@@ -221,34 +211,6 @@ module.exports = class SynterSynt {
     }
 
     /*
-     |  GLOBAL :: BOWER DATA
-     |  Contains all data within the `bower.json` file.
-     */
-    bower = { };
-
-    /*
-     |  GLOBAL :: PACKAGE DATA
-     |  Contains all data within the `package.json` file.
-     */
-    package = { };
-
-    /*
-     |  GLOBAL :: GLOBAL SCOPE
-     |  Contains all available global-scoped variables.
-     */
-    global = {
-        core: { },
-        data: { },
-        date: { }
-    };
-
-    /*
-     |  GLOBAL :: LOCAL SCOPE
-     |  Contains all available local-scoped variables.
-     */
-    local = { };
-
-    /*
      |  CONSTRUCTOR
      |  @since  0.1.0 [0.1.0]
      |
@@ -262,10 +224,24 @@ module.exports = class SynterSynt {
         if(!/^:(template|part)/gm.test(synt)) {
             throw new Error("The passed .synt content seems invalid or is empty.");
         }
-        this._parts = {};
-        this._templates = {};
+
+        // Set Synt
+        this.templates = { };
+        this.parts = { };
+
+        // Set Package
         this.bower = bower_data || { };
         this.package = package_data || { };
+
+        // Set Scope
+        this.global = {
+            core: { },
+            data: { },
+            date: { }
+        };
+        this.local = { };
+
+        // Build
         return this.build(synt);
     }
     
@@ -624,7 +600,7 @@ module.exports = class SynterSynt {
                 replace = [true, ""];
             }
             if(!replace[0]) {
-                return replace;
+                return [false, ""];
             }
 
             // Replace

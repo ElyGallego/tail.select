@@ -25,10 +25,8 @@ class Options {
         // Init Deselectability
         if(this.parent.get("deselect") && !this.parent.get("multiple")) {
             let option: HTMLOptionElement = this.source.querySelector("option:checked");
-            if(this.source.querySelector("option[selected]") === null) {
-                if(option) {
-                    option.selected = false;
-                }
+            if(option && this.source.querySelector("option[selected]") === null) {
+                option.selected = false;
                 this.source.selectedIndex = -1;
             }
         }

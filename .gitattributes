@@ -13,4 +13,5 @@ src/docs/* linguist-vendored
 src/locales/* linguist-vendored
 src/scss/* linguist-vendored
 src/synter/* linguist-vendored
+src/build.js linguist-vendored
 tests/* linguist-vendored

@@ -13,6 +13,7 @@
  |  LOAD CORE DEPENDENCIES
  */
 const fs = require("fs");
+const path = require("path");
 
 
 /*
@@ -22,60 +23,34 @@ module.exports = class SynterDocs {
     /*
      |  REGEXP :: HEADER
      */
-    regexHeader = /\<h([1-6])(?:\s+[^\>]+)?\>([\s\S]*?)\<\/h\1\>/gm;
-
-    /*
-     |  CORE :: ROOT PATH TO SRC FILEs
-     */
-    root = "";
-
-    /*
-     |  CORE :: RENDER PATH TO DIST FILEs
-     */
-    path = "";
-
-    /*
-     |  CORE :: DOCUMENTATION PAGE INDEX
-     */
-    index = { };
-
-    /*
-     |  CORE :: MAIN LAYOUT STRUCTURE
-     */
-    layout = "";
-
-    /*
-     |  CORE :: FETCHED HEADERS
-     */
-    headers = [ ];
-
+    get regexHeader() {
+        return /\<h([1-6])(?:\s+[^\>]+)?\>([\s\S]*?)\<\/h\1\>/gm;
+    }
 
     /*
      |  CONSTRUCTOR
      |  @since  0.1.0 [0.1.0]
      */ 
-    constructor(config, path, self) {
-        let root = config.split("/");
-            root.pop();
-            root = root.join("/") + "/";
+    constructor(config, outdir, self) {
+        let root = path.dirname(config);
 
         // Check Data
         if(!fs.existsSync(config)) {
             throw new Error(`The config file ${config} doesn't exist.`);
         }
-        if(!fs.existsSync(path)) {
-            throw new Error(`The documentation folder ${path} doesn't exist.`);
+        if(!fs.existsSync(outdir)) {
+            throw new Error(`The documentation folder ${outdir} doesn't exist.`);
         }
-        if(!fs.existsSync(root + "layout.html")) {
+        if(!fs.existsSync(path.join(root, "layout.html"))) {
             throw new Error(`The documentation layout file ${root}layout.html doesn't exist.`);
         }
 
         // Add Data
         this.synter = self;
         this.root = root;
-        this.path = path;
+        this.outdir = outdir;
         this.index = JSON.parse(fs.readFileSync(config).toString());
-        this.layout = fs.readFileSync(root + "layout.html").toString();
+        this.layout = fs.readFileSync(path.join(root, "layout.html")).toString();
         this.headers = [];
         return this;
     }
@@ -102,7 +77,7 @@ module.exports = class SynterDocs {
 
             // Load Content
             let skip = false;
-            let content = fs.readFileSync(`${this.root}${page}.html`).toString();
+            let content = fs.readFileSync(path.join(this.root, page + ".html")).toString();
             this.index[page]["content"] = "\n" + content.trim().split("\n").map((line) => {
                 if(line.trim().startsWith("<pre")) {
                     skip = true;
@@ -118,7 +93,9 @@ module.exports = class SynterDocs {
             let lastnum = 1;
             let lastitem = null;
             let navigation = [];
-            while((header = this.regexHeader.exec(content)) !== null) {
+
+            let regex = this.regexHeader;
+            while((header = regex.exec(content)) !== null) {
                 let number = parseInt(header[1]);
                 let title = header[2].substr(0, Math.max(header[2].indexOf("<"), 0) || header[2].length).trim();
                 let hash = /id\=\"(.+?)\"/g.exec(header[0]);
@@ -174,7 +151,7 @@ module.exports = class SynterDocs {
             });
 
             // Write Content
-            fs.writeFileSync(`${this.path}${page}.html`, html, "utf-8");
+            fs.writeFileSync(path.join(this.outdir, page + ".html"), html, "utf-8");
             this.synter.writeConsole(2, `./src/docs/${page}.html`);
         }
     }

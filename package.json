@@ -21,7 +21,6 @@
     "license": "MIT",
     "homepage": "https://github.com/pytesNET/tail.select",
     "copyright": "pytesNET <info@pytes.net>",
-    
     "bugs": {
         "url": "https://github.com/pytesNET/tail.select/issues",
         "email": "info@pytes.net"
@@ -30,10 +29,8 @@
         "type": "git",
         "url": "git+ssh://git@github.com/pytesNET/tail.select.git"
     },
-
     "devDependencies": {
-        "sass": "1.2.x",
-        "dart-sass": "1.23.x - 1.25.x",
+        "node-sass": "4.12.x",
         "typescript": "3.5.x - 3.7.x",
         "uglify-es": "~3.3.x",
         "uglify-js": "3.3.x - 3.5.x"
@@ -41,7 +38,6 @@
     "main": "dist/js/tail.select.js",
     "browser": "dist/js/tail.select.js",
     "jsdelivr": "dist/js/tail.select.js",
-
     "reveal": true,
     "jquery": "tailselect",
     "mootools": "tailselect"

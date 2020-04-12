@@ -13,10 +13,15 @@
  */
 
 /*
+ |  LOAD CORE
+ */
+const path = require("path");
+
+/*
  |  INIT SYNTER DEPENDENCY
  */
 const Synter = require("./synter/synter.js");
-const synter = new Synter(__dirname + "/");
+const synter = new Synter(path.join(__dirname, "../"));
 
 /*
  |  SYNTER COMMUNICATOR
@@ -41,7 +46,7 @@ function SynterConsole(status, file, line, number, message) {
  */
 function CompileTypeScript(type) {
     let walk = function(file, name, code) {
-        let data = this.header("ts/plugins/" + name + ".ts");
+        let data = this.header(path.join(__dirname, "ts", "plugins", name + ".ts"));
         this.synt.setScope({ plugin: { name: data[0], description: data.description } }, false);
     };
 
@@ -49,10 +54,10 @@ function CompileTypeScript(type) {
     //
     //  This Part renders the ECMAScript 5 AND ECMAScript 2015 core files.
     if(type == "all" || type == "core") {
-        synter.console(SynterConsole, "TypeScript");
+        synter.doConsole(SynterConsole, "TypeScript");
 
         // Compile ES5
-        synter.typescript("./ts/tsconfig.json", {
+        synter.typescript(path.join(__dirname, "ts", "tsconfig.json"), {
             target: 1,
             outDir: "../dist/js/",
             outFile: "../dist/js/tail.select.js"
@@ -62,7 +67,7 @@ function CompileTypeScript(type) {
         synter.minify("uglify-js", "minified-js", "../dist/js/tail.select.min.js");
 
         // Compile ES6
-        synter.typescript("./ts/tsconfig.json", {
+        synter.typescript(path.join(__dirname, "ts", "tsconfig.json"), {
             target: 2,
             outDir: "../dist/es/",
             outFile: "../dist/es/tail.select.js"
@@ -76,10 +81,10 @@ function CompileTypeScript(type) {
     //
     //  This Part renders the single and the "all" Plugin files for ES5 and ES6.
     if(type == "all" || type == "plugins") {
-        synter.console(SynterConsole, "TypeScript :: Plugins");
+        synter.doConsole(SynterConsole, "TypeScript :: Plugins");
 
         // Compile ES5
-        synter.typescript("./ts/plugins/tsconfig.json", {
+        synter.typescript(path.join(__dirname, "ts", "plugins", "tsconfig.json"), {
             target: 1,
             outDir: "../dist/js/plugins/"
         });
@@ -90,7 +95,7 @@ function CompileTypeScript(type) {
         synter.minify("uglify-js", "minified-js", "../dist/js/plugins/all.min.js");
 
         // Compile ES6
-        synter.typescript("./ts/plugins/tsconfig.json", {
+        synter.typescript(path.join(__dirname, "ts", "plugins", "tsconfig.json"), {
             target: 2,
             outDir: "../dist/es/plugins/"
         });
@@ -105,10 +110,10 @@ function CompileTypeScript(type) {
     //
     //  This Part renders the single and the "all" Language files for ES5 and ES6.
     if(type == "all" || type == "langs") {
-        synter.console(SynterConsole, "TypeScript :: Locales");
+        synter.doConsole(SynterConsole, "TypeScript :: Locales");
 
         // Compile ES5
-        let cb = synter.locales("./locales/");
+        let cb = synter.locales(path.join(__dirname, "locales"));
         synter.synt.setScope({ build: "ECMAScript 5" });
         synter.render("locale-es5", "../dist/js/locales/$name.js", cb);
         synter.minify("uglify-js", "minified-js", "../dist/js/locales/$name.min.js");
@@ -141,10 +146,10 @@ function CompileStylesheets(type) {
 
     //  RENDER THEMEs
     if(type == "all" || type == "themes") {
-        synter.console(SynterConsole, "SASS :: Themes");
+        synter.doConsole(SynterConsole, "SASS :: Themes");
 
         // Compile Theme Files
-        synter.sass("./scss/", config);
+        synter.sass(path.join(__dirname, "scss"), config);
         synter.render("stylesheet", "../dist/css/$name0/theme-$name.css");
         synter.renderMap("../dist/css/$name0/theme-$name.css.map");
         synter.minify("sass", "minified-css", "../dist/css/$name0/theme-$name.min.css");
@@ -154,10 +159,10 @@ function CompileStylesheets(type) {
     config.files = /^select\-*/;
     config.outFile = "dist/css/$name/select-$name.css";
     if(type == "all" || type == "plugins") {
-        synter.console(SynterConsole, "SASS :: Plugins");
+        synter.doConsole(SynterConsole, "SASS :: Plugins");
 
         // Compile Plugin Files
-        synter.sass("./scss/", config);
+        synter.sass(path.join(__dirname, "scss"), config);
         synter.render("stylesheet", "../dist/css/$name0/plugins/select-$name1.css")
         synter.renderMap("../dist/css/$name0/plugins/select-$name1.css.map");
         synter.minify("sass", "minified-css", "../dist/css/$name0/plugins/select-$name1.min.css");
@@ -170,8 +175,11 @@ function CompileStylesheets(type) {
  */
 function CompileDocumentation(type) {
     if(type == "all" || type == "pages") {
-        synter.console(SynterConsole, "Documentation");
-        synter.documentation("./docs/docs.json", "../docs/docs/");
+        synter.doConsole(SynterConsole, "Documentation");
+        synter.documentation(
+            path.join(__dirname, "docs", "docs.json"),
+            path.join(__dirname, "../", "docs", "docs")
+        );
     }
 }
 

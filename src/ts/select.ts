@@ -1110,7 +1110,7 @@ class Select {
      */
     value(format: string = "auto") {
         var itm = this.options.get(null, null, true);
-        switch((format === "auto")? (this.get("multiple")? "array": "csv"): format){
+        switch((format === "auto")? (this.get("multiple")? "array": "csv"): format) {
             case "csv": return [].map.call(itm, (i) => i.value).join(this.get("csvSeparator", ","));
             case "array": return [].map.call(itm, (i) => i.value);
             case "nodes": return itm;

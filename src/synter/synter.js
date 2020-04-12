@@ -15,6 +15,7 @@
 const fs = require("fs");
 const path = require("path");
 
+
 /*
  |  LOAD TYPESCRIPT DEPENDENCIES
  */
@@ -22,10 +23,12 @@ const ts = require("typescript");
 const minifyES5 = require("uglify-js");
 const minifyES6 = require("uglify-es");
 
+
 /*
  |  LOAD SASS DEPENDENCY
  */
-const sass = require("sass");
+const sass = require("node-sass");
+
 
 /*
  |  LOAD INTERNAL PACKAGES
@@ -37,72 +40,7 @@ const SynterDocs = require("./synter-docs");
 /*
  |  THIS MAIN CLASS HANDLES THE SYNTER ENVIRONMENT AND COMPILER PROCESSES
  */
-module.exports = class Synter {
-    /*
-     |  THE SYNTER VERSION
-     */
-    static version = "0.1.0";
-
-    /*
-     |  THE SYNTER VERSION STATUS
-     */
-    static status = "alpha";
-
-
-    /*
-     |  CORE :: BOWER
-     |  Contains the parsed 'bower.json' content if available.
-     */
-    bower = null;
-
-    /*
-     |  CORE :: PACKAGE
-     |  Contains the parsed 'package.json' content if available.
-     */
-    package = null;
-
-    /*
-     |  CORE :: SYNT INSTANCE
-     |  The SynterSynt class instance using the '*.synt' builder file.
-     */
-    synt = null;
-
-    /*
-     |  BUILD :: SOURCE CODEs
-     |  Contains all compiled source codes (see '.typescript()' or '.sass()').
-     */
-    source = [];
-
-    /*
-     |  BUILD :: SOURCE MAPs
-     |  Contains all available source maps (currently only available on SASS).
-     */
-    map = [];
-
-    /*
-     |  RENDER :: CONTENT CODEs
-     |  Conatins all rendered distribution files (see '.render()').
-     */
-    content = [];
-
-    /*
-     |  RENDER :: CONTENT MINIFIED
-     |  Conatins all minified rendered distribution files (see '.minify()').
-     */
-    minified = [];
-
-    /*
-     |  CONSOLE :: WRITE
-     |  The console to render compiler or rendering errors.
-     */
-    writeConsole = function(status, file, line, character, message){ };
-
-    /*
-     |  CONSOLE :: PREFIX
-     |  The current console prefix.
-     */
-    writeConsolePrefix = "";
-
+class Synter {
     /*
      |  CONSTRUCTOR
      |  @since  0.1.0 [0.1.0]
@@ -112,30 +50,43 @@ module.exports = class Synter {
      |
      |  @return this    The Synter instance itself.
      */
-    constructor(root, synt = null) {
-        synt = !synt? "build": "";
-        synt = !synt.endsWith(".synt")? synt + ".synt": synt;
+    constructor(root, synt = "build.synt") {
+        this.bower = null;
+        this.package = null;
+        this.synt = null;
+        this.source = [];
+        this.map = [];
+        this.content = [];
+        this.minified = [];
+        this.writeConsole = function(status, file, line, character, message){ };
+        this.writeConsolePrefix = "";
 
-        // Get Package / Bower .json
-        if(fs.existsSync(`${root}package.json`)) {
-            this.package = JSON.parse(fs.readFileSync(`${root}package.json`).toString());
-        } else if(fs.existsSync(`./package.json`)) {
-            this.package = JSON.parse(fs.readFileSync(`./package.json`).toString());
+        // Check root path
+        if(!fs.existsSync(path.join(root))) {
+            throw new Error(`The passed root path doesn't exist.`);
         }
-        if(fs.existsSync(`${root}bower.json`)) {
-            this.bower = JSON.parse(fs.readFileSync(`${root}bower.json`).toString());
-        } else if(fs.existsSync(`./bower.json`)) {
-            this.bower = JSON.parse(fs.readFileSync(`./bower.json`).toString());
+        this.root = path.join(root);
+        this.src = path.join(root, "src");
+
+        // Check for package.json
+        if(fs.existsSync(path.join(this.root, "package.json"))) {
+            this.package = JSON.parse(fs.readFileSync(path.join(this.root, "package.json")).toString());
         }
+
+        // Check for bower.json
+        if(fs.existsSync(path.join(this.root, "bower.json"))) {
+            this.bower = JSON.parse(fs.readFileSync(path.join(this.root, "bower.json")).toString());
+        }
+
+        // Both doesn't exist
         if(!this.package && !this.bower) {
             throw new Error("Neither a package.json nor a bower.json file was found.");
         }
 
-        // Init SYNT
-        if(fs.existsSync(`${root}${synt}`)) {
-            this.synt = new SynterSynt(fs.readFileSync(`${root}${synt}`).toString(), this.package, this.bower);
-        } else if(fs.existsSync(`./${synt}`)) {
-            this.synt = new SynterSynt(fs.readFileSync(`./${synt}`).toString(), this.package, this.bower);
+        // Check for .synt file
+        if(fs.existsSync(path.join(this.src, synt))) {
+            this.synt = fs.readFileSync(path.join(this.src, synt)).toString();
+            this.synt = new SynterSynt(this.synt, this.package, this.bower);
         } else {
             throw new Error(`The ${synt} file couldn't be found.`);
         }
@@ -151,7 +102,7 @@ module.exports = class Synter {
      |
      |  @return this    The Synter instance itself.
      */
-    console(func, prefix = "") {
+    doConsole(func, prefix = "") {
         if(this.writeConsolePrefix !== prefix && prefix !== "") {
             this.writeConsole = func;
             this.writeConsolePrefix = prefix;
@@ -214,7 +165,7 @@ module.exports = class Synter {
                 if(filename.indexOf("ts/") < 0) {
                     return source.call(host, filename, target, onError, newSourceFile);
                 }
-                let file = fs.readFileSync(`./${filename}`).toString();
+                let file = fs.readFileSync(filename).toString();
 
                 // Remove ES5 / ES6 specific content
                 if(target === 1) {
@@ -224,7 +175,8 @@ module.exports = class Synter {
                 }
 
                 // Create SourceFile and Return
-                self.writeConsole(0, "./src/" + filename, null, null, "");
+                var debug = path.join(filename).replace(path.dirname(__dirname), "");
+                self.writeConsole(0, "./src" + debug.replace(/\\/g, "/"), null, null, "");
                 return ts.createSourceFile(filename, file, target, true);
             };
 
@@ -275,24 +227,26 @@ module.exports = class Synter {
      |
      |  @return this    The Synter instance itself.
      */
-    locales(path) {
+    locales(root) {
         this.source = [];
         this.content = [];
 
         // Read Locale Directory
-        let files = fs.readdirSync(path);
+        let files = fs.readdirSync(root);
         for(let i = 0; i < files.length; i++) {
             if(files[i][0] === "_") {
                 continue;
             }
             this.source.push([files[i].replace(".json", ""), ""]);
-            this.writeConsole(0, "./src/locales/" + files[i], null, null, "");
+
+            var debug = path.join(files[i]).replace(path.dirname(__dirname), "");
+            this.writeConsole(0, "./src/locales/" + debug, null, null, "");
         }
 
         // Return Callback
         this._locales = [];
         return function(file, name, code) {
-            let json = JSON.parse(fs.readFileSync(`${path}${name}.json`).toString());
+            let json = JSON.parse(fs.readFileSync(path.join(root, name + ".json")).toString());
 
             // Prepare Strings
             let strings = [];
@@ -326,8 +280,8 @@ module.exports = class Synter {
      |
      |  @return this    The Synter instance itself.
      */ 
-    sass(path, config = []) {
-        let themes = fs.readdirSync(path, "utf-8");
+    sass(root, config = []) {
+        let themes = fs.readdirSync(root, "utf-8");
         this.map = [];
         this.source = [];
         this.content = [];
@@ -336,15 +290,17 @@ module.exports = class Synter {
         // Loop Themes
         for(let i = 0; i < themes.length; i++) {
             let theme = themes[i];
-            let files = fs.readdirSync(path + theme, "utf-8").filter((f) => config.files.test(f));
+            let files = fs.readdirSync(path.join(root, theme), "utf-8").filter((f) => config.files.test(f));
 
 
             for(let i = 0; i < files.length; i++) {
-                let file = path + theme + "/" + files[i];
-                this.writeConsole(0, `${file.replace("./", "./src/")}`, null, null, "");
+                let file = path.join(root, theme, files[i]);
+                var debug = file.replace(path.dirname(__dirname), "");
+                this.writeConsole(0, "./src" + debug.replace(/\\/g, "/"), null, null, "");
 
                 // Prepare Config
                 let conf = Object.assign({ }, config);
+                delete conf.files;
                 conf.file = file;
                 conf.outFile = conf.outFile.replace(/\$name/g, theme);
 
@@ -352,10 +308,15 @@ module.exports = class Synter {
                 let content = "";
                 let minified = "";
                 try {
-                    content = sass.renderSync(((c) => { c.outputStyle = "expanded"; return c; })(conf));
-                    minified = sass.renderSync(((c) => { c.sourceMap = false; c.outputStyle = "compressed"; return c; })(conf));
+                    conf.sourceMap = true;
+                    conf.outputStyle = "expanded";
+                    content = sass.renderSync(conf);
+                    
+                    conf.sourceMap = false;
+                    conf.outputStyle = "compressed";
+                    minified = sass.renderSync(conf);
                 } catch (err) {
-                    this.writeConsole(1, `${file.replace("./", "./src/")}`, err.line, err.column, err.formatted);
+                    this.writeConsole(1, "./src" + debug.replace(/\\/g, "/"), err.line, err.column, err.formatted);
                 }
                 if(content === "" && minified === "") {
                     continue;
@@ -389,10 +350,10 @@ module.exports = class Synter {
      |  DOCUMENTATION
      |  @since  0.1.0 [0.1.0]
      */
-    documentation(config, path) {
+    documentation(config, outdir) {
         let docs;
         try {
-            docs = new SynterDocs(config, path, this);
+            docs = new SynterDocs(config, outdir, this);
             docs.render();
         } catch(err) {
             console.error(err.message);
@@ -549,15 +510,13 @@ module.exports = class Synter {
                         dead_code: true,
                         keep_fnames: true,
                         toplevel: false,
-                        unused: false,
-                        warnings: true
+                        unused: false
                     },
                     mangle: {
                         keep_fnames: true
                     },
                     sourceMap: false,
-                    toplevel: false,
-                    warnings: true
+                    toplevel: false
                 });
                 if(minified.error) {
                     this.writeConsole(1, filename, minified.error.line, minified.error.col, minified.error.message);
@@ -591,3 +550,5 @@ module.exports = class Synter {
         return this;
     }
 }
+
+module.exports = Synter;
