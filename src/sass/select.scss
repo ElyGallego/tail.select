@@ -1,0 +1,121 @@
+
+// GENERAL :: THEME NAME
+// ––––––––––––––––––––––––––––––
+
+$theme-name: "default";
+
+
+// GENERAL :: THEME IMPORTs
+// ––––––––––––––––––––––––––––––
+
+@import "_Core/Functions";
+@import "_Core/Icons";
+@import "_Core/Mixins";
+
+@import "select/Variables";
+
+
+// STYLINGS :: GENERAL
+// ––––––––––––––––––––––––––––––
+
+.rat-select-theme-name:after {
+    content: "#{$theme-name}-light"; // <theme-name>-<default-scheme>
+}
+.rat-select.theme-#{$theme-name} {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    font-size: $font-size;
+    line-height: $font-height;
+    font-family: $font-family;
+    outline: none;
+    box-sizing: border-box;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+
+    *, *:before, *:after {
+        box-sizing: border-box;
+    }
+    div, ol, li {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+    mark {
+        background-color: $color-secondary;
+    }
+}
+
+
+// STYLINGS :: LABEL
+// ––––––––––––––––––––––––––––––
+
+.rat-select.theme-#{$theme-name} .select-label {
+    cursor: pointer;
+    color: fadeout($color-dark, 25%);
+    width: 100%;
+    margin: 0;
+    padding: $space-sm $space-md;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    text-align: left;
+    border: 1px solid map-get($border-line-normal, light);
+    border-radius: 3px;
+    background-color: $color-light;
+    box-shadow: map-get($shadow-line-normal, light);
+    transition: color 142ms linear, background-color 142ms linear, border-color 142ms linear, box-shadow 142ms linear, z-index 0ms linear 142ms;
+
+    &:after {
+        flex: 0 0 5px;
+        z-index: 25;
+        content: "";
+        opacity: 0.35;
+        border-top: 5px dashed;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        transition: opacity 142ms linear, transform 142ms linear;
+    }
+}
+.rat-select.theme-#{$theme-name} {
+    &:hover .select-label {
+        color: $color-dark;
+        border-color: map-get($border-line-hover, light);
+        box-shadow: map-get($shadow-line-hover, light);
+
+        &:after {
+            opacity: 0.75;
+        }
+    }
+    &.active .select-label {
+        border-color: map-get($border-line-active, light);
+        box-shadow: map-get($shadow-line-active, light);
+    }
+    &.disabled .select-label {
+        cursor: not-allowed;
+        border-color: map-get($border-line-disabled, light);
+        box-shadow: map-get($shadow-line-disabled, light);
+    }
+    &.error .select-label {
+        border-color: map-get($border-line-error, light);
+        box-shadow: map-get($shadow-line-error, light);
+    }
+    &.success .select-label {
+        border-color: map-get($border-line-success, light);
+        box-shadow: map-get($shadow-line-success, light);
+    }
+}
+
+.rat-select.theme-#{$theme-name} .select-label {
+    .label-inner {
+        flex: 1 1 auto;
+        padding-right: $space-md;
+    }
+}

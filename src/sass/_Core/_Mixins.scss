@@ -1,0 +1,30 @@
+//
+//  MIXINS :: [W]HITE [OR] [B]LACK
+// 
+//  @param  color   The color to check.
+//  @param  color   The color to be used on light environments.
+//  @param  color   The color to be used on dark environments.
+//  @param  number  The percentage of the lightness that turns white into black.
+//
+@mixin worb($color, $light: white, $black: black, $percent: 70%) {
+    @if lightness($color) > $percent {
+        color: black;
+    } @else {
+        color: white;
+    }
+}
+
+//
+//  MIXINS :: GRADIENT 
+// 
+//  @param  multi   The gradient starting color.
+//  @param  multi   The gradient ending color.
+//
+@mixin gradient($startColor, $endColor) {
+    background-color: mix($startColor, $endColor, 60%);
+    background-image: linear-gradient(to bottom, $startColor, $endColor);
+    background-image: -o-linear-gradient(top, $startColor, $endColor);
+    background-image: -moz-linear-gradient(top, $startColor, $endColor);
+    background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+    background-repeat: repeat-x;
+}

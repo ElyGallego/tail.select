@@ -1,0 +1,57 @@
+{
+    "name": "rat.select",
+    "version": "1.0.0",
+    "status": "stable",
+    "description": "The vanilla solution to level up your HTML <select> fields.",
+    "keywords": [
+        "select",
+        "input",
+        "form",
+        "dropdown",
+        "choose",
+        "frontend",
+        "ui",
+        "vanilla",
+        "rat"
+    ],
+    "author": "SamBrishes <sam@pytes.net> (https://www.pytes.net)",
+    "contributors": [
+        "Lenivyy <lenivyy@pytes.net> (https://www.pytes.net)"
+    ],
+    "license": "MIT",
+    "copyright": "pytesNET <info@pytes.net>",
+    "homepage": "https://rat.md/select",
+    "bugs": {
+        "url": "https://github.com/pytesNET/tail.select/issues",
+        "email": "info@pytes.net"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/pytesNET/tail.select.git"
+    },
+    "engines": {
+        "node": "14.x"
+    },
+    "main": "dist/js/tail.select.js",
+    "scripts": {
+        "build": "rollup -c",
+        "watch": "rollup -c --watch",
+        "demo": "",
+        "tests": ""
+    },
+    "browser": "dist/js/tail.select.js",
+    "jsdelivr": "dist/js/tail.select.js",
+    "reveal": true,
+    "dependencies": {},
+    "devDependencies": {
+        "@rollup/plugin-typescript": "^6.1.0",
+        "node-sass": "^5.0.0",
+        "rollup": "^2.33.3",
+        "rollup-plugin-consts": "^1.0.2",
+        "rollup-plugin-ignore-import": "^1.3.2",
+        "rollup-plugin-terser": "^7.0.2",
+        "rollup-pluginutils": "^2.8.2",
+        "tslib": "^2.0.3",
+        "typescript": "^4.1.2"
+    }
+}

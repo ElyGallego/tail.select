@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "alwaysStrict": false,
+        "lib": ["DOM", "ES5", "ES6"],
+        "locale": "en",
+        "newLine": "lf",
+        "removeComments": true,
+        "sourceMap": false,
+        "target": "ES5",
+        "typeRoots": [
+            "./src/ts/types"
+        ]
+    },
+    "exclude": [
+        "./rollup.config.js",
+        "./dist/*",
+        "./src/_rat/*",
+        "./src/langs/*",
+        "./src/plugins/*"
+    ]
+}
