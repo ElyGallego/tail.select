@@ -87,49 +87,6 @@
         return Plugins;
     }());
 
-    /*! *****************************************************************************
-    Copyright (c) Microsoft Corporation.
-
-    Permission to use, copy, modify, and/or distribute this software for any
-    purpose with or without fee is hereby granted.
-
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-    PERFORMANCE OF THIS SOFTWARE.
-    ***************************************************************************** */
-
-    function __generator(thisArg, body) {
-        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-        function verb(n) { return function (v) { return step([n, v]); }; }
-        function step(op) {
-            if (f) throw new TypeError("Generator is already executing.");
-            while (_) try {
-                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-                if (y = 0, t) op = [op[0] & 2, t.value];
-                switch (op[0]) {
-                    case 0: case 1: t = op; break;
-                    case 4: _.label++; return { value: op[1], done: false };
-                    case 5: _.label++; y = op[1]; op = [0]; continue;
-                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                    default:
-                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                        if (t[2]) _.ops.pop();
-                        _.trys.pop(); continue;
-                }
-                op = body.call(thisArg, _);
-            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-        }
-    }
-
     var Options = (function () {
         function Options(select) {
             this.select = select;
@@ -171,65 +128,136 @@
             }
             return this;
         };
-        Options.prototype.walker = function (orderGroups, orderItems) {
-            var groups, _a, _b, _i, group;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
-                    case 0:
-                        groups = this.getGroups(false);
-                        if (typeof orderGroups === "function") {
-                            groups = orderGroups.call(this, groups);
-                        }
-                        else if (typeof orderGroups === "string") {
-                            if (orderGroups.toLowerCase() === "asc") {
-                                groups = groups.sort();
-                            }
-                            else {
-                                groups = groups.sort().reverse();
-                            }
-                        }
-                        groups.unshift(null);
-                        _a = [];
-                        for (_b in groups)
-                            _a.push(_b);
-                        _i = 0;
-                        _c.label = 1;
-                    case 1:
-                        if (!(_i < _a.length)) return [3, 4];
-                        group = _a[_i];
-                        return [4, group];
-                    case 2:
-                        _c.sent();
-                        _c.label = 3;
-                    case 3:
-                        _i++;
-                        return [3, 1];
-                    case 4: return [2];
-                }
-            });
-        };
-        Options.prototype.get = function () {
+        Options.prototype.get = function (value, group, states) {
+            var format = { disabled: ":disabled", selected: ":checked", hidden: "[hidden]" };
+            var selector = states ? states.map(function (state) {
+                return state[0] === "!" ? ":not(" + format[state.slice(1)] + ")" : format[state];
+            }) : "";
+            if (typeof value === "number") {
+                var nth = (value > 0) ? ":nth-child" : ":nth-last-child";
+                selector = "option" + nth + "(" + Math.abs(value) + ")" + selector;
+            }
+            else if (typeof value === "string" || !value) {
+                selector = "option" + (!value ? "" : "[value=\"" + value + "\"]") + selector;
+            }
+            else {
+                return [];
+            }
+            if (!group && group !== false) {
+                return this.source.querySelectorAll(selector);
+            }
+            else if (typeof group === "string") {
+                return this.source.querySelectorAll("optgroup[label=\"" + group + "\"] " + selector);
+            }
+            else if (group === false) {
+                selector = "select[data-rat-select=\"" + this.source.dataset.ratSelect + "\"] > " + selector;
+                return this.source.parentElement.querySelectorAll(selector);
+            }
+            return [];
         };
         Options.prototype.getGroups = function (objects) {
             var groups = this.source.querySelectorAll("optgroup");
             return (objects) ? groups : [].map.call(groups, function (i) { return i.label; });
         };
-        Options.prototype.count = function () {
+        Options.prototype.count = function (group, states) {
+            if (arguments.length === 0) {
+                return this.source.options.length;
+            }
+            var result = this.get(null, group, states);
+            return result ? result.length : 0;
         };
         Options.prototype.set = function (item, group, position, reload) {
-            return this;
+            var _this = this;
+            if (!(item instanceof HTMLOptionElement)) {
+                [].map.call(item, function (el, i) { return _this.set(el, group, (position < 0) ? -1 : (position + i), !1); });
+                return (reload && this.select.reload()) ? this : this;
+            }
+            if (group === void 0 || group === null) {
+                group = item.parentElement.label || false;
+            }
+            if (typeof group === "string") {
+                var optgroup = this.source.querySelector("optgroup[label=\"" + group + "\"]");
+                if (!optgroup) {
+                    optgroup = document.createElement("OPTGROUP");
+                    optgroup.label = group;
+                    optgroup.dataset.select = "add";
+                    this.source.appendChild(optgroup);
+                }
+                if (position < 0 || position > optgroup.children.length) {
+                    optgroup.appendChild(item);
+                }
+                else {
+                    optgroup.insertBefore(item, optgroup.children[position]);
+                }
+            }
+            if (!group) {
+                var selector = "select[data-rat-select=\"" + this.source.dataset.ratSelect + "\"] > option";
+                var options = this.source.parentElement.querySelectorAll(selector);
+                var calc = Math.min(position < 0 ? options.length : position, options.length);
+                if (this.source.children.length === calc || !options[calc - 1].nextElementSibling) {
+                    this.source.appendChild(item);
+                }
+                else {
+                    this.source.insertBefore(item, options[calc - 1].nextElementSibling || this.source.children[0]);
+                }
+            }
+            item.dataset.select = "add";
+            return (reload && this.select.reload()) ? this : this;
         };
-        Options.prototype.remove = function () {
+        Options.prototype.remove = function (items, reload) {
+            if (items instanceof HTMLOptionElement) {
+                items = [items];
+            }
+            [].map.call(items, function (item) {
+                item.parentElement.removeChild(item);
+            });
+            return (reload && this.select.reload) ? this : this;
         };
-        Options.prototype.reload = function () {
-        };
-        Options.prototype.handle = function () {
+        Options.prototype.handle = function (items, states) {
+            var _this = this;
+            if (items instanceof HTMLOptionElement) {
+                items = [items];
+            }
+            var result = [];
+            var limit = this.select.get("multiLimit", -1);
+            [].map.call(items, function (item) {
+                var changes = {};
+                if (states.hasOwnProperty("disabled") && states.disabled !== item.disabled) {
+                    changes.disabled = item.disabled = states.disabled;
+                }
+                if (states.hasOwnProperty("hidden") && states.hidden !== item.hidden) {
+                    changes.hidden = item.hidden = states.hidden;
+                }
+                while (states.hasOwnProperty("selected") && states.selected !== item.selected) {
+                    if (item.disabled || item.hidden) {
+                        break;
+                    }
+                    if (states.selected && _this.source.multiple && limit >= 0 && limit <= _this.count(null, [":selected"])) {
+                        break;
+                    }
+                    if (!states.selected && !_this.source.multiple && _this.select.get("deselect", !1)) {
+                        break;
+                    }
+                    changes.selected = item.selected = states.selected;
+                    if (!_this.source.multiple && !states.selected) {
+                        _this.source.selectedIndex = -1;
+                    }
+                    break;
+                }
+                if (Object.keys(changes).length > 0) {
+                    result.push([item, changes]);
+                }
+            });
+            return this.select.update(result) ? this : this;
         };
         Options.prototype.selected = function (items, state) {
+            return this.handle(items, { selected: state });
         };
         Options.prototype.disabled = function (items, state) {
+            return this.handle(items, { disabled: state });
         };
         Options.prototype.hidden = function (items, state) {
+            return this.handle(items, { hidden: state });
         };
         return Options;
     }());
@@ -283,7 +311,7 @@
                 this.source.parentElement.appendChild(this.select);
             }
             this.trigger("hook", "init:after");
-            return this.query("walker");
+            return this.query();
         };
         Select.prototype.build = function () {
             var _this = this;
@@ -352,15 +380,26 @@
             }
             return null;
         };
-        Select.prototype.query = function (method, args, limit, offset) {
+        Select.prototype.query = function (query) {
+            var _this = this;
             this.trigger("hook", "query:before", []);
+            query = typeof query !== "function" ? this.get("query", null) : null;
+            if (!query) {
+                query = function () { return _this.options.get(); };
+            }
+            var items = query.call(this);
+            console.log(items);
+            for (var _i = 0, items_1 = items; _i < items_1.length; _i++) {
+                var item = items_1[_i];
+                console.log(item);
+            }
             this.trigger("hook", "query:after");
             return this;
         };
         Select.prototype.render = function () {
             return this;
         };
-        Select.prototype.update = function () {
+        Select.prototype.update = function (changes) {
             return this;
         };
         Select.prototype.open = function () {
@@ -393,8 +432,8 @@
                 case 'csv': return null;
                 case 'array': return null;
                 case 'node': return null;
+                default: return null;
             }
-            return null;
         };
         Select.prototype.get = function (key, def) {
             return (key in this.config) ? this.config[key] : def;

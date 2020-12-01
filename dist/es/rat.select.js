@@ -94,46 +94,134 @@ class Options {
         }
         return this;
     }
-    *walker(orderGroups, orderItems) {
-        let groups = this.getGroups(false);
-        if (typeof orderGroups === "function") {
-            groups = orderGroups.call(this, groups);
+    get(value, group, states) {
+        let format = { disabled: ":disabled", selected: ":checked", hidden: "[hidden]" };
+        let selector = states ? states.map((state) => {
+            return state[0] === "!" ? `:not(${format[state.slice(1)]})` : format[state];
+        }) : "";
+        if (typeof value === "number") {
+            let nth = (value > 0) ? ":nth-child" : ":nth-last-child";
+            selector = `option${nth}(${Math.abs(value)})${selector}`;
         }
-        else if (typeof orderGroups === "string") {
-            if (orderGroups.toLowerCase() === "asc") {
-                groups = groups.sort();
-            }
-            else {
-                groups = groups.sort().reverse();
-            }
+        else if (typeof value === "string" || !value) {
+            selector = `option${!value ? "" : `[value="${value}"]`}${selector}`;
         }
-        groups.unshift(null);
-        for (let group in groups) {
-            yield group;
+        else {
+            return [];
         }
-    }
-    get() {
+        if (!group && group !== false) {
+            return this.source.querySelectorAll(selector);
+        }
+        else if (typeof group === "string") {
+            return this.source.querySelectorAll(`optgroup[label="${group}"] ${selector}`);
+        }
+        else if (group === false) {
+            selector = `select[data-rat-select="${this.source.dataset.ratSelect}"] > ${selector}`;
+            return this.source.parentElement.querySelectorAll(selector);
+        }
+        return [];
     }
     getGroups(objects) {
         let groups = this.source.querySelectorAll("optgroup");
         return (objects) ? groups : [].map.call(groups, (i) => i.label);
     }
-    count() {
+    count(group, states) {
+        if (arguments.length === 0) {
+            return this.source.options.length;
+        }
+        let result = this.get(null, group, states);
+        return result ? result.length : 0;
     }
     set(item, group, position, reload) {
-        return this;
+        if (!(item instanceof HTMLOptionElement)) {
+            [].map.call(item, (el, i) => this.set(el, group, (position < 0) ? -1 : (position + i), !1));
+            return (reload && this.select.reload()) ? this : this;
+        }
+        if (group === void 0 || group === null) {
+            group = item.parentElement.label || false;
+        }
+        if (typeof group === "string") {
+            let optgroup = this.source.querySelector(`optgroup[label="${group}"]`);
+            if (!optgroup) {
+                optgroup = document.createElement("OPTGROUP");
+                optgroup.label = group;
+                optgroup.dataset.select = "add";
+                this.source.appendChild(optgroup);
+            }
+            if (position < 0 || position > optgroup.children.length) {
+                optgroup.appendChild(item);
+            }
+            else {
+                optgroup.insertBefore(item, optgroup.children[position]);
+            }
+        }
+        if (!group) {
+            let selector = `select[data-rat-select="${this.source.dataset.ratSelect}"] > option`;
+            let options = this.source.parentElement.querySelectorAll(selector);
+            let calc = Math.min(position < 0 ? options.length : position, options.length);
+            if (this.source.children.length === calc || !options[calc - 1].nextElementSibling) {
+                this.source.appendChild(item);
+            }
+            else {
+                this.source.insertBefore(item, options[calc - 1].nextElementSibling || this.source.children[0]);
+            }
+        }
+        item.dataset.select = "add";
+        return (reload && this.select.reload()) ? this : this;
     }
-    remove() {
+    remove(items, reload) {
+        if (items instanceof HTMLOptionElement) {
+            items = [items];
+        }
+        [].map.call(items, (item) => {
+            item.parentElement.removeChild(item);
+        });
+        return (reload && this.select.reload) ? this : this;
     }
-    reload() {
-    }
-    handle() {
+    handle(items, states) {
+        if (items instanceof HTMLOptionElement) {
+            items = [items];
+        }
+        let result = [];
+        let limit = this.select.get("multiLimit", -1);
+        [].map.call(items, (item) => {
+            let changes = {};
+            if (states.hasOwnProperty("disabled") && states.disabled !== item.disabled) {
+                changes.disabled = item.disabled = states.disabled;
+            }
+            if (states.hasOwnProperty("hidden") && states.hidden !== item.hidden) {
+                changes.hidden = item.hidden = states.hidden;
+            }
+            while (states.hasOwnProperty("selected") && states.selected !== item.selected) {
+                if (item.disabled || item.hidden) {
+                    break;
+                }
+                if (states.selected && this.source.multiple && limit >= 0 && limit <= this.count(null, [":selected"])) {
+                    break;
+                }
+                if (!states.selected && !this.source.multiple && this.select.get("deselect", !1)) {
+                    break;
+                }
+                changes.selected = item.selected = states.selected;
+                if (!this.source.multiple && !states.selected) {
+                    this.source.selectedIndex = -1;
+                }
+                break;
+            }
+            if (Object.keys(changes).length > 0) {
+                result.push([item, changes]);
+            }
+        });
+        return this.select.update(result) ? this : this;
     }
     selected(items, state) {
+        return this.handle(items, { selected: state });
     }
     disabled(items, state) {
+        return this.handle(items, { disabled: state });
     }
     hidden(items, state) {
+        return this.handle(items, { hidden: state });
     }
 }
 
@@ -186,7 +274,7 @@ class Select {
             this.source.parentElement.appendChild(this.select);
         }
         this.trigger("hook", "init:after");
-        return this.query("walker");
+        return this.query();
     }
     build() {
         let cls = this.get("classNames") === true ? this.source.className : this.get("classNames", "");
@@ -254,15 +342,24 @@ class Select {
         }
         return null;
     }
-    query(method, args, limit, offset) {
+    query(query) {
         this.trigger("hook", "query:before", []);
+        query = typeof query !== "function" ? this.get("query", null) : null;
+        if (!query) {
+            query = () => this.options.get();
+        }
+        let items = query.call(this);
+        console.log(items);
+        for (let item of items) {
+            console.log(item);
+        }
         this.trigger("hook", "query:after");
         return this;
     }
     render() {
         return this;
     }
-    update() {
+    update(changes) {
         return this;
     }
     open() {
@@ -295,8 +392,8 @@ class Select {
             case 'csv': return null;
             case 'array': return null;
             case 'node': return null;
+            default: return null;
         }
-        return null;
     }
     get(key, def) {
         return (key in this.config) ? this.config[key] : def;

@@ -66,32 +66,36 @@ export class Options implements RatSelect_Options {
     }
 
     /*
-     |  CORE :: OPTIONs WALKER
+     |  API :: GET ONE OR MORE OPTIONs
      */
-    *walker(orderGroups?: null | string | Function, orderItems?: null | string | Function): Generator {
-        let groups = this.getGroups(false) as string[];
-        if(typeof orderGroups === "function") {
-            groups = orderGroups.call(this, groups);
-        } else if(typeof orderGroups === "string") {
-            if(orderGroups.toLowerCase() === "asc") {
-                groups = groups.sort();
-            } else {
-                groups = groups.sort().reverse();
-            }
+    get(value?: null | Number | string, group?: null | false | string, states?: string[]): Array<null> | NodeListOf<HTMLOptionElement> {
+        let format = { disabled: ":disabled", selected: ":checked", hidden: "[hidden]" };
+
+        // State Selector
+        let selector = states? states.map((state) => {
+            return state[0] === "!"? `:not(${format[state.slice(1)]})`: format[state];
+        }): "";
+
+        // Option Selector
+        if(typeof value === "number") {
+            let nth = (value > 0)? ":nth-child": ":nth-last-child";
+            selector = `option${nth}(${Math.abs(value)})${selector}`;
+        } else if(typeof value === "string" || !value) {
+            selector = `option${!value? "": `[value="${value}"]`}${selector}`;
+        } else {
+            return [];
         }
-        groups.unshift(null);
 
-        // Loop Groups
-        for(let group in groups) {
-            yield group;
+        // Select & Return
+        if(!group && group !== false) {
+            return this.source.querySelectorAll(selector);
+        } else if(typeof group === "string") {
+            return this.source.querySelectorAll(`optgroup[label="${group}"] ${selector}`);
+        } else if(group === false) {
+            selector = `select[data-rat-select="${this.source.dataset.ratSelect}"] > ${selector}`;
+            return this.source.parentElement.querySelectorAll(selector);
         }
-    }
-
-    /*
-     |  API :: GET ONE OR MOER OPTIONs
-     */
-    get() {
-
+        return [];
     }
 
     /*
@@ -105,49 +109,136 @@ export class Options implements RatSelect_Options {
     /*
      |  API :: COUNT OPTIONs
      */
-    count() {
-
+    count(group?: null | false | string, states?: string[]): Number {
+        if(arguments.length === 0) {
+            return this.source.options.length;
+        }
+        let result = this.get(null, group, states);
+        return result? result.length: 0;
     }
 
     /*
      |  API :: SET A NEW OPTION
      */
-    set(item: HTMLOptionElement, group?: null | string, position?: null | number, reload?: boolean): RatSelect_Options {
+    set(item: RatSelect_OptionSelector, group?: null | false | string, position?: null | number, reload?: boolean): RatSelect_Options {
+        if(!(item instanceof HTMLOptionElement)) {
+            [].map.call(item, (el, i) => this.set(el, group, (position < 0)? -1: (position+i), !1));
+            return (reload && this.select.reload())? this: this;
+        }
 
-        return this;
+        // Check Group
+        if(group === void 0 || group === null) {
+            group = (item.parentElement as HTMLOptGroupElement).label || false;
+        }
+
+        // Add to Group
+        if(typeof group === "string") {
+            let optgroup = this.source.querySelector(`optgroup[label="${group}"]`) as HTMLOptGroupElement;
+            if(!optgroup) {
+                optgroup = document.createElement("OPTGROUP") as HTMLOptGroupElement;
+                optgroup.label = group;
+                optgroup.dataset.select = "add";
+                this.source.appendChild(optgroup);
+            }
+
+            if(position < 0 || position > optgroup.children.length) {
+                optgroup.appendChild(item);
+            } else {
+                optgroup.insertBefore(item, optgroup.children[position]);
+            }
+        }
+
+        // Add to Select
+        if(!group) {
+            let selector = `select[data-rat-select="${this.source.dataset.ratSelect}"] > option`;
+            let options = this.source.parentElement.querySelectorAll(selector) as NodeListOf<HTMLOptionElement>;
+
+            let calc = Math.min(position < 0? options.length: position, options.length);
+            if(this.source.children.length === calc || !options[calc-1].nextElementSibling) {
+                this.source.appendChild(item);
+            } else {
+                this.source.insertBefore(item, options[calc-1].nextElementSibling || this.source.children[0]);
+            }
+        }
+
+        // Return
+        item.dataset.select = "add";
+        return (reload && this.select.reload())? this: this;
     }
 
     /*
      |  API :: REMOVE ONE OR MORE OPTION
      */
-    remove() {
-
-    }
-
-    /*
-     |  API :: RELOAD OPTIONS
-     */
-    reload() {
-
+    remove(items: RatSelect_OptionSelector, reload: boolean): RatSelect_Options {
+        if(items instanceof HTMLOptionElement) {
+            items = [items];
+        }
+        [].map.call(items, (item) => {
+            item.parentElement.removeChild(item);
+        });
+        return(reload && this.select.reload)? this: this;
     }
 
     /*
      |  PUBLIC :: OPTION STATEs
      */
-    handle() {
+    handle(items: RatSelect_OptionSelector, states: RatSelect_OptionStates): RatSelect_Options {
+        if(items instanceof HTMLOptionElement) {
+            items = [items];
+        }
 
+        let result = [];
+        let limit = this.select.get("multiLimit", -1);
+        [].map.call(items, (item) => {
+            let changes: RatSelect_OptionStates = { };
+
+            // Handle Disabled
+            if(states.hasOwnProperty("disabled") && states.disabled !== item.disabled) {
+                changes.disabled = item.disabled = states.disabled;
+            }
+
+            // Handle Hidden
+            if(states.hasOwnProperty("hidden") && states.hidden !== item.hidden) {
+                changes.hidden = item.hidden = states.hidden;
+            }
+
+            // Handle Selected
+            while(states.hasOwnProperty("selected") && states.selected !== item.selected) {
+                if(item.disabled || item.hidden) {
+                    break;  // <option> is disabled or hidden
+                }
+                if(states.selected && this.source.multiple && limit >= 0 && limit <= this.count(null, [":selected"])) {
+                    break;  // Too many <option>s are selected
+                }
+                if(!states.selected && !this.source.multiple && this.select.get("deselect", !1)) {
+                    break;  // Non-Deselectable single <select>
+                }
+
+                changes.selected = item.selected = states.selected;
+                if(!this.source.multiple && !states.selected) {
+                    this.source.selectedIndex = -1;
+                }
+                break;      // Done
+            }
+
+            // Append Changes
+            if(Object.keys(changes).length > 0) {
+                result.push([item, changes]);
+            }
+        });
+        return this.select.update(result)? this: this;
     }
 
     /*
      |  PUBLIC :: OPTION STATEs <ALIASES>
      */
-    selected(items: any, state?: boolean) {
-
+    selected(items: RatSelect_OptionSelector, state?: boolean): RatSelect_Options {
+        return this.handle(items, { selected: state });
     }
-    disabled(items: any, state?: boolean) {
-
+    disabled(items: RatSelect_OptionSelector, state?: boolean) {
+        return this.handle(items, { disabled: state });
     }
-    hidden(items: any, state?: boolean) {
-
+    hidden(items: RatSelect_OptionSelector, state?: boolean) {
+        return this.handle(items, { hidden: state });
     }
 }

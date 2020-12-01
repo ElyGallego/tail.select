@@ -1,8 +1,8 @@
 {
 	"version": 3,
-	"file": "../../stdin.css",
+	"file": "stdin.css",
 	"sources": [
-		"../../stdin"
+		"stdin"
 	],
 	"names": [],
 	"mappings": "AAAA,AAAA,KAAK,CAAC;IACF,KAAK,EAAE,MAAM;CAChB"

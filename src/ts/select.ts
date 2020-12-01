@@ -123,7 +123,9 @@ export class Select implements RatSelect_Select {
      |  CORE :: INIT SELECT FIELD
      */
     init(): RatSelect_Select {
-        this.trigger("hook", "init:before");
+        if(this.trigger("hook", "init:before") === false) {
+            return this;
+        }
 
         // Init Options
         if(typeof this.config.items !== "undefined") {
@@ -132,15 +134,16 @@ export class Select implements RatSelect_Select {
         }
 
         // Handle Build Step
-        this.trigger("hook", "build:before");
-        this.build();
-        this.trigger("hook", "build:after");
+        if(this.trigger("hook", "build:before") === true) {
+            this.build();
+            this.trigger("hook", "build:after");
+        }
 
         // Handle Bind Step
-        this.trigger("hook", "bind:before");
-        this.bind();
-        this.trigger("hook", "bind:after");
-
+        if(this.trigger("hook", "bind:before") === true) {
+            this.bind();
+            this.trigger("hook", "bind:after");
+        }
 
         // Append to DOM
         if(this.source.nextElementSibling) {
@@ -149,7 +152,7 @@ export class Select implements RatSelect_Select {
             this.source.parentElement.appendChild(this.select);
         }
         this.trigger("hook", "init:after");
-        return this.query("walker");
+        return this.query();
     }
 
     /*
@@ -232,11 +235,11 @@ export class Select implements RatSelect_Select {
     /*
      |  API :: TRIGGER EVENT, FILTER OR HOOK
      */
-    trigger(type: "hook" | "event", name: string, args?: Array <any>): any {
+    trigger(type: "hook" | "filter" | "event", name: string, args?: Array <any>): boolean | Array<any> {
         if(type === "event") {
             let data = { bubbles: false, cancelable: true, detail: { args: args, select: this } };
             let event = new CustomEvent(`rat::${name}`, data);
-            this.select.dispatchEvent(event);
+            var cancelled = this.select.dispatchEvent(event);
 
             if(name === "change") {
                 let input = new CustomEvent("input", data);
@@ -246,20 +249,84 @@ export class Select implements RatSelect_Select {
             }
         }
 
-        // Handle Hooks
+        // Handle Hooks & Filters
+        let _arg = true;
+        let callbacks = [...this.plugins.hook(name), ...(this.events[name] || [])];
+        callbacks.map((cb) => {
+            if(type === "filter") {
+                args = cb.apply(this, args);
+            } else if(this.handle.apply(this, args) === false) {
+                _arg = false;
+            }
+        });
 
-        return null;
+        // Return
+        return (type === "hook")? _arg: ((type === "filter")? args: cancelled);
     }
 
     /*
      |  API :: QUERY DROPDOWN
      */
-    query(method: string | Function, args?: Array<any>, limit?: null | Number, offset?: null | Number): RatSelect_Select {
-        this.trigger("hook", "query:before", []);
+    query(query?: null | Function): RatSelect_Select {
+        if(this.trigger("hook", "query:before") === false) {
+            return this;
+        }
+
+        // Handle Query
+        query = typeof query === "function"? query: this.get("query", () => this.options.get());
+        query = this.trigger("filter", "query", [query])[0];
 
         // Handle Walker
+        let el = null;
+        let skip = null;
+        let head = [];
+        let items = query.call(this);
+        for(let item of items) {
+            let group = item.parentElement instanceof HTMLOptGroupElement? item.parentElement.label: null;
+            [item, group] = this.trigger("filter", "walk", [item, group]) as Array<any>;
 
+            // Skip Group, but keep loop running
+            if(group === skip) {
+                continue;
+            }
 
+            // Create Group
+            if(!(head.length > 0 && head[0].dataset.group === group)) {
+                let arg = item.parentElement instanceof HTMLOptGroupElement? item.parentElemnt: null;
+                if((el = this.render(arg)) === null) {
+                    skip = group;
+                    continue; // Skip Group
+                } else if(el === false) {
+                    break; // Break Loop
+                }
+                head.unshift(el);
+            }
+
+            // Create Item
+            if(el = this.render(item) === null) {
+                continue;  // Skip Item
+            } else if(el === false) {
+                break;  // Break Loop
+            }
+            head[0].appendChild(el);
+
+            // Experimental Scroll Function
+            if(this.get("titleOverflow") === "scroll") {
+                (function(el, self) {
+                    let style = window.getComputedStyle(el);
+                    let inner = el.clientWidth - parseInt(style.paddingLeft) - parseInt(style.paddingRight) - 17;
+                    let title = el.querySelector(".option-title");
+
+                    if(title.scrollwidth > inner) {
+                        let number = inner - title.scrollWidth - 15;
+                        title.style.paddingLeft = Math.abs(number) + "px";
+                        el.style.textIndent = number + "px";
+                    }
+                }(el, this));
+            }
+        }
+
+        // Hook & Return
         this.trigger("hook", "query:after");
         return this;
     }
@@ -267,14 +334,14 @@ export class Select implements RatSelect_Select {
     /*
      |  API :: RENDER DROPDOWN
      */
-    render(): RatSelect_Select {
-        return this;
+    render(element: HTMLOptionElement | HTMLOptGroupElement): HTMLElement {
+        return document.createElement("DIV");
     }
 
     /*
      |  API :: UPDATE INSTANCE
      */
-    update(): RatSelect_Select {
+    update(changes: Array<HTMLOptionElement | RatSelect_OptionStates>): RatSelect_Select {
         return this;
     }
 
@@ -325,13 +392,12 @@ export class Select implements RatSelect_Select {
         if(typeof format === 'undefined' || format === 'auto') {
             format = this.source.multiple? 'array': 'csv';
         }
-
         switch(format) {
             case 'csv':   return null;
             case 'array': return null;
             case 'node':  return null;
+            default:      return null;
         }
-        return null;
     }
 
     /*

@@ -1,5 +1,7 @@
 
-declare type RatSelect_Selector = string | HTMLSelectElement | HTMLSelectElement[] | HTMLCollection | NodeList;
+declare type RatSelect_SelectSelector = string | HTMLSelectElement | HTMLSelectElement[] | HTMLCollectionOf<HTMLSelectElement> | NodeListOf<HTMLSelectElement>;
+
+declare type RatSelect_OptionSelector = HTMLOptionElement | HTMLOptionElement[] | HTMLCollectionOf<HTMLOptionElement> | NodeListOf<HTMLOptionElement>;
 
 declare type RatSelect_ItemBasic = {
     [key: string]: string;
@@ -19,6 +21,12 @@ declare type RatSelect_Item = RatSelect_ItemBasic | RatSelect_ItemExtended;
 
 declare type RatSelect_Events = {
     [key: string]: Function;
+}
+
+declare type RatSelect_OptionStates = {
+    disabled?: boolean,
+    selected?: boolean,
+    hidden?: boolean
 }
 
 // Rollup

@@ -150,9 +150,9 @@ export default function ratSCSS(options = { }) {
                     // Handle SourceMap
                     if("sourceMap" in options) {
                         if(options.sourceMap === true) {
-                            overwrite.sourceMap = store + ".map";
+                            overwrite.sourceMap = store.slice(store.lastIndexOf("/")+1) + ".map";
                         } else if(typeof options.sourceMap === "string") {
-                            overwrite.sourceMap = options.sourceMap.relpace("[name]", name);
+                            overwrite.sourceMap = options.sourceMap.replace("[name]", name);
                         }
                     }
 
@@ -168,8 +168,6 @@ export default function ratSCSS(options = { }) {
                     // Write CSS File
                     let banner = options.banner? options.banner[outputStyle] || "": "";
                     banner = banner.replace("[name]", name);
-
-                    writeFileSync
 
                     writeFileSync(store, banner + "\n" + data.css);
                     if("map" in data && data.map.length >= 0) {

@@ -30,13 +30,15 @@ export class Plugins implements RatSelect_Plugins {
     }
 
     /*
-     |  CORE :: CALL HOOK
+     |  CORE :: RETURN HOOKs
      */
-    hook(hook: string): any {
+    hook(hook: string): Function[] {
+        let cbs = [];
         for(let name in this.plugins) {
             if(hook in this.plugins[name].hooks) {
-
+                cbs.push(this.plugins[name].hooks[hook]);
             }
         }
+        return cbs;
     }
 }

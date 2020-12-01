@@ -280,6 +280,19 @@ declare interface RatSelect_Config {
     plugins: null | RatSelect_Plugins;
 
     /*
+     |  QUERY ITEMS
+     |  @since          1.0.0
+     |
+     |  @values
+     |      null        Use the default items query.
+     |      Function    Pass a custom function to query the items on your own.
+     |
+     |  @default
+     |      null
+     */
+    query: null | Function;
+
+    /*
      |  REQUIRED STATE OF THE SELECT FIELD
      |  @since          0.5.0
      |
@@ -303,34 +316,6 @@ declare interface RatSelect_Config {
      |      null
      */
     rtl: null | boolean;
-
-    /*
-     |  CHANGE OPTION SORTING
-     |  @since          0.3.0
-     |
-     |  @values
-     |      null        Use the default order from the source select field.
-     |      string      Change the order using 'asc' or 'desc'.
-     |      Function    Change the order using a custom callback function.
-     |
-     |  @default
-     |      null
-     */
-    sortItems: "asc" | "ASC" | "desc" | "DESC" | Function | null;
-
-    /*
-     |  CHANGE OPTGROUP SORTING
-     |  @since          0.3.0
-     |
-     |  @values
-     |      null        Use the default order from the source select field.
-     |      string      Change the order using 'asc' or 'desc'.
-     |      Function    Change the order using a custom callback function.
-     |
-     |  @default
-     |      null
-     */
-    sortGroups: "asc" | "ASC" | "desc" | "DESC" | Function | null;
 
     /*
      |  BIND THE SOURCE SELECT FIELD

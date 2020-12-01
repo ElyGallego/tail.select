@@ -42,10 +42,12 @@ declare interface RatSelect_Plugins {
     plugins: Object;
 
     /*
-     |  INSTANCE :: CALL HOOK
+     |  CORE :: RETURN HOOKs
      |  @since  1.0.0
      |
      |  @param  string  The hook name.
+     |
+     |  @return array   All function callbacks, attached to the passed hook.
      */
-    hook(hook: string): any;
+    hook(hook: string): Function[];
 }

@@ -113,13 +113,15 @@ declare interface RatSelect_Select {
      |  API :: TRIGGER EVENT, FILTER OR HOOK
      |  @since  0.4.0
      |
-     |  @param  string  The callback type to do: "hook" or "event".
+     |  @param  string  The callback type to do: "hook", "filter" or "event".
      |  @param  string  The hook or event name to call.
      |  @param  array   The arguments to be passed to the callback functions.
      |
-     |  @return mixed   Depending on the action done by the callbacks.
+     |  @return mixed   Returns the boolean process state on hooks,
+     |                  Returns the filtered arguments on filters,
+     |                  Returns the boolean cancel state on events.
      */
-    trigger(type: "hook" | "event", name: string, args?: Array <any>): any;
+    trigger(type: "hook" | "filter" | "event", name: string, args?: Array <any>): boolean | Array<any>;
     
     /*
      |  API :: QUERY DROPDOWN
@@ -127,15 +129,18 @@ declare interface RatSelect_Select {
      |
      |  @return this    The select instance.
      */
-    query(method: string | Function, args?: Array<any>, limit?: null | Number, offset?: null | Number): RatSelect_Select;
+    query(query?: null | Function): RatSelect_Select;
     
     /*
      |  API :: RENDER DROPDOWN
      |  @since  0.5.0
      |
-     |  @return this    The select instance.
+     |  @param  object  The HTMLElement to render, which is either a 
+     |                  HTMLOptionElement or a HTMLOptGroupElement.
+     |
+     |  @return object  The HTMLElement to pass to the dropdown field.
      */
-    render(): RatSelect_Select;
+    render(element: HTMLOptionElement | HTMLOptGroupElement): HTMLElement;
     
     /*
      |  API :: UPDATE INSTANCE
@@ -143,7 +148,7 @@ declare interface RatSelect_Select {
      |
      |  @return this    The select instance.
      */
-    update(): RatSelect_Select;
+    update(changes: Array<HTMLOptionElement | RatSelect_OptionStates>): RatSelect_Select;
     
     /*
      |  API :: OPEN DROPDOWN

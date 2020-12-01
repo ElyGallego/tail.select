@@ -16,7 +16,7 @@ import { Options } from "./options";
 /*
  |  MAIN RAT.SELECT FUNCTION
  */
-function RatSelect(selector: RatSelect_Selector, config?: RatSelect_Config, options?: RatSelect_OptionsConstructor): null | Select | Array<Select | null>  {
+function RatSelect(selector: RatSelect_SelectSelector, config?: RatSelect_Config, options?: RatSelect_OptionsConstructor): null | Select | Array<Select | null>  {
     let _return = (source) => {
         if(!(source instanceof HTMLSelectElement)) {
             return null;

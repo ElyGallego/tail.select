@@ -43,16 +43,29 @@ declare interface RatSelect_Options {
     parse(items: RatSelect_Item[]): RatSelect_Options;
 
     /*
-     |  CORE :: OPTIONs WALKER
+     |  API :: GET ONE OR MORE OPTIONs
      |  @since  0.3.0
+     |
+     |  @param  mixed   The option selector, which allows different types:
+     |          null    Get all options depending on the followed parameters
+     |          number  Get the option depending on the position, use negative
+     |                  numbers to start from the end.
+     |          string  Get the option by it's value attribute.
+     |  @param  mixed   The optgroup selector, which allows different types:
+     |          null    Don't restrict the returning options to a group.
+     |          false   Return ungrouped optons only.
+     |          string  Return options from this specific group label.
+     |  @param  array   The state selector, which may contains one or more of:
+     |                  ':selected'     Get only selected options
+     |                  '!selected'     Get only non-selected options
+     |                  ':disabled'     Get only disabled options
+     |                  '!disabled'     Get only non-disabled options
+     |                  ':hidden'       Get only hidden options
+     |                  '!hidden'       Get only non-hidden options
+     |
+     |  @return mixed   All selected options as NodeList or an empty Array.
      */
-    walker(): Generator;
-
-    /*
-     |  API :: GET ONE OR MOER OPTIONs
-     |  @since  0.3.0
-     */
-    get();
+    get(value?: null | Number | string, group?: null | false | string, states?: string[]): Array<null> | NodeListOf<HTMLOptionElement>;
 
     /*
      |  API :: GET ONE OR MORE GROUPs
@@ -69,14 +82,29 @@ declare interface RatSelect_Options {
     /*
      |  API :: COUNT OPTIONs
      |  @since  1.0.0
+     |
+     |  @param  mixed   The optgroup selector, which allows different types:
+     |          null    Don't restrict the returnin options to a group.
+     |          false   Return ungrouped optons only.
+     |          string  Return options from this specific group label.
+     |  @param  array   The state selector, which may contains one or more of:
+     |                  ':selected'     Get only selected options
+     |                  '!selected'     Get only non-selected options
+     |                  ':disabled'     Get only disabled options
+     |                  '!disabled'     Get only non-disabled options
+     |                  ':hidden'       Get only hidden options
+     |                  '!hidden'       Get only non-hidden options
+     |
+     |  @return number  The number of selected options.
      */
-    count();
+    count(group?: null | false | string, states?: string[]): Number;
 
     /*
      |  API :: SET A NEW OPTION
      |  @since  0.3.0
      |
-     |  @param  object  The HTMLOptionElement instance to add to.
+     |  @param  mixed   A single HTMLOptionElement to set or multiple as Array 
+     |                  or within a NodeList or HTMLCollection.
      |  @param  string  The optgroup label string.
      |  @param  number  The position where the new option should be placed.
      |                  Use '0' for the first and '-1' for the last position.
@@ -84,31 +112,31 @@ declare interface RatSelect_Options {
      |
      |  @return this    The Options instance.
      */
-    set(item: HTMLOptionElement, group?: null | string, position?: null | number, reload?: boolean): RatSelect_Options;
+    set(item: RatSelect_OptionSelector, group?: null | string, position?: null | number, reload?: boolean): RatSelect_Options;
 
     /*
      |  API :: REMOVE ONE OR MORE OPTION
      |  @since  0.3.0
+     |
+     |  @param  mixed   A single HTMLOptionElement to remove or multiple as
+     |                  Array or within a NodeList or HTMLCollection.
+     |  @param  bool    TRUE to reload the rat.select field, FALSE to do it not.
+     |
+     |  @return this    The Options instance.
      */
-    remove();
-
-    /*
-     |  API :: RELOAD OPTIONS
-     |  @since  1.0.0
-     */
-    reload();
+    remove(items: RatSelect_OptionSelector, reload: boolean): RatSelect_Options;
 
     /*
      |  PUBLIC :: OPTION STATEs
      |  @since  0.3.0
      */
-    handle();
+    handle(items: RatSelect_OptionSelector, states: RatSelect_OptionStates): RatSelect_Options;
 
     /*
      |  PUBLIC :: OPTION STATEs <ALIASES>
      |  @since  0.3.0
      */
-    selected(items: any, state?: boolean);
-    disabled(items: any, state?: boolean);
-    hidden(items: any, state?: boolean);
+    selected(items: RatSelect_OptionSelector, state?: boolean): RatSelect_Options;
+    disabled(items: RatSelect_OptionSelector, state?: boolean): RatSelect_Options;
+    hidden(items: RatSelect_OptionSelector, state?: boolean): RatSelect_Options;
 }
