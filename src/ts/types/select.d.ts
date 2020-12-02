@@ -138,9 +138,10 @@ declare interface RatSelect_Select {
      |  @param  object  The HTMLElement to render, which is either a 
      |                  HTMLOptionElement or a HTMLOptGroupElement.
      |
-     |  @return object  The HTMLElement to pass to the dropdown field.
+     |  @return mixed   The HTMLElement object to pass to the dropdown field,
+     |                  null to skip this item or false to break the loop.
      */
-    render(element: HTMLOptionElement | HTMLOptGroupElement): HTMLElement;
+    render(element: HTMLOptionElement | HTMLOptGroupElement): null | boolean | HTMLElement;
     
     /*
      |  API :: UPDATE INSTANCE

@@ -5,7 +5,7 @@
         "lib": ["DOM", "ES5", "ES6"],
         "locale": "en",
         "newLine": "lf",
-        "removeComments": true,
+        "removeComments": false,
         "sourceMap": false,
         "target": "ES5",
         "typeRoots": [

@@ -229,7 +229,7 @@ export class Select implements RatSelect_Select {
      |  CORE :: HANDLE EVENTs
      */
     handle(event: Event) {
-        console.log(event);
+        //console.log(event);
     }
 
     /*
@@ -251,7 +251,7 @@ export class Select implements RatSelect_Select {
 
         // Handle Hooks & Filters
         let _arg = true;
-        let callbacks = [...this.plugins.hook(name), ...(this.events[name] || [])];
+        let callbacks = this.plugins.hook(name).concat(this.events[name] || []);
         callbacks.map((cb) => {
             if(type === "filter") {
                 args = cb.apply(this, args);
@@ -278,7 +278,7 @@ export class Select implements RatSelect_Select {
 
         // Handle Walker
         let el = null;
-        let skip = null;
+        let skip = void 0;
         let head = [];
         let items = query.call(this);
         for(let item of items) {
@@ -293,6 +293,11 @@ export class Select implements RatSelect_Select {
             // Create Group
             if(!(head.length > 0 && head[0].dataset.group === group)) {
                 let arg = item.parentElement instanceof HTMLOptGroupElement? item.parentElemnt: null;
+                if(!arg) {
+                    arg = document.createElement("OPTGROUP");
+                    arg.innerText = this.get("ungroupedLabel", null);
+                }
+
                 if((el = this.render(arg)) === null) {
                     skip = group;
                     continue; // Skip Group
@@ -303,7 +308,7 @@ export class Select implements RatSelect_Select {
             }
 
             // Create Item
-            if(el = this.render(item) === null) {
+            if((el = this.render(item)) === null) {
                 continue;  // Skip Item
             } else if(el === false) {
                 break;  // Break Loop
@@ -326,6 +331,12 @@ export class Select implements RatSelect_Select {
             }
         }
 
+        // Replace
+        let root = this.dropdown.querySelector(".dropdown-inner");
+        let clone = root.cloneNode();
+        head.map((item) => clone.appendChild(item));
+        this.dropdown.replaceChild(clone, root);
+
         // Hook & Return
         this.trigger("hook", "query:after");
         return this;
@@ -334,8 +345,36 @@ export class Select implements RatSelect_Select {
     /*
      |  API :: RENDER DROPDOWN
      */
-    render(element: HTMLOptionElement | HTMLOptGroupElement): HTMLElement {
-        return document.createElement("DIV");
+    render(element: HTMLOptionElement | HTMLOptGroupElement): null | false | HTMLElement {
+        let tag = element.tagName.toUpperCase();
+        let output = document.createElement(tag === "OPTION"? "LI": "OL");
+
+        // Render Item
+        if(tag === "OPTION") {
+            output.className = "dropdown-option";
+            output.innerHTML = `<span class="option-title">${element.innerHTML}</span>`;
+            output.dataset.group = (element.parentElement as HTMLOptGroupElement)?.label || "#";
+            output.dataset.value = (element as HTMLOptionElement).value;
+            if(element.dataset.description) {
+                output.innerHTML += `<span clasS="option-description">${element.dataset.description}</span>`
+            }
+        } else {
+            output.className = "dropdown-optgroup";
+            output.innerHTML = `<li class="optgroup-title">${element.label}</li>`;
+            output.dataset.group = element.label;
+
+            if(this.get("multiple") && this.get("multiSelectGroup", 1)) {
+                for(let item of ['select-none', 'select-all']) {
+                    let btn = document.createElement("BUTTON");
+                    btn.dataset.action = item;
+                    btn.innerHTML = this.locale._(item === "select-all"? "buttonAll": "buttonNone");
+                    output.querySelector(".optgroup-title").appendChild(btn);
+                }
+            }
+        }
+
+        // Filter & Return
+        return this.trigger("filter", `render#${tag}`, [output, element, tag])[0];
     }
 
     /*
