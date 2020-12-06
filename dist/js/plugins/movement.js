@@ -1,12 +1,12 @@
 /*! pytesNET/rat.select | @version 1.0.0 | @license MIT | @copyright pytesNET <info@pytes.net> */
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('rat.select')) :
-	typeof define === 'function' && define.amd ? define(['rat.select'], factory) :
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('../ts/select')) :
+	typeof define === 'function' && define.amd ? define(['../ts/select'], factory) :
 	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.rat.select));
-}(this, (function (rat_select) {
+}(this, (function (select) {
 	"use strict";
 
-	rat_select.Select.Plugins.add("movement", { }, { });
+	select.Select.plugins.add("movement", {}, {});
 
 })));
 //# sourceMappingURL=movement.js.map

@@ -16,7 +16,6 @@
         "./rollup.config.js",
         "./dist/*",
         "./src/_rat/*",
-        "./src/langs/*",
-        "./src/plugins/*"
+        "./src/langs/*"
     ]
 }

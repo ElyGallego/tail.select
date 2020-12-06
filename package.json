@@ -44,6 +44,7 @@
     "reveal": true,
     "dependencies": {},
     "devDependencies": {
+        "@rollup/plugin-alias": "^3.1.1",
         "@rollup/plugin-typescript": "^6.1.0",
         "node-sass": "^5.0.0",
         "rollup": "^2.33.3",

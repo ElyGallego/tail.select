@@ -8,7 +8,7 @@
  |  @license    MIT License
  |  @copyright  Copyright © 2020 pytesNET <info@pytes.net>
  */
-import { dirname } from 'path';
+import { dirname, resolve } from 'path';
 import { glob } from 'glob';
 import { rollup } from 'rollup';
 import { createFilter } from 'rollup-pluginutils';
@@ -36,7 +36,7 @@ export default function ratExports(options = { }) {
             }
             return config;
         },
-        renderChunk: async function(code, chunk, options) {
+        renderChunk: async function(code, chunk) {
             let path = dirname(chunk.facadeModuleId).replace(__dirname, "").replace(/\\/g, "/").slice(1) + "/";
             let name = chunk.fileName;
             let dest = config.output[0].dir + "/" + name;
@@ -50,10 +50,22 @@ export default function ratExports(options = { }) {
             // Options
             let inputOptions = { 
                 input: path + name, 
-                external: config.external, 
-                plugins: [] 
+                external: [...config.external, 'index'], 
+                plugins: options.plugins || []
             };
             let outputOptions = { ...config.output[0], format: "umd" };
+
+            if((inputOptions.plugins || []).length > 0) {
+
+                let externalID = resolve(__dirname, "src/ts/select");
+
+                inputOptions.input = inputOptions.input.replace(".js", ".ts");
+                inputOptions.external = [externalID, "../ts/select"];
+                outputOptions.format = "umd";
+                outputOptions.globals = { [externalID]: "rat.select", "../ts/select": "rat.select" };
+
+                console.log(externalID);
+            }
 
             // Render Files
             let bundle  = await rollup(inputOptions);

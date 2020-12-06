@@ -1,6 +1,7 @@
 
 // Load package.json
 import pkg from "./package.json";
+import tsc from "./tsconfig.json";
 
 // Load custom rollup plugins
 import ratSASS from './src/_rat/rat-sass';
@@ -9,6 +10,7 @@ import ratExports from './src/_rat/rat-exports';
 // Load external rollup plugins
 import ignoreImport from 'rollup-plugin-ignore-import';
 import typescript from '@rollup/plugin-typescript';
+import alias from '@rollup/plugin-alias';
 import { terser } from 'rollup-plugin-terser';
 import consts from 'rollup-plugin-consts';
 
@@ -122,7 +124,7 @@ export default [
 
     // ES5 Plugins
     {
-        input: ['src/plugins/*.js'],
+        input: ['src/plugins/*.ts'],
         output: {
             name: pkg.name,
             dir: 'dist/js/plugins',
@@ -132,7 +134,8 @@ export default [
             compact: false,
             extend: true,
             globals: {
-                'rat.select': 'rat.select'
+                'rat.select': 'rat.select',
+                '../ts/select': 'rat.select'
             },
             esModule: false,
             preserveModules: false,
@@ -140,9 +143,23 @@ export default [
             sourcemapExcludeSources: true,
             strict: false
         },
-        external: ['rat.select'],
+        external: ['rat.select', '../ts/select'],
         plugins: [
-            ratExports()
+            ratExports({
+                plugins: [
+                    consts({
+                        version: pkg.version,
+                        status: pkg.status
+                    }),
+                    typescript({ tsconfig: __dirname + '/tsconfig.json' }),
+                    alias({
+                        entries: {
+                            'rat.select': "../ts/select",
+                            '../ts/select': "rat.select"
+                        }
+                    }),
+                ]
+            })
         ]
     },
 
