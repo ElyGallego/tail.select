@@ -1,15 +1,3 @@
 /*! pytesNET/rat.select | @version 1.0.0 | @license MIT | @copyright pytesNET <info@pytes.net> */
-"use strict";
-
-import RatSelect from '../rat.select.js';
-
-RatSelect.Strings["de_AT"] = {
-    "key": "value"
-};
-function test(object) {
-    return Object.assign(Object.assign({}, object), { test: 14 });
-}
-test({ test: 12 });
-
+import t from"rat.select";var e;t.Strings.de_AT={key:"value"},e={test:12},Object.assign(Object.assign({},e),{test:14});
 /*! Visit this project on https://rat.md/select */
-//# sourceMappingURL=de_AT.js.map

@@ -168,7 +168,7 @@ export default [
         output: [
             {
                 banner: copysmall,
-                compact: false,             //@TODO SET TO TRUE
+                compact: true,
                 dir: 'dist/js/langs',
                 esModule: false,
                 extend: true,
@@ -182,12 +182,14 @@ export default [
                 name: pkg.name,
                 preserveModules: false,
                 strict: false,
-                sourcemap: true,
-                sourcemapExcludeSources: true
+                sourcemap: false,
+                plugins: [
+                    terser()
+                ]
             },
             {
                 banner: copysmall,
-                compact: false,             //@TODO SET TO TRUE
+                compact: true,
                 dir: 'dist/es/langs',
                 esModule: true,
                 extend: true,
@@ -200,8 +202,10 @@ export default [
                 name: pkg.name,
                 preserveModules: false,
                 strict: false,
-                sourcemap: true,
-                sourcemapExcludeSources: true
+                sourcemap: false,
+                plugins: [
+                    terser()
+                ]
             }
         ],
         external: ['rat.select'],
@@ -220,7 +224,7 @@ export default [
         output: [
             {
                 banner: copysmall,
-                compact: false,             //@TODO SET TO TRUE
+                compact: true,
                 dir: 'dist/js/plugins',
                 esModule: false,
                 extend: true,
@@ -234,12 +238,14 @@ export default [
                 name: pkg.name,
                 preserveModules: false,
                 strict: false,
-                sourcemap: true,
-                sourcemapExcludeSources: true
+                sourcemap: false,
+                plugins: [
+                    terser()
+                ]
             },
             {
                 banner: copysmall,
-                compact: false,             //@TODO SET TO TRUE
+                compact: true,
                 dir: 'dist/es/plugins',
                 esModule: false,
                 extend: true,
@@ -252,8 +258,10 @@ export default [
                 name: pkg.name,
                 preserveModules: false,
                 strict: false,
-                sourcemap: true,
-                sourcemapExcludeSources: true
+                sourcemap: false,
+                plugins: [
+                    terser()
+                ]
             }
         ],
         external: ['rat.select'],

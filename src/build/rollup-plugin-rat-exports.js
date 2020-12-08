@@ -75,7 +75,7 @@ export default function ratExports(options = { }) {
             let inputOptions = {
                 input: (path + name).replace(".js", ".ts"),
                 external: ["rat.select"], 
-                plugins: [ typescript({ tsconfig, target }) ]
+                plugins: [ typescript({ tsconfig, target, sourceMap: false }) ]
             };
             outputOptions.format = (target === "ES6")? "es": "umd";
 
