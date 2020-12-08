@@ -33,5 +33,5 @@ declare interface RatSelect_Strings {
      |
      |  @return string  The translated and parsed string.
      */
-    _(key: string, params?: string[]): string
+    _(key: string, params?: Array<string | number>): string
 }

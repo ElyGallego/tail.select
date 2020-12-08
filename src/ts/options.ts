@@ -76,6 +76,7 @@ export class Options implements RatSelect_Options {
         let selector = states? states.map((state) => {
             return state[0] === "!"? `:not(${format[state.slice(1)]})`: format[state];
         }): "";
+        selector += ":not([data-rat-ignore])";
 
         // Option Selector
         if(typeof value === "number") {
@@ -211,13 +212,20 @@ export class Options implements RatSelect_Options {
                 if(!item.selected && this.source.multiple && limit >= 0 && limit <= this.count(null, [":selected"])) {
                     break;  // Too many <option>s are selected
                 }
-                if(item.selected && !this.source.multiple && this.select.get("deselect", !1)) {
+                if(item.selected && !this.source.multiple && !this.select.get("deselect", !1)) {
                     break;  // Non-Deselectable single <select>
                 }
+                
+                // Deselect
+                if(!this.source.multiple && !item.selected && this.source.selectedIndex >= 0) {
+                    result.push([this.source.options[this.source.selectedIndex], { selected: false }]);
+                }
 
+                // Change
                 changes.selected = item.selected = !item.selected;
                 if(!this.source.multiple && !item.selected) {
-                    this.source.selectedIndex = -1;
+                    let oaap = `option[value=""]:not(:disabled):checked:first-child`;
+                    this.source.selectedIndex = this.source.querySelector(oaap)? 0: -1;
                 }
                 break;      // Done
             }

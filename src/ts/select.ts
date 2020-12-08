@@ -67,6 +67,11 @@ export class Select implements RatSelect_Select {
     csv: HTMLInputElement;
 
     /*
+     |  RAT :: EVENT HANDLER
+     */
+    handler: () => any;
+
+    /*
      |  CORE :: CONSTRUCTOR
      */
     constructor(source: HTMLSelectElement, config: RatSelect_Config, options?: RatSelect_OptionsConstructor) {
@@ -81,13 +86,14 @@ export class Select implements RatSelect_Select {
         this.config.multiple = this.source.multiple = config.multiple || source.multiple;
         this.config.disabled = this.source.disabled = config.disabled || source.disabled;
         this.config.required = this.source.required = config.required || source.required;
+        this.config.placeholder = config.placeholder || source.dataset.placeholder || null;
 
-        // Init Placeholder
-        let placeholder = config.placeholder || source.dataset.placeholder || null;
-        if(!placeholder || source.options[0].value === "") {
-            placeholder = source.options[0].innerText;
+        // Init [O]ption [A]s [A] [P]laceholder
+        let oaap = source.querySelector("option[value='']:checked:first-child") as HTMLOptionElement;
+        if(oaap && (oaap.dataset.ratIgnore = "1")) {
+            this.config.deselect = !oaap.disabled;
+            this.config.placeholder = oaap.innerText || config.placeholder;
         }
-        this.config.placeholder = placeholder;
 
         // Init RTL
         if((config.rtl || null) === null) {
@@ -141,6 +147,7 @@ export class Select implements RatSelect_Select {
         } else {
             this.source.parentElement.appendChild(this.select);
         }
+        this.updateLabel();
         this.trigger("hook", "init:after");
         return this.query();
     }
@@ -176,7 +183,7 @@ export class Select implements RatSelect_Select {
         // Create :: Label
         this.label = document.createElement("LABEL") as HTMLLabelElement;
         this.label.className = "select-label";
-        this.label.innerHTML = `<span class="label-inner">Test Placeholder</span>`;
+        this.label.innerHTML = `<span class="label-inner"></span>`;
 
         // Create :: Dropdown
         this.dropdown = document.createElement("DIV") as HTMLDivElement;
@@ -233,14 +240,26 @@ export class Select implements RatSelect_Select {
     /*
      |  CORE :: BIND SELECT FIELD
      */
-    bind(): RatSelect_Select {
-        let handle = this.handle.bind(this);
+    bind(unbind?: boolean): RatSelect_Select {
+        if(!this.handler) {
+            this.handler = this.handle.bind(this);
+        }
 
         // Attach Events
-        document.addEventListener("keydown", handle);
-        document.addEventListener("click", handle);
+        if(!unbind) {
+            document.addEventListener("keydown", this.handler);
+            document.addEventListener("click", this.handler);
+            if(this.get("sourceBind")) {
+                this.source.addEventListener("change", this.handler);
+            }
+            return this;
+        }
+
+        // Remove Events
+        document.removeEventListener("keydown", this.handler);
+        document.removeEventListener("click", this.handler);
         if(this.get("sourceBind")) {
-            this.source.addEventListener("change", handle);
+            this.source.removeEventListener("change", this.handler);
         }
         return this;
     }
@@ -248,10 +267,15 @@ export class Select implements RatSelect_Select {
     /*
      |  CORE :: HANDLE EVENTs
      */
-    handle(event: Event) {
+    handle(this: RatSelect_Select, event: Event) {
         let target = event.target as HTMLElement;
 
-        // Click Events
+        // Event :: Keydown
+        if(event.type === "keydown") {
+
+        }
+
+        // Event :: Click
         if(event.type === "click") {
             if(target === this.label || this.label.contains(target)) {
                 return this.toggle();
@@ -263,15 +287,23 @@ export class Select implements RatSelect_Select {
                 while(target && this.dropdown.contains(target) && !target.dataset.action) {
                     target = target.parentElement;
                 }
-                if(target.dataset.action && (target.dataset.value || target.dataset.group)) {
+
+                let disabled = target.classList.contains("disabled");
+                if(!disabled && target.dataset.action && (target.dataset.value || target.dataset.group)) {
                     let items = this.options.get(target.dataset.value, target.dataset.group);
                     let action = target.dataset.action;
                     this.options.selected(items, action === "toggle"? null: action === "select");
-                }
-                if(!this.get("stayOpen") && !this.source.multiple) {
-                    return this.close();
+
+                    if(!this.get("stayOpen") && !this.source.multiple) {
+                        return this.close();
+                    }
                 }
             }
+        }
+
+        // Event :: Change
+        if(event.type === "change" && !(event instanceof CustomEvent)) {
+            
         }
     }
 
@@ -394,10 +426,14 @@ export class Select implements RatSelect_Select {
     render(element: HTMLOptionElement | HTMLOptGroupElement): null | false | HTMLElement {
         let tag = element.tagName.toUpperCase();
         let output = document.createElement(tag === "OPTION"? "LI": "OL");
+        let classes = (item) => {
+            let selected = (this.get("multiple") && item.hasAttribute("selected")) || item.selected;
+            return ((selected? " selected": "") + (item.disabled? " disabled": "") + (item.hidden? " hidden": "")).trim();
+        };
 
         // Render Item
         if(tag === "OPTION") {
-            output.className = "dropdown-option";
+            output.className = "dropdown-option " + classes(element);
             output.innerHTML = `<span class="option-title">${element.innerHTML}</span>`;
             output.dataset.group = (element.parentElement as HTMLOptGroupElement)?.label || "";
             output.dataset.value = (element as HTMLOptionElement).value;
@@ -428,6 +464,71 @@ export class Select implements RatSelect_Select {
      |  API :: UPDATE INSTANCE
      */
     update(changes: Array<HTMLOptionElement | RatSelect_OptionStates>): RatSelect_Select {
+        if(changes.length === 0) {
+            return this;
+        }
+
+        // Hook
+        if(this.trigger("hook", "update:before", [changes]) !== true) {
+            return this;
+        }
+        
+        // Events
+        this.trigger("event", "change", [changes]);
+        if(this.source.multiple && this.get("multiLimit") > 0) {
+            if(this.options.count(null, ["selected"]) >= this.get("multiLimit")) {
+                this.trigger("event", "limit", [changes]);
+            }
+        }
+
+        // Update Items
+        [].map.call(changes, (dataset) => {
+            let [option, change] = dataset;
+            let value = option.value.replace(/('|\\)/g, "\\$1");
+            let group = option.parentElement? option.parentElement.label || "": "";
+            let item = this.dropdown.querySelector(`li[data-value="${value}"][data-group="${group}"]`);
+            if(item) {
+                for(let key in change) {
+                    item.classList[change[key]? "add": "remove"](key);
+                }
+            }
+        });
+
+        // Hook & Update
+        this.trigger("hook", "update:after", [changes]);
+        return this.updateCSV().updateLabel();
+    }
+
+    /*
+     |  API :: UPDATE CSV
+     */
+    updateCSV(): RatSelect_Select {
+        if(this.get("csvOutput")){
+            this.csv.value = this.trigger("filter", "update#csv", [this.value("csv")])[0];
+        }
+        return this;
+    }
+
+    /*
+     |  API :: UPDATE LABEL
+     */
+    updateLabel(label?: string): RatSelect_Select {
+        let value = this.value("array") as string[];
+        let limit = this.get("multiLimit");
+
+        // Set Placeholder label
+        if(this.source.disabled || !this.options.count()) {
+            label = this.source.disabled? "disabled": "empty";
+        } else if(this.source.multiple && value.length > 0) {
+            label = limit === value.length? "multipleLimit": "multipleCount";
+        } else if(!this.source.multiple && value.length === 1) {
+            label = value[0];
+        } else {
+            label = this.get("placeholder") || (this.source.multiple? "multiple": "single");
+        }
+
+        // Set Placeholder Count
+        this.label.innerText = this.locale._(label, [value.length]);
         return this;
     }
 
@@ -483,15 +584,17 @@ export class Select implements RatSelect_Select {
     /*
      |  PUBLIC :: GET VALUE
      */
-    value(format?: 'auto' | 'csv' | 'array' | 'node'): null | string | string[] | HTMLOptionElement {
+    value(format?: 'auto' | 'csv' | 'array' | 'node'): null | string | string[] | HTMLOptionElement | NodeListOf<HTMLOptionElement> {
         if(typeof format === 'undefined' || format === 'auto') {
             format = this.source.multiple? 'array': 'csv';
         }
+
+        let items = this.options.get(null, null, ["selected"]);
         switch(format) {
-            case 'csv':   return null;
-            case 'array': return null;
-            case 'node':  return null;
-            default:      return null;
+            case 'csv':   return [].map.call(items, (i) => i.value).join(this.get("csvSeparator", ","));
+            case 'array': return [].map.call(items, (i) => i.value);
+            case 'node':  return !this.source.multiple? (items[0] || null): [].map.call(items, (i) => i.value);
+            default:      return format === "array"? []: null;
         }
     }
 

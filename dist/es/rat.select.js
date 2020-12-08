@@ -21,17 +21,29 @@ class Strings {
     }
     _(key, params) {
         let string = (key in this.strings) ? this.strings[key] : key;
-        if (typeof params !== undefined && params.length > 0) {
+        if (typeof string === "function") {
+            string = string.apply(this, params);
+        }
+        if (typeof params !== "undefined" && params.length > 0) {
             params.map((replace, index) => {
-                let regexp = new RegExp("\[" + index + "\]", "g");
-                return string.replace(regexp, replace);
+                let regexp = new RegExp("\\[" + index.toString() + "\\]", "g");
+                string = string.replace(regexp, replace.toString());
             });
         }
         return string;
     }
 }
 Strings.en = {
-    "key": "value"
+    buttonAll: "All",
+    buttonNone: "None",
+    disabled: "This field is disabled",
+    empty: "No options available",
+    multiple: "Choose one or more options...",
+    multipleCount: (count) => {
+        return `[0] ${count === 1 ? "option" : "options"} selected...`;
+    },
+    multipleLimit: "No more options selectable",
+    single: "Choose an option..."
 };
 
 class Plugins {
@@ -104,6 +116,7 @@ class Options {
         let selector = states ? states.map((state) => {
             return state[0] === "!" ? `:not(${format[state.slice(1)]})` : format[state];
         }) : "";
+        selector += ":not([data-rat-ignore])";
         if (typeof value === "number") {
             let nth = (value > 0) ? ":nth-child" : ":nth-last-child";
             selector = `option${nth}(${Math.abs(value)})${selector}`;
@@ -204,12 +217,16 @@ class Options {
                 if (!item.selected && this.source.multiple && limit >= 0 && limit <= this.count(null, [":selected"])) {
                     break;
                 }
-                if (item.selected && !this.source.multiple && this.select.get("deselect", !1)) {
+                if (item.selected && !this.source.multiple && !this.select.get("deselect", !1)) {
                     break;
+                }
+                if (!this.source.multiple && !item.selected && this.source.selectedIndex >= 0) {
+                    result.push([this.source.options[this.source.selectedIndex], { selected: false }]);
                 }
                 changes.selected = item.selected = !item.selected;
                 if (!this.source.multiple && !item.selected) {
-                    this.source.selectedIndex = -1;
+                    let oaap = `option[value=""]:not(:disabled):checked:first-child`;
+                    this.source.selectedIndex = this.source.querySelector(oaap) ? 0 : -1;
                 }
                 break;
             }
@@ -241,11 +258,12 @@ class Select {
         this.config.multiple = this.source.multiple = config.multiple || source.multiple;
         this.config.disabled = this.source.disabled = config.disabled || source.disabled;
         this.config.required = this.source.required = config.required || source.required;
-        let placeholder = config.placeholder || source.dataset.placeholder || null;
-        if (!placeholder || source.options[0].value === "") {
-            placeholder = source.options[0].innerText;
+        this.config.placeholder = config.placeholder || source.dataset.placeholder || null;
+        let oaap = source.querySelector("option[value='']:checked:first-child");
+        if (oaap && (oaap.dataset.ratIgnore = "1")) {
+            this.config.deselect = !oaap.disabled;
+            this.config.placeholder = oaap.innerText || config.placeholder;
         }
-        this.config.placeholder = placeholder;
         if ((config.rtl || null) === null) {
             this.config.rtl = ['ar', 'fa', 'he', 'mdr', 'sam', 'syr'].indexOf(config.locale || "en") >= 0;
         }
@@ -282,6 +300,7 @@ class Select {
         else {
             this.source.parentElement.appendChild(this.select);
         }
+        this.updateLabel();
         this.trigger("hook", "init:after");
         return this.query();
     }
@@ -308,7 +327,7 @@ class Select {
         }
         this.label = document.createElement("LABEL");
         this.label.className = "select-label";
-        this.label.innerHTML = `<span class="label-inner">Test Placeholder</span>`;
+        this.label.innerHTML = `<span class="label-inner"></span>`;
         this.dropdown = document.createElement("DIV");
         this.dropdown.className = `select-dropdown overflow-${this.get("titleOverflow", "clip")}`;
         this.dropdown.innerHTML = `<div class="dropdown-inner"></div>`;
@@ -345,17 +364,28 @@ class Select {
         clone.style.maxHeight = height + "px";
         return this;
     }
-    bind() {
-        let handle = this.handle.bind(this);
-        document.addEventListener("keydown", handle);
-        document.addEventListener("click", handle);
+    bind(unbind) {
+        if (!this.handler) {
+            this.handler = this.handle.bind(this);
+        }
+        if (!unbind) {
+            document.addEventListener("keydown", this.handler);
+            document.addEventListener("click", this.handler);
+            if (this.get("sourceBind")) {
+                this.source.addEventListener("change", this.handler);
+            }
+            return this;
+        }
+        document.removeEventListener("keydown", this.handler);
+        document.removeEventListener("click", this.handler);
         if (this.get("sourceBind")) {
-            this.source.addEventListener("change", handle);
+            this.source.removeEventListener("change", this.handler);
         }
         return this;
     }
     handle(event) {
         let target = event.target;
+        if (event.type === "keydown") ;
         if (event.type === "click") {
             if (target === this.label || this.label.contains(target)) {
                 return this.toggle();
@@ -367,16 +397,18 @@ class Select {
                 while (target && this.dropdown.contains(target) && !target.dataset.action) {
                     target = target.parentElement;
                 }
-                if (target.dataset.action && (target.dataset.value || target.dataset.group)) {
+                let disabled = target.classList.contains("disabled");
+                if (!disabled && target.dataset.action && (target.dataset.value || target.dataset.group)) {
                     let items = this.options.get(target.dataset.value, target.dataset.group);
                     let action = target.dataset.action;
                     this.options.selected(items, action === "toggle" ? null : action === "select");
-                }
-                if (!this.get("stayOpen") && !this.source.multiple) {
-                    return this.close();
+                    if (!this.get("stayOpen") && !this.source.multiple) {
+                        return this.close();
+                    }
                 }
             }
         }
+        if (event.type === "change" && !(event instanceof CustomEvent)) ;
     }
     trigger(type, name, args) {
         if (type === "event") {
@@ -467,8 +499,12 @@ class Select {
         var _a;
         let tag = element.tagName.toUpperCase();
         let output = document.createElement(tag === "OPTION" ? "LI" : "OL");
+        let classes = (item) => {
+            let selected = (this.get("multiple") && item.hasAttribute("selected")) || item.selected;
+            return ((selected ? " selected" : "") + (item.disabled ? " disabled" : "") + (item.hidden ? " hidden" : "")).trim();
+        };
         if (tag === "OPTION") {
-            output.className = "dropdown-option";
+            output.className = "dropdown-option " + classes(element);
             output.innerHTML = `<span class="option-title">${element.innerHTML}</span>`;
             output.dataset.group = ((_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.label) || "";
             output.dataset.value = element.value;
@@ -493,6 +529,54 @@ class Select {
         return this.trigger("filter", `render#${tag}`, [output, element, tag])[0];
     }
     update(changes) {
+        if (changes.length === 0) {
+            return this;
+        }
+        if (this.trigger("hook", "update:before", [changes]) !== true) {
+            return this;
+        }
+        this.trigger("event", "change", [changes]);
+        if (this.source.multiple && this.get("multiLimit") > 0) {
+            if (this.options.count(null, ["selected"]) >= this.get("multiLimit")) {
+                this.trigger("event", "limit", [changes]);
+            }
+        }
+        [].map.call(changes, (dataset) => {
+            let [option, change] = dataset;
+            let value = option.value.replace(/('|\\)/g, "\\$1");
+            let group = option.parentElement ? option.parentElement.label || "" : "";
+            let item = this.dropdown.querySelector(`li[data-value="${value}"][data-group="${group}"]`);
+            if (item) {
+                for (let key in change) {
+                    item.classList[change[key] ? "add" : "remove"](key);
+                }
+            }
+        });
+        this.trigger("hook", "update:after", [changes]);
+        return this.updateCSV().updateLabel();
+    }
+    updateCSV() {
+        if (this.get("csvOutput")) {
+            this.csv.value = this.trigger("filter", "update#csv", [this.value("csv")])[0];
+        }
+        return this;
+    }
+    updateLabel(label) {
+        let value = this.value("array");
+        let limit = this.get("multiLimit");
+        if (this.source.disabled || !this.options.count()) {
+            label = this.source.disabled ? "disabled" : "empty";
+        }
+        else if (this.source.multiple && value.length > 0) {
+            label = limit === value.length ? "multipleLimit" : "multipleCount";
+        }
+        else if (!this.source.multiple && value.length === 1) {
+            label = value[0];
+        }
+        else {
+            label = this.get("placeholder") || (this.source.multiple ? "multiple" : "single");
+        }
+        this.label.innerText = this.locale._(label, [value.length]);
         return this;
     }
     open() {
@@ -526,11 +610,12 @@ class Select {
         if (typeof format === 'undefined' || format === 'auto') {
             format = this.source.multiple ? 'array' : 'csv';
         }
+        let items = this.options.get(null, null, ["selected"]);
         switch (format) {
-            case 'csv': return null;
-            case 'array': return null;
-            case 'node': return null;
-            default: return null;
+            case 'csv': return [].map.call(items, (i) => i.value).join(this.get("csvSeparator", ","));
+            case 'array': return [].map.call(items, (i) => i.value);
+            case 'node': return !this.source.multiple ? (items[0] || null) : [].map.call(items, (i) => i.value);
+            default: return format === "array" ? [] : null;
         }
     }
     get(key, def) {

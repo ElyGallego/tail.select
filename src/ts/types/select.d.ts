@@ -68,6 +68,11 @@ declare interface RatSelect_Select {
     csv: HTMLInputElement;
 
     /*
+     |  RAT :: EVENT HANDLER
+     */
+    handler: () => any;
+
+    /*
      |  CORE :: INIT SELECT FIELD
      |  @since  0.3.0
      |
@@ -105,7 +110,7 @@ declare interface RatSelect_Select {
      |
      |  @return this    The select instance.
      */
-    handle(event: Event);
+    handle(this: RatSelect_Select, event: Event | CustomEvent);
 
     /*
      |  API :: TRIGGER EVENT, FILTER OR HOOK
@@ -148,6 +153,22 @@ declare interface RatSelect_Select {
      |  @return this    The select instance.
      */
     update(changes: Array<HTMLOptionElement | RatSelect_OptionStates>): RatSelect_Select;
+
+    /*
+     |  API :: UPDATE CSV FIELD
+     |  @since  0.5.0
+     |
+     |  @return this    The select instance.
+     */
+    updateCSV(): RatSelect_Select;
+    
+    /*
+     |  API :: UPDATE LABEL INSTANCE
+     |  @since  0.5.0
+     |
+     |  @return this    The select instance.
+     */
+    updateLabel(label?: string | Function): RatSelect_Select;
     
     /*
      |  API :: OPEN DROPDOWN
@@ -203,7 +224,7 @@ declare interface RatSelect_Select {
      |
      |  @return mixed   The selected values in the desired format or null if format is invalid.
      */
-    value(format?: 'auto' | 'csv' | 'array' | 'node'): null | string | string[] | HTMLOptionElement
+    value(format?: 'auto' | 'csv' | 'array' | 'node'): null | string | string[] | HTMLOptionElement | NodeListOf<HTMLOptionElement>;
     
     /*
      |  PUBLIC :: GET CONFIG

@@ -4,7 +4,16 @@ export class Strings implements RatSelect_Strings {
      |  STATIC :: DEFAULT LOCALE
      */
     static en = {
-        "key": "value"
+        buttonAll: "All",
+        buttonNone: "None",
+        disabled: "This field is disabled",
+        empty: "No options available",
+        multiple: "Choose one or more options...",
+        multipleCount: (count) => {
+            return `[0] ${count === 1? "option": "options"} selected...`
+        },
+        multipleLimit: "No more options selectable",
+        single: "Choose an option..."
     };
 
     /*
@@ -22,12 +31,15 @@ export class Strings implements RatSelect_Strings {
     /*
      |  CORE :: TRANSLATE STRING
      */
-    _(key: string, params?: string[]): string {
+    _(key: string, params?: Array<string | number>): string {
         let string = (key in this.strings)? this.strings[key]: key;
-        if(typeof params !== undefined && params.length > 0) {
+        if(typeof string === "function") {
+            string = (string as Function).apply(this, params);
+        }
+        if(typeof params !== "undefined" && params.length > 0) {
             params.map((replace, index) => {
-                let regexp = new RegExp("\[" + index + "\]", "g");
-                return string.replace(regexp, replace);
+                let regexp = new RegExp("\\[" + index.toString() + "\\]", "g");
+                string = string.replace(regexp, replace.toString());
             });
         }
         return string;

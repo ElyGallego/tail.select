@@ -3,7 +3,7 @@ rat.select - CHANGELOG
 
 Version 1.0.0 - Stable
 ----------------------
--   Info: The **tail.select** package has been refactored to **rat.select** and contains dozens of 
+-   Info: The **tail.select** package has been refactored to **rat.select** and contains a few 
     breaking changes (based on v0.6.0-beta), view BREAKING.md for more details.
 -   Info: The new **rat.select** package is now completely written in TypeScript and SCSS, using 
     Rollup as bundler engine and offering a non-longer-experimental ES6 module build as well.
@@ -28,8 +28,15 @@ Version 1.0.0 - Stable
 -   Add: The new `movement` plugin allows to handle selected options in a moveable manor.
 -   Add: The new `search` plugin now contains the whole search-related functionallity.
 
+### Themes
+
+
 Version 0.6.0 - Beta
 --------------------
+
+-   Info: This release has been skipped due to too many changes during the development and building
+    process and the huge amount of time, which has already been invested into it. However, many 
+    features and ideas has become a part of version 1.0.0 though.
 
 ### Select()
 -   Add: The new option `grouplessName`, which allows to add a group header title on ungrouped &lt;option&gt; elements 
@@ -177,6 +184,7 @@ Version 0.6.0 - Beta
     - Thanks to [#92](https://github.com/pytesNET/tail.select/issues/92).
 -   Bugfix: Deselect options on `None` button if no searched option is selected.
     - Thanks to [#117](https://github.com/pytesNET/tail.select/issues/117).
+-   Bugfix: Keep the dropdown field open when clicking on a disabled option.
 
 
 Version 0.5.15 - Beta

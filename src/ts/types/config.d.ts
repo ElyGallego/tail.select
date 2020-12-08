@@ -40,19 +40,6 @@ declare interface RatSelect_Config {
     csvSeparator: string;
 
     /*
-     |  COMMA-SEPARATE VALUE USE QUOTES
-     |  @since          1.0.0
-     |
-     |  @values
-     |      null        Don't quote the csv output at all.
-     |      string      The quotes to be used for the csv list (as defined in csvOutput).
-     |
-     |  @default
-     |      null
-     */
-    csvQuoted: null | string;
-
-    /*
      |  DESELECTABLE OPTIONs
      |  @since          0.3.0
      |
@@ -244,8 +231,8 @@ declare interface RatSelect_Config {
      |
      |  @values
      |      null        Use the default placeholder or the first empty-valued option.
-     |      string      Pass a custom placeholder.
-     |      Function    Pass a function which returns the placeholder on each rendering
+     |      string      Pass a custom placeholder text itself.
+     |      Function    Pass a function which returns the placeholder on each rendering-
      |
      |  @default
      |      null
@@ -258,13 +245,17 @@ declare interface RatSelect_Config {
      |
      |  @values
      |      null        Use the default behaviour depending on the multiple state.
-     |      string      Pass a custom placeholder counter.
-     |      Function    Pass a function which returns the placeholder counter on each rendering
+     |      string      Use one of the following special strings:
+     |                      'count-up'      Count up the selected options
+     |                      'count-down'    Count down the selectable options (requires multiLimit)
+     |                      'limit'         Show the selectable options limit (requires multiLimit)
+     |                      'both'          Show the selectable options / optioms limit (requires multiLimit)
+     |      Function    Pass a function which returns the placeholder counter on each rendering-
      |
      |  @default
      |      null
      */
-    placeholderCount: null | string | Function;
+    placeholderCount: null | "count-up" | "count-down" | "limit" | "both" | Function;
 
     /*
      |  PLUGINS TO LOAD

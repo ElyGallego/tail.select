@@ -53,16 +53,28 @@
         }
         Strings.prototype._ = function (key, params) {
             var string = (key in this.strings) ? this.strings[key] : key;
-            if (typeof params !== undefined && params.length > 0) {
+            if (typeof string === "function") {
+                string = string.apply(this, params);
+            }
+            if (typeof params !== "undefined" && params.length > 0) {
                 params.map(function (replace, index) {
-                    var regexp = new RegExp("\[" + index + "\]", "g");
-                    return string.replace(regexp, replace);
+                    var regexp = new RegExp("\\[" + index.toString() + "\\]", "g");
+                    string = string.replace(regexp, replace.toString());
                 });
             }
             return string;
         };
         Strings.en = {
-            "key": "value"
+            buttonAll: "All",
+            buttonNone: "None",
+            disabled: "This field is disabled",
+            empty: "No options available",
+            multiple: "Choose one or more options...",
+            multipleCount: function (count) {
+                return "[0] " + (count === 1 ? "option" : "options") + " selected...";
+            },
+            multipleLimit: "No more options selectable",
+            single: "Choose an option..."
         };
         return Strings;
     }());
@@ -138,6 +150,7 @@
             var selector = states ? states.map(function (state) {
                 return state[0] === "!" ? ":not(" + format[state.slice(1)] + ")" : format[state];
             }) : "";
+            selector += ":not([data-rat-ignore])";
             if (typeof value === "number") {
                 var nth = (value > 0) ? ":nth-child" : ":nth-last-child";
                 selector = "option" + nth + "(" + Math.abs(value) + ")" + selector;
@@ -240,12 +253,16 @@
                     if (!item.selected && _this.source.multiple && limit >= 0 && limit <= _this.count(null, [":selected"])) {
                         break;
                     }
-                    if (item.selected && !_this.source.multiple && _this.select.get("deselect", !1)) {
+                    if (item.selected && !_this.source.multiple && !_this.select.get("deselect", !1)) {
                         break;
+                    }
+                    if (!_this.source.multiple && !item.selected && _this.source.selectedIndex >= 0) {
+                        result.push([_this.source.options[_this.source.selectedIndex], { selected: false }]);
                     }
                     changes.selected = item.selected = !item.selected;
                     if (!_this.source.multiple && !item.selected) {
-                        _this.source.selectedIndex = -1;
+                        var oaap = "option[value=\"\"]:not(:disabled):checked:first-child";
+                        _this.source.selectedIndex = _this.source.querySelector(oaap) ? 0 : -1;
                     }
                     break;
                 }
@@ -278,11 +295,12 @@
             this.config.multiple = this.source.multiple = config.multiple || source.multiple;
             this.config.disabled = this.source.disabled = config.disabled || source.disabled;
             this.config.required = this.source.required = config.required || source.required;
-            var placeholder = config.placeholder || source.dataset.placeholder || null;
-            if (!placeholder || source.options[0].value === "") {
-                placeholder = source.options[0].innerText;
+            this.config.placeholder = config.placeholder || source.dataset.placeholder || null;
+            var oaap = source.querySelector("option[value='']:checked:first-child");
+            if (oaap && (oaap.dataset.ratIgnore = "1")) {
+                this.config.deselect = !oaap.disabled;
+                this.config.placeholder = oaap.innerText || config.placeholder;
             }
-            this.config.placeholder = placeholder;
             if ((config.rtl || null) === null) {
                 this.config.rtl = ['ar', 'fa', 'he', 'mdr', 'sam', 'syr'].indexOf(config.locale || "en") >= 0;
             }
@@ -319,6 +337,7 @@
             else {
                 this.source.parentElement.appendChild(this.select);
             }
+            this.updateLabel();
             this.trigger("hook", "init:after");
             return this.query();
         };
@@ -346,7 +365,7 @@
             }
             this.label = document.createElement("LABEL");
             this.label.className = "select-label";
-            this.label.innerHTML = "<span class=\"label-inner\">Test Placeholder</span>";
+            this.label.innerHTML = "<span class=\"label-inner\"></span>";
             this.dropdown = document.createElement("DIV");
             this.dropdown.className = "select-dropdown overflow-" + this.get("titleOverflow", "clip");
             this.dropdown.innerHTML = "<div class=\"dropdown-inner\"></div>";
@@ -384,17 +403,28 @@
             clone.style.maxHeight = height + "px";
             return this;
         };
-        Select.prototype.bind = function () {
-            var handle = this.handle.bind(this);
-            document.addEventListener("keydown", handle);
-            document.addEventListener("click", handle);
+        Select.prototype.bind = function (unbind) {
+            if (!this.handler) {
+                this.handler = this.handle.bind(this);
+            }
+            if (!unbind) {
+                document.addEventListener("keydown", this.handler);
+                document.addEventListener("click", this.handler);
+                if (this.get("sourceBind")) {
+                    this.source.addEventListener("change", this.handler);
+                }
+                return this;
+            }
+            document.removeEventListener("keydown", this.handler);
+            document.removeEventListener("click", this.handler);
             if (this.get("sourceBind")) {
-                this.source.addEventListener("change", handle);
+                this.source.removeEventListener("change", this.handler);
             }
             return this;
         };
         Select.prototype.handle = function (event) {
             var target = event.target;
+            if (event.type === "keydown") ;
             if (event.type === "click") {
                 if (target === this.label || this.label.contains(target)) {
                     return this.toggle();
@@ -406,16 +436,18 @@
                     while (target && this.dropdown.contains(target) && !target.dataset.action) {
                         target = target.parentElement;
                     }
-                    if (target.dataset.action && (target.dataset.value || target.dataset.group)) {
+                    var disabled = target.classList.contains("disabled");
+                    if (!disabled && target.dataset.action && (target.dataset.value || target.dataset.group)) {
                         var items = this.options.get(target.dataset.value, target.dataset.group);
                         var action = target.dataset.action;
                         this.options.selected(items, action === "toggle" ? null : action === "select");
-                    }
-                    if (!this.get("stayOpen") && !this.source.multiple) {
-                        return this.close();
+                        if (!this.get("stayOpen") && !this.source.multiple) {
+                            return this.close();
+                        }
                     }
                 }
             }
+            if (event.type === "change" && !(event instanceof CustomEvent)) ;
         };
         Select.prototype.trigger = function (type, name, args) {
             var _this = this;
@@ -507,11 +539,16 @@
             return this;
         };
         Select.prototype.render = function (element) {
+            var _this = this;
             var _a;
             var tag = element.tagName.toUpperCase();
             var output = document.createElement(tag === "OPTION" ? "LI" : "OL");
+            var classes = function (item) {
+                var selected = (_this.get("multiple") && item.hasAttribute("selected")) || item.selected;
+                return ((selected ? " selected" : "") + (item.disabled ? " disabled" : "") + (item.hidden ? " hidden" : "")).trim();
+            };
             if (tag === "OPTION") {
-                output.className = "dropdown-option";
+                output.className = "dropdown-option " + classes(element);
                 output.innerHTML = "<span class=\"option-title\">" + element.innerHTML + "</span>";
                 output.dataset.group = ((_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.label) || "";
                 output.dataset.value = element.value;
@@ -537,6 +574,55 @@
             return this.trigger("filter", "render#" + tag, [output, element, tag])[0];
         };
         Select.prototype.update = function (changes) {
+            var _this = this;
+            if (changes.length === 0) {
+                return this;
+            }
+            if (this.trigger("hook", "update:before", [changes]) !== true) {
+                return this;
+            }
+            this.trigger("event", "change", [changes]);
+            if (this.source.multiple && this.get("multiLimit") > 0) {
+                if (this.options.count(null, ["selected"]) >= this.get("multiLimit")) {
+                    this.trigger("event", "limit", [changes]);
+                }
+            }
+            [].map.call(changes, function (dataset) {
+                var option = dataset[0], change = dataset[1];
+                var value = option.value.replace(/('|\\)/g, "\\$1");
+                var group = option.parentElement ? option.parentElement.label || "" : "";
+                var item = _this.dropdown.querySelector("li[data-value=\"" + value + "\"][data-group=\"" + group + "\"]");
+                if (item) {
+                    for (var key in change) {
+                        item.classList[change[key] ? "add" : "remove"](key);
+                    }
+                }
+            });
+            this.trigger("hook", "update:after", [changes]);
+            return this.updateCSV().updateLabel();
+        };
+        Select.prototype.updateCSV = function () {
+            if (this.get("csvOutput")) {
+                this.csv.value = this.trigger("filter", "update#csv", [this.value("csv")])[0];
+            }
+            return this;
+        };
+        Select.prototype.updateLabel = function (label) {
+            var value = this.value("array");
+            var limit = this.get("multiLimit");
+            if (this.source.disabled || !this.options.count()) {
+                label = this.source.disabled ? "disabled" : "empty";
+            }
+            else if (this.source.multiple && value.length > 0) {
+                label = limit === value.length ? "multipleLimit" : "multipleCount";
+            }
+            else if (!this.source.multiple && value.length === 1) {
+                label = value[0];
+            }
+            else {
+                label = this.get("placeholder") || (this.source.multiple ? "multiple" : "single");
+            }
+            this.label.innerText = this.locale._(label, [value.length]);
             return this;
         };
         Select.prototype.open = function () {
@@ -570,11 +656,12 @@
             if (typeof format === 'undefined' || format === 'auto') {
                 format = this.source.multiple ? 'array' : 'csv';
             }
+            var items = this.options.get(null, null, ["selected"]);
             switch (format) {
-                case 'csv': return null;
-                case 'array': return null;
-                case 'node': return null;
-                default: return null;
+                case 'csv': return [].map.call(items, function (i) { return i.value; }).join(this.get("csvSeparator", ","));
+                case 'array': return [].map.call(items, function (i) { return i.value; });
+                case 'node': return !this.source.multiple ? (items[0] || null) : [].map.call(items, function (i) { return i.value; });
+                default: return format === "array" ? [] : null;
             }
         };
         Select.prototype.get = function (key, def) {

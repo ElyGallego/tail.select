@@ -170,6 +170,59 @@ $theme-name: "default";
         opacity: 0;
         visibility: hidden;
     }
+    .dropdown-inner {
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    ol {
+        li {
+            color: $color-dark;
+            padding: 7px 10px 7px 35px;
+            position: relative;
+            font-size: 95%;
+            text-align: left;
+            font-weight: normal;
+            text-shadow: none;
+        }
+        li.dropdown-option {
+            cursor: pointer;
+            color: $color-dark;
+            transition: color 142ms linear, background-color 142ms linear;
+
+            &:before {
+                top: 50%;
+                left: 10px;
+                width: 15px;
+                height: 15px;
+                margin: -7.5px 0 0 0;
+                padding: 0;
+                z-index: 21;
+                display: inline-block;
+                content: "";
+                opacity: 0;
+                position: absolute;
+                vertical-align: top;
+                background-repeat: no-repeat;
+                background-position: center center;
+                transition: opacity 250ms ease;
+            }
+            &:hover,
+            &.hover {
+                color: $color-dark;
+                background-color: fadeout($color-primary, 92.5%);
+            }
+            &.disabled, 
+            &.hidden {
+                cursor: not-allowed;
+                color: fadeout($color-dark, 50%);
+                background-color: fadeout($color-dark, 95.175%);
+            }
+            &.selected {
+                color: $color-primary;
+            }
+        }
+    }
 }
 .rat-select.theme-#{$theme-name} {
     &.cloned,
@@ -188,5 +241,82 @@ $theme-name: "default";
         border-color: map-get($border-line-active, light);
         box-shadow: map-get($shadow-line-active, light);
         transition: max-height 142ms linear, border-color 142ms linear, z-index 0ms linear 0ms;
+    }
+}
+
+// Dropdown States
+.rat-select.theme-#{$theme-name} {
+    &.hide-selected .select-dropdown li.dropdown-option.selected,
+    &.hide-disabled .select-dropdown li.dropdown-option.disabled,
+    &.hide-hidden .select-dropdown li.dropdown-option.hidden {
+        display: none;
+    }
+
+    // State :: Normal
+    .select-dropdown li.dropdown-option {
+        &:before {
+            @include icon("select", $color-dark);
+        }
+        &:hover:before, 
+        &.hover:before {
+            opacity: 0.5;
+        }
+    }
+    &.multiple .select-dropdown li.dropdown-option {
+        &:before {
+            @include icon("m-select", $color-dark);
+        }
+    }
+
+    // State :: Selected
+    .select-dropdown li.dropdown-option.selected {
+        &:before {
+            opacity: 0.85;
+            @include icon("selected", $color-primary);
+        }
+    }
+    &.multiple .select-dropdown li.dropdown-option.selected {
+        &:before {
+            @include icon("m-selected", $color-primary);
+        }
+    }
+
+    // State :: Deselect
+    &.deselect .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden) {
+        &:hover, 
+        &.hover {
+            color: $color-secondary;
+            background-color: fadeout($color-secondary, 95.175%);
+
+            &:before {
+                opacity: 0.85;
+                @include icon("deselect", $color-secondary);
+            }
+        }
+    }
+    &.multiple .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden) {
+        &:hover:before, 
+        &.hover:before {
+            @include icon("m-deselect", $color-dark);
+        }
+    }
+
+    // State :: Disabled
+    .select-dropdown li.dropdown-option.disabled,
+    .select-dropdown li.dropdown-option.hidden {
+        &:before {
+            opacity: 0.5;
+            @include icon("disabled", $color-dark);
+        }
+        &:hover:before, 
+        &.hover:before {
+            opacity: 0.5;
+        }
+    }
+    &.multiple .select-dropdown li.dropdown-option.disabled,
+    &.multiple .select-dropdown li.dropdown-option.hidden {
+        &:before {
+            @include icon("m-disabled", $color-dark);
+        }
     }
 }
