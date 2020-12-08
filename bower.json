@@ -23,14 +23,14 @@
     "homepage": "https://rat.md/select",
     "repository": {
         "type": "git",
-        "url": "git+ssh://git@github.com/pytesNET/tail.select.git"
+        "url": "git+ssh://git@github.com/pytesNET/rat.select.git"
     },
     "engines": {
         "node": "14.x"
     },
     "main": [
-        "dist/js/tail.select.js",
-        "dist/css/default.css"
+        "dist/js/rat.select.js",
+        "dist/css/rat.select.css"
     ],
     "moduleType": [
         "amd",

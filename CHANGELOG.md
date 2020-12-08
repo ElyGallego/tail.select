@@ -1,11 +1,35 @@
-CHANGELOG
-===========
+rat.select - CHANGELOG
+======================
+
+Version 1.0.0 - Stable
+----------------------
+-   Info: The **tail.select** package has been refactored to **rat.select** and contains dozens of 
+    breaking changes (based on v0.6.0-beta), view BREAKING.md for more details.
+-   Info: The new **rat.select** package is now completely written in TypeScript and SCSS, using 
+    Rollup as bundler engine and offering a non-longer-experimental ES6 module build as well.
+
+### Select() class
+
+#### Select Options
+
+-   Remove: The `animate` option has been removed completely. You can use the `no-animation` class
+    name additionally to remove the dropdown animations.
+
+### Options() class
+
+### Strings() class 
+
+### Plugins() class
+-   Info: The previously native search abilities has been moved to an own plugin.
+-   Add: A new approved Plugin API.
+-   Add: The new `ajax` plugin adds an asynchronous interface for loading options and items.
+-   Add: The new `columns` plugin extends the dropdown field in collaps-able groups (side-by-side).
+-   Add: The new `input` plugin turns the **rat.select** label element into an input field.
+-   Add: The new `movement` plugin allows to handle selected options in a moveable manor.
+-   Add: The new `search` plugin now contains the whole search-related functionallity.
 
 Version 0.6.0 - Beta
 --------------------
--   Info: **tail.select** is now completely written in TypeScript (with a customized JS Compiler).
--   Info: The ES6 Version is no longer "EXPERIMENTAL" and can be used as the ES5 Version.
--   Info: Contains many breaking changes, compared to the previous 0.5.x releases.
 
 ### Select()
 -   Add: The new option `grouplessName`, which allows to add a group header title on ungrouped &lt;option&gt; elements 
@@ -65,7 +89,6 @@ Version 0.6.0 - Beta
 -   Update: The dropdown fields doesn't close, when an option is selected with ENTER or SPACE.
 -   Update: The main event handler is now attached to the main **tail.select** container instead to each single item.
 -   Update: The `data-key` attribute has been renamed to `data-value`.
--   Remove: The option `animate`. The animation is now completely done by CSS.
 -   Remove: The options `multiPinSelected` and `multiContainer` and it's functionallity has been outsourced to a plugin.
 -   Remove: The options `multiShowCount` and `multiShowLimit` has been replaced with the new `placeholderCount` option.
 -   Remove: The option `searchDisabled` has been removed, the `hideDisabled` option will be used instead.
@@ -124,13 +147,6 @@ Version 0.6.0 - Beta
 -   Update: Better Design for Selected AND Disabled / Hidden items.
 -   Update: More accurate replica of all available bootstrap designs.
 -   Remove: Unnecessary Prefixes on `box-shadow` and `transition` including its Mixins.
-
-### Plugins
--   Add: A new Plugin API.
--   Add: The new plugin `select-ajax` adds an asynchronous way to load and initialize the options.
--   Add: The new plugin `select-columns` allows to collapse groups and show them side by side. 
--   Add: The new plugin `select-input` turns the label **tail.select** label element into an input field.
--   Add: The new plugin `select-movement` allows to move selected options on the top or to an custom container.
 
 ### Miscellaneous
 -   Add: The language objects are now stored as JSON files and gets parsed through the new node script.

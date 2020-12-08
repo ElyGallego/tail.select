@@ -22,25 +22,35 @@
     "copyright": "pytesNET <info@pytes.net>",
     "homepage": "https://rat.md/select",
     "bugs": {
-        "url": "https://github.com/pytesNET/tail.select/issues",
+        "url": "https://github.com/pytesNET/rat.select/issues",
         "email": "info@pytes.net"
     },
     "repository": {
         "type": "git",
-        "url": "git+ssh://git@github.com/pytesNET/tail.select.git"
+        "url": "git+ssh://git@github.com/pytesNET/rat.select.git"
     },
+    "funding": [
+        {
+            "type": "buymeacoffee",
+            "url": "https://buymeacoff.ee/pytesNET"
+        },
+        {
+            "type": "paypal",
+            "url": "https://paypal.me/pytesNET"
+        }
+    ],
     "engines": {
         "node": "14.x"
     },
-    "main": "dist/js/tail.select.js",
     "scripts": {
         "build": "rollup -c",
         "watch": "rollup -c --watch",
         "demo": "",
         "tests": ""
     },
-    "browser": "dist/js/tail.select.js",
-    "jsdelivr": "dist/js/tail.select.js",
+    "main": "dist/js/rat.select.js",
+    "browser": "dist/js/rat.select.js",
+    "jsdelivr": "dist/js/rat.select.js",
     "reveal": true,
     "dependencies": {},
     "devDependencies": {
