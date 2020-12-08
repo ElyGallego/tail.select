@@ -162,6 +162,7 @@ export default [
     /*
      |  EXPORT LANGUAGE FILEs
      |      uses the ratExports Plugin to export file-per-file
+     |      uses the terser Plugin to minify the distribution files
      */
     {
         input: ['src/ts/langs/*.ts'],
@@ -217,7 +218,7 @@ export default [
     /*
      |  EXPORT PLUGIN FILEs
      |      uses the ratExports Plugin to export file-per-file
-     |      uses the typescript Plugin to transpile to JavaScript
+     |      uses the terser Plugin to minify the distribution files
      */
     {
         input: ['src/ts/plugins/*.ts'],
