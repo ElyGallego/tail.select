@@ -20,11 +20,6 @@
 
     var status = "stable";
 
-    /*
-     |  ASSIGN POLYFILL
-     |  @target     IE
-     |  @source     https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Object/assign#Polyfill
-     */
     if (typeof Object.assign !== "function") {
         Object.defineProperty(Object, "assign", {
             value: function assign(target, _) {
@@ -43,11 +38,6 @@
             }
         });
     }
-    /*
-     |  CUSTOM EVENT POLYFILL
-     |  @target     IE
-     |  @source     https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill
-     */
     if (typeof CustomEvent.constructor !== "function") {
         CustomEvent.constructor = function (event, params) {
             params = params || { bubbles: false, cancelable: false, detail: null };
@@ -57,16 +47,10 @@
         };
     }
 
-    var Strings = /** @class */ (function () {
-        /*
-         |  CORE :: CONSTRUCTOR
-         */
+    var Strings = (function () {
         function Strings(locale) {
             this.strings = Strings[locale] || Strings.en;
         }
-        /*
-         |  CORE :: TRANSLATE STRING
-         */
         Strings.prototype._ = function (key, params) {
             var string = (key in this.strings) ? this.strings[key] : key;
             if (typeof params !== undefined && params.length > 0) {
@@ -77,25 +61,16 @@
             }
             return string;
         };
-        /*
-         |  STATIC :: DEFAULT LOCALE
-         */
         Strings.en = {
             "key": "value"
         };
         return Strings;
     }());
 
-    var Plugins = /** @class */ (function () {
-        /*
-         |  CORE :: CONSTRUCTOR
-         */
+    var Plugins = (function () {
         function Plugins(plugins) {
             this.plugins = plugins;
         }
-        /*
-         |  STATIC :: REGSTER A PLUGIN
-         */
         Plugins.add = function (name, config, hooks) {
             if (name in this.plugins) {
                 return false;
@@ -103,9 +78,6 @@
             this.plugins[name] = { config: config, hooks: hooks };
             return true;
         };
-        /*
-         |  CORE :: RETURN HOOKs
-         */
         Plugins.prototype.hook = function (hook) {
             var cbs = [];
             for (var name_1 in this.plugins) {
@@ -115,27 +87,19 @@
             }
             return cbs;
         };
-        /*
-         |  STATIC :: PLUGIN OBJECTs
-         */
         Plugins.plugins = {};
         return Plugins;
     }());
 
-    var Options = /** @class */ (function () {
-        /*
-         |  CORE :: CONSTRUCTOR
-         */
+    var Options = (function () {
         function Options(select) {
             this.select = select;
             this.source = select.source;
-            // Prepare Source Select
             [].map.call(this.source.querySelectorAll('options:not([value])'), function (option) {
                 if (option.innerText !== "") {
                     option.setAttribute("value", option.innerText);
                 }
             });
-            // Prepare Deselectability
             if (select.get("deselect") && !select.get("multiple")) {
                 var option = this.source.querySelector('option:checked');
                 if (option && this.source.querySelector('option[selected]') === null) {
@@ -144,9 +108,6 @@
                 }
             }
         }
-        /*
-         |  HELPER :: CREATE A NEW OPTION
-         */
         Options.prototype.create = function (value, item) {
             var option = document.createElement("OPTION");
             option.value = value;
@@ -159,9 +120,6 @@
             }
             return option;
         };
-        /*
-         |  HELPER :: PARSE OPTION OBJECT
-         */
         Options.prototype.parse = function (items) {
             for (var key in items) {
                 if (typeof items[key] === "string") {
@@ -174,16 +132,11 @@
             }
             return this;
         };
-        /*
-         |  API :: GET ONE OR MORE OPTIONs
-         */
         Options.prototype.get = function (value, group, states) {
             var format = { disabled: ":disabled", selected: ":checked", hidden: "[hidden]" };
-            // State Selector
             var selector = states ? states.map(function (state) {
                 return state[0] === "!" ? ":not(" + format[state.slice(1)] + ")" : format[state];
             }) : "";
-            // Option Selector
             if (typeof value === "number") {
                 var nth = (value > 0) ? ":nth-child" : ":nth-last-child";
                 selector = "option" + nth + "(" + Math.abs(value) + ")" + selector;
@@ -194,7 +147,6 @@
             else {
                 return [];
             }
-            // Select & Return
             if (!group && group !== false) {
                 return this.source.querySelectorAll(selector);
             }
@@ -207,16 +159,10 @@
             }
             return [];
         };
-        /*
-         |  API :: GET ONE OR MORE GROUPs
-         */
         Options.prototype.getGroups = function (objects) {
             var groups = this.source.querySelectorAll("optgroup");
             return (objects) ? groups : [].map.call(groups, function (i) { return i.label; });
         };
-        /*
-         |  API :: COUNT OPTIONs
-         */
         Options.prototype.count = function (group, states) {
             if (arguments.length === 0) {
                 return this.source.options.length;
@@ -224,20 +170,15 @@
             var result = this.get(null, group, states);
             return result ? result.length : 0;
         };
-        /*
-         |  API :: SET A NEW OPTION
-         */
         Options.prototype.set = function (item, group, position, reload) {
             var _this = this;
             if (!(item instanceof HTMLOptionElement)) {
                 [].map.call(item, function (el, i) { return _this.set(el, group, (position < 0) ? -1 : (position + i), !1); });
                 return (reload && this.select.reload()) ? this : this;
             }
-            // Check Group
             if (group === void 0 || group === null) {
                 group = item.parentElement.label || false;
             }
-            // Add to Group
             if (typeof group === "string") {
                 var optgroup = this.source.querySelector("optgroup[label=\"" + group + "\"]");
                 if (!optgroup) {
@@ -253,7 +194,6 @@
                     optgroup.insertBefore(item, optgroup.children[position]);
                 }
             }
-            // Add to Select
             if (!group) {
                 var selector = "select[data-rat-select=\"" + this.source.dataset.ratSelect + "\"] > option";
                 var options = this.source.parentElement.querySelectorAll(selector);
@@ -265,13 +205,9 @@
                     this.source.insertBefore(item, options[calc - 1].nextElementSibling || this.source.children[0]);
                 }
             }
-            // Return
             item.dataset.select = "add";
             return (reload && this.select.reload()) ? this : this;
         };
-        /*
-         |  API :: REMOVE ONE OR MORE OPTION
-         */
         Options.prototype.remove = function (items, reload) {
             if (items instanceof HTMLOptionElement) {
                 items = [items];
@@ -281,9 +217,6 @@
             });
             return (reload && this.select.reload) ? this : this;
         };
-        /*
-         |  PUBLIC :: OPTION STATEs
-         */
         Options.prototype.handle = function (items, states) {
             var _this = this;
             if (items instanceof HTMLOptionElement) {
@@ -293,41 +226,34 @@
             var limit = this.select.get("multiLimit", -1);
             [].map.call(items, function (item) {
                 var changes = {};
-                // Handle Disabled
                 if (states.hasOwnProperty("disabled") && states.disabled !== item.disabled) {
                     changes.disabled = item.disabled = states.disabled;
                 }
-                // Handle Hidden
                 if (states.hasOwnProperty("hidden") && states.hidden !== item.hidden) {
                     changes.hidden = item.hidden = states.hidden;
                 }
-                // Handle Selected
                 while (states.hasOwnProperty("selected") && states.selected !== item.selected) {
                     if (item.disabled || item.hidden) {
-                        break; // <option> is disabled or hidden
+                        break;
                     }
                     if (states.selected && _this.source.multiple && limit >= 0 && limit <= _this.count(null, [":selected"])) {
-                        break; // Too many <option>s are selected
+                        break;
                     }
                     if (!states.selected && !_this.source.multiple && _this.select.get("deselect", !1)) {
-                        break; // Non-Deselectable single <select>
+                        break;
                     }
                     changes.selected = item.selected = states.selected;
                     if (!_this.source.multiple && !states.selected) {
                         _this.source.selectedIndex = -1;
                     }
-                    break; // Done
+                    break;
                 }
-                // Append Changes
                 if (Object.keys(changes).length > 0) {
                     result.push([item, changes]);
                 }
             });
             return this.select.update(result) ? this : this;
         };
-        /*
-         |  PUBLIC :: OPTION STATEs <ALIASES>
-         */
         Options.prototype.selected = function (items, state) {
             return this.handle(items, { selected: state });
         };
@@ -340,10 +266,7 @@
         return Options;
     }());
 
-    var Select = /** @class */ (function () {
-        /*
-         |  CORE :: CONSTRUCTOR
-         */
+    var Select = (function () {
         function Select(source, config, options) {
             this.source = source;
             this.config = config;
@@ -351,21 +274,17 @@
             this.locale = new Strings(config.locale || "en");
             this.plugins = new Plugins(config.plugins || {});
             this.events = config.on || {};
-            // Init States
             this.config.multiple = this.source.multiple = config.multiple || source.multiple;
             this.config.disabled = this.source.disabled = config.disabled || source.disabled;
             this.config.required = this.source.required = config.required || source.required;
-            // Init Placeholder
             var placeholder = config.placeholder || source.dataset.placeholder || null;
             if (!placeholder || source.options[0].value === "") {
                 placeholder = source.options[0].innerText;
             }
             this.config.placeholder = placeholder;
-            // Init RTL
             if ((config.rtl || null) === null) {
                 this.config.rtl = ['ar', 'fa', 'he', 'mdr', 'sam', 'syr'].indexOf(config.locale || "en") >= 0;
             }
-            // Init Theme
             if ((config.theme || null) === null) {
                 var evaluate = document.createElement("SPAN");
                 evaluate.className = "rat-select-theme-name";
@@ -373,34 +292,26 @@
                 this.config.theme = window.getComputedStyle(evaluate, ":after").content.replace(/"/g, "");
                 document.body.removeChild(evaluate);
             }
-            // Add Instance
             source.dataset.ratSelect = Select.inst.length.toString();
             Select.inst[Select.inst.length++] = this;
             this.init();
         }
-        /*
-         |  CORE :: INIT SELECT FIELD
-         */
         Select.prototype.init = function () {
             if (this.trigger("hook", "init:before") === false) {
                 return this;
             }
-            // Init Options
             if (typeof this.config.items !== "undefined") {
                 var items = this.config.items;
                 this.options.parse(typeof items === "function" ? items.call(this, this.options) : items);
             }
-            // Handle Build Step
             if (this.trigger("hook", "build:before") === true) {
                 this.build();
                 this.trigger("hook", "build:after");
             }
-            // Handle Bind Step
             if (this.trigger("hook", "bind:before") === true) {
                 this.bind();
                 this.trigger("hook", "bind:after");
             }
-            // Append to DOM
             if (this.source.nextElementSibling) {
                 this.source.parentElement.insertBefore(this.select, this.source.nextElementSibling);
             }
@@ -410,13 +321,9 @@
             this.trigger("hook", "init:after");
             return this.query();
         };
-        /*
-         |  CORE :: BUILD SELECT FIELD
-         */
         Select.prototype.build = function () {
             var _this = this;
             var cls = this.get("classNames") === true ? this.source.className : this.get("classNames", "");
-            // Create :: Select
             this.select = document.createElement("DIV");
             this.select.className = (function (cls) {
                 _this.get("rtl") ? cls.unshift("rtl") : null;
@@ -436,15 +343,12 @@
             if (width !== null) {
                 this.select.style.width = width + (isNaN(width) ? "" : "px");
             }
-            // Create :: Label
             this.label = document.createElement("LABEL");
             this.label.className = "select-label";
             this.label.innerHTML = "<span class=\"label-inner\">Test Placeholder</span>";
-            // Create :: Dropdown
             this.dropdown = document.createElement("DIV");
             this.dropdown.className = "select-dropdown overflow-" + this.get("titleOverflow", "clip");
             this.dropdown.innerHTML = "<div class=\"dropdown-inner\"></div>";
-            // Create :: CSV Input
             this.csv = document.createElement("INPUT");
             this.csv.className = "select-search";
             this.csv.name = (function (name) {
@@ -453,18 +357,13 @@
                 }
                 return name === false ? "" : name;
             })(this.get("csvOutput", !1));
-            // Build Up
             this.select.appendChild(this.label);
             this.select.appendChild(this.dropdown);
             this.get("csvOutput") ? this.select.appendChild(this.csv) : null;
             return this;
         };
-        /*
-         |  CORE :: BIND SELECT FIELD
-         */
         Select.prototype.bind = function () {
             var handle = this.handle.bind(this);
-            // Attach Events
             document.addEventListener("keydown", this.handle);
             document.addEventListener("click", this.handle);
             if (this.get("sourceBind")) {
@@ -472,15 +371,8 @@
             }
             return this;
         };
-        /*
-         |  CORE :: HANDLE EVENTs
-         */
         Select.prototype.handle = function (event) {
-            //console.log(event);
         };
-        /*
-         |  API :: TRIGGER EVENT, FILTER OR HOOK
-         */
         Select.prototype.trigger = function (type, name, args) {
             var _this = this;
             if (type === "event") {
@@ -494,7 +386,6 @@
                     this.source.dispatchEvent(event_2);
                 }
             }
-            // Handle Hooks & Filters
             var _arg = true;
             var callbacks = this.plugins.hook(name).concat(this.events[name] || []);
             callbacks.map(function (cb) {
@@ -505,22 +396,16 @@
                     _arg = false;
                 }
             });
-            // Return
             return (type === "hook") ? _arg : ((type === "filter") ? args : cancelled);
         };
-        /*
-         |  API :: QUERY DROPDOWN
-         */
         Select.prototype.query = function (query) {
             var _a;
             var _this = this;
             if (this.trigger("hook", "query:before") === false) {
                 return this;
             }
-            // Handle Query
             query = typeof query === "function" ? query : this.get("query", function () { return _this.options.get(); });
             query = this.trigger("filter", "query", [query])[0];
-            // Handle Walker
             var el = null;
             var skip = void 0;
             var head = [];
@@ -529,11 +414,9 @@
                 var item = items_1[_i];
                 var group = item.parentElement instanceof HTMLOptGroupElement ? item.parentElement.label : null;
                 _a = this.trigger("filter", "walk", [item, group]), item = _a[0], group = _a[1];
-                // Skip Group, but keep loop running
                 if (group === skip) {
                     continue;
                 }
-                // Create Group
                 if (!(head.length > 0 && head[0].dataset.group === group)) {
                     var arg = item.parentElement instanceof HTMLOptGroupElement ? item.parentElemnt : null;
                     if (!arg) {
@@ -542,22 +425,20 @@
                     }
                     if ((el = this.render(arg)) === null) {
                         skip = group;
-                        continue; // Skip Group
+                        continue;
                     }
                     else if (el === false) {
-                        break; // Break Loop
+                        break;
                     }
                     head.unshift(el);
                 }
-                // Create Item
                 if ((el = this.render(item)) === null) {
-                    continue; // Skip Item
+                    continue;
                 }
                 else if (el === false) {
-                    break; // Break Loop
+                    break;
                 }
                 head[0].appendChild(el);
-                // Experimental Scroll Function
                 if (this.get("titleOverflow") === "scroll") {
                     (function (el, self) {
                         var style = window.getComputedStyle(el);
@@ -571,23 +452,17 @@
                     }(el));
                 }
             }
-            // Replace
             var root = this.dropdown.querySelector(".dropdown-inner");
             var clone = root.cloneNode();
             head.map(function (item) { return clone.appendChild(item); });
             this.dropdown.replaceChild(clone, root);
-            // Hook & Return
             this.trigger("hook", "query:after");
             return this;
         };
-        /*
-         |  API :: RENDER DROPDOWN
-         */
         Select.prototype.render = function (element) {
             var _a;
             var tag = element.tagName.toUpperCase();
             var output = document.createElement(tag === "OPTION" ? "LI" : "OL");
-            // Render Item
             if (tag === "OPTION") {
                 output.className = "dropdown-option";
                 output.innerHTML = "<span class=\"option-title\">" + element.innerHTML + "</span>";
@@ -611,18 +486,11 @@
                     }
                 }
             }
-            // Filter & Return
             return this.trigger("filter", "render#" + tag, [output, element, tag])[0];
         };
-        /*
-         |  API :: UPDATE INSTANCE
-         */
         Select.prototype.update = function (changes) {
             return this;
         };
-        /*
-         |  API :: OPEN DROPDOWN
-         */
         Select.prototype.open = function () {
             if (this.select.classList.contains("active")) {
                 return this;
@@ -631,9 +499,6 @@
             this.trigger("event", "open", []);
             return this;
         };
-        /*
-         |  API :: CLOSE DROPDOWN
-         */
         Select.prototype.close = function () {
             if (!this.select.classList.contains("active")) {
                 return this;
@@ -642,21 +507,12 @@
             this.trigger("event", "close", []);
             return this;
         };
-        /*
-         |  API :: RELOAD SELECT INSTANCE
-         */
         Select.prototype.reload = function (hard) {
             return this;
         };
-        /*
-         |  API :: REMOVE SELECT INSTANCE
-         */
         Select.prototype.remove = function () {
             return this;
         };
-        /*
-         |  PUBLIC :: GET VALUE
-         */
         Select.prototype.value = function (format) {
             if (typeof format === 'undefined' || format === 'auto') {
                 format = this.source.multiple ? 'array' : 'csv';
@@ -668,15 +524,9 @@
                 default: return null;
             }
         };
-        /*
-         |  PUBLIC :: GET CONFIG
-         */
         Select.prototype.get = function (key, def) {
             return (key in this.config) ? this.config[key] : def;
         };
-        /*
-         |  PUBLIC :: SET CONFIG
-         */
         Select.prototype.set = function (key, value, reload) {
             if (['multiple', 'disabled', 'required'].indexOf(key) >= 0) {
                 if (key === 'disabled') {
@@ -689,25 +539,16 @@
             }
             return (reload) ? this.reload() : this;
         };
-        /*
-         |  PUBLIC :: ENABLE SELECT INSTANCE
-         */
         Select.prototype.enable = function (reload) {
             this.config.disabled = this.source.disabled = false;
             this.select.classList.remove("disabled");
             return (reload) ? this.reload() : this;
         };
-        /*
-         |  PUBLIC :: DISABLE SELECT INSTANCE
-         */
         Select.prototype.disable = function (reload) {
             this.config.disabled = this.source.disabled = true;
             this.select.classList.add("disabled");
             return (reload) ? this.reload() : this;
         };
-        /*
-         |  PUBLIC :: EVENT LISTENER
-         */
         Select.prototype.on = function (name, callback) {
             var _this = this;
             name.split(",").map(function (event) {
@@ -716,26 +557,12 @@
             });
             return this;
         };
-        /*
-         |  STATIC :: INSTANCES
-         */
         Select.inst = {
             length: 0
         };
-        /*
-         |  STATIC :: STRING HANDLER
-         */
-        Select.strings = Strings;
-        /*
-         |  STATIC :: PLUGINS HANDLER
-         */
-        Select.plugins = Plugins;
         return Select;
     }());
 
-    /*
-     |  MAIN RAT.SELECT FUNCTION
-     */
     function RatSelect(selector, config, options) {
         var _return = function (source) {
             if (!(source instanceof HTMLSelectElement)) {
@@ -758,6 +585,8 @@
     RatSelect.status = status;
     RatSelect.Select = Select;
     RatSelect.Options = Options;
+    RatSelect.Strings = Strings;
+    RatSelect.Plugins = Plugins;
 
     return RatSelect;
 

@@ -1,20 +1,18 @@
 
-// Load package.json
+import { join } from "path";
+
 import pkg from "./package.json";
-import tsc from "./tsconfig.json";
+import ratSASS from './src/build/rollup-plugin-rat-sass';
+import ratExports from './src/build/rollup-plugin-rat-exports';
 
-// Load custom rollup plugins
-import ratSASS from './src/_rat/rat-sass';
-import ratExports from './src/_rat/rat-exports';
-
-// Load external rollup plugins
-import ignoreImport from 'rollup-plugin-ignore-import';
 import typescript from '@rollup/plugin-typescript';
-import alias from '@rollup/plugin-alias';
+import ignoreImport from 'rollup-plugin-ignore-import';
 import { terser } from 'rollup-plugin-terser';
 import consts from 'rollup-plugin-consts';
 
-// Define banner
+/*
+ |  DEFINE DISTRIBUTION BANNERs
+ */
 const copyright = `/*!
  |  ${pkg.name} - ${pkg.description}
  |  @file       ${pkg.main}
@@ -23,47 +21,54 @@ const copyright = `/*!
  |  
  |  @website    ${pkg.homepage}
  |  @license    ${pkg.license} License
- |  @copyright  Copyright © 2014 - 2020 ${pkg.copyright}
+ |  @copyright  Copyright © 2014 - ${(new Date()).getFullYear()} ${pkg.copyright}
  */`;
 const copysmall = `/*! pytesNET/${pkg.name} | @version ${pkg.version} | @license ${pkg.license} | @copyright ${pkg.copyright} */`;
 
-// Export Rollup Configuration
+/*
+ |  EXPORT ROLLUP CONFIGURATION
+ */
 export default [
-
-    // ES5
+    /*
+     |  EXPORT ECMASCRIPT 5 VERSION
+     |      uses the ratSASS Plugin to compile the stylesheets
+     |      uses the const Plugin to pass version constants
+     |      uses the typescript Plugin to transpile to JavaScript
+     |      uses the terser Plugin to minify the second output
+     */
     {
         input: 'src/ts/index.ts',
         output: [
             {
-                name: pkg.name,
+                amd: {
+                    id: pkg.name
+                },
+                banner: copyright,
+                compact: false,
+                esModule: false,
                 file: `dist/js/${pkg.name}.js`,
                 format: 'umd',
-                banner: copyright,
                 intro: '"use strict";',
-                compact: false,
+                name: pkg.name,
+                strict: false,
                 sourcemap: true,
-                sourcemapExcludeSources: true,
-                amd: {
-                    id: pkg.name
-                },
-                esModule: false,
-                strict: false
+                sourcemapExcludeSources: true
             },
             {
-                name: pkg.name,
-                file: `dist/js/${pkg.name}.min.js`,
-                format: 'umd',
-                banner: copysmall,
-                footer: `\n/*! Visit this project on ${pkg.homepage} */`,
-                intro: '"use strict";',
-                compact: true,
-                sourcemap: true,
-                sourcemapExcludeSources: true,
                 amd: {
                     id: pkg.name
                 },
+                banner: copysmall,
+                compact: true,
                 esModule: false,
+                file: `dist/js/${pkg.name}.min.js`,
+                footer: `\n/*! Visit this project on ${pkg.homepage} */`,
+                format: 'umd',
+                intro: '"use strict";',
+                name: pkg.name,
                 strict: false,
+                sourcemap: true,
+                sourcemapExcludeSources: true,
                 plugins: [
                     terser({
                         output: { comments: /^!(?! \*)/ }
@@ -73,10 +78,6 @@ export default [
         ],
         plugins: [
             ratSASS({
-                output: {
-                    expanded: 'dist/css/rat.[name].css',
-                    compressed: 'dist/css/rat.[name].min.css'
-                },
                 banner: {
                     expanded: copyright.replace('dist/js/tail.select.js', 'dist/css/rat.[name].css'),
                     compressed: copysmall
@@ -84,7 +85,11 @@ export default [
                 bundle: false,
                 indentType: 'space',
                 indentWidth: 4,
-                sourceMap: true
+                sourceMap: true,
+                output: {
+                    expanded: 'dist/css/rat.[name].css',
+                    compressed: 'dist/css/rat.[name].min.css'
+                },
             }),
             consts({
                 version: pkg.version,
@@ -93,104 +98,44 @@ export default [
             typescript({ 
                 sourceMap: true
             })
-        ],
-    },
-
-    // ES5 Langs
-    {
-        input: ['src/langs/*.js'],
-        output: {
-            name: pkg.name,
-            dir: 'dist/js/langs',
-            format: 'umd',
-            banner: copysmall,
-            intro: '"use strict";',
-            compact: false,
-            extend: true,
-            globals: {
-                'rat.select': 'rat.select'
-            },
-            esModule: false,
-            preserveModules: false,
-            sourcemap: true,
-            sourcemapExcludeSources: true,
-            strict: false
-        },
-        external: ['rat.select'],
-        plugins: [
-            ratExports()
         ]
     },
 
-    // ES5 Plugins
-    {
-        input: ['src/plugins/*.ts'],
-        output: {
-            name: pkg.name,
-            dir: 'dist/js/plugins',
-            format: 'umd',
-            banner: copysmall,
-            intro: '"use strict";',
-            compact: false,
-            extend: true,
-            globals: {
-                'rat.select': 'rat.select',
-                '../ts/select': 'rat.select'
-            },
-            esModule: false,
-            preserveModules: false,
-            sourcemap: true,
-            sourcemapExcludeSources: true,
-            strict: false
-        },
-        external: ['rat.select', '../ts/select'],
-        plugins: [
-            ratExports({
-                plugins: [
-                    consts({
-                        version: pkg.version,
-                        status: pkg.status
-                    }),
-                    typescript({ tsconfig: __dirname + '/tsconfig.json' }),
-                    alias({
-                        entries: {
-                            'rat.select': "../ts/select",
-                            '../ts/select': "rat.select"
-                        }
-                    }),
-                ]
-            })
-        ]
-    },
-
-    // ES6
+    /*
+     |  EXPORT ECMASCRIPT 6 VERSION
+     |      uses the ratSASS Plugin to skip the SASS files
+     |      uses the const Plugin to pass version constants
+     |      uses the ignoreImport Plugin to skip ES5 Polyfills
+     |      uses the typescript Plugin to transpile to JavaScript
+     |      uses the terser Plugin to minify the second output
+     */
     {
         input: 'src/ts/index.ts',
         output: [
             {
-                name: pkg.name,
+                banner: copyright.replace(/dist\/js/g, "dist/es"),
+                compact: false,
+                esModule: true,
                 file: `dist/es/${pkg.name}.js`,
                 format: 'es',
-                banner: copyright.replace(/dist\/js/g, "dist/es"),
                 intro: '"use strict";',
-                compact: false,
+                name: pkg.name,
+                strict: false,
                 sourcemap: true,
-                sourcemapExcludeSources: true,
-                esModule: true,
-                strict: false
+                sourcemapExcludeSources: true
             },
             {
-                name: pkg.name,
-                file: `dist/es/${pkg.name}.min.js`,
-                format: 'es',
                 banner: copysmall.replace(/dist\/js/g, "dist/es"),
-                footer: `\n/*! Visit this project on ${pkg.homepage} */`,
-                intro: '"use strict";',
                 compact: true,
+                esModule: true,
+                file: `dist/es/${pkg.name}.min.js`,
+                footer: `\n/*! Visit this project on ${pkg.homepage} */`,
+                format: 'es',
+                intro: '"use strict";',
+                name: pkg.name,
+                strict: false,
                 sourcemap: true,
                 sourcemapExcludeSources: true,
-                esModule: true,
-                strict: false,
                 plugins: [
                     terser()
                 ]
@@ -214,52 +159,103 @@ export default [
         ],
     },
 
-    // ES6 Langs
+    /*
+     |  EXPORT LANGUAGE FILEs
+     |      uses the ratExports Plugin to export file-per-file
+     */
     {
-        input: ['src/langs/*.js'],
-        output: {
-            name: pkg.name,
-            dir: 'dist/es/langs',
-            format: 'es',
-            banner: copysmall,
-            intro: '"use strict";',
-            compact: false,
-            extend: true,
-            globals: {
-                'rat.select': 'rat.select'
+        input: ['src/ts/langs/*.ts'],
+        output: [
+            {
+                banner: copysmall,
+                compact: false,             //@TODO SET TO TRUE
+                dir: 'dist/js/langs',
+                esModule: false,
+                extend: true,
+                footer: `\n/*! Visit this project on ${pkg.homepage} */`,
+                format: 'umd',
+                globals: {
+                    'rat.select': 'rat.select'
+                },
+                interop: false,
+                intro: '"use strict";',
+                name: pkg.name,
+                preserveModules: false,
+                strict: false,
+                sourcemap: true,
+                sourcemapExcludeSources: true
             },
-            esModule: false,
-            sourcemap: true,
-            sourcemapExcludeSources: true,
-            preserveModules: false,
-            strict: false
-        },
+            {
+                banner: copysmall,
+                compact: false,             //@TODO SET TO TRUE
+                dir: 'dist/es/langs',
+                esModule: true,
+                extend: true,
+                footer: `\n/*! Visit this project on ${pkg.homepage} */`,
+                format: 'es',
+                globals: {
+                    'rat.select': 'rat.select'
+                },
+                intro: '"use strict";',
+                name: pkg.name,
+                preserveModules: false,
+                strict: false,
+                sourcemap: true,
+                sourcemapExcludeSources: true
+            }
+        ],
         external: ['rat.select'],
         plugins: [
             ratExports()
         ]
     },
 
-    // ES6 Plugins
+    /*
+     |  EXPORT PLUGIN FILEs
+     |      uses the ratExports Plugin to export file-per-file
+     |      uses the typescript Plugin to transpile to JavaScript
+     */
     {
-        input: ['src/plugins/*.js'],
-        output: {
-            name: pkg.name,
-            dir: 'dist/es/plugins',
-            format: 'es',
-            banner: copysmall,
-            intro: '"use strict";',
-            compact: false,
-            extend: true,
-            globals: {
-                'rat.select': 'rat.select'
+        input: ['src/ts/plugins/*.ts'],
+        output: [
+            {
+                banner: copysmall,
+                compact: false,             //@TODO SET TO TRUE
+                dir: 'dist/js/plugins',
+                esModule: false,
+                extend: true,
+                footer: `\n/*! Visit this project on ${pkg.homepage} */`,
+                format: 'umd',
+                globals: {
+                    'rat.select': 'rat.select'
+                },
+                interop: false,
+                intro: '"use strict";',
+                name: pkg.name,
+                preserveModules: false,
+                strict: false,
+                sourcemap: true,
+                sourcemapExcludeSources: true
             },
-            esModule: false,
-            sourcemap: true,
-            sourcemapExcludeSources: true,
-            preserveModules: false,
-            strict: false
-        },
+            {
+                banner: copysmall,
+                compact: false,             //@TODO SET TO TRUE
+                dir: 'dist/es/plugins',
+                esModule: false,
+                extend: true,
+                footer: `\n/*! Visit this project on ${pkg.homepage} */`,
+                format: 'es',
+                globals: {
+                    'rat.select': 'rat.select'
+                },
+                intro: '"use strict";',
+                name: pkg.name,
+                preserveModules: false,
+                strict: false,
+                sourcemap: true,
+                sourcemapExcludeSources: true
+            }
+        ],
         external: ['rat.select'],
         plugins: [
             ratExports()

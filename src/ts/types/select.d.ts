@@ -6,16 +6,6 @@ declare interface RatSelect_SelectConstructor {
     inst: Object;
 
     /*
-     |  STATIC :: STRING HANDLER
-     */
-    strings: RatSelect_Strings;
-    
-    /*
-     |  STATIC :: PLUGINS HANDLER
-     */
-    plugins: RatSelect_Plugins;
-
-    /*
      |  CONSTRUCTOR
      |  @since  1.0.0
      |

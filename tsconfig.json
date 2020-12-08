@@ -2,20 +2,24 @@
     "compilerOptions": {
         "allowJs": true,
         "alwaysStrict": false,
+        "baseUrl": ".",
         "lib": ["DOM", "ES5", "ES6"],
         "locale": "en",
         "newLine": "lf",
-        "removeComments": false,
-        "sourceMap": false,
+        "paths": {
+            "rat.select": ["src/ts/index"]
+        },
+        "removeComments": true,
+        "sourceMap": true,
         "target": "ES5",
         "typeRoots": [
-            "./src/ts/types"
+            "./src/ts/types",
+            "./src/ts/plugins/types"
         ]
     },
     "exclude": [
         "./rollup.config.js",
         "./dist/*",
-        "./src/_rat/*",
-        "./src/langs/*"
+        "./src/build/*"
     ]
 }

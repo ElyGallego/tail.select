@@ -1,9 +1,11 @@
 /*! pytesNET/rat.select | @version 1.0.0 | @license MIT | @copyright pytesNET <info@pytes.net> */
 "use strict";
 
-import { Select } from 'rat.select';
+import RatSelect from '../rat.select.js';
 
-Select.Strings.de_DE = {
+RatSelect.Strings["de_DE"] = {
     "key": "value"
 };
+
+/*! Visit this project on https://rat.md/select */
 //# sourceMappingURL=de_DE.js.map

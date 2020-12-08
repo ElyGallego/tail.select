@@ -15,17 +15,7 @@ export class Select implements RatSelect_Select {
         length: 0
     };
 
-    /*
-     |  STATIC :: STRING HANDLER
-     */
-    static strings = Strings;
-
-    /*
-     |  STATIC :: PLUGINS HANDLER
-     */
-    static plugins = Plugins;
-
-
+    
     /*
      |  CORE :: SOURCE SELECT FIELD
      */

@@ -11,12 +11,12 @@
             }
         </style>
 
-        <script type="text/javascript" src="../dist/js/rat.select.js"></script>
-        <script type="text/javascript" src="../dist/js/langs/de_AT.js"></script>
-        <script type="text/javascript" src="../dist/js/plugins/ajax.js"></script>
-        <script type="text/javascript">
+        <script type="module">
+            import select from "../dist/es/rat.select.js";
+            import "../dist/es/langs/de_AT.js";
+
             document.addEventListener("DOMContentLoaded", function() {
-                console.log(rat.select("select"));
+                console.log(select);
             });
         </script>
     </head>

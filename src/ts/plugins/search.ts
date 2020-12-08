@@ -1,7 +1,7 @@
 
-import { Select } from "../ts/select";
+import RatSelect from "rat.select";
 
-Select.plugins.add("search", { }, {
+RatSelect.Plugins.add("search", { }, {
     "init:before": function() {
         this.options.finder = function() {
             return "1";

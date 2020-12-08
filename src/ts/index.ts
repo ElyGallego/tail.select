@@ -12,6 +12,8 @@ import "../sass/chosen.scss";
 
 import { Select } from "./select";
 import { Options } from "./options";
+import { Strings } from "./strings";
+import { Plugins } from "./plugins";
 
 /*
  |  MAIN RAT.SELECT FUNCTION
@@ -38,6 +40,8 @@ RatSelect.version = version;
 RatSelect.status = status;
 RatSelect.Select = Select;
 RatSelect.Options = Options;
+RatSelect.Strings = Strings;
+RatSelect.Plugins = Plugins;
 
 // Export
 export default RatSelect;
