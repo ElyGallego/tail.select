@@ -44,7 +44,7 @@ declare interface RatSelect_Config {
      |  @since          1.0.0
      |
      |  @values
-     |      null        Don't qupte the csv output at all.
+     |      null        Don't quote the csv output at all.
      |      string      The quotes to be used for the csv list (as defined in csvOutput).
      |
      |  @default

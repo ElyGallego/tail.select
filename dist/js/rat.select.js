@@ -1,6 +1,6 @@
 /*!
  |  rat.select - The vanilla solution to level up your HTML <select> fields.
- |  @file       dist/js/tail.select.js
+ |  @file       dist/js/rat.select.js
  |  @version    1.0.0 - Stable
  |  @author     SamBrishes <sam@pytes.net> (https://www.pytes.net)
  |				Lenivyy <lenivyy@pytes.net> (https://www.pytes.net)
@@ -95,7 +95,7 @@
         function Options(select) {
             this.select = select;
             this.source = select.source;
-            [].map.call(this.source.querySelectorAll('options:not([value])'), function (option) {
+            [].map.call(this.source.querySelectorAll('option:not([value])'), function (option) {
                 if (option.innerText !== "") {
                     option.setAttribute("value", option.innerText);
                 }
@@ -134,6 +134,7 @@
         };
         Options.prototype.get = function (value, group, states) {
             var format = { disabled: ":disabled", selected: ":checked", hidden: "[hidden]" };
+            group = group === "" ? false : group;
             var selector = states ? states.map(function (state) {
                 return state[0] === "!" ? ":not(" + format[state.slice(1)] + ")" : format[state];
             }) : "";
@@ -227,23 +228,23 @@
             [].map.call(items, function (item) {
                 var changes = {};
                 if (states.hasOwnProperty("disabled") && states.disabled !== item.disabled) {
-                    changes.disabled = item.disabled = states.disabled;
+                    changes.disabled = item.disabled = !item.disabled;
                 }
                 if (states.hasOwnProperty("hidden") && states.hidden !== item.hidden) {
-                    changes.hidden = item.hidden = states.hidden;
+                    changes.hidden = item.hidden = !item.hidden;
                 }
                 while (states.hasOwnProperty("selected") && states.selected !== item.selected) {
                     if (item.disabled || item.hidden) {
                         break;
                     }
-                    if (states.selected && _this.source.multiple && limit >= 0 && limit <= _this.count(null, [":selected"])) {
+                    if (!item.selected && _this.source.multiple && limit >= 0 && limit <= _this.count(null, [":selected"])) {
                         break;
                     }
-                    if (!states.selected && !_this.source.multiple && _this.select.get("deselect", !1)) {
+                    if (item.selected && !_this.source.multiple && _this.select.get("deselect", !1)) {
                         break;
                     }
-                    changes.selected = item.selected = states.selected;
-                    if (!_this.source.multiple && !states.selected) {
+                    changes.selected = item.selected = !item.selected;
+                    if (!_this.source.multiple && !item.selected) {
                         _this.source.selectedIndex = -1;
                     }
                     break;
@@ -362,16 +363,59 @@
             this.get("csvOutput") ? this.select.appendChild(this.csv) : null;
             return this;
         };
+        Select.prototype.calculate = function () {
+            var _this = this;
+            var clone = this.dropdown;
+            var height = (function (height) {
+                var _a, _b;
+                var temp = clone.cloneNode(true);
+                temp.classList.add("height");
+                _this.select.appendChild(temp);
+                if (typeof height === "string" && height.charAt(0) === ":") {
+                    var opt = (_b = (_a = clone.querySelector(".dropdown-option")) === null || _a === void 0 ? void 0 : _a.offsetHeight) !== null && _b !== void 0 ? _b : 50;
+                    temp.style.maxHeight = opt * parseInt(height.slice(1)) + "px";
+                }
+                else {
+                    temp.style.maxHeight = height + (isNaN(height) ? "" : "px");
+                }
+                height = temp.offsetHeight > height ? height : temp.offsetHeight;
+                return _this.select.removeChild(temp) ? height : height;
+            })((!this.get("height", 350)) ? "auto" : this.get("height", 350));
+            clone.style.maxHeight = height + "px";
+            return this;
+        };
         Select.prototype.bind = function () {
             var handle = this.handle.bind(this);
-            document.addEventListener("keydown", this.handle);
-            document.addEventListener("click", this.handle);
+            document.addEventListener("keydown", handle);
+            document.addEventListener("click", handle);
             if (this.get("sourceBind")) {
-                this.source.addEventListener("change", this.handle);
+                this.source.addEventListener("change", handle);
             }
             return this;
         };
         Select.prototype.handle = function (event) {
+            var target = event.target;
+            if (event.type === "click") {
+                if (target === this.label || this.label.contains(target)) {
+                    return this.toggle();
+                }
+                if (!this.select.contains(target) && !this.get("stayOpen")) {
+                    return this.close();
+                }
+                if (this.dropdown.contains(target)) {
+                    while (target && this.dropdown.contains(target) && !target.dataset.action) {
+                        target = target.parentElement;
+                    }
+                    if (target.dataset.action && (target.dataset.value || target.dataset.group)) {
+                        var items = this.options.get(target.dataset.value, target.dataset.group);
+                        var action = target.dataset.action;
+                        this.options.selected(items, action === "toggle" ? null : action === "select");
+                    }
+                    if (!this.get("stayOpen") && !this.source.multiple) {
+                        return this.close();
+                    }
+                }
+            }
         };
         Select.prototype.trigger = function (type, name, args) {
             var _this = this;
@@ -417,7 +461,7 @@
                 if (group === skip) {
                     continue;
                 }
-                if (!(head.length > 0 && head[0].dataset.group === group)) {
+                if (!(head.length > 0 && head[0].dataset.group === (!group ? "" : group))) {
                     var arg = item.parentElement instanceof HTMLOptGroupElement ? item.parentElemnt : null;
                     if (!arg) {
                         arg = document.createElement("OPTGROUP");
@@ -430,7 +474,7 @@
                     else if (el === false) {
                         break;
                     }
-                    head.unshift(el);
+                    head.push(el);
                 }
                 if ((el = this.render(item)) === null) {
                     continue;
@@ -456,6 +500,9 @@
             var clone = root.cloneNode();
             head.map(function (item) { return clone.appendChild(item); });
             this.dropdown.replaceChild(clone, root);
+            if (this.select.classList.contains("active")) {
+                this.calculate();
+            }
             this.trigger("hook", "query:after");
             return this;
         };
@@ -466,8 +513,9 @@
             if (tag === "OPTION") {
                 output.className = "dropdown-option";
                 output.innerHTML = "<span class=\"option-title\">" + element.innerHTML + "</span>";
-                output.dataset.group = ((_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.label) || "#";
+                output.dataset.group = ((_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.label) || "";
                 output.dataset.value = element.value;
+                output.dataset.action = "toggle";
                 if (element.dataset.description) {
                     output.innerHTML += "<span clasS=\"option-description\">" + element.dataset.description + "</span>";
                 }
@@ -495,6 +543,7 @@
             if (this.select.classList.contains("active")) {
                 return this;
             }
+            this.calculate();
             this.select.classList.add("active");
             this.trigger("event", "open", []);
             return this;
@@ -503,9 +552,13 @@
             if (!this.select.classList.contains("active")) {
                 return this;
             }
+            this.dropdown.style.removeProperty("max-height");
             this.select.classList.remove("active");
             this.trigger("event", "close", []);
             return this;
+        };
+        Select.prototype.toggle = function () {
+            return this[this.select.classList.contains("active") ? "close" : "open"]();
         };
         Select.prototype.reload = function (hard) {
             return this;

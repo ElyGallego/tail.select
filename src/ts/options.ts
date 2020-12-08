@@ -18,7 +18,7 @@ export class Options implements RatSelect_Options {
         this.source = select.source;
 
         // Prepare Source Select
-        [].map.call(this.source.querySelectorAll('options:not([value])'), (option) => {
+        [].map.call(this.source.querySelectorAll('option:not([value])'), (option) => {
             if(option.innerText !== "") {
                 option.setAttribute("value", option.innerText);
             }
@@ -70,6 +70,7 @@ export class Options implements RatSelect_Options {
      */
     get(value?: null | Number | string, group?: null | false | string, states?: string[]): Array<null> | NodeListOf<HTMLOptionElement> {
         let format = { disabled: ":disabled", selected: ":checked", hidden: "[hidden]" };
+        group = group === ""? false: group;
 
         // State Selector
         let selector = states? states.map((state) => {
@@ -194,12 +195,12 @@ export class Options implements RatSelect_Options {
 
             // Handle Disabled
             if(states.hasOwnProperty("disabled") && states.disabled !== item.disabled) {
-                changes.disabled = item.disabled = states.disabled;
+                changes.disabled = item.disabled = !item.disabled;
             }
 
             // Handle Hidden
             if(states.hasOwnProperty("hidden") && states.hidden !== item.hidden) {
-                changes.hidden = item.hidden = states.hidden;
+                changes.hidden = item.hidden = !item.hidden;
             }
 
             // Handle Selected
@@ -207,15 +208,15 @@ export class Options implements RatSelect_Options {
                 if(item.disabled || item.hidden) {
                     break;  // <option> is disabled or hidden
                 }
-                if(states.selected && this.source.multiple && limit >= 0 && limit <= this.count(null, [":selected"])) {
+                if(!item.selected && this.source.multiple && limit >= 0 && limit <= this.count(null, [":selected"])) {
                     break;  // Too many <option>s are selected
                 }
-                if(!states.selected && !this.source.multiple && this.select.get("deselect", !1)) {
+                if(item.selected && !this.source.multiple && this.select.get("deselect", !1)) {
                     break;  // Non-Deselectable single <select>
                 }
 
-                changes.selected = item.selected = states.selected;
-                if(!this.source.multiple && !states.selected) {
+                changes.selected = item.selected = !item.selected;
+                if(!this.source.multiple && !item.selected) {
                     this.source.selectedIndex = -1;
                 }
                 break;      // Done
@@ -232,13 +233,13 @@ export class Options implements RatSelect_Options {
     /*
      |  PUBLIC :: OPTION STATEs <ALIASES>
      */
-    selected(items: RatSelect_OptionSelector, state?: boolean): RatSelect_Options {
+    selected(items: RatSelect_OptionSelector, state?: null | boolean): RatSelect_Options {
         return this.handle(items, { selected: state });
     }
-    disabled(items: RatSelect_OptionSelector, state?: boolean) {
+    disabled(items: RatSelect_OptionSelector, state?: null | boolean) {
         return this.handle(items, { disabled: state });
     }
-    hidden(items: RatSelect_OptionSelector, state?: boolean) {
+    hidden(items: RatSelect_OptionSelector, state?: null | boolean) {
         return this.handle(items, { hidden: state });
     }
 }

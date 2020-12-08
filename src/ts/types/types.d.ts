@@ -24,9 +24,9 @@ declare type RatSelect_Events = {
 }
 
 declare type RatSelect_OptionStates = {
-    disabled?: boolean,
-    selected?: boolean,
-    hidden?: boolean
+    disabled?: null | boolean,
+    selected?: null | boolean,
+    hidden?: null | boolean
 }
 
 // Rollup

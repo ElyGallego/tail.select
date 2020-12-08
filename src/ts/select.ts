@@ -201,16 +201,46 @@ export class Select implements RatSelect_Select {
     }
 
     /*
+     |  CORE :: CALCULATE DROPDOWN HEIGHT
+     */
+    calculate(): RatSelect_Select {
+        let clone = this.dropdown as HTMLDivElement;
+
+        // Calculate Height
+        let height = ((height) => {
+            let temp = clone.cloneNode(true) as HTMLDivElement;
+            temp.classList.add("height");
+            this.select.appendChild(temp);
+
+            if(typeof height === "string" && height.charAt(0) === ":") {
+                let opt = (clone.querySelector(".dropdown-option") as HTMLElement)?.offsetHeight ?? 50;
+                temp.style.maxHeight = opt * parseInt(height.slice(1)) + "px";
+            } else {
+                temp.style.maxHeight = height + (isNaN(height)? "": "px");
+            }
+
+            height = temp.offsetHeight > height? height: temp.offsetHeight;
+            return this.select.removeChild(temp)? height: height;
+        })((!this.get("height", 350))? "auto": this.get("height", 350));
+
+        //@TODO Calculate openAbove
+
+        // Set Height
+        clone.style.maxHeight = height + "px";
+        return this;
+    }
+
+    /*
      |  CORE :: BIND SELECT FIELD
      */
     bind(): RatSelect_Select {
         let handle = this.handle.bind(this);
 
         // Attach Events
-        document.addEventListener("keydown", this.handle);
-        document.addEventListener("click", this.handle);
+        document.addEventListener("keydown", handle);
+        document.addEventListener("click", handle);
         if(this.get("sourceBind")) {
-            this.source.addEventListener("change", this.handle);
+            this.source.addEventListener("change", handle);
         }
         return this;
     }
@@ -219,7 +249,30 @@ export class Select implements RatSelect_Select {
      |  CORE :: HANDLE EVENTs
      */
     handle(event: Event) {
-        //console.log(event);
+        let target = event.target as HTMLElement;
+
+        // Click Events
+        if(event.type === "click") {
+            if(target === this.label || this.label.contains(target)) {
+                return this.toggle();
+            }
+            if(!this.select.contains(target) && !this.get("stayOpen")) {
+                return this.close();
+            }
+            if(this.dropdown.contains(target)) {
+                while(target && this.dropdown.contains(target) && !target.dataset.action) {
+                    target = target.parentElement;
+                }
+                if(target.dataset.action && (target.dataset.value || target.dataset.group)) {
+                    let items = this.options.get(target.dataset.value, target.dataset.group);
+                    let action = target.dataset.action;
+                    this.options.selected(items, action === "toggle"? null: action === "select");
+                }
+                if(!this.get("stayOpen") && !this.source.multiple) {
+                    return this.close();
+                }
+            }
+        }
     }
 
     /*
@@ -281,7 +334,7 @@ export class Select implements RatSelect_Select {
             }
 
             // Create Group
-            if(!(head.length > 0 && head[0].dataset.group === group)) {
+            if(!(head.length > 0 && head[0].dataset.group === (!group? "": group))) {
                 let arg = item.parentElement instanceof HTMLOptGroupElement? item.parentElemnt: null;
                 if(!arg) {
                     arg = document.createElement("OPTGROUP");
@@ -294,7 +347,7 @@ export class Select implements RatSelect_Select {
                 } else if(el === false) {
                     break; // Break Loop
                 }
-                head.unshift(el);
+                head.push(el);
             }
 
             // Create Item
@@ -328,6 +381,9 @@ export class Select implements RatSelect_Select {
         this.dropdown.replaceChild(clone, root);
 
         // Hook & Return
+        if(this.select.classList.contains("active")) {
+            this.calculate();
+        }
         this.trigger("hook", "query:after");
         return this;
     }
@@ -343,8 +399,9 @@ export class Select implements RatSelect_Select {
         if(tag === "OPTION") {
             output.className = "dropdown-option";
             output.innerHTML = `<span class="option-title">${element.innerHTML}</span>`;
-            output.dataset.group = (element.parentElement as HTMLOptGroupElement)?.label || "#";
+            output.dataset.group = (element.parentElement as HTMLOptGroupElement)?.label || "";
             output.dataset.value = (element as HTMLOptionElement).value;
+            output.dataset.action = "toggle";
             if(element.dataset.description) {
                 output.innerHTML += `<span clasS="option-description">${element.dataset.description}</span>`
             }
@@ -381,6 +438,7 @@ export class Select implements RatSelect_Select {
         if(this.select.classList.contains("active")) {
             return this;
         }
+        this.calculate();
         this.select.classList.add("active");
         this.trigger("event", "open", []);
         return this;
@@ -393,9 +451,17 @@ export class Select implements RatSelect_Select {
         if(!this.select.classList.contains("active")) {
             return this;
         }
+        this.dropdown.style.removeProperty("max-height");
         this.select.classList.remove("active");
         this.trigger("event", "close", []);
         return this;
+    }
+
+    /*
+     |  API :: TOGGLE DROPDOWN
+     */
+    toggle(): RatSelect_Select {
+        return this[this.select.classList.contains("active")? "close": "open"]();
     }
 
     /*

@@ -84,6 +84,14 @@ declare interface RatSelect_Select {
     build(): RatSelect_Select;
 
     /*
+     |  CORE :: CALCULATE DROPDOWN FIELD
+     |  @since  0.6.0
+     |
+     |  @return this    The select instance.
+     */
+    calculate(): RatSelect_Select;
+
+    /*
      |  CORE :: BIND SELECT FIELD
      |  @since  0.3.0
      |
@@ -156,6 +164,14 @@ declare interface RatSelect_Select {
      |  @return this    The select instance.
      */
     close(): RatSelect_Select;
+
+    /*
+     |  API :: TOGGLE DROPDOWN
+     |  @since  0.3.0
+     |
+     |  @return this    The select instance.
+     */
+    toggle(): RatSelect_Select;
     
     /*
      |  API :: RELOAD SELECT INSTANCE

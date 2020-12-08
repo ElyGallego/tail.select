@@ -1,6 +1,6 @@
 /*!
  |  rat.select - The vanilla solution to level up your HTML <select> fields.
- |  @file       dist/es/tail.select.js
+ |  @file       dist/es/rat.select.js
  |  @version    1.0.0 - Stable
  |  @author     SamBrishes <sam@pytes.net> (https://www.pytes.net)
  |				Lenivyy <lenivyy@pytes.net> (https://www.pytes.net)
@@ -61,7 +61,7 @@ class Options {
     constructor(select) {
         this.select = select;
         this.source = select.source;
-        [].map.call(this.source.querySelectorAll('options:not([value])'), (option) => {
+        [].map.call(this.source.querySelectorAll('option:not([value])'), (option) => {
             if (option.innerText !== "") {
                 option.setAttribute("value", option.innerText);
             }
@@ -100,6 +100,7 @@ class Options {
     }
     get(value, group, states) {
         let format = { disabled: ":disabled", selected: ":checked", hidden: "[hidden]" };
+        group = group === "" ? false : group;
         let selector = states ? states.map((state) => {
             return state[0] === "!" ? `:not(${format[state.slice(1)]})` : format[state];
         }) : "";
@@ -191,23 +192,23 @@ class Options {
         [].map.call(items, (item) => {
             let changes = {};
             if (states.hasOwnProperty("disabled") && states.disabled !== item.disabled) {
-                changes.disabled = item.disabled = states.disabled;
+                changes.disabled = item.disabled = !item.disabled;
             }
             if (states.hasOwnProperty("hidden") && states.hidden !== item.hidden) {
-                changes.hidden = item.hidden = states.hidden;
+                changes.hidden = item.hidden = !item.hidden;
             }
             while (states.hasOwnProperty("selected") && states.selected !== item.selected) {
                 if (item.disabled || item.hidden) {
                     break;
                 }
-                if (states.selected && this.source.multiple && limit >= 0 && limit <= this.count(null, [":selected"])) {
+                if (!item.selected && this.source.multiple && limit >= 0 && limit <= this.count(null, [":selected"])) {
                     break;
                 }
-                if (!states.selected && !this.source.multiple && this.select.get("deselect", !1)) {
+                if (item.selected && !this.source.multiple && this.select.get("deselect", !1)) {
                     break;
                 }
-                changes.selected = item.selected = states.selected;
-                if (!this.source.multiple && !states.selected) {
+                changes.selected = item.selected = !item.selected;
+                if (!this.source.multiple && !item.selected) {
                     this.source.selectedIndex = -1;
                 }
                 break;
@@ -324,16 +325,58 @@ class Select {
         this.get("csvOutput") ? this.select.appendChild(this.csv) : null;
         return this;
     }
+    calculate() {
+        let clone = this.dropdown;
+        let height = ((height) => {
+            var _a, _b;
+            let temp = clone.cloneNode(true);
+            temp.classList.add("height");
+            this.select.appendChild(temp);
+            if (typeof height === "string" && height.charAt(0) === ":") {
+                let opt = (_b = (_a = clone.querySelector(".dropdown-option")) === null || _a === void 0 ? void 0 : _a.offsetHeight) !== null && _b !== void 0 ? _b : 50;
+                temp.style.maxHeight = opt * parseInt(height.slice(1)) + "px";
+            }
+            else {
+                temp.style.maxHeight = height + (isNaN(height) ? "" : "px");
+            }
+            height = temp.offsetHeight > height ? height : temp.offsetHeight;
+            return this.select.removeChild(temp) ? height : height;
+        })((!this.get("height", 350)) ? "auto" : this.get("height", 350));
+        clone.style.maxHeight = height + "px";
+        return this;
+    }
     bind() {
         let handle = this.handle.bind(this);
-        document.addEventListener("keydown", this.handle);
-        document.addEventListener("click", this.handle);
+        document.addEventListener("keydown", handle);
+        document.addEventListener("click", handle);
         if (this.get("sourceBind")) {
-            this.source.addEventListener("change", this.handle);
+            this.source.addEventListener("change", handle);
         }
         return this;
     }
     handle(event) {
+        let target = event.target;
+        if (event.type === "click") {
+            if (target === this.label || this.label.contains(target)) {
+                return this.toggle();
+            }
+            if (!this.select.contains(target) && !this.get("stayOpen")) {
+                return this.close();
+            }
+            if (this.dropdown.contains(target)) {
+                while (target && this.dropdown.contains(target) && !target.dataset.action) {
+                    target = target.parentElement;
+                }
+                if (target.dataset.action && (target.dataset.value || target.dataset.group)) {
+                    let items = this.options.get(target.dataset.value, target.dataset.group);
+                    let action = target.dataset.action;
+                    this.options.selected(items, action === "toggle" ? null : action === "select");
+                }
+                if (!this.get("stayOpen") && !this.source.multiple) {
+                    return this.close();
+                }
+            }
+        }
     }
     trigger(type, name, args) {
         if (type === "event") {
@@ -375,7 +418,7 @@ class Select {
             if (group === skip) {
                 continue;
             }
-            if (!(head.length > 0 && head[0].dataset.group === group)) {
+            if (!(head.length > 0 && head[0].dataset.group === (!group ? "" : group))) {
                 let arg = item.parentElement instanceof HTMLOptGroupElement ? item.parentElemnt : null;
                 if (!arg) {
                     arg = document.createElement("OPTGROUP");
@@ -388,7 +431,7 @@ class Select {
                 else if (el === false) {
                     break;
                 }
-                head.unshift(el);
+                head.push(el);
             }
             if ((el = this.render(item)) === null) {
                 continue;
@@ -414,6 +457,9 @@ class Select {
         let clone = root.cloneNode();
         head.map((item) => clone.appendChild(item));
         this.dropdown.replaceChild(clone, root);
+        if (this.select.classList.contains("active")) {
+            this.calculate();
+        }
         this.trigger("hook", "query:after");
         return this;
     }
@@ -424,8 +470,9 @@ class Select {
         if (tag === "OPTION") {
             output.className = "dropdown-option";
             output.innerHTML = `<span class="option-title">${element.innerHTML}</span>`;
-            output.dataset.group = ((_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.label) || "#";
+            output.dataset.group = ((_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.label) || "";
             output.dataset.value = element.value;
+            output.dataset.action = "toggle";
             if (element.dataset.description) {
                 output.innerHTML += `<span clasS="option-description">${element.dataset.description}</span>`;
             }
@@ -452,6 +499,7 @@ class Select {
         if (this.select.classList.contains("active")) {
             return this;
         }
+        this.calculate();
         this.select.classList.add("active");
         this.trigger("event", "open", []);
         return this;
@@ -460,9 +508,13 @@ class Select {
         if (!this.select.classList.contains("active")) {
             return this;
         }
+        this.dropdown.style.removeProperty("max-height");
         this.select.classList.remove("active");
         this.trigger("event", "close", []);
         return this;
+    }
+    toggle() {
+        return this[this.select.classList.contains("active") ? "close" : "open"]();
     }
     reload(hard) {
         return this;
