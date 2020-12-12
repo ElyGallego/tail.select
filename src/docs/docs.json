@@ -1,0 +1,52 @@
+{
+    "index": {
+        "title": "Index",
+        "description": "",
+        "tags": []
+    },
+    "basics": {
+        "title": "Basic Usage",
+        "description": "",
+        "tags": []
+    },
+    "options": {
+        "title": "Public Options",
+        "description": "",
+        "tags": []
+    },
+    "class-select": {
+        "title": "Select Methods",
+        "description": "",
+        "tags": []
+    },
+    "class-options": {
+        "title": "Options Methods",
+        "description": "",
+        "tags": []
+    },
+    "callbacks": {
+        "title": "Callbacks",
+        "description": "",
+        "tags": []
+    },
+    "plugins": {
+        "title": "Plugin API",
+        "description": "",
+        "tags": []
+    },
+    "theming": {
+        "title": "Theming API",
+        "description": "",
+        "tags": []
+    },
+    "migrate": {
+        "title": "Migration Guides",
+        "description": "",
+        "tags": []
+    },
+    "how-to-do": {
+        "title": "Smart Tips & Tricks",
+        "description": "",
+        "tags": []
+    }
+}

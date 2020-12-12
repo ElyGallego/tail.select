@@ -45,6 +45,10 @@
     background-color: #DC4650;
 }
 
+.rat-select.theme-default.rtl {
+    direction: rtl;
+}
+
 .rat-select.theme-default .select-label {
     cursor: pointer;
     color: rgba(48, 50, 54, 0.75);
@@ -62,6 +66,17 @@
     background-color: #FFFFFF;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
     transition: color 142ms linear, background-color 142ms linear, border-color 142ms linear, box-shadow 142ms linear, z-index 0ms linear 142ms;
+}
+
+.rat-select.theme-default .select-label .label-count {
+    flex: 0 0 auto;
+    padding-right: 7px;
+    margin-right: 7px;
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.rat-select.theme-default .select-label .label-placeholder {
+    flex: 1 1 auto;
 }
 
 .rat-select.theme-default .select-label:after {
@@ -85,6 +100,17 @@
     opacity: 0.75;
 }
 
+.rat-select.theme-default:focus .select-label {
+    color: #303236;
+    border-color: rgba(60, 130, 230, 0.75);
+    box-shadow: 0 1px 1px 0 rgba(60, 130, 230, 0.3);
+}
+
+.rat-select.theme-default:focus .select-label:after {
+    color: #3C82E6;
+    opacity: 1;
+}
+
 .rat-select.theme-default.active .select-label {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -104,24 +130,24 @@
     box-shadow: transparent;
 }
 
-.rat-select.theme-default.error .select-label {
+.rat-select.theme-default.state-error .select-label {
     border-color: rgba(220, 70, 80, 0.75);
     box-shadow: 0 0 1px 1px rgba(220, 70, 80, 0.3);
 }
 
-.rat-select.theme-default.error .select-label:after {
+.rat-select.theme-default.state-error .select-label:after {
     color: #DC4650;
     opacity: 1;
     border: 4px solid;
     border-radius: 4px;
 }
 
-.rat-select.theme-default.success .select-label {
+.rat-select.theme-default.state-success .select-label {
     border-color: rgba(73, 169, 66, 0.75);
     box-shadow: 0 0 1px 1px rgba(73, 169, 66, 0.3);
 }
 
-.rat-select.theme-default.success .select-label:after {
+.rat-select.theme-default.state-success .select-label:after {
     color: #49a942;
     opacity: 1;
     border: 4px solid;
@@ -180,6 +206,16 @@
     transition: color 142ms linear, background-color 142ms linear;
 }
 
+.rat-select.theme-default .select-dropdown ol li.dropdown-option .option-description {
+    color: #6c717a;
+    width: auto;
+    margin: 0;
+    padding: 0 2px;
+    display: block;
+    font-size: 12px;
+    text-align: left;
+}
+
 .rat-select.theme-default .select-dropdown ol li.dropdown-option:before {
     top: 50%;
     left: 10px;
@@ -213,7 +249,26 @@
     color: #3C82E6;
 }
 
-.rat-select.theme-default.cloned .select-dropdown, .rat-select.theme-default.no-animation .select-dropdown {
+.rat-select.theme-default .select-dropdown ol li.optgroup-title {
+    padding-left: 10px;
+    font-size: 90%;
+    font-weight: 600;
+    background-color: #FFFFFF;
+}
+
+.rat-select.theme-default .select-dropdown ol li.optgroup-title.optgroup-hidden {
+    display: none;
+}
+
+.rat-select.theme-default .select-dropdown ol.optgroup-sticky li.optgroup-title {
+    top: -1px;
+    z-index: 50;
+    position: sticky;
+}
+
+.rat-select.theme-default.cloned .select-dropdown,
+.rat-select.theme-default.cloned.active .select-dropdown, .rat-select.theme-default.no-animation .select-dropdown,
+.rat-select.theme-default.no-animation.active .select-dropdown {
     transition: none;
 }
 

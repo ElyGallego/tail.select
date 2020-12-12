@@ -79,8 +79,13 @@ export class Select implements RatSelect_Select {
         this.config = config;
         this.options = new (options || Options)(this);
         this.locale = new Strings(config.locale || "en");
-        this.plugins = new Plugins(config.plugins || { });
-        this.events = config.on || { };
+        this.plugins = new Plugins(Object.assign({ }, config.plugins || { }));
+        this.events = ((events: object) => {
+            for(let event in events) {
+                events[event] = [events[event]];
+            }
+            return events;
+        })(Object.assign({ }, config.on || { }));
 
         // Init States
         this.config.multiple = this.source.multiple = config.multiple || source.multiple;
@@ -128,7 +133,7 @@ export class Select implements RatSelect_Select {
             let items = this.config.items;
             this.options.parse(typeof items === "function"? items.call(this, this.options): items);
         }
-
+        
         // Handle Build Step
         if(this.trigger("hook", "build:before") === true) {
             this.build();
@@ -141,6 +146,11 @@ export class Select implements RatSelect_Select {
             this.trigger("hook", "bind:after");
         }
 
+        // Handle Visibility
+        if(this.get("sourceHide", true)) {
+            this.source.style.display = "none";
+        }
+
         // Append to DOM
         if(this.source.nextElementSibling) {
             this.source.parentElement.insertBefore(this.select, this.source.nextElementSibling);
@@ -149,7 +159,15 @@ export class Select implements RatSelect_Select {
         }
         this.updateLabel();
         this.trigger("hook", "init:after");
-        return this.query();
+
+        // Handle & Return
+        this.query();
+        if(this.get("startOpen") && !this.get("disabled")) {
+            return this.open();
+        } else if(this.source.autofocus && !this.get("disabled")) {
+            return this.focus();
+        }
+        return this;
     }
 
     /*
@@ -161,18 +179,16 @@ export class Select implements RatSelect_Select {
         // Create :: Select
         this.select = document.createElement("DIV") as HTMLDivElement;
         this.select.className = ((cls) => {
-            this.get("rtl")? cls.unshift("rtl"): null;
-            this.get("hideSelected")? cls.unshift("hide-selected"): null;
-            this.get("hideDisabled")? cls.unshift("hide-disabled"): null;
-            this.get("hideHidden", !0)? cls.unshift("hide-hidden"): null;
-            this.get("disabled")? cls.unshift("disabled"): null;
-            this.get("required")? cls.unshift("required"): null;
-            this.get("multiple")? cls.unshift("multiple"): null;
-            this.get("deselect")? cls.unshift("deselect"): null;
+            let _l = ["rtl", "hideSelected", "hideDisabled", "hideHidden", "disabled", "required", "multiple", "deselect"];
+            _l.map((item) => {
+                if(this.get(item, item === "hideHidden")) {
+                    cls.unshift(item.replace(/[A-Z]/, (char) => `-${char.toLowerCase()}`));
+                }
+            });
             cls.unshift(`rat-select theme-${this.get("theme").replace("-", " scheme-").replace(".", " ")}`);
-            return cls.filter((item) => item.length > 0).join(" ");
+            return cls.join(" ").trim();
         })(typeof cls === "string"? cls.split(" "): cls);
-        this.select.tabIndex = this.source.tabIndex || 0;
+        this.select.tabIndex = this.source.tabIndex || 1;
         this.select.dataset.ratSelect = this.source.dataset.ratSelect;
 
         let width = this.get("width", 250);
@@ -183,7 +199,6 @@ export class Select implements RatSelect_Select {
         // Create :: Label
         this.label = document.createElement("LABEL") as HTMLLabelElement;
         this.label.className = "select-label";
-        this.label.innerHTML = `<span class="label-inner"></span>`;
 
         // Create :: Dropdown
         this.dropdown = document.createElement("DIV") as HTMLDivElement;
@@ -195,7 +210,7 @@ export class Select implements RatSelect_Select {
         this.csv.className = "select-search";
         this.csv.name = ((name) => {
             if(name === true) {
-                name = this.source.dataset.name || this.source.name || "";
+                name = this.source.name || "";
             }
             return name === false? "": name;
         })(this.get("csvOutput", !1));
@@ -216,12 +231,22 @@ export class Select implements RatSelect_Select {
         // Calculate Height
         let height = ((height) => {
             let temp = clone.cloneNode(true) as HTMLDivElement;
-            temp.classList.add("height");
+            temp.classList.add("cloned");
             this.select.appendChild(temp);
 
             if(typeof height === "string" && height.charAt(0) === ":") {
-                let opt = (clone.querySelector(".dropdown-option") as HTMLElement)?.offsetHeight ?? 50;
-                temp.style.maxHeight = opt * parseInt(height.slice(1)) + "px";
+                let len = parseInt(height.slice(1));
+                let count = 0;
+                let items = [].slice.call(clone.querySelectorAll("li"));
+                for(let c = 0, i = 0; i < items.length; i++) {
+                    if(items[i].offsetHeight > 0) {
+                        count += items[i].offsetHeight;
+                        if(c++ >= len) {
+                            break;
+                        }
+                    }
+                }
+                temp.style.maxHeight = count + "px";
             } else {
                 temp.style.maxHeight = height + (isNaN(height)? "": "px");
             }
@@ -234,6 +259,7 @@ export class Select implements RatSelect_Select {
 
         // Set Height
         clone.style.maxHeight = height + "px";
+        (clone.querySelector(".dropdown-inner") as HTMLDivElement).style.maxHeight = height + "px";
         return this;
     }
 
@@ -268,17 +294,78 @@ export class Select implements RatSelect_Select {
      |  CORE :: HANDLE EVENTs
      */
     handle(this: RatSelect_Select, event: Event) {
+        if(!(event instanceof Event) || this.get("disabled")) {
+            return this;
+        }
         let target = event.target as HTMLElement;
 
         // Event :: Keydown
         if(event.type === "keydown") {
+            if(document.activeElement !== this.select) {
+                return;
+            }
+            let key = (event as KeyboardEvent).keyCode;
+            let sel = ".dropdown-option:not(.disabled):not(.hidden)";
 
+            // Handle if Closed
+            if(key === 32 && !this.select.classList.contains("active")) {
+                return this.open();
+            } else if(!this.select.classList.contains("active")) {
+                return;
+            }
+
+            // Handle if Opened
+            switch(key) {
+                case 13:        // [Return] Toggle
+                case 32:        // [Space] Toggle
+                    let itm = this.dropdown.querySelector(".dropdown-option.hover") as HTMLDivElement;
+                    if(itm) {
+                        this.options.selected(this.options.get(itm.dataset.value, itm.dataset.group));
+                        return !this.get("stayOpen") && !this.get("multiple")? this.close(): 1;
+                    }
+                    return;
+                case 27:        // [ESC] Close
+                    return this.close();
+                case 38:        // [↑] Move Uo
+                case 40:        // [↓] Move Down
+                    let items = this.dropdown.querySelectorAll(sel) as NodeListOf<HTMLDivElement>;
+                    let item = null;
+                    let opt = [].slice.call(items).indexOf(this.dropdown.querySelector(".dropdown-option.hover"));
+
+                    // Select Next / Previous
+                    if(opt >= 0 && items[opt + (key > 38? +1: -1)]) {
+                        item = items[opt + (key > 38? +1: -1)]
+                    }
+
+                    // Select First / Last
+                    if(!item) {
+                        item = items[key > 38? 0: items.length-1];
+                    }
+
+                    // Select
+                    if(item) {
+                        item.classList.add("hover");
+                        (items[opt])? items[opt].classList.remove("hover"): 0;
+
+                        let pos = ((el, pos) => {
+                            while((el = el.parentElement) !== this.dropdown) {
+                                pos.top += el.offsetTop;
+                            }
+                            return pos;
+                        })(item, { top: item.offsetTop, height: item.offsetHeight });
+                        this.dropdown.scrollTop = Math.max(0, pos.top - (pos.height * 2));
+                    }
+                    return;
+            }
         }
 
         // Event :: Click
         if(event.type === "click") {
             if(target === this.label || this.label.contains(target)) {
                 return this.toggle();
+            }
+            if(target.getAttribute("for") === this.source.id) {
+                return this.focus();
             }
             if(!this.select.contains(target) && !this.get("stayOpen")) {
                 return this.close();
@@ -293,7 +380,6 @@ export class Select implements RatSelect_Select {
                     let items = this.options.get(target.dataset.value, target.dataset.group);
                     let action = target.dataset.action;
                     this.options.selected(items, action === "toggle"? null: action === "select");
-
                     if(!this.get("stayOpen") && !this.source.multiple) {
                         return this.close();
                     }
@@ -303,7 +389,7 @@ export class Select implements RatSelect_Select {
 
         // Event :: Change
         if(event.type === "change" && !(event instanceof CustomEvent)) {
-            
+            // @todo find a perfomant solution
         }
     }
 
@@ -314,7 +400,7 @@ export class Select implements RatSelect_Select {
         if(type === "event") {
             let data = { bubbles: false, cancelable: true, detail: { args: args, select: this } };
             let event = new CustomEvent(`rat::${name}`, data);
-            var cancelled = this.select.dispatchEvent(event);
+            var cancelled = this.select.dispatchEvent(event) || this.source.dispatchEvent(event);
 
             if(name === "change") {
                 let input = new CustomEvent("input", data);
@@ -330,7 +416,7 @@ export class Select implements RatSelect_Select {
         callbacks.map((cb) => {
             if(type === "filter") {
                 args = cb.apply(this, args);
-            } else if(this.handle.apply(this, args) === false) {
+            } else if(cb.apply(this, args) === false) {
                 _arg = false;
             }
         });
@@ -360,17 +446,21 @@ export class Select implements RatSelect_Select {
             let group = item.parentElement instanceof HTMLOptGroupElement? item.parentElement.label: null;
             [item, group] = this.trigger("filter", "walk", [item, group]) as Array<any>;
 
+            // Skip Empty
+            if(this.get("hideEmpty", true) && item.value === "") {
+                continue;
+            }
+
             // Skip Group, but keep loop running
             if(group === skip) {
                 continue;
             }
 
             // Create Group
-            if(!(head.length > 0 && head[0].dataset.group === (!group? "": group))) {
-                let arg = item.parentElement instanceof HTMLOptGroupElement? item.parentElemnt: null;
+            if(!(head.length > 0 && head[0].dataset.group === (!group? this.options.ungrouped: group))) {
+                let arg = item.parentElement instanceof HTMLOptGroupElement? item.parentElement: null;
                 if(!arg) {
                     arg = document.createElement("OPTGROUP");
-                    arg.innerText = this.get("ungroupedLabel", null);
                 }
 
                 if((el = this.render(arg)) === null) {
@@ -379,7 +469,7 @@ export class Select implements RatSelect_Select {
                 } else if(el === false) {
                     break; // Break Loop
                 }
-                head.push(el);
+                head.unshift(el);
             }
 
             // Create Item
@@ -409,7 +499,7 @@ export class Select implements RatSelect_Select {
         // Replace
         let root = this.dropdown.querySelector(".dropdown-inner");
         let clone = root.cloneNode();
-        head.map((item) => clone.appendChild(item));
+        head.reverse().map((item) => clone.appendChild(item));
         this.dropdown.replaceChild(clone, root);
 
         // Hook & Return
@@ -435,22 +525,26 @@ export class Select implements RatSelect_Select {
         if(tag === "OPTION") {
             output.className = "dropdown-option " + classes(element);
             output.innerHTML = `<span class="option-title">${element.innerHTML}</span>`;
-            output.dataset.group = (element.parentElement as HTMLOptGroupElement)?.label || "";
+            output.dataset.group = (element.parentElement as HTMLOptGroupElement)?.label || this.options.ungrouped;
             output.dataset.value = (element as HTMLOptionElement).value;
             output.dataset.action = "toggle";
             if(element.dataset.description) {
                 output.innerHTML += `<span clasS="option-description">${element.dataset.description}</span>`
             }
         } else {
-            output.className = "dropdown-optgroup";
-            output.innerHTML = `<li class="optgroup-title">${element.label}</li>`;
-            output.dataset.group = element.label;
+            let label = element.label || this.get("ungroupedLabel", null) || "";
+            output.className = `dropdown-optgroup${this.get("stickyGroups")? " optgroup-sticky": ""}`;
+            output.innerHTML = `<li class="optgroup-title">${label}</li>`;
+            output.dataset.group = element.label || this.options.ungrouped;
+
+
 
             if(this.get("multiple") && this.get("multiSelectGroup", 1)) {
-                for(let item of ['select-none', 'select-all']) {
+                for(let item of ['buttonAll', 'buttonNone']) {
                     let btn = document.createElement("BUTTON");
-                    btn.dataset.action = item;
-                    btn.innerHTML = this.locale._(item === "select-all"? "buttonAll": "buttonNone");
+                    btn.dataset.action = (item === "buttonAll"? "select": "unselect");
+                    btn.dataset.group = output.dataset.group;
+                    btn.innerHTML = this.locale._(item);
                     output.querySelector(".optgroup-title").appendChild(btn);
                 }
             }
@@ -485,7 +579,7 @@ export class Select implements RatSelect_Select {
         [].map.call(changes, (dataset) => {
             let [option, change] = dataset;
             let value = option.value.replace(/('|\\)/g, "\\$1");
-            let group = option.parentElement? option.parentElement.label || "": "";
+            let group = option.parentElement.label? option.parentElement.label: this.options.ungrouped;
             let item = this.dropdown.querySelector(`li[data-value="${value}"][data-group="${group}"]`);
             if(item) {
                 for(let key in change) {
@@ -527,8 +621,28 @@ export class Select implements RatSelect_Select {
             label = this.get("placeholder") || (this.source.multiple? "multiple": "single");
         }
 
+        // Set Placeholder counter
+        let counter = this.source.multiple? this.get("placeholderCount", false): false;
+        if(counter) {
+            let selected = this.options.count(null, ["selected"]);
+            let count = this.options.count(null, ["!disabled", "!hidden"]);
+            let max = limit < 0? count: limit; 
+
+            counter = counter === true? "count-up": counter;
+            switch(counter) {
+                case "count-up": counter = selected; break;
+                case "count-down": counter = limit-selected; break;
+                case "limit": counter = max; break;
+                case "both": counter = `${selected}/${max}`; break;
+            }
+            if(typeof counter === "function") {
+                counter = counter.call(this);
+            }
+        }
+
         // Set Placeholder Count
-        this.label.innerText = this.locale._(label, [value.length]);
+        this.label.innerHTML = `${counter? `<span class="label-count">${counter}</span>`: ``}`
+                             + `<span class="label-placeholder">${this.locale._(label, [value.length])}</span>`;
         return this;
     }
 
@@ -569,15 +683,46 @@ export class Select implements RatSelect_Select {
      |  API :: RELOAD SELECT INSTANCE
      */
     reload(hard?: boolean): RatSelect_Select {
-
+        if(this.trigger("hook", "reload:before", [hard]) !== true) {
+            return this;
+        }
+        (hard)? this.remove().init(): this.query();
+        this.trigger("hook", "reload:after", [hard]);
         return this;
     }
 
     /*
      |  API :: REMOVE SELECT INSTANCE
      */
-    remove(): RatSelect_Select {
+    remove(keep?: boolean): RatSelect_Select {
+        if(this.trigger("hook", "remove:before", [keep]) !== true) {
+            return this;
+        }
 
+        // Handle Options
+        if(!keep) {
+            [].map.call(this.source.querySelectorAll("optgroup[data-select='add']"), (item) => {
+                item.parentElement.removeChild(item);
+            });
+            [].map.call(this.source.querySelectorAll("option[data-select='add']"), (item) => {
+                item.parentElement.removeChild(item);
+            });
+        }
+
+        // Handle Visibility
+        if(this.get("sourceHide")) {
+            this.source.style.removeProperty("display");
+            this.source.style.removeProperty("visibility");
+        }
+
+        // Good Bye :(
+        if(this.select.parentElement) {
+            this.select.parentElement.removeChild(this.select);
+        }
+        this.source.removeAttribute("data-rat-select");
+
+        // Return
+        this.trigger("hook", "remove:after", [keep]);
         return this;
     }
 
@@ -624,6 +769,7 @@ export class Select implements RatSelect_Select {
      |  PUBLIC :: ENABLE SELECT INSTANCE
      */
     enable(reload: boolean): RatSelect_Select {
+        this.trigger("event", "enable", [reload]);
         this.config.disabled = this.source.disabled = false;
         this.select.classList.remove("disabled");
         return (reload)? this.reload(): this;
@@ -633,9 +779,27 @@ export class Select implements RatSelect_Select {
      |  PUBLIC :: DISABLE SELECT INSTANCE
      */
     disable(reload: boolean): RatSelect_Select {
+        this.trigger("event", "disable", [reload]);
         this.config.disabled = this.source.disabled = true;
         this.select.classList.add("disabled");
         return (reload)? this.reload(): this;
+    }
+
+    /*
+     |  PUBLIC :: FOCUS SELECT FIELD
+     */
+    focus(): RatSelect_Select {
+        this.select.focus();
+        return this;
+    }
+
+    /*
+     |  PUBLIC :: SET OR REMOVE STATE
+     */
+    state(state: string, status: boolean): RatSelect_Select {
+        status = status === void 0? !this.select.classList.contains(`state-${state}`): status;
+        this.select.classList[status? "add": "remove"](`state-${state}`);
+        return this;
     }
 
     /*

@@ -11,6 +11,11 @@ export class Options implements RatSelect_Options {
     select: RatSelect_Select;
 
     /*
+     |  CORE :: UNGROUPED PSEUDEO ID
+     */
+    ungrouped: string = "#";
+
+    /*
      |  CORE :: CONSTRUCTOR
      */
     constructor(select?: RatSelect_Select) {
@@ -88,14 +93,14 @@ export class Options implements RatSelect_Options {
             return [];
         }
 
-        // Select & Return
-        if(!group && group !== false) {
+        // Group Selector
+        if(!group) {
             return this.source.querySelectorAll(selector);
-        } else if(typeof group === "string") {
-            return this.source.querySelectorAll(`optgroup[label="${group}"] ${selector}`);
-        } else if(group === false) {
+        } else if(group === this.ungrouped) {
             selector = `select[data-rat-select="${this.source.dataset.ratSelect}"] > ${selector}`;
             return this.source.parentElement.querySelectorAll(selector);
+        } else if(typeof group === "string") {
+            return this.source.querySelectorAll(`optgroup[label="${group}"] ${selector}`);
         }
         return [];
     }
@@ -111,7 +116,7 @@ export class Options implements RatSelect_Options {
     /*
      |  API :: COUNT OPTIONs
      */
-    count(group?: null | false | string, states?: string[]): Number {
+    count(group?: null | false | string, states?: string[]): number {
         if(arguments.length === 0) {
             return this.source.options.length;
         }
@@ -134,7 +139,7 @@ export class Options implements RatSelect_Options {
         }
 
         // Add to Group
-        if(typeof group === "string") {
+        if(typeof group === "string" && group !== this.ungrouped) {
             let optgroup = this.source.querySelector(`optgroup[label="${group}"]`) as HTMLOptGroupElement;
             if(!optgroup) {
                 optgroup = document.createElement("OPTGROUP") as HTMLOptGroupElement;

@@ -49,6 +49,9 @@ $theme-name: "default";
     mark {
         background-color: $color-secondary;
     }
+    &.rtl {
+        direction: rtl;
+    }
 }
 
 
@@ -73,6 +76,15 @@ $theme-name: "default";
     box-shadow: map-get($shadow-line-normal, light);
     transition: color 142ms linear, background-color 142ms linear, border-color 142ms linear, box-shadow 142ms linear, z-index 0ms linear 142ms;
 
+    .label-count {
+        flex: 0 0 auto;
+        padding-right: 7px;
+        margin-right: 7px;
+        border-right: 1px solid map-get($border-line-normal, light);
+    }
+    .label-placeholder {
+        flex: 1 1 auto;
+    }
     &:after {
         flex: 0 0 5px;
         z-index: 25;
@@ -94,6 +106,16 @@ $theme-name: "default";
             opacity: 0.75;
         }
     }
+    &:focus .select-label {
+        color: $color-dark;
+        border-color: map-get($border-line-active, light);
+        box-shadow: map-get($shadow-line-active, light);
+
+        &:after {
+            color: $color-primary;
+            opacity: 1;
+        }
+    }
     &.active .select-label {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
@@ -111,7 +133,7 @@ $theme-name: "default";
         border-color: map-get($border-line-disabled, light);
         box-shadow: map-get($shadow-line-disabled, light);
     }
-    &.error .select-label {
+    &.state-error .select-label {
         border-color: map-get($border-line-error, light);
         box-shadow: map-get($shadow-line-error, light);
 
@@ -122,7 +144,7 @@ $theme-name: "default";
             border-radius: 4px;
         }
     }
-    &.success .select-label {
+    &.state-success .select-label {
         border-color: map-get($border-line-success, light);
         box-shadow: map-get($shadow-line-success, light);
 
@@ -190,6 +212,15 @@ $theme-name: "default";
             color: $color-dark;
             transition: color 142ms linear, background-color 142ms linear;
 
+            .option-description {
+                color: lighten($color-dark, 25%);
+                width: auto;
+                margin: 0;
+                padding: 0 2px;
+                display: block;
+                font-size: 12px;
+                text-align: left;
+            }
             &:before {
                 top: 50%;
                 left: 10px;
@@ -222,12 +253,28 @@ $theme-name: "default";
                 color: $color-primary;
             }
         }
+        li.optgroup-title {
+            padding-left: 10px;
+            font-size: 90%;
+            font-weight: 600;
+            background-color: $color-light;
+
+            &.optgroup-hidden {
+                display: none;
+            }
+        }
+        &.optgroup-sticky li.optgroup-title {
+            top: -1px;
+            z-index: 50;
+            position: sticky;
+        }
     }
 }
 .rat-select.theme-#{$theme-name} {
     &.cloned,
     &.no-animation {
-        .select-dropdown {
+        .select-dropdown,
+        &.active .select-dropdown {
             transition: none;
         }
     }

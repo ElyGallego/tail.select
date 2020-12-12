@@ -9,11 +9,87 @@ Version 1.0.0 - Stable
     Rollup as bundler engine and offering a non-longer-experimental ES6 module build as well.
 
 ### Select() class
+-   Add: Labels, which are attached to the source select field focus now the rat.select instance.
+-   Add: Handles the `autofocus` attribute when set on the source select field.
+-   Add: The new `focus()` public method, which allows to set the focus to the rat.select field.
+-   Add: The new `state()` public method, which allows to set a custom state for design purposes.
+-   Add: The new `get()` public method to get the used configuration values.
+-   Add: The new `set()` public method to set the desired  configuration values.
+-   Add: The new `build()` internal method to generate the rat.select instance structure.
+-   Add: The new `calculate()` internal method replaces the former `calc()` method.
+-   Add: The new `render()` method replaces the `cbGroup()` and `cbItem()` methods.
+-   Update: The event handlers are now attached to the document instead to each single option.
+-   Update: ENTER & SPACE keys can now also be used to toggle an option.
+-   Update: The dropdown fields doesn't close, when an option is selected with ENTER or SPACE.
+-   Update: The `.open()`, `.close()` and `.toggle()` methods doesn't allow any parameter anymore.
+-   Update: The `.trigger()` method is now the main API handler.
+-   Update: The plain Select constructor requires a single HTMLSelectElement now.
+-   Update: The plain Select constructor allows now to pass a custom `Options` class.
+-   Update: The `.on()` method doesn't allow to pass own arguments (third parameter) anymore.
+-   Update: The `remove()` method allows now to keep added options using `true` as first parameter.
+-   Update: The `reload()` method allows now to use the hard reload using `true` as first parameter.
+-   Update: The `.value()` method allows now a first parameter, which controls the returning value and the respective 
+    format (Available: 'auto', 'csv', 'array' and 'nodes').
+-   Remove: The jQuery and MooTools bidnings has been removed completely.
+-   Remove: The `multiPinSelected` and `multiContainer` options and it's functionallity has been 
+    outsourced to a plugin.
+-   Remove: The options `multiShowCount` and `multiShowLimit` has been replaced with the new 
+    `placeholderCount` option.
+-   Remove: The options `cbComplete`, `cbEmpty`, `cbLoopItem` and `cbLoopGroup` has been replaced 
+    with the new `on` method and option.
+-   Remove: The `.callback()` method has been removed, `.update()` does the job now.
+-   Remove: The `.cbGroup()` and `.cbItem()` method has been replaced with `.render()`.
+-   Remove: The `.updateContainer()` and `.updatePin()` methods has been removed completely.
+-   Remove: The helper methods `_e()` and `_cls()` has been removed completely. 
 
 #### Select Options
 
+-   Add: The new `hideEmpty` option to skip empty-valued `<option>` elements.
+-   Add: The new `hideHidden` option to hide  `<option hidden>` elements.
+-   Add: The new `on` option to attach event, filter and hook listeners directly.
+-   Add: The new `placeholderCount` option to add a counter element to the label structure.
+-   Add: The new `rtl` option to change the read direction to right-to-left.
+-   Add: The new `stickyGroups` option to use `sticky` position on the optgroup labels.
+-   Add: The new `theme` option to set a theme and colour scheme.
+-   Add: The new `ungroupedLabel` option to add a group label for ungrouped `<option>` elements.
+-   Update: The `csvOutput` option can now also contain a string, which is used as name of the 
+    hidden `<input />` field instead of `true` to take over the source `<select>` name.
+-   Update: The `height` option can now also be a string with a unit type of your choice or a new 
+    syntax starting with a colon and the number of optons to show (example: `:15`).
+-   Update: The `items` option now allows now 2 object formats to pass custom options.
+-   Update: The `width` option has now a new default value `250`.
+-   Update: The `width` and `height` options doesn't get regular-expressed anymore.
 -   Remove: The `animate` option has been removed completely. You can use the `no-animation` class
     name additionally to remove the dropdown animations.
+-   Remove: The `descriptions` option has been removed completely, descriptions are now always 
+    shown if a `data-description` attribute is available.
+-   Remove: All `cb*` callback options has been replaced with the new `on` option and method.
+-   Remove: All search related options, including `linguisticRules` has been merged out to a plugin.
+-   Remove: The default option initialization has been removed.
+-   Remove: The json-attribute configuration as been removed (it was a unofficial feature anyway.)
+
+
+
+
+
+-   Add: The new option `plugins`, which allows to add and configure already included plugins to the respective 
+    **tail.select** instances.
+-   Add: The new option `titleOverflow`, which allows to handle the behaviour on too-long option titles.
+-   Update: The option `placeholder` can now also be a callable function.
+-   Update: The options `sortItems` and `sortGroups` doesn't accept `false` anymore, use `null` instead (new default).
+-   Update: The option `stayOpen` can now also be `null` which closes the dropdown if a click outside appears.
+-   Update: The `.bind()` method adds, removes and handles now all event handers.
+-   Update: The `data-key` attribute has been renamed to `data-value`.
+
+
+
+
+
+
+
+
+
+
 
 ### Options() class
 
@@ -39,73 +115,6 @@ Version 0.6.0 - Beta
     features and ideas has become a part of version 1.0.0 though.
 
 ### Select()
--   Add: The new option `grouplessName`, which allows to add a group header title on ungrouped &lt;option&gt; elements 
-    (doesn't has any effect on the source &lt;select&gt; field).
--   Add: The new option `hideEmpty`, which allows to hide empty-valued &lt;option&gt; elements.
--   Add: The new option `hideHidden`, which allows to hide (`true`), show (`false`) or completely skip (`null`) as 
-    `[hidden]` marked &lt;option&gt; elements.
--   Add: The new option `on`, which allows to attach events, filters and hooks directly on the initialization of the 
-    **tail.select** instance (this option replaces all 4 `cb*` options as used before).
--   Add: The new option `placeholderCount`, which allows to customize and configure the counters left to the main
-    **tail.select** label (this option replaces the `multiShowLimit` and `multiShowCount` options).
--   Add: The new option `plugins`, which allows to add and configure already included plugins to the respective 
-    **tail.select** instances.
--   Add: The new option `rtl`, which allows to use an right-to-left text direction on the complete instances.
--   Add: The new option `sortSearch`, which allows to manipulate the order of the returning items on search queries.
--   Add: The new option `stickyGroups`, which allows to "stick" groups on the top of the dropdown list while scrolling.
--   Add: The new option `theme`, which allows to set the used theme and scheme (separated by an '-' dash).
--   Add: The new option `titleOverflow`, which allows to handle the behaviour on too-long option titles.
--   Add: The new `._cls()` helper method generates the class names for the list items.
--	Add: The new `.get()` public method allows to receive all setted options.
--	Add: The new `.set()` public method allows to update an existing / set a new option.
--   Add: The new `.build()` method now builds the **tail.select** elements.
--   Add: The new `.calculate()` method replaces the `.calc()` method (clear naming).
--   Add: The new `.render()` method replaces the `.cbGroup()` and `.cbItem()` handlers.
--   Add: Attach all labels focus the source &lt;select&gt; field now.
--   Update: The contructor will now ALWAYS return an Array with all instances, except on single HTMLElement objects (for
-    example by using `document.querySelector`).
--   Update: The jQuery and MooTools bindings.
--   Update: The option `csvOutput` can now also contain a string, which is used as name for the hidden `<input />` field 
-    (Still use `true` to "take over" the name of the `<select>` field).
--   Update: The option `csvOutput` allows now also to use a `data-name` attribute on the source &lt;select&gt; field, 
-    which is preferred used instead of `name`.
--   Update: The option `descriptions` is now `true` per default.
--   Update: the option `height` now allows all types of units (just pass them as string).
--   Update: The option `hideDisabled` and `hideSelected` allows now `true` to hide them using CSS and `null` to skip the 
-    item rendering completely.
--   Update: The option `items` now allows a bit different object format to pass through.
--   Update: The option `linguisticRules` doesn't contain any values per default anymore.
--   Update: The option `placeholder` can now also be a callable function.
--   Update: The option `searchMinLength` has now `3` as default value.
--   Update: The options `sortItems` and `sortGroups` doesn't accept `false` anymore, use `null` instead (new default).
--   Update: The option `stayOpen` can now also be `null` which closes the dropdown if a click outside appears.
--   Update: The option `width` has now `250` as new default value.
--   Update: The new `Select()` constructor allows now also to pass an optional and custom `Options` class.
--   Update: The `._e()` method doesn't allow a third parameter anymore, the first one will return instead.
--   Update: The `.bind()` method adds, removes and handles now all event handers.
--   Update: The `.trigger()` method is now the main API handler.
--   Update: The `.open()`, `.close()` and `.toggle()` methods doesn't allow any parameter anymore.
--   Update: The `.remove()` method allows now to keep the manually added options by passing true as first parameter.
--   Update: The `.reload()` method allows now a soft-reload, which just reloads the previously query, by calling them 
-    with the first parameter (`set`) to `true` (which is the default).
--   Update: The `.on()` method doesn't allow to pass own arguments (third parameter) anymore.
--   Update: The `.value()` method allows now a first parameter, which controls the returning value and the respective 
-    format (Available: 'auto', 'csv', 'array' and 'nodes').
--   Update: The sizes on `height` and `width` doesn't gets validated using a regular expression anymore.
--   Update: ENTER & SPACE keys can now also be used to toggle an option.
--   Update: The dropdown fields doesn't close, when an option is selected with ENTER or SPACE.
--   Update: The main event handler is now attached to the main **tail.select** container instead to each single item.
--   Update: The `data-key` attribute has been renamed to `data-value`.
--   Remove: The options `multiPinSelected` and `multiContainer` and it's functionallity has been outsourced to a plugin.
--   Remove: The options `multiShowCount` and `multiShowLimit` has been replaced with the new `placeholderCount` option.
--   Remove: The option `searchDisabled` has been removed, the `hideDisabled` option will be used instead.
--   Remove: The options `cbComplete`, `cbEmpty`, `cbLoopItem` and `cbLoopGroup` has been replaced with the `on`.
--   Remove: The `.callback()` method has been removed, `.update()` does the job now.
--   Remove: The `.cbGroup()` and `.cbItem()` method has been replaced with `.render()`.
--   Remove: The `.updateContainer()` and `.updatePin()` methods has been removed completely.
--   Remove: The Inline JSON configuration (was an unofficial function anyway).
--   Remove: The fallback option initialization.
-
 ### Options()
 -	Add: The new `.create()` method allows to easily create new and valid &lt;option&gt;s.
 -   Add: The new `.getGroups()` method returns all &lt;optgroup&gt;s nodes or labels.

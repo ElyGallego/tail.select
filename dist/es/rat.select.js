@@ -71,6 +71,7 @@ Plugins.plugins = {};
 
 class Options {
     constructor(select) {
+        this.ungrouped = "#";
         this.select = select;
         this.source = select.source;
         [].map.call(this.source.querySelectorAll('option:not([value])'), (option) => {
@@ -127,15 +128,15 @@ class Options {
         else {
             return [];
         }
-        if (!group && group !== false) {
+        if (!group) {
             return this.source.querySelectorAll(selector);
+        }
+        else if (group === this.ungrouped) {
+            selector = `select[data-rat-select="${this.source.dataset.ratSelect}"] > ${selector}`;
+            return this.source.parentElement.querySelectorAll(selector);
         }
         else if (typeof group === "string") {
             return this.source.querySelectorAll(`optgroup[label="${group}"] ${selector}`);
-        }
-        else if (group === false) {
-            selector = `select[data-rat-select="${this.source.dataset.ratSelect}"] > ${selector}`;
-            return this.source.parentElement.querySelectorAll(selector);
         }
         return [];
     }
@@ -158,7 +159,7 @@ class Options {
         if (group === void 0 || group === null) {
             group = item.parentElement.label || false;
         }
-        if (typeof group === "string") {
+        if (typeof group === "string" && group !== this.ungrouped) {
             let optgroup = this.source.querySelector(`optgroup[label="${group}"]`);
             if (!optgroup) {
                 optgroup = document.createElement("OPTGROUP");
@@ -253,8 +254,13 @@ class Select {
         this.config = config;
         this.options = new (options || Options)(this);
         this.locale = new Strings(config.locale || "en");
-        this.plugins = new Plugins(config.plugins || {});
-        this.events = config.on || {};
+        this.plugins = new Plugins(Object.assign({}, config.plugins || {}));
+        this.events = ((events) => {
+            for (let event in events) {
+                events[event] = [events[event]];
+            }
+            return events;
+        })(Object.assign({}, config.on || {}));
         this.config.multiple = this.source.multiple = config.multiple || source.multiple;
         this.config.disabled = this.source.disabled = config.disabled || source.disabled;
         this.config.required = this.source.required = config.required || source.required;
@@ -294,6 +300,9 @@ class Select {
             this.bind();
             this.trigger("hook", "bind:after");
         }
+        if (this.get("sourceHide", true)) {
+            this.source.style.display = "none";
+        }
         if (this.source.nextElementSibling) {
             this.source.parentElement.insertBefore(this.select, this.source.nextElementSibling);
         }
@@ -302,24 +311,29 @@ class Select {
         }
         this.updateLabel();
         this.trigger("hook", "init:after");
-        return this.query();
+        this.query();
+        if (this.get("startOpen") && !this.get("disabled")) {
+            return this.open();
+        }
+        else if (this.source.autofocus && !this.get("disabled")) {
+            return this.focus();
+        }
+        return this;
     }
     build() {
         let cls = this.get("classNames") === true ? this.source.className : this.get("classNames", "");
         this.select = document.createElement("DIV");
         this.select.className = ((cls) => {
-            this.get("rtl") ? cls.unshift("rtl") : null;
-            this.get("hideSelected") ? cls.unshift("hide-selected") : null;
-            this.get("hideDisabled") ? cls.unshift("hide-disabled") : null;
-            this.get("hideHidden", !0) ? cls.unshift("hide-hidden") : null;
-            this.get("disabled") ? cls.unshift("disabled") : null;
-            this.get("required") ? cls.unshift("required") : null;
-            this.get("multiple") ? cls.unshift("multiple") : null;
-            this.get("deselect") ? cls.unshift("deselect") : null;
+            let _l = ["rtl", "hideSelected", "hideDisabled", "hideHidden", "disabled", "required", "multiple", "deselect"];
+            _l.map((item) => {
+                if (this.get(item, item === "hideHidden")) {
+                    cls.unshift(item.replace(/[A-Z]/, (char) => `-${char.toLowerCase()}`));
+                }
+            });
             cls.unshift(`rat-select theme-${this.get("theme").replace("-", " scheme-").replace(".", " ")}`);
-            return cls.filter((item) => item.length > 0).join(" ");
+            return cls.join(" ").trim();
         })(typeof cls === "string" ? cls.split(" ") : cls);
-        this.select.tabIndex = this.source.tabIndex || 0;
+        this.select.tabIndex = this.source.tabIndex || 1;
         this.select.dataset.ratSelect = this.source.dataset.ratSelect;
         let width = this.get("width", 250);
         if (width !== null) {
@@ -327,7 +341,6 @@ class Select {
         }
         this.label = document.createElement("LABEL");
         this.label.className = "select-label";
-        this.label.innerHTML = `<span class="label-inner"></span>`;
         this.dropdown = document.createElement("DIV");
         this.dropdown.className = `select-dropdown overflow-${this.get("titleOverflow", "clip")}`;
         this.dropdown.innerHTML = `<div class="dropdown-inner"></div>`;
@@ -335,7 +348,7 @@ class Select {
         this.csv.className = "select-search";
         this.csv.name = ((name) => {
             if (name === true) {
-                name = this.source.dataset.name || this.source.name || "";
+                name = this.source.name || "";
             }
             return name === false ? "" : name;
         })(this.get("csvOutput", !1));
@@ -347,13 +360,22 @@ class Select {
     calculate() {
         let clone = this.dropdown;
         let height = ((height) => {
-            var _a, _b;
             let temp = clone.cloneNode(true);
-            temp.classList.add("height");
+            temp.classList.add("cloned");
             this.select.appendChild(temp);
             if (typeof height === "string" && height.charAt(0) === ":") {
-                let opt = (_b = (_a = clone.querySelector(".dropdown-option")) === null || _a === void 0 ? void 0 : _a.offsetHeight) !== null && _b !== void 0 ? _b : 50;
-                temp.style.maxHeight = opt * parseInt(height.slice(1)) + "px";
+                let len = parseInt(height.slice(1));
+                let count = 0;
+                let items = [].slice.call(clone.querySelectorAll("li"));
+                for (let c = 0, i = 0; i < items.length; i++) {
+                    if (items[i].offsetHeight > 0) {
+                        count += items[i].offsetHeight;
+                        if (c++ >= len) {
+                            break;
+                        }
+                    }
+                }
+                temp.style.maxHeight = count + "px";
             }
             else {
                 temp.style.maxHeight = height + (isNaN(height) ? "" : "px");
@@ -362,6 +384,7 @@ class Select {
             return this.select.removeChild(temp) ? height : height;
         })((!this.get("height", 350)) ? "auto" : this.get("height", 350));
         clone.style.maxHeight = height + "px";
+        clone.querySelector(".dropdown-inner").style.maxHeight = height + "px";
         return this;
     }
     bind(unbind) {
@@ -384,11 +407,64 @@ class Select {
         return this;
     }
     handle(event) {
+        if (!(event instanceof Event) || this.get("disabled")) {
+            return this;
+        }
         let target = event.target;
-        if (event.type === "keydown") ;
+        if (event.type === "keydown") {
+            if (document.activeElement !== this.select) {
+                return;
+            }
+            let key = event.keyCode;
+            let sel = ".dropdown-option:not(.disabled):not(.hidden)";
+            if (key === 32 && !this.select.classList.contains("active")) {
+                return this.open();
+            }
+            else if (!this.select.classList.contains("active")) {
+                return;
+            }
+            switch (key) {
+                case 13:
+                case 32:
+                    let itm = this.dropdown.querySelector(".dropdown-option.hover");
+                    if (itm) {
+                        this.options.selected(this.options.get(itm.dataset.value, itm.dataset.group));
+                        return !this.get("stayOpen") && !this.get("multiple") ? this.close() : 1;
+                    }
+                    return;
+                case 27:
+                    return this.close();
+                case 38:
+                case 40:
+                    let items = this.dropdown.querySelectorAll(sel);
+                    let item = null;
+                    let opt = [].slice.call(items).indexOf(this.dropdown.querySelector(".dropdown-option.hover"));
+                    if (opt >= 0 && items[opt + (key > 38 ? +1 : -1)]) {
+                        item = items[opt + (key > 38 ? +1 : -1)];
+                    }
+                    if (!item) {
+                        item = items[key > 38 ? 0 : items.length - 1];
+                    }
+                    if (item) {
+                        item.classList.add("hover");
+                        (items[opt]) ? items[opt].classList.remove("hover") : 0;
+                        let pos = ((el, pos) => {
+                            while ((el = el.parentElement) !== this.dropdown) {
+                                pos.top += el.offsetTop;
+                            }
+                            return pos;
+                        })(item, { top: item.offsetTop, height: item.offsetHeight });
+                        this.dropdown.scrollTop = Math.max(0, pos.top - (pos.height * 2));
+                    }
+                    return;
+            }
+        }
         if (event.type === "click") {
             if (target === this.label || this.label.contains(target)) {
                 return this.toggle();
+            }
+            if (target.getAttribute("for") === this.source.id) {
+                return this.focus();
             }
             if (!this.select.contains(target) && !this.get("stayOpen")) {
                 return this.close();
@@ -414,7 +490,7 @@ class Select {
         if (type === "event") {
             let data = { bubbles: false, cancelable: true, detail: { args: args, select: this } };
             let event = new CustomEvent(`rat::${name}`, data);
-            var cancelled = this.select.dispatchEvent(event);
+            var cancelled = this.select.dispatchEvent(event) || this.source.dispatchEvent(event);
             if (name === "change") {
                 let input = new CustomEvent("input", data);
                 let event = new CustomEvent("change", data);
@@ -428,7 +504,7 @@ class Select {
             if (type === "filter") {
                 args = cb.apply(this, args);
             }
-            else if (this.handle.apply(this, args) === false) {
+            else if (cb.apply(this, args) === false) {
                 _arg = false;
             }
         });
@@ -447,14 +523,16 @@ class Select {
         for (let item of items) {
             let group = item.parentElement instanceof HTMLOptGroupElement ? item.parentElement.label : null;
             [item, group] = this.trigger("filter", "walk", [item, group]);
+            if (this.get("hideEmpty", true) && item.value === "") {
+                continue;
+            }
             if (group === skip) {
                 continue;
             }
-            if (!(head.length > 0 && head[0].dataset.group === (!group ? "" : group))) {
-                let arg = item.parentElement instanceof HTMLOptGroupElement ? item.parentElemnt : null;
+            if (!(head.length > 0 && head[0].dataset.group === (!group ? this.options.ungrouped : group))) {
+                let arg = item.parentElement instanceof HTMLOptGroupElement ? item.parentElement : null;
                 if (!arg) {
                     arg = document.createElement("OPTGROUP");
-                    arg.innerText = this.get("ungroupedLabel", null);
                 }
                 if ((el = this.render(arg)) === null) {
                     skip = group;
@@ -463,7 +541,7 @@ class Select {
                 else if (el === false) {
                     break;
                 }
-                head.push(el);
+                head.unshift(el);
             }
             if ((el = this.render(item)) === null) {
                 continue;
@@ -487,7 +565,7 @@ class Select {
         }
         let root = this.dropdown.querySelector(".dropdown-inner");
         let clone = root.cloneNode();
-        head.map((item) => clone.appendChild(item));
+        head.reverse().map((item) => clone.appendChild(item));
         this.dropdown.replaceChild(clone, root);
         if (this.select.classList.contains("active")) {
             this.calculate();
@@ -506,7 +584,7 @@ class Select {
         if (tag === "OPTION") {
             output.className = "dropdown-option " + classes(element);
             output.innerHTML = `<span class="option-title">${element.innerHTML}</span>`;
-            output.dataset.group = ((_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.label) || "";
+            output.dataset.group = ((_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.label) || this.options.ungrouped;
             output.dataset.value = element.value;
             output.dataset.action = "toggle";
             if (element.dataset.description) {
@@ -514,14 +592,16 @@ class Select {
             }
         }
         else {
-            output.className = "dropdown-optgroup";
-            output.innerHTML = `<li class="optgroup-title">${element.label}</li>`;
-            output.dataset.group = element.label;
+            let label = element.label || this.get("ungroupedLabel", null) || "";
+            output.className = `dropdown-optgroup${this.get("stickyGroups") ? " optgroup-sticky" : ""}`;
+            output.innerHTML = `<li class="optgroup-title">${label}</li>`;
+            output.dataset.group = element.label || this.options.ungrouped;
             if (this.get("multiple") && this.get("multiSelectGroup", 1)) {
-                for (let item of ['select-none', 'select-all']) {
+                for (let item of ['buttonAll', 'buttonNone']) {
                     let btn = document.createElement("BUTTON");
-                    btn.dataset.action = item;
-                    btn.innerHTML = this.locale._(item === "select-all" ? "buttonAll" : "buttonNone");
+                    btn.dataset.action = (item === "buttonAll" ? "select" : "unselect");
+                    btn.dataset.group = output.dataset.group;
+                    btn.innerHTML = this.locale._(item);
                     output.querySelector(".optgroup-title").appendChild(btn);
                 }
             }
@@ -544,7 +624,7 @@ class Select {
         [].map.call(changes, (dataset) => {
             let [option, change] = dataset;
             let value = option.value.replace(/('|\\)/g, "\\$1");
-            let group = option.parentElement ? option.parentElement.label || "" : "";
+            let group = option.parentElement.label ? option.parentElement.label : this.options.ungrouped;
             let item = this.dropdown.querySelector(`li[data-value="${value}"][data-group="${group}"]`);
             if (item) {
                 for (let key in change) {
@@ -576,7 +656,32 @@ class Select {
         else {
             label = this.get("placeholder") || (this.source.multiple ? "multiple" : "single");
         }
-        this.label.innerText = this.locale._(label, [value.length]);
+        let counter = this.source.multiple ? this.get("placeholderCount", false) : false;
+        if (counter) {
+            let selected = this.options.count(null, ["selected"]);
+            let count = this.options.count(null, ["!disabled", "!hidden"]);
+            let max = limit < 0 ? count : limit;
+            counter = counter === true ? "count-up" : counter;
+            switch (counter) {
+                case "count-up":
+                    counter = selected;
+                    break;
+                case "count-down":
+                    counter = limit - selected;
+                    break;
+                case "limit":
+                    counter = max;
+                    break;
+                case "both":
+                    counter = `${selected}/${max}`;
+                    break;
+            }
+            if (typeof counter === "function") {
+                counter = counter.call(this);
+            }
+        }
+        this.label.innerHTML = `${counter ? `<span class="label-count">${counter}</span>` : ``}`
+            + `<span class="label-placeholder">${this.locale._(label, [value.length])}</span>`;
         return this;
     }
     open() {
@@ -601,9 +706,34 @@ class Select {
         return this[this.select.classList.contains("active") ? "close" : "open"]();
     }
     reload(hard) {
+        if (this.trigger("hook", "reload:before", [hard]) !== true) {
+            return this;
+        }
+        (hard) ? this.remove().init() : this.query();
+        this.trigger("hook", "reload:after", [hard]);
         return this;
     }
-    remove() {
+    remove(keep) {
+        if (this.trigger("hook", "remove:before", [keep]) !== true) {
+            return this;
+        }
+        if (!keep) {
+            [].map.call(this.source.querySelectorAll("optgroup[data-select='add']"), (item) => {
+                item.parentElement.removeChild(item);
+            });
+            [].map.call(this.source.querySelectorAll("option[data-select='add']"), (item) => {
+                item.parentElement.removeChild(item);
+            });
+        }
+        if (this.get("sourceHide")) {
+            this.source.style.removeProperty("display");
+            this.source.style.removeProperty("visibility");
+        }
+        if (this.select.parentElement) {
+            this.select.parentElement.removeChild(this.select);
+        }
+        this.source.removeAttribute("data-rat-select");
+        this.trigger("hook", "remove:after", [keep]);
         return this;
     }
     value(format) {
@@ -634,14 +764,25 @@ class Select {
         return (reload) ? this.reload() : this;
     }
     enable(reload) {
+        this.trigger("event", "enable", [reload]);
         this.config.disabled = this.source.disabled = false;
         this.select.classList.remove("disabled");
         return (reload) ? this.reload() : this;
     }
     disable(reload) {
+        this.trigger("event", "disable", [reload]);
         this.config.disabled = this.source.disabled = true;
         this.select.classList.add("disabled");
         return (reload) ? this.reload() : this;
+    }
+    focus() {
+        this.select.focus();
+        return this;
+    }
+    state(state, status) {
+        status = status === void 0 ? !this.select.classList.contains(`state-${state}`) : status;
+        this.select.classList[status ? "add" : "remove"](`state-${state}`);
+        return this;
     }
     on(name, callback) {
         name.split(",").map((event) => {

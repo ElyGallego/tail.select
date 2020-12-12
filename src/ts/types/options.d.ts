@@ -21,6 +21,11 @@ declare interface RatSelect_Options {
     select: RatSelect_Select;
 
     /*
+     |  CORE :: UNGROUPED PSEUDEO ID
+     */
+    ungrouped: string;
+
+    /*
      |  HELPER :: CREATE A NEW OPTION
      |  @since  1.0.0
      |
@@ -35,7 +40,7 @@ declare interface RatSelect_Options {
      |  HELPER :: PARSE OPTION OBJECT
      |  @since  1.0.0
      |
-     |  @param  object  Additional items to load using the basic or extended 
+     |  @param  object  Additional items to load using the basic or extended
      |                  syntax of the RatSelect_Item definitions.
      |
      |  @return this    The Options instance.
@@ -53,7 +58,6 @@ declare interface RatSelect_Options {
      |          string  Get the option by it's value attribute.
      |  @param  mixed   The optgroup selector, which allows different types:
      |          null    Don't restrict the returning options to a group.
-     |          false   Return ungrouped optons only.
      |          string  Return options from this specific group label.
      |  @param  array   The state selector, which may contains one or more of:
      |                  ':selected'     Get only selected options
@@ -65,7 +69,7 @@ declare interface RatSelect_Options {
      |
      |  @return mixed   All selected options as NodeList or an empty Array.
      */
-    get(value?: null | Number | string, group?: null | false | string, states?: string[]): Array<null> | NodeListOf<HTMLOptionElement>;
+    get(value?: null | Number | string, group?: null | string, states?: string[]): Array<null> | NodeListOf<HTMLOptionElement>;
 
     /*
      |  API :: GET ONE OR MORE GROUPs
@@ -74,7 +78,7 @@ declare interface RatSelect_Options {
      |  @param  bool    TRUE to return the HTMLOptGroupElement instances,
      |                  FALSE to just return the label strings.
      |
-     |  @return mixed   The HTMLOptGroupElement instances or an Array with the 
+     |  @return mixed   The HTMLOptGroupElement instances or an Array with the
      |                  respective labels.
      */
     getGroups(objects?: boolean): string[] | NodeListOf<HTMLOptGroupElement>;
@@ -85,7 +89,6 @@ declare interface RatSelect_Options {
      |
      |  @param  mixed   The optgroup selector, which allows different types:
      |          null    Don't restrict the returnin options to a group.
-     |          false   Return ungrouped optons only.
      |          string  Return options from this specific group label.
      |  @param  array   The state selector, which may contains one or more of:
      |                  ':selected'     Get only selected options
@@ -97,13 +100,13 @@ declare interface RatSelect_Options {
      |
      |  @return number  The number of selected options.
      */
-    count(group?: null | false | string, states?: string[]): Number;
+    count(group?: null | string, states?: string[]): number;
 
     /*
      |  API :: SET A NEW OPTION
      |  @since  0.3.0
      |
-     |  @param  mixed   A single HTMLOptionElement to set or multiple as Array 
+     |  @param  mixed   A single HTMLOptionElement to set or multiple as Array
      |                  or within a NodeList or HTMLCollection.
      |  @param  string  The optgroup label string.
      |  @param  number  The position where the new option should be placed.

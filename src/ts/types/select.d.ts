@@ -208,6 +208,9 @@ declare interface RatSelect_Select {
      |  API :: REMOVE SELECT INSTANCE
      |  @since  0.3.0
      |
+     |  @param  bool    TRUE to keep options which has been added after init,
+     |                  FALSE to remove them and reset everything.
+     |
      |  @return this    The select instance.
      */
     remove(): RatSelect_Select;
@@ -268,6 +271,25 @@ declare interface RatSelect_Select {
      |  @return this    The select instance.
      */
     disable(reload: boolean): RatSelect_Select;
+
+    /*
+     |  PUBLIC :: FOCUS SELECT FIELD
+     |  @since  1.0.0
+     |
+     |  @return this    The select instance.
+     */
+    focus(): RatSelect_Select;
+    
+    /*
+     |  PUBLIC :: CHANGE SELECT STATE
+     |  @since  1.0.0
+     |
+     |  @param  string  The state you want to set, mostly 'error' or 'success'.
+     |  @param  bool    TRUE to set, FALSE to remove, noting to toggle state.
+     |
+     |  @return this    The select instance.
+     */
+    state(state: string, status: null | boolean): RatSelect_Select;
     
     /*
      |  PUBLIC :: EVENT LISTENER

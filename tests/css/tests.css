@@ -1,0 +1,34 @@
+
+/* @start GENERAL DESIGN */
+*, 
+*:before, 
+*:after {
+    box-sizing: inherit;
+}
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-size: 16px;
+    line-height: 1.4;
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+/* @end GENERAL DESIGN */
+
+/* @start BASIC DESIGN */
+.container {
+    width: 1250px;
+    margin: 0 auto;
+    padding: 0 25px;
+    text-align: center;
+}
+/* @end BASIC DESIGN */
+
+/* @start RAT-SELECT DESIGN */
+.select-test {
+    margin: 25px 0;
+}
+/* @end RAT-SELECT DESIGN */

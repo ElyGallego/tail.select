@@ -18,7 +18,7 @@ import { Plugins } from "./plugins";
 /*
  |  MAIN RAT.SELECT FUNCTION
  */
-function RatSelect(selector: RatSelect_SelectSelector, config?: RatSelect_Config, options?: RatSelect_OptionsConstructor): null | Select | Array<Select | null>  {
+function RatSelect(selector: RatSelect_SelectSelector, config?: RatSelect_Config, options?: RatSelect_OptionsConstructor): null | RatSelect_Select | RatSelect_Select[] {
     let _return = (source) => {
         if(!(source instanceof HTMLSelectElement)) {
             return null;

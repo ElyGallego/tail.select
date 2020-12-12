@@ -1,45 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        <title>Testing ES5 - rat.select</title>
+
+        <link type="text/css" rel="stylesheet" href="css/tests.css" />
         <link type="text/css" rel="stylesheet" href="../dist/css/rat.select.css" />
-        <style type="text/css">
-            html, body {
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
-            }
-        </style>
 
         <script type="text/javascript" src="../dist/js/rat.select.js"></script>
         <script type="text/javascript" src="../dist/js/langs/de_AT.js"></script>
         <script type="text/javascript" src="../dist/js/plugins/ajax.js"></script>
         <script type="text/javascript">
             document.addEventListener("DOMContentLoaded", function() {
-                console.log(new rat.select("select"));
+                const select = rat.select("select", {
+                    height: ":5",
+                    placeholderCount: true,
+                    sourceHide: true,
+                    stickyGroups: true,
+                    hideDisabled: true,
+                    on: {
+                        "open": () => {
+                            console.log("open");
+                        },
+                        "close": () => {
+                            console.log("close");
+                        },
+                        "change": () => {
+                            console.log("change");
+                        },
+                        "enable": () => {
+                            console.log("enable");
+                        },
+                        "disable": () => {
+                            console.log("disable");
+                        },
+                        "limit": () => {
+                            console.log("limit");
+                        }
+                    }
+                });
             });
         </script>
     </head>
     <body>
-        <div class="select-test">
-            <select>
-                <option value="" selected>Placeholder</option>
-                <option>Option A</option>
-                <option disabled>Option B</option>
-                <option>Option C</option>
-                <option>Option D</option>
-                <option>Option E</option>
-            </select>
+        <div class="container">
+            <div class="select-test">
+                <select>
+                    <option value="" selected>Placeholder</option>
+                    <option>Option A</option>
+                    <option>Option B</option>
+                    <option>Option C</option>
+                    <option>Option D</option>
+                    <option>Option E</option>
+                    <option>Option F</option>
+                    <option>Option G</option>
+                    <option>Option H</option>
+                    <option>Option I</option>
+                    <option>Option J</option>
+                    <option>Option K</option>
+                    <option>Option L</option>
+                </select>
+            </div>
         </div>
 
-        <div class="select-test">
-            <select multiple>
-                <option>Option A</option>
-                <option>Option B</option>
-                <option>Option C</option>
-                <option>Option D</option>
-                <option>Option E</option>
-            </select>
+        <div class="container">
+            <div class="select-test">
+                <select id="my-select" multiple>
+                    <option>Option A</option>
+                    <option hidden>Option B</option>
+                    <option>Option C</option>
+                    <option>Option D</option>
+                    <option>Option E</option>
+
+                    <optgroup label="Something">
+                        <option>Option AA</option>
+                        <option>Option AB</option>
+                        <option>Option AC</option>
+                        <option>Option AD</option>
+                    </optgroup>
+
+                    <optgroup label="Something 2">
+                        <option>Option BA</option>
+                        <option>Option BB</option>
+                        <option>Option BC</option>
+                        <option>Option BD</option>
+                    </optgroup>
+                </select>
+            </div>
         </div>
     </body>
 </html>

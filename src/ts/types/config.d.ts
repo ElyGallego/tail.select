@@ -94,7 +94,7 @@ declare interface RatSelect_Config {
      |  @since          1.0.0
      |
      |  @values
-     |      boolean     True to hide empty options (without options text or value), False to do it not.
+     |      boolean     True to skip empty-valued options (without options text or value), False to do it not.
      |
      |  @default
      |      true
@@ -244,7 +244,7 @@ declare interface RatSelect_Config {
      |  @since          1.0.0
      |
      |  @values
-     |      null        Use the default behaviour depending on the multiple state.
+     |      boolean     True to use the default behaviour, False to disable the placeholder Counter.
      |      string      Use one of the following special strings:
      |                      'count-up'      Count up the selected options
      |                      'count-down'    Count down the selectable options (requires multiLimit)
@@ -253,13 +253,13 @@ declare interface RatSelect_Config {
      |      Function    Pass a function which returns the placeholder counter on each rendering-
      |
      |  @default
-     |      null
+     |      false
      */
-    placeholderCount: null | "count-up" | "count-down" | "limit" | "both" | Function;
+    placeholderCount: boolean | "count-up" | "count-down" | "limit" | "both" | Function;
 
     /*
      |  PLUGINS TO LOAD
-     |  @since          1.0.0
+     |  @since          0.6.0
      |
      |  @values
      |      null        Don't add any plugins.
@@ -399,8 +399,8 @@ declare interface RatSelect_Config {
     titleOverflow: "break" | "clip" | "scroll";
 
     /*
-     |  TITLE FOR THE UNGROUPED OPTIONs
-     |  @since          1.0.0
+     |  LABEL FOR THE UNGROUPED OPTIONs
+     |  @since          0.6.0
      |
      |  @values
      |      null        Skip the title for ungrouped options.
@@ -409,7 +409,7 @@ declare interface RatSelect_Config {
      |  @default
      |      null
      */
-    ungroupedTitle: null | string;
+    ungroupedLabel: null | string;
 
     /*
      |  WIDTH FOR THE RAT.SELECT FIELD

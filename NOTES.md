@@ -45,3 +45,27 @@ All `<option>` elements, which contains a `data-rat-ignore` attribute will be co
 the rat.select environment. They will not be passed, not be rendered or handled in any other known 
 way. This attribute has not only been introduced for the OAAP feature, but also for doing awesome 
 magic stuff with your select fields and a few JavaScript lines. (More in the examples)
+
+
+Change ungrouped ID
+-------------------
+
+All items, which are not wrapped within an `<optgroup>` element, are usually selectable using the 
+pseudo group `#`. Since it is nearly impossible that anyone will use this character as single and 
+only `<optgroup>` label text (and will use the rat.select library together) it should not harme 
+anyone. But just in case, in the really rare case (we calculated that a SHA512 hash collision 
+is about a factor of 42 more likely) that someone is crazy enough to use this combination... this 
+crazy one can change the ungrouped group pseudo-selector ID as follows:
+
+You can either change the ungrouped selector character in general using...
+
+```js
+select.Options.prototype.ungrouped = "+";
+```
+
+... or you just change them by instance such as...
+
+```js
+let select = rat.select(document.getElementById("crazy"));
+select.options.ungrouped = "~";
+```
