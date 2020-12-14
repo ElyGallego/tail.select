@@ -116,7 +116,7 @@ export default function ratSCSS(options = { }) {
 
         // Attach Watcher
         if('watch' in options) {
-            let files = Array.isArray(options.watch)? options.watch: [optins.watch];
+            let files = Array.isArray(options.watch)? options.watch: [options.watch];
             files.forEach(file => this.addWatchFile(file));
         }
 

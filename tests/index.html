@@ -16,9 +16,14 @@
             document.addEventListener("DOMContentLoaded", function() {
                 const select = rat.select("select", {
                     height: ":5",
+                    placeholder: () => {
+                        return "I'm a Placeholder";
+                    },
+                    deselect: true,
                     placeholderCount: true,
                     sourceHide: true,
                     stickyGroups: true,
+                    titleOverflow: "scroll",
                     hideDisabled: true,
                     on: {
                         "open": () => {
@@ -48,8 +53,7 @@
         <div class="container">
             <div class="select-test">
                 <select>
-                    <option value="" selected>Placeholder</option>
-                    <option>Option A</option>
+                    <option>OptionOptionOption A tr r trzrzrt rtz trz rtz</option>
                     <option>Option B</option>
                     <option>Option C</option>
                     <option>Option D</option>

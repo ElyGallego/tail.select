@@ -27,7 +27,7 @@ declare interface RatSelect_Options {
 
     /*
      |  HELPER :: CREATE A NEW OPTION
-     |  @since  1.0.0
+     |  @since  0.6.0
      |
      |  @param  string  The option value.
      |  @param  object  The option data.
@@ -73,7 +73,7 @@ declare interface RatSelect_Options {
 
     /*
      |  API :: GET ONE OR MORE GROUPs
-     |  @since  1.0.0
+     |  @since  0.6.0
      |
      |  @param  bool    TRUE to return the HTMLOptGroupElement instances,
      |                  FALSE to just return the label strings.
@@ -85,7 +85,7 @@ declare interface RatSelect_Options {
 
     /*
      |  API :: COUNT OPTIONs
-     |  @since  1.0.0
+     |  @since  0.6.0
      |
      |  @param  mixed   The optgroup selector, which allows different types:
      |          null    Don't restrict the returnin options to a group.
@@ -137,7 +137,7 @@ declare interface RatSelect_Options {
 
     /*
      |  PUBLIC :: OPTION STATEs <ALIASES>
-     |  @since  0.3.0
+     |  @since  1.0.0
      */
     selected(items: RatSelect_OptionSelector, state?: boolean): RatSelect_Options;
     disabled(items: RatSelect_OptionSelector, state?: boolean): RatSelect_Options;

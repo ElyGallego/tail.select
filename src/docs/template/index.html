@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="content-language" content="en" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>{{ header.title }} – Documentation – {{ package.name }}</title>
+        
+        <meta name="name" content="{{ header.title }} – Documentation – {{ package.name }}" />
+        <meta name="description" content="{{ package.description }}" />
+        <meta name="keywords" content="{{ package.keywords }}" />
+        <meta name="author" content="{{ package.author }}" />
+        <meta name="publisher" content="{{ package.author }}" />
+        <meta name="copyright" content="{{ package.copyright }}" />
+    </head>
+    <body>
+        <div class="header">
+
+        </div>
+
+        <div class="content">
+            <div class="content-topbar">
+                Date, Version - Status
+            </div>
+
+            <main class="content-inner">
+                {{ content }}
+            </main>
+            <div class="content-sidebar">
+
+            </div>
+        </div>
+
+        <div class="footer">
+
+        </div>
+    </body>
+</html>

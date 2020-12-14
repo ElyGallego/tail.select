@@ -479,21 +479,6 @@ export class Select implements RatSelect_Select {
                 break;  // Break Loop
             }
             head[0].appendChild(el);
-
-            // Experimental Scroll Function
-            if(this.get("titleOverflow") === "scroll") {
-                (function(el, self) {
-                    let style = window.getComputedStyle(el);
-                    let inner = el.clientWidth - parseInt(style.paddingLeft) - parseInt(style.paddingRight) - 17;
-                    let title = el.querySelector(".option-title");
-
-                    if(title.scrollwidth > inner) {
-                        let number = inner - title.scrollWidth - 15;
-                        title.style.paddingLeft = Math.abs(number) + "px";
-                        el.style.textIndent = number + "px";
-                    }
-                }(el, this));
-            }
         }
 
         // Replace
@@ -501,6 +486,18 @@ export class Select implements RatSelect_Select {
         let clone = root.cloneNode();
         head.reverse().map((item) => clone.appendChild(item));
         this.dropdown.replaceChild(clone, root);
+
+        // Experimental Scroll Width
+        if(this.get("titleOverflow") === "scroll") {
+            [].map.call(this.dropdown.querySelectorAll(".dropdown-option"), (el) => {
+                let width = el.clientWidth-el.querySelector(".option-title").offsetLeft;
+                let scroll = el.querySelector(".option-title").scrollWidth;
+                if(scroll > width) {
+                    el.style.textIndent = width-scroll + "px";
+                    el.querySelector(".option-title").style.marginLeft = scroll-width + "px";
+                }
+            });
+        }
 
         // Hook & Return
         if(this.select.classList.contains("active")) {
@@ -536,8 +533,6 @@ export class Select implements RatSelect_Select {
             output.className = `dropdown-optgroup${this.get("stickyGroups")? " optgroup-sticky": ""}`;
             output.innerHTML = `<li class="optgroup-title">${label}</li>`;
             output.dataset.group = element.label || this.options.ungrouped;
-
-
 
             if(this.get("multiple") && this.get("multiSelectGroup", 1)) {
                 for(let item of ['buttonAll', 'buttonNone']) {
@@ -611,14 +606,19 @@ export class Select implements RatSelect_Select {
         let limit = this.get("multiLimit");
 
         // Set Placeholder label
-        if(this.source.disabled || !this.options.count()) {
-            label = this.source.disabled? "disabled": "empty";
-        } else if(this.source.multiple && value.length > 0) {
-            label = limit === value.length? "multipleLimit": "multipleCount";
-        } else if(!this.source.multiple && value.length === 1) {
-            label = value[0];
-        } else {
-            label = this.get("placeholder") || (this.source.multiple? "multiple": "single");
+        if(!label && typeof this.get("placeholder") === "function") {
+            label = this.get("placeholder").call(this);
+        }
+        if(!label) {
+            if(this.source.disabled || !this.options.count()) {
+                label = this.source.disabled? "disabled": "empty";
+            } else if(this.source.multiple && value.length > 0) {
+                label = limit === value.length? "multipleLimit": "multipleCount";
+            } else if(!this.source.multiple && value.length === 1) {
+                label = value[0];
+            } else {
+                label = this.source.multiple? "multiple": "single";
+            }
         }
 
         // Set Placeholder counter

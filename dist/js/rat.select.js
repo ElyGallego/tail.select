@@ -594,23 +594,21 @@
                     break;
                 }
                 head[0].appendChild(el);
-                if (this.get("titleOverflow") === "scroll") {
-                    (function (el, self) {
-                        var style = window.getComputedStyle(el);
-                        var inner = el.clientWidth - parseInt(style.paddingLeft) - parseInt(style.paddingRight) - 17;
-                        var title = el.querySelector(".option-title");
-                        if (title.scrollwidth > inner) {
-                            var number = inner - title.scrollWidth - 15;
-                            title.style.paddingLeft = Math.abs(number) + "px";
-                            el.style.textIndent = number + "px";
-                        }
-                    }(el));
-                }
             }
             var root = this.dropdown.querySelector(".dropdown-inner");
             var clone = root.cloneNode();
             head.reverse().map(function (item) { return clone.appendChild(item); });
             this.dropdown.replaceChild(clone, root);
+            if (this.get("titleOverflow") === "scroll") {
+                [].map.call(this.dropdown.querySelectorAll(".dropdown-option"), function (el) {
+                    var width = el.clientWidth - el.querySelector(".option-title").offsetLeft;
+                    var scroll = el.querySelector(".option-title").scrollWidth;
+                    if (scroll > width) {
+                        el.style.textIndent = width - scroll + "px";
+                        el.querySelector(".option-title").style.marginLeft = scroll - width + "px";
+                    }
+                });
+            }
             if (this.select.classList.contains("active")) {
                 this.calculate();
             }
@@ -691,17 +689,22 @@
         Select.prototype.updateLabel = function (label) {
             var value = this.value("array");
             var limit = this.get("multiLimit");
-            if (this.source.disabled || !this.options.count()) {
-                label = this.source.disabled ? "disabled" : "empty";
+            if (!label && typeof this.get("placeholder") === "function") {
+                label = this.get("placeholder").call(this);
             }
-            else if (this.source.multiple && value.length > 0) {
-                label = limit === value.length ? "multipleLimit" : "multipleCount";
-            }
-            else if (!this.source.multiple && value.length === 1) {
-                label = value[0];
-            }
-            else {
-                label = this.get("placeholder") || (this.source.multiple ? "multiple" : "single");
+            if (!label) {
+                if (this.source.disabled || !this.options.count()) {
+                    label = this.source.disabled ? "disabled" : "empty";
+                }
+                else if (this.source.multiple && value.length > 0) {
+                    label = limit === value.length ? "multipleLimit" : "multipleCount";
+                }
+                else if (!this.source.multiple && value.length === 1) {
+                    label = value[0];
+                }
+                else {
+                    label = this.source.multiple ? "multiple" : "single";
+                }
             }
             var counter = this.source.multiple ? this.get("placeholderCount", false) : false;
             if (counter) {

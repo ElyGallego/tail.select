@@ -9,6 +9,24 @@
  |  @license    MIT License
  |  @copyright  Copyright © 2014 - 2020 pytesNET <info@pytes.net>
  */
+@keyframes rat_select_text_scroll {
+    70% {
+        margin-left: -30px;
+    }
+    100% {
+        margin-left: -30px;
+    }
+}
+
+@-webkit-keyframes rat_select_text_scroll {
+    70% {
+        margin-left: -30px;
+    }
+    100% {
+        margin-left: -30px;
+    }
+}
+
 .rat-select-theme-name:after {
     content: "default-light";
 }
@@ -264,6 +282,30 @@
     top: -1px;
     z-index: 50;
     position: sticky;
+}
+
+.rat-select.theme-default .select-dropdown.overflow-break li {
+    overflow: visible;
+    white-space: normal;
+    text-overflow: none;
+}
+
+.rat-select.theme-default .select-dropdown.overflow-clip li {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.rat-select.theme-default .select-dropdown.overflow-scroll li {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.rat-select.theme-default .select-dropdown.overflow-scroll li[style]:hover span.option-title,
+.rat-select.theme-default .select-dropdown.overflow-scroll li[style].hover span.option-title {
+    animation: rat_select_text_scroll 2.0s infinite ease-in-out 250ms;
+    -webkit-animation: rat_select_text_scroll 2.0s infinite ease-in-out 250ms;
 }
 
 .rat-select.theme-default.cloned .select-dropdown,

@@ -45,7 +45,7 @@
     "scripts": {
         "build": "rollup -c",
         "watch": "rollup -c --watch",
-        "demo": "",
+        "docs": "node src/build/rat-docs.js",
         "tests": ""
     },
     "main": "dist/js/rat.select.js",
@@ -55,6 +55,8 @@
     "dependencies": {},
     "devDependencies": {
         "@rollup/plugin-typescript": "^6.1.0",
+        "html-prettify": "^1.0.3",
+        "marked": "^1.2.6",
         "node-sass": "^5.0.0",
         "rollup": "^2.33.3",
         "rollup-plugin-consts": "^1.0.2",

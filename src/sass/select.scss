@@ -11,6 +11,7 @@ $theme-name: "default";
 @import "_Core/Functions";
 @import "_Core/Icons";
 @import "_Core/Mixins";
+@import "_Core/Keyframes";
 
 @import "select/Variables";
 
@@ -192,6 +193,7 @@ $theme-name: "default";
         opacity: 0;
         visibility: hidden;
     }
+
     .dropdown-inner {
         position: relative;
         overflow-x: hidden;
@@ -267,6 +269,35 @@ $theme-name: "default";
             top: -1px;
             z-index: 50;
             position: sticky;
+        }
+    }
+
+    // Title Overflows
+    &.overflow-break {
+        li {
+            overflow: visible;
+            white-space: normal;
+            text-overflow: none;
+        }
+    }
+    &.overflow-clip {
+        li {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+    &.overflow-scroll {
+        li {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
+            &[style]:hover span.option-title,
+            &[style].hover span.option-title {
+                animation: rat_select_text_scroll 2.0s infinite ease-in-out 250ms;
+                -webkit-animation: rat_select_text_scroll 2.0s infinite ease-in-out 250ms;
+            }
         }
     }
 }

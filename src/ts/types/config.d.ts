@@ -385,7 +385,7 @@ declare interface RatSelect_Config {
 
     /*
      |  [EXPERIMENTAL] TITLE OVERFLOW BEHAVIOUR
-     |  @since          1.0.0
+     |  @since          0.6.0
      |
      |  @values
      |      string      The desired behaviour if the option title doesn't fit the width:
@@ -394,7 +394,7 @@ declare interface RatSelect_Config {
      |                      'scroll'    Scroll to show the whole title.
      |
      |  @default
-     |      'clip'
+     |      'break'
      */
     titleOverflow: "break" | "clip" | "scroll";
 

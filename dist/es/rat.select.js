@@ -550,23 +550,21 @@ class Select {
                 break;
             }
             head[0].appendChild(el);
-            if (this.get("titleOverflow") === "scroll") {
-                (function (el, self) {
-                    let style = window.getComputedStyle(el);
-                    let inner = el.clientWidth - parseInt(style.paddingLeft) - parseInt(style.paddingRight) - 17;
-                    let title = el.querySelector(".option-title");
-                    if (title.scrollwidth > inner) {
-                        let number = inner - title.scrollWidth - 15;
-                        title.style.paddingLeft = Math.abs(number) + "px";
-                        el.style.textIndent = number + "px";
-                    }
-                }(el));
-            }
         }
         let root = this.dropdown.querySelector(".dropdown-inner");
         let clone = root.cloneNode();
         head.reverse().map((item) => clone.appendChild(item));
         this.dropdown.replaceChild(clone, root);
+        if (this.get("titleOverflow") === "scroll") {
+            [].map.call(this.dropdown.querySelectorAll(".dropdown-option"), (el) => {
+                let width = el.clientWidth - el.querySelector(".option-title").offsetLeft;
+                let scroll = el.querySelector(".option-title").scrollWidth;
+                if (scroll > width) {
+                    el.style.textIndent = width - scroll + "px";
+                    el.querySelector(".option-title").style.marginLeft = scroll - width + "px";
+                }
+            });
+        }
         if (this.select.classList.contains("active")) {
             this.calculate();
         }
@@ -644,17 +642,22 @@ class Select {
     updateLabel(label) {
         let value = this.value("array");
         let limit = this.get("multiLimit");
-        if (this.source.disabled || !this.options.count()) {
-            label = this.source.disabled ? "disabled" : "empty";
+        if (!label && typeof this.get("placeholder") === "function") {
+            label = this.get("placeholder").call(this);
         }
-        else if (this.source.multiple && value.length > 0) {
-            label = limit === value.length ? "multipleLimit" : "multipleCount";
-        }
-        else if (!this.source.multiple && value.length === 1) {
-            label = value[0];
-        }
-        else {
-            label = this.get("placeholder") || (this.source.multiple ? "multiple" : "single");
+        if (!label) {
+            if (this.source.disabled || !this.options.count()) {
+                label = this.source.disabled ? "disabled" : "empty";
+            }
+            else if (this.source.multiple && value.length > 0) {
+                label = limit === value.length ? "multipleLimit" : "multipleCount";
+            }
+            else if (!this.source.multiple && value.length === 1) {
+                label = value[0];
+            }
+            else {
+                label = this.source.multiple ? "multiple" : "single";
+            }
         }
         let counter = this.source.multiple ? this.get("placeholderCount", false) : false;
         if (counter) {

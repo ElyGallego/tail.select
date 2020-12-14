@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="content-language" content="en" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Public Options – Documentation – rat.select</title>
+        
+        <meta name="name" content="Public Options – Documentation – rat.select" />
+        <meta name="description" content="The vanilla solution to level up your HTML &lt;select&gt; fields." />
+        <meta name="keywords" content="select, input, form, dropdown, choose, frontend, ui, vanilla, rat" />
+        <meta name="author" content="SamBrishes &lt;sam@pytes.net&gt; (https://www.pytes.net)" />
+        <meta name="publisher" content="SamBrishes &lt;sam@pytes.net&gt; (https://www.pytes.net)" />
+        <meta name="copyright" content="pytesNET &lt;info@pytes.net&gt;" />
+    </head>
+    <body>
+        <div class="header">
+
+        </div>
+
+        <div class="content">
+            <div class="content-topbar">
+                Date, Version - Status
+            </div>
+
+            <main class="content-inner">
+                <h1>Public Options</h1>
+<p>The current version of our <strong>rat.select</strong> library contains 33 settings, all of these can be passed 
+as second argument on the main <a href=""><code>rat.select()</code></a> function. The default value of a few options relates
+on the source &lt;select&gt; field, such as <code>disabled</code> or <code>multiple</code>. The options can also be 
+changed at any time using the <a href=""><code>set()</code></a> function.</p>
+<h2>classNames<span class="badge badge-added">0.3.0</span></h2>
+<p><div class="types"><span class="default-value">false</span><ul><li>boolean</li><li>string</li><li>array</li></ul></div></p>
+<p>This option allows you to add additional class names to the main <strong>rat.select</strong> container element. 
+You can pass the class names as space separated <code>string</code>, within an <code>Array</code> or you can also pass 
+just <code>true</code> to copy the class names of the source &lt;select&gt; field.</p>
+<div class="changelog"><div class="changelog-title">Changelog</div><dl><dt>Version 0.3.0</dt><dd>The option copy_class was used prior version 0.3.0.</dd></dl></div>
+<h2>csvOutput<span class="badge badge-added">0.3.</span><span class="badge badge-updated">0.6.0</span></h2>
+<p><div class="types"><span class="default-value">false</span><ul><li>boolean</li><li>string</li></ul></div></p>
+<p>This option creates a hidden &lt;input /&gt; HTML field containing all selected option values 
+separated as defined in <a href="#csvSeparator">csvSeparator</a>. You can either pass the desired <code>name</code> 
+attribute as string, <code>true</code> to copy the <code>name</code> attribute of the source &lt;select&gt; field or 
+<code>false</code> to skip the hidden &lt;input /&gt; field.</p>
+<div class="changelog"><div class="changelog-title">Changelog</div><dl><dt>Version 1.0.0</dt><dd>You can now pass a string to use a different name attribute.</dd><dt>Version 0.5.0</dt><dd>The name attribute of the source &lt;select&gt; field gets removed, when this option is in use.</dd></dl></div>
+<h2>csvSeparator<span class="badge badge-added">0.3.0</span></h2>
+<h2>deselect<span class="badge badge-added">0.3.0</span></h2>
+<h2>disabled<span class="badge badge-added">0.5.0</span></h2>
+<h2>height<span class="badge badge-added">0.2.0</span><span class="badge badge-updated">1.0.0</span></h2>
+<h2>hideDisabled<span class="badge badge-added">0.3.0</span></h2>
+<h2>hideEmpty<span class="badge badge-new">NEW</span><span class="badge badge-added">1.0.0</span></h2>
+<h2>hideHidden<span class="badge badge-new">NEW</span><span class="badge badge-added">1.0.0</span></h2>
+<h2>hideSelected<span class="badge badge-added">0.3.0</span></h2>
+<h2>items<span class="badge badge-added">0.3.0</span><span class="badge badge-updated">1.0.0</span></h2>
+<h2>locale<span class="badge badge-added">0.5.0</span></h2>
+<h2>multiple<span class="badge badge-added">0.3.0</span></h2>
+<h2>multiLimit<span class="badge badge-added">0.3.0</span><span class="badge badge-updated">0.5.0</span></h2>
+<h2>multiSelectAll<span class="badge badge-added">0.4.0</span></h2>
+<h2>multiSelectGroup<span class="badge badge-added">0.4.0</span></h2>
+<h2>on<span class="badge badge-new">NEW</span><span class="badge badge-added">1.0.0</span></h2>
+<h2>openAbove<span class="badge badge-added">0.3.0</span></h2>
+<h2>placeholder<span class="badge badge-added">0.1.0</span><span class="badge badge-updated">1.0.0</span></h2>
+<h2>placeholderCount<span class="badge badge-new">NEW</span><span class="badge badge-added">1.0.0</span></h2>
+<h2>plugins<span class="badge badge-new">NEW</span><span class="badge badge-added">1.0.0</span></h2>
+<h2>query<span class="badge badge-new">NEW</span><span class="badge badge-added">1.0.0</span></h2>
+<h2>required<span class="badge badge-new">NEW</span><span class="badge badge-added">1.0.0</span></h2>
+<h2>rtl<span class="badge badge-new">NEW</span><span class="badge badge-added">1.0.0</span></h2>
+<h2>sourceBind<span class="badge badge-added">0.5.0</span></h2>
+<h2>sourceHide<span class="badge badge-added">0.5.0</span></h2>
+<h2>startOpen<span class="badge badge-added">0.3.0</span></h2>
+<h2>stayOpen<span class="badge badge-added">0.3.0</span></h2>
+<h2>stickyGroups<span class="badge badge-new">NEW</span><span class="badge badge-added">1.0.0</span></h2>
+<h2>theme<span class="badge badge-new">NEW</span><span class="badge badge-added">1.0.0</span></h2>
+<h2>titleOverflow<span class="badge badge-new">NEW</span><span class="badge badge-experimental">EXPERIMENTAL</span><span class="badge badge-added">1.0.0</span></h2>
+<h2>ungroupedLabel<span class="badge badge-new">NEW</span><span class="badge badge-added">1.0.0</span></h2>
+<h2>width<span class="badge badge-added">0.2.0</span><span class="badge badge-updated">0.5.0</span></h2>
+<h2>Removed Options</h2>
+<h3>animate<span class="badge badge-added">0.3.0</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>bindSourceSelect<span class="badge badge-added">0.3.0</span><span class="badge badge-removed">0.5.0</span></h3>
+<h3>cbComplete<span class="badge badge-added">0.5.0</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>cbEmpty<span class="badge badge-added">0.5.0</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>cbLoopItem<span class="badge badge-added">0.4.0</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>cbLoopGroup<span class="badge badge-added">0.4.0</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>descriptions<span class="badge badge-added">0.3.0</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>hideSelect<span class="badge badge-added">0.3.0</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>multiContainer<span class="badge badge-added">0.3.0</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>multiPinSelected<span class="badge badge-added">0.5.0</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>multiShowCount<span class="badge badge-added">0.3.0</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>multiShowLimit<span class="badge badge-added">0.3.0</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>search<span class="badge badge-added">0.3.0</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>searchConfig<span class="badge badge-added">0.5.13</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>searchFocus<span class="badge badge-added">0.3.0</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>searchMarked<span class="badge badge-added">0.3.0</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>searchMinLength<span class="badge badge-added">0.5.13</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>searchDisabled<span class="badge badge-added">0.5.5</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>sortItems<span class="badge badge-added">0.3.0</span><span class="badge badge-removed">1.0.0</span></h3>
+<h3>sortGroups<span class="badge badge-added">0.3.0</span><span class="badge badge-removed">1.0.0</span></h3>
+
+            </main>
+            <div class="content-sidebar">
+
+            </div>
+        </div>
+
+        <div class="footer">
+
+        </div>
+    </body>
+</html>
