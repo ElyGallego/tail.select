@@ -1,9 +1,9 @@
 rat.select - LvL+ for your select fields
 ========================================
 
-The vanilla JavaScript solution to **LEVEL UP** and **IMPROVE** your HTML `&lt;select&gt;` fields!
+The vanilla JavaScript solution to **LEVEL UP** and **IMPROVE** your HTML `<select>` fields!
 
-Create, Design, Archive awesome and feature-rich single and multiple `&lt;select&gt;` fields using 
+Create, Design, Archive awesome and feature-rich single and multiple `<select>` fields using 
 the power and flexibility of **rat.select** (former known as *tail.select*). You don't need any 
 additional library, JavaScript Framework or Polyfills, since this package comes with everything 
 you need, optimized and adapted for IE 11, Safari and modern browsers as well.
