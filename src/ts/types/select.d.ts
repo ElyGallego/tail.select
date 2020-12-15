@@ -130,9 +130,12 @@ declare interface RatSelect_Select {
      |  API :: QUERY DROPDOWN
      |  @since  0.5.0
      |
+     |  @param  callb.  A custom callback function to receive the options.
+     |  @param  array   Additional parameters for the query callback function.
+     |
      |  @return this    The select instance.
      */
-    query(query?: null | Function): RatSelect_Select;
+    query(query?: null | Function, args?: Array<any>): RatSelect_Select;
     
     /*
      |  API :: RENDER DROPDOWN
@@ -150,9 +153,12 @@ declare interface RatSelect_Select {
      |  API :: UPDATE INSTANCE
      |  @since  0.5.0
      |
+     |  @param  Array   An object containing Arrays with all items and changed states.
+     |  @param  bool    TRUE to skip the "input" / "change" events, FALSE to do it not.
+     |
      |  @return this    The select instance.
      */
-    update(changes: Array<HTMLOptionElement | RatSelect_OptionStates>): RatSelect_Select;
+    update(changes: Array<HTMLOptionElement | RatSelect_OptionStates>, skipEvents?: boolean): RatSelect_Select;
 
     /*
      |  API :: UPDATE CSV FIELD
@@ -287,9 +293,10 @@ declare interface RatSelect_Select {
      |  @param  string  The state you want to set, mostly 'error' or 'success'.
      |  @param  bool    TRUE to set, FALSE to remove, noting to toggle state.
      |
-     |  @return this    The select instance.
+     |  @return mixed   A boolean value showing the current state value if status has been avoided,
+     |                  the select instance otherwise.
      */
-    state(state: string, status: null | boolean): RatSelect_Select;
+    state(state: string, status?: null | boolean): boolean | RatSelect_Select ;
     
     /*
      |  PUBLIC :: EVENT LISTENER

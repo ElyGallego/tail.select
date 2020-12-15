@@ -69,3 +69,26 @@ select.Options.prototype.ungrouped = "+";
 let select = rat.select(document.getElementById("crazy"));
 select.options.ungrouped = "~";
 ```
+
+sort options using `query`
+--------------------------
+
+The `sortGroups` and `sortItems` options has been replaced with the new `query` option, which only
+allows to pass a function instead of a simple "asc" and "desc" string. 
+
+
+// Reverse Options (sortItems: "desc")
+return [].slice.call(this.options.get()).sort((a, b) => {
+    
+});
+
+// return [].slice.call(this.options.get()).reverse();
+
+// Reverse Optgroups (sortGroups: "desc")
+return [].slice.call(this.options.get()).sort((a, b) => {
+    let [ap, bp] = [a.parentElement, b.parentElement];
+    if((ap.label || "#") === (bp.label || "#")) {
+        return 0;
+    }
+    return (ap.label || "Z") > (bp.label || "Z")? -1: 1;
+});

@@ -14,7 +14,8 @@
         "target": "ES5",
         "typeRoots": [
             "./src/ts/types",
-            "./src/ts/plugins/types"
+            "./src/ts/plugins/types",
+            "src/ts/plugins/types"
         ]
     },
     "exclude": [

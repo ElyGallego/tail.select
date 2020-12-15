@@ -25,6 +25,84 @@
         margin-left: -30px;
     }
 }
+@keyframes rat_select_spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(0deg);
+    }
+    90% {
+        transform: rotate(179deg);
+    }
+    100% {
+        transform: rotate(179deg);
+    }
+}
+@-webkit-keyframes rat_select_spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(0deg);
+    }
+    90% {
+        transform: rotate(179deg);
+    }
+    100% {
+        transform: rotate(179deg);
+    }
+}
+input.dropdown-search {
+    width: calc(100% - 20px);
+    margin: 5px 10px;
+    padding: 4px 8px;
+    display: block;
+    border: 1px solid #d7d8db;
+    outline: 0;
+    border-radius: 3px;
+    transition: border 142ms linear;
+    box-shadow: none;
+}
+input.dropdown-search:hover {
+    border-color: #bcbec3;
+}
+input.dropdown-search:focus {
+    border-color: #3C82E6;
+}
+
+.dropdown-spinner {
+    width: 100%;
+    height: 60px;
+    position: relative;
+    text-align: center;
+}
+.dropdown-spinner:before, .dropdown-spinner:after {
+    top: 50%;
+    left: 50%;
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    border-width: 3px;
+    border-style: solid;
+    border-color: transparent #303236 transparent #303236;
+    animation: rat_select_spinner 1s infinite ease-in-out 0ms;
+    -webkit-animation: rat_select_spinner 1s infinite ease-in-out 0ms;
+}
+.dropdown-spinner:before {
+    width: 36px;
+    height: 36px;
+    margin: -18px 0 0 -18px;
+}
+.dropdown-spinner:after {
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    animation-direction: reverse;
+    -webkit-animation-direction: reverse;
+}
+
 .rat-select-theme-name:after {
     content: "default-light";
 }
@@ -155,8 +233,6 @@
     opacity: 1;
 }
 .rat-select.theme-default.active .select-label {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
     border-color: rgba(60, 130, 230, 0.75);
     box-shadow: 0 1px 1px 0 rgba(60, 130, 230, 0.3);
 }
@@ -164,6 +240,14 @@
     color: #3C82E6;
     opacity: 1;
     transform: rotate(180deg);
+}
+.rat-select.theme-default.active.open-top .select-label {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.rat-select.theme-default.active:not(.open-top) .select-label {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 .rat-select.theme-default.disabled .select-label {
     cursor: not-allowed;
@@ -322,19 +406,29 @@
     -webkit-animation: rat_select_text_scroll 2s infinite ease-in-out 250ms;
 }
 
-.rat-select.theme-default.cloned .select-dropdown, .rat-select.theme-default.cloned.active .select-dropdown, .rat-select.theme-default.no-animation .select-dropdown, .rat-select.theme-default.no-animation.active .select-dropdown {
+.rat-select.theme-default.no-animation .select-dropdown, .rat-select.theme-default.no-animation.active .select-dropdown {
     transition: none;
 }
-.rat-select.theme-default.open-top .select-dropdown {
-    top: auto;
-    bottom: 100%;
-    margin: 0;
+.rat-select.theme-default .select-dropdown.cloned, .rat-select.theme-default .select-dropdown.cloned .dropdown-inner {
+    max-height: none !important;
+    transition: none !important;
 }
 .rat-select.theme-default.active .select-dropdown {
     z-index: 25;
     border-color: rgba(60, 130, 230, 0.75);
     box-shadow: 0 1px 1px 0 rgba(60, 130, 230, 0.3);
     transition: max-height 142ms linear, border-color 142ms linear, z-index 0ms linear 0ms;
+}
+.rat-select.theme-default.open-top .select-dropdown {
+    top: auto;
+    bottom: 100%;
+    margin: 0 0 -1px 0;
+    border-top-width: 1px;
+    border-bottom-width: 0;
+    border-radius: 3px 3px 0 0;
+}
+.rat-select.theme-default.active.open-top .select-dropdown {
+    box-shadow: 0 -1px 1px 0 rgba(60, 130, 230, 0.3);
 }
 
 .rat-select.theme-default.hide-selected .select-dropdown li.dropdown-option.selected, .rat-select.theme-default.hide-disabled .select-dropdown li.dropdown-option.disabled, .rat-select.theme-default.hide-hidden .select-dropdown li.dropdown-option.hidden {

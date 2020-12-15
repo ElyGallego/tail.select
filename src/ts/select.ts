@@ -78,7 +78,7 @@ export class Select implements RatSelect_Select {
         this.config = config;
         this.options = new (options || Options)(this);
         this.locale = new Strings(config.locale || "en");
-        this.plugins = new Plugins(Object.assign({ }, config.plugins || { }));
+        this.plugins = new Plugins(Object.assign({ }, config.plugins || { }), this);
         this.events = ((events: object) => {
             for(let event in events) {
                 events[event] = [events[event]];
@@ -133,17 +133,9 @@ export class Select implements RatSelect_Select {
             this.options.parse(typeof items === "function"? items.call(this, this.options): items);
         }
         
-        // Handle Build Step
-        if(this.trigger("hook", "build:before") === true) {
-            this.build();
-            this.trigger("hook", "build:after");
-        }
-
-        // Handle Bind Step
-        if(this.trigger("hook", "bind:before") === true) {
-            this.bind();
-            this.trigger("hook", "bind:after");
-        }
+        // Handle Logic
+        this.build();
+        this.bind();
 
         // Handle Visibility
         if(this.get("sourceHide", true)) {
@@ -173,6 +165,9 @@ export class Select implements RatSelect_Select {
      |  CORE :: BUILD SELECT FIELD
      */
     build(): RatSelect_Select {
+        if(this.trigger("hook", "build:before") === false) {
+            return this;
+        }
         let cls = this.get("classNames") === true? this.source.className: this.get("classNames", "");
 
         // Create :: Select
@@ -218,6 +213,9 @@ export class Select implements RatSelect_Select {
         this.select.appendChild(this.label);
         this.select.appendChild(this.dropdown);
         this.get("csvOutput")? this.select.appendChild(this.csv): null;
+
+        // Hook & Return
+        this.trigger("hook", "build:after");
         return this;
     }
 
@@ -228,6 +226,7 @@ export class Select implements RatSelect_Select {
         let clone = this.dropdown as HTMLDivElement;
 
         // Calculate Height
+        let offset = 0;
         let height = ((height) => {
             let temp = clone.cloneNode(true) as HTMLDivElement;
             temp.classList.add("cloned");
@@ -246,46 +245,48 @@ export class Select implements RatSelect_Select {
                     }
                 }
                 temp.style.maxHeight = count + "px";
+                height = count;
             } else {
                 temp.style.maxHeight = height + (isNaN(height)? "": "px");
+                height = temp.offsetHeight > height? height: temp.offsetHeight;
             }
-
-            height = temp.offsetHeight > height? height: temp.offsetHeight;
-            return this.select.removeChild(temp)? height: height;
+            offset = (temp.querySelector(".dropdown-inner") as HTMLDivElement).offsetTop;
+            return this.select.removeChild(temp)? height + offset: height + offset;
         })((!this.get("height", 350))? "auto": this.get("height", 350));
 
-        //@TODO Calculate openAbove
+        // Calculate Position
+        let rect: any = this.select.getBoundingClientRect();
+        let free: any = { top: rect.top, bottom: window.innerHeight - (rect.top + rect.height) };
+        let side: boolean = this.get("openAbove", null) || !(free.bottom >= height || free.bottom >= free.top);
+        height = Math.min(height, (side? free.top: free.bottom) - 15);
+        this.select.classList[side? "add": "remove"]("open-top");
 
         // Set Height
         clone.style.maxHeight = height + "px";
-        (clone.querySelector(".dropdown-inner") as HTMLDivElement).style.maxHeight = height + "px";
+        (clone.querySelector(".dropdown-inner") as HTMLDivElement).style.maxHeight = height - offset + "px";
         return this;
     }
 
     /*
      |  CORE :: BIND SELECT FIELD
      */
-    bind(unbind?: boolean): RatSelect_Select {
+    bind(): RatSelect_Select {
         if(!this.handler) {
             this.handler = this.handle.bind(this);
         }
-
-        // Attach Events
-        if(!unbind) {
-            document.addEventListener("keydown", this.handler);
-            document.addEventListener("click", this.handler);
-            if(this.get("sourceBind")) {
-                this.source.addEventListener("change", this.handler);
-            }
+        if(this.trigger("hook", "bind:before") === false) {
             return this;
         }
 
-        // Remove Events
-        document.removeEventListener("keydown", this.handler);
-        document.removeEventListener("click", this.handler);
+        // Bind Events
+        document.addEventListener("keydown", this.handler);
+        document.addEventListener("click", this.handler);
         if(this.get("sourceBind")) {
-            this.source.removeEventListener("change", this.handler);
+            this.source.addEventListener("change", this.handler);
         }
+
+        // Hook & Return
+        this.trigger("hook", "bind:after");
         return this;
     }
 
@@ -293,6 +294,9 @@ export class Select implements RatSelect_Select {
      |  CORE :: HANDLE EVENTs
      */
     handle(this: RatSelect_Select, event: Event) {
+        if(this.trigger("hook", "handle:before", [event]) === false) {
+            return this;
+        }
         if(!(event instanceof Event) || this.get("disabled")) {
             return this;
         }
@@ -325,7 +329,7 @@ export class Select implements RatSelect_Select {
                     return;
                 case 27:        // [ESC] Close
                     return this.close();
-                case 38:        // [↑] Move Uo
+                case 38:        // [↑] Move Up
                 case 40:        // [↓] Move Down
                     let items = this.dropdown.querySelectorAll(sel) as NodeListOf<HTMLDivElement>;
                     let item = null;
@@ -388,8 +392,17 @@ export class Select implements RatSelect_Select {
 
         // Event :: Change
         if(event.type === "change" && !(event instanceof CustomEvent)) {
-            // @todo find a perfomant solution
+            [].map.call(this.select.querySelectorAll(".dropdown-option.active"), (item) => {
+                item.classList.remove("active");
+            });
+            let changes = [];
+            [].map.call(this.source.querySelectorAll("option:checked"), (item) => changes.push([item, { selected: true }]));
+            return this.update(changes, false);
         }
+
+        // Hook & Return
+        this.trigger("hook", "handle:after", [event]);
+        return this;
     }
 
     /*
@@ -427,7 +440,7 @@ export class Select implements RatSelect_Select {
     /*
      |  API :: QUERY DROPDOWN
      */
-    query(query?: null | Function): RatSelect_Select {
+    query(query?: null | Function, args?: Array<any>): RatSelect_Select {
         if(this.trigger("hook", "query:before") === false) {
             return this;
         }
@@ -440,7 +453,7 @@ export class Select implements RatSelect_Select {
         let el = null;
         let skip = void 0;
         let head = [];
-        let items = query.call(this);
+        let items = query.apply(this, args || []);
         for(let item of items) {
             let group = item.parentElement instanceof HTMLOptGroupElement? item.parentElement.label: null;
             [item, group] = this.trigger("filter", "walk", [item, group]) as Array<any>;
@@ -551,21 +564,23 @@ export class Select implements RatSelect_Select {
     /*
      |  API :: UPDATE INSTANCE
      */
-    update(changes: Array<HTMLOptionElement | RatSelect_OptionStates>): RatSelect_Select {
+    update(changes: Array<HTMLOptionElement | RatSelect_OptionStates>, skipEvents?: boolean): RatSelect_Select {
         if(changes.length === 0) {
             return this;
         }
 
         // Hook
-        if(this.trigger("hook", "update:before", [changes]) !== true) {
+        if(this.trigger("hook", "update:before", [changes, skipEvents]) !== true) {
             return this;
         }
         
         // Events
-        this.trigger("event", "change", [changes]);
-        if(this.source.multiple && this.get("multiLimit") > 0) {
-            if(this.options.count(null, ["selected"]) >= this.get("multiLimit")) {
-                this.trigger("event", "limit", [changes]);
+        if(typeof skipEvents === "boolean" && skipEvents) {
+            this.trigger("event", "change", [changes]);
+            if(this.source.multiple && this.get("multiLimit") > 0) {
+                if(this.options.count(null, ["selected"]) >= this.get("multiLimit")) {
+                    this.trigger("event", "limit", [changes]);
+                }
             }
         }
 
@@ -583,7 +598,7 @@ export class Select implements RatSelect_Select {
         });
 
         // Hook & Update
-        this.trigger("hook", "update:after", [changes]);
+        this.trigger("hook", "update:after", [changes, skipEvents]);
         return this.updateCSV().updateLabel();
     }
 
@@ -746,6 +761,11 @@ export class Select implements RatSelect_Select {
      |  PUBLIC :: GET CONFIG
      */
     get(key: string, def?: any): any {
+        if(key.indexOf(".") > 0) {
+            let [name, config] = key.split(".");
+            let plugin = this.config.plugins[name];
+            return (plugin && plugin[config])? plugin[config]: def;
+        }
         return (key in this.config)? this.config[key]: def;
     }
 
@@ -753,6 +773,14 @@ export class Select implements RatSelect_Select {
      |  PUBLIC :: SET CONFIG
      */
     set(key: string, value: any, reload?: boolean): RatSelect_Select {
+        if(key.indexOf(".") > 0) {
+            let [name, config] = key.split(".");
+            let plugin = this.config.plugins[name];
+            if(plugin) {
+                plugin[config] = value;
+            }
+            return (reload)? this.reload(): this;
+        }
         if(['multiple', 'disabled', 'required'].indexOf(key) >= 0) {
             if(key === 'disabled') {
                 return this[value? 'enable': 'disable'](reload);
@@ -795,8 +823,11 @@ export class Select implements RatSelect_Select {
     /*
      |  PUBLIC :: SET OR REMOVE STATE
      */
-    state(state: string, status: boolean): RatSelect_Select {
-        status = status === void 0? !this.select.classList.contains(`state-${state}`): status;
+    state(state: string, status?: null | boolean): boolean | RatSelect_Select {
+        if(typeof state === "undefined"){
+            return this.select.classList.contains(`state-${state}`);
+        }
+        status = status === null? !this.select.classList.contains(`state-${state}`): status;
         this.select.classList[status? "add": "remove"](`state-${state}`);
         return this;
     }

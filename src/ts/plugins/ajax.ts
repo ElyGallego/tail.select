@@ -1,4 +1,8 @@
 
 import RatSelect from "rat.select";
 
-RatSelect.Plugins.add("ajax", { }, { });
+RatSelect.Plugins.add("ajax", {
+    callback: null
+}, {
+    
+});

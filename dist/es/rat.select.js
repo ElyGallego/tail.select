@@ -47,8 +47,19 @@ Strings.en = {
 };
 
 class Plugins {
-    constructor(plugins) {
-        this.plugins = plugins;
+    constructor(plugins, select) {
+        this.plugins = {};
+        for (let key in plugins) {
+            let plugin = Plugins.plugins[key];
+            if (plugin) {
+                let config = Object.assign({}, plugin.config, plugins[key]);
+                this.plugins[key] = {
+                    config: config,
+                    hooks: Object.assign({}, plugin.hooks)
+                };
+                select.config.plugins[key] = config;
+            }
+        }
     }
     static add(name, config, hooks) {
         if (name in this.plugins) {
@@ -254,7 +265,7 @@ class Select {
         this.config = config;
         this.options = new (options || Options)(this);
         this.locale = new Strings(config.locale || "en");
-        this.plugins = new Plugins(Object.assign({}, config.plugins || {}));
+        this.plugins = new Plugins(Object.assign({}, config.plugins || {}), this);
         this.events = ((events) => {
             for (let event in events) {
                 events[event] = [events[event]];
@@ -292,14 +303,8 @@ class Select {
             let items = this.config.items;
             this.options.parse(typeof items === "function" ? items.call(this, this.options) : items);
         }
-        if (this.trigger("hook", "build:before") === true) {
-            this.build();
-            this.trigger("hook", "build:after");
-        }
-        if (this.trigger("hook", "bind:before") === true) {
-            this.bind();
-            this.trigger("hook", "bind:after");
-        }
+        this.build();
+        this.bind();
         if (this.get("sourceHide", true)) {
             this.source.style.display = "none";
         }
@@ -321,6 +326,9 @@ class Select {
         return this;
     }
     build() {
+        if (this.trigger("hook", "build:before") === false) {
+            return this;
+        }
         let cls = this.get("classNames") === true ? this.source.className : this.get("classNames", "");
         this.select = document.createElement("DIV");
         this.select.className = ((cls) => {
@@ -355,10 +363,12 @@ class Select {
         this.select.appendChild(this.label);
         this.select.appendChild(this.dropdown);
         this.get("csvOutput") ? this.select.appendChild(this.csv) : null;
+        this.trigger("hook", "build:after");
         return this;
     }
     calculate() {
         let clone = this.dropdown;
+        let offset = 0;
         let height = ((height) => {
             let temp = clone.cloneNode(true);
             temp.classList.add("cloned");
@@ -376,37 +386,43 @@ class Select {
                     }
                 }
                 temp.style.maxHeight = count + "px";
+                height = count;
             }
             else {
                 temp.style.maxHeight = height + (isNaN(height) ? "" : "px");
+                height = temp.offsetHeight > height ? height : temp.offsetHeight;
             }
-            height = temp.offsetHeight > height ? height : temp.offsetHeight;
-            return this.select.removeChild(temp) ? height : height;
+            offset = temp.querySelector(".dropdown-inner").offsetTop;
+            return this.select.removeChild(temp) ? height + offset : height + offset;
         })((!this.get("height", 350)) ? "auto" : this.get("height", 350));
+        let rect = this.select.getBoundingClientRect();
+        let free = { top: rect.top, bottom: window.innerHeight - (rect.top + rect.height) };
+        let side = this.get("openAbove", null) || !(free.bottom >= height || free.bottom >= free.top);
+        height = Math.min(height, (side ? free.top : free.bottom) - 15);
+        this.select.classList[side ? "add" : "remove"]("open-top");
         clone.style.maxHeight = height + "px";
-        clone.querySelector(".dropdown-inner").style.maxHeight = height + "px";
+        clone.querySelector(".dropdown-inner").style.maxHeight = height - offset + "px";
         return this;
     }
-    bind(unbind) {
+    bind() {
         if (!this.handler) {
             this.handler = this.handle.bind(this);
         }
-        if (!unbind) {
-            document.addEventListener("keydown", this.handler);
-            document.addEventListener("click", this.handler);
-            if (this.get("sourceBind")) {
-                this.source.addEventListener("change", this.handler);
-            }
+        if (this.trigger("hook", "bind:before") === false) {
             return this;
         }
-        document.removeEventListener("keydown", this.handler);
-        document.removeEventListener("click", this.handler);
+        document.addEventListener("keydown", this.handler);
+        document.addEventListener("click", this.handler);
         if (this.get("sourceBind")) {
-            this.source.removeEventListener("change", this.handler);
+            this.source.addEventListener("change", this.handler);
         }
+        this.trigger("hook", "bind:after");
         return this;
     }
     handle(event) {
+        if (this.trigger("hook", "handle:before", [event]) === false) {
+            return this;
+        }
         if (!(event instanceof Event) || this.get("disabled")) {
             return this;
         }
@@ -484,7 +500,16 @@ class Select {
                 }
             }
         }
-        if (event.type === "change" && !(event instanceof CustomEvent)) ;
+        if (event.type === "change" && !(event instanceof CustomEvent)) {
+            [].map.call(this.select.querySelectorAll(".dropdown-option.active"), (item) => {
+                item.classList.remove("active");
+            });
+            let changes = [];
+            [].map.call(this.source.querySelectorAll("option:checked"), (item) => changes.push([item, { selected: true }]));
+            return this.update(changes, false);
+        }
+        this.trigger("hook", "handle:after", [event]);
+        return this;
     }
     trigger(type, name, args) {
         if (type === "event") {
@@ -510,7 +535,7 @@ class Select {
         });
         return (type === "hook") ? _arg : ((type === "filter") ? args : cancelled);
     }
-    query(query) {
+    query(query, args) {
         if (this.trigger("hook", "query:before") === false) {
             return this;
         }
@@ -519,7 +544,7 @@ class Select {
         let el = null;
         let skip = void 0;
         let head = [];
-        let items = query.call(this);
+        let items = query.apply(this, args || []);
         for (let item of items) {
             let group = item.parentElement instanceof HTMLOptGroupElement ? item.parentElement.label : null;
             [item, group] = this.trigger("filter", "walk", [item, group]);
@@ -606,17 +631,19 @@ class Select {
         }
         return this.trigger("filter", `render#${tag}`, [output, element, tag])[0];
     }
-    update(changes) {
+    update(changes, skipEvents) {
         if (changes.length === 0) {
             return this;
         }
-        if (this.trigger("hook", "update:before", [changes]) !== true) {
+        if (this.trigger("hook", "update:before", [changes, skipEvents]) !== true) {
             return this;
         }
-        this.trigger("event", "change", [changes]);
-        if (this.source.multiple && this.get("multiLimit") > 0) {
-            if (this.options.count(null, ["selected"]) >= this.get("multiLimit")) {
-                this.trigger("event", "limit", [changes]);
+        if (typeof skipEvents === "boolean" && skipEvents) {
+            this.trigger("event", "change", [changes]);
+            if (this.source.multiple && this.get("multiLimit") > 0) {
+                if (this.options.count(null, ["selected"]) >= this.get("multiLimit")) {
+                    this.trigger("event", "limit", [changes]);
+                }
             }
         }
         [].map.call(changes, (dataset) => {
@@ -630,7 +657,7 @@ class Select {
                 }
             }
         });
-        this.trigger("hook", "update:after", [changes]);
+        this.trigger("hook", "update:after", [changes, skipEvents]);
         return this.updateCSV().updateLabel();
     }
     updateCSV() {
@@ -752,9 +779,22 @@ class Select {
         }
     }
     get(key, def) {
+        if (key.indexOf(".") > 0) {
+            let [name, config] = key.split(".");
+            let plugin = this.config.plugins[name];
+            return (plugin && plugin[config]) ? plugin[config] : def;
+        }
         return (key in this.config) ? this.config[key] : def;
     }
     set(key, value, reload) {
+        if (key.indexOf(".") > 0) {
+            let [name, config] = key.split(".");
+            let plugin = this.config.plugins[name];
+            if (plugin) {
+                plugin[config] = value;
+            }
+            return (reload) ? this.reload() : this;
+        }
         if (['multiple', 'disabled', 'required'].indexOf(key) >= 0) {
             if (key === 'disabled') {
                 return this[value ? 'enable' : 'disable'](reload);
@@ -783,7 +823,10 @@ class Select {
         return this;
     }
     state(state, status) {
-        status = status === void 0 ? !this.select.classList.contains(`state-${state}`) : status;
+        if (typeof state === "undefined") {
+            return this.select.classList.contains(`state-${state}`);
+        }
+        status = status === null ? !this.select.classList.contains(`state-${state}`) : status;
         this.select.classList[status ? "add" : "remove"](`state-${state}`);
         return this;
     }

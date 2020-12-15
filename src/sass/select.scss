@@ -1,3 +1,4 @@
+@use "sass:list";
 
 // GENERAL :: THEME NAME
 // ––––––––––––––––––––––––––––––
@@ -14,6 +15,7 @@ $theme-name: "default";
 @import "_Core/Keyframes";
 
 @import "select/Variables";
+@import "select/PluginSearch";
 
 
 // STYLINGS :: GENERAL
@@ -114,7 +116,7 @@ $theme-name: "default";
     position: relative;
     text-align: left;
     border: 1px solid map-get($border-line-normal, light);
-    border-radius: 3px;
+    border-radius: $border-radius;
     background-color: $color-light;
     box-shadow: map-get($shadow-line-normal, light);
     transition: color 142ms linear, background-color 142ms linear, border-color 142ms linear, box-shadow 142ms linear, z-index 0ms linear 142ms;
@@ -160,8 +162,6 @@ $theme-name: "default";
         }
     }
     &.active .select-label {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
         border-color: map-get($border-line-active, light);
         box-shadow: map-get($shadow-line-active, light);
 
@@ -169,6 +169,16 @@ $theme-name: "default";
             color: $color-primary;
             opacity: 1;
             transform: rotate(180deg);
+        }
+    }
+    &.active {
+        &.open-top .select-label {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        &:not(.open-top) .select-label {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
         }
     }
     &.disabled .select-label {
@@ -356,23 +366,34 @@ $theme-name: "default";
     }
 }
 .rat-select.theme-#{$theme-name} {
-    &.cloned,
     &.no-animation {
         .select-dropdown,
         &.active .select-dropdown {
             transition: none;
         }
     }
-    &.open-top .select-dropdown {
-        top: auto;
-        bottom: 100%;
-        margin: 0;
+    .select-dropdown.cloned {
+        &, .dropdown-inner {
+            max-height: none !important;
+            transition: none !important;
+        }
     }
     &.active .select-dropdown {
         z-index: 25;
         border-color: map-get($border-line-active, light);
         box-shadow: map-get($shadow-line-active, light);
         transition: max-height 142ms linear, border-color 142ms linear, z-index 0ms linear 0ms;
+    }
+    &.open-top .select-dropdown {
+        top: auto;
+        bottom: 100%;
+        margin: 0 0 -1px 0;
+        border-top-width: 1px;
+        border-bottom-width: 0;
+        border-radius: $border-radius $border-radius 0 0;
+    }
+    &.active.open-top .select-dropdown {
+        box-shadow: list.set-nth(map-get($shadow-line-active, light), 2, -1px);
     }
 }
 

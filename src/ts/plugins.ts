@@ -20,13 +20,24 @@ export class Plugins implements RatSelect_Plugins {
     /*
      |  CORE :: ENABLED PLUGINS
      */
-    plugins: Object;
+    plugins: RatSelect_PluginsStorage;
 
     /*
      |  CORE :: CONSTRUCTOR
      */
-    constructor(plugins: Object) {
-        this.plugins = plugins;
+    constructor(plugins: Object, select: RatSelect_Select) {
+        this.plugins = { };
+        for(let key in plugins) {
+            let plugin = Plugins.plugins[key];
+            if(plugin) {
+                let config = Object.assign({ }, plugin.config, plugins[key]);
+                this.plugins[key] = { 
+                    config: config,
+                    hooks: Object.assign({ }, plugin.hooks) 
+                };
+                select.config.plugins[key] = config;
+            }
+        }
     }
 
     /*
