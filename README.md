@@ -17,7 +17,7 @@ Features
 --------
 
 - **It's Beautiful**. 12 unique themes with many colour schemes.
-    - Perfectly fits Bluma, Bootstrap (2, 3, 4), Materialize, Foundation, ...
+    - Perfectly fits Bluma, Bootstrap (2, 3, 4), Foundation, Materialize, ...
     - Adapts the design of Chosen, Selectize, Select2, ...
 - **It's Extensive**. You don't need any other solution.
     - Asynchronous and Searchable, capable for thousands of options.
@@ -64,6 +64,20 @@ But of course, you can also directly jump in using the awesome CDN services from
 ```
 
 
+Package Overview
+----------------
+
+The **rat.select** library is available in the following, official, packages.
+
+| Package      | Dependencies                  | Visit Branch |
+| ------------ | ----------------------------- |:------------:|
+| Vanilla UMD  | -                             | [Master]()   |
+| Vanilla ES6  | Modern Browser                | [Master]()   |
+| WebComponent | Modern Browser                | [WebC]()     |
+| Svelte       | [Svelte](https://svelte.dev)  | [Svelte]()   |
+| Vue.js       | [Vue.js](https://vuejs.org)   | [VueJS]()    |
+
+
 Thanks To
 ---------
 
@@ -81,7 +95,7 @@ includes dozens of examples, tutorials, snippets and answers. The [GitHub Docs](
 with the latest information, and the package contains a small docs bundle as well.
 
 However, below you will find a quick cheatsheet with all available core as well as included plugin 
-options and their default value:
+options and their default values:
 
 ```javascript
 /*
@@ -143,7 +157,7 @@ rat.select('select', {
     stayOpen: null,             //   null | boolean
     stickyGroups: true,         //   boolean
     theme: null,                //   null | string
-    titleOverflow: 'break',     //   [EXPERIMENTAL ]'break' | 'clip' | 'scroll'
+    titleOverflow: 'break',     //   [EXPERIMENTAL] 'break' | 'clip' | 'scroll'
     ungroupedLabel: null,       //   null | string
     width: 250                  //   null | number | string
 }, rat.select.Options);
