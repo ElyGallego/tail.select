@@ -1,11 +1,10 @@
 
-declare interface RatSelect_PluginsStorage {
-    [key: string]: RatSelect_PluginsStorageItem
+declare interface RatSelect_PluginsStorageStatic {
+    [key: string]: RatSelect_PluginConstructor
 }
 
-declare interface RatSelect_PluginsStorageItem {
-    config: Object,
-    hooks: Object
+declare interface RatSelect_PluginsStorage {
+    [key: string]: RatSelect_Plugin
 }
 
 declare interface RatSelect_PluginsConstructor {
@@ -42,12 +41,26 @@ declare interface RatSelect_Plugins {
     plugins: Object;
 
     /*
-     |  CORE :: RETURN HOOKs
+     |  CORE :: RETURN METHODs
      |  @since  1.0.0
      |
-     |  @param  string  The hook name.
+     |  @param  string  The method name.
      |
-     |  @return array   All function callbacks, attached to the passed hook.
+     |  @return array   The existing method callbacks from all available plugins.
      */
-    hook(hook: string): Function[];
+    methods(method: string): Function[];
+}
+
+declare interface RatSelect_PluginConstructor {
+    /*
+     |  CONSTRUCTOR
+     |  @since  1.0.0
+     |
+     |  @param  string  The desired locale to use.
+     */
+    new(select: RatSelect_Select): RatSelect_Plugin
+}
+
+declare interface RatSelect_Plugin {
+    [key: string]: any;
 }

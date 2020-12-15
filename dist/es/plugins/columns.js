@@ -1,3 +1,3 @@
 /*! pytesNET/rat.select | @version 1.0.0 | @license MIT | @copyright pytesNET <info@pytes.net> */
-import l from"rat.select";l.Plugins.add("columns",{},{});
+import s from"rat.select";s.Plugins.add("columns",class{constructor(s){this.select=s}});
 /*! Visit this project on https://rat.md/select */

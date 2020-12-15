@@ -12,9 +12,14 @@
         <script type="text/javascript" src="../dist/js/rat.select.js"></script>
         <script type="text/javascript" src="../dist/js/langs/de.js"></script>
         <script type="text/javascript" src="../dist/js/plugins/search.js"></script>
+        <script type="text/javascript" src="../dist/js/plugins/input.js"></script>
         <script type="text/javascript">
             document.addEventListener("DOMContentLoaded", function() {
-                const select = rat.select("select", {
+                const select1 = rat.select("select:not([multiple])", {
+
+                });
+                
+                const select2 = rat.select("select[multiple]", {
                     height: ":5",
                     deselect: true,
                     placeholderCount: true,
@@ -25,7 +30,8 @@
                         search: {
                             async: true,
                             focus: true
-                        }
+                        },
+                        input: { }
                     },
                     on: {
                         open: () => {

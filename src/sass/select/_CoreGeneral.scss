@@ -1,0 +1,86 @@
+
+// STYLINGS :: GENERAL
+// ––––––––––––––––––––––––––––––
+
+.rat-select-theme-name:after {
+    content: "#{$theme-name}-light"; // <theme-name>-<default-scheme>
+}
+.rat-select.theme-#{$theme-name} {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    font-size: $font-size;
+    line-height: $font-height;
+    font-family: $font-family;
+    outline: none;
+    box-sizing: border-box;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+
+    *, *:before, *:after {
+        box-sizing: border-box;
+    }
+    div, ol, li {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: block;
+    }
+    mark {
+        background-color: $color-secondary;
+    }
+    input {
+        font-size: $font-size;
+        line-height: $font-height;
+        font-family: $font-family;
+    }
+    button {
+        cursor: pointer;
+        height: auto;
+        outline: 0;
+        display: inline-block;
+        text-shadow: none;
+        font-weight: normal;
+        line-height: 1;
+        letter-spacing: 0;
+        text-transform: none;
+        vertical-align: top;
+
+        &[data-action="select"],
+        &[data-action="unselect"] {
+            color: darken($color-light, 50%);
+            margin: 0;
+            padding: 4px 7px;
+            font-size: 10px;
+            border: 0;
+            text-transform: uppercase;
+            border-radius: $border-radius - 1;
+            box-shadow: none;
+            background-color: darken($color-light, 10%);
+            transition: color 142ms linear, opacity 142ms linear, background-color 142ms linear;
+        }
+        &[data-action="select"]:hover {
+            color: $color-light;
+            background-color: $color-primary;
+        }
+        &[data-action="unselect"]:hover {
+            color: $color-light;
+            background-color: $color-secondary;
+        }
+    }
+    &.disabled button,
+    button:disabled {
+        &[data-action="select"],
+        &[data-action="unselect"] {
+            color: darken($color-light, 25%);
+            background-color: transparent;
+        }
+    }
+    &.rtl {
+        direction: rtl;
+    }
+}

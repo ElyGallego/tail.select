@@ -90,6 +90,16 @@ export default [
                     expanded: 'dist/css/rat.[name].css',
                     compressed: 'dist/css/rat.[name].min.css'
                 },
+                watch: [
+                    "src/sass/_core",
+                    "src/sass/bootstrap2",
+                    "src/sass/bootstrap3",
+                    "src/sass/bootstrap4",
+                    "src/sass/chosen",
+                    "src/sass/harx",
+                    "src/sass/select",
+                    "src/sass/selectize"
+                ]
             }),
             consts({
                 version: pkg.version,

@@ -31,7 +31,9 @@ export default function ratExports(options = { }) {
         options: function(conf) {
             let files = [ ];
             for(let input in conf.input) {
-                files = files.concat(glob.sync(conf.input[input]));
+                files = files.concat(glob.sync(conf.input[input])).filter((item) => {
+                    return item.indexOf(".example.") < 0;
+                });
             }
 
             // Create Filter and Adapt Input

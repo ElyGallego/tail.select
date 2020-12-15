@@ -1,3 +1,3 @@
 /*! pytesNET/rat.select | @version 1.0.0 | @license MIT | @copyright pytesNET <info@pytes.net> */
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(require("rat.select")):"function"==typeof define&&define.amd?define(["rat.select"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).rat.select)}(this,(function(e){"use strict";e.Plugins.add("ajax",{callback:null},{})}));
+!function(e,i){"object"==typeof exports&&"undefined"!=typeof module?i(require("rat.select")):"function"==typeof define&&define.amd?define(["rat.select"],i):i((e="undefined"!=typeof globalThis?globalThis:e||self).rat.select)}(this,(function(e){"use strict";var i=function(e){this.select=e};e.Strings.en.error="Oops, an error is occured",e.Strings.en.loading="Loading, please wait.",e.Strings.en.waiting="Waiting for your input.",e.Plugins.add("ajax",i)}));
 /*! Visit this project on https://rat.md/select */

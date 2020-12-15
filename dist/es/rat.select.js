@@ -50,29 +50,23 @@ class Plugins {
     constructor(plugins, select) {
         this.plugins = {};
         for (let key in plugins) {
-            let plugin = Plugins.plugins[key];
-            if (plugin) {
-                let config = Object.assign({}, plugin.config, plugins[key]);
-                this.plugins[key] = {
-                    config: config,
-                    hooks: Object.assign({}, plugin.hooks)
-                };
-                select.config.plugins[key] = config;
+            if (Plugins.plugins[key]) {
+                this.plugins[key] = new Plugins.plugins[key](select);
             }
         }
     }
-    static add(name, config, hooks) {
+    static add(name, pluginClass) {
         if (name in this.plugins) {
             return false;
         }
-        this.plugins[name] = { config: config, hooks: hooks };
+        this.plugins[name] = pluginClass;
         return true;
     }
-    hook(hook) {
+    methods(method) {
         let cbs = [];
         for (let name in this.plugins) {
-            if (hook in this.plugins[name].hooks) {
-                cbs.push(this.plugins[name].hooks[hook]);
+            if (method in this.plugins[name]) {
+                cbs.push(this.plugins[name][method]);
             }
         }
         return cbs;
@@ -349,6 +343,7 @@ class Select {
         }
         this.label = document.createElement("LABEL");
         this.label.className = "select-label";
+        this.label.innerHTML = `<div class="label-placeholder"></div>`;
         this.dropdown = document.createElement("DIV");
         this.dropdown.className = `select-dropdown overflow-${this.get("titleOverflow", "clip")}`;
         this.dropdown.innerHTML = `<div class="dropdown-inner"></div>`;
@@ -524,7 +519,7 @@ class Select {
             }
         }
         let _arg = true;
-        let callbacks = this.plugins.hook(name).concat(this.events[name] || []);
+        let callbacks = this.plugins.methods(name).concat(this.events[name] || []);
         callbacks.map((cb) => {
             if (type === "filter") {
                 args = cb.apply(this, args);
@@ -598,13 +593,13 @@ class Select {
     }
     render(element) {
         var _a;
-        let tag = element.tagName.toUpperCase();
-        let output = document.createElement(tag === "OPTION" ? "LI" : "OL");
+        let tag = element.tagName.toLowerCase();
+        let output = document.createElement(tag === "option" ? "LI" : "OL");
         let classes = (item) => {
             let selected = (this.get("multiple") && item.hasAttribute("selected")) || item.selected;
             return ((selected ? " selected" : "") + (item.disabled ? " disabled" : "") + (item.hidden ? " hidden" : "")).trim();
         };
-        if (tag === "OPTION") {
+        if (tag === "option") {
             output.className = "dropdown-option " + classes(element);
             output.innerHTML = `<span class="option-title">${element.innerHTML}</span>`;
             output.dataset.group = ((_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.label) || this.options.ungrouped;
@@ -661,8 +656,9 @@ class Select {
         return this.updateCSV().updateLabel();
     }
     updateCSV() {
-        if (this.get("csvOutput")) {
-            this.csv.value = this.trigger("filter", "update#csv", [this.value("csv")])[0];
+        let csvValue = this.trigger("filter", "update#csv", [this.value("csv")])[0];
+        if (this.get("csvOutput") && csvValue) {
+            this.csv.value = csvValue;
         }
         return this;
     }
@@ -710,8 +706,11 @@ class Select {
                 counter = counter.call(this);
             }
         }
-        this.label.innerHTML = `${counter ? `<span class="label-count">${counter}</span>` : ``}`
-            + `<span class="label-placeholder">${this.locale._(label, [value.length])}</span>`;
+        let [pl, cl] = this.trigger("filter", "update#placeholder", [this.locale._(label, [value.length]), counter]);
+        let placeholder = this.label.querySelector(".label-placeholder");
+        if (pl && placeholder) {
+            placeholder.innerHTML = `${cl ? `<span class="label-count">${cl}</span>` : ``}${pl}`;
+        }
         return this;
     }
     open() {
@@ -823,7 +822,7 @@ class Select {
         return this;
     }
     state(state, status) {
-        if (typeof state === "undefined") {
+        if (typeof status === "undefined") {
             return this.select.classList.contains(`state-${state}`);
         }
         status = status === null ? !this.select.classList.contains(`state-${state}`) : status;

@@ -193,6 +193,7 @@ export class Select implements RatSelect_Select {
         // Create :: Label
         this.label = document.createElement("LABEL") as HTMLLabelElement;
         this.label.className = "select-label";
+        this.label.innerHTML = `<div class="label-placeholder"></div>`;
 
         // Create :: Dropdown
         this.dropdown = document.createElement("DIV") as HTMLDivElement;
@@ -424,7 +425,7 @@ export class Select implements RatSelect_Select {
 
         // Handle Hooks & Filters
         let _arg = true;
-        let callbacks = this.plugins.hook(name).concat(this.events[name] || []);
+        let callbacks = this.plugins.methods(name).concat(this.events[name] || []);
         callbacks.map((cb) => {
             if(type === "filter") {
                 args = cb.apply(this, args);
@@ -523,15 +524,15 @@ export class Select implements RatSelect_Select {
      |  API :: RENDER DROPDOWN
      */
     render(element: HTMLOptionElement | HTMLOptGroupElement): null | false | HTMLElement {
-        let tag = element.tagName.toUpperCase();
-        let output = document.createElement(tag === "OPTION"? "LI": "OL");
+        let tag = element.tagName.toLowerCase();
+        let output = document.createElement(tag === "option"? "LI": "OL");
         let classes = (item) => {
             let selected = (this.get("multiple") && item.hasAttribute("selected")) || item.selected;
             return ((selected? " selected": "") + (item.disabled? " disabled": "") + (item.hidden? " hidden": "")).trim();
         };
 
         // Render Item
-        if(tag === "OPTION") {
+        if(tag === "option") {
             output.className = "dropdown-option " + classes(element);
             output.innerHTML = `<span class="option-title">${element.innerHTML}</span>`;
             output.dataset.group = (element.parentElement as HTMLOptGroupElement)?.label || this.options.ungrouped;
@@ -606,8 +607,9 @@ export class Select implements RatSelect_Select {
      |  API :: UPDATE CSV
      */
     updateCSV(): RatSelect_Select {
-        if(this.get("csvOutput")){
-            this.csv.value = this.trigger("filter", "update#csv", [this.value("csv")])[0];
+        let csvValue = this.trigger("filter", "update#csv", [this.value("csv")])[0];
+        if(this.get("csvOutput") && csvValue){
+            this.csv.value = csvValue;
         }
         return this;
     }
@@ -655,8 +657,11 @@ export class Select implements RatSelect_Select {
         }
 
         // Set Placeholder Count
-        this.label.innerHTML = `${counter? `<span class="label-count">${counter}</span>`: ``}`
-                             + `<span class="label-placeholder">${this.locale._(label, [value.length])}</span>`;
+        let [pl, cl] = this.trigger("filter", "update#placeholder", [this.locale._(label, [value.length]), counter]) as Array<any>;
+        let placeholder = this.label.querySelector(".label-placeholder");
+        if(pl && placeholder) {
+            placeholder.innerHTML = `${cl? `<span class="label-count">${cl}</span>`: ``}${pl}`;
+        }
         return this;
     }
 
@@ -824,7 +829,7 @@ export class Select implements RatSelect_Select {
      |  PUBLIC :: SET OR REMOVE STATE
      */
     state(state: string, status?: null | boolean): boolean | RatSelect_Select {
-        if(typeof state === "undefined"){
+        if(typeof status === "undefined"){
             return this.select.classList.contains(`state-${state}`);
         }
         status = status === null? !this.select.classList.contains(`state-${state}`): status;

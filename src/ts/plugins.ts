@@ -3,16 +3,16 @@ export class Plugins implements RatSelect_Plugins {
     /*
      |  STATIC :: PLUGIN OBJECTs
      */
-    static plugins: RatSelect_PluginsStorage = { };
+    static plugins: RatSelect_PluginsStorageStatic = { };
 
     /*
      |  STATIC :: REGSTER A PLUGIN
      */
-    static add(name: string, config: Object, hooks: Object): boolean {
+    static add(name: string, pluginClass: RatSelect_PluginConstructor): boolean {
         if(name in this.plugins) {
             return false;
         }
-        this.plugins[name] = { config: config, hooks: hooks };
+        this.plugins[name] = pluginClass;
         return true;
     }
 
@@ -28,26 +28,20 @@ export class Plugins implements RatSelect_Plugins {
     constructor(plugins: Object, select: RatSelect_Select) {
         this.plugins = { };
         for(let key in plugins) {
-            let plugin = Plugins.plugins[key];
-            if(plugin) {
-                let config = Object.assign({ }, plugin.config, plugins[key]);
-                this.plugins[key] = { 
-                    config: config,
-                    hooks: Object.assign({ }, plugin.hooks) 
-                };
-                select.config.plugins[key] = config;
+            if(Plugins.plugins[key]) {
+                this.plugins[key] = new Plugins.plugins[key](select);
             }
         }
     }
 
     /*
-     |  CORE :: RETURN HOOKs
+     |  CORE :: RETURN METHODs
      */
-    hook(hook: string): Function[] {
+    methods(method: string): Function[] {
         let cbs = [];
         for(let name in this.plugins) {
-            if(hook in this.plugins[name].hooks) {
-                cbs.push(this.plugins[name].hooks[hook]);
+            if(method in this.plugins[name]) {
+                cbs.push(this.plugins[name][method]);
             }
         }
         return cbs;

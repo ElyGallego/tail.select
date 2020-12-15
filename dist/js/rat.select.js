@@ -83,29 +83,23 @@
         function Plugins(plugins, select) {
             this.plugins = {};
             for (var key in plugins) {
-                var plugin = Plugins.plugins[key];
-                if (plugin) {
-                    var config = Object.assign({}, plugin.config, plugins[key]);
-                    this.plugins[key] = {
-                        config: config,
-                        hooks: Object.assign({}, plugin.hooks)
-                    };
-                    select.config.plugins[key] = config;
+                if (Plugins.plugins[key]) {
+                    this.plugins[key] = new Plugins.plugins[key](select);
                 }
             }
         }
-        Plugins.add = function (name, config, hooks) {
+        Plugins.add = function (name, pluginClass) {
             if (name in this.plugins) {
                 return false;
             }
-            this.plugins[name] = { config: config, hooks: hooks };
+            this.plugins[name] = pluginClass;
             return true;
         };
-        Plugins.prototype.hook = function (hook) {
+        Plugins.prototype.methods = function (method) {
             var cbs = [];
             for (var name_1 in this.plugins) {
-                if (hook in this.plugins[name_1].hooks) {
-                    cbs.push(this.plugins[name_1].hooks[hook]);
+                if (method in this.plugins[name_1]) {
+                    cbs.push(this.plugins[name_1][method]);
                 }
             }
             return cbs;
@@ -387,6 +381,7 @@
             }
             this.label = document.createElement("LABEL");
             this.label.className = "select-label";
+            this.label.innerHTML = "<div class=\"label-placeholder\"></div>";
             this.dropdown = document.createElement("DIV");
             this.dropdown.className = "select-dropdown overflow-" + this.get("titleOverflow", "clip");
             this.dropdown.innerHTML = "<div class=\"dropdown-inner\"></div>";
@@ -565,7 +560,7 @@
                 }
             }
             var _arg = true;
-            var callbacks = this.plugins.hook(name).concat(this.events[name] || []);
+            var callbacks = this.plugins.methods(name).concat(this.events[name] || []);
             callbacks.map(function (cb) {
                 if (type === "filter") {
                     args = cb.apply(_this, args);
@@ -643,13 +638,13 @@
         Select.prototype.render = function (element) {
             var _this = this;
             var _a;
-            var tag = element.tagName.toUpperCase();
-            var output = document.createElement(tag === "OPTION" ? "LI" : "OL");
+            var tag = element.tagName.toLowerCase();
+            var output = document.createElement(tag === "option" ? "LI" : "OL");
             var classes = function (item) {
                 var selected = (_this.get("multiple") && item.hasAttribute("selected")) || item.selected;
                 return ((selected ? " selected" : "") + (item.disabled ? " disabled" : "") + (item.hidden ? " hidden" : "")).trim();
             };
-            if (tag === "OPTION") {
+            if (tag === "option") {
                 output.className = "dropdown-option " + classes(element);
                 output.innerHTML = "<span class=\"option-title\">" + element.innerHTML + "</span>";
                 output.dataset.group = ((_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.label) || this.options.ungrouped;
@@ -708,8 +703,9 @@
             return this.updateCSV().updateLabel();
         };
         Select.prototype.updateCSV = function () {
-            if (this.get("csvOutput")) {
-                this.csv.value = this.trigger("filter", "update#csv", [this.value("csv")])[0];
+            var csvValue = this.trigger("filter", "update#csv", [this.value("csv")])[0];
+            if (this.get("csvOutput") && csvValue) {
+                this.csv.value = csvValue;
             }
             return this;
         };
@@ -757,8 +753,11 @@
                     counter = counter.call(this);
                 }
             }
-            this.label.innerHTML = "" + (counter ? "<span class=\"label-count\">" + counter + "</span>" : "")
-                + ("<span class=\"label-placeholder\">" + this.locale._(label, [value.length]) + "</span>");
+            var _a = this.trigger("filter", "update#placeholder", [this.locale._(label, [value.length]), counter]), pl = _a[0], cl = _a[1];
+            var placeholder = this.label.querySelector(".label-placeholder");
+            if (pl && placeholder) {
+                placeholder.innerHTML = "" + (cl ? "<span class=\"label-count\">" + cl + "</span>" : "") + pl;
+            }
             return this;
         };
         Select.prototype.open = function () {
@@ -870,7 +869,7 @@
             return this;
         };
         Select.prototype.state = function (state, status) {
-            if (typeof state === "undefined") {
+            if (typeof status === "undefined") {
                 return this.select.classList.contains("state-" + state);
             }
             status = status === null ? !this.select.classList.contains("state-" + state) : status;

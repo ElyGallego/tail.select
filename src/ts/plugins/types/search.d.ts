@@ -68,17 +68,19 @@ declare interface RatSelect_PluginSearchDefaults {
      |  @since          1.0.0
      |
      |  @values
+     |      object      An object using the ascii keys and their linguistic equivalents
      |
      |  @default
      |      null
      */
-    linguistic: Object;
+    linguistic: null | Object;
 
     /*
      |  MARK FOUND TERMS
      |  @since          1.0.0
      |
      |  @values
+     |      boolean     True to <mark> the found visible terms, False to do it not.
      |
      |  @default
      |      true
@@ -90,6 +92,7 @@ declare interface RatSelect_PluginSearchDefaults {
      |  @since          1.0.0
      |
      |  @values
+     |      number      The minimum length to trigger a search from the input field.
      |
      |  @default
      |      3
@@ -97,13 +100,87 @@ declare interface RatSelect_PluginSearchDefaults {
     minimum: number;
 }
 
-declare interface RatSelect_PluginSearchMethods {
-    [key: string]: Function
-}
-
-declare interface RatSelect_SelectSearch extends RatSelect_Select {
+declare interface RatSelect_PluginSearchSelect extends RatSelect_Select {
     /*
      |  RAT :: SEARCH INPUT
      */
     search: HTMLInputElement;
+}
+
+declare interface RatSelect_PluginSearch extends RatSelect_Plugin {
+    /*
+     |  CORE :: SELECT INSTANCE
+     */
+    select: RatSelect_PluginSearchSelect;
+
+    /*
+     |  HELPER :: APPLY LINGUISTIC RULEs
+     |  @since  1.0.0
+     |
+     |  @param  string  The desired search term to apply the linguistic rules on.
+     |  @param  bool    TRUE to apply them case-sensitive, FALSE to do it not.
+     |
+     |  @return string  The formatted string, on which the lingusitic rules has been applid on.
+     */
+    applyLinguistic(term: string, strict: boolean): string;
+
+    /*
+     |  WALKER :: OPTION FINDER
+     |  @since  1.0.0
+     |
+     |  @param  string  The search term.
+     |  @param  array   The search configuration array.
+     |
+     |  @return mixed   The resulted options.
+     */
+    finder(this: RatSelect_PluginSearchSelect, term: string, config: RatSelect_PluginSearchConfigOptions[]): HTMLOptionElement[] | HTMLCollectionOf<HTMLOptionElement> | NodeListOf<HTMLOptionElement>;
+    
+    /*
+     |  HOOK :: BUILD AFTER
+     |  @since  1.0.0
+     |  @info   Creates the search field and appends them on the dropdown field.
+     |
+     |  @return void
+     */
+    "build:after"(this: RatSelect_PluginSearchSelect): void;
+
+    /*
+     |  HOOK :: BIND AFTER
+     |  @since  1.0.0
+     |  @info   Adds the event listener on the search field.
+     |
+     |  @return void
+     */
+    "bind:after"(this: RatSelect_PluginSearchSelect): void;
+
+    /*
+     |  HOOK :: HANDLE BEFORE
+     |  @since  1.0.0
+     |  @info   Handles the events triggered on the search field.
+     |
+     |  @return void
+     */
+    "handle:before"(this: RatSelect_PluginSearchSelect, event: Event): void;
+
+    /*
+     |  FILTER :: RENDERED ELEMENT
+     |  @since  1.0.0
+     |  @info   Changes the rendered format of the resulted options.
+     |
+     |  @param  object  The HTMLDivElement representing the item option within the dropdown field.
+     |  @param  object  The source HTMLOptionElement of the source select field.
+     |  @param  string  The lowercased tag name of the source HTMLOptionElement.
+     |
+     |  @return array   The passed, may manipulated / adapted passed parameters.
+     */
+    "render#option"(this: RatSelect_PluginSearchSelect, output, element, tag);
+
+    /*
+     |  EVENT :: OPEN
+     |  @since  1.0.0
+     |  @info   Focus the search field if the `focus` option is enabled.
+     |
+     |  @return void
+     */
+    "open"(this: RatSelect_PluginSearchSelect): void;
 }
