@@ -1,4 +1,4 @@
-rat.select - LvL⬆️ for your select fields
+rat.select - LvL⬆ for your select fields
 ==========================================
 [![npm Version](https://s.pytes.me/47a6bf48)](https://s.pytes.me/2a8c886a)
 [![npm Downloads](https://s.pytes.me/f678004c)](https://s.pytes.me/2a8c886a)
