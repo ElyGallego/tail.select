@@ -1,5 +1,10 @@
-rat.select - LvL+ for your select fields
-========================================
+rat.select - LvL⬆️ for your select fields
+==========================================
+[![npm Version](https://s.pytes.me/47a6bf48)](https://s.pytes.me/2a8c886a)
+[![npm Downloads](https://s.pytes.me/f678004c)](https://s.pytes.me/2a8c886a)
+[![Support Me](https://s.pytes.me/4a1717aa)](https://buymeacoffee.com/pytesNET)
+[![plainJS](https://s.pytes.me/cb2d2d94)](https://s.pytes.me/21d65dff)
+[![License](https://s.pytes.me/8257ac72)](LICENSE.md)
 
 The vanilla JavaScript solution to **LEVEL UP** and **IMPROVE** your HTML `<select>` fields!
 
@@ -74,6 +79,7 @@ The **rat.select** library is available in the following, official, packages.
 | Vanilla UMD  | -                             | [Master]()   |
 | Vanilla ES6  | Modern Browser                | [Master]()   |
 | WebComponent | Modern Browser                | [WebC]()     |
+| ESNext       | Latest Browser                | [ESNext]()   |
 | Svelte       | [Svelte](https://svelte.dev)  | [Svelte]()   |
 | Vue.js       | [Vue.js](https://vuejs.org)   | [VueJS]()    |
 
