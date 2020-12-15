@@ -29,7 +29,7 @@ if(typeof Object.assign !== "function") {
  |  @target     IE
  |  @source     https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill
  */
-if(typeof CustomEvent.constructor !== "function") {
+if(typeof CustomEvent !== "undefined" && typeof CustomEvent.constructor !== "function") {
     CustomEvent.constructor = function(event, params) {
         params = params || { bubbles: false, cancelable: false, detail: null };
         var evt = document.createEvent("CustomEvent");

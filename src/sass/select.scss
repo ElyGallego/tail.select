@@ -50,6 +50,48 @@ $theme-name: "default";
     mark {
         background-color: $color-secondary;
     }
+    button {
+        cursor: pointer;
+        height: auto;
+        outline: 0;
+        display: inline-block;
+        text-shadow: none;
+        font-weight: normal;
+        line-height: 1;
+        letter-spacing: 0;
+        text-transform: none;
+        vertical-align: top;
+
+        &[data-action="select"],
+        &[data-action="unselect"] {
+            color: darken($color-light, 50%);
+            margin: 0;
+            padding: 4px 7px;
+            font-size: 10px;
+            border: 0;
+            text-transform: uppercase;
+            border-radius: $border-radius - 1;
+            box-shadow: none;
+            background-color: darken($color-light, 10%);
+            transition: color 142ms linear, opacity 142ms linear, background-color 142ms linear;
+        }
+        &[data-action="select"]:hover {
+            color: $color-light;
+            background-color: $color-primary;
+        }
+        &[data-action="unselect"]:hover {
+            color: $color-light;
+            background-color: $color-secondary;
+        }
+    }
+    &.disabled button,
+    button:disabled {
+        &[data-action="select"],
+        &[data-action="unselect"] {
+            color: darken($color-light, 25%);
+            background-color: transparent;
+        }
+    }
     &.rtl {
         direction: rtl;
     }
@@ -257,13 +299,25 @@ $theme-name: "default";
         }
         li.optgroup-title {
             padding-left: 10px;
+            display: flex;
+            justify-content: stretch;
             font-size: 90%;
             font-weight: 600;
             background-color: $color-light;
 
+            button {
+                opacity: 0;
+            }
+            button[data-action="select"] {
+                margin-left: auto;
+                margin-right: 5px;
+            }
             &.optgroup-hidden {
                 display: none;
             }
+        }
+        &:hover li.optgroup-title button {
+            opacity: 1;
         }
         &.optgroup-sticky li.optgroup-title {
             top: -1px;
@@ -322,7 +376,10 @@ $theme-name: "default";
     }
 }
 
-// Dropdown States
+
+// STYLINGS :: DROPDOWN STYLEs
+// ––––––––––––––––––––––––––––––
+
 .rat-select.theme-#{$theme-name} {
     &.hide-selected .select-dropdown li.dropdown-option.selected,
     &.hide-disabled .select-dropdown li.dropdown-option.disabled,
@@ -398,3 +455,63 @@ $theme-name: "default";
         }
     }
 }
+
+// Feather Icons
+.rat-select.theme-#{$theme-name}.scheme-light-feather {
+    ol li.dropdown-option {
+        &:before {
+            width: 18px;
+            height: 18px;
+            margin: -9px 0 0 0;
+        }
+    }
+    .select-dropdown li.dropdown-option {
+        &:before {
+            @include icon("select", $color-dark, "feather");
+        }
+    }
+    &.multiple .select-dropdown li.dropdown-option {
+        &:before {
+            @include icon("m-select",  $color-dark, "feather");
+        }
+    }
+
+    // State :: Selected
+    .select-dropdown li.dropdown-option.selected {
+        &:before {
+            @include icon("selected", $color-dark, "feather");
+        }
+    }
+    &.multiple .select-dropdown li.dropdown-option.selected {
+        &:before {
+            @include icon("m-selected", $color-dark, "feather");
+        }
+    }
+
+    // State :: Deselect
+    &.deselectable .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden) {
+        &:hover:before, &.hover:before {
+            @include icon("deselect", $color-dark, "feather");
+        }
+    }
+    &.multiple .select-dropdown li.dropdown-option.selected:not(.disabled):not(.hidden) {
+        &:hover:before, &.hover:before {
+            @include icon("m-deselect", $color-dark, "feather");
+        }
+    }
+
+    // State :: Disabled
+    .select-dropdown li.dropdown-option.disabled,
+    .select-dropdown li.dropdown-option.hidden {
+        &:before {
+            @include icon("disabled", $color-dark, "feather");
+        }
+    }
+    &.multiple .select-dropdown li.dropdown-option.disabled,
+    &.multiple .select-dropdown li.dropdown-option.hidden {
+        &:before {
+            @include icon("m-disabled", $color-dark, "feather");
+        }
+    }
+}
+/* @end DROPDOWN */

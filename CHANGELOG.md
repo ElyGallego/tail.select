@@ -104,6 +104,14 @@ Version 1.0.0 - Stable
     - Thanks to [#124](https://github.com/pytesNET/tail.select/issues/124).
 -   Add: The new Persian Translation for Iran.
     - Thanks to [#129](https://github.com/pytesNET/tail.select/issues/129).
+-   Add: The new Arabic Translation.
+    - Thanks to [#147](https://github.com/pytesNET/tail.select/pull/147).
+-   Add: The new Greek Translation.
+    - Thanks to [#151](https://github.com/pytesNET/tail.select/pull/151).
+-   Add: The new Swedish Translation.
+    - Thanks to [#153](https://github.com/pytesNET/tail.select/pull/153).
+-   Add: The new Polish Translation.
+    - Thanks to [#162](https://github.com/pytesNET/tail.select/issues/162).
 -   Add: The `Strings` class has been reduced to a single method for translating strings.
 
 ### Plugins

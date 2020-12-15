@@ -62,7 +62,7 @@ function ensureParentDirsSync(dir) {
  |  ROLLUP PLUGIN
  */
 export default function ratSCSS(options = { }) {
-    const sass = require('node-sass');
+    const sass = require('sass');
     const filter = createFilter(options.include || ['/**/*.css', '/**/*.scss', '/**/*.sass'], options.exclude);
 
     // Stylesheets

@@ -1,5 +1,4 @@
 
-
 import "./polyfill.es5";
 
 import { Strings } from "./strings";

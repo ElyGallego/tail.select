@@ -10,7 +10,7 @@
         <link type="text/css" rel="stylesheet" href="../dist/css/rat.select.css" />
 
         <script type="text/javascript" src="../dist/js/rat.select.js"></script>
-        <script type="text/javascript" src="../dist/js/langs/de_AT.js"></script>
+        <script type="text/javascript" src="../dist/js/langs/de.js"></script>
         <script type="text/javascript" src="../dist/js/plugins/ajax.js"></script>
         <script type="text/javascript">
             document.addEventListener("DOMContentLoaded", function() {
@@ -26,22 +26,22 @@
                     titleOverflow: "scroll",
                     hideDisabled: true,
                     on: {
-                        "open": () => {
+                        open: () => {
                             console.log("open");
                         },
-                        "close": () => {
+                        close: () => {
                             console.log("close");
                         },
-                        "change": () => {
+                        change: () => {
                             console.log("change");
                         },
-                        "enable": () => {
+                        enable: () => {
                             console.log("enable");
                         },
-                        "disable": () => {
+                        disable: () => {
                             console.log("disable");
                         },
-                        "limit": () => {
+                        limit: () => {
                             console.log("limit");
                         }
                     }

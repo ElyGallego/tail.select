@@ -1,0 +1,3 @@
+/*! pytesNET/rat.select | @version 1.0.0 | @license MIT | @copyright pytesNET <info@pytes.net> */
+import e from"rat.select";e.Strings.de={buttonAll:"Alle",buttonNone:"Keine",disabled:"Dieses Feld ist deaktiviert",empty:"Keine Optionen verfügbar",multiple:"Wähle eine oder mehrere Optionen...",multipleCount:e=>`[0] ${1===e?"Option":"Optionen"} ausgewählt...`,multipleLimit:"Keine weiteren Optionen wählbar",search:"Tippen um zu suchen...",single:"Wähle eine Option..."};
+/*! Visit this project on https://rat.md/select */

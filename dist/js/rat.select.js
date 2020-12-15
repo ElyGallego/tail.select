@@ -38,7 +38,7 @@
             }
         });
     }
-    if (typeof CustomEvent.constructor !== "function") {
+    if (typeof CustomEvent !== "undefined" && typeof CustomEvent.constructor !== "function") {
         CustomEvent.constructor = function (event, params) {
             params = params || { bubbles: false, cancelable: false, detail: null };
             var evt = document.createEvent("CustomEvent");
