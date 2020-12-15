@@ -132,11 +132,13 @@ export class Options implements RatSelect_Options {
             [].map.call(item, (el, i) => this.set(el, group, (position < 0)? -1: (position+i), !1));
             return (reload && this.select.reload())? this: this;
         }
+        position = typeof position === "number"? position: -1;
 
         // Check Group
         if(group === void 0 || group === null) {
-            group = (item.parentElement as HTMLOptGroupElement).label || false;
+            group = item.parentElement? (item.parentElement as HTMLOptGroupElement).label || "#": "#";
         }
+
 
         // Add to Group
         if(typeof group === "string" && group !== this.ungrouped) {
@@ -156,10 +158,10 @@ export class Options implements RatSelect_Options {
         }
 
         // Add to Select
-        if(!group) {
+        if(group === this.ungrouped) {
             let selector = `select[data-rat-select="${this.source.dataset.ratSelect}"] > option`;
             let options = this.source.parentElement.querySelectorAll(selector) as NodeListOf<HTMLOptionElement>;
-
+            
             let calc = Math.min(position < 0? options.length: position, options.length);
             if(this.source.children.length === calc || !options[calc-1].nextElementSibling) {
                 this.source.appendChild(item);

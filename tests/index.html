@@ -13,10 +13,26 @@
         <script type="text/javascript" src="../dist/js/langs/de.js"></script>
         <script type="text/javascript" src="../dist/js/plugins/search.js"></script>
         <script type="text/javascript" src="../dist/js/plugins/input.js"></script>
+        <script type="text/javascript" src="../dist/js/plugins/ajax.js"></script>
         <script type="text/javascript">
             document.addEventListener("DOMContentLoaded", function() {
                 const select1 = rat.select("select:not([multiple])", {
-
+                    placeholder: "Select Something...",
+                    plugins: {
+                        ajax: {
+                            callback: (resolve, reject, select) => {
+                                return new Promise(function(resolve, reject) {
+                                    setTimeout(() => {
+                                        resolve({
+                                            "value1": "Hello World",
+                                            "value2": "Hello Harx!"
+                                        });
+                                    }, 500);
+                                });
+                            },
+                            listen: "open"
+                        }
+                    }
                 });
                 
                 const select2 = rat.select("select[multiple]", {
@@ -61,18 +77,6 @@
         <div class="container">
             <div class="select-test">
                 <select>
-                    <option>OptionOptionOption A tr r trzrzrt rtz trz rtz</option>
-                    <option>Option B</option>
-                    <option>Option C</option>
-                    <option>Option D</option>
-                    <option>Option E</option>
-                    <option>Option F</option>
-                    <option>Option G</option>
-                    <option>Option H</option>
-                    <option>Option I</option>
-                    <option>Option J</option>
-                    <option>Option K</option>
-                    <option>Option L</option>
                 </select>
             </div>
         </div>

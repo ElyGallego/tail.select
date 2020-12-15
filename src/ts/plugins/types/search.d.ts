@@ -85,7 +85,7 @@ declare interface RatSelect_PluginSearchDefaults {
      |  @default
      |      true
      */
-    mark: Object;
+    mark: boolean;
 
     /*
      |  MINIMUM LENGTH TO TRIGGER A SEARCH

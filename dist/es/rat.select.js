@@ -161,8 +161,9 @@ class Options {
             [].map.call(item, (el, i) => this.set(el, group, (position < 0) ? -1 : (position + i), !1));
             return (reload && this.select.reload()) ? this : this;
         }
+        position = typeof position === "number" ? position : -1;
         if (group === void 0 || group === null) {
-            group = item.parentElement.label || false;
+            group = item.parentElement ? item.parentElement.label || "#" : "#";
         }
         if (typeof group === "string" && group !== this.ungrouped) {
             let optgroup = this.source.querySelector(`optgroup[label="${group}"]`);
@@ -179,7 +180,7 @@ class Options {
                 optgroup.insertBefore(item, optgroup.children[position]);
             }
         }
-        if (!group) {
+        if (group === this.ungrouped) {
             let selector = `select[data-rat-select="${this.source.dataset.ratSelect}"] > option`;
             let options = this.source.parentElement.querySelectorAll(selector);
             let calc = Math.min(position < 0 ? options.length : position, options.length);

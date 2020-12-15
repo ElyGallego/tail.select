@@ -47,7 +47,7 @@ declare interface RatSelect_Config {
      |      boolean     True to allow deselecting options, False to do it not.
      |
      |  @default
-     |      true (if select is multiple), false (if select is single)
+     |      false
      */
     deselect: boolean;
 
@@ -121,7 +121,7 @@ declare interface RatSelect_Config {
      |      boolean     True to hide seleted options, False to do it not.
      |
      |  @default
-     |      true
+     |      false
      */
     hideSelected: boolean;
 

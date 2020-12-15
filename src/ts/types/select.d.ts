@@ -239,7 +239,8 @@ declare interface RatSelect_Select {
      |  PUBLIC :: GET CONFIG
      |  @since  1.0.0
      |
-     |  @param  string  The configuration key to receive the value.
+     |  @param  string  The configuration key to receive the value, to receive the configugration 
+     |                  value from a plugin use the plugin name as prefix, such as 'plugin.key'.
      |  @param  mixed   The default value if the config key does not exist.
      |
      |  @return mixed   The configuration value of the passed default value.
@@ -250,7 +251,8 @@ declare interface RatSelect_Select {
      |  PUBLIC :: SET CONFIG
      |  @since  1.0.0
      |
-     |  @param  string  The configuration key to set the value for.
+     |  @param  string  The configuration key to set the value for, to set the configuration value
+     |                  for a plugin use the plugin name + dot as prefix, such as 'plugin.key'.
      |  @param  mixed   The desired value to set.
      |  @param  bool    True to soft-reload the instance, False to do it not.
      |
