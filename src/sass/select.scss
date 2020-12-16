@@ -23,5 +23,6 @@ $theme-name: "default";
 @import "select/CoreGeneral";
 @import "select/CoreLabel";
 @import "select/CoreDropdown";
-@import "select/PluginSearch";
+@import "select/PluginAjax";
 @import "select/PluginInput";
+@import "select/PluginSearch";

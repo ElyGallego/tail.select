@@ -3,14 +3,14 @@ import RatSelect from "rat.select";
 
 class SelectPluginColumns implements RatSelect_Plugin {
     /*
-     |
+     |  CORE :: SELECT INSTANCE
      */
-    select: RatSelect_Select;
+    select: RatSelect_PluginColumnsSelect;
 
     /*
-     |  CONSTRUCTOR
+     |  CORE :: CONSTRUCTOR
      */ 
-    constructor(select: RatSelect_Select) {
+    constructor(select: RatSelect_PluginColumnsSelect) {
         this.select = select;
     }
 }

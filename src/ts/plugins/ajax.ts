@@ -17,8 +17,11 @@ class SelectPluginAjax implements RatSelect_Plugin {
     /*
      |  CORE :: RENDER DROPDOWN
      */
-    render() {
-        
+    render(text: string, className: string) {
+        let dropdown = document.createElement("DIV");
+        dropdown.className = "dropdown-inner dropdown-ajax-holder dropdown-ajax-" + className;
+        dropdown.innerText = text;
+        return dropdown;
     }
 
     /*
@@ -26,6 +29,7 @@ class SelectPluginAjax implements RatSelect_Plugin {
      */
     "init:after"(this: RatSelect_PluginAjaxSelect) {
         this.ajax = this.get("ajax.listen", "init") === "init";
+        this.select.classList.add("plugin-ajax");
     }
 
     /*
@@ -67,7 +71,11 @@ class SelectPluginAjax implements RatSelect_Plugin {
             let reject = (function(error) {
                 this.ajax = "rejected";
                 this.ajaxItems = [ ];
-                this.query();
+                
+                // Ajax Error
+                let item = this.plugins.plugins["ajax"].render(this.locale._("error"), "error");
+                this.dropdown.replaceChild(item, this.dropdown.querySelector(".dropdown-inner"));
+                this.calculate();
             }).bind(this);
 
             // Call
@@ -75,6 +83,11 @@ class SelectPluginAjax implements RatSelect_Plugin {
             if(typeof Promise !== "undefined" && result instanceof Promise) {
                 result.then(resolve, reject);
             }
+            
+            // Ajax Placeholder
+            let item = this.plugins.plugins["ajax"].render(this.locale._("loading"), "loading");
+            this.dropdown.replaceChild(item, this.dropdown.querySelector(".dropdown-inner"));
+            this.calculate();
         }
         if(this.ajax === "resolved") {
             return true;

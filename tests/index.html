@@ -23,14 +23,11 @@
                             callback: (resolve, reject, select) => {
                                 return new Promise(function(resolve, reject) {
                                     setTimeout(() => {
-                                        resolve({
-                                            "value1": "Hello World",
-                                            "value2": "Hello Harx!"
-                                        });
-                                    }, 500);
+                                        reject();
+                                    }, 5000);
                                 });
                             },
-                            listen: "open"
+                            listen: "init"
                         }
                     }
                 });

@@ -499,6 +499,7 @@ export class Select implements RatSelect_Select {
         let clone = root.cloneNode();
         head.reverse().map((item) => clone.appendChild(item));
         this.dropdown.replaceChild(clone, root);
+        this.dropdown.querySelector(".dropdown-inner").className = "dropdown-inner";
 
         // Experimental Scroll Width
         if(this.get("titleOverflow") === "scroll") {

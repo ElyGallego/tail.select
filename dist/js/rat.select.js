@@ -620,6 +620,7 @@
             var clone = root.cloneNode();
             head.reverse().map(function (item) { return clone.appendChild(item); });
             this.dropdown.replaceChild(clone, root);
+            this.dropdown.querySelector(".dropdown-inner").className = "dropdown-inner";
             if (this.get("titleOverflow") === "scroll") {
                 [].map.call(this.dropdown.querySelectorAll(".dropdown-option"), function (el) {
                     var width = el.clientWidth - el.querySelector(".option-title").offsetLeft;

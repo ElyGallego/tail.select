@@ -37,8 +37,14 @@ Features
 - **It's Free/To/Use**. Published under the MIT license <3
 
 
-Install & Embed
----------------
+Support
+-------
+
+BuyMeACoffee
+
+
+Install
+-------
 
 The master branch will always contain the latest updates and fixes, but may also some not-enough 
 tested features or commits. Therefore it is **HIGHLY** recommended download and using the versions
@@ -168,6 +174,7 @@ rat.select('select', {
     width: 250                  //   null | number | string
 }, rat.select.Options);
 ```
+
 
 Copyright & License
 -------------------

@@ -576,6 +576,7 @@ class Select {
         let clone = root.cloneNode();
         head.reverse().map((item) => clone.appendChild(item));
         this.dropdown.replaceChild(clone, root);
+        this.dropdown.querySelector(".dropdown-inner").className = "dropdown-inner";
         if (this.get("titleOverflow") === "scroll") {
             [].map.call(this.dropdown.querySelectorAll(".dropdown-option"), (el) => {
                 let width = el.clientWidth - el.querySelector(".option-title").offsetLeft;

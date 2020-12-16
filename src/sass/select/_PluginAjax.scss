@@ -1,0 +1,14 @@
+
+// PLUGIN :: AJAX
+// ––––––––––––––––––––––––––––––
+
+.rat-select.theme-#{$theme-name}.plugin-ajax .select-dropdown {
+    .dropdown-inner.dropdown-ajax-holder {
+        color: lighten($color-dark, 50%);
+        padding: 20px 0;
+
+        &.dropdown-ajax-error {
+            color: $color-secondary;
+        }
+    }
+}
