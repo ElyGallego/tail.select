@@ -1,14 +1,13 @@
 
-import { join } from "path";
-
 import pkg from "./package.json";
-import ratSASS from './src/build/rollup-plugin-rat-sass';
 import ratExports from './src/build/rollup-plugin-rat-exports';
 
 import typescript from '@rollup/plugin-typescript';
 import ignoreImport from 'rollup-plugin-ignore-import';
 import { terser } from 'rollup-plugin-terser';
 import consts from 'rollup-plugin-consts';
+
+import { RatSass, RatSassSkip, RatSassOutput } from '@rat.md/rollup-plugin-sass';
 
 /*
  |  DEFINE DISTRIBUTION BANNERs
@@ -45,14 +44,21 @@ export default [
                 },
                 banner: copyright,
                 compact: false,
+                dir: `dist`,
+                entryFileNames: `js/${pkg.name}.js`,
                 esModule: false,
-                file: `dist/js/${pkg.name}.js`,
                 format: 'umd',
                 intro: '"use strict";',
                 name: pkg.name,
                 strict: false,
                 sourcemap: true,
-                sourcemapExcludeSources: true
+                sourcemapExcludeSources: true,
+                plugins: [
+                    RatSassOuput({
+                        banner: copyright.replace('dist/js/tail.select.js', 'dist/css/rat.[name].css'),
+                        fileNames: 'dist/css/rat.[name].css'
+                    })
+                ]
             },
             {
                 amd: {
@@ -60,8 +66,9 @@ export default [
                 },
                 banner: copysmall,
                 compact: true,
+                dir: `dist`,
+                entryFileNames: `js/${pkg.name}.min.js`,
                 esModule: false,
-                file: `dist/js/${pkg.name}.min.js`,
                 footer: `\n/*! Visit this project on ${pkg.homepage} */`,
                 format: 'umd',
                 intro: '"use strict";',
@@ -70,6 +77,11 @@ export default [
                 sourcemap: true,
                 sourcemapExcludeSources: true,
                 plugins: [
+                    RatSassOuput({
+                        banner: copysmall,
+                        outputStyle: 'compressed',
+                        fileNames: 'dist/css/rat.[name].min.css'
+                    }),
                     terser({
                         output: { comments: /^!(?! \*)/ }
                     })
@@ -77,19 +89,10 @@ export default [
             }
         ],
         plugins: [
-            ratSASS({
-                banner: {
-                    expanded: copyright.replace('dist/js/tail.select.js', 'dist/css/rat.[name].css'),
-                    compressed: copysmall
-                },
+            RatSass({
                 bundle: false,
                 indentType: 'space',
                 indentWidth: 4,
-                sourceMap: true,
-                output: {
-                    expanded: 'dist/css/rat.[name].css',
-                    compressed: 'dist/css/rat.[name].min.css'
-                },
                 watch: [
                     "src/sass/_core",
                     "src/sass/bootstrap2",
@@ -152,9 +155,7 @@ export default [
             }
         ],
         plugins: [
-            ratSASS({
-                output: false
-            }),
+            RatSassSkip(),
             consts({
                 version: pkg.version,
                 status: pkg.status

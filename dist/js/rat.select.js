@@ -1,13 +1,13 @@
 /*!
  |  rat.select - The vanilla solution to level up your HTML <select> fields.
  |  @file       dist/js/rat.select.js
- |  @version    1.0.0 - Stable
+ |  @version    1.0.0-rc.1 - Rc.1
  |  @author     SamBrishes <sam@pytes.net> (https://www.pytes.net)
  |				Lenivyy <lenivyy@pytes.net> (https://www.pytes.net)
  |  
  |  @website    https://rat.md/select
  |  @license    MIT License
- |  @copyright  Copyright © 2014 - 2020 pytesNET <info@pytes.net>
+ |  @copyright  Copyright © 2014 - 2021 pytesNET <info@pytes.net>
  */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -16,9 +16,9 @@
 }(this, (function () {
     "use strict";
 
-    var version = "1.0.0";
+    var version = "1.0.0-rc.1";
 
-    var status = "stable";
+    var status = "rc.1";
 
     if (typeof Object.assign !== "function") {
         Object.defineProperty(Object, "assign", {

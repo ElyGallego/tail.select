@@ -1,7 +1,7 @@
 {
     "name": "rat.select",
-    "version": "1.0.0",
-    "status": "stable",
+    "version": "1.0.0-rc.1",
+    "status": "rc.1",
     "description": "The vanilla solution to level up your HTML <select> fields.",
     "keywords": [
         "select",

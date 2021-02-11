@@ -1,19 +1,19 @@
 /*!
  |  rat.select - The vanilla solution to level up your HTML <select> fields.
  |  @file       dist/es/rat.select.js
- |  @version    1.0.0 - Stable
+ |  @version    1.0.0-rc.1 - Rc.1
  |  @author     SamBrishes <sam@pytes.net> (https://www.pytes.net)
  |				Lenivyy <lenivyy@pytes.net> (https://www.pytes.net)
  |  
  |  @website    https://rat.md/select
  |  @license    MIT License
- |  @copyright  Copyright © 2014 - 2020 pytesNET <info@pytes.net>
+ |  @copyright  Copyright © 2014 - 2021 pytesNET <info@pytes.net>
  */
 "use strict";
 
-var version = "1.0.0";
+var version = "1.0.0-rc.1";
 
-var status = "stable";
+var status = "rc.1";
 
 class Strings {
     constructor(locale) {
