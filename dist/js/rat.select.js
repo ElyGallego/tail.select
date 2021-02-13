@@ -1,5 +1,5 @@
 /*!
- |  @rat.md/select - The vanilla solution to level up your HTML <select> fields.
+ |  rat.select - The vanilla solution to level up your HTML <select> fields.
  |  @file       dist/js/rat.select.js
  |  @version    1.0.0-rc.1 - Rc.1
  |  @author     SamBrishes <sam@pytes.net> (https://www.pytes.net)
@@ -11,8 +11,8 @@
  */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-    typeof define === 'function' && define.amd ? define('@rat.md/select', factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global['@rat'] = global['@rat'] || {}, global['@rat']['md/select'] = factory()));
+    typeof define === 'function' && define.amd ? define('rat.select', factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.rat = global.rat || {}, global.rat.select = factory()));
 }(this, (function () {
     "use strict";
 

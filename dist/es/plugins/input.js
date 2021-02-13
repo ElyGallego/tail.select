@@ -1,3 +1,3 @@
-/*! pytesNET/@rat.md/select | @version 1.0.0-rc.1 | @license MIT | @copyright pytesNET <info@pytes.net> */
+/*! pytesNET/rat.select | @version 1.0.0-rc.1 | @license MIT | @copyright pytesNET <info@pytes.net> */
 import t from"rat.select";t.Strings.en.input="Press Return to add...",t.Plugins.add("input",class{constructor(t){this.select=t}"bind:before"(){this.search&&this.search instanceof HTMLInputElement?this.input=this.search:(this.input=document.createElement("INPUT"),this.input.type="text"),this.input.className="label-input",this.label.insertBefore(this.input,this.label.querySelector(".label-placeholder")),this.select.classList.add("plugin-input")}"bind:after"(){}"update#placeholder"(t,e){return this.input.placeholder=t,[null,null]}});
 /*! Visit this project on https://rat.md/select */
