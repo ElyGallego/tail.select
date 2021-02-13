@@ -2,7 +2,6 @@
 import pkg from "./package.json";
 
 import typescript from '@rollup/plugin-typescript';
-import ignoreImport from 'rollup-plugin-ignore-import';
 import consts from 'rollup-plugin-consts';
 import { terser } from 'rollup-plugin-terser';
 import { RatRollupResolve } from '@rat.md/rollup-resolve'; 
@@ -13,7 +12,7 @@ import { RatSass, RatSassSkip, RatSassOutput } from '@rat.md/rollup-plugin-sass'
  |  DEFINE DISTRIBUTION BANNERs
  */
 const copyright = `/*!
- |  ${pkg.name} - ${pkg.description}
+ |  ${pkg.global} - ${pkg.description}
  |  @file       ${pkg.main}
  |  @version    ${pkg.version} - ${pkg.status.charAt(0).toUpperCase() + pkg.status.slice(1)}
  |  @author     ${pkg.author}${pkg.contributors? "\n |\t\t\t\t" + pkg.contributors.join("\n |\t\t\t\t"): ""}
@@ -22,7 +21,7 @@ const copyright = `/*!
  |  @license    ${pkg.license} License
  |  @copyright  Copyright © 2014 - ${(new Date()).getFullYear()} ${pkg.copyright}
  */`;
-const copysmall = `/*! pytesNET/${pkg.name} | @version ${pkg.version} | @license ${pkg.license} | @copyright ${pkg.copyright} */`;
+const copysmall = `/*! pytesNET/${pkg.global} | @version ${pkg.version} | @license ${pkg.license} | @copyright ${pkg.copyright} */`;
 
 
 /*
@@ -60,7 +59,7 @@ const langs = RatRollupResolve('src/ts/langs/*.ts', [
             'rat.select': 'rat.select'
         },
         intro: '"use strict";',
-        name: pkg.name,
+        name: pkg.global,
         preserveModules: false,
         strict: false,
         sourcemap: false,
@@ -110,7 +109,7 @@ const plugins = RatRollupResolve('src/ts/plugins/*.ts', [
             'rat.select': 'rat.select'
         },
         intro: '"use strict";',
-        name: pkg.name,
+        name: pkg.global,
         preserveModules: false,
         strict: false,
         sourcemap: false,
@@ -141,16 +140,16 @@ export default [
         output: [
             {
                 amd: {
-                    id: pkg.name
+                    id: pkg.global
                 },
                 banner: copyright,
                 compact: false,
                 dir: `dist`,
-                entryFileNames: `js/${pkg.name.replace('@rat.md/', 'rat.')}.js`,
+                entryFileNames: `js/${pkg.global}.js`,
                 esModule: false,
                 format: 'umd',
                 intro: '"use strict";',
-                name: pkg.name,
+                name: pkg.global,
                 strict: false,
                 sourcemap: true,
                 sourcemapExcludeSources: true,
@@ -162,17 +161,17 @@ export default [
             },
             {
                 amd: {
-                    id: pkg.name
+                    id: pkg.global
                 },
                 banner: copysmall,
                 compact: true,
                 dir: `dist`,
-                entryFileNames: `js/${pkg.name.replace('@rat.md/', 'rat.')}.min.js`,
+                entryFileNames: `js/${pkg.global}.min.js`,
                 esModule: false,
                 footer: `\n/*! Visit this project on ${pkg.homepage} */`,
                 format: 'umd',
                 intro: '"use strict";',
-                name: pkg.name,
+                name: pkg.global,
                 strict: false,
                 sourcemap: true,
                 sourcemapExcludeSources: true,
@@ -230,11 +229,11 @@ export default [
                 banner: copyright.replace(/dist\/js/g, "dist/es"),
                 compact: false,
                 dir: `dist`,
-                entryFileNames: `es/${pkg.name.replace('@rat.md/', 'rat.')}.js`,
+                entryFileNames: `es/${pkg.global}.js`,
                 esModule: true,
                 format: 'es',
                 intro: '"use strict";',
-                name: pkg.name,
+                name: pkg.global,
                 strict: false,
                 sourcemap: true,
                 sourcemapExcludeSources: true
@@ -243,12 +242,12 @@ export default [
                 banner: copysmall.replace(/dist\/js/g, "dist/es"),
                 compact: true,
                 dir: `dist`,
-                entryFileNames: `es/${pkg.name.replace('@rat.md/', 'rat.')}.js`,
+                entryFileNames: `es/${pkg.global}.js`,
                 esModule: true,
                 footer: `\n/*! Visit this project on ${pkg.homepage} */`,
                 format: 'es',
                 intro: '"use strict";',
-                name: pkg.name,
+                name: pkg.global,
                 strict: false,
                 sourcemap: true,
                 sourcemapExcludeSources: true,
@@ -263,9 +262,15 @@ export default [
                 version: pkg.version,
                 status: pkg.status
             }),
-            ignoreImport({
-                extensions: ['es5.ts', 'es5.js']
-            }),
+            ((body) => {
+                return {
+                    transform(code, id) {
+                        if (id.endsWith('es5.ts') || id.endsWith('es5.js')) {
+                            return { code: body, map: null };
+                        }
+                    }
+                };
+            })('export default undefined;'),
             typescript({ 
                 sourceMap: true, 
                 target: "ES6" 
