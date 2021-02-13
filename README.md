@@ -41,7 +41,15 @@ Features
 Support
 -------
 
-BuyMeACoffee
+You can support as and the development of our rat packages...
+
+- by translating the strings to your (native) languages
+- by reporting any errors or missing features
+- by contributing on the source code or the occured issues
+- by spending us a coffee on [BuyMeACoffee](https://www.buymeacoff.ee/pytesNET)
+- by sending us some good old money on [PayPal.me](https://www.paypal.com/paypalme/pytesNET)
+
+Thanks for your support and the use of our package, we really appreciate that!
 
 
 Install
@@ -181,4 +189,4 @@ Copyright & License
 
 Written by SamBrishes (sam@pytes.net), Lenivyy (lenivyy@pytes.net) and many awesome contributors.
 
-Published under the MIT license, Coypright &copy; 2014 - 2021 pytesNET.
+Published under the MIT license, Copyright &copy; 2014 - 2021 pytesNET.
