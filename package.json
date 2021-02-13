@@ -70,7 +70,7 @@
     "dependencies": {},
     "devDependencies": {
         "@rat.md/rollup-plugin-sass": "^0.1.3-alpha",
-        "@rat.md/rollup-resolve": "0.1.0-alpha",
+        "@rat.md/rollup-resolve": "^0.1.1-alpha",
         "@rollup/plugin-typescript": "^6.1.0",
         "rollup": "^2.38.5",
         "rollup-plugin-consts": "^1.0.2",
