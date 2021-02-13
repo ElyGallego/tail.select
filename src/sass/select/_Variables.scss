@@ -1,0 +1,86 @@
+
+// VARIABLES :: FONT
+// ––––––––––––––––––––––––––––––
+
+$font-family:           inherit;
+$font-size:             14px;
+$font-height:           1.5;
+
+
+// VARIABLES :: COLOURs
+// ––––––––––––––––––––––––––––––
+
+$color-dark:            #303236;
+$color-light:           #FFFFFF;
+
+$color-primary:         #3C82E6;
+$color-secondary:       #DC4650;
+$color-tertiary:        #49a942;
+
+
+// VARIABLES :: GENERAL
+// ––––––––––––––––––––––––––––––
+
+$space-sm:              5px;
+$space-md:              10px;
+$space-lg:              15px;
+
+$border-radius:         3px;
+
+
+// VARIABLES :: BORDERs
+// ––––––––––––––––––––––––––––––
+
+$border-line-normal: (
+    light: rgba(0, 0, 0, 0.15),
+    dark: transparent
+);
+$border-line-hover: (
+    light: rgba(0, 0, 0, 0.225),
+    dark: transparent
+);
+$border-line-active: (
+    light: fadeout($color-primary, 25%),
+    dark: transparent
+);
+$border-line-disabled: (
+    light: fadeout($color-secondary, 25%),
+    dark: transparent
+);
+$border-line-error: (
+    light: fadeout($color-secondary, 25%),
+    dark: transparent
+);
+$border-line-success: (
+    light: fadeout($color-tertiary, 25%),
+    dark: transparent
+);
+
+
+// VARIABLES :: SHADOWs
+// ––––––––––––––––––––––––––––––
+
+$shadow-line-normal: (
+    light: (0 1px 1px 0 rgba(0, 0, 0, 0.05)),
+    dark: transparent
+);
+$shadow-line-hover: (
+    light: (0 1px 1px 0 rgba(0, 0, 0, 0.1)),
+    dark: transparent
+);
+$shadow-line-active: (
+    light: (0 1px 1px 0 fadeout($color-primary, 70%)),
+    dark: transparent
+);
+$shadow-line-disabled: (
+    light: transparent,
+    dark: transparent
+);
+$shadow-line-error: (
+    light: (0 0 1px 1px fadeout($color-secondary, 70%)),
+    dark: transparent
+);
+$shadow-line-success: (
+    light: (0 0 1px 1px fadeout($color-tertiary, 70%)),
+    dark: transparent
+);

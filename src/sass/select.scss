@@ -1,0 +1,28 @@
+
+@use "sass:list";
+
+// GENERAL :: THEME NAME
+// ––––––––––––––––––––––––––––––
+
+$theme-name: "default";
+
+
+// GENERAL :: CORE IMPORTs
+// ––––––––––––––––––––––––––––––
+
+@import "_Core/Functions";
+@import "_Core/Icons";
+@import "_Core/Mixins";
+@import "_Core/Keyframes";
+
+
+// GENERAL :: THEME IMPORTs
+// ––––––––––––––––––––––––––––––
+
+@import "select/Variables";
+@import "select/CoreGeneral";
+@import "select/CoreLabel";
+@import "select/CoreDropdown";
+@import "select/PluginAjax";
+@import "select/PluginInput";
+@import "select/PluginSearch";

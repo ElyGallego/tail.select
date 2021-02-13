@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "name": "tail.select",
     "version": "0.6.0",
     "status": "beta",
@@ -13,20 +14,45 @@
         "ui",
         "vanilla",
         "tail"
+=======
+    "name": "@rat.md/select",
+    "version": "1.0.0-rc.1",
+    "status": "rc.1",
+    "description": "The vanilla solution to level up your HTML <select> fields.",
+    "keywords": [
+        "front-end",
+        "select",
+        "input",
+        "form",
+        "dropdown",
+        "choose",
+        "ui",
+        "vanilla",
+        "es2015",
+        "rat"
+>>>>>>> master
     ],
     "author": "SamBrishes <sam@pytes.net> (https://www.pytes.net)",
     "contributors": [
         "Lenivyy <lenivyy@pytes.net> (https://www.pytes.net)"
     ],
     "license": "MIT",
+<<<<<<< HEAD
     "homepage": "https://github.com/pytesNET/tail.select",
     "copyright": "pytesNET <info@pytes.net>",
     "bugs": {
         "url": "https://github.com/pytesNET/tail.select/issues",
+=======
+    "copyright": "pytesNET <info@pytes.net>",
+    "homepage": "https://rat.md/select",
+    "bugs": {
+        "url": "https://github.com/pytesNET/rat.select/issues",
+>>>>>>> master
         "email": "info@pytes.net"
     },
     "repository": {
         "type": "git",
+<<<<<<< HEAD
         "url": "git+ssh://git@github.com/pytesNET/tail.select.git"
     },
     "engines": {
@@ -44,4 +70,44 @@
     "reveal": true,
     "jquery": "tailselect",
     "mootools": "tailselect"
+=======
+        "url": "git+ssh://git@github.com/pytesNET/rat.select.git"
+    },
+    "funding": [
+        {
+            "type": "buymeacoffee",
+            "url": "https://buymeacoff.ee/pytesNET"
+        },
+        {
+            "type": "paypal",
+            "url": "https://paypal.me/pytesNET"
+        }
+    ],
+    "engines": {
+        "node": "^14.13.0"
+    },
+    "scripts": {
+        "build": "rollup -c",
+        "watch": "rollup -c --watch",
+        "docs": "node src/build/rat-docs.js",
+        "tests": ""
+    },
+    "main": "dist/js/rat.select.js",
+    "module": "dist/es/rat.select.js",
+    "browser": "dist/js/rat.select.js",
+    "jsdelivr": "dist/js/rat.select.js",
+    "reveal": true,
+    "dependencies": {},
+    "devDependencies": {
+        "@rat.md/rollup-plugin-sass": "^0.1.3-alpha",
+        "@rat.md/rollup-resolve": "0.1.0-alpha",
+        "@rollup/plugin-typescript": "^6.1.0",
+        "rollup": "^2.38.5",
+        "rollup-plugin-consts": "^1.0.2",
+        "rollup-plugin-ignore-import": "^1.3.2",
+        "rollup-plugin-terser": "^7.0.2",
+        "tslib": "^2.1.0",
+        "typescript": "^4.1.5"
+    }
+>>>>>>> master
 }

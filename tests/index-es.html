@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Testing ES6 - rat.select</title>
+
+        <link type="text/css" rel="stylesheet" href="css/tests.css" />
+        <link type="text/css" rel="stylesheet" href="../dist/css/rat.select.css" />
+
+        <script type="module">
+            import select from "../dist/es/rat.select.js";
+            import "../dist/es/langs/de_AT.js";
+
+            document.addEventListener("DOMContentLoaded", function() {
+                console.log(select("select"));
+            });
+        </script>
+    </head>
+    <body>
+        <select>
+            <option>test</option>
+        </select>
+    </body>
+</html>

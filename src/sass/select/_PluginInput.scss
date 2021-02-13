@@ -1,0 +1,17 @@
+
+// PLUGIN :: INPUT
+// ––––––––––––––––––––––––––––––
+
+.rat-select.theme-#{$theme-name}.plugin-input .select-label {
+    padding: 0 10px;
+
+    input.label-input {
+        width: 100%;
+        border: 0;
+        padding: 5px 0;
+        background-color: transparent;
+    }
+    input.label-input + .label-placeholder {
+        position: absolute;
+    }
+}

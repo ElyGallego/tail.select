@@ -1,0 +1,66 @@
+//
+//  FUNCTION :: STRING REPLACE  (<3: ttps://css-tricks.com/snippets/sass/str-replace-function/)
+//
+//  @param  string  The string being searched and replaced on, otherwise known as the haystack. 
+//  @param  string  The value being searched for, otherwise known as the needle.
+//  @param  string  The replacement value that replaces found [$search] values.
+//
+//  @return string  The string with the replaced values.
+//
+@function replace($string, $search, $replace: "") {
+    $index: str-index($string, $search);
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+    @return $string;
+}
+
+
+//
+//  FUNCTION :: ENCODE HTML
+//
+//  @param  string  The string being searched and replaced on, otherwise known as the haystack. 
+//
+//  @return string  The HTML encoded string, ready to use.
+//
+@function encode($string) {
+    $string: replace($string, "<", "%3C");
+    $string: replace($string, ">", "%3E");
+    $string: replace($string, " ", "%20");
+    $string: replace($string, '=', "%3D");
+    $string: replace($string, '"', "%22");
+    $string: replace($string, '#', "%23");
+    @return $string;
+}
+
+
+//
+//  FUNCTION :: FADEOUT
+//
+//  @param  color   The color which alpha channel should be changed.
+//  @param  number  The number to be subtracted, used as 0.x float or xx% percent value.
+//
+//  @return color   The new color value.
+//
+@function fadeout($color, $alpha) {
+    @if $alpha > 1 {
+        $alpha: $alpha / 100;
+    }
+    @return transparentize($color, $alpha);
+}
+
+
+//
+//  FUNCTION :: FADEIN
+//
+//  @param  color   The color which alpha channel should be changed.
+//  @param  number  The number to be added, used as 0.x float or xx% percent value.
+//
+//  @return color   The new color value.
+//
+@function fadein($color, $alpha) {
+    @if $alpha > 1 {
+        $alpha: $alpha / 100;
+    }
+    @return opacify($color, $alpha);
+}

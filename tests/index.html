@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Testing ES5 - rat.select</title>
+
+        <link type="text/css" rel="stylesheet" href="css/tests.css" />
+        <link type="text/css" rel="stylesheet" href="../dist/css/rat.select.css" />
+
+        <script type="text/javascript" src="../dist/js/rat.select.js"></script>
+        <script type="text/javascript" src="../dist/js/langs/de.js"></script>
+        <script type="text/javascript" src="../dist/js/plugins/search.js"></script>
+        <script type="text/javascript" src="../dist/js/plugins/input.js"></script>
+        <script type="text/javascript" src="../dist/js/plugins/ajax.js"></script>
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+                const select1 = rat.select("select:not([multiple])", {
+                    placeholder: "Select Something...",
+                    plugins: {
+                        ajax: {
+                            callback: (resolve, reject, select) => {
+                                return new Promise(function(resolve, reject) {
+                                    setTimeout(() => {
+                                        reject();
+                                    }, 5000);
+                                });
+                            },
+                            listen: "init"
+                        }
+                    }
+                });
+                
+                const select2 = rat.select("select[multiple]", {
+                    height: ":5",
+                    deselect: true,
+                    placeholderCount: true,
+                    stickyGroups: true,
+                    titleOverflow: "scroll",
+                    hideDisabled: true,
+                    plugins: {
+                        search: {
+                            async: true,
+                            focus: true
+                        },
+                        input: { }
+                    },
+                    on: {
+                        open: () => {
+                            console.log("open");
+                        },
+                        close: () => {
+                            console.log("close");
+                        },
+                        change: () => {
+                            console.log("change");
+                        },
+                        enable: () => {
+                            console.log("enable");
+                        },
+                        disable: () => {
+                            console.log("disable");
+                        },
+                        limit: () => {
+                            console.log("limit");
+                        }
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="select-test">
+                <select>
+                </select>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="select-test">
+                <select id="my-select" multiple>
+                    <option>Option A</option>
+                    <option hidden>Option B</option>
+                    <option>Option C</option>
+                    <option>Option D</option>
+                    <option>Option E</option>
+
+                    <optgroup label="Something">
+                        <option>Option AA</option>
+                        <option>Option AB</option>
+                        <option>Option AC</option>
+                        <option>Option AD</option>
+                    </optgroup>
+
+                    <optgroup label="Something 2">
+                        <option>Option BA</option>
+                        <option>Option BB</option>
+                        <option>Option BC</option>
+                        <option>Option BD</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+
+        <div class="container" style="margin-top: 500px;">
+            <div class="select-test">
+                <select>
+                    <option>OptionOptionOption A tr r trzrzrt rtz trz rtz</option>
+                    <option>Option B</option>
+                    <option>Option C</option>
+                    <option>Option D</option>
+                    <option>Option E</option>
+                    <option>Option F</option>
+                    <option>Option G</option>
+                    <option>Option H</option>
+                    <option>Option I</option>
+                    <option>Option J</option>
+                    <option>Option K</option>
+                    <option>Option L</option>
+                </select>
+            </div>
+        </div>
+    </body>
+</html>
