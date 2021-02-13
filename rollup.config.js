@@ -1,5 +1,6 @@
 
-import pkg from "./package.json";
+import fs from 'fs';
+import pkg from './package.json';
 
 import typescript from '@rollup/plugin-typescript';
 import consts from 'rollup-plugin-consts';
@@ -68,7 +69,17 @@ export default (async () => {
             strict: false,
             sourcemap: false,
             plugins: [
-                terser()
+                terser(),
+                {
+                    // Add Translation Comment on output
+                    renderChunk(code, chunk, options) {
+                        let content = fs.readFileSync(chunk.facadeModuleId).toString();
+                        content = "\n" + content.substr(0, content.indexOf('*/')+2);
+
+                        let offset = code.indexOf('*/')+2;
+                        return code.substr(0, offset) + content + code.substr(offset);
+                    }
+                },
             ]
         },
         external: ['rat.select'],
@@ -266,15 +277,14 @@ export default (async () => {
                     version: pkg.version,
                     status: pkg.status
                 }),
-                ((body) => {
-                    return {
-                        transform(code, id) {
-                            if (id.endsWith('es5.ts') || id.endsWith('es5.js')) {
-                                return { code: body, map: null };
-                            }
+                {
+                    // Ignore Polyfills
+                    transform(code, id) {
+                        if (id.endsWith('es5.ts') || id.endsWith('es5.js')) {
+                            return { code: 'export default undefined;', map: null };
                         }
-                    };
-                })('export default undefined;'),
+                    }
+                },
                 typescript({ 
                     sourceMap: true, 
                     target: "ES6" 
