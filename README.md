@@ -82,7 +82,7 @@ marked with an **\*** are experimental playgrounds and shouldn't be used product
 | Vanilla UMD  | -                             | [Master]()   | @rat.md/select        |
 | Vanilla ES6  | Modern Browser                | [Master]()   | @rat.md/select        |
 | WebComponent | Modern Browser                | [WebC]()     | @rat.md/select.webc   |
-| ESNext**\*** | Latest Browser                | [ESNext]()   | @rat.md/select.esnext |
+| ESNext **\***| Latest Browser                | [ESNext]()   | @rat.md/select.esnext |
 | Svelte       | [Svelte](https://svelte.dev)  | [Svelte]()   | @rat.md/select.svelte |
 | Vue.js       | [Vue.js](https://vuejs.org)   | [VueJS]()    | @rat.md/select.vue    |
 
