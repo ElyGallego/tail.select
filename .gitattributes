@@ -1,24 +1,4 @@
-<<<<<<< HEAD
-##
-##  DETECT FILES / PERFORM LF NORMALIZATION
-##
-* text=auto
-
-
-##
-##  IGNORE LANGUAGEs
-##
-dist/* linguist-vendored
-docs/* linguist-vendored
-src/docs/* linguist-vendored
-src/locales/* linguist-vendored
-src/scss/* linguist-vendored
-src/synter/* linguist-vendored
-src/build.js linguist-vendored
-tests/* linguist-vendored
-=======
 * text=auto
 docs/* linguist-vendored
 src/docs/* linguist-vendored
 tests/* linguist-vendored
->>>>>>> master

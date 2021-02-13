@@ -1,101 +1,3 @@
-<<<<<<< HEAD
-CHANGELOG
-===========
-
-Version 0.6.0 - Beta
---------------------
--   Info: **tail.select** is now completely written in TypeScript (with a customized JS Compiler).
--   Info: The ES6 Version is no longer "EXPERIMENTAL" and can be used as the ES5 Version.
--   Info: Contains many breaking changes, compared to the previous 0.5.x releases.
-
-### Select()
--   Add: The new option `grouplessName`, which allows to add a group header title on ungrouped &lt;option&gt; elements 
-    (doesn't has any effect on the source &lt;select&gt; field).
--   Add: The new option `hideEmpty`, which allows to hide empty-valued &lt;option&gt; elements.
--   Add: The new option `hideHidden`, which allows to hide (`true`), show (`false`) or completely skip (`null`) as 
-    `[hidden]` marked &lt;option&gt; elements.
--   Add: The new option `on`, which allows to attach events, filters and hooks directly on the initialization of the 
-    **tail.select** instance (this option replaces all 4 `cb*` options as used before).
--   Add: The new option `placeholderCount`, which allows to customize and configure the counters left to the main
-    **tail.select** label (this option replaces the `multiShowLimit` and `multiShowCount` options).
--   Add: The new option `plugins`, which allows to add and configure already included plugins to the respective 
-    **tail.select** instances.
--   Add: The new option `rtl`, which allows to use an right-to-left text direction on the complete instances.
--   Add: The new option `sortSearch`, which allows to manipulate the order of the returning items on search queries.
--   Add: The new option `stickyGroups`, which allows to "stick" groups on the top of the dropdown list while scrolling.
--   Add: The new option `theme`, which allows to set the used theme and scheme (separated by an '-' dash).
--   Add: The new option `titleOverflow`, which allows to handle the behaviour on too-long option titles.
--   Add: The new `._cls()` helper method generates the class names for the list items.
--	Add: The new `.get()` public method allows to receive all setted options.
--	Add: The new `.set()` public method allows to update an existing / set a new option.
--   Add: The new `.build()` method now builds the **tail.select** elements.
--   Add: The new `.calculate()` method replaces the `.calc()` method (clear naming).
--   Add: The new `.render()` method replaces the `.cbGroup()` and `.cbItem()` handlers.
--   Add: Attach all labels focus the source &lt;select&gt; field now.
--   Update: The contructor will now ALWAYS return an Array with all instances, except on single HTMLElement objects (for
-    example by using `document.querySelector`).
--   Update: The jQuery and MooTools bindings.
--   Update: The option `csvOutput` can now also contain a string, which is used as name for the hidden `<input />` field 
-    (Still use `true` to "take over" the name of the `<select>` field).
--   Update: The option `csvOutput` allows now also to use a `data-name` attribute on the source &lt;select&gt; field, 
-    which is preferred used instead of `name`.
--   Update: The option `descriptions` is now `true` per default.
--   Update: the option `height` now allows all types of units (just pass them as string).
--   Update: The option `hideDisabled` and `hideSelected` allows now `true` to hide them using CSS and `null` to skip the 
-    item rendering completely.
--   Update: The option `items` now allows a bit different object format to pass through.
--   Update: The option `linguisticRules` doesn't contain any values per default anymore.
--   Update: The option `placeholder` can now also be a callable function.
--   Update: The option `searchMinLength` has now `3` as default value.
--   Update: The options `sortItems` and `sortGroups` doesn't accept `false` anymore, use `null` instead (new default).
--   Update: The option `stayOpen` can now also be `null` which closes the dropdown if a click outside appears.
--   Update: The option `width` has now `250` as new default value.
--   Update: The new `Select()` constructor allows now also to pass an optional and custom `Options` class.
--   Update: The `._e()` method doesn't allow a third parameter anymore, the first one will return instead.
--   Update: The `.bind()` method adds, removes and handles now all event handers.
--   Update: The `.trigger()` method is now the main API handler.
--   Update: The `.open()`, `.close()` and `.toggle()` methods doesn't allow any parameter anymore.
--   Update: The `.remove()` method allows now to keep the manually added options by passing true as first parameter.
--   Update: The `.reload()` method allows now a soft-reload, which just reloads the previously query, by calling them 
-    with the first parameter (`set`) to `true` (which is the default).
--   Update: The `.on()` method doesn't allow to pass own arguments (third parameter) anymore.
--   Update: The `.value()` method allows now a first parameter, which controls the returning value and the respective 
-    format (Available: 'auto', 'csv', 'array' and 'nodes').
--   Update: The sizes on `height` and `width` doesn't gets validated using a regular expression anymore.
--   Update: ENTER & SPACE keys can now also be used to toggle an option.
--   Update: The dropdown fields doesn't close, when an option is selected with ENTER or SPACE.
--   Update: The main event handler is now attached to the main **tail.select** container instead to each single item.
--   Update: The `data-key` attribute has been renamed to `data-value`.
--   Remove: The option `animate`. The animation is now completely done by CSS.
--   Remove: The options `multiPinSelected` and `multiContainer` and it's functionallity has been outsourced to a plugin.
--   Remove: The options `multiShowCount` and `multiShowLimit` has been replaced with the new `placeholderCount` option.
--   Remove: The option `searchDisabled` has been removed, the `hideDisabled` option will be used instead.
--   Remove: The options `cbComplete`, `cbEmpty`, `cbLoopItem` and `cbLoopGroup` has been replaced with the `on`.
--   Remove: The `.callback()` method has been removed, `.update()` does the job now.
--   Remove: The `.cbGroup()` and `.cbItem()` method has been replaced with `.render()`.
--   Remove: The `.updateContainer()` and `.updatePin()` methods has been removed completely.
--   Remove: The Inline JSON configuration (was an unofficial function anyway).
--   Remove: The fallback option initialization.
-
-### Options()
--	Add: The new `.create()` method allows to easily create new and valid &lt;option&gt;s.
--   Add: The new `.getGroups()` method returns all &lt;optgroup&gt;s nodes or labels.
--   Add: The new `.count()` method allows to count the available &lt;option&gt;s.
--   Add: The new `.hide()` and `.show()` are alias methods for `.handle()`.
--	Add: The new `.reload()` method, which builds up the environment using the source &lt;select&gt; field.
--   Update: The new `Options` class doesn't store the single &lt;option&gt; and groups elements anymore.
--   Update: The new `Options` Constructor requires now only the **tail.select** instance.
--   Update: The new `Options` Constructor prepares the deselectability if enabled.
--   Update: The new `Options` Constructor prepares the missing value attribute on all &lt;option&gt;.
--   Update: The `.get()` method has been completely rewritten and allows to get multiple &lt;option&gt;s at once.
--   Update: The `.set()` method has been completely rewritten and allows to add multiple &lt;option&gt;s at once.
--   Update: The `.add()` method has been completely rewritten and allows to create multiple &lt;option&gt;s at once.
--   Update: The `.handle()` method and all alias has been rewritten and allow to handle multiple &lt;option&gt;s at once.
--   Update: The `.find()` and `.finder()` methods allows now to pass a search function as third parameter.
--   Update: The ES5 `.finder()` and `.walker()` generator can now be reseted by passing "reset" as this.
--   Update: The `finder()` and `walker()` methods doesn't return a disabled, hidden or selected item if the repsective 
-    option is set to `null`.
-=======
 rat.select - CHANGELOG
 ======================
 
@@ -185,17 +87,10 @@ Version 1.0.0 - Stable
 -   Update: The `handle()` method has been completely rewritten.
 -   Remove: The `add()` method has been removed, use `parse()` or `set()` instead.
 -   Remove: The `walker()` and `finder()` methods has been removed.
->>>>>>> master
 -   Remove: The `._r()` helper method has been removed completely. Just don't do typos ;)
 -   Remove: The `.move()` handler method has been removed completely.
 -   Remove: The `.remove()` handler method has been removed completely.
 -   Remove: The `.is()` handler method has been removed completely.
-<<<<<<< HEAD
--   Remove: The `.all()`, `.walk()` and `.invert()` methods has been removed. You can use the default option handler 
-    methods instead, since they walk also through multiple (and all) &lt;option&gt;s at once.
--   Remove: The `.invert()` method has been removed, use `.toggle()` instead.
-
-=======
 -   Remove: The `.all()`, `.walk()` and `.invert()` methods has been removed. Use the default option 
     handler methods instead, since they walk also through multiple `<option>`s at once.
 -   Remove: The `.invert()` method has been removed, use `.toggle()` instead.
@@ -228,7 +123,6 @@ Version 1.0.0 - Stable
 -   Add: The new `movement` plugin allows to handle selected options in a moveable manor.
 -   Add: The new `search` plugin now contains the whole search-related functionallity.
 
->>>>>>> master
 ### Themes
 -   Info: Switched from Less to SASS (SCSS Syntax).
 -   Info: All available schemes of a theme are now included in a single stylesheet.
@@ -237,61 +131,19 @@ Version 1.0.0 - Stable
 -   Add: A new CSS setting / property for the auto-initialization of the used / included theme.
 -   Add: The themes completely take-over the open / close animation.
 -   Add: The custom additional class name `no-animation` to disable the dropdown animation.
-<<<<<<< HEAD
--   Add: The `.title-break`, `.title-clip` and `.title-scroll` classes on the `.select-dropdown` selector.
-=======
 -   Add: The `.title-break`, `.title-clip` and `.title-scroll` classes.
->>>>>>> master
 -   Add: The new Functions `@replace()` and `@encode()` for string operations.
 -   Add: The new Functions `@fadein()` and `@fadeout()` for an easier Adaption of the alpha channel.
 -   Add: The new Mixin `@worb()` to use white or black color depending on the lightness. 
 -   Add: The new Mixins `@animation()` and `@prefix()` to prefix CSS properties.
 -   Add: The new additional class names `form-control`, `form-control-sm` and `form-control-lg` for
     the re-designed Bootstrap-4 design.
-<<<<<<< HEAD
--   Update: The main class name `deselect` has been renamed into `deselectable`.
--   Update: The button class names has been renamed into `select-all` and `select-none`.
-=======
->>>>>>> master
 -   Update: Many other small and particular changes on all available themes.
 -   Update: The dropdown item icon is now always in the vertical middle.
 -   Update: Better Design for Selected AND Disabled / Hidden items.
 -   Update: More accurate replica of all available bootstrap designs.
 -   Remove: Unnecessary Prefixes on `box-shadow` and `transition` including its Mixins.
 
-<<<<<<< HEAD
-### Plugins
--   Add: A new Plugin API.
--   Add: The new plugin `select-ajax` adds an asynchronous way to load and initialize the options.
--   Add: The new plugin `select-columns` allows to collapse groups and show them side by side. 
--   Add: The new plugin `select-input` turns the label **tail.select** label element into an input field.
--   Add: The new plugin `select-movement` allows to move selected options on the top or to an custom container.
-
-### Miscellaneous
--   Add: The language objects are now stored as JSON files and gets parsed through the new node script.
--   Add: The new Farsi Translation for Persians.
-    - Thanks to [#115](https://github.com/pytesNET/tail.select/pull/115).
--   Add: The new Georgian Translation.
-    - Thanks to [#122](https://github.com/pytesNET/tail.select/issues/122).
--   Add: The new Lithuanian Translation.
-    - Thanks to [#124](https://github.com/pytesNET/tail.select/issues/124).
--   Add: The new Persian Translation for Iran.
-    - Thanks to [#129](https://github.com/pytesNET/tail.select/issues/129).
--   Add: The new `Strings.add()` method replaces `.register()` and `.modify()`.
--   Add: The new `Plugins` class / API, which allows to hook to each created `tail.select` instance.
--   Update: The helper methods are now available through `Select.__helpers` (`tail.select.__helpers`).
--   Remove: The helper functions `cHAS()`, `cREM()` and `cADD()`. classList is used instead. 
--   Remove: The `Strings.modify()` and `Strings.register()` method has been replaced with the new  method `Select.add()`.
-
-### Fixed
--   Bugfix: ClassNames have been taken over if the **tail.select** selector points to more then one &lt;select&gt; field.
--   Bugfix: The `multiSelectAll` option has also been used, where `multiSelectGroup` should be used.
--   Bugfix: The `.query()` method was triggered every time even if `searchMinLength` wasn't reached.
--   Bugfix: Invalid replacement by `Options.applyLinguisticRules()` when no rules where defined.
--   Bugfix: The empty message didn't show up, when only hidden options (`hideDisabled`, `hideSelected`) are available.
--   Bugfix: The group items within the dropdown list gets rendered even if no visible item is within the group.
--   Bugfix: The ES5 walker internal variables hasn't been reseted, if the loop has been breaked before.
-=======
 ### Bugfixes
 -   Bugfix: ClassNames have been taken over if the **rat.select** selector points to more then one 
     `<select>` field.
@@ -302,15 +154,11 @@ Version 1.0.0 - Stable
     `hideSelected`) are available.
 -   Bugfix: The group items in the dropdown list gets rendered even if no visible item are available.
 -   Bugfix: The ES5 walker variables hasn't been reseted, if the loop has been breaked before.
->>>>>>> master
 -   Bugfix: The dropdown scrollbar is longer then the dropdown container (Windows).
 -   Bugfix: IE doesn't recognize `Object.constructor()` as object (instead as function).
     - Thanks to [#92](https://github.com/pytesNET/tail.select/issues/92).
 -   Bugfix: Deselect options on `None` button if no searched option is selected.
     - Thanks to [#117](https://github.com/pytesNET/tail.select/issues/117).
-<<<<<<< HEAD
-
-=======
 -   Bugfix: Keep the dropdown field open when clicking on a disabled option.
 
 Version 0.6.0 - Beta
@@ -319,7 +167,6 @@ Version 0.6.0 - Beta
 -   Info: This release has been skipped due to too many changes during the development and building
     process and the huge amount of time, which has already been invested into it. However, many 
     features and ideas has become a part of version 1.0.0 though.
->>>>>>> master
 
 Version 0.5.15 - Beta
 ---------------------

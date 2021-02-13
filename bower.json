@@ -1,20 +1,4 @@
 {
-<<<<<<< HEAD
-    "name": "tail.select",
-    "description": "The vanilla solution to level up your HTML <select> fields!",
-    "keywords": [
-        "select",
-        "multiselect",
-        "dropdown",
-        "html",
-        "form",
-        "input",
-        "ui",
-        "vanilla",
-        "tail"
-    ],
-    "authors": [
-=======
     "name": "rat.select",
     "version": "1.0.0-rc.1",
     "status": "rc.1",
@@ -31,24 +15,10 @@
         "rat"
     ],
     "author": [
->>>>>>> master
         "SamBrishes <sam@pytes.net> (https://www.pytes.net)",
         "Lenivyy <lenivyy@pytes.net> (https://www.pytes.net)"
     ],
     "license": "MIT",
-<<<<<<< HEAD
-    "homepage": "https://github.com/pytesNET/tail.select",
-
-    "main": [
-        "dist/js/tail.select.js",
-        "dist/css/default/tail.select-default.css"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git+ssh://git@github.com/pytesNET/tail.select.git"
-    },
-
-=======
     "copyright": "pytesNET <info@pytes.net>",
     "homepage": "https://rat.md/select",
     "repository": {
@@ -62,18 +32,10 @@
         "dist/js/rat.select.js",
         "dist/css/rat.select.css"
     ],
->>>>>>> master
     "moduleType": [
         "amd",
         "globals"
     ],
-<<<<<<< HEAD
-    "devDependencies": {
-        "dart-sass": "1.23.x - 1.25.x",
-        "typescript": "3.5.x - 3.7.x",
-        "uglify-es": "~3.3.x",
-        "uglify-js": "3.3.x - 3.5.x"
-=======
     "dependencies": {},
     "devDependencies": {
         "@rollup/plugin-typescript": "^6.1.0",
@@ -81,6 +43,5 @@
         "sass": "^1.29.0",
         "tslib": "^2.0.3",
         "typescript": "^4.1.2"
->>>>>>> master
     }
 }

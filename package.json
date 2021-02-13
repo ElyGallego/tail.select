@@ -1,20 +1,4 @@
 {
-<<<<<<< HEAD
-    "name": "tail.select",
-    "version": "0.6.0",
-    "status": "beta",
-    "description": "The vanilla solution to level up your HTML <select> fields!",
-    "keywords": [
-        "select",
-        "multiselect",
-        "dropdown",
-        "html",
-        "form",
-        "input",
-        "ui",
-        "vanilla",
-        "tail"
-=======
     "name": "@rat.md/select",
     "version": "1.0.0-rc.1",
     "status": "rc.1",
@@ -30,47 +14,20 @@
         "vanilla",
         "es2015",
         "rat"
->>>>>>> master
     ],
     "author": "SamBrishes <sam@pytes.net> (https://www.pytes.net)",
     "contributors": [
         "Lenivyy <lenivyy@pytes.net> (https://www.pytes.net)"
     ],
     "license": "MIT",
-<<<<<<< HEAD
-    "homepage": "https://github.com/pytesNET/tail.select",
-    "copyright": "pytesNET <info@pytes.net>",
-    "bugs": {
-        "url": "https://github.com/pytesNET/tail.select/issues",
-=======
     "copyright": "pytesNET <info@pytes.net>",
     "homepage": "https://rat.md/select",
     "bugs": {
         "url": "https://github.com/pytesNET/rat.select/issues",
->>>>>>> master
         "email": "info@pytes.net"
     },
     "repository": {
         "type": "git",
-<<<<<<< HEAD
-        "url": "git+ssh://git@github.com/pytesNET/tail.select.git"
-    },
-    "engines": {
-        "node": "12.x"
-    },
-    "devDependencies": {
-        "node-sass": "4.12.x",
-        "typescript": "3.5.x - 3.7.x",
-        "uglify-es": "~3.3.x",
-        "uglify-js": "3.3.x - 3.5.x"
-    },
-    "main": "dist/js/tail.select.js",
-    "browser": "dist/js/tail.select.js",
-    "jsdelivr": "dist/js/tail.select.js",
-    "reveal": true,
-    "jquery": "tailselect",
-    "mootools": "tailselect"
-=======
         "url": "git+ssh://git@github.com/pytesNET/rat.select.git"
     },
     "funding": [
@@ -109,5 +66,4 @@
         "tslib": "^2.1.0",
         "typescript": "^4.1.5"
     }
->>>>>>> master
 }
