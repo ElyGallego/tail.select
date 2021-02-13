@@ -74,8 +74,7 @@ But of course, you can also directly jump in using the awesome CDN services from
 Package Overview
 ----------------
 
-The **rat.select** library is available in the following official packages. Packages, which are 
-marked with an **\*** are experimental playgrounds and shouldn't be used productive.
+The **rat.select** library is available in the following official packages.
 
 | Package      | Dependencies                  | Visit Branch | NPM Package           |
 | ------------ | ----------------------------- |:------------:|  -------------------- |
@@ -85,6 +84,8 @@ marked with an **\*** are experimental playgrounds and shouldn't be used product
 | **ESNext\*** | Latest Browser                | [ESNext]()   | @rat.md/select.esnext |
 | Svelte       | [Svelte](https://svelte.dev)  | [Svelte]()   | @rat.md/select.svelte |
 | Vue.js       | [Vue.js](https://vuejs.org)   | [VueJS]()    | @rat.md/select.vue    |
+
+Packages, which are marked with **\*** are experimental and shouldn't be used productive.
 
 
 Thanks To
