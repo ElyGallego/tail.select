@@ -50,7 +50,7 @@ The master branch will always contain the latest updates and fixes, but may also
 tested features or commits. Therefore it is **HIGHLY** recommended download and using the versions
 released on our [GitHub Release History]().
 
-Way easier is the use of a package manager such as NPM, Yarn or bower:
+Way easier is the use of a package manager such as NPM or Yarn (bower support has been dropped):
 
 ```
 npm i @rat.md/select
@@ -58,10 +58,6 @@ npm i @rat.md/select
 
 ```
 yarn add @rat.md/select
-```
-
-```
-bower install rat.select
 ```
 
 But of course, you can also directly jump in using the awesome CDN services from jsDelivr and UNPKG.
@@ -80,14 +76,14 @@ Package Overview
 
 The **rat.select** library is available in the following, official, packages.
 
-| Package      | Dependencies                  | Visit Branch |
-| ------------ | ----------------------------- |:------------:|
-| Vanilla UMD  | -                             | [Master]()   |
-| Vanilla ES6  | Modern Browser                | [Master]()   |
-| WebComponent | Modern Browser                | [WebC]()     |
-| ESNext       | Latest Browser                | [ESNext]()   |
-| Svelte       | [Svelte](https://svelte.dev)  | [Svelte]()   |
-| Vue.js       | [Vue.js](https://vuejs.org)   | [VueJS]()    |
+| Package      | Dependencies                  | Visit Branch | NPM Package           |
+| ------------ | ----------------------------- |:------------:|  -------------------- |
+| Vanilla UMD  | -                             | [Master]()   | @rat.md/select        |
+| Vanilla ES6  | Modern Browser                | [Master]()   | @rat.md/select        |
+| WebComponent | Modern Browser                | [WebC]()     | @rat.md/select.webc   |
+| ESNext       | Latest Browser                | [ESNext]()   | @rat.md/select.esnext |
+| Svelte       | [Svelte](https://svelte.dev)  | [Svelte]()   | @rat.md/select.svelte |
+| Vue.js       | [Vue.js](https://vuejs.org)   | [VueJS]()    | @rat.md/select.vue    |
 
 
 Thanks To
