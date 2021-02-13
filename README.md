@@ -1,5 +1,5 @@
-rat.select - LvL-UP for your select fields
-==========================================
+rat.select - LvL-UP your select fields
+======================================
 [![npm Version](https://s.pytes.me/47a6bf48)](https://s.pytes.me/2a8c886a)
 [![npm Downloads](https://s.pytes.me/f678004c)](https://s.pytes.me/2a8c886a)
 [![Support Me](https://s.pytes.me/4a1717aa)](https://buymeacoffee.com/pytesNET)
@@ -74,14 +74,15 @@ But of course, you can also directly jump in using the awesome CDN services from
 Package Overview
 ----------------
 
-The **rat.select** library is available in the following, official, packages.
+The **rat.select** library is available in the following official packages. Packages, which are 
+marked with an **\*** are experimental playgrounds and shouldn't be used productive.
 
 | Package      | Dependencies                  | Visit Branch | NPM Package           |
 | ------------ | ----------------------------- |:------------:|  -------------------- |
 | Vanilla UMD  | -                             | [Master]()   | @rat.md/select        |
 | Vanilla ES6  | Modern Browser                | [Master]()   | @rat.md/select        |
 | WebComponent | Modern Browser                | [WebC]()     | @rat.md/select.webc   |
-| ESNext       | Latest Browser                | [ESNext]()   | @rat.md/select.esnext |
+| ESNext**\*** | Latest Browser                | [ESNext]()   | @rat.md/select.esnext |
 | Svelte       | [Svelte](https://svelte.dev)  | [Svelte]()   | @rat.md/select.svelte |
 | Vue.js       | [Vue.js](https://vuejs.org)   | [VueJS]()    | @rat.md/select.vue    |
 

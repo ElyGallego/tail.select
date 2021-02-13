@@ -14,7 +14,7 @@ import { RatSass, RatSassSkip, RatSassOutput } from '@rat.md/rollup-plugin-sass'
 const copyright = `/*!
  |  ${pkg.global} - ${pkg.description}
  |  @file       ${pkg.main}
- |  @version    ${pkg.version} - ${pkg.status.charAt(0).toUpperCase() + pkg.status.slice(1)}
+ |  @version    ${pkg.version.split("-")[0]} - ${pkg.status.toUpperCase()}
  |  @author     ${pkg.author}${pkg.contributors? "\n |\t\t\t\t" + pkg.contributors.join("\n |\t\t\t\t"): ""}
  |  
  |  @website    ${pkg.homepage}
@@ -24,8 +24,10 @@ const copyright = `/*!
 const copysmall = `/*! pytesNET/${pkg.global} | @version ${pkg.version} | @license ${pkg.license} | @copyright ${pkg.copyright} */`;
 
 
-
-async function RollupDefinition() {
+/*
+ |  EXPORT ROLLUP DEFINITION
+ */
+export default (async () => {
     /*
      |  RESOLVE LANGUAGE FILEs
      */
@@ -290,6 +292,4 @@ async function RollupDefinition() {
          */
         ...plugins
     ];
-}
-
-export default RollupDefinition();
+})();

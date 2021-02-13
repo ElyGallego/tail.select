@@ -1,7 +1,7 @@
 /*!
  |  rat.select - The vanilla solution to level up your HTML <select> fields.
  |  @file       dist/js/rat.select.js
- |  @version    1.0.0-rc.1 - Rc.1
+ |  @version    1.0.0 - RC.1
  |  @author     SamBrishes <sam@pytes.net> (https://www.pytes.net)
  |				Lenivyy <lenivyy@pytes.net> (https://www.pytes.net)
  |  
