@@ -22,16 +22,17 @@ Features
 --------
 
 - **It's Beautiful**. 12 unique themes with many colour schemes.
-    - Perfectly fits Bluma, Bootstrap (2, 3, 4), Foundation, Materialize, ...
-    - Adapts the design of Chosen, Selectize, Select2, ...
+    - Perfectly fits Bluma, Bootstrap (2, 3, 4), Foundation and Materialize,
+    - Adapts the design of Chosen, Selectize and Select2,
+    - Comes up with the unqiue Select, Harx and Smep themes. 
 - **It's Extensive**. You don't need any other solution.
     - Asynchronous and Searchable, capable for thousands of options.
     - Supports all native behaviours plus de-selectability and more.
     - Allows to be used as input / tag field as well (ex. for eMail forms).
 - **It's Lightweight**. Just 20,4 KB minified (6,5 KB gzipped).
-    - Delivered as UMD package or ES6 Module.
-    - **NEW** Also available as WebComponent, Svelte and Vue.js module.
-- **It's Extendable**. A feature-rich API to create all kind of plugins.
+    - Delivered as UMD package, ES6 Module and ESNext build.
+    - **NEW** Also available as WebComponent, Svelte and Vue.js plugins.
+- **It's Extendable**. A feature-rich API to create all kind of plugins easily.
 - **It's Configurable**. Many settings, hooks, filters and community translations.
 - **It's Vanilla**. No dependencies, just include, initialize and use.
 - **It's Free/To/Use**. Published under the MIT license <3
@@ -91,6 +92,7 @@ Packages, which are marked with **\*** are experimental and shouldn't be used pr
 Thanks To
 ---------
 
+- The community for helping out, translating and improving the rat.select package.
 - [Octicons]() and [Feather]() for the awesome icons
 - [Rollup]() for the awesome bundler engine
 - [prismJS]() for the syntax highlighting library
