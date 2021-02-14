@@ -55,12 +55,47 @@ As a translator you don't need to be familiar with TypeScript or any other progr
 itself, just follow the following instructions and we will do the rest to make your locale file 
 available for everyone after we accept your pull request.
 
-1.  Fork our `rat.select` repository as described [here](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo).
-2.  Go to the `src/ts/langs` directory.
-3.  Copy and Paste the `.example.ts` file and rename it correctly ([use a valid locale name as listed here](https://github.com/umpirsky/locale-list/blob/master/data/en_GB/locales.csv)).
-4.  Edit the file in an text-editor (like Notepad, but we recommend using [Atom](https://atom.io/) or [Notepad++](https://notepad-plus-plus.org/downloads/) instead).
-5.  Change the `[LOCALE]` part in `RatSelect.Strings["[LOCALE]"]` using your locale name.
-6.  Translate all the available / listed locale strings in your native language.
-7.  Optional: Fill out the comment header with your data.
+
+### Translate directly on GitHub.com
+
+This part requires you to create an account on GitHub.com.
+
+1.  Visit the example locale file [here](https://github.com/pytesNET/rat.select/blob/master/src/ts/langs/.example.ts).
+2.  Click on the `Edit this file` button on the right upper corner of the file.
+3.  Change the file name (above the editor) using a locale name [listed here](https://github.com/umpirsky/locale-list/blob/master/data/en_GB/locales.csv).
+4.  Change the `[LOCALE]` part in `RatSelect.Strings["[LOCALE]"]` using the locale name from step 3.
+5.  Do your translation as described on the comment on the bottom of this file.
+6.  Optional: Fill out the translation header with your data (accept the `@source` part).
+7.  Remove the translation comment and press the green `Commit Changes` button on the bottom.
+8.  Press the `Create Pull Request` button, add some description and, again, press the `Create Pull Request` button.
+9.  Thanks for your contribution, we will come back to you as soon as possible.
+
+
+### Translate using Git
+
+This part requires you to install [`Git`](https://git-scm.com/) or any Git UI application (such as 
+[GitHub Desktop](https://desktop.github.com/)) on your computer.
+
+1.  Fork and Clone our `rat.select` repository as described [here](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo).
+2.  Visit the `src/ts/langs` directory and copy'n'paste the `.example.ts` file using a locale name [listed here](https://github.com/umpirsky/locale-list/blob/master/data/en_GB/locales.csv).
+3.  Edit the file in an text-editor (like Notepad, but we recommend using [Atom](https://atom.io/) or [Notepad++](https://notepad-plus-plus.org/downloads/) instead).
+4.  Change the `[LOCALE]` part in `RatSelect.Strings["[LOCALE]"]` using the locale name from step 2.
+5.  Do your translation as described on the comment on the bottom of this file.
+6.  Optional: Fill out the translation header with your data (accept the `@source` part).
+7.  Remove the translation comment and push your changes to your repository as described [here](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/pushing-changes-to-github).
 8.  Create a Pull request back to our `rat.select` repository as described [here](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 9.  Thanks for your contribution, we will come back to you as soon as possible.
+
+
+### Translate using ISSUE or E-MAIL
+
+You can also still send us your translation via ISSUE or E-MAIL (localization@rat.md), creating an 
+issue requires you to create an account on GitHub.com.
+
+1.  Visit the example locale file [here](https://github.com/pytesNET/rat.select/blob/master/src/ts/langs/.example.ts).
+2.  Edit the file using an text-editor (like Notepad, but we recommend using [Atom](https://atom.io/) or [Notepad++](https://notepad-plus-plus.org/downloads/) instead).
+3.  Change the `[LOCALE]` part in `RatSelect.Strings["[LOCALE]"]` using a locale name [listed here](https://github.com/umpirsky/locale-list/blob/master/data/en_GB/locales.csv).
+4.  Do your translation as described on the comment on the bottom of this file.
+5.  Optional: Fill out the translation header with your data (accept the `@source` part).
+6.  Remove the translation comment and submit your translation as ISSUE or mail them to localization@rat.md.
+7.  Thanks for your contribution, we will come back to you as soon as possible.
