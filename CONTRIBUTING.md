@@ -6,8 +6,8 @@ Your contribution adds a real value to this library, and we really appreciate th
 able to accept your pull request as soon as possible, please follow the following procedures.
 
 
-General
--------
+General information for Pull Requests
+-------------------------------------
 
 **TLDR**: ALL OF YOUR CHANGES SHOULD BE MADE IN THE `SRC` FOLDER.
 
@@ -74,7 +74,8 @@ This part requires you to create an account on GitHub.com.
 ### Translate using Git
 
 This part requires you to install [`Git`](https://git-scm.com/) or any Git UI application (such as 
-[GitHub Desktop](https://desktop.github.com/)) on your computer.
+[GitHub Desktop](https://desktop.github.com/)) on your computer and you need to create an account 
+on GitHub.com as well.
 
 1.  Fork and Clone our `rat.select` repository as described [here](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo).
 2.  Visit the `src/ts/langs` directory and copy'n'paste the `.example.ts` file using a locale name [listed here](https://github.com/umpirsky/locale-list/blob/master/data/en_GB/locales.csv).
