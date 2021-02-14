@@ -1,5 +1,6 @@
 rat.select - LvL-UP your select fields
 ======================================
+[![Version](https://b.rat.md/select/~minified)](https://b.rat.md/select/+minified)
 [![Version](https://b.rat.md/select/~version)](https://b.rat.md/select/+version)
 [![Downloads](https://b.rat.md/select/~downloads)](https://b.rat.md/select/+downloads)
 [![Support](https://b.rat.md/global/~bmac)](https://b.rat.md/global/+bmac)
