@@ -14,19 +14,20 @@ General information for Pull Requests
 The rat.select package is written in TypeScript and SASS (SCSS-Syntax), using node.js and related 
 tools and packages - such as rollup - to build the distribution files. Unlike many other npm 
 packages we keep the latest `dist` files on our GitHub repository, thus also node-unfamiliar 
-developers can use them without building the latest `master` branch first.
-
-However, even if the distribution files are available, please do NEVER edit them yourself. If you 
-aren't familiar with TypeScript, consider to post your desired changes as ISSUE on the repo and we 
-will take care of your code.
+developers can use them without building the latest `master` branch on their own. However, even if 
+the distribution files are available, please do **NEVER** edit them yourself. If you aren't familiar 
+with TypeScript (or SASS), consider to post your desired changes as ISSUE on the repository itself 
+and we will take care of your code instead.
 
 
 **TLDR**: BUNDLE BEFORE SUBMIT YOUR PULL REQUEST.
 
-But this also means, that changes on your Code must be bundled first, before your submit your Pull 
-Request to our repository. Just enter `npm run build` or `npm run docs:build` will fully meet this 
-requirement. Please don't 'play around' with custom scripts, and don't add one of your own. If you 
-think we can optimize one of our scripts, let us discuss your concept and idea as ISSUE first.
+The above paragraph also means, that changes on your Code must be bundled first, before your submit 
+your Pull Request to our repository. Since we aren't using any CI/CD tools or other similar GitHub 
+apps, which bundles them automatically, you MUST enter `npm run build` or `npm run docs:build` 
+completely on your own (so before you start with `git add .`). Please don't 'play around' with 
+custom scripts, and don't add one of your own. If you think we can optimize one of our scripts, let 
+us discuss your concept and idea as ISSUE first.
 
 
 **TLDR**: TEST BEFORE YOU SUBMIT YOUR PULL REQUEST.
