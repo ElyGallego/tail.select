@@ -9,7 +9,7 @@ able to accept your pull request as soon as possible, please follow the followin
 General information for Pull Requests
 -------------------------------------
 
-### **TLDR**: ALL OF YOUR CHANGES SHOULD BE MADE IN THE `SRC` FOLDER.
+### ALL OF YOUR CHANGES SHOULD BE MADE IN THE `SRC` FOLDER.
 
 The rat.select package is written in TypeScript and SASS (SCSS-Syntax), using node.js and related 
 tools and packages - such as rollup - to build the distribution files. Unlike many other npm 
@@ -20,7 +20,7 @@ with TypeScript (or SASS), consider to post your desired changes as ISSUE on the
 and we will take care of your code instead.
 
 
-### **TLDR**: BUNDLE BEFORE SUBMIT YOUR PULL REQUEST.
+### BUNDLE BEFORE SUBMIT YOUR PULL REQUEST.
 
 The above paragraph also means, that changes on your Code must be bundled first, before your submit 
 your Pull Request to our repository. Since we aren't using any CI/CD tools or other similar GitHub 
@@ -30,7 +30,7 @@ custom scripts, and don't add one of your own. If you think we can optimize one 
 us discuss your concept and idea as ISSUE first.
 
 
-### **TLDR**: TEST BEFORE YOU SUBMIT YOUR PULL REQUEST.
+### TEST BEFORE YOU SUBMIT YOUR PULL REQUEST.
 
 Many contributors out there aren't familiar with unit-testing (in fact: we are also fairly new to 
 this topic) and we don't require you to write one, even if you add a new feature or possibilty. 
@@ -101,3 +101,13 @@ issue requires you to create an account on GitHub.com.
 5.  Optional: Fill out the translation header with your data (accept the `@source` part).
 6.  Remove the translation comment and submit your translation as ISSUE or mail them to localization@rat.md.
 7.  Thanks for your contribution, we will come back to you as soon as possible.
+
+
+Thanks for your work
+--------------------
+
+We really appreciate your work and your time, which you invest making the rat.select package even 
+more awesome.
+
+Thanks for your work and stay awesome,<br>
+Your friendly rats.
