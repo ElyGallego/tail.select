@@ -1,10 +1,10 @@
 tail.select - Beautify Select Fields
 ====================================
-[![npm Version](https://s.pytes.me/47a6bf48)](https://s.pytes.me/2a8c886a)
-[![npm Downloads](https://s.pytes.me/f678004c)](https://s.pytes.me/2a8c886a)
-[![Support Me](https://s.pytes.me/4a1717aa)](https://buymeacoffee.com/pytesNET)
-[![plainJS](https://s.pytes.me/cb2d2d94)](https://s.pytes.me/21d65dff)
-[![License](https://s.pytes.me/8257ac72)](LICENSE.md)
+[![Minfied Size](https://b.rat.md/select/~minified)](https://b.rat.md/select/+minified)
+[![Version](https://b.rat.md/select/~version)](https://b.rat.md/select/+version)
+[![Downloads](https://b.rat.md/select/~downloads)](https://b.rat.md/select/+downloads)
+[![Support](https://b.rat.md/global/~bmac)](https://b.rat.md/global/+bmac)
+[![plainJS](https://b.rat.md/select/~plainJS)](https://b.rat.md/select/+plainJS)
 
 **Replace** and **Improve** your HTML `<select>` fields with style and without **jQuery**!
 
@@ -12,9 +12,9 @@ tail.select - Beautify Select Fields
 <img src="https://repository-images.githubusercontent.com/150568173/e3ebbd80-a27d-11e9-9da1-c6caa6484bcc" style="width:auto;max-width:640px;" />
 </a></p>
 
-The **tail.select** script is back, re-written in vanilla JavaScript and ready to beautify and 
-extend your HTML `<select>` fields... again! Add a search bar, multi-selection utilities (such as 
-select all or none buttons), deselectability on single select fields, a perfect design and many 
+The **tail.select** script is back, re-written in vanilla JavaScript and ready to beautify and
+extend your HTML `<select>` fields... again! Add a search bar, multi-selection utilities (such as
+select all or none buttons), deselectability on single select fields, a perfect design and many
 more user-friendly functions to your web-application.
 
 ----------------------------
