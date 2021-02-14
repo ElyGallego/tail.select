@@ -241,7 +241,7 @@ export default (async () => {
             input: 'src/ts/index.ts',
             output: [
                 {
-                    banner: copyright.replace(/dist\/js/g, "dist/es"),
+                    banner: copyright.replace(pkg.main, pkg.module),
                     compact: false,
                     dir: `dist`,
                     entryFileNames: `es/${pkg.global}.js`,
@@ -254,10 +254,10 @@ export default (async () => {
                     sourcemapExcludeSources: true
                 },
                 {
-                    banner: copysmall.replace(/dist\/js/g, "dist/es"),
+                    banner: copysmall,
                     compact: true,
                     dir: `dist`,
-                    entryFileNames: `es/${pkg.global}.js`,
+                    entryFileNames: `es/${pkg.global}.min.js`,
                     esModule: true,
                     footer: `\n/*! Visit this project on ${pkg.homepage} */`,
                     format: 'es',

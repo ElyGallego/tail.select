@@ -1,3 +1,872 @@
-/*! pytesNET/rat.select | @version 1.0.0-rc.1 | @license MIT | @copyright pytesNET <info@pytes.net> */
-class e{constructor(t){this.strings=e[t]||e.en}_(e,t){let s=e in this.strings?this.strings[e]:e;return"function"==typeof s&&(s=s.apply(this,t)),void 0!==t&&t.length>0&&t.map(((e,t)=>{let i=new RegExp("\\["+t.toString()+"\\]","g");s=s.replace(i,e.toString())})),s}}e.en={buttonAll:"All",buttonNone:"None",disabled:"This field is disabled",empty:"No options available",multiple:"Choose one or more options...",multipleCount:e=>`[0] ${1===e?"option":"options"} selected...`,multipleLimit:"No more options selectable",single:"Choose an option..."};class t{constructor(e,s){this.plugins={};for(let i in e)t.plugins[i]&&(this.plugins[i]=new t.plugins[i](s))}static add(e,t){return!(e in this.plugins)&&(this.plugins[e]=t,!0)}methods(e){let t=[];for(let s in this.plugins)e in this.plugins[s]&&t.push(this.plugins[s][e]);return t}}t.plugins={};class s{constructor(e){if(this.ungrouped="#",this.select=e,this.source=e.source,[].map.call(this.source.querySelectorAll("option:not([value])"),(e=>{""!==e.innerText&&e.setAttribute("value",e.innerText)})),e.get("deselect")&&!e.get("multiple")){let e=this.source.querySelector("option:checked");e&&null===this.source.querySelector("option[selected]")&&(e.selected=!1,this.source.selectedIndex=-1)}}create(e,t){let s=document.createElement("OPTION");return s.value=e,s.innerText=t.title,s.selected=t.selected||!1,s.disabled=t.disabled||!1,s.hidden=t.hidden||!1,t.description&&(s.dataset.description=t.description),s}parse(e){for(let s in e){if("string"==typeof e[s])var t=this.create(s,Object({title:e[s]}));else t=this.create(s,e[s]);this.set(t)}return this}get(e,t,s){let i={disabled:":disabled",selected:":checked",hidden:"[hidden]"};t=""!==t&&t;let l=s?s.map((e=>"!"===e[0]?`:not(${i[e.slice(1)]})`:i[e])):"";if(l+=":not([data-rat-ignore])","number"==typeof e){l=`option${e>0?":nth-child":":nth-last-child"}(${Math.abs(e)})${l}`}else{if("string"!=typeof e&&e)return[];l=`option${e?`[value="${e}"]`:""}${l}`}return t?t===this.ungrouped?(l=`select[data-rat-select="${this.source.dataset.ratSelect}"] > ${l}`,this.source.parentElement.querySelectorAll(l)):"string"==typeof t?this.source.querySelectorAll(`optgroup[label="${t}"] ${l}`):[]:this.source.querySelectorAll(l)}getGroups(e){let t=this.source.querySelectorAll("optgroup");return e?t:[].map.call(t,(e=>e.label))}count(e,t){if(0===arguments.length)return this.source.options.length;let s=this.get(null,e,t);return s?s.length:0}set(e,t,s,i){if(!(e instanceof HTMLOptionElement))return[].map.call(e,((e,i)=>this.set(e,t,s<0?-1:s+i,!1))),i&&this.select.reload(),this;if(s="number"==typeof s?s:-1,null==t&&(t=e.parentElement&&e.parentElement.label||"#"),"string"==typeof t&&t!==this.ungrouped){let i=this.source.querySelector(`optgroup[label="${t}"]`);i||(i=document.createElement("OPTGROUP"),i.label=t,i.dataset.select="add",this.source.appendChild(i)),s<0||s>i.children.length?i.appendChild(e):i.insertBefore(e,i.children[s])}if(t===this.ungrouped){let t=`select[data-rat-select="${this.source.dataset.ratSelect}"] > option`,i=this.source.parentElement.querySelectorAll(t),l=Math.min(s<0?i.length:s,i.length);this.source.children.length!==l&&i[l-1].nextElementSibling?this.source.insertBefore(e,i[l-1].nextElementSibling||this.source.children[0]):this.source.appendChild(e)}return e.dataset.select="add",i&&this.select.reload(),this}remove(e,t){return e instanceof HTMLOptionElement&&(e=[e]),[].map.call(e,(e=>{e.parentElement.removeChild(e)})),t&&this.select.reload,this}handle(e,t){e instanceof HTMLOptionElement&&(e=[e]);let s=[],i=this.select.get("multiLimit",-1);return[].map.call(e,(e=>{let l={};for(t.hasOwnProperty("disabled")&&t.disabled!==e.disabled&&(l.disabled=e.disabled=!e.disabled),t.hasOwnProperty("hidden")&&t.hidden!==e.hidden&&(l.hidden=e.hidden=!e.hidden);t.hasOwnProperty("selected")&&t.selected!==e.selected&&!e.disabled&&!e.hidden&&!(!e.selected&&this.source.multiple&&i>=0&&i<=this.count(null,[":selected"]))&&(!e.selected||this.source.multiple||this.select.get("deselect",!1));){if(!this.source.multiple&&!e.selected&&this.source.selectedIndex>=0&&s.push([this.source.options[this.source.selectedIndex],{selected:!1}]),l.selected=e.selected=!e.selected,!this.source.multiple&&!e.selected){let e='option[value=""]:not(:disabled):checked:first-child';this.source.selectedIndex=this.source.querySelector(e)?0:-1}break}Object.keys(l).length>0&&s.push([e,l])})),this.select.update(s),this}selected(e,t){return this.handle(e,{selected:t})}disabled(e,t){return this.handle(e,{disabled:t})}hidden(e,t){return this.handle(e,{hidden:t})}}class i{constructor(l,n,r){this.source=l,this.config=n,this.options=new(r||s)(this),this.locale=new e(n.locale||"en"),this.plugins=new t(Object.assign({},n.plugins||{}),this),this.events=(e=>{for(let t in e)e[t]=[e[t]];return e})(Object.assign({},n.on||{})),this.config.multiple=this.source.multiple=n.multiple||l.multiple,this.config.disabled=this.source.disabled=n.disabled||l.disabled,this.config.required=this.source.required=n.required||l.required,this.config.placeholder=n.placeholder||l.dataset.placeholder||null;let o=l.querySelector("option[value='']:checked:first-child");if(o&&(o.dataset.ratIgnore="1")&&(this.config.deselect=!o.disabled,this.config.placeholder=o.innerText||n.placeholder),null===(n.rtl||null)&&(this.config.rtl=["ar","fa","he","mdr","sam","syr"].indexOf(n.locale||"en")>=0),null===(n.theme||null)){let e=document.createElement("SPAN");e.className="rat-select-theme-name",document.body.appendChild(e),this.config.theme=window.getComputedStyle(e,":after").content.replace(/"/g,""),document.body.removeChild(e)}l.dataset.ratSelect=i.inst.length.toString(),i.inst[i.inst.length++]=this,this.init()}init(){if(!1===this.trigger("hook","init:before"))return this;if(void 0!==this.config.items){let e=this.config.items;this.options.parse("function"==typeof e?e.call(this,this.options):e)}return this.build(),this.bind(),this.get("sourceHide",!0)&&(this.source.style.display="none"),this.source.nextElementSibling?this.source.parentElement.insertBefore(this.select,this.source.nextElementSibling):this.source.parentElement.appendChild(this.select),this.updateLabel(),this.trigger("hook","init:after"),this.query(),this.get("startOpen")&&!this.get("disabled")?this.open():this.source.autofocus&&!this.get("disabled")?this.focus():this}build(){if(!1===this.trigger("hook","build:before"))return this;let e=!0===this.get("classNames")?this.source.className:this.get("classNames","");this.select=document.createElement("DIV"),this.select.className=(e=>(["rtl","hideSelected","hideDisabled","hideHidden","disabled","required","multiple","deselect"].map((t=>{this.get(t,"hideHidden"===t)&&e.unshift(t.replace(/[A-Z]/,(e=>`-${e.toLowerCase()}`)))})),e.unshift(`rat-select theme-${this.get("theme").replace("-"," scheme-").replace("."," ")}`),e.join(" ").trim()))("string"==typeof e?e.split(" "):e),this.select.tabIndex=this.source.tabIndex||1,this.select.dataset.ratSelect=this.source.dataset.ratSelect;let t=this.get("width",250);return null!==t&&(this.select.style.width=t+(isNaN(t)?"":"px")),this.label=document.createElement("LABEL"),this.label.className="select-label",this.label.innerHTML='<div class="label-placeholder"></div>',this.dropdown=document.createElement("DIV"),this.dropdown.className=`select-dropdown overflow-${this.get("titleOverflow","clip")}`,this.dropdown.innerHTML='<div class="dropdown-inner"></div>',this.csv=document.createElement("INPUT"),this.csv.className="select-search",this.csv.name=(e=>(!0===e&&(e=this.source.name||""),!1===e?"":e))(this.get("csvOutput",!1)),this.select.appendChild(this.label),this.select.appendChild(this.dropdown),this.get("csvOutput")&&this.select.appendChild(this.csv),this.trigger("hook","build:after"),this}calculate(){let e=this.dropdown,t=0,s=(s=>{let i=e.cloneNode(!0);if(i.classList.add("cloned"),this.select.appendChild(i),"string"==typeof s&&":"===s.charAt(0)){let t=parseInt(s.slice(1)),l=0,n=[].slice.call(e.querySelectorAll("li"));for(let e=0,s=0;s<n.length&&!(n[s].offsetHeight>0&&(l+=n[s].offsetHeight,e++>=t));s++);i.style.maxHeight=l+"px",s=l}else i.style.maxHeight=s+(isNaN(s)?"":"px"),s=i.offsetHeight>s?s:i.offsetHeight;return t=i.querySelector(".dropdown-inner").offsetTop,this.select.removeChild(i),s+t})(this.get("height",350)?this.get("height",350):"auto"),i=this.select.getBoundingClientRect(),l=i.top,n=window.innerHeight-(i.top+i.height),r=this.get("openAbove",null)||!(n>=s||n>=l);return s=Math.min(s,(r?l:n)-15),this.select.classList[r?"add":"remove"]("open-top"),e.style.maxHeight=s+"px",e.querySelector(".dropdown-inner").style.maxHeight=s-t+"px",this}bind(){return this.handler||(this.handler=this.handle.bind(this)),!1===this.trigger("hook","bind:before")||(document.addEventListener("keydown",this.handler),document.addEventListener("click",this.handler),this.get("sourceBind")&&this.source.addEventListener("change",this.handler),this.trigger("hook","bind:after")),this}handle(e){if(!1===this.trigger("hook","handle:before",[e]))return this;if(!(e instanceof Event)||this.get("disabled"))return this;let t=e.target;if("keydown"===e.type){if(document.activeElement!==this.select)return;let t=e.keyCode,s=".dropdown-option:not(.disabled):not(.hidden)";if(32===t&&!this.select.classList.contains("active"))return this.open();if(!this.select.classList.contains("active"))return;switch(t){case 13:case 32:let e=this.dropdown.querySelector(".dropdown-option.hover");return e?(this.options.selected(this.options.get(e.dataset.value,e.dataset.group)),this.get("stayOpen")||this.get("multiple")?1:this.close()):void 0;case 27:return this.close();case 38:case 40:let i=this.dropdown.querySelectorAll(s),l=null,n=[].slice.call(i).indexOf(this.dropdown.querySelector(".dropdown-option.hover"));if(n>=0&&i[n+(t>38?1:-1)]&&(l=i[n+(t>38?1:-1)]),l||(l=i[t>38?0:i.length-1]),l){l.classList.add("hover"),i[n]&&i[n].classList.remove("hover");let e=((e,t)=>{for(;(e=e.parentElement)!==this.dropdown;)t.top+=e.offsetTop;return t})(l,{top:l.offsetTop,height:l.offsetHeight});this.dropdown.scrollTop=Math.max(0,e.top-2*e.height)}return}}if("click"===e.type){if(t===this.label||this.label.contains(t))return this.toggle();if(t.getAttribute("for")===this.source.id)return this.focus();if(!this.select.contains(t)&&!this.get("stayOpen"))return this.close();if(this.dropdown.contains(t)){for(;t&&this.dropdown.contains(t)&&!t.dataset.action;)t=t.parentElement;if(!t.classList.contains("disabled")&&t.dataset.action&&(t.dataset.value||t.dataset.group)){let e=this.options.get(t.dataset.value,t.dataset.group),s=t.dataset.action;if(this.options.selected(e,"toggle"===s?null:"select"===s),!this.get("stayOpen")&&!this.source.multiple)return this.close()}}}if("change"===e.type&&!(e instanceof CustomEvent)){[].map.call(this.select.querySelectorAll(".dropdown-option.active"),(e=>{e.classList.remove("active")}));let e=[];return[].map.call(this.source.querySelectorAll("option:checked"),(t=>e.push([t,{selected:!0}]))),this.update(e,!1)}return this.trigger("hook","handle:after",[e]),this}trigger(e,t,s){if("event"===e){let e={bubbles:!1,cancelable:!0,detail:{args:s,select:this}},l=new CustomEvent(`rat::${t}`,e);var i=this.select.dispatchEvent(l)||this.source.dispatchEvent(l);if("change"===t){let t=new CustomEvent("input",e),s=new CustomEvent("change",e);this.source.dispatchEvent(t),this.source.dispatchEvent(s)}}let l=!0;return this.plugins.methods(t).concat(this.events[t]||[]).map((t=>{"filter"===e?s=t.apply(this,s):!1===t.apply(this,s)&&(l=!1)})),"hook"===e?l:"filter"===e?s:i}query(e,t){if(!1===this.trigger("hook","query:before"))return this;e="function"==typeof e?e:this.get("query",(()=>this.options.get()));let s,i=null,l=[],n=(e=this.trigger("filter","query",[e])[0]).apply(this,t||[]);for(let e of n){let t=e.parentElement instanceof HTMLOptGroupElement?e.parentElement.label:null;if([e,t]=this.trigger("filter","walk",[e,t]),(!this.get("hideEmpty",!0)||""!==e.value)&&t!==s){if(!(l.length>0&&l[0].dataset.group===(t||this.options.ungrouped))){let n=e.parentElement instanceof HTMLOptGroupElement?e.parentElement:null;if(n||(n=document.createElement("OPTGROUP")),null===(i=this.render(n))){s=t;continue}if(!1===i)break;l.unshift(i)}if(null!==(i=this.render(e))){if(!1===i)break;l[0].appendChild(i)}}}let r=this.dropdown.querySelector(".dropdown-inner"),o=r.cloneNode();return l.reverse().map((e=>o.appendChild(e))),this.dropdown.replaceChild(o,r),this.dropdown.querySelector(".dropdown-inner").className="dropdown-inner","scroll"===this.get("titleOverflow")&&[].map.call(this.dropdown.querySelectorAll(".dropdown-option"),(e=>{let t=e.clientWidth-e.querySelector(".option-title").offsetLeft,s=e.querySelector(".option-title").scrollWidth;s>t&&(e.style.textIndent=t-s+"px",e.querySelector(".option-title").style.marginLeft=s-t+"px")})),this.select.classList.contains("active")&&this.calculate(),this.trigger("hook","query:after"),this}render(e){var t;let s=e.tagName.toLowerCase(),i=document.createElement("option"===s?"LI":"OL"),l=e=>((this.get("multiple")&&e.hasAttribute("selected")||e.selected?" selected":"")+(e.disabled?" disabled":"")+(e.hidden?" hidden":"")).trim();if("option"===s)i.className="dropdown-option "+l(e),i.innerHTML=`<span class="option-title">${e.innerHTML}</span>`,i.dataset.group=(null===(t=e.parentElement)||void 0===t?void 0:t.label)||this.options.ungrouped,i.dataset.value=e.value,i.dataset.action="toggle",e.dataset.description&&(i.innerHTML+=`<span clasS="option-description">${e.dataset.description}</span>`);else{let t=e.label||this.get("ungroupedLabel",null)||"";if(i.className="dropdown-optgroup"+(this.get("stickyGroups")?" optgroup-sticky":""),i.innerHTML=`<li class="optgroup-title">${t}</li>`,i.dataset.group=e.label||this.options.ungrouped,this.get("multiple")&&this.get("multiSelectGroup",1))for(let e of["buttonAll","buttonNone"]){let t=document.createElement("BUTTON");t.dataset.action="buttonAll"===e?"select":"unselect",t.dataset.group=i.dataset.group,t.innerHTML=this.locale._(e),i.querySelector(".optgroup-title").appendChild(t)}}return this.trigger("filter",`render#${s}`,[i,e,s])[0]}update(e,t){return 0===e.length||!0!==this.trigger("hook","update:before",[e,t])?this:("boolean"==typeof t&&t&&(this.trigger("event","change",[e]),this.source.multiple&&this.get("multiLimit")>0&&this.options.count(null,["selected"])>=this.get("multiLimit")&&this.trigger("event","limit",[e])),[].map.call(e,(e=>{let[t,s]=e,i=t.value.replace(/('|\\)/g,"\\$1"),l=t.parentElement.label?t.parentElement.label:this.options.ungrouped,n=this.dropdown.querySelector(`li[data-value="${i}"][data-group="${l}"]`);if(n)for(let e in s)n.classList[s[e]?"add":"remove"](e)})),this.trigger("hook","update:after",[e,t]),this.updateCSV().updateLabel())}updateCSV(){let e=this.trigger("filter","update#csv",[this.value("csv")])[0];return this.get("csvOutput")&&e&&(this.csv.value=e),this}updateLabel(e){let t=this.value("array"),s=this.get("multiLimit");e||"function"!=typeof this.get("placeholder")||(e=this.get("placeholder").call(this)),e||(e=this.source.disabled||!this.options.count()?this.source.disabled?"disabled":"empty":this.source.multiple&&t.length>0?s===t.length?"multipleLimit":"multipleCount":this.source.multiple||1!==t.length?this.source.multiple?"multiple":"single":t[0]);let i=!!this.source.multiple&&this.get("placeholderCount",!1);if(i){let e=this.options.count(null,["selected"]),t=this.options.count(null,["!disabled","!hidden"]),l=s<0?t:s;switch(i=!0===i?"count-up":i,i){case"count-up":i=e;break;case"count-down":i=s-e;break;case"limit":i=l;break;case"both":i=`${e}/${l}`}"function"==typeof i&&(i=i.call(this))}let[l,n]=this.trigger("filter","update#placeholder",[this.locale._(e,[t.length]),i]),r=this.label.querySelector(".label-placeholder");return l&&r&&(r.innerHTML=`${n?`<span class="label-count">${n}</span>`:""}${l}`),this}open(){return this.select.classList.contains("active")||(this.calculate(),this.select.classList.add("active"),this.trigger("event","open",[])),this}close(){return this.select.classList.contains("active")?(this.dropdown.style.removeProperty("max-height"),this.select.classList.remove("active"),this.trigger("event","close",[]),this):this}toggle(){return this[this.select.classList.contains("active")?"close":"open"]()}reload(e){return!0!==this.trigger("hook","reload:before",[e])||(e?this.remove().init():this.query(),this.trigger("hook","reload:after",[e])),this}remove(e){return!0!==this.trigger("hook","remove:before",[e])||(e||([].map.call(this.source.querySelectorAll("optgroup[data-select='add']"),(e=>{e.parentElement.removeChild(e)})),[].map.call(this.source.querySelectorAll("option[data-select='add']"),(e=>{e.parentElement.removeChild(e)}))),this.get("sourceHide")&&(this.source.style.removeProperty("display"),this.source.style.removeProperty("visibility")),this.select.parentElement&&this.select.parentElement.removeChild(this.select),this.source.removeAttribute("data-rat-select"),this.trigger("hook","remove:after",[e])),this}value(e){void 0!==e&&"auto"!==e||(e=this.source.multiple?"array":"csv");let t=this.options.get(null,null,["selected"]);switch(e){case"csv":return[].map.call(t,(e=>e.value)).join(this.get("csvSeparator",","));case"array":return[].map.call(t,(e=>e.value));case"node":return this.source.multiple?[].map.call(t,(e=>e.value)):t[0]||null;default:return"array"===e?[]:null}}get(e,t){if(e.indexOf(".")>0){let[s,i]=e.split("."),l=this.config.plugins[s];return l&&l[i]?l[i]:t}return e in this.config?this.config[e]:t}set(e,t,s){if(e.indexOf(".")>0){let[i,l]=e.split("."),n=this.config.plugins[i];return n&&(n[l]=t),s?this.reload():this}if(["multiple","disabled","required"].indexOf(e)>=0){if("disabled"===e)return this[t?"enable":"disable"](s);this.config[e]=this.source[e]=!!e}else this.config[e]=t;return s?this.reload():this}enable(e){return this.trigger("event","enable",[e]),this.config.disabled=this.source.disabled=!1,this.select.classList.remove("disabled"),e?this.reload():this}disable(e){return this.trigger("event","disable",[e]),this.config.disabled=this.source.disabled=!0,this.select.classList.add("disabled"),e?this.reload():this}focus(){return this.select.focus(),this}state(e,t){return void 0===t?this.select.classList.contains(`state-${e}`):(t=null===t?!this.select.classList.contains(`state-${e}`):t,this.select.classList[t?"add":"remove"](`state-${e}`),this)}on(e,t){return e.split(",").map((e=>{this.events[e]=this.events[e]||[],this.events[e].push(t)})),this}}function l(e,t,l){let n=e=>e instanceof HTMLSelectElement?e.dataset.ratSelect?i.inst[e.dataset.ratSelect]:new i(e,t?Object.assign({},t):{},l||s):null;return"string"==typeof e&&(e=document.querySelectorAll(e)),e instanceof HTMLSelectElement?n(e):[].map.call(e,n)}i.inst={length:0},l.version="1.0.0-rc.1",l.status="rc.1",l.Select=i,l.Options=s,l.Strings=e,l.Plugins=t;export default l;
-/*! Visit this project on https://rat.md/select *///# sourceMappingURL=rat.select.js.map
+/*!
+ |  rat.select - The vanilla solution to level up your HTML <select> fields.
+ |  @file       dist/es/rat.select.js
+ |  @version    1.0.0 - RC.1
+ |  @author     SamBrishes <sam@pytes.net> (https://www.pytes.net)
+ |				Lenivyy <lenivyy@pytes.net> (https://www.pytes.net)
+ |  
+ |  @website    https://rat.md/select
+ |  @license    MIT License
+ |  @copyright  Copyright © 2014 - 2021 pytesNET <info@pytes.net>
+ */
+"use strict";
+
+var version = "1.0.0-rc.1";
+
+var status = "rc.1";
+
+class Strings {
+    constructor(locale) {
+        this.strings = Strings[locale] || Strings.en;
+    }
+    _(key, params) {
+        let string = (key in this.strings) ? this.strings[key] : key;
+        if (typeof string === "function") {
+            string = string.apply(this, params);
+        }
+        if (typeof params !== "undefined" && params.length > 0) {
+            params.map((replace, index) => {
+                let regexp = new RegExp("\\[" + index.toString() + "\\]", "g");
+                string = string.replace(regexp, replace.toString());
+            });
+        }
+        return string;
+    }
+}
+Strings.en = {
+    buttonAll: "All",
+    buttonNone: "None",
+    disabled: "This field is disabled",
+    empty: "No options available",
+    multiple: "Choose one or more options...",
+    multipleCount: (count) => {
+        return `[0] ${count === 1 ? "option" : "options"} selected...`;
+    },
+    multipleLimit: "No more options selectable",
+    single: "Choose an option..."
+};
+
+class Plugins {
+    constructor(plugins, select) {
+        this.plugins = {};
+        for (let key in plugins) {
+            if (Plugins.plugins[key]) {
+                this.plugins[key] = new Plugins.plugins[key](select);
+            }
+        }
+    }
+    static add(name, pluginClass) {
+        if (name in this.plugins) {
+            return false;
+        }
+        this.plugins[name] = pluginClass;
+        return true;
+    }
+    methods(method) {
+        let cbs = [];
+        for (let name in this.plugins) {
+            if (method in this.plugins[name]) {
+                cbs.push(this.plugins[name][method]);
+            }
+        }
+        return cbs;
+    }
+}
+Plugins.plugins = {};
+
+class Options {
+    constructor(select) {
+        this.ungrouped = "#";
+        this.select = select;
+        this.source = select.source;
+        [].map.call(this.source.querySelectorAll('option:not([value])'), (option) => {
+            if (option.innerText !== "") {
+                option.setAttribute("value", option.innerText);
+            }
+        });
+        if (select.get("deselect") && !select.get("multiple")) {
+            let option = this.source.querySelector('option:checked');
+            if (option && this.source.querySelector('option[selected]') === null) {
+                option.selected = false;
+                this.source.selectedIndex = -1;
+            }
+        }
+    }
+    create(value, item) {
+        let option = document.createElement("OPTION");
+        option.value = value;
+        option.innerText = item.title;
+        option.selected = item.selected || false;
+        option.disabled = item.disabled || false;
+        option.hidden = item.hidden || false;
+        if (item.description) {
+            option.dataset.description = item.description;
+        }
+        return option;
+    }
+    parse(items) {
+        for (let key in items) {
+            if (typeof items[key] === "string") {
+                var item = this.create(key, Object({ title: items[key] }));
+            }
+            else {
+                var item = this.create(key, items[key]);
+            }
+            this.set(item);
+        }
+        return this;
+    }
+    get(value, group, states) {
+        let format = { disabled: ":disabled", selected: ":checked", hidden: "[hidden]" };
+        group = group === "" ? false : group;
+        let selector = states ? states.map((state) => {
+            return state[0] === "!" ? `:not(${format[state.slice(1)]})` : format[state];
+        }) : "";
+        selector += ":not([data-rat-ignore])";
+        if (typeof value === "number") {
+            let nth = (value > 0) ? ":nth-child" : ":nth-last-child";
+            selector = `option${nth}(${Math.abs(value)})${selector}`;
+        }
+        else if (typeof value === "string" || !value) {
+            selector = `option${!value ? "" : `[value="${value}"]`}${selector}`;
+        }
+        else {
+            return [];
+        }
+        if (!group) {
+            return this.source.querySelectorAll(selector);
+        }
+        else if (group === this.ungrouped) {
+            selector = `select[data-rat-select="${this.source.dataset.ratSelect}"] > ${selector}`;
+            return this.source.parentElement.querySelectorAll(selector);
+        }
+        else if (typeof group === "string") {
+            return this.source.querySelectorAll(`optgroup[label="${group}"] ${selector}`);
+        }
+        return [];
+    }
+    getGroups(objects) {
+        let groups = this.source.querySelectorAll("optgroup");
+        return (objects) ? groups : [].map.call(groups, (i) => i.label);
+    }
+    count(group, states) {
+        if (arguments.length === 0) {
+            return this.source.options.length;
+        }
+        let result = this.get(null, group, states);
+        return result ? result.length : 0;
+    }
+    set(item, group, position, reload) {
+        if (!(item instanceof HTMLOptionElement)) {
+            [].map.call(item, (el, i) => this.set(el, group, (position < 0) ? -1 : (position + i), !1));
+            return (reload && this.select.reload()) ? this : this;
+        }
+        position = typeof position === "number" ? position : -1;
+        if (group === void 0 || group === null) {
+            group = item.parentElement ? item.parentElement.label || "#" : "#";
+        }
+        if (typeof group === "string" && group !== this.ungrouped) {
+            let optgroup = this.source.querySelector(`optgroup[label="${group}"]`);
+            if (!optgroup) {
+                optgroup = document.createElement("OPTGROUP");
+                optgroup.label = group;
+                optgroup.dataset.select = "add";
+                this.source.appendChild(optgroup);
+            }
+            if (position < 0 || position > optgroup.children.length) {
+                optgroup.appendChild(item);
+            }
+            else {
+                optgroup.insertBefore(item, optgroup.children[position]);
+            }
+        }
+        if (group === this.ungrouped) {
+            let selector = `select[data-rat-select="${this.source.dataset.ratSelect}"] > option`;
+            let options = this.source.parentElement.querySelectorAll(selector);
+            let calc = Math.min(position < 0 ? options.length : position, options.length);
+            if (this.source.children.length === calc || !options[calc - 1].nextElementSibling) {
+                this.source.appendChild(item);
+            }
+            else {
+                this.source.insertBefore(item, options[calc - 1].nextElementSibling || this.source.children[0]);
+            }
+        }
+        item.dataset.select = "add";
+        return (reload && this.select.reload()) ? this : this;
+    }
+    remove(items, reload) {
+        if (items instanceof HTMLOptionElement) {
+            items = [items];
+        }
+        [].map.call(items, (item) => {
+            item.parentElement.removeChild(item);
+        });
+        return (reload && this.select.reload) ? this : this;
+    }
+    handle(items, states) {
+        if (items instanceof HTMLOptionElement) {
+            items = [items];
+        }
+        let result = [];
+        let limit = this.select.get("multiLimit", -1);
+        [].map.call(items, (item) => {
+            let changes = {};
+            if (states.hasOwnProperty("disabled") && states.disabled !== item.disabled) {
+                changes.disabled = item.disabled = !item.disabled;
+            }
+            if (states.hasOwnProperty("hidden") && states.hidden !== item.hidden) {
+                changes.hidden = item.hidden = !item.hidden;
+            }
+            while (states.hasOwnProperty("selected") && states.selected !== item.selected) {
+                if (item.disabled || item.hidden) {
+                    break;
+                }
+                if (!item.selected && this.source.multiple && limit >= 0 && limit <= this.count(null, [":selected"])) {
+                    break;
+                }
+                if (item.selected && !this.source.multiple && !this.select.get("deselect", !1)) {
+                    break;
+                }
+                if (!this.source.multiple && !item.selected && this.source.selectedIndex >= 0) {
+                    result.push([this.source.options[this.source.selectedIndex], { selected: false }]);
+                }
+                changes.selected = item.selected = !item.selected;
+                if (!this.source.multiple && !item.selected) {
+                    let oaap = `option[value=""]:not(:disabled):checked:first-child`;
+                    this.source.selectedIndex = this.source.querySelector(oaap) ? 0 : -1;
+                }
+                break;
+            }
+            if (Object.keys(changes).length > 0) {
+                result.push([item, changes]);
+            }
+        });
+        return this.select.update(result) ? this : this;
+    }
+    selected(items, state) {
+        return this.handle(items, { selected: state });
+    }
+    disabled(items, state) {
+        return this.handle(items, { disabled: state });
+    }
+    hidden(items, state) {
+        return this.handle(items, { hidden: state });
+    }
+}
+
+class Select {
+    constructor(source, config, options) {
+        this.source = source;
+        this.config = config;
+        this.options = new (options || Options)(this);
+        this.locale = new Strings(config.locale || "en");
+        this.plugins = new Plugins(Object.assign({}, config.plugins || {}), this);
+        this.events = ((events) => {
+            for (let event in events) {
+                events[event] = [events[event]];
+            }
+            return events;
+        })(Object.assign({}, config.on || {}));
+        this.config.multiple = this.source.multiple = config.multiple || source.multiple;
+        this.config.disabled = this.source.disabled = config.disabled || source.disabled;
+        this.config.required = this.source.required = config.required || source.required;
+        this.config.placeholder = config.placeholder || source.dataset.placeholder || null;
+        let oaap = source.querySelector("option[value='']:checked:first-child");
+        if (oaap && (oaap.dataset.ratIgnore = "1")) {
+            this.config.deselect = !oaap.disabled;
+            this.config.placeholder = oaap.innerText || config.placeholder;
+        }
+        if ((config.rtl || null) === null) {
+            this.config.rtl = ['ar', 'fa', 'he', 'mdr', 'sam', 'syr'].indexOf(config.locale || "en") >= 0;
+        }
+        if ((config.theme || null) === null) {
+            let evaluate = document.createElement("SPAN");
+            evaluate.className = "rat-select-theme-name";
+            document.body.appendChild(evaluate);
+            this.config.theme = window.getComputedStyle(evaluate, ":after").content.replace(/"/g, "");
+            document.body.removeChild(evaluate);
+        }
+        source.dataset.ratSelect = Select.inst.length.toString();
+        Select.inst[Select.inst.length++] = this;
+        this.init();
+    }
+    init() {
+        if (this.trigger("hook", "init:before") === false) {
+            return this;
+        }
+        if (typeof this.config.items !== "undefined") {
+            let items = this.config.items;
+            this.options.parse(typeof items === "function" ? items.call(this, this.options) : items);
+        }
+        this.build();
+        this.bind();
+        if (this.get("sourceHide", true)) {
+            this.source.style.display = "none";
+        }
+        if (this.source.nextElementSibling) {
+            this.source.parentElement.insertBefore(this.select, this.source.nextElementSibling);
+        }
+        else {
+            this.source.parentElement.appendChild(this.select);
+        }
+        this.updateLabel();
+        this.trigger("hook", "init:after");
+        this.query();
+        if (this.get("startOpen") && !this.get("disabled")) {
+            return this.open();
+        }
+        else if (this.source.autofocus && !this.get("disabled")) {
+            return this.focus();
+        }
+        return this;
+    }
+    build() {
+        if (this.trigger("hook", "build:before") === false) {
+            return this;
+        }
+        let cls = this.get("classNames") === true ? this.source.className : this.get("classNames", "");
+        this.select = document.createElement("DIV");
+        this.select.className = ((cls) => {
+            let _l = ["rtl", "hideSelected", "hideDisabled", "hideHidden", "disabled", "required", "multiple", "deselect"];
+            _l.map((item) => {
+                if (this.get(item, item === "hideHidden")) {
+                    cls.unshift(item.replace(/[A-Z]/, (char) => `-${char.toLowerCase()}`));
+                }
+            });
+            cls.unshift(`rat-select theme-${this.get("theme").replace("-", " scheme-").replace(".", " ")}`);
+            return cls.join(" ").trim();
+        })(typeof cls === "string" ? cls.split(" ") : cls);
+        this.select.tabIndex = this.source.tabIndex || 1;
+        this.select.dataset.ratSelect = this.source.dataset.ratSelect;
+        let width = this.get("width", 250);
+        if (width !== null) {
+            this.select.style.width = width + (isNaN(width) ? "" : "px");
+        }
+        this.label = document.createElement("LABEL");
+        this.label.className = "select-label";
+        this.label.innerHTML = `<div class="label-placeholder"></div>`;
+        this.dropdown = document.createElement("DIV");
+        this.dropdown.className = `select-dropdown overflow-${this.get("titleOverflow", "clip")}`;
+        this.dropdown.innerHTML = `<div class="dropdown-inner"></div>`;
+        this.csv = document.createElement("INPUT");
+        this.csv.className = "select-search";
+        this.csv.name = ((name) => {
+            if (name === true) {
+                name = this.source.name || "";
+            }
+            return name === false ? "" : name;
+        })(this.get("csvOutput", !1));
+        this.select.appendChild(this.label);
+        this.select.appendChild(this.dropdown);
+        this.get("csvOutput") ? this.select.appendChild(this.csv) : null;
+        this.trigger("hook", "build:after");
+        return this;
+    }
+    calculate() {
+        let clone = this.dropdown;
+        let offset = 0;
+        let height = ((height) => {
+            let temp = clone.cloneNode(true);
+            temp.classList.add("cloned");
+            this.select.appendChild(temp);
+            if (typeof height === "string" && height.charAt(0) === ":") {
+                let len = parseInt(height.slice(1));
+                let count = 0;
+                let items = [].slice.call(clone.querySelectorAll("li"));
+                for (let c = 0, i = 0; i < items.length; i++) {
+                    if (items[i].offsetHeight > 0) {
+                        count += items[i].offsetHeight;
+                        if (c++ >= len) {
+                            break;
+                        }
+                    }
+                }
+                temp.style.maxHeight = count + "px";
+                height = count;
+            }
+            else {
+                temp.style.maxHeight = height + (isNaN(height) ? "" : "px");
+                height = temp.offsetHeight > height ? height : temp.offsetHeight;
+            }
+            offset = temp.querySelector(".dropdown-inner").offsetTop;
+            return this.select.removeChild(temp) ? height + offset : height + offset;
+        })((!this.get("height", 350)) ? "auto" : this.get("height", 350));
+        let rect = this.select.getBoundingClientRect();
+        let free = { top: rect.top, bottom: window.innerHeight - (rect.top + rect.height) };
+        let side = this.get("openAbove", null) || !(free.bottom >= height || free.bottom >= free.top);
+        height = Math.min(height, (side ? free.top : free.bottom) - 15);
+        this.select.classList[side ? "add" : "remove"]("open-top");
+        clone.style.maxHeight = height + "px";
+        clone.querySelector(".dropdown-inner").style.maxHeight = height - offset + "px";
+        return this;
+    }
+    bind() {
+        if (!this.handler) {
+            this.handler = this.handle.bind(this);
+        }
+        if (this.trigger("hook", "bind:before") === false) {
+            return this;
+        }
+        document.addEventListener("keydown", this.handler);
+        document.addEventListener("click", this.handler);
+        if (this.get("sourceBind")) {
+            this.source.addEventListener("change", this.handler);
+        }
+        this.trigger("hook", "bind:after");
+        return this;
+    }
+    handle(event) {
+        if (this.trigger("hook", "handle:before", [event]) === false) {
+            return this;
+        }
+        if (!(event instanceof Event) || this.get("disabled")) {
+            return this;
+        }
+        let target = event.target;
+        if (event.type === "keydown") {
+            if (document.activeElement !== this.select) {
+                return;
+            }
+            let key = event.keyCode;
+            let sel = ".dropdown-option:not(.disabled):not(.hidden)";
+            if (key === 32 && !this.select.classList.contains("active")) {
+                return this.open();
+            }
+            else if (!this.select.classList.contains("active")) {
+                return;
+            }
+            switch (key) {
+                case 13:
+                case 32:
+                    let itm = this.dropdown.querySelector(".dropdown-option.hover");
+                    if (itm) {
+                        this.options.selected(this.options.get(itm.dataset.value, itm.dataset.group));
+                        return !this.get("stayOpen") && !this.get("multiple") ? this.close() : 1;
+                    }
+                    return;
+                case 27:
+                    return this.close();
+                case 38:
+                case 40:
+                    let items = this.dropdown.querySelectorAll(sel);
+                    let item = null;
+                    let opt = [].slice.call(items).indexOf(this.dropdown.querySelector(".dropdown-option.hover"));
+                    if (opt >= 0 && items[opt + (key > 38 ? +1 : -1)]) {
+                        item = items[opt + (key > 38 ? +1 : -1)];
+                    }
+                    if (!item) {
+                        item = items[key > 38 ? 0 : items.length - 1];
+                    }
+                    if (item) {
+                        item.classList.add("hover");
+                        (items[opt]) ? items[opt].classList.remove("hover") : 0;
+                        let pos = ((el, pos) => {
+                            while ((el = el.parentElement) !== this.dropdown) {
+                                pos.top += el.offsetTop;
+                            }
+                            return pos;
+                        })(item, { top: item.offsetTop, height: item.offsetHeight });
+                        this.dropdown.scrollTop = Math.max(0, pos.top - (pos.height * 2));
+                    }
+                    return;
+            }
+        }
+        if (event.type === "click") {
+            if (target === this.label || this.label.contains(target)) {
+                return this.toggle();
+            }
+            if (target.getAttribute("for") === this.source.id) {
+                return this.focus();
+            }
+            if (!this.select.contains(target) && !this.get("stayOpen")) {
+                return this.close();
+            }
+            if (this.dropdown.contains(target)) {
+                while (target && this.dropdown.contains(target) && !target.dataset.action) {
+                    target = target.parentElement;
+                }
+                let disabled = target.classList.contains("disabled");
+                if (!disabled && target.dataset.action && (target.dataset.value || target.dataset.group)) {
+                    let items = this.options.get(target.dataset.value, target.dataset.group);
+                    let action = target.dataset.action;
+                    this.options.selected(items, action === "toggle" ? null : action === "select");
+                    if (!this.get("stayOpen") && !this.source.multiple) {
+                        return this.close();
+                    }
+                }
+            }
+        }
+        if (event.type === "change" && !(event instanceof CustomEvent)) {
+            [].map.call(this.select.querySelectorAll(".dropdown-option.active"), (item) => {
+                item.classList.remove("active");
+            });
+            let changes = [];
+            [].map.call(this.source.querySelectorAll("option:checked"), (item) => changes.push([item, { selected: true }]));
+            return this.update(changes, false);
+        }
+        this.trigger("hook", "handle:after", [event]);
+        return this;
+    }
+    trigger(type, name, args) {
+        if (type === "event") {
+            let data = { bubbles: false, cancelable: true, detail: { args: args, select: this } };
+            let event = new CustomEvent(`rat::${name}`, data);
+            var cancelled = this.select.dispatchEvent(event) || this.source.dispatchEvent(event);
+            if (name === "change") {
+                let input = new CustomEvent("input", data);
+                let event = new CustomEvent("change", data);
+                this.source.dispatchEvent(input);
+                this.source.dispatchEvent(event);
+            }
+        }
+        let _arg = true;
+        let callbacks = this.plugins.methods(name).concat(this.events[name] || []);
+        callbacks.map((cb) => {
+            if (type === "filter") {
+                args = cb.apply(this, args);
+            }
+            else if (cb.apply(this, args) === false) {
+                _arg = false;
+            }
+        });
+        return (type === "hook") ? _arg : ((type === "filter") ? args : cancelled);
+    }
+    query(query, args) {
+        if (this.trigger("hook", "query:before") === false) {
+            return this;
+        }
+        query = typeof query === "function" ? query : this.get("query", () => this.options.get());
+        query = this.trigger("filter", "query", [query])[0];
+        let el = null;
+        let skip = void 0;
+        let head = [];
+        let items = query.apply(this, args || []);
+        for (let item of items) {
+            let group = item.parentElement instanceof HTMLOptGroupElement ? item.parentElement.label : null;
+            [item, group] = this.trigger("filter", "walk", [item, group]);
+            if (this.get("hideEmpty", true) && item.value === "") {
+                continue;
+            }
+            if (group === skip) {
+                continue;
+            }
+            if (!(head.length > 0 && head[0].dataset.group === (!group ? this.options.ungrouped : group))) {
+                let arg = item.parentElement instanceof HTMLOptGroupElement ? item.parentElement : null;
+                if (!arg) {
+                    arg = document.createElement("OPTGROUP");
+                }
+                if ((el = this.render(arg)) === null) {
+                    skip = group;
+                    continue;
+                }
+                else if (el === false) {
+                    break;
+                }
+                head.unshift(el);
+            }
+            if ((el = this.render(item)) === null) {
+                continue;
+            }
+            else if (el === false) {
+                break;
+            }
+            head[0].appendChild(el);
+        }
+        let root = this.dropdown.querySelector(".dropdown-inner");
+        let clone = root.cloneNode();
+        head.reverse().map((item) => clone.appendChild(item));
+        this.dropdown.replaceChild(clone, root);
+        this.dropdown.querySelector(".dropdown-inner").className = "dropdown-inner";
+        if (this.get("titleOverflow") === "scroll") {
+            [].map.call(this.dropdown.querySelectorAll(".dropdown-option"), (el) => {
+                let width = el.clientWidth - el.querySelector(".option-title").offsetLeft;
+                let scroll = el.querySelector(".option-title").scrollWidth;
+                if (scroll > width) {
+                    el.style.textIndent = width - scroll + "px";
+                    el.querySelector(".option-title").style.marginLeft = scroll - width + "px";
+                }
+            });
+        }
+        if (this.select.classList.contains("active")) {
+            this.calculate();
+        }
+        this.trigger("hook", "query:after");
+        return this;
+    }
+    render(element) {
+        var _a;
+        let tag = element.tagName.toLowerCase();
+        let output = document.createElement(tag === "option" ? "LI" : "OL");
+        let classes = (item) => {
+            let selected = (this.get("multiple") && item.hasAttribute("selected")) || item.selected;
+            return ((selected ? " selected" : "") + (item.disabled ? " disabled" : "") + (item.hidden ? " hidden" : "")).trim();
+        };
+        if (tag === "option") {
+            output.className = "dropdown-option " + classes(element);
+            output.innerHTML = `<span class="option-title">${element.innerHTML}</span>`;
+            output.dataset.group = ((_a = element.parentElement) === null || _a === void 0 ? void 0 : _a.label) || this.options.ungrouped;
+            output.dataset.value = element.value;
+            output.dataset.action = "toggle";
+            if (element.dataset.description) {
+                output.innerHTML += `<span clasS="option-description">${element.dataset.description}</span>`;
+            }
+        }
+        else {
+            let label = element.label || this.get("ungroupedLabel", null) || "";
+            output.className = `dropdown-optgroup${this.get("stickyGroups") ? " optgroup-sticky" : ""}`;
+            output.innerHTML = `<li class="optgroup-title">${label}</li>`;
+            output.dataset.group = element.label || this.options.ungrouped;
+            if (this.get("multiple") && this.get("multiSelectGroup", 1)) {
+                for (let item of ['buttonAll', 'buttonNone']) {
+                    let btn = document.createElement("BUTTON");
+                    btn.dataset.action = (item === "buttonAll" ? "select" : "unselect");
+                    btn.dataset.group = output.dataset.group;
+                    btn.innerHTML = this.locale._(item);
+                    output.querySelector(".optgroup-title").appendChild(btn);
+                }
+            }
+        }
+        return this.trigger("filter", `render#${tag}`, [output, element, tag])[0];
+    }
+    update(changes, skipEvents) {
+        if (changes.length === 0) {
+            return this;
+        }
+        if (this.trigger("hook", "update:before", [changes, skipEvents]) !== true) {
+            return this;
+        }
+        if (typeof skipEvents === "boolean" && skipEvents) {
+            this.trigger("event", "change", [changes]);
+            if (this.source.multiple && this.get("multiLimit") > 0) {
+                if (this.options.count(null, ["selected"]) >= this.get("multiLimit")) {
+                    this.trigger("event", "limit", [changes]);
+                }
+            }
+        }
+        [].map.call(changes, (dataset) => {
+            let [option, change] = dataset;
+            let value = option.value.replace(/('|\\)/g, "\\$1");
+            let group = option.parentElement.label ? option.parentElement.label : this.options.ungrouped;
+            let item = this.dropdown.querySelector(`li[data-value="${value}"][data-group="${group}"]`);
+            if (item) {
+                for (let key in change) {
+                    item.classList[change[key] ? "add" : "remove"](key);
+                }
+            }
+        });
+        this.trigger("hook", "update:after", [changes, skipEvents]);
+        return this.updateCSV().updateLabel();
+    }
+    updateCSV() {
+        let csvValue = this.trigger("filter", "update#csv", [this.value("csv")])[0];
+        if (this.get("csvOutput") && csvValue) {
+            this.csv.value = csvValue;
+        }
+        return this;
+    }
+    updateLabel(label) {
+        let value = this.value("array");
+        let limit = this.get("multiLimit");
+        if (!label && typeof this.get("placeholder") === "function") {
+            label = this.get("placeholder").call(this);
+        }
+        if (!label) {
+            if (this.source.disabled || !this.options.count()) {
+                label = this.source.disabled ? "disabled" : "empty";
+            }
+            else if (this.source.multiple && value.length > 0) {
+                label = limit === value.length ? "multipleLimit" : "multipleCount";
+            }
+            else if (!this.source.multiple && value.length === 1) {
+                label = value[0];
+            }
+            else {
+                label = this.source.multiple ? "multiple" : "single";
+            }
+        }
+        let counter = this.source.multiple ? this.get("placeholderCount", false) : false;
+        if (counter) {
+            let selected = this.options.count(null, ["selected"]);
+            let count = this.options.count(null, ["!disabled", "!hidden"]);
+            let max = limit < 0 ? count : limit;
+            counter = counter === true ? "count-up" : counter;
+            switch (counter) {
+                case "count-up":
+                    counter = selected;
+                    break;
+                case "count-down":
+                    counter = limit - selected;
+                    break;
+                case "limit":
+                    counter = max;
+                    break;
+                case "both":
+                    counter = `${selected}/${max}`;
+                    break;
+            }
+            if (typeof counter === "function") {
+                counter = counter.call(this);
+            }
+        }
+        let [pl, cl] = this.trigger("filter", "update#placeholder", [this.locale._(label, [value.length]), counter]);
+        let placeholder = this.label.querySelector(".label-placeholder");
+        if (pl && placeholder) {
+            placeholder.innerHTML = `${cl ? `<span class="label-count">${cl}</span>` : ``}${pl}`;
+        }
+        return this;
+    }
+    open() {
+        if (this.select.classList.contains("active")) {
+            return this;
+        }
+        this.calculate();
+        this.select.classList.add("active");
+        this.trigger("event", "open", []);
+        return this;
+    }
+    close() {
+        if (!this.select.classList.contains("active")) {
+            return this;
+        }
+        this.dropdown.style.removeProperty("max-height");
+        this.select.classList.remove("active");
+        this.trigger("event", "close", []);
+        return this;
+    }
+    toggle() {
+        return this[this.select.classList.contains("active") ? "close" : "open"]();
+    }
+    reload(hard) {
+        if (this.trigger("hook", "reload:before", [hard]) !== true) {
+            return this;
+        }
+        (hard) ? this.remove().init() : this.query();
+        this.trigger("hook", "reload:after", [hard]);
+        return this;
+    }
+    remove(keep) {
+        if (this.trigger("hook", "remove:before", [keep]) !== true) {
+            return this;
+        }
+        if (!keep) {
+            [].map.call(this.source.querySelectorAll("optgroup[data-select='add']"), (item) => {
+                item.parentElement.removeChild(item);
+            });
+            [].map.call(this.source.querySelectorAll("option[data-select='add']"), (item) => {
+                item.parentElement.removeChild(item);
+            });
+        }
+        if (this.get("sourceHide")) {
+            this.source.style.removeProperty("display");
+            this.source.style.removeProperty("visibility");
+        }
+        if (this.select.parentElement) {
+            this.select.parentElement.removeChild(this.select);
+        }
+        this.source.removeAttribute("data-rat-select");
+        this.trigger("hook", "remove:after", [keep]);
+        return this;
+    }
+    value(format) {
+        if (typeof format === 'undefined' || format === 'auto') {
+            format = this.source.multiple ? 'array' : 'csv';
+        }
+        let items = this.options.get(null, null, ["selected"]);
+        switch (format) {
+            case 'csv': return [].map.call(items, (i) => i.value).join(this.get("csvSeparator", ","));
+            case 'array': return [].map.call(items, (i) => i.value);
+            case 'node': return !this.source.multiple ? (items[0] || null) : [].map.call(items, (i) => i.value);
+            default: return format === "array" ? [] : null;
+        }
+    }
+    get(key, def) {
+        if (key.indexOf(".") > 0) {
+            let [name, config] = key.split(".");
+            let plugin = this.config.plugins[name];
+            return (plugin && plugin[config]) ? plugin[config] : def;
+        }
+        return (key in this.config) ? this.config[key] : def;
+    }
+    set(key, value, reload) {
+        if (key.indexOf(".") > 0) {
+            let [name, config] = key.split(".");
+            let plugin = this.config.plugins[name];
+            if (plugin) {
+                plugin[config] = value;
+            }
+            return (reload) ? this.reload() : this;
+        }
+        if (['multiple', 'disabled', 'required'].indexOf(key) >= 0) {
+            if (key === 'disabled') {
+                return this[value ? 'enable' : 'disable'](reload);
+            }
+            this.config[key] = this.source[key] = !!key;
+        }
+        else {
+            this.config[key] = value;
+        }
+        return (reload) ? this.reload() : this;
+    }
+    enable(reload) {
+        this.trigger("event", "enable", [reload]);
+        this.config.disabled = this.source.disabled = false;
+        this.select.classList.remove("disabled");
+        return (reload) ? this.reload() : this;
+    }
+    disable(reload) {
+        this.trigger("event", "disable", [reload]);
+        this.config.disabled = this.source.disabled = true;
+        this.select.classList.add("disabled");
+        return (reload) ? this.reload() : this;
+    }
+    focus() {
+        this.select.focus();
+        return this;
+    }
+    state(state, status) {
+        if (typeof status === "undefined") {
+            return this.select.classList.contains(`state-${state}`);
+        }
+        status = status === null ? !this.select.classList.contains(`state-${state}`) : status;
+        this.select.classList[status ? "add" : "remove"](`state-${state}`);
+        return this;
+    }
+    on(name, callback) {
+        name.split(",").map((event) => {
+            this.events[event] = this.events[event] || [];
+            this.events[event].push(callback);
+        });
+        return this;
+    }
+}
+Select.inst = {
+    length: 0
+};
+
+function RatSelect(selector, config, options) {
+    let _return = (source) => {
+        if (!(source instanceof HTMLSelectElement)) {
+            return null;
+        }
+        if (source.dataset.ratSelect) {
+            return Select.inst[source.dataset.ratSelect];
+        }
+        return new Select(source, config ? Object.assign({}, config) : {}, options ? options : Options);
+    };
+    if (typeof selector === "string") {
+        selector = document.querySelectorAll(selector);
+    }
+    if (selector instanceof HTMLSelectElement) {
+        return _return(selector);
+    }
+    return [].map.call(selector, _return);
+}
+RatSelect.version = version;
+RatSelect.status = status;
+RatSelect.Select = Select;
+RatSelect.Options = Options;
+RatSelect.Strings = Strings;
+RatSelect.Plugins = Plugins;
+
+export default RatSelect;
+//# sourceMappingURL=rat.select.js.map
