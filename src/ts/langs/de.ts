@@ -20,5 +20,5 @@ RatSelect.Strings["de"] = {
     multipleLimit: "Keine weiteren Optionen wählbar",
     search: "Tippen um zu suchen...",
     single: "Wähle eine Option...",
-    waiting: "Warte auf deine Eingabe."
+    waiting: "Warte auf Eingabe..."
 };

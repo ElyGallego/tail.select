@@ -17,7 +17,7 @@ RatSelect.Strings["[LOCALE]"] = {
     multipleLimit: "No more options selectable",
     search: "Tap to search...",
     single: "Choose an option...",
-    waiting: "Waiting for your input."
+    waiting: "Waiting for input..."
 };
 
 /*
