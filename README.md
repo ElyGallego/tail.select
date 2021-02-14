@@ -1,10 +1,9 @@
 rat.select - LvL-UP your select fields
 ======================================
-[![npm Version](https://s.pytes.me/47a6bf48)](https://s.pytes.me/2a8c886a)
-[![npm Downloads](https://s.pytes.me/f678004c)](https://s.pytes.me/2a8c886a)
-[![Support Me](https://s.pytes.me/4a1717aa)](https://buymeacoffee.com/pytesNET)
-[![plainJS](https://s.pytes.me/cb2d2d94)](https://s.pytes.me/21d65dff)
-[![License](https://s.pytes.me/8257ac72)](LICENSE.md)
+[![Version](https://b.rat.md/select/~version)](https://b.rat.md/select/+version)
+[![Downloads](https://b.rat.md/select/~downloads)](https://b.rat.md/select/+downloads)
+[![Support](https://b.rat.md/global/~bmac)](https://b.rat.md/global/+bmac)
+[![plainJS](https://b.rat.md/select/~plainJS)](https://b.rat.md/select/+plainJS)
 
 The vanilla JavaScript solution to **LEVEL UP** and **IMPROVE** your HTML `<select>` fields!
 
@@ -52,8 +51,8 @@ You can support as and the development of our rat packages...
 Thanks for your support and the use of our package, we really appreciate that!
 
 
-Install
--------
+Installation
+------------
 
 The master branch will always contain the latest updates and fixes, but may also some not-enough 
 tested features or commits. Therefore it is **HIGHLY** recommended download and using the versions
