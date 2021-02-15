@@ -1,5 +1,6 @@
 tail.select - Beautify Select Fields
 ====================================
+
 [![Minfied Size](https://b.rat.md/select/~minified)](https://b.rat.md/select/+minified)
 [![Version](https://b.rat.md/select/~version)](https://b.rat.md/select/+version)
 [![Downloads](https://b.rat.md/select/~downloads)](https://b.rat.md/select/+downloads)
@@ -8,9 +9,7 @@ tail.select - Beautify Select Fields
 
 **Replace** and **Improve** your HTML `<select>` fields with style and without **jQuery**!
 
-<p align="center" style="text-align:center"><a href="https://github.pytes.net/tail.select">
-<img src="https://repository-images.githubusercontent.com/150568173/e3ebbd80-a27d-11e9-9da1-c6caa6484bcc" style="width:auto;max-width:640px;" />
-</a></p>
+> **The tail.select package is currently re-written in TypeScript as 'rat.select'. More information coming soon.**
 
 The **tail.select** script is back, re-written in vanilla JavaScript and ready to beautify and
 extend your HTML `<select>` fields... again! Add a search bar, multi-selection utilities (such as
