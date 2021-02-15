@@ -6,6 +6,11 @@ tail.select - Awesome Select Fields
 [![plainJS](https://s.pytes.me/cb2d2d94)](https://s.pytes.me/21d65dff)
 [![License](https://s.pytes.me/8257ac72)](LICENSE.md)
 
+
+--------------
+> This development build is deprecated, we're working on a fully re-written bundle.
+--------------
+
 **This is the development build, with many unstable, unreleased lines of code, which may gets changed 
 with a single commit. So, don't use this version on production websites, it serves only  for building 
 up and creating the new awesome release.**
