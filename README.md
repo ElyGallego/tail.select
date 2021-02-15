@@ -7,9 +7,13 @@ tail.select - Beautify Select Fields
 [![Support](https://b.rat.md/global/~bmac)](https://b.rat.md/global/+bmac)
 [![plainJS](https://b.rat.md/select/~plainJS)](https://b.rat.md/select/+plainJS)
 
-**Replace** and **Improve** your HTML `<select>` fields with style and without **jQuery**!
+--------------
 
 > **The tail.select package is currently re-written in TypeScript as 'rat.select'. More information coming soon.**
+
+--------------
+
+**Replace** and **Improve** your HTML `<select>` fields with style and without **jQuery**!
 
 The **tail.select** script is back, re-written in vanilla JavaScript and ready to beautify and
 extend your HTML `<select>` fields... again! Add a search bar, multi-selection utilities (such as
