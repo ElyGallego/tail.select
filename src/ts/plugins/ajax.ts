@@ -1,4 +1,14 @@
 
+/*
+    CONSIDER ADDING A PUBLIC FUNCTION TO THE GLOBAL SELECT
+
+        select.ajax.insert()    <!-- Insert options at any time
+        select.ajax.update()    <!-- Update all options at any time
+
+    difference between select.options.set() is that both functions above allows to be called using 
+    a function, which returns the options directly or by passing a Promise object.
+*/
+
 import RatSelect from "rat.select";
 
 class SelectPluginAjax implements RatSelect_Plugin {
@@ -75,7 +85,6 @@ class SelectPluginAjax implements RatSelect_Plugin {
                 // Ajax Error
                 let item = this.plugins.plugins["ajax"].render(this.locale._("error"), "error");
                 this.dropdown.replaceChild(item, this.dropdown.querySelector(".dropdown-inner"));
-                this.calculate();
             }).bind(this);
 
             // Call
@@ -87,7 +96,6 @@ class SelectPluginAjax implements RatSelect_Plugin {
             // Ajax Placeholder
             let item = this.plugins.plugins["ajax"].render(this.locale._("loading"), "loading");
             this.dropdown.replaceChild(item, this.dropdown.querySelector(".dropdown-inner"));
-            this.calculate();
         }
         if(this.ajax === "resolved") {
             return true;
@@ -114,5 +122,5 @@ class SelectPluginAjax implements RatSelect_Plugin {
  */
 RatSelect.Strings.en["error"] = "Oops, an error is occured";
 RatSelect.Strings.en["loading"] = "Loading, please wait.";
-RatSelect.Strings.en["waiting"] = "Waiting for your input.";
+RatSelect.Strings.en["waiting"] = "Waiting for input.";
 RatSelect.Plugins.add("ajax", SelectPluginAjax);

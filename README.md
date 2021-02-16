@@ -114,8 +114,7 @@ Check out our up-to-date documentation on [rat.md/select](https://rat.md/select/
 includes dozens of examples, tutorials, snippets and answers. The [GitHub Docs]() are also filled 
 with the latest information, and the package contains a small docs bundle as well.
 
-However, below you will find a quick cheatsheet with all available core as well as included plugin 
-options and their default values:
+However, below you will find a quick cheatsheet with all available core options with their defaults.
 
 ```javascript
 /*
@@ -142,32 +141,7 @@ rat.select('select', {
     openAbove: null,            //   null | boolean
     placeholder: null,          //   null | string | function
     placeholderCount: false,    //   boolean, string, function
-    plugins: {                  //   null | object
-        ajax: {
-
-        },
-        columns: {
-
-        },
-        input: {
-
-        },
-        movement: {
-
-        },
-        search: {
-            async: false,       //   [EXPERIMENTAL] boolean
-            config: [           //   string[]
-                'text', 
-                'visible'
-            ],
-            finder: null,       //   null | function
-            focus: false,       //   boolean
-            linguistic: null,   //   null | object
-            mark: true,         //   boolean
-            minimum: 3          //   number
-        }
-    },
+    plugins: { },               //   null | object
     query: null,                //   null | functon
     required: false,            // * boolean
     rtl: null,                  //   null | boolean

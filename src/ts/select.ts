@@ -224,7 +224,7 @@ export class Select implements RatSelect_Select {
      |  CORE :: CALCULATE DROPDOWN HEIGHT
      */
     calculate(): RatSelect_Select {
-        let clone = this.dropdown as HTMLDivElement;
+        let clone = this.dropdown;
 
         // Calculate Height
         let offset = 0;

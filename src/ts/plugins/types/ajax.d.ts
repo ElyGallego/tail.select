@@ -33,7 +33,7 @@ declare interface RatSelect_PluginAjaxDefaults {
      |  @default
      |      true
      */
-    forcePlaceholder: Function;
+    forcePlaceholder: boolean;
 
     /*
      |  AJAX Callback Listener

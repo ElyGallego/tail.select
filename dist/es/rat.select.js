@@ -150,6 +150,7 @@ class Options {
         return (objects) ? groups : [].map.call(groups, (i) => i.label);
     }
     count(group, states) {
+        console.log(this.source.options);
         if (arguments.length === 0) {
             return this.source.options.length;
         }

@@ -49,7 +49,7 @@
         "watch": "rollup -c --watch",
         "docs:build": "node src/build/rat-docs.js",
         "docs:watch": "node src/build/rat-docs.js",
-        "test": ""
+        "test": "node --trace-warnings tests/index.js"
     },
     "main": "dist/js/rat.select.js",
     "module": "dist/es/rat.select.js",
@@ -69,13 +69,15 @@
     "reveal": true,
     "dependencies": {},
     "devDependencies": {
-        "@rat.md/rollup-plugin-sass": "^0.1.3-alpha",
+        "@rat.md/rollup-plugin-sass": "^0.3.1",
         "@rat.md/rollup-resolve": "^0.1.2-alpha",
-        "@rollup/plugin-typescript": "^6.1.0",
+        "@rollup/plugin-typescript": "^8.2.0",
+        "linkedom": "^0.4.24",
         "rollup": "^2.38.5",
         "rollup-plugin-consts": "^1.0.2",
         "rollup-plugin-terser": "^7.0.2",
         "tslib": "^2.1.0",
-        "typescript": "^4.1.5"
+        "typescript": "^4.1.5",
+        "zora": "^4.0.2"
     }
 }

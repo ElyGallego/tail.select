@@ -184,6 +184,7 @@
             return (objects) ? groups : [].map.call(groups, function (i) { return i.label; });
         };
         Options.prototype.count = function (group, states) {
+            console.log(this.source.options);
             if (arguments.length === 0) {
                 return this.source.options.length;
             }
