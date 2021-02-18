@@ -1,5 +1,4 @@
-const { test } = require("zora");
 
-t.test('  -> classNames', () => {
-
+t.test('classNames', () => {
+    createDocument().body.outerHTML;
 });

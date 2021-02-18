@@ -5,7 +5,7 @@ import pkg from './package.json';
 import typescript from '@rollup/plugin-typescript';
 import consts from 'rollup-plugin-consts';
 import { terser } from 'rollup-plugin-terser';
-import { RatRollupResolve } from '@rat.md/rollup-resolve';
+import { RatRollupResolve } from '../rollup-resolve/dist/rollup-resolve';
 import { RatSass, RatSassSkip, RatSassOutput } from '@rat.md/rollup-plugin-sass';
 
 
@@ -32,62 +32,65 @@ export default (async () => {
     /*
      |  RESOLVE LANGUAGE FILEs
      */
-    const langs = await RatRollupResolve('src/ts/langs/*.ts', [
-        {
-            output: {
-                dir: 'dist/js/langs',
-                esModule: false,
-                format: 'umd',
-                interop: false
+    const langs = await RatRollupResolve({
+        match: 'src/ts/langs/*.ts',
+        options: [
+            {
+                output: {
+                    dir: 'dist/js/langs',
+                    esModule: false,
+                    format: 'umd',
+                    interop: false
+                },
+                plugins: [
+                    typescript({ sourceMap: false })
+                ]
             },
-            plugins: [
-                typescript({ sourceMap: false })
-            ]
-        },
-        {
+            {
+                output: {
+                    dir: 'dist/es/langs',
+                    esModule: true,
+                    format: 'es'
+                },
+                plugins: [
+                    typescript({ sourceMap: false, target: 'ES6' })
+                ]
+            }
+        ],
+        sharedOptions: {
             output: {
-                dir: 'dist/es/langs',
-                esModule: true,
-                format: 'es'
+                banner: copysmall,
+                compact: true,
+                extend: true,
+                footer: `\n/*! Visit this project on ${pkg.homepage} */`,
+                globals: {
+                    'rat.select': 'rat.select'
+                },
+                intro: '"use strict";',
+                name: pkg.global,
+                preserveModules: false,
+                strict: false,
+                sourcemap: false,
+                plugins: [
+                    terser(),
+                    {
+                        // Add Translation Comment on output
+                        renderChunk(code, chunk, options) {
+                            let content = fs.readFileSync(chunk.facadeModuleId).toString();
+                            content = "\n" + content.substr(0, content.indexOf('*/')+2);
+    
+                            let offset = code.indexOf('*/')+2;
+                            return code.substr(0, offset) + content + code.substr(offset);
+                        }
+                    },
+                ]
             },
+            external: ['rat.select'],
             plugins: [
-                typescript({ sourceMap: false, target: 'ES6' })
+                RatSassSkip()
             ]
         }
-    ], {
-        output: {
-            banner: copysmall,
-            compact: true,
-            extend: true,
-            footer: `\n/*! Visit this project on ${pkg.homepage} */`,
-            globals: {
-                'rat.select': 'rat.select'
-            },
-            intro: '"use strict";',
-            name: pkg.global,
-            preserveModules: false,
-            strict: false,
-            sourcemap: false,
-            plugins: [
-                terser(),
-                {
-                    // Add Translation Comment on output
-                    renderChunk(code, chunk, options) {
-                        let content = fs.readFileSync(chunk.facadeModuleId).toString();
-                        content = "\n" + content.substr(0, content.indexOf('*/')+2);
-
-                        let offset = code.indexOf('*/')+2;
-                        return code.substr(0, offset) + content + code.substr(offset);
-                    }
-                },
-            ]
-        },
-        external: ['rat.select'],
-        plugins: [
-            RatSassSkip()
-        ]
     });
-
 
     /*
      |  RESOLVE PLUGIN FILEs

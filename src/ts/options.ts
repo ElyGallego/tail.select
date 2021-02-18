@@ -117,7 +117,6 @@ export class Options implements RatSelect_Options {
      |  API :: COUNT OPTIONs
      */
     count(group?: null | false | string, states?: string[]): number {
-        console.log(this.source.options);
         if(arguments.length === 0) {
             return this.source.options.length;
         }
