@@ -1,5 +1,4 @@
-
-const readline = require('readline');
+const { isReturnStatement } = require("typescript");
 
 /*
  |  FACTORY FUNCTION RETURNING AN ASYNC GENERATOR
@@ -28,17 +27,26 @@ class RatZoraReporter {
      |  CONSTRUCTOR
      */
     constructor(config) {
-        this.title = [];
+        this.title = ['Task:', ''];
 
+        // Total Tests
         this.passed = 0;
         this.skipped = 0;
         this.failed = 0;
+        this.tests = { };
+        this.testsDone = [ ];
+        this.testsQueue = [];
 
+        // Total Dots
         this.dots = [[]];
         this.dotsRow = 0;
         
+        // Draw Data
         this.screen = process.stdout;
         this.drawnLines = 0;
+
+        // Development
+        this.debug = [];
     }
     
     /*
@@ -50,90 +58,140 @@ class RatZoraReporter {
         let lastMessage = null;
         for await (const message of src) {
             lastMessage = message;
+            // { type: 'TEST_START', data: { description: 'Hello World' }, offset: 0 }
             switch (message.type) {
                 case "TEST_START":
-                    this.printTestStart(message);
+                    this.handleTestStart(message);
                     break;
                 case "ASSERTION":
-                    this.printAssertion(message);
+                    this.handleAssertion(message);
                     break;
                 case "BAIL_OUT":
-                    this.printBailOut(message);
+                    this.handleBailOut(message);
+                    break;
+                case "TEST_END":
+                    this.handleTestEnd(message);
                     break;
             }
-            this.print(`1..${lastMessage.data.count}`, 0);
-            this.printSummary(lastMessage);
         }
-        this.printSummary(lastMessage);
+        this.handleSummary(lastMessage);
     }
 
     /*
-     |  PRINT :: 
+     |  HANDLE :: TEST START
      */
-    printTestStart(message) {
+    handleTestStart(message) {
         const { data: { description } } = message;
-        this.title[0] = description;
+        if (typeof description === 'undefined' || description.length === 0) {
+            return;
+        }
+
+        // Add Test
+        this.title[1] = description;
+        this.testsQueue.push(this.title);
+
+        // Debug
+        this.debug.push(`START: ${description}`);
     }
 
     /*
-     |  PRINT :: 
+     |  HANDLE :: TEST START
      */
-    printAssertion(message) {
-        const { data, offset } = message;
-        const { pass, description } = data;
-        const label = pass === true ? 'ok' : 'not ok';
+    handleTestEnd(message) {
+        if (this.testsQueue.length === 0) {
+            return;
+        }
 
+        const { data: { description } } = message;
+        if (typeof description === 'undefined' || description.length === 0) {
+            return;
+        }
+
+        // Remove Tests
+        this.testsDone.push(this.testsQueue.pop());
+
+        // Debug
+        this.debug.push(`END: ${description}`);
+    }
+
+    /*
+     |  HANDLE :: ASSERTION
+     */
+    handleAssertion(message) {
+        if (this.testsQueue.length === 0) {
+            return;
+        }
+
+        const { data: { pass, description, executionTime } } = message;
+        if (typeof description === 'undefined' || typeof executionTime !== 'undefined') {
+            return;
+        }
+
+        // Pass Dot
         if (this.dots[this.dotsRow].length >= 40) {
             this.dotsRow++
             this.dots.push([]);
         }
         this.dots[this.dotsRow].push(pass? "\x1b[32m.\x1b[0m": "\x1b[31m,\x1b[0m");
 
+        // Count Test
         if (pass) {
             this.passed++;
         } else {
             this.failed++;
         }
 
+        // Draw
         this.draw();
+
+        // Debug
+        this.debug.push(`ASSERT: ${description}`);
     }
 
     /*
-     |  PRINT :: 
+     |  HANDLE :: BAIL OUT
      */
-    printBailOut(message) {
-        //console.log(message);
+    handleBailOut(message) {
+        if (this.testCurrent) {
+            return;
+        }
+        const { data: { pass, description } } = message;
+
+        // Debug
+        this.debug.push(`BAIL OUT: ${description}`);
     }
 
     /*
-     |  PRINT :: 
+     |  HANDLE :: SUMMARY
      */
-    print(message) {
-        //console.log(message);
+    handleSummary(message) {
+        this.title[0] = '';
+        this.title[1] = 'Finished!';
+        this.draw('summary');
     }
 
     /*
-     |  PRINT :: 
+     |  DRAW
      */
-    printSummary(message) {
-    }
-
-    /*
-     |  PRINT :: GREEN DOT
-     */
-    draw() {
+    draw(view) {
         if (this.drawnLines > 0) {
             process.stdout.moveCursor(0, -this.drawnLines);
             process.stdout.clearLine();
             process.stdout.cursorTo(0);
         }
-        process.stdout.clearScreenDown()
+        process.stdout.clearScreenDown();
 
-        process.stdout.write(`\n\x1b[2mTask:\x1b[0m ${this.title[0]}             \x1b[32m\u2713\x1b[0m ${this.passed}  \x1b[31m\u2717\x1b[0m ${this.failed}\n`);
+        process.stdout.write(`\n\x1b[2m${this.title[0]}\x1b[0m ${this.title[1]}             \x1b[32m\u2713\x1b[0m ${this.passed}  \x1b[31m\u2717\x1b[0m ${this.failed}\n`);
         for (let rows of this.dots) {
             process.stdout.write(rows.join('') + "\n");
         }
         this.drawnLines = 2 + this.dots.length;
+
+        if (typeof view !== 'undefined') {
+
+            process.stdout.write(this.debug.join('\n'));
+        }
+
     }
 }
 

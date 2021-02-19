@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const fs = require('fs');
 const path = require('path');
 const dom = require('../../~linkedom');
@@ -8,7 +6,6 @@ const rat = require('../dist/js/rat.select');
 const RatZoraReporter = require('./zora-reporter');
 
 const { createHarness } = require('zora');
-const { time } = require('console');
 const harness = createHarness();
 const { test } = harness;
 
@@ -44,7 +41,7 @@ test('Hello World', (t) => {
 /*
  |  HANDLE OPTIONS TESTS
  */
-test('Testing Options', async (t) => {
+test('Options', (t) => {
     globalThis.t = t;
 
     fs.readdirSync('./tests/options', 'utf-8').map((file) => {
@@ -54,29 +51,8 @@ test('Testing Options', async (t) => {
     });
 });
 
-
-let handle = 1;
-let timer = function() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(true);
-        }, 250);
-    });
-}
-
-function testing() {
-    if (handle++ >= 197) {
-        return;
-    }
-    test('Test Title', async (t) => {
-        let value = await timer();
-        t.truthy(Math.floor(Math.random() * Math.floor(20)) < 18);
-    }).then(() => {
-        testing();
-    });
-}
-testing();
-
-
+/*
+ |  TEST OUTPUT
+ */
 harness.report(RatZoraReporter()).then(() => {
 });

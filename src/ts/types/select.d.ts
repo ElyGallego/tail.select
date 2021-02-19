@@ -298,7 +298,7 @@ declare interface RatSelect_Select {
      |  @return mixed   A boolean value showing the current state value if status has been avoided,
      |                  the select instance otherwise.
      */
-    state(state: string, status?: null | boolean): boolean | RatSelect_Select ;
+    state(state: string, status?: null | boolean): boolean | RatSelect_Select;
     
     /*
      |  PUBLIC :: EVENT LISTENER

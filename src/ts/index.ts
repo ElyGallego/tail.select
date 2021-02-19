@@ -2,13 +2,20 @@
 import version from "consts:version";
 import status from "consts:status";
 
+import "../sass/harx.scss";
 import "../sass/select.scss";
+import "../sass/smep.scss";
+
+import "../sass/bluma.scss";
 import "../sass/bootstrap2.scss";
 import "../sass/bootstrap3.scss";
 import "../sass/bootstrap4.scss";
-import "../sass/selectize.scss";
-import "../sass/harx.scss";
+import "../sass/foundation.scss";
+import "../sass/materialize.scss";
+
 import "../sass/chosen.scss";
+import "../sass/select2.scss";
+import "../sass/selectize.scss";
 
 import { Select } from "./select";
 import { Options } from "./options";

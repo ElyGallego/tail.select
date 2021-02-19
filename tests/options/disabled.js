@@ -1,5 +1,5 @@
 
-t.test('classNames', (t) => {
+t.test('disabled', (t) => {
     createDocument().body.outerHTML;
 
     t.truthy(false);

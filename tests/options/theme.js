@@ -1,5 +1,5 @@
 
-t.test('classNames', (t) => {
+t.test('theme', (t) => {
     createDocument().body.outerHTML;
 
     t.truthy(false);

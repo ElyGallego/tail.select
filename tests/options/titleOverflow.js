@@ -1,5 +1,5 @@
 
-t.test('classNames', (t) => {
+t.test('titleOverflow', (t) => {
     createDocument().body.outerHTML;
 
     t.truthy(false);

@@ -7,15 +7,6 @@ almost all import breaking changes you should know of, if you're switching from 
 to the brandnew one.
 
 
-rat.select() is not a prototype anymore
----------------------------------------
-
-Before version 1.0.0 you could initialize the (former named) `tail.select` package using the `new` 
-keyword and this was possible since tail.select was a prototyped class object before. The new 
-version doesn't use this structure anymore, thus you SHOULD avoid using `new rat.select()` even 
-if it still works gently.
-
-
 rat.select() returning values
 -----------------------------
 
