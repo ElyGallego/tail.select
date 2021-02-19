@@ -2,3 +2,4 @@
 docs/* linguist-vendored
 src/docs/* linguist-vendored
 tests/* linguist-vendored
+tests/examples/* linguist-vendored
