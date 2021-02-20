@@ -85,14 +85,14 @@ Package Overview
 
 The **rat.select** library is available in the following official packages.
 
-| Package      | Dependencies                  | Visit Branch | NPM Package           |
-| ------------ | ----------------------------- |:------------:|  -------------------- |
-| Vanilla UMD  | -                             | [Master]()   | @rat.md/select        |
-| Vanilla ES6  | Modern Browser                | [Master]()   | @rat.md/select        |
-| WebComponent | Modern Browser                | [WebC]()     | @rat.md/select.webc   |
-| ESNext **\***| Latest Browser                | [ESNext]()   | @rat.md/select.esnext |
-| Svelte       | [Svelte](https://svelte.dev)  | [Svelte]()   | @rat.md/select.svelte |
-| Vue.js       | [Vue.js](https://vuejs.org)   | [VueJS]()    | @rat.md/select.vue    |
+| Package      | Dependencies                   |  NPM Package          | Visit Branch                                                  |
+| ------------ | ------------------------------ | --------------------- |:-------------------------------------------------------------:|
+| Vanilla UMD  | -                              | @rat.md/select        | [Master](https://github.com/pytesNET/tail.select)             |
+| Vanilla ES6  | Modern Browser                 | @rat.md/select        | [Master](https://github.com/pytesNET/tail.select)             |
+| WebComponent | Modern Browser                 | @rat.md/select.webc   | [WebC](https://github.com/pytesNET/rat.select/tree/webc)      |
+| ESNext **\***| Latest Browser                 | @rat.md/select.esnext | [ESNext](https://github.com/pytesNET/rat.select/tree/esnext)  |
+| Svelte       | [Svelte](https://svelte.dev)   | @rat.md/select.svelte | [Svelte](https://github.com/pytesNET/tail.select/tree/svelte) |
+| Vue.js       | [Vue.js](https://vuejs.org) v3 | @rat.md/select.vue    | [VueJS](https://github.com/pytesNET/tail.select/tree/vuejs)   |
 
 Packages, which are marked with **\*** are experimental and shouldn't be used productive.
 
@@ -101,10 +101,11 @@ Thanks To
 ---------
 
 - The community for helping out, translating and improving the rat.select package.
-- [Octicons]() and [Feather]() for the awesome icons
-- [Rollup]() for the awesome bundler engine
-- [prismJS]() for the syntax highlighting library
-- [MenuSpy]() for the used menu navigation on the docs
+- [Octicons](https://primer.style/octicons) and [Feather](https://feathericons.com/) for the awesome icons.
+- [Rollup](https://rollupjs.org) for the awesome bundler engine.
+- [Zora](https://github.com/lorenzofox3/zora) and [LinkeDOM](https://github.com/WebReflection/linkedom) for the awesome testing environment.
+- [prismJS](https://prismjs.com/) for the syntax highlighting library.
+- [MenuSpy](https://leocs.me/menuspy/) for the used menu navigation on the docs.
 
 
 Documentation
