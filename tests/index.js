@@ -3,8 +3,7 @@ const path = require('path');
 const dom = require('../../~linkedom');
 const rat = require('../dist/js/rat.select');
 
-const RatZoraReporter = require('./zora-reporter');
-
+const { reporter } = require('../../zora-reporter');
 const { createHarness } = require('zora');
 const harness = createHarness();
 const { test } = harness;
@@ -54,5 +53,5 @@ test('Options', (t) => {
 /*
  |  TEST OUTPUT
  */
-harness.report(RatZoraReporter()).then(() => {
+harness.report(reporter()).then(() => {
 });

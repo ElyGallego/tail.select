@@ -67,9 +67,7 @@
     ],
     "typings": "src/ts/types/ratsass.d.ts",
     "reveal": true,
-    "dependencies": {
-        "uninstall": "0.0.0"
-    },
+    "dependencies": {},
     "devDependencies": {
         "@rat.md/rollup-plugin-sass": "^0.3.2",
         "@rat.md/rollup-resolve": "^0.2.0",

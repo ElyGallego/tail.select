@@ -88,7 +88,7 @@ The **rat.select** library is available in the following official packages.
 | Package      | Dependencies                   |  NPM Package          | Visit Branch                                                  |
 | ------------ | ------------------------------ | --------------------- |:-------------------------------------------------------------:|
 | Vanilla UMD  | -                              | @rat.md/select        | [Master](https://github.com/pytesNET/tail.select)             |
-| Vanilla ES6  | Modern Browser                 | @rat.md/select        | [Master](https://github.com/pytesNET/tail.select)             |
+| ES6 Module   | Modern Browser                 | @rat.md/select        | [Master](https://github.com/pytesNET/tail.select)             |
 | WebComponent | Modern Browser                 | @rat.md/select.webc   | [WebC](https://github.com/pytesNET/rat.select/tree/webc)      |
 | ESNext **\***| Latest Browser                 | @rat.md/select.esnext | [ESNext](https://github.com/pytesNET/rat.select/tree/esnext)  |
 | Svelte       | [Svelte](https://svelte.dev)   | @rat.md/select.svelte | [Svelte](https://github.com/pytesNET/tail.select/tree/svelte) |
