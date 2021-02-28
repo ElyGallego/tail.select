@@ -6,6 +6,13 @@ rat.select - LvL-UP your select fields
 [![Support](https://b.rat.md/global/~bmac)](https://b.rat.md/global/+bmac)
 [![plainJS](https://b.rat.md/select/~plainJS)](https://b.rat.md/select/+plainJS)
 
+
+---
+**You're currently looking on the development branch**<br>
+Don't use this package on production!
+---
+
+
 The vanilla JavaScript solution to **LEVEL UP** and **IMPROVE** your HTML `<select>` fields!
 
 Create, Design, Archive awesome and feature-rich single and multiple `<select>` fields using 
@@ -122,39 +129,7 @@ However, below you will find a quick cheatsheet with all available core options 
  |  ALL *-DEFAULT VALUES DEPENDS ON THE SOURCE SELECT FIELDs
  */
 rat.select('select', {
-    classNames: false,          //   boolean | string | string[]
-    csvOutput: false,           //   boolean | string
-    csvSeparator: ',',          //   string
-    deselect: false,            //   boolean
-    disabled: false,            // * boolean
-    height: 350,                //   null | number | string
-    hideDisabled: false,        //   boolean
-    hideEmpty: true,            //   boolean
-    hideHidden: true,           //   boolean
-    hideSelected: false,        //   boolean
-    items: nullm                //   null | array | function
-    locale: 'en',               //   string
-    multiple: false,            // * boolean
-    multiLimit: -1,             //   number
-    multiSelectAll: false,      //   boolean
-    multiSelectGroup: false,    //   boolean
-    on: null,                   //   null | object
-    openAbove: null,            //   null | boolean
-    placeholder: null,          //   null | string | function
-    placeholderCount: false,    //   boolean, string, function
-    plugins: { },               //   null | object
-    query: null,                //   null | functon
-    required: false,            // * boolean
-    rtl: null,                  //   null | boolean
-    sourceBind: false,          //   boolean
-    sourceHide: true,           //   boolean
-    startOpen: false,           //   boolean
-    stayOpen: null,             //   null | boolean
-    stickyGroups: true,         //   boolean
-    theme: null,                //   null | string
-    titleOverflow: 'break',     //   [EXPERIMENTAL] 'break' | 'clip' | 'scroll'
-    ungroupedLabel: null,       //   null | string
-    width: 250                  //   null | number | string
+    // Coming Soon
 }, rat.select.Options);
 ```
 
