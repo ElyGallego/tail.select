@@ -71,8 +71,9 @@
     "devDependencies": {
         "@rat.md/rollup-plugin-sass": "^0.3.2",
         "@rat.md/rollup-resolve": "^0.2.0",
+        "@rat.md/zora-reporter": "^0.1.2",
         "@rollup/plugin-typescript": "^8.2.0",
-        "linkedom": "^0.4.24",
+        "linkedom": "^0.4.26",
         "rollup": "^2.38.5",
         "rollup-plugin-consts": "^1.0.2",
         "rollup-plugin-terser": "^7.0.2",

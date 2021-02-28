@@ -211,15 +211,15 @@ declare interface RatSelect_Select {
     reload(hard?: boolean): RatSelect_Select;
     
     /*
-     |  API :: REMOVE SELECT INSTANCE
+     |  API :: DESTROY SELECT INSTANCE
      |  @since  0.3.0
      |
      |  @param  bool    TRUE to keep options which has been added after init,
-     |                  FALSE to remove them and reset everything.
+     |                  FALSE to destroy them and reset everything.
      |
      |  @return this    The select instance.
      */
-    remove(): RatSelect_Select;
+    destroy(): RatSelect_Select;
 
     /*
      |  PUBLIC :: GET VALUE

@@ -309,7 +309,7 @@ class Select {
         else {
             this.source.parentElement.appendChild(this.select);
         }
-        this.updateLabel();
+        this.updateCSV().updateLabel();
         this.trigger("hook", "init:after");
         this.query();
         if (this.get("startOpen") && !this.get("disabled")) {
@@ -324,7 +324,7 @@ class Select {
         if (this.trigger("hook", "build:before") === false) {
             return this;
         }
-        let cls = this.get("classNames") === true ? this.source.className : this.get("classNames", "");
+        let cls = this.get("classNames") === true ? this.source.className : this.get("classNames", "") || "";
         this.select = document.createElement("DIV");
         this.select.className = ((cls) => {
             let _l = ["rtl", "hideSelected", "hideDisabled", "hideHidden", "disabled", "required", "multiple", "deselect"];
@@ -658,10 +658,7 @@ class Select {
         return this.updateCSV().updateLabel();
     }
     updateCSV() {
-        let csvValue = this.trigger("filter", "update#csv", [this.value("csv")])[0];
-        if (this.get("csvOutput") && csvValue) {
-            this.csv.value = csvValue;
-        }
+        this.csv.value = this.trigger("filter", "update#csv", [this.value("csv")])[0];
         return this;
     }
     updateLabel(label) {
@@ -740,12 +737,12 @@ class Select {
         if (this.trigger("hook", "reload:before", [hard]) !== true) {
             return this;
         }
-        (hard) ? this.remove().init() : this.query();
+        (hard) ? this.destroy().init() : this.query();
         this.trigger("hook", "reload:after", [hard]);
         return this;
     }
-    remove(keep) {
-        if (this.trigger("hook", "remove:before", [keep]) !== true) {
+    destroy(keep) {
+        if (this.trigger("hook", "destroy:before", [keep]) !== true) {
             return this;
         }
         if (!keep) {
@@ -764,7 +761,7 @@ class Select {
             this.select.parentElement.removeChild(this.select);
         }
         this.source.removeAttribute("data-rat-select");
-        this.trigger("hook", "remove:after", [keep]);
+        this.trigger("hook", "destroy:after", [keep]);
         return this;
     }
     value(format) {

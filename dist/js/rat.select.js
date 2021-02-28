@@ -346,7 +346,7 @@
             else {
                 this.source.parentElement.appendChild(this.select);
             }
-            this.updateLabel();
+            this.updateCSV().updateLabel();
             this.trigger("hook", "init:after");
             this.query();
             if (this.get("startOpen") && !this.get("disabled")) {
@@ -362,7 +362,7 @@
             if (this.trigger("hook", "build:before") === false) {
                 return this;
             }
-            var cls = this.get("classNames") === true ? this.source.className : this.get("classNames", "");
+            var cls = this.get("classNames") === true ? this.source.className : this.get("classNames", "") || "";
             this.select = document.createElement("DIV");
             this.select.className = (function (cls) {
                 var _l = ["rtl", "hideSelected", "hideDisabled", "hideHidden", "disabled", "required", "multiple", "deselect"];
@@ -705,10 +705,7 @@
             return this.updateCSV().updateLabel();
         };
         Select.prototype.updateCSV = function () {
-            var csvValue = this.trigger("filter", "update#csv", [this.value("csv")])[0];
-            if (this.get("csvOutput") && csvValue) {
-                this.csv.value = csvValue;
-            }
+            this.csv.value = this.trigger("filter", "update#csv", [this.value("csv")])[0];
             return this;
         };
         Select.prototype.updateLabel = function (label) {
@@ -787,12 +784,12 @@
             if (this.trigger("hook", "reload:before", [hard]) !== true) {
                 return this;
             }
-            (hard) ? this.remove().init() : this.query();
+            (hard) ? this.destroy().init() : this.query();
             this.trigger("hook", "reload:after", [hard]);
             return this;
         };
-        Select.prototype.remove = function (keep) {
-            if (this.trigger("hook", "remove:before", [keep]) !== true) {
+        Select.prototype.destroy = function (keep) {
+            if (this.trigger("hook", "destroy:before", [keep]) !== true) {
                 return this;
             }
             if (!keep) {
@@ -811,7 +808,7 @@
                 this.select.parentElement.removeChild(this.select);
             }
             this.source.removeAttribute("data-rat-select");
-            this.trigger("hook", "remove:after", [keep]);
+            this.trigger("hook", "destroy:after", [keep]);
             return this;
         };
         Select.prototype.value = function (format) {
