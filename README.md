@@ -1,1 +1,1 @@
-# This is a forked repository from [Tail Select](https://github.pytes.net/tail.select), it was forked for personal purposes.
+# This is a forked repository from [Tail Select](https://github.pytes.net/tail.select).
