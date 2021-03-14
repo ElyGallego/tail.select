@@ -425,8 +425,10 @@
 
             // Prepare Options
             this.options = new options(this.e, this);
-            for(var l = this.e.options.length, i = 0; i < l; i++){
-                this.options.set(this.e.options[i], false);
+            if (this.e.options) {
+                for(var l = this.e.options.length, i = 0; i < l; i++){
+                    this.options.set(this.e.options[i], false);
+                }
             }
             for(var key in con.items){
                 if(typeof con.items[key] === "string"){
